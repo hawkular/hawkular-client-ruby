@@ -1,0 +1,5 @@
+== Changes
+
+This document describes the relevant changes beween releases of the
+_hawkular-client_ project.
+
