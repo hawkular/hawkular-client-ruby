@@ -28,7 +28,7 @@ module Hawkular::Metrics
 
   class Client
 
-    # @return [Hash]
+    # @!visibility private
     attr_reader :credentials, :entrypoint, :options
     # @return [Tenants] access tenants API
     attr_reader :tenants
@@ -61,6 +61,7 @@ module Hawkular::Metrics
       @avail = Client::Availability::new self
     end
 
+
     def http_get(suburl, headers={})
       begin
         res = rest_client(suburl).get(http_headers(headers))
@@ -70,6 +71,7 @@ module Hawkular::Metrics
         handle_fault $!
       end
     end
+
 
     def http_post(suburl, hash, headers={})
       begin
@@ -103,20 +105,9 @@ module Hawkular::Metrics
       end
     end
 
-    def tenant_header
-      # keep "tenantId" header until HWKMETRICS-187 gets fixed
-      @options[:tenant].nil? ? {} : { :'Hawkular-Tenant' => @options[:tenant], "tenantId" => @options[:tenant] }
-    end
 
-    def auth_header
-      if @credentials[:username].nil? and @credentials[:password].nil?
-        return {}
-      end
-      # This is the method for strict_encode64:
-      encoded_credentials = ["#{@credentials[:username]}:#{@credentials[:password]}"].pack("m0").gsub(/\n/,'')
-      {:authorization => "Basic " + encoded_credentials }
-    end
 
+    # @!visibility private
     def rest_client(suburl)
       options[:timeout] = ENV['HAWKULARCLIENT_REST_TIMEOUT'] if ENV['HAWKULARCLIENT_REST_TIMEOUT']
       # strip @endpoint in case suburl is absolute
@@ -126,15 +117,18 @@ module Hawkular::Metrics
       RestClient::Resource.new(@entrypoint, options)[suburl]
     end
 
+    # @!visibility private
     def base_url
       url = URI.parse(@entrypoint)
       "#{url.scheme}://#{url.host}:#{url.port}"
     end
 
+    # @!visibility private
     def self.parse_response(response)
       JSON.parse(response)
     end
 
+    # @!visibility private
     def http_headers(headers ={})
       {}.merge(auth_header)
         .merge(tenant_header)
@@ -145,19 +139,42 @@ module Hawkular::Metrics
         .merge(headers)
     end
 
-    def handle_fault(f)
-      if defined? f.http_body and !f.http_body.nil?
-        begin
-          fault = "#{f.errorMsg}\n%s\n" % JSON.parse(f.http_body)["errorMsg"]
-        rescue
-          fault = f.http_body
-          raise HawkularException::new(fault)
-        end
-      else
-        raise f
+    # timestamp of current time
+    # @return [Integer] timestamp
+    def now
+      Integer(Time::now.to_f * 1000)
+    end
+
+    private
+
+
+      def tenant_header
+        @options[:tenant].nil? ? {} : { :'Hawkular-Tenant' => @options[:tenant], "tenantId" => @options[:tenant] }
       end
 
-    end
+
+      def auth_header
+        if @credentials[:username].nil? and @credentials[:password].nil?
+          return {}
+        end
+        # This is the method for strict_encode64:
+        encoded_credentials = ["#{@credentials[:username]}:#{@credentials[:password]}"].pack("m0").gsub(/\n/,'')
+        {:authorization => "Basic " + encoded_credentials }
+      end
+
+      def handle_fault(f)
+        if defined? f.http_body and !f.http_body.nil?
+          begin
+            fault = "#{f.errorMsg}\n%s\n" % JSON.parse(f.http_body)["errorMsg"]
+          rescue
+            fault = f.http_body
+            raise HawkularException::new(fault)
+          end
+        else
+          raise f
+        end
+
+      end
   end
 
 end

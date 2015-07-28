@@ -4,6 +4,9 @@ require "securerandom"
 # examples related to Hawkular Metrics
 
 
+# time constants
+t4h = 4 * 60 * 60 * 1000
+
 # more or less generic methodc common for all metric types (counters, gauges, availabilities)
 def create_metric_using_hash(endpoint)
   id = SecureRandom.uuid
@@ -74,6 +77,46 @@ describe "Tenants" do
   end
 end
 
+describe "Mixed metrics" do
+
+  before(:all) do
+    setup_client_new_tenant
+  end
+
+  it "Should send mixed metric request of a single type" do
+    id = SecureRandom.uuid
+    @client.push_data(counters:[{:id => id, :data => [{:value => 1}]} ] )
+    data = @client.counters.get_data(id)
+    expect(data.size).to be 1
+
+    @client.push_data(availabilities:[{:id => id, :data => [{:value => "down"}]} ] )
+    data = @client.avail.get_data(id)
+    expect(data.size).to be 1
+
+    @client.push_data(gauges:[{:id => id, :data => [{:value => 1.1}]} ] )
+    data = @client.gauges.get_data(id)
+    expect(data.size).to be 1
+  end
+
+  it "Should send mixed metric request" do
+    id = SecureRandom.uuid
+
+    expect(@client.counters.get_data(id).size).to be 0
+    expect(@client.gauges.get_data(id).size).to be 0
+    expect(@client.avail.get_data(id).size).to be 0
+
+    @client.push_data(
+      counters:[{:id => id, :data => [{:value => 1}]}],
+      availabilities:[{:id => id, :data => [{:value => "down"}]}],
+      gauges:[{:id => id, :data => [{:value => 1.1}]}]
+    )
+
+    expect(@client.counters.get_data(id).size).to be 1
+    expect(@client.gauges.get_data(id).size).to be 1
+    expect(@client.avail.get_data(id).size).to be 1
+  end
+end
+
 describe "Counter metrics" do
 
   before(:all) do
@@ -92,7 +135,7 @@ describe "Counter metrics" do
     id = SecureRandom.uuid
     #create counter
     @client.counters.create({:id => id})
-    now = Integer(Time::now.to_f * 1000)
+    now = @client.now
 
     # push 3  values with timestamps
     @client.counters.push_data(id, [{:value => 1, :timestamp => now - 30}, {:value => 2, :timestamp => now - 20}, {:value => 3, :timestamp => now -10 }])
@@ -104,6 +147,10 @@ describe "Counter metrics" do
     @client.counters.push_data(id, {:value => 4})
     data = @client.counters.get_data(id)
     expect(data.size).to be 4
+
+    # retrieve values from past
+    data = @client.counters.get_data(id, starts: @client.now - (2 * t4h), ends: @client.now - t4h)
+    expect(data.empty?).to be true
   end
 
   it "Should push metric data to non-existing counter" do
@@ -156,7 +203,7 @@ describe "Gauge metrics" do
     id = SecureRandom.uuid
     #create gauge
     @client.gauges.create({:id => id})
-    now = Integer(Time::now.to_f * 1000)
+    now = @client.now
 
     # push 3  values with timestamps
     @client.gauges.push_data(id, [{:value => 1, :timestamp => now - 30}, {:value => 2, :timestamp => now - 20}, {:value => 3, :timestamp => now -10 }])
@@ -168,10 +215,27 @@ describe "Gauge metrics" do
     @client.gauges.push_data(id, {:value => 4})
     data = @client.gauges.get_data(id)
     expect(data.size).to be 4
+
+    # retrieve values from past
+    data = @client.counters.get_data(id, starts: @client.now - (2 * t4h), ends: @client.now - t4h)
+    expect(data.empty?).to be true
   end
 
   it "Should update tags for gauge definition" do
     update_metric_by_tags @client.gauges
+  end
+
+  it "Should return periods" do
+    id = SecureRandom.uuid
+    now = @client.now
+    # push 3  values with timestamps
+    @client.gauges.push_data(id, [{:value => 1, :timestamp => now - 30}, {:value => 2, :timestamp => now - 20}, {:value => 3, :timestamp => now}])
+
+    before4h = @client.now - t4h
+    data = @client.gauges.get_periods(id, operation: "lte", threshold: 4, starts: before4h)
+    expect(data.size).to be 1
+    expect(data[0][0]).to eql(now - 30)
+    expect(data[0][1]).to eql(now)
   end
 
 end
