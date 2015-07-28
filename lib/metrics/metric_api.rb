@@ -105,8 +105,8 @@ module Hawkular::Metrics
 
       # Retrieve metric datapoints
       # @param id [String] metric definition id
-      # @param starts: [Integer] optional timestamp (default now - 8h)
-      # @param ends: [Integer] optional timestamp (default now)
+      # @param starts [Integer] optional timestamp (default now - 8h)
+      # @param ends [Integer] optional timestamp (default now)
       # @return [Array[Hash]] datapoints
       # @see #push_data #push_data for datapoint detail
       def get_data(id, starts: nil, ends: nil)
@@ -128,10 +128,10 @@ module Hawkular::Metrics
 
       # Retrieve time ranges when given gauge matches given operation and threshold
       # @param id [String] gauge ID
-      # @param starts: [Integer] timestamp (default now - 8h)
-      # @param ends: [Integer] timestamp (default now)
-      # @param threshold: [Numeric]
-      # @param operator: [String] A comparison operation to perform between values and the threshold. Supported operations include "ge", "gte", "lt", "lte", and "eq"
+      # @param starts [Integer] timestamp (default now - 8h)
+      # @param ends [Integer] timestamp (default now)
+      # @param threshold [Numeric]
+      # @param operation [String] A comparison operation to perform between values and the threshold. Supported operations include "ge", "gte", "lt", "lte", and "eq"
       # @example Get time periods when metric "gauge1" was under 10 in past 4 hours
       #   before4h = client.now - (4 * 60 * 60 * 1000)
       #   client.gauges.get_periods("gauge1", starts: before4h, threshold: 10, operation: "lte")

@@ -3,14 +3,14 @@ module Hawkular::Metrics
     # Provides access to tenants API
     class Tenants
 
-      # @param [Client]
+      # @param client [Client]
       def initialize(client)
         @client = client
         @resource = "tenants"
       end
 
       # Create new tenant
-      # @param [String] tenant ID/Name
+      # @param id [String] tenant ID/Name
       def create(id)
         @client.http_post("/#{resource}", {:id => id})
       end
