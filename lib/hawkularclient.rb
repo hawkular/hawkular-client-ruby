@@ -4,6 +4,13 @@ require "json"
 require "rest-client"
 
 module Hawkular
+  # Metrics module provides access to Hawkular Metrics REST API
+  # @see http://www.hawkular.org/docs/rest/rest-metrics.html Hawkular Metrics REST API Documentation
+  # @example Create Hawkular-Metrics client and start pushing some metric data
+  #  # create client instance
+  #  client = Hawkular::Metrics::Client::new("http://server","username","password",{"tenant" => "your tenant ID"})
+  #  # push gauge metric data for metric called "myGauge" (no need to create metric definition unless you wish to specify data retention)
+  #  client.gauges.push_data("myGauge", {:value => 3.1415925})
   module Metrics
   end
 end
