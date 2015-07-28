@@ -514,21 +514,21 @@
       <pre class="lines">
 
 
-51
-52
-53
-54
-55
-56
-57
 58
 59
 60
 61
-62</pre>
+62
+63
+64
+65
+66
+67
+68
+69</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkularclient.rb', line 51</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkularclient.rb', line 58</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_entrypoint'>entrypoint</span><span class='op'>=</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>http://localhost:8080/hawkular/metrics</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span><span class='id identifier rubyid_username'>username</span><span class='op'>=</span><span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_password'>password</span><span class='op'>=</span><span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='ivar'>@entrypoint</span> <span class='op'>=</span> <span class='id identifier rubyid_entrypoint'>entrypoint</span>
@@ -598,12 +598,12 @@
       <pre class="lines">
 
 
-40
-41
-42</pre>
+47
+48
+49</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkularclient.rb', line 40</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkularclient.rb', line 47</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_avail'>avail</span>
   <span class='ivar'>@avail</span>
@@ -659,12 +659,12 @@
       <pre class="lines">
 
 
-36
-37
-38</pre>
+43
+44
+45</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkularclient.rb', line 36</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkularclient.rb', line 43</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_counters'>counters</span>
   <span class='ivar'>@counters</span>
@@ -720,12 +720,12 @@
       <pre class="lines">
 
 
-38
-39
-40</pre>
+45
+46
+47</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkularclient.rb', line 38</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkularclient.rb', line 45</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_gauges'>gauges</span>
   <span class='ivar'>@gauges</span>
@@ -781,12 +781,12 @@
       <pre class="lines">
 
 
-34
-35
-36</pre>
+41
+42
+43</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkularclient.rb', line 34</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkularclient.rb', line 41</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_tenants'>tenants</span>
   <span class='ivar'>@tenants</span>
@@ -818,18 +818,18 @@
       <pre class="lines">
 
 
-98
-99
-100
-101
-102
-103
-104
 105
-106</pre>
+106
+107
+108
+109
+110
+111
+112
+113</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkularclient.rb', line 98</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkularclient.rb', line 105</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_http_delete'>http_delete</span><span class='lparen'>(</span><span class='id identifier rubyid_suburl'>suburl</span><span class='comma'>,</span> <span class='id identifier rubyid_headers'>headers</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='kw'>begin</span>
@@ -860,18 +860,18 @@
       <pre class="lines">
 
 
-65
-66
-67
-68
-69
-70
-71
 72
-73</pre>
+73
+74
+75
+76
+77
+78
+79
+80</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkularclient.rb', line 65</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkularclient.rb', line 72</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_http_get'>http_get</span><span class='lparen'>(</span><span class='id identifier rubyid_suburl'>suburl</span><span class='comma'>,</span> <span class='id identifier rubyid_headers'>headers</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='kw'>begin</span>
@@ -902,19 +902,19 @@
       <pre class="lines">
 
 
-76
-77
-78
-79
-80
-81
-82
 83
 84
-85</pre>
+85
+86
+87
+88
+89
+90
+91
+92</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkularclient.rb', line 76</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkularclient.rb', line 83</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_http_post'>http_post</span><span class='lparen'>(</span><span class='id identifier rubyid_suburl'>suburl</span><span class='comma'>,</span> <span class='id identifier rubyid_hash'>hash</span><span class='comma'>,</span> <span class='id identifier rubyid_headers'>headers</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='kw'>begin</span>
@@ -946,19 +946,19 @@
       <pre class="lines">
 
 
-87
-88
-89
-90
-91
-92
-93
 94
 95
-96</pre>
+96
+97
+98
+99
+100
+101
+102
+103</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkularclient.rb', line 87</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkularclient.rb', line 94</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_http_put'>http_put</span><span class='lparen'>(</span><span class='id identifier rubyid_suburl'>suburl</span><span class='comma'>,</span> <span class='id identifier rubyid_hash'>hash</span><span class='comma'>,</span> <span class='id identifier rubyid_headers'>headers</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='kw'>begin</span>
@@ -1019,12 +1019,12 @@
       <pre class="lines">
 
 
-144
-145
-146</pre>
+151
+152
+153</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkularclient.rb', line 144</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkularclient.rb', line 151</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_now'>now</span>
   <span class='const'>Integer</span><span class='lparen'>(</span><span class='const'>Time</span><span class='op'>::</span><span class='id identifier rubyid_now'>now</span><span class='period'>.</span><span class='id identifier rubyid_to_f'>to_f</span> <span class='op'>*</span> <span class='int'>1000</span><span class='rparen'>)</span>
@@ -1157,7 +1157,7 @@
 </div>
 
     <div id="footer">
-  Generated on Tue Jul 28 15:09:42 2015 by
+  Generated on Tue Jul 28 15:29:21 2015 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.6 (ruby-2.2.2).
 </div>
