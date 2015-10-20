@@ -135,7 +135,7 @@ module Hawkular::Metrics
       # @example Get time periods when metric "gauge1" was under 10 in past 4 hours
       #   before4h = client.now - (4 * 60 * 60 * 1000)
       #   client.gauges.get_periods("gauge1", starts: before4h, threshold: 10, operation: "lte")
-      def get_periods(id, starts: nil, ends: nil, threshold:, operation:)
+      def get_periods(id, starts: nil, ends: nil, threshold: nil, operation: nil)
           params = {:start => starts, :end => ends, :threshold => threshold, :op => operation}
           params.delete_if { |k, v| v.nil? }
           @client.http_get("/#{@resource}/#{id}/periods?"+URI.encode_www_form(params))
@@ -153,7 +153,7 @@ module Hawkular::Metrics
 
       # get rate for given metric
       # @param id [String] metric ID
-      def get_rate(id:)
+      def get_rate(id: nil)
         @client.http_get("/#{@resource}/#{id}/rate")
       end
     end
