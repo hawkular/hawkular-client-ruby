@@ -59,7 +59,11 @@ module Hawkular::Metrics
       @entrypoint = entrypoint
       @credentials = { :username => username, :password => password }
       @options = {
-        :tenant => nil,
+        :tenant          => nil,
+        :ssl_ca_file     => nil,
+        :verify_ssl      => OpenSSL::SSL::VERIFY_PEER,
+        :ssl_client_cert => nil,
+        :ssl_client_key  => nil
       }.merge(options)
 
       @tenants = Client::Tenants::new self
@@ -117,6 +121,10 @@ module Hawkular::Metrics
     # @!visibility private
     def rest_client(suburl)
       options[:timeout] = ENV['HAWKULARCLIENT_REST_TIMEOUT'] if ENV['HAWKULARCLIENT_REST_TIMEOUT']
+      options[:ssl_ca_file]     = @options[:ssl_ca_file]
+      options[:verify_ssl]      = @options[:verify_ssl]
+      options[:ssl_client_cert] = @options[:ssl_client_cert]
+      options[:ssl_client_key]  = @options[:ssl_client_key]
       # strip @endpoint in case suburl is absolute
       if suburl.match(/^http/)
         suburl = suburl[@entrypoint.length,suburl.length]
