@@ -63,7 +63,8 @@ module Hawkular::Metrics
         :ssl_ca_file     => nil,
         :verify_ssl      => OpenSSL::SSL::VERIFY_PEER,
         :ssl_client_cert => nil,
-        :ssl_client_key  => nil
+        :ssl_client_key  => nil,
+        :headers         => {}
       }.merge(options)
 
       @tenants = Client::Tenants::new self
@@ -147,6 +148,7 @@ module Hawkular::Metrics
     def http_headers(headers ={})
       {}.merge(auth_header)
         .merge(tenant_header)
+        .merge(@options[:headers])
         .merge({
           :content_type => 'application/json',
           :accept => 'application/json',
