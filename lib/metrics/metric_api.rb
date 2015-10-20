@@ -116,6 +116,19 @@ module Hawkular::Metrics
         resp
       end
 
+      # Retrieve metric datapoints by tags
+      # @param tags [Hash]
+      # @param starts [Integer] optional timestamp (default now - 8h)
+      # @param ends [Integer] optional timestamp (default now)
+      # @param bucketDuration [String] optional interval (default no aggregation)
+      # @return [Array[Hash]] datapoints
+      # @see #push_data #push_data for datapoint detail
+      def get_data_by_tags(tags, starts: nil, ends: nil, bucketDuration: nil)
+        params = {:tags => tags_param(tags), :start => starts, :end => ends, :bucketDuration => bucketDuration}
+        resp = @client.http_get("/#{@resource}/data/?" + encode_params(params))
+        resp.kind_of?(Array) ? resp : [] # API returns no content (empty Hash) instead of empty array
+      end
+
       def tags_param(tags)
         tags.map { |k, v| "#{k}:#{v}" }.join(',')
       end
