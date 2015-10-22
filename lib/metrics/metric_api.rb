@@ -107,10 +107,11 @@ module Hawkular::Metrics
       # @param id [String] metric definition id
       # @param starts [Integer] optional timestamp (default now - 8h)
       # @param ends [Integer] optional timestamp (default now)
+      # @param bucketDuration [String] optional interval (default no aggregation)
       # @return [Array[Hash]] datapoints
       # @see #push_data #push_data for datapoint detail
-      def get_data(id, starts: nil, ends: nil)
-        params = {:start => starts, :end => ends}
+      def get_data(id, starts: nil, ends: nil, bucketDuration: nil)
+        params = {:start => starts, :end => ends, :bucketDuration => bucketDuration}
         params.delete_if { |k, v| v.nil? }
         resp = @client.http_get("/#{@resource}/#{id}/data/?"+URI.encode_www_form(params))
         return [] if !resp.kind_of?(Array) # API returns no content (empty Hash) instead of empty array
