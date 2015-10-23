@@ -62,10 +62,7 @@ module Hawkular::Metrics
       # @param tags [Hash]
       # @return [Array[MetricDefinition]]
       def query(tags)
-          tags = tags.map do |k,v|
-            "#{k}:#{v}"
-          end
-          @client.http_get("/metrics/?type=#{@type}&tags=#{tags.join(',')}").map do |g|
+          @client.http_get("/metrics/?type=#{@type}&tags=#{tags_param(tags)}").map do |g|
             Hawkular::Metrics::MetricDefinition::new(g)
           end
       end
@@ -115,6 +112,10 @@ module Hawkular::Metrics
         resp = @client.http_get("/#{@resource}/#{id}/data/?"+URI.encode_www_form(params))
         return [] if !resp.kind_of?(Array) # API returns no content (empty Hash) instead of empty array
         resp
+      end
+
+      def tags_param(tags)
+        tags.map { |k, v| "#{k}:#{v}" }.join(',')
       end
     end
 
