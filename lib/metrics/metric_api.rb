@@ -112,8 +112,7 @@ module Hawkular::Metrics
       def get_data(id, starts: nil, ends: nil, bucketDuration: nil)
         params = {:start => starts, :end => ends, :bucketDuration => bucketDuration}
         resp = @client.http_get("/#{@resource}/#{ERB::Util::url_encode(id)}/data/?" + encode_params(params))
-        return [] if !resp.kind_of?(Array) # API returns no content (empty Hash) instead of empty array
-        resp
+        resp.kind_of?(Array) ? resp : [] # API returns no content (empty Hash) instead of empty array
       end
 
       def tags_param(tags)
