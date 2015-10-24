@@ -55,9 +55,13 @@ module Hawkular::Metrics
     # @example initialize with Hawkular-tenant option
     #   Hawkular::Metrics::Client::new("http://server","username","password",{"tenant" => "your tenant ID"})
     #
-    def initialize(entrypoint='http://localhost:8080/hawkular/metrics',username=nil, password=nil, options={})
+    def initialize(entrypoint='http://localhost:8080/hawkular/metrics', credentials={}, options={})
       @entrypoint = entrypoint
-      @credentials = { :username => username, :password => password }
+      @credentials = {
+        username: nil,
+        password: nil,
+        token:    nil
+      }.merge(credentials)
       @options = {
         :tenant          => nil,
         :ssl_ca_file     => nil,
@@ -149,6 +153,7 @@ module Hawkular::Metrics
     # @!visibility private
     def http_headers(headers ={})
       {}.merge(tenant_header)
+        .merge(token_header)
         .merge(@options[:headers])
         .merge({
           :content_type => 'application/json',
@@ -165,6 +170,9 @@ module Hawkular::Metrics
 
     private
 
+      def token_header
+        @credentials[:token].nil? ? {} : { 'Authorization' => "Bearer #{@credentials[:token]}" }
+      end
 
       def tenant_header
         @options[:tenant].nil? ? {} : { :'Hawkular-Tenant' => @options[:tenant], "tenantId" => @options[:tenant] }

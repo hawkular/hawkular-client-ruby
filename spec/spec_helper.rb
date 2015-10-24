@@ -8,8 +8,11 @@ require 'yaml'
 module Hawkular::Metrics::RSpec
 
   def setup_client(options = {})
-    user, password, url = config['user'], config['password'], config['url']
-    @client = Hawkular::Metrics::Client.new(url, user, password, options)
+    credentials = {
+      username: config['user'],
+      password: config['password']
+    }
+    @client = Hawkular::Metrics::Client.new(config['url'], credentials, options)
   end
 
   def setup_client_new_tenant(options = {})
