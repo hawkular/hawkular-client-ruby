@@ -126,6 +126,8 @@ module Hawkular::Metrics
       options[:verify_ssl]      = @options[:verify_ssl]
       options[:ssl_client_cert] = @options[:ssl_client_cert]
       options[:ssl_client_key]  = @options[:ssl_client_key]
+      options[:user]            = @credentials[:username]
+      options[:password]        = @credentials[:password]
       # strip @endpoint in case suburl is absolute
       if suburl.match(/^http/)
         suburl = suburl[@entrypoint.length,suburl.length]
@@ -146,8 +148,7 @@ module Hawkular::Metrics
 
     # @!visibility private
     def http_headers(headers ={})
-      {}.merge(auth_header)
-        .merge(tenant_header)
+      {}.merge(tenant_header)
         .merge(@options[:headers])
         .merge({
           :content_type => 'application/json',
@@ -167,16 +168,6 @@ module Hawkular::Metrics
 
       def tenant_header
         @options[:tenant].nil? ? {} : { :'Hawkular-Tenant' => @options[:tenant], "tenantId" => @options[:tenant] }
-      end
-
-
-      def auth_header
-        if @credentials[:username].nil? and @credentials[:password].nil?
-          return {}
-        end
-        # This is the method for strict_encode64:
-        encoded_credentials = ["#{@credentials[:username]}:#{@credentials[:password]}"].pack("m0").gsub(/\n/,'')
-        {:authorization => "Basic " + encoded_credentials }
       end
 
       def handle_fault(f)
