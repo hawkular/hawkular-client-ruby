@@ -171,13 +171,14 @@ module Hawkular::Metrics
       end
 
       def handle_fault(f)
-        if defined? f.http_body and !f.http_body.nil?
+        if f.respond_to?(:http_body) && !f.http_body.nil?
           begin
-            fault = "#{f.errorMsg}\n%s\n" % JSON.parse(f.http_body)["errorMsg"]
-          rescue
-            fault = f.http_body
-            raise HawkularException::new(fault)
+            json_body = JSON.parse(f.http_body)
+            fault_message = json_body['errorMsg'] || f.http_body
+          rescue JSON::ParserError
+            fault_message = f.http_body
           end
+          raise HawkularException, fault_message
         else
           raise f
         end
