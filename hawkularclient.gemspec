@@ -23,7 +23,7 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency('shoulda')
   gem.add_development_dependency('rspec-rails', '~> 2.6')
   gem.add_development_dependency('rake')
-  gem.add_development_dependency('yardoc')
+  gem.add_development_dependency('yard')
 
   gem.rdoc_options << '--title' << gem.name << '--main' << 'README.rdoc' << '--line-numbers' << '--inline-source'
   gem.extra_rdoc_files = ['README.rdoc', 'CHANGES.rdoc']
