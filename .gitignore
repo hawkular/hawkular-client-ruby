@@ -36,3 +36,19 @@ build/
 
 # test config
 spec/endpoint.yml
+
+# IDE files
+.project
+.classpath
+.settings
+.idea
+*.ipr
+*.iml
+*.iws
+nb-configuration.xml
+
+# KDE
+.directory
+
+# OSX
+.DS_Store
