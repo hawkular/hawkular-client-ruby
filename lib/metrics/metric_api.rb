@@ -1,3 +1,5 @@
+require 'erb'
+
 module Hawkular::Metrics
   class Client
 
@@ -109,14 +111,17 @@ module Hawkular::Metrics
       # @see #push_data #push_data for datapoint detail
       def get_data(id, starts: nil, ends: nil, bucketDuration: nil)
         params = {:start => starts, :end => ends, :bucketDuration => bucketDuration}
-        params.delete_if { |k, v| v.nil? }
-        resp = @client.http_get("/#{@resource}/#{id}/data/?"+URI.encode_www_form(params))
+        resp = @client.http_get("/#{@resource}/#{ERB::Util::url_encode(id)}/data/?" + encode_params(params))
         return [] if !resp.kind_of?(Array) # API returns no content (empty Hash) instead of empty array
         resp
       end
 
       def tags_param(tags)
         tags.map { |k, v| "#{k}:#{v}" }.join(',')
+      end
+
+      def encode_params(params)
+        URI.encode_www_form(params.select { |k, v| !v.nil? })
       end
     end
 
@@ -139,8 +144,7 @@ module Hawkular::Metrics
       #   client.gauges.get_periods("gauge1", starts: before4h, threshold: 10, operation: "lte")
       def get_periods(id, starts: nil, ends: nil, threshold: nil, operation: nil)
           params = {:start => starts, :end => ends, :threshold => threshold, :op => operation}
-          params.delete_if { |k, v| v.nil? }
-          @client.http_get("/#{@resource}/#{id}/periods?"+URI.encode_www_form(params))
+          @client.http_get("/#{@resource}/#{id}/periods?" + encode_params(params))
       end
 
     end
