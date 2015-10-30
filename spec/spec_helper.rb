@@ -14,8 +14,8 @@ module Hawkular::Metrics::RSpec
 
   def setup_client_new_tenant(options = {})
 	setup_client
-    @tenant = SecureRandom.uuid
-    @client.tenants.create(@tenant)
+    @tenant = 'vcr-test-tenant-123'
+    # @client.tenants.create(@tenant)
     setup_client({:tenant => @tenant})
   end
 
