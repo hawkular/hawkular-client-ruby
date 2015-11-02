@@ -23,15 +23,10 @@ module Hawkular::Metrics
     #    client.push_data(gauges: [{:id => "gauge1", :data => [{:value => 1}, {:value => 2}]}],
     #                           availabilities: [{:id => "avail1", :data => [{:value => "up"}]}])
     def push_data(gauges: [], counters: [], availabilities: [])
-      gauges.each do |g|
-        default_timestamp g[:data]
-      end
-      counters.each do |g|
-        default_timestamp g[:data]
-      end
-      availabilities.each do |g|
-        default_timestamp g[:data]
-      end
+      gauges.each { |g| default_timestamp g[:data] }
+      counters.each { |g| default_timestamp g[:data] }
+      availabilities.each { |g| default_timestamp g[:data] }
+
       data = { gauges: gauges, counters: counters, availabilities: availabilities }
       http_post('/metrics/data', data)
     end
