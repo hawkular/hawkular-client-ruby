@@ -1,0 +1,210 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://localhost:8080/hawkular/metrics/availability
+    body:
+      encoding: UTF-8
+      string: '{"id":"<%= id %>","tags":{"myTag":"<%= id %>"}}'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Hawkular-Tenant:
+      - vcr-test-tenant-123
+      Tenantid:
+      - vcr-test-tenant-123
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '101'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/9
+      Location:
+      - http://localhost:8080/hawkular/metrics/availability/<%= id %>
+      Content-Length:
+      - '0'
+      Date:
+      - Fri, 30 Oct 2015 17:30:28 GMT
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Fri, 30 Oct 2015 17:30:28 GMT
+- request:
+    method: get
+    uri: http://localhost:8080/hawkular/metrics/availability/<%= id %>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Hawkular-Tenant:
+      - vcr-test-tenant-123
+      Tenantid:
+      - vcr-test-tenant-123
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/9
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '156'
+      Date:
+      - Fri, 30 Oct 2015 17:30:28 GMT
+    body:
+      encoding: UTF-8
+      string: '{"id":"<%= id %>","tags":{"myTag":"<%= id %>"},"type":"availability","tenantId":"vcr-test-tenant-123"}'
+    http_version: 
+  recorded_at: Fri, 30 Oct 2015 17:30:28 GMT
+- request:
+    method: put
+    uri: http://localhost:8080/hawkular/metrics/availability/<%= id %>/tags
+    body:
+      encoding: UTF-8
+      string: '{"newTag":"newValue"}'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Hawkular-Tenant:
+      - vcr-test-tenant-123
+      Tenantid:
+      - vcr-test-tenant-123
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '21'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/9
+      Content-Length:
+      - '0'
+      Date:
+      - Fri, 30 Oct 2015 17:30:28 GMT
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Fri, 30 Oct 2015 17:30:28 GMT
+- request:
+    method: get
+    uri: http://localhost:8080/hawkular/metrics/availability/<%= id %>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Hawkular-Tenant:
+      - vcr-test-tenant-123
+      Tenantid:
+      - vcr-test-tenant-123
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/9
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '176'
+      Date:
+      - Fri, 30 Oct 2015 17:30:28 GMT
+    body:
+      encoding: UTF-8
+      string: '{"id":"<%= id %>","tags":{"myTag":"<%= id %>","newTag":"newValue"},"type":"availability","tenantId":"vcr-test-tenant-123"}'
+    http_version: 
+  recorded_at: Fri, 30 Oct 2015 17:30:28 GMT
+- request:
+    method: get
+    uri: http://localhost:8080/hawkular/metrics/metrics/?tags=myTag:<%= id %>&type=availability
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Hawkular-Tenant:
+      - vcr-test-tenant-123
+      Tenantid:
+      - vcr-test-tenant-123
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/9
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '178'
+      Date:
+      - Fri, 30 Oct 2015 17:30:29 GMT
+    body:
+      encoding: UTF-8
+      string: '[{"id":"<%= id %>","tags":{"myTag":"<%= id %>","newTag":"newValue"},"type":"availability","tenantId":"vcr-test-tenant-123"}]'
+    http_version: 
+  recorded_at: Fri, 30 Oct 2015 17:30:29 GMT
+recorded_with: VCR 2.9.3
