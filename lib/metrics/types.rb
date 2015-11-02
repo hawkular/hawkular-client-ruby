@@ -6,9 +6,7 @@ module Hawkular
 
       def initialize(json)
         @json = json
-        if !json.nil?
-          @id = @json['id']
-        end
+        @id = @json['id'] unless json.nil?
       end
     end
 
@@ -16,23 +14,23 @@ module Hawkular
     end
 
     class MetricDefinition < BaseObject
-      attr_accessor :tenantId, :dataRetention, :tags
+      attr_accessor :tenant_id, :data_retention, :tags
 
-      def initialize(json=nil)
+      def initialize(json = nil)
         super(json)
-        if !json.nil?
-          @tenantId = @json['tenantId']
-          @dataRetention = @json['dataRetention']
+        unless json.nil? # rubocop:disable Style/GuardClause
+          @tenant_id = @json['tenantId']
+          @data_retention = @json['dataRetention']
           @tags = @json['tags']
         end
       end
 
       def hash
-        h = {:id => @id, :tenantId => @tenantId, :dataRetention => @dataRetention, :tags => @tags}
-        h.delete_if { |k, v| v.nil? }
+        h = { id: @id, tenantId: @tenant_id,
+              dataRetention: @data_retention, tags: @tags }
+        h.delete_if { |_k, v| v.nil? }
         h
       end
-
     end
   end
 end
