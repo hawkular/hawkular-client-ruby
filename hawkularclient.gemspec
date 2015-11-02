@@ -6,11 +6,13 @@ require 'metrics/version'
 Gem::Specification.new do |gem|
   gem.name          = 'hawkular-client'
   gem.version       = Hawkular::Metrics::VERSION
-  gem.authors       = ['Libor Zoubek']
-  gem.email         = ['lzoubek@redhat.com']
+  gem.authors       = ['Libor Zoubek', 'Heiko W. Rupp', 'Federico Simoncelli']
+  gem.email         = %w(lzoubek@redhat.com hrupp@redhat.com)
   gem.homepage      = 'https://github.com/hawkular/hawkular-client-ruby'
   gem.summary       = 'A Ruby client for Hawkular'
-  gem.description   = <<-EOS
+  gem.license       = 'ASL 2.0'
+  gem.required_ruby_version = '>= 2.0.0'
+  gem.description = <<-EOS
     A Ruby client for Hawkular
   EOS
 

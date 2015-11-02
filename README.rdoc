@@ -15,7 +15,8 @@ A Ruby Hawkular Client.
 == Running the tests
 
 * Copy the file spec/endpoint.yml.example to spec/endpoint.yml
-* Edit the endpoint properties (user, password and host name)
+* Edit the endpoint properties in the file `spec/endpoint.yml`(user, password and host
+ name)
 * From command line run => rake spec
 
 == Logging

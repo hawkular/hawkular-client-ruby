@@ -45,12 +45,12 @@ module Hawkular::Metrics
 
     # Construct a new Hawkular Metrics client class.
     # optional parameters
-    # @param entrypoint [String]
-    # @param username [String]
-    # @param password [String]
+    # @param entrypoint [String] Base url of the Hawkular (metrics) server
+    # @param credentials Hash of username, password, token(optional)
     # @param options [Hash{String=>String}] client options
     # @example initialize with Hawkular-tenant option
-    #   Hawkular::Metrics::Client::new("http://server","username","password",
+    #   Hawkular::Metrics::Client::new("http://server",
+    #     {username:"username",password:"password"},
     #                          {"tenant" => "your tenant ID"})
     #
     def initialize(entrypoint = 'http://localhost:8080/hawkular/metrics',
