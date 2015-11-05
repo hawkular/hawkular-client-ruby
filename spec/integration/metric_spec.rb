@@ -77,6 +77,24 @@ describe 'Tenants', vcr: { match_requests_on: [:uri, :method], record: :none } d
   end
 end
 
+describe 'No_Tenant' do
+  it 'Should fail' do
+    id = SecureRandom.uuid
+
+    VCR.use_cassette('No_Tenant/Should fail', erb: { id: id }, record: :none) do
+      setup_client
+
+      begin
+        @client.counters.push_data(id, value: 4)
+      rescue # rubocop:disable Lint/HandleExceptions
+        # This is good
+      else
+        fail 'The call should have failed due to missing tenant'
+      end
+    end
+  end
+end
+
 describe 'Mixed metrics' do
   before(:all) do
     setup_client_new_tenant

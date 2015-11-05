@@ -3,6 +3,9 @@
 This document describes the relevant changes beween releases of the
 _hawkular-client_ project.
 
+=== V 0.1.2
+
+* Fix exception handling - this was missing `require 'English'`
 
 === V 0.1.1
 

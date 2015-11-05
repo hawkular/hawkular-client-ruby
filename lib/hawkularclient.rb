@@ -2,6 +2,7 @@
 
 require 'json'
 require 'rest-client'
+require 'English'
 
 module Hawkular
   # Metrics module provides access to Hawkular Metrics REST API
