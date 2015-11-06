@@ -1,5 +1,7 @@
+require 'hakwular'
+
 module Hawkular
   module Metrics
-    VERSION = '0.1.2'
+    VERSION = Hawkular.VERSION
   end
 end

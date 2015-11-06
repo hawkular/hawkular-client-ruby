@@ -1,4 +1,4 @@
-require 'hawkularclient'
+require 'hawkular'
 require 'rspec/core'
 require 'rspec/mocks'
 require 'socket'
