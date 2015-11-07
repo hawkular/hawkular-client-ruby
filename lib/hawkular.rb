@@ -1,9 +1,11 @@
-require 'hawkularclient'
-require 'inventory/inventory_api'
 require 'base64'
 require 'addressable/uri'
 
 module Hawkular
+
+  module Metrics
+  end
+
   class BaseClient
     # @!visibility private
     attr_reader :credentials, :entrypoint, :options
@@ -142,4 +144,14 @@ module Hawkular
       end
     end
   end
+
+  class HawkularException < StandardError
+    def initialize(message)
+      @message = message
+      super
+    end
+
+    attr_reader :message
+  end
+
 end

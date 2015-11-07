@@ -1,4 +1,7 @@
 require 'hawkular'
+require 'hawkularclient'
+require 'inventory/inventory_api'
+require 'alerts/alerts_api'
 require 'rspec/core'
 require 'rspec/mocks'
 require 'socket'
