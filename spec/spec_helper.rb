@@ -1,5 +1,5 @@
 require 'hawkular'
-require 'hawkularclient'
+require 'metrics/metrics_client'
 require 'inventory/inventory_api'
 require 'alerts/alerts_api'
 require 'rspec/core'

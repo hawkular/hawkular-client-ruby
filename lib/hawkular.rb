@@ -2,7 +2,6 @@ require 'base64'
 require 'addressable/uri'
 
 module Hawkular
-
   module Metrics
   end
 
@@ -119,6 +118,25 @@ module Hawkular
       encoded.rstrip!
     end
 
+    def generate_query_params(param_hash = {})
+      return '' if param_hash.size == 0
+
+      ret = ''
+      num = 0
+      param_hash.each { |_k, v| num += 1 unless v.nil? }
+
+      i = 0
+      ret = '?' if num > 0
+      param_hash.each  do |k, v|
+        next if v.nil?
+
+        ret += "#{k}=#{v}"
+        i += 1
+        ret += '&' if i < num
+      end
+      ret
+    end
+
     private
 
     def token_header
@@ -153,5 +171,4 @@ module Hawkular
 
     attr_reader :message
   end
-
 end

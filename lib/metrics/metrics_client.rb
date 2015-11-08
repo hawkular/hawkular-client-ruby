@@ -23,7 +23,6 @@ require 'metrics/tenant_api'
 require 'metrics/metric_api'
 
 module Hawkular::Metrics
-
   class Client < Hawkular::BaseClient
     # @return [Tenants] access tenants API
     attr_reader :tenants
@@ -48,7 +47,7 @@ module Hawkular::Metrics
                    credentials = {},
                    options = {})
 
-      super(entrypoint,credentials,options)
+      super(entrypoint, credentials, options)
       @tenants = Client::Tenants.new self
       @counters = Client::Counters.new self
       @gauges = Client::Gauges.new self
@@ -56,4 +55,3 @@ module Hawkular::Metrics
     end
   end
 end
-
