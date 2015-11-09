@@ -1,5 +1,5 @@
 
-require 'Hawkular'
+require 'hawkular'
 require 'json'
 require 'rest-client'
 require 'English'

@@ -1,4 +1,4 @@
-require 'Hawkular'
+require 'hawkular'
 
 module Hawkular::Inventory
   class InventoryClient < Hawkular::BaseClient

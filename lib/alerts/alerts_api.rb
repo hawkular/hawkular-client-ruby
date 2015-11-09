@@ -1,4 +1,4 @@
-require 'Hawkular'
+require 'hawkular'
 require 'ostruct'
 
 module Hawkular::Alerts
