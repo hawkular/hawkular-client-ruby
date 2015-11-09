@@ -1,0 +1,50 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://jdoe:password@localhost:8080/hawkular/alerts/triggers/snert~Local_jvm_nheap
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/9
+      Pragma:
+      - no-cache
+      Date:
+      - Mon, 09 Nov 2015 07:06:04 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '703'
+    body:
+      encoding: UTF-8
+      string: '{"tenantId":"28026b36-8fe4-4332-84c8-524e173a68bf","id":"snert~Local_jvm_nheap","name":"JVM
+        Non Heap Used","context":{"description":"JVM Non Heap Used for snert~Local","resourceName":"snert~Local","resourcePath":"/t;28026b36-8fe4-4332-84c8-524e173a68bf/e;test/f;snert/r;snert~Local~~","resourceType":"App
+        Server","triggerType":"RangeByPercent","triggerTypeProperty1":"MI~R~[snert~Local~~]~MT~WildFly
+        Memory Metrics~Heap Max"},"actions":{"email":["jdoe@acme.com"]},"autoDisable":true,"autoEnable":true,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","description":"JVM
+        Non Heap Used for snert~Local","enabled":true,"firingMatch":"ALL","orphan":false,"group":false,"severity":"HIGH"}'
+    http_version: 
+  recorded_at: Mon, 09 Nov 2015 07:06:04 GMT
+recorded_with: VCR 3.0.0
