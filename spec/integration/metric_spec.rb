@@ -350,4 +350,11 @@ describe 'Gauge metrics' do
       expect(data[0][1]).to eql(now)
     end
   end
+
+  it 'Should return the version' do
+    VCR.use_cassette('Metrics/Status') do
+      data = @client.fetch_version_and_status
+      expect(data).not_to be_nil
+    end
+  end
 end

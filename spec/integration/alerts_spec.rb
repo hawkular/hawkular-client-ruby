@@ -89,4 +89,12 @@ module Hawkular::Alerts::RSpec
       expect(alert.ackBy).to eql('Heiko')
     end
   end
+
+  # TODO: enable when alerts supports it
+  # describe 'Alerts' do
+  #   it 'Should return the version' do
+  #     data = @client.get_version_and_status
+  #     expect(data).not_to be_nil
+  #   end
+  # end
 end

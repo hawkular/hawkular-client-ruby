@@ -1,0 +1,44 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://localhost:8080/hawkular/metrics/status
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Hawkular-Tenant:
+      - vcr-test-tenant-123
+      Tenantid:
+      - vcr-test-tenant-123
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/9
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '187'
+      Date:
+      - Tue, 10 Nov 2015 11:13:50 GMT
+    body:
+      encoding: UTF-8
+      string: '{"MetricsService":"STARTING","Implementation-Version":"0.9.0.Final-SRC-revision-9080fcfbe40a66ce8143c477b5d6f8fbadeecf3a","Built-From-Git-SHA1":"9080fcfbe40a66ce8143c477b5d6f8fbadeecf3a"}'
+    http_version: 
+  recorded_at: Tue, 10 Nov 2015 11:13:50 GMT
+recorded_with: VCR 3.0.0

@@ -111,6 +111,10 @@ module Hawkular
       Integer(Time.now.to_f * 1000)
     end
 
+    # Encode the passed credentials (username/password) into a base64
+    # representation that can be used to generate a Http-Authentication header
+    # @param credentials [Hash{:username,:password}]
+    # @return [String] Base64 encoded result
     def base_64_credentials(credentials = {})
       creds = credentials.empty? ? @credentials : credentials
 
@@ -118,19 +122,28 @@ module Hawkular
       encoded.rstrip!
     end
 
+    # Generate a query string from the passed hash.
+    # This string starts with a `?` if the hash is
+    # not empty.
+    # Values may be an array, in which case the array values are joined together by `,`.
+    # @param param_hash [Hash] key-values pairs
+    # @return [String] complete query string to append to a base url
     def generate_query_params(param_hash = {})
       return '' if param_hash.size == 0
 
-      ret = ''
-      num = 0
-      param_hash.each { |_k, v| num += 1 unless v.nil? }
+      num = count_non_nil_values(param_hash)
 
       i = 0
+      ret = ''
       ret = '?' if num > 0
       param_hash.each  do |k, v|
-        next if v.nil?
+        next if not_suitable?(v)
 
-        ret += "#{k}=#{v}"
+        if v.instance_of? Array
+          ret += "#{k}=#{v.join(',')}"
+        else
+          ret += "#{k}=#{v}"
+        end
         i += 1
         ret += '&' if i < num
       end
@@ -138,6 +151,18 @@ module Hawkular
     end
 
     private
+
+    def not_suitable?(v)
+      v.nil? || (v.instance_of? Array) && v.size == 0
+    end
+
+    def count_non_nil_values(param_hash)
+      num = 0
+      param_hash.each do |_k, v|
+        num += 1 unless not_suitable?(v)
+      end
+      num
+    end
 
     def token_header
       @credentials[:token].nil? ? {} : { 'Authorization' => "Bearer #{@credentials[:token]}" }

@@ -84,6 +84,21 @@ module Hawkular::Inventory::RSpec
       expect(resources.size).to be(1)
     end
 
+    it 'Should list URLs' do
+      creds = { username: 'jdoe', password: 'password' }
+
+      client = Hawkular::Inventory::InventoryClient.new(INVENTORY_BASE, creds)
+      client.impersonate
+
+      resources = client.list_resources_for_type(nil, 'URL')
+
+      expect(resources.size).to be(1)
+      resource = resources[0]
+      expect(resource.instance_of? Hawkular::Inventory::Resource).to be_truthy
+      expect(resource.properties.size).to be(5)
+      expect(resource.properties['url']).to eq('http://bsd.de')
+    end
+
     it 'Should list metrics for WildFlys' do
       creds = { username: 'jdoe', password: 'password' }
 
@@ -120,5 +135,11 @@ module Hawkular::Inventory::RSpec
       metrics = client.list_metrics_for_resource(wild_fly, type: 'GAUGE')
       expect(metrics.size).to be(10)
     end
+
+    # TODO: enable when inventory supports it
+    # it 'Should return the version' do
+    #   data = @client.get_version_and_status
+    #   expect(data).not_to be_nil
+    # end
   end
 end

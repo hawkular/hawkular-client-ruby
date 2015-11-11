@@ -11,6 +11,13 @@ module Hawkular::Metrics
       array
     end
 
+    # Return version and status information for the used version of Hawkular-Metrics
+    # @return [Hash{String=>String}]
+    #         ('Implementation-Version', 'Built-From-Git-SHA1', 'Status')
+    def fetch_version_and_status
+      http_get('/status')
+    end
+
     # Push data for multiple metrics of all supported types
     # @param gauges [Array]
     # @param counters [Array]

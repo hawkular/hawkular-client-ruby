@@ -10,12 +10,17 @@ A Ruby Hawkular Client.
 * Start a feature/bugfix branch
 * Commit and push until you are happy with your contribution
 * Make sure to add tests for it. This is important so I don't break it in a future version unintentionally.
+* Run your code through RuboCop (which is default when running `rake`) and fix complaints.
+* When you open a pull request, watch out for failures on Travis.
 * Please try not to mess with the Rakefile, version, or history. If you want to have your own version, or is otherwise necessary, that is fine, but please isolate to its own commit so I can cherry-pick around it.
 
 == Running the tests
 
-* Copy the file spec/endpoint.yml.example to spec/endpoint.yml
-* Edit the endpoint properties in the file `spec/endpoint.yml`(user, password and host name)
+Integration tests are recorded and played against cassettes recorded with VCR
+(http://www.relishapp.com/vcr/vcr/docs)
+
+* Edit the endpoint properties in the file `spec/endpoint.yml`(user, password and host name) if
+ needed
 * From command line run => rake spec
 
 == Logging

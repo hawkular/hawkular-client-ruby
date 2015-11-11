@@ -33,5 +33,25 @@ describe 'Base Spec' do
 
     expect(ret).to include('value=hello')
     expect(ret).to include('name=world')
+    expect(ret).to start_with('?')
+    expect(ret).to include('&')
+  end
+
+  it 'should flatten arrays' do
+    params = { value: %w(hello world) }
+
+    c = Hawkular::BaseClient.new('not-needed-for-this-test')
+    ret = c.generate_query_params params
+
+    expect(ret).to eql('?value=hello,world')
+  end
+
+  it 'should flatten arrays2' do
+    params = { value: [] }
+
+    c = Hawkular::BaseClient.new('not-needed-for-this-test')
+    ret = c.generate_query_params params
+
+    expect(ret).to eql('')
   end
 end
