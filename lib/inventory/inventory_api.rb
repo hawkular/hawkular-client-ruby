@@ -3,7 +3,7 @@ require 'hawkular'
 # Inventory module provides access to the Hawkular Inventory REST API.
 # @see http://www.hawkular.org/docs/rest/rest-inventory.html
 #
-# @note While Inventory supports 'environements', they are not used currently
+# @note While Inventory supports 'environments', they are not used currently
 #   and thus set to 'test' as default value.
 module Hawkular::Inventory
   # Client class to interact with Hawkular Inventory
@@ -48,13 +48,12 @@ module Hawkular::Inventory
 
     # List resource types. If no need is given all types are listed
     # @param [String] feed The id of the feed the type lives under. Can be nil for feedless types
-    # @param [String] environment the environment to use
     # @return [Array<ResourceType>] List of types, that can be empty
-    def list_resource_types(feed = nil, environment = 'test')
+    def list_resource_types(feed = nil)
       if feed.nil?
         ret = http_get('/resourceTypes')
       else
-        ret = http_get('/' + environment + '/' + feed + '/resourceTypes')
+        ret = http_get('/feeds/' + feed + '/resourceTypes')
       end
       val = []
       ret.each { |rt| val.push(ResourceType.new(rt['path'], rt['id'])) }
@@ -64,18 +63,62 @@ module Hawkular::Inventory
     # List the resources for the passed feed and resource type.
     # @param [String] feed The id of the feed the type lives under. Can be nil for feedless types
     # @param [String] type Name of the type to look for. Can be obtained from ResourceType.id
-    # @param [String] environment the environment to use
     # @return [Array<Resource>] List of resources. Can be empty
-    def list_resources_for_type(feed, type, environment = 'test')
+    def list_resources_for_type(feed, type)
       if feed.nil?
         ret = http_get('resourceTypes/' + type + '/resources')
       else
-        ret = http_get('/' + environment + '/' + feed + '/resourceTypes/' + type + '/resources')
+        ret = http_get('/feeds/'  + feed + '/resourceTypes/' + type + '/resources')
       end
       val = []
       ret.each { |r| val.push(Resource.new(r)) }
       val
     end
+
+    def list_child_resources(resource)
+      ret = http_get( '/feeds/' + resource.feed +  '/resources/' + resource.id + '/children')
+      val = []
+      ret.each { |r| val.push(Resource.new(r)) }
+      val
+    end
+
+    def list_relationships(resource)
+      ret = http_get('/feeds/' + resource.feed +  '/resources/' + resource.id + '/relationships')
+      val = []
+      ret.each { |r| val.push(Relationship.new(r)) }
+      val
+    rescue
+      []
+    end
+
+    def list_relationships_for_feed(feed_id)
+      ret = http_get('/feeds/' + feed_id +  '/relationships')
+      val = []
+      ret.each { |r| val.push(Relationship.new(r)) }
+      val
+    rescue
+      []
+    end
+
+
+    #[15:01:51]  <jkremser>	pilhuhn, this works for me curl -XPOST -H "Content-Type: application/json" -u jdoe:password -d
+    # '{"id" : "foo", "source": "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;localhost",
+    # "target": "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;localhost/r;localhost~Local~~/r;localhost~Local~%2Fsubsystem=hawkular-bus-broker",
+    # "name": "isRelatedTo"}' 'http://localhost:8080/hawkular/inventory/feeds/localhost/relationships'
+    #
+    def create_relationship(source_resource, target_resource, name, properties={})
+
+      rel = Relationship.new
+      rel.source_id = source_resource.path
+      rel.target_id = target_resource.path
+      rel.name = name
+      rel.properties = properties
+
+      http_post('/feeds/' + source_resource.feed + '/relationships',
+        rel.to_h)
+
+    end
+
 
     # def list_metrics_for_resource_type
     #   # TODO implement me
@@ -96,7 +139,7 @@ module Hawkular::Inventory
     #    # Don't filter, return all metric definitions
     #    client.list_metrics_for_resource(wild_fly)
     def list_metrics_for_resource(resource, filter = {})
-      ret = http_get('/' + resource.env + '/' +
+      ret = http_get('/feeds/' +
                            resource.feed + '/resources/' +
                            resource.id + '/metrics')
       val = []
@@ -192,5 +235,33 @@ module Hawkular::Inventory
       @type = res_type['type']
       @unit = res_type['unit']
     end
+  end
+
+  class Relationship
+    attr_accessor :source_id, :target_id, :properties, :name, :id
+
+    def initialize(hash={})
+      if hash.empty?
+        @properties = {}
+        return
+      end
+
+      @source_id = hash['source']
+      @target_id = hash['target']
+      @properties = hash['properties']
+      @name = hash['name']
+      @id = hash['id']
+    end
+
+    def to_h
+      hash = {}
+      hash['source'] = @source_id
+      hash['target'] = @target_id
+      hash['properties'] = @properties
+      hash['name'] = @name
+      hash['id'] = @id
+      hash
+    end
+
   end
 end

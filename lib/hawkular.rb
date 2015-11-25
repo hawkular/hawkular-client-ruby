@@ -41,8 +41,16 @@ module Hawkular
       handle_fault $ERROR_INFO
     end
 
+    def hawk_escape(input)
+      sub_url = input
+      sub_url.gsub!(' ', '%20')
+      sub_url.gsub!('[', '%5b')
+      sub_url.gsub!(']', '%5d')
+      sub_url
+    end
+
     def http_post(suburl, hash, headers = {})
-      suburl = Addressable::URI.escape(suburl)
+      suburl = hawk_escape(suburl)
       body = JSON.generate(hash)
       res = rest_client(suburl).post(body, http_headers(headers))
       puts "#{res}\n" if ENV['HAWKULARCLIENT_LOG_RESPONSE']
@@ -52,7 +60,7 @@ module Hawkular
     end
 
     def http_put(suburl, hash, headers = {})
-      suburl = Addressable::URI.escape(suburl)
+      suburl = hawk_escape(suburl)
       body = JSON.generate(hash)
       res = rest_client(suburl).put(body, http_headers(headers))
       puts "#{res}\n" if ENV['HAWKULARCLIENT_LOG_RESPONSE']
@@ -62,7 +70,7 @@ module Hawkular
     end
 
     def http_delete(suburl, headers = {})
-      suburl = Addressable::URI.escape(suburl)
+      suburl = hawk_escape(suburl)
       res = rest_client(suburl).delete(http_headers(headers))
       puts "#{res}\n" if ENV['HAWKULARCLIENT_LOG_RESPONSE']
       res.empty? ? {} : JSON.parse(res)

@@ -114,8 +114,8 @@ module Hawkular::Metrics
       # @param bucketDuration [String] optional interval (default no aggregation)
       # @return [Array[Hash]] datapoints
       # @see #push_data #push_data for datapoint detail
-      def get_data(id, starts: nil, ends: nil, bucketDuration: nil)
-        params = { start: starts, end: ends, bucketDuration: bucketDuration }
+      def get_data(id, starts: nil, ends: nil, bucketDuration: nil, buckets: nil)
+        params = { start: starts, end: ends, bucketDuration: bucketDuration, buckets: buckets }
         resp = @client.http_get("/#{@resource}/#{ERB::Util.url_encode(id)}/data/?" +
                  encode_params(params))
         resp.is_a?(Array) ? resp : [] # API returns no content (empty Hash) instead of empty array

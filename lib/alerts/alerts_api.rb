@@ -51,6 +51,17 @@ module Hawkular::Alerts
       trigger
     end
 
+
+    def get_alerts_for_trigger(trigger_id ) # TODO add additional filters
+      return [] unless trigger_id
+
+      url = '/?triggerIds=' + trigger_id
+      ret = http_get(url)
+      val = []
+      ret.each { |a| val.push(Alert.new(a)) }
+      val
+    end
+
     # List fired alerts
     # @return [Array<Alert>] List of alerts in the system. Can be empty
     def list_alerts
@@ -98,18 +109,44 @@ module Hawkular::Alerts
 
   # Representation of one Trigger
   class Trigger
-    attr_reader :id, :name, :context, :actions, :autoDisable, :autoEnable
-    attr_reader :autoResolve, :autoResolveAlerts
-    attr_reader :tenant, :description, :enabled, :group, :severity
-    attr_reader :conditions, :dampenings
+    attr_reader :id, :name, :context, :actions, :auto_disable, :auto_enable
+    attr_reader :auto_resolve, :auto_resolve_alerts
+    attr_reader :tenant, :description, :group, :severity
+    attr_reader :conditions, :dampenings, :event_type
+    attr_accessor :enabled
+
     def initialize(trigger_hash)
+      @_hash = trigger_hash
       @conditions = []
       @dampenings = []
       @id = trigger_hash['id']
       @name = trigger_hash['name']
       @enabled = trigger_hash['enabled']
       @severity = trigger_hash['severity']
+      @auto_resolve = trigger_hash['autoResolve']
+      @auto_resolve_alerts = trigger_hash['autoResolveAlerts']
+      @event_type = trigger_hash['eventType']
+      @tenant = trigger_hash['tenantId']
+      @description = trigger_hash['description']
+      @auto_enable = trigger_hash['autoEnable']
+      @auto_disable = trigger_hash['autoDisable']
     end
+
+=begin
+    def enable
+      @enabled = true
+      @_hash['enabled'] = true
+      url = '/triggers/' + @id
+      Hawkular::BaseClient.http_put(url, @_hash)
+    end
+
+    def disable
+      @enabled = false
+      url = '/triggers/' + @id
+      AlertsClient.http_put(url, self)
+    end
+=end
+
 
     # Representing of one Condition
     class Condition
@@ -129,7 +166,7 @@ module Hawkular::Alerts
 
     # Representation of one Dampening setting
     class Dampening
-      attr_reader :dampeining_id, :type, :eval_true_setting, :eval_total_setting, :eval_time_setting
+      attr_reader :dampening_id, :type, :eval_true_setting, :eval_total_setting, :eval_time_setting
       attr_reader :current_evals
 
       def initialize(damp_hash)

@@ -14,6 +14,30 @@ module Hawkular::Alerts::RSpec
       expect(triggers.size).to be(3)
     end
 
+    it 'Should List Triggers for Tag' do
+      client = Hawkular::Alerts::AlertsClient.new(ALERTS_BASE, creds)
+
+      triggers = client.list_triggers [], [ 'bla' ]
+
+      expect(triggers.size).to be(3)
+    end
+
+    it 'Should List Triggers for Tags' do
+      client = Hawkular::Alerts::AlertsClient.new(ALERTS_BASE, creds)
+
+      triggers = client.list_triggers [], [ 'bla', 'fasel' ]
+
+      expect(triggers.size).to be(3)
+    end
+
+    it 'Should List Triggers for ID' do
+      client = Hawkular::Alerts::AlertsClient.new(ALERTS_BASE, creds)
+
+      triggers = client.list_triggers [ 'id1', 'id2' ]
+
+      expect(triggers.size).to be(3)
+    end
+
     it 'Should get a single metric Trigger' do
       client = Hawkular::Alerts::AlertsClient.new(ALERTS_BASE, creds)
 
@@ -41,6 +65,16 @@ module Hawkular::Alerts::RSpec
 
       expect(alerts).to_not be_nil
       expect(alerts.size).to be(2)
+    end
+
+    it 'Should list alerts for trigger' do
+      client = Hawkular::Alerts::AlertsClient.new(ALERTS_BASE, creds)
+
+      alerts = client.get_alerts_for_triggers 'id15'
+
+      expect(alerts).to_not be_nil
+      expect(alerts.size).to be(2)
+
     end
 
     it 'Should fetch single alert' do
