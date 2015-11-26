@@ -34,4 +34,14 @@ end
 
 RSpec.configure do |config|
   config.include Hawkular::Metrics::RSpec
+
+  # Sometimes one wants to check if the real api has
+  # changed, so turn off VCR and use live connections
+  # instead of recorded cassettes
+  if ENV['VCR_OFF']=='1'
+    VCR.eject_cassette
+    VCR.turn_off!(:ignore_cassettes => true)
+    WebMock.allow_net_connect!
+    puts 'VCR is turned off!'
+  end
 end
