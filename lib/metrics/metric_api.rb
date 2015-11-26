@@ -1,6 +1,7 @@
 require 'erb'
 
 module Hawkular::Metrics
+  # Client to access the Hawkular_metrics subsystem
   class Client
     # @!visibility private
     def default_timestamp(array)

@@ -19,7 +19,9 @@ module Hawkular::Alerts
 
     # Lists defined triggers in the system
     # @param [Array] ids List of trigger ids. If provided, limits to the given triggers
-    # @param [Array] tags List of tags. If provided, limits to the given tags
+    # @param [Array] tags List of tags. If provided, limits to the given tags. Individual
+    # tags are of the format # key|value. Tags are OR'd together. If a tag-key shows up
+    # more than once, only the last one is accepted
     # @return [Array<Trigger>] Triggers found
     def list_triggers(ids = [], tags = [])
       query = generate_query_params 'triggerIds' => ids, 'tags' => tags
@@ -51,8 +53,10 @@ module Hawkular::Alerts
       trigger
     end
 
-
-    def get_alerts_for_trigger(trigger_id ) # TODO add additional filters
+    # Obtain the alerts for the Trigger with the passed id
+    # @param [String] trigger_id Id of the trigger that has fired the alerts
+    # @return [Array<Alert>] List of alerts for the trigger. Can be empty
+    def get_alerts_for_trigger(trigger_id) # TODO: add additional filters
       return [] unless trigger_id
 
       url = '/?triggerIds=' + trigger_id
@@ -132,21 +136,18 @@ module Hawkular::Alerts
       @auto_disable = trigger_hash['autoDisable']
     end
 
-=begin
-    def enable
-      @enabled = true
-      @_hash['enabled'] = true
-      url = '/triggers/' + @id
-      Hawkular::BaseClient.http_put(url, @_hash)
-    end
-
-    def disable
-      @enabled = false
-      url = '/triggers/' + @id
-      AlertsClient.http_put(url, self)
-    end
-=end
-
+    #     def enable
+    #       @enabled = true
+    #       @_hash['enabled'] = true
+    #       url = '/triggers/' + @id
+    #       Hawkular::BaseClient.http_put(url, @_hash)
+    #     end
+    #
+    #     def disable
+    #       @enabled = false
+    #       url = '/triggers/' + @id
+    #       AlertsClient.http_put(url, self)
+    #     end
 
     # Representing of one Condition
     class Condition

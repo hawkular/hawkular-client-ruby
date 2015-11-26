@@ -56,7 +56,7 @@ module Hawkular::Inventory
         ret = http_get('/feeds/' + feed + '/resourceTypes')
       end
       val = []
-      ret.each { |rt| val.push(ResourceType.new(rt['path'], rt['id'])) }
+      ret.each { |rt| val.push(ResourceType.new(rt)) }
       val
     end
 
@@ -68,22 +68,31 @@ module Hawkular::Inventory
       if feed.nil?
         ret = http_get('resourceTypes/' + type + '/resources')
       else
-        ret = http_get('/feeds/'  + feed + '/resourceTypes/' + type + '/resources')
+        ret = http_get('/feeds/' + feed + '/resourceTypes/' + type + '/resources')
       end
       val = []
       ret.each { |r| val.push(Resource.new(r)) }
       val
     end
 
-    def list_child_resources(resource)
-      ret = http_get( '/feeds/' + resource.feed +  '/resources/' + resource.id + '/children')
+    # Obtain the child resources of the passed resource. In case of a WildFly server,
+    # those would be Datasources, Deployments and so on.
+    # @param [Resource] parent_resource Resource to obtain children from
+    # @return [Array<Resource>] List of resources that are children of the given parent resource.
+    #   Can be empty
+    def list_child_resources(parent_resource)
+      ret = http_get('/feeds/' + parent_resource.feed +
+                     '/resources/' + parent_resource.id + '/children')
       val = []
       ret.each { |r| val.push(Resource.new(r)) }
       val
     end
 
+    # Obtain a list of relationships starting at the passed resource
+    # @param [Resource] resource One end of the relationship
+    # @return [Array<Relationship>] List of relationships
     def list_relationships(resource)
-      ret = http_get('/feeds/' + resource.feed +  '/resources/' + resource.id + '/relationships')
+      ret = http_get('/feeds/' + resource.feed + '/resources/' + resource.id + '/relationships')
       val = []
       ret.each { |r| val.push(Relationship.new(r)) }
       val
@@ -91,8 +100,11 @@ module Hawkular::Inventory
       []
     end
 
+    # Obtain a list of relationships for the passed feed
+    # @param [String] feed_id Id of the feed
+    # @return [Array<Relationship>] List of relationships
     def list_relationships_for_feed(feed_id)
-      ret = http_get('/feeds/' + feed_id +  '/relationships')
+      ret = http_get('/feeds/' + feed_id + '/relationships')
       val = []
       ret.each { |r| val.push(Relationship.new(r)) }
       val
@@ -100,25 +112,25 @@ module Hawkular::Inventory
       []
     end
 
-
-    #[15:01:51]  <jkremser>	pilhuhn, this works for me curl -XPOST -H "Content-Type: application/json" -u jdoe:password -d
+    # [15:01:51]  <jkremser>	pilhuhn, this works for me curl -XPOST
+    #   -H "Content-Type: application/json"
+    #   -u jdoe:password -d
     # '{"id" : "foo", "source": "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;localhost",
-    # "target": "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;localhost/r;localhost~Local~~/r;localhost~Local~%2Fsubsystem=hawkular-bus-broker",
-    # "name": "isRelatedTo"}' 'http://localhost:8080/hawkular/inventory/feeds/localhost/relationships'
+    # "target": "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;localhost/r;localhost~Local~~/
+    #      r;localhost~Local~%2Fsubsystem=hawkular-bus-broker",
+    # "name": "isRelatedTo"}'
+    #    'http://localhost:8080/hawkular/inventory/feeds/localhost/relationships'
     #
-    def create_relationship(source_resource, target_resource, name, properties={})
-
-      rel = Relationship.new
-      rel.source_id = source_resource.path
-      rel.target_id = target_resource.path
-      rel.name = name
-      rel.properties = properties
-
-      http_post('/feeds/' + source_resource.feed + '/relationships',
-        rel.to_h)
-
-    end
-
+    # def create_relationship(source_resource, target_resource, name, properties = {})
+    #   rel = Relationship.new
+    #   rel.source_id = source_resource.path
+    #   rel.target_id = target_resource.path
+    #   rel.name = name
+    #   rel.properties = properties
+    #
+    #   http_post('/feeds/' + source_resource.feed + '/relationships',
+    #             rel.to_h)
+    # end
 
     # def list_metrics_for_resource_type
     #   # TODO implement me
@@ -165,12 +177,30 @@ module Hawkular::Inventory
     end
   end
 
+  # A ResourceType is like a class definition for {Resource}s
+  # ResourceTypes are currently unique per feed, but one can assume
+  # that a two types with the same name of two different feeds are
+  # (more or less) the same.
   class ResourceType
-    attr_reader :path, :name, :id, :feed, :env
+    # @return [String] Full path of the type
+    attr_reader :path
+    # @return [String] Name of the type
+    attr_reader :name
+    # @return [String] Name of the type
+    attr_reader :id
+    # @return [String] Feed this type belongs to
+    attr_reader :feed
+    # @return [String] Environment this Type belongs to - currently unused
+    attr_reader :env
+    # @return [String] Properties of this type
+    attr_reader :properties
 
-    def initialize(path, id)
-      @id = id
-      @path = path
+    def initialize(rt_hash)
+      @id = rt_hash['id']
+      @path = rt_hash['path']
+      @name = rt_hash['name'] || rt_hash['id']
+      @properties = rt_hash['properties']
+      @_hash = rt_hash.dup
 
       tmp = path.split('/')
       tmp.each do |pair|
@@ -180,15 +210,32 @@ module Hawkular::Inventory
           @feed = val
         when 'e'
           @env = val
-        when 'n'
-          @name = val.nil? ? id : val
         end
       end
     end
+
+    # Returns a hash representation of the resource type
+    # @return [Hash<String,Object>] hash of the type
+    def to_h
+      @_hash.dup
+    end
   end
 
+  # A Resource is an instantiation of a {ResourceType}
   class Resource
-    attr_reader :path, :name, :id, :feed, :env, :type_path
+    # @return [String] Full path of the resource including feed id
+    attr_reader :path
+    # @return [String] Name of the resource
+    attr_reader :name
+    # @return [String] Name of the resource
+    attr_reader :id
+    # @return [String] Name of the feed for this resource
+    attr_reader :feed
+    # @return [String] Name of the environment for this resource -- currently unused
+    attr_reader :env
+    # @return [String] Full path of the {ResourceType}
+    attr_reader :type_path
+    # @return [Hash<String,Object>] Hash with additional, resource specific properties
     attr_reader :properties
 
     def initialize(res_hash)
@@ -196,6 +243,7 @@ module Hawkular::Inventory
       @path = res_hash['path']
       @properties = res_hash['properties']
       @type_path = res_hash['type']['path']
+      @_hash = res_hash
 
       tmp = @path.split('/')
       tmp.each do |pair|
@@ -211,10 +259,21 @@ module Hawkular::Inventory
       end
       self
     end
+
+    def to_h
+      @_hash.deep_dup
+    end
   end
 
+  # Definition of a Metric inside the inventory.
   class Metric
-    attr_reader :path, :name, :id, :feed, :env, :type, :unit
+    attr_reader :path
+    attr_reader :name
+    attr_reader :id
+    attr_reader :feed
+    attr_reader :env
+    attr_reader :type
+    attr_reader :unit
 
     def initialize(path, id, res_type)
       @id = id
@@ -237,10 +296,15 @@ module Hawkular::Inventory
     end
   end
 
+  # Definition of a Relationship between two entities in Inventory
   class Relationship
-    attr_accessor :source_id, :target_id, :properties, :name, :id
+    attr_accessor :source_id
+    attr_reader :target_id
+    attr_reader :properties
+    attr_reader :name
+    attr_reader :id
 
-    def initialize(hash={})
+    def initialize(hash = {})
       if hash.empty?
         @properties = {}
         return
@@ -262,6 +326,5 @@ module Hawkular::Inventory
       hash['id'] = @id
       hash
     end
-
   end
 end

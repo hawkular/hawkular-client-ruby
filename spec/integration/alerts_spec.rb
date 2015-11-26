@@ -17,25 +17,26 @@ module Hawkular::Alerts::RSpec
     it 'Should List Triggers for Tag' do
       client = Hawkular::Alerts::AlertsClient.new(ALERTS_BASE, creds)
 
-      triggers = client.list_triggers [], [ 'bla' ]
+      triggers = client.list_triggers [], ['resourceId|75bfdd05-d03d-481e-bf32-c724c7719d8b~Local']
 
-      expect(triggers.size).to be(3)
+      expect(triggers.size).to be(7)
     end
 
     it 'Should List Triggers for Tags' do
       client = Hawkular::Alerts::AlertsClient.new(ALERTS_BASE, creds)
 
-      triggers = client.list_triggers [], [ 'bla', 'fasel' ]
+      triggers = client.list_triggers [], ['resourceId|75bfdd05-d03d-481e-bf32-c724c7719d8b~Local',
+                                           'app|MyShop']
 
-      expect(triggers.size).to be(3)
+      expect(triggers.size).to be(7)
     end
 
     it 'Should List Triggers for ID' do
       client = Hawkular::Alerts::AlertsClient.new(ALERTS_BASE, creds)
 
-      triggers = client.list_triggers [ 'id1', 'id2' ]
+      triggers = client.list_triggers ['75bfdd05-d03d-481e-bf32-c724c7719d8b~Local_jvm_pheap']
 
-      expect(triggers.size).to be(3)
+      expect(triggers.size).to be(1)
     end
 
     it 'Should get a single metric Trigger' do
@@ -70,11 +71,19 @@ module Hawkular::Alerts::RSpec
     it 'Should list alerts for trigger' do
       client = Hawkular::Alerts::AlertsClient.new(ALERTS_BASE, creds)
 
-      alerts = client.get_alerts_for_triggers 'id15'
+      alerts = client.get_alerts_for_trigger '75bfdd05-d03d-481e-bf32-c724c7719d8b~Local_jvm_pheap'
 
       expect(alerts).to_not be_nil
-      expect(alerts.size).to be(2)
+      expect(alerts.size).to be(1)
+    end
 
+    it 'Should list alerts for unknown trigger' do
+      client = Hawkular::Alerts::AlertsClient.new(ALERTS_BASE, creds)
+
+      alerts = client.get_alerts_for_trigger 'does-not-exist'
+
+      expect(alerts).to_not be_nil
+      expect(alerts.size).to be(0)
     end
 
     it 'Should fetch single alert' do
