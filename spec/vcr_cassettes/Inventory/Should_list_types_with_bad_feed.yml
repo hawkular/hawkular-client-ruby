@@ -45,11 +45,11 @@ http_interactions:
       string: !binary |-
         H4sIAAAAAAAAAKvmUlBQKkgsyVBSsFJQ0i+xNrIwMDJLMjbTtUhLNdE1MTY2
         0rUwSbbQNTUySTU0N040s0hKU9IB6cpMAeshSgNXLQAnmwH5aQAAAA==
-    http_version: 
+    http_version:
   recorded_at: Fri, 06 Nov 2015 19:45:47 GMT
 - request:
     method: get
-    uri: http://jdoe:password@localhost:8080/hawkular/inventory/test/does%20not%20exist/resourceTypes
+    uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/does%20not%20exist/resourceTypes
     body:
       encoding: US-ASCII
       string: ''
@@ -90,12 +90,12 @@ http_interactions:
       Content-Length:
       - '23'
       Link:
-      - <http://localhost:8080/hawkular/inventory/test/does%20not%20exist/resourceTypes>;
+      - <http://localhost:8080/hawkular/inventory/feeds/does%20not%20exist/resourceTypes>;
         rel="current"
     body:
       encoding: ASCII-8BIT
       string: !binary |-
         H4sIAAAAAAAAAItWiAUAqBH2HwMAAAA=
-    http_version: 
+    http_version:
   recorded_at: Fri, 06 Nov 2015 19:45:47 GMT
 recorded_with: VCR 3.0.0
