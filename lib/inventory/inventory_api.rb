@@ -53,7 +53,8 @@ module Hawkular::Inventory
       if feed.nil?
         ret = http_get('/resourceTypes')
       else
-        ret = http_get('/feeds/' + feed + '/resourceTypes')
+        the_feed = hawk_escape feed
+        ret = http_get('/feeds/' + the_feed + '/resourceTypes')
       end
       val = []
       ret.each { |rt| val.push(ResourceType.new(rt)) }
@@ -62,13 +63,18 @@ module Hawkular::Inventory
 
     # List the resources for the passed feed and resource type.
     # @param [String] feed The id of the feed the type lives under. Can be nil for feedless types
-    # @param [String] type Name of the type to look for. Can be obtained from ResourceType.id
+    # @param [String] type Name of the type to look for. Can be obtained from {ResourceType}.id.
+    #   Must not be nil
     # @return [Array<Resource>] List of resources. Can be empty
     def list_resources_for_type(feed, type)
+      fail 'Type must not be nil' unless type
+      the_type = hawk_escape type
       if feed.nil?
-        ret = http_get('resourceTypes/' + type + '/resources')
+        ret = http_get('resourceTypes/' + the_type + '/resources')
       else
-        ret = http_get('/feeds/' + feed + '/resourceTypes/' + type + '/resources')
+
+        the_feed = hawk_escape feed
+        ret = http_get('/feeds/' + the_feed + '/resourceTypes/' + the_type + '/resources')
       end
       val = []
       ret.each { |r| val.push(Resource.new(r)) }
@@ -81,8 +87,11 @@ module Hawkular::Inventory
     # @return [Array<Resource>] List of resources that are children of the given parent resource.
     #   Can be empty
     def list_child_resources(parent_resource)
-      ret = http_get('/feeds/' + parent_resource.feed +
-                     '/resources/' + parent_resource.id + '/children')
+      the_feed = hawk_escape parent_resource.feed
+      the_id = hawk_escape parent_resource.id
+
+      ret = http_get('/feeds/' + the_feed +
+                     '/resources/' + the_id + '/children')
       val = []
       ret.each { |r| val.push(Resource.new(r)) }
       val
@@ -92,7 +101,10 @@ module Hawkular::Inventory
     # @param [Resource] resource One end of the relationship
     # @return [Array<Relationship>] List of relationships
     def list_relationships(resource)
-      ret = http_get('/feeds/' + resource.feed + '/resources/' + resource.id + '/relationships')
+      the_feed = hawk_escape resource.feed
+      the_id = hawk_escape resource.id
+
+      ret = http_get('/feeds/' + the_feed + '/resources/' + the_id + '/relationships')
       val = []
       ret.each { |r| val.push(Relationship.new(r)) }
       val
@@ -104,7 +116,8 @@ module Hawkular::Inventory
     # @param [String] feed_id Id of the feed
     # @return [Array<Relationship>] List of relationships
     def list_relationships_for_feed(feed_id)
-      ret = http_get('/feeds/' + feed_id + '/relationships')
+      the_feed = hawk_escape feed_id
+      ret = http_get('/feeds/' + the_feed + '/relationships')
       val = []
       ret.each { |r| val.push(Relationship.new(r)) }
       val
@@ -151,12 +164,15 @@ module Hawkular::Inventory
     #    # Don't filter, return all metric definitions
     #    client.list_metrics_for_resource(wild_fly)
     def list_metrics_for_resource(resource, filter = {})
+      the_feed = hawk_escape resource.feed
+      the_id = hawk_escape resource.id
+
       ret = http_get('/feeds/' +
-                           resource.feed + '/resources/' +
-                           resource.id + '/metrics')
+                           the_feed + '/resources/' +
+                           the_id + '/metrics')
       val = []
       ret.each do |m|
-        metric_new = Metric.new(m['path'], m['id'], m['type'])
+        metric_new = Metric.new(m)
         found = should_include?(metric_new, filter)
         val.push(metric_new) if found
       end
@@ -267,17 +283,23 @@ module Hawkular::Inventory
 
   # Definition of a Metric inside the inventory.
   class Metric
+    # @return [String] Full path of the metric (definition)
     attr_reader :path
+    # @return [String] Name of the metric
     attr_reader :name
     attr_reader :id
     attr_reader :feed
     attr_reader :env
     attr_reader :type
     attr_reader :unit
+    # @return [Long] collection interval in seconds
+    attr_reader :collection_interval
 
-    def initialize(path, id, res_type)
-      @id = id
-      @path = path
+    def initialize(metric_hash)
+      @id = metric_hash['id']
+      @path = metric_hash['path']
+      @name = metric_hash['name'] || @id
+      @_hash = metric_hash.dup
 
       tmp = path.split('/')
       tmp.each do |pair|
@@ -291,8 +313,13 @@ module Hawkular::Inventory
           @name = val.nil? ? id : val
         end
       end
-      @type = res_type['type']
-      @unit = res_type['unit']
+      @type = metric_hash['type']['type']
+      @unit = metric_hash['type']['unit']
+      @collection_interval = metric_hash['collectionInterval']
+    end
+
+    def to_h
+      @_hash.dup
     end
   end
 

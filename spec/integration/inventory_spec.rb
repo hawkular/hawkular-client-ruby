@@ -68,7 +68,9 @@ module Hawkular::Inventory::RSpec
       client = Hawkular::Inventory::InventoryClient.new(INVENTORY_BASE, creds)
       client.impersonate
 
-      types = client.list_resource_types('does not exist')
+      type = 'does not exist'
+      types = client.list_resource_types(type)
+      expect(type).to eq('does not exist')
 
       expect(types.size).to be(0)
     end
@@ -113,6 +115,22 @@ module Hawkular::Inventory::RSpec
       metrics = client.list_metrics_for_resource(wild_fly)
 
       expect(metrics.size).to be(14)
+    end
+
+    it 'Should list children of WildFly' do
+      creds = { username: 'jdoe', password: 'password' }
+
+      client = Hawkular::Inventory::InventoryClient.new(INVENTORY_BASE, creds)
+      client.impersonate
+
+      resources = client.list_resources_for_type('snert', 'WildFly Server')
+      expect(resources.size).to be(1)
+
+      wild_fly = resources[0]
+
+      metrics = client.list_child_resources(wild_fly)
+
+      expect(metrics.size).to be(21)
     end
 
     it 'Should list heap metrics for WildFlys' do

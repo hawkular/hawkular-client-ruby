@@ -79,7 +79,8 @@ module Hawkular::Metrics
       # @param id [String]
       # @return [MetricDefinition]
       def get(id)
-        Hawkular::Metrics::MetricDefinition.new(@client.http_get("/#{@resource}/#{id}"))
+        the_id = @client.hawk_escape id
+        Hawkular::Metrics::MetricDefinition.new(@client.http_get("/#{@resource}/#{the_id}"))
       end
 
       # update tags for given metric definition
@@ -168,7 +169,7 @@ module Hawkular::Metrics
       end
     end
 
-    # Class that interracts with "counter" metric types
+    # Class that interacts with "counter" metric types
     class Counters < Metrics
       # @param client [Client]
       def initialize(client)
@@ -179,19 +180,19 @@ module Hawkular::Metrics
       # @param id [String] metric definition id
       # @param starts [Integer] optional timestamp (default now - 8h)
       # @param ends [Integer] optional timestamp (default now)
-      # @param bucketDuration [String] optional interval (default no
+      # @param bucket_duration [String] optional interval (default no
       #                       aggregation)
       # @return [Array[Hash]] rate points
-      def get_rate(id, starts: nil, ends: nil, bucketDuration: nil)
+      def get_rate(id, starts: nil, ends: nil, bucket_duration: nil)
         path = "/#{@resource}/#{ERB::Util.url_encode(id)}/rate"
-        params = { start: starts, end: ends, bucketDuration: bucketDuration }
+        params = { start: starts, end: ends, bucketDuration: bucket_duration }
         resp = @client.http_get(path + '?' + encode_params(params))
         # API returns no content (empty Hash) instead of empty array
         resp.is_a?(Array) ? resp : []
       end
     end
 
-    # Class that interracts with "availability" metric types
+    # Class that interacts with "availability" metric types
     class Availability < Metrics
       # @param client [Client]
       def initialize(client)

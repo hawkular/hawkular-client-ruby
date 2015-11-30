@@ -5,6 +5,9 @@ module Hawkular
   module Metrics
   end
 
+  # This is the base functionality for all the clients,
+  # that inherit from it. You should not directly use it,
+  # but through the more specialized clients.
   class BaseClient
     # @!visibility private
     attr_reader :credentials, :entrypoint, :options
@@ -33,7 +36,6 @@ module Hawkular
     end
 
     def http_get(suburl, headers = {})
-      suburl = Addressable::URI.escape(suburl)
       res = rest_client(suburl).get(http_headers(headers))
       puts "#{res}\n" if ENV['HAWKULARCLIENT_LOG_RESPONSE']
       res.empty? ? {} : JSON.parse(res)
@@ -41,16 +43,26 @@ module Hawkular
       handle_fault $ERROR_INFO
     end
 
-    def hawk_escape(input)
-      sub_url = input
+    # Escapes the passed url part. This is necessary,
+    # as many ids inside Hawkular can contain characters
+    # that are invalid for an url/uri.
+    # The passed value is duplicated
+    # @param [String] url_part Part of an url to be escaped
+    # @return [String] escaped url_part as new string
+    def hawk_escape(url_part)
+      sub_url = url_part.dup
+      sub_url.gsub!('%', '%25')
       sub_url.gsub!(' ', '%20')
       sub_url.gsub!('[', '%5b')
       sub_url.gsub!(']', '%5d')
+      sub_url.gsub!('|', '%7c')
+      sub_url.gsub!('(', '%28')
+      sub_url.gsub!(')', '%29')
+      sub_url.gsub!('/', '%2f')
       sub_url
     end
 
     def http_post(suburl, hash, headers = {})
-      suburl = hawk_escape(suburl)
       body = JSON.generate(hash)
       res = rest_client(suburl).post(body, http_headers(headers))
       puts "#{res}\n" if ENV['HAWKULARCLIENT_LOG_RESPONSE']
@@ -60,7 +72,6 @@ module Hawkular
     end
 
     def http_put(suburl, hash, headers = {})
-      suburl = hawk_escape(suburl)
       body = JSON.generate(hash)
       res = rest_client(suburl).put(body, http_headers(headers))
       puts "#{res}\n" if ENV['HAWKULARCLIENT_LOG_RESPONSE']
@@ -70,7 +81,6 @@ module Hawkular
     end
 
     def http_delete(suburl, headers = {})
-      suburl = hawk_escape(suburl)
       res = rest_client(suburl).delete(http_headers(headers))
       puts "#{res}\n" if ENV['HAWKULARCLIENT_LOG_RESPONSE']
       res.empty? ? {} : JSON.parse(res)
@@ -148,10 +158,13 @@ module Hawkular
         next if not_suitable?(v)
 
         if v.instance_of? Array
-          ret += "#{k}=#{v.join(',')}"
+          part = "#{k}=#{v.join(',')}"
         else
-          ret += "#{k}=#{v}"
+          part = "#{k}=#{v}"
         end
+
+        ret += hawk_escape part
+
         i += 1
         ret += '&' if i < num
       end
@@ -196,6 +209,8 @@ module Hawkular
     end
   end
 
+  # Specialized exception to be thrown
+  # when the interction with Hawkular fails
   class HawkularException < StandardError
     def initialize(message)
       @message = message
