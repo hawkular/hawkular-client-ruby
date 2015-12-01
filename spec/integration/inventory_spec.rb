@@ -112,7 +112,6 @@ module Hawkular::Inventory::RSpec
       expect(resources.size).to be(2)
       wf = resources.first
       expect(wf.properties.size).to be(0) # They have no props
-
     end
 
     it 'Should list URLs' do
