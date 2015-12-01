@@ -101,6 +101,20 @@ module Hawkular::Inventory::RSpec
       expect(wf.properties['Hostname']).to eq('snert')
     end
 
+    it 'Should List datasources with no props' do
+      creds = { username: 'jdoe', password: 'password' }
+
+      client = Hawkular::Inventory::InventoryClient.new(INVENTORY_BASE, creds)
+      client.impersonate
+
+      resources = client.list_resources_for_type('snert', 'Datasource', true)
+
+      expect(resources.size).to be(2)
+      wf = resources.first
+      expect(wf.properties.size).to be(0) # They have no props
+
+    end
+
     it 'Should list URLs' do
       creds = { username: 'jdoe', password: 'password' }
 

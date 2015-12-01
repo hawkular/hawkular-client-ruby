@@ -98,6 +98,8 @@ module Hawkular::Inventory
       the_id = hawk_escape resource_id
       the_feed = hawk_escape feed
       http_get('feeds/' + the_feed + '/resources/' + the_id + '/data?dataType=configuration')
+    rescue
+      {}
     end
 
     # Obtain the child resources of the passed resource. In case of a WildFly server,
