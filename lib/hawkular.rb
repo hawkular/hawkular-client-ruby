@@ -1,60 +1,20 @@
-
-
-require 'json'
-require 'rest-client'
-require 'English'
+require 'base64'
+require 'addressable/uri'
 
 module Hawkular
-  # Metrics module provides access to Hawkular Metrics REST API
-  # @see http://www.hawkular.org/docs/rest/rest-metrics.html Hawkular Metrics REST API Documentation
-  # @example Create Hawkular-Metrics client and start pushing some metric data
-  #  # create client instance
-  #  client = Hawkular::Metrics::Client::new("http://server","username",
-  #                "password",{"tenant" => "your tenant ID"})
-  #  # push gauge metric data for metric called "myGauge" (no need to create metric definition
-  #  # unless you wish to specify data retention)
-  #  client.gauges.push_data("myGauge", {:value => 3.1415925})
   module Metrics
   end
-end
 
-require 'metrics/types'
-require 'metrics/tenant_api'
-require 'metrics/metric_api'
-
-module Hawkular::Metrics
-  class HawkularException < StandardError
-    def initialize(message)
-      @message = message
-      super
-    end
-
-    attr_reader :message
-  end
-
-  class Client
+  # This is the base functionality for all the clients,
+  # that inherit from it. You should not directly use it,
+  # but through the more specialized clients.
+  class BaseClient
     # @!visibility private
     attr_reader :credentials, :entrypoint, :options
     # @return [Tenants] access tenants API
     attr_reader :tenants
-    # @return [Counters] access counters API
-    attr_reader :counters
-    # @return [Gauges] access gauges API
-    attr_reader :gauges
-    # @return [Availability] access counters API
-    attr_reader :avail
 
-    # Construct a new Hawkular Metrics client class.
-    # optional parameters
-    # @param entrypoint [String] Base url of the Hawkular (metrics) server
-    # @param credentials Hash of username, password, token(optional)
-    # @param options [Hash{String=>String}] client options
-    # @example initialize with Hawkular-tenant option
-    #   Hawkular::Metrics::Client::new("http://server",
-    #     {username:"username",password:"password"},
-    #                          {"tenant" => "your tenant ID"})
-    #
-    def initialize(entrypoint = 'http://localhost:8080/hawkular/metrics',
+    def initialize(entrypoint = nil,
                    credentials = {},
                    options = {})
       @entrypoint = entrypoint
@@ -72,10 +32,7 @@ module Hawkular::Metrics
         headers: {}
       }.merge(options)
 
-      @tenants = Client::Tenants.new self
-      @counters = Client::Counters.new self
-      @gauges = Client::Gauges.new self
-      @avail = Client::Availability.new self
+      fail 'You need to provide an entrypoint' if entrypoint.nil?
     end
 
     def http_get(suburl, headers = {})
@@ -84,6 +41,25 @@ module Hawkular::Metrics
       res.empty? ? {} : JSON.parse(res)
     rescue
       handle_fault $ERROR_INFO
+    end
+
+    # Escapes the passed url part. This is necessary,
+    # as many ids inside Hawkular can contain characters
+    # that are invalid for an url/uri.
+    # The passed value is duplicated
+    # @param [String] url_part Part of an url to be escaped
+    # @return [String] escaped url_part as new string
+    def hawk_escape(url_part)
+      sub_url = url_part.dup
+      sub_url.gsub!('%', '%25')
+      sub_url.gsub!(' ', '%20')
+      sub_url.gsub!('[', '%5b')
+      sub_url.gsub!(']', '%5d')
+      sub_url.gsub!('|', '%7c')
+      sub_url.gsub!('(', '%28')
+      sub_url.gsub!(')', '%29')
+      sub_url.gsub!('/', '%2f')
+      sub_url
     end
 
     def http_post(suburl, hash, headers = {})
@@ -153,7 +129,61 @@ module Hawkular::Metrics
       Integer(Time.now.to_f * 1000)
     end
 
+    # Encode the passed credentials (username/password) into a base64
+    # representation that can be used to generate a Http-Authentication header
+    # @param credentials [Hash{:username,:password}]
+    # @return [String] Base64 encoded result
+    def base_64_credentials(credentials = {})
+      creds = credentials.empty? ? @credentials : credentials
+
+      encoded = Base64.encode64(creds[:username] + ':' + creds[:password])
+      encoded.rstrip!
+    end
+
+    # Generate a query string from the passed hash.
+    # This string starts with a `?` if the hash is
+    # not empty.
+    # Values may be an array, in which case the array values are joined together by `,`.
+    # @param param_hash [Hash] key-values pairs
+    # @return [String] complete query string to append to a base url
+    def generate_query_params(param_hash = {})
+      return '' if param_hash.size == 0
+
+      num = count_non_nil_values(param_hash)
+
+      i = 0
+      ret = ''
+      ret = '?' if num > 0
+      param_hash.each  do |k, v|
+        next if not_suitable?(v)
+
+        if v.instance_of? Array
+          part = "#{k}=#{v.join(',')}"
+        else
+          part = "#{k}=#{v}"
+        end
+
+        ret += hawk_escape part
+
+        i += 1
+        ret += '&' if i < num
+      end
+      ret
+    end
+
     private
+
+    def not_suitable?(v)
+      v.nil? || (v.instance_of? Array) && v.size == 0
+    end
+
+    def count_non_nil_values(param_hash)
+      num = 0
+      param_hash.each do |_k, v|
+        num += 1 unless not_suitable?(v)
+      end
+      num
+    end
 
     def token_header
       @credentials[:token].nil? ? {} : { 'Authorization' => "Bearer #{@credentials[:token]}" }
@@ -177,5 +207,16 @@ module Hawkular::Metrics
         fail f
       end
     end
+  end
+
+  # Specialized exception to be thrown
+  # when the interction with Hawkular fails
+  class HawkularException < StandardError
+    def initialize(message)
+      @message = message
+      super
+    end
+
+    attr_reader :message
   end
 end

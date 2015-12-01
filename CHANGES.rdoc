@@ -3,6 +3,14 @@
 This document describes the relevant changes beween releases of the
 _hawkular-client_ project.
 
+=== V 0.2.0
+
+* Add support for Hawkular-Inventory and Hawkular-Alerts
+* Reshuffeling of inner classes
+* The sub-url that is passed to `http_*` methods is escaped via
+  `Addressable::URI.escape()`
+
+
 === V 0.1.2
 
 * Fix exception handling - this was missing `require 'English'`

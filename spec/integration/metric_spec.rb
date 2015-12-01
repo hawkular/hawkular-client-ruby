@@ -350,4 +350,37 @@ describe 'Gauge metrics' do
       expect(data[0][1]).to eql(now)
     end
   end
+
+  it 'Should return platform memory def' do
+    tenant_id = '28026b36-8fe4-4332-84c8-524e173a68bf'
+    setup_client tenant: tenant_id
+
+    VCR.use_cassette('Gauge_metrics/Platform mem def') do
+      # The next id is not a real one, but shortened for rubocpo
+      mem_id = 'MI~R~[snert~platform~/OP_SYSTEM=Apple (Capitan) 42/MEMORY=Mem]~MT~Total Memory'
+      data = @client.gauges.get(mem_id)
+
+      expect(data).not_to be_nil
+      expect(data.id).not_to be_nil
+      expect(data.tenant_id).to eq(tenant_id)
+    end
+  end
+
+  it 'Should return platform memory' do
+    setup_client tenant: '28026b36-8fe4-4332-84c8-524e173a68bf'
+
+    VCR.use_cassette('Gauge_metrics/Platform mem') do
+      # The next id is not a real one, but shortened for rubocpo
+      mem_id = 'MI~R~[snert~platform~/OP_SYSTEM=Apple (Capitan) 42/MEMORY=Mem]~MT~Total Memory'
+      data = @client.gauges.get_data(mem_id)
+      expect(data.size).to be 71
+    end
+  end
+
+  it 'Should return the version' do
+    VCR.use_cassette('Metrics/Status') do
+      data = @client.fetch_version_and_status
+      expect(data).not_to be_nil
+    end
+  end
 end

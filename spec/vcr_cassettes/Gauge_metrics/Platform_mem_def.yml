@@ -1,0 +1,45 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://localhost:8080/hawkular/metrics/gauges/MI~R~%5Bsnert~platform~%2FOP_SYSTEM=Apple%20(Capitan)%2042%2FMEMORY=Mem%5D~MT~Total%20Memory
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Hawkular-Tenant:
+      - 28026b36-8fe4-4332-84c8-524e173a68bf
+      Tenantid:
+      - 28026b36-8fe4-4332-84c8-524e173a68bf
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/9
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '191'
+      Date:
+      - Mon, 30 Nov 2015 10:35:29 GMT
+    body:
+      encoding: UTF-8
+      string: '{"id":"MI~R~[snert~platform~/OPERATING_SYSTEM=Apple Mac OS X 10.11.1
+        (El Capitan) build 15B42/MEMORY=Memory]~MT~Total Memory","type":"gauge","tenantId":"28026b36-8fe4-4332-84c8-524e173a68bf"}'
+    http_version:
+  recorded_at: Mon, 30 Nov 2015 10:35:29 GMT
+recorded_with: VCR 3.0.0

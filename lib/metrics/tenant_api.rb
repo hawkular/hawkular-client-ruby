@@ -1,5 +1,5 @@
 module Hawkular::Metrics
-  class Client
+  class Client < Hawkular::BaseClient
     # Provides access to tenants API
     class Tenants
       # @param client [Client]

@@ -1,0 +1,105 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://jdoe:password@localhost:8080/hawkular/inventory/tenant
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Encoding:
+      - gzip
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/9
+      Pragma:
+      - no-cache
+      Date:
+      - Tue, 10 Nov 2015 14:01:18 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '85'
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAAKvmUlBQKkgsyVBSsFJQ0i+xNrIwMDJLMjbTtUhLNdE1MTY2
+        0rUwSbbQNTUySTU0N040s0hKU9IB6cpMAeshSgNXLQAnmwH5aQAAAA==
+    http_version: 
+  recorded_at: Tue, 10 Nov 2015 14:01:18 GMT
+- request:
+    method: get
+    uri: http://jdoe:password@localhost:8080/hawkular/inventory/resourceTypes/URL/resources
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Encoding:
+      - gzip
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/9
+      Pragma:
+      - no-cache
+      Date:
+      - Tue, 10 Nov 2015 14:01:22 GMT
+      X-Total-Count:
+      - '1'
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '269'
+      Link:
+      - <http://localhost:8080/hawkular/inventory/resourceTypes/URL/resources>; rel="current"
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAAJ2QP0/DMBDF934KKzNOHNtxnGZiZwIxIQb/uZKItLacq6oK
+        9buTWC0CFiTWu/d+7969kI8NIUU0OBRkS4oKe64ZV1YoqncgqRSCUy2dpg2X
+        ULfCKG13FfQIM1apb4RyToCHplWdVczIrm2l5I0Bbw2Xxd3Kx3OElb+G/Scu
+        Yf/8+JBZi3302bxOlsElJ8QUIiQcYf6WM5ze6dtxpD7szXh4Cgmz0c6+9HCj
+        YTIjUhemCRyCp+Gwimop21pJphlT+ocyhhOkRWfPGXYfjRt+wRLsAwI13ieY
+        80EFr3mpVckZK2vd3eTHNOXtgBi3VXU97KvUteifP95cyOsnvhJ0f8oBAAA=
+    http_version: 
+  recorded_at: Tue, 10 Nov 2015 14:01:22 GMT
+recorded_with: VCR 3.0.0

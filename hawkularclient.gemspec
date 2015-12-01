@@ -1,11 +1,11 @@
 # -*- encoding: utf-8 -*-
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'metrics/version'
+require 'version'
 
 Gem::Specification.new do |gem|
   gem.name          = 'hawkular-client'
-  gem.version       = Hawkular::Metrics::VERSION
+  gem.version       = Hawkular::VERSION
   gem.authors       = ['Libor Zoubek', 'Heiko W. Rupp', 'Federico Simoncelli']
   gem.email         = %w(lzoubek@redhat.com hrupp@redhat.com)
   gem.homepage      = 'https://github.com/hawkular/hawkular-client-ruby'

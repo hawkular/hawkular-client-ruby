@@ -1,0 +1,308 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://jdoe:password@localhost:8080/hawkular/inventory/tenant
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Encoding:
+      - gzip
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/9
+      Pragma:
+      - no-cache
+      Date:
+      - Fri, 06 Nov 2015 21:24:41 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '85'
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAAKvmUlBQKkgsyVBSsFJQ0i+xNrIwMDJLMjbTtUhLNdE1MTY2
+        0rUwSbbQNTUySTU0N040s0hKU9IB6cpMAeshSgNXLQAnmwH5aQAAAA==
+    http_version:
+  recorded_at: Fri, 06 Nov 2015 21:24:41 GMT
+- request:
+    method: get
+    uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/snert/resourceTypes/WildFly%20Server/resources
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Encoding:
+      - gzip
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/9
+      Pragma:
+      - no-cache
+      Date:
+      - Fri, 06 Nov 2015 21:24:41 GMT
+      X-Total-Count:
+      - '1'
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '177'
+      Link:
+      - <http://localhost:8080/hawkular/inventory/feeds/snert/resourceTypes/WildFly%20Server/resources>;
+        rel="current"
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAAItWqOZSUFAqSCzJUFKwUlDSL7E2sjAwMksyNtO1SEs10TUx
+        NjbStTBJttA1NTJJNTQ3TjSzSErTT7UuSS0u0U+zLs5LLSrRL4LQdT75yYk5
+        dXVKOiBDSyoLUkGGgmyghh0l1uGZOSluOZWqRgbBqUVlqUVge4BG5yXmgm1S
+        gipQQJXOTMEmCZSrBbsTh26FaLC9sRDPQM1A9SZXrUIsAH0JV21CAQAA
+    http_version:
+  recorded_at: Fri, 06 Nov 2015 21:24:41 GMT
+- request:
+    method: get
+    uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/snert/resources/snert~Local~~/metrics
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Encoding:
+      - gzip
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/9
+      Pragma:
+      - no-cache
+      Date:
+      - Fri, 06 Nov 2015 21:24:41 GMT
+      X-Total-Count:
+      - '14'
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '800'
+      Link:
+      - <http://localhost:8080/hawkular/inventory/feeds/snert/resources/snert~Local~~/metrics>;
+        rel="current"
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAANVZ0Y6iMBR9369oSOZtjLPquGZ9YhzX3WR1EsVMNpN5QKxO
+        N4AuFDNmI9++FYFBbaGUKuwLgcI997ScHO4tL+DvJwCUtY7fFPAVKHXcbXTu
+        Gu1Zs13rLGCr1mo2G7VOy+jU7hst+PlLU293Zos67GLo4vqi69rQwXWrO/zh
+        j/2b+4fg2v+5MnTTJ9eP/lDzn5E5/2Zubxp36nLpwKWO4ZxcPMMZOQ4hdpDh
+        +ke3JtDZmBCTszH845FM5ExDFlRu92zxdg33bPfUZZDHXckMCSlbtwKOSggN
+        PqIBgQXnoCCEBCEgSMJ5NsIB3Ohp1I8Go3VQBup0EI+iuYy8BGsXLLbMiUTc
+        ArG8HEnlNSEUYc672+vKeQitlbNNSOQ71NfkcurC+eWlmpmd9vYOQSAZApIB
+        sdAefmn9SS6lMaHZWkplw6sWdt5r64HXPFQDow2Mn5lA10Ur262Ou6URFPOE
+        A2Jw9xTtkt5GS1vE2ljTkOdsVMZVFfIY/oZG8qnqSTmdopgKIkwBOfeepiOt
+        PxYWND11EUmzJyNP1AzW15a19uZAfY7sZUIshzEy0Ft5Nr68bjk50N5lHAqO
+        A8FRmLidZuCzRcZBjFdLWRyq6oT99zVyKm2EqQzFrCOELMEGqZmLuCBzKvJM
+        kM659J5ltLLDxqG3siyEcSm9C4sFR9cQhoKzQHEnzMzA3dLQyQm2NhQepcsn
+        fGtD/b28jjdKzttiJp6XppEYOF+3G69bgWY3yFq6EFTD8CzPDL82gx45PHqO
+        jonNlaCMLDYc7ycBAQY9cBpe5APHmYlbSmlUBZXF5FTVCoy2I3ulml4ORTmb
+        rTl6gaJFGD21zJ3j/P2DMOvS/bMCRZhoBXbh8ku09pJXeJVddfEaDKkE/oft
+        5WyaYvZBcMvaaGalLuKGadOR54dM5qU74kdPWNIPNQqBHC0f9bearFY034+1
+        M0oFG1DZv9dUlkBUzd9/r6Gz94uNjkx9hkyEt766XocFFXQupQzOzMn1PwyD
+        0wBw/Hh+NWTgnguBg0iErdI0EC88O+cOvP4DiWqq0D8iAAA=
+    http_version:
+  recorded_at: Fri, 06 Nov 2015 21:24:41 GMT
+- request:
+    method: get
+    uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/snert/resources/snert~Local~~/metrics
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Encoding:
+      - gzip
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/9
+      Pragma:
+      - no-cache
+      Date:
+      - Fri, 06 Nov 2015 21:24:41 GMT
+      X-Total-Count:
+      - '14'
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '800'
+      Link:
+      - <http://localhost:8080/hawkular/inventory/feeds/snert/resources/snert~Local~~/metrics>;
+        rel="current"
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAANVZ0Y6iMBR9369oSOZtjLPquGZ9YhzX3WR1EsVMNpN5QKxO
+        N4AuFDNmI9++FYFBbaGUKuwLgcI997ScHO4tL+DvJwCUtY7fFPAVKHXcbXTu
+        Gu1Zs13rLGCr1mo2G7VOy+jU7hst+PlLU293Zos67GLo4vqi69rQwXWrO/zh
+        j/2b+4fg2v+5MnTTJ9eP/lDzn5E5/2Zubxp36nLpwKWO4ZxcPMMZOQ4hdpDh
+        +ke3JtDZmBCTszH845FM5ExDFlRu92zxdg33bPfUZZDHXckMCSlbtwKOSggN
+        PqIBgQXnoCCEBCEgSMJ5NsIB3Ohp1I8Go3VQBup0EI+iuYy8BGsXLLbMiUTc
+        ArG8HEnlNSEUYc672+vKeQitlbNNSOQ71NfkcurC+eWlmpmd9vYOQSAZApIB
+        sdAefmn9SS6lMaHZWkplw6sWdt5r64HXPFQDow2Mn5lA10Ur262Ou6URFPOE
+        A2Jw9xTtkt5GS1vE2ljTkOdsVMZVFfIY/oZG8qnqSTmdopgKIkwBOfeepiOt
+        PxYWND11EUmzJyNP1AzW15a19uZAfY7sZUIshzEy0Ft5Nr68bjk50N5lHAqO
+        A8FRmLidZuCzRcZBjFdLWRyq6oT99zVyKm2EqQzFrCOELMEGqZmLuCBzKvJM
+        kM659J5ltLLDxqG3siyEcSm9C4sFR9cQhoKzQHEnzMzA3dLQyQm2NhQepcsn
+        fGtD/b28jjdKzttiJp6XppEYOF+3G69bgWY3yFq6EFTD8CzPDL82gx45PHqO
+        jonNlaCMLDYc7ycBAQY9cBpe5APHmYlbSmlUBZXF5FTVCoy2I3ulml4ORTmb
+        rTl6gaJFGD21zJ3j/P2DMOvS/bMCRZhoBXbh8ku09pJXeJVddfEaDKkE/oft
+        5WyaYvZBcMvaaGalLuKGadOR54dM5qU74kdPWNIPNQqBHC0f9bearFY034+1
+        M0oFG1DZv9dUlkBUzd9/r6Gz94uNjkx9hkyEt766XocFFXQupQzOzMn1PwyD
+        0wBw/Hh+NWTgnguBg0iErdI0EC88O+cOvP4DiWqq0D8iAAA=
+    http_version:
+  recorded_at: Fri, 06 Nov 2015 21:24:41 GMT
+- request:
+    method: get
+    uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/snert/resources/snert~Local~~/metrics
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Encoding:
+      - gzip
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/9
+      Pragma:
+      - no-cache
+      Date:
+      - Fri, 06 Nov 2015 21:24:41 GMT
+      X-Total-Count:
+      - '14'
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '800'
+      Link:
+      - <http://localhost:8080/hawkular/inventory/feeds/snert/resources/snert~Local~~/metrics>;
+        rel="current"
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAANVZ0Y6iMBR9369oSOZtjLPquGZ9YhzX3WR1EsVMNpN5QKxO
+        N4AuFDNmI9++FYFBbaGUKuwLgcI997ScHO4tL+DvJwCUtY7fFPAVKHXcbXTu
+        Gu1Zs13rLGCr1mo2G7VOy+jU7hst+PlLU293Zos67GLo4vqi69rQwXWrO/zh
+        j/2b+4fg2v+5MnTTJ9eP/lDzn5E5/2Zubxp36nLpwKWO4ZxcPMMZOQ4hdpDh
+        +ke3JtDZmBCTszH845FM5ExDFlRu92zxdg33bPfUZZDHXckMCSlbtwKOSggN
+        PqIBgQXnoCCEBCEgSMJ5NsIB3Ohp1I8Go3VQBup0EI+iuYy8BGsXLLbMiUTc
+        ArG8HEnlNSEUYc672+vKeQitlbNNSOQ71NfkcurC+eWlmpmd9vYOQSAZApIB
+        sdAefmn9SS6lMaHZWkplw6sWdt5r64HXPFQDow2Mn5lA10Ur262Ou6URFPOE
+        A2Jw9xTtkt5GS1vE2ljTkOdsVMZVFfIY/oZG8qnqSTmdopgKIkwBOfeepiOt
+        PxYWND11EUmzJyNP1AzW15a19uZAfY7sZUIshzEy0Ft5Nr68bjk50N5lHAqO
+        A8FRmLidZuCzRcZBjFdLWRyq6oT99zVyKm2EqQzFrCOELMEGqZmLuCBzKvJM
+        kM659J5ltLLDxqG3siyEcSm9C4sFR9cQhoKzQHEnzMzA3dLQyQm2NhQepcsn
+        fGtD/b28jjdKzttiJp6XppEYOF+3G69bgWY3yFq6EFTD8CzPDL82gx45PHqO
+        jonNlaCMLDYc7ycBAQY9cBpe5APHmYlbSmlUBZXF5FTVCoy2I3ulml4ORTmb
+        rTl6gaJFGD21zJ3j/P2DMOvS/bMCRZhoBXbh8ku09pJXeJVddfEaDKkE/oft
+        5WyaYvZBcMvaaGalLuKGadOR54dM5qU74kdPWNIPNQqBHC0f9bearFY034+1
+        M0oFG1DZv9dUlkBUzd9/r6Gz94uNjkx9hkyEt766XocFFXQupQzOzMn1PwyD
+        0wBw/Hh+NWTgnguBg0iErdI0EC88O+cOvP4DiWqq0D8iAAA=
+    http_version:
+  recorded_at: Fri, 06 Nov 2015 21:24:41 GMT
+recorded_with: VCR 3.0.0

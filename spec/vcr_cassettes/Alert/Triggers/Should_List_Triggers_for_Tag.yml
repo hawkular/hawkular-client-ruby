@@ -1,0 +1,68 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://jdoe:password@localhost:8080/hawkular/alerts/triggers?tags=resourceId%7C75bfdd05-d03d-481e-bf32-c724c7719d8b~Local
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/9
+      Pragma:
+      - no-cache
+      Date:
+      - Thu, 26 Nov 2015 11:13:28 GMT
+      X-Total-Count:
+      - '7'
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '6062'
+      Link:
+      - <http://localhost:8080/hawkular/alerts/triggers?tags=resourceId%7C75bfdd05-d03d-481e-bf32-c724c7719d8b~Local>;
+        rel="current", <http://localhost:8080/hawkular/alerts/triggers?tags=resourceId%7C75bfdd05-d03d-481e-bf32-c724c7719d8b~Local&page=0>;
+        rel="last"
+    body:
+      encoding: UTF-8
+      string: '[{"tenantId":"28026b36-8fe4-4332-84c8-524e173a68bf","id":"75bfdd05-d03d-481e-bf32-c724c7719d8b~Local_web_rejected_sessions","name":"Web
+        Sessions Rejected","description":"Rejected Web Sessions for 75bfdd05-d03d-481e-bf32-c724c7719d8b~Local","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"LOW","context":{"alertType":"REJECTED_SESSIONS","resourceName":"75bfdd05-d03d-481e-bf32-c724c7719d8b~Local","resourcePath":"/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;75bfdd05-d03d-481e-bf32-c724c7719d8b/r;75bfdd05-d03d-481e-bf32-c724c7719d8b~Local~~","resourceType":"App
+        Server","triggerType":"Threshold"},"tags":{"resourceId":"75bfdd05-d03d-481e-bf32-c724c7719d8b~Local"},"autoDisable":true,"autoEnable":true,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","enabled":true,"firingMatch":"ALL","orphan":false,"group":false},{"tenantId":"28026b36-8fe4-4332-84c8-524e173a68bf","id":"75bfdd05-d03d-481e-bf32-c724c7719d8b~Local_web_expired_sessions","name":"Web
+        Sessions Expired","description":"Expired Web Sessions for 75bfdd05-d03d-481e-bf32-c724c7719d8b~Local","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"LOW","context":{"alertType":"EXPIRED_SESSIONS","resourceName":"75bfdd05-d03d-481e-bf32-c724c7719d8b~Local","resourcePath":"/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;75bfdd05-d03d-481e-bf32-c724c7719d8b/r;75bfdd05-d03d-481e-bf32-c724c7719d8b~Local~~","resourceType":"App
+        Server","triggerType":"Threshold"},"tags":{"resourceId":"75bfdd05-d03d-481e-bf32-c724c7719d8b~Local"},"autoDisable":true,"autoEnable":true,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","enabled":true,"firingMatch":"ALL","orphan":false,"group":false},{"tenantId":"28026b36-8fe4-4332-84c8-524e173a68bf","id":"75bfdd05-d03d-481e-bf32-c724c7719d8b~Local_web_active_sessions","name":"Web
+        Sessions Active","description":"Active Web Sessions for 75bfdd05-d03d-481e-bf32-c724c7719d8b~Local","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"MEDIUM","context":{"alertType":"ACTIVE_SESSIONS","resourceName":"75bfdd05-d03d-481e-bf32-c724c7719d8b~Local","resourcePath":"/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;75bfdd05-d03d-481e-bf32-c724c7719d8b/r;75bfdd05-d03d-481e-bf32-c724c7719d8b~Local~~","resourceType":"App
+        Server","triggerType":"Range"},"tags":{"resourceId":"75bfdd05-d03d-481e-bf32-c724c7719d8b~Local"},"autoDisable":true,"autoEnable":true,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","enabled":false,"firingMatch":"ALL","orphan":false,"group":false},{"tenantId":"28026b36-8fe4-4332-84c8-524e173a68bf","id":"75bfdd05-d03d-481e-bf32-c724c7719d8b~Local_jvm_nheap","name":"JVM
+        Non Heap Used","description":"JVM Non Heap Used for 75bfdd05-d03d-481e-bf32-c724c7719d8b~Local","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"HIGH","context":{"alertType":"NHEAP","resourceName":"75bfdd05-d03d-481e-bf32-c724c7719d8b~Local","resourcePath":"/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;75bfdd05-d03d-481e-bf32-c724c7719d8b/r;75bfdd05-d03d-481e-bf32-c724c7719d8b~Local~~","resourceType":"App
+        Server","triggerType":"RangeByPercent","triggerTypeProperty1":"MI~R~[75bfdd05-d03d-481e-bf32-c724c7719d8b~Local~~]~MT~WildFly
+        Memory Metrics~Heap Max","triggerTypeProperty2":"Heap Max"},"tags":{"resourceId":"75bfdd05-d03d-481e-bf32-c724c7719d8b~Local"},"autoDisable":true,"autoEnable":true,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","enabled":false,"firingMatch":"ANY","orphan":false,"group":false},{"tenantId":"28026b36-8fe4-4332-84c8-524e173a68bf","id":"75bfdd05-d03d-481e-bf32-c724c7719d8b~Local_jvm_pheap","name":"JVM
+        Heap Used","description":"JVM Heap Used for 75bfdd05-d03d-481e-bf32-c724c7719d8b~Local","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"MEDIUM","context":{"alertType":"PHEAP","resourceName":"75bfdd05-d03d-481e-bf32-c724c7719d8b~Local","resourcePath":"/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;snert/r;snert~Local~~","resourceType":"App
+        Server","triggerType":"RangeByPercent","triggerTypeProperty1":"MI~R~[75bfdd05-d03d-481e-bf32-c724c7719d8b~Local~~]~MT~WildFly
+        Memory Metrics~Heap Max","triggerTypeProperty2":"Heap Max"},"tags":{"resourceId":"75bfdd05-d03d-481e-bf32-c724c7719d8b~Local"},"autoDisable":true,"autoEnable":true,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","enabled":true,"firingMatch":"ANY","orphan":false,"group":false},{"tenantId":"28026b36-8fe4-4332-84c8-524e173a68bf","id":"75bfdd05-d03d-481e-bf32-c724c7719d8b~Local_jvm_garba","name":"JVM
+        Accumulated GC Duration","description":"Accumulated GC Duration for 75bfdd05-d03d-481e-bf32-c724c7719d8b~Local","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"HIGH","context":{"alertType":"GARBA","resourceName":"75bfdd05-d03d-481e-bf32-c724c7719d8b~Local","resourcePath":"/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;snert/r;snert~Local~~","resourceType":"App
+        Server","triggerType":"Threshold"},"tags":{"resourceId":"75bfdd05-d03d-481e-bf32-c724c7719d8b~Local"},"autoDisable":true,"autoEnable":true,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","enabled":false,"firingMatch":"ALL","orphan":false,"group":false},{"tenantId":"28026b36-8fe4-4332-84c8-524e173a68bf","id":"75bfdd05-d03d-481e-bf32-c724c7719d8b~Local_failed_deployment","name":"Deployment
+        Failure","description":"Deployment failure for 75bfdd05-d03d-481e-bf32-c724c7719d8b~Local","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"MEDIUM","context":{"alertType":"DEPLOYMENT_FAIL","resourceName":"75bfdd05-d03d-481e-bf32-c724c7719d8b~Local","resourcePath":"/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;75bfdd05-d03d-481e-bf32-c724c7719d8b/r;75bfdd05-d03d-481e-bf32-c724c7719d8b~Local~~","resourceType":"App
+        Server Deployment","triggerType":"Event"},"tags":{"resourceId":"75bfdd05-d03d-481e-bf32-c724c7719d8b~Local"},"autoDisable":true,"autoEnable":true,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","enabled":true,"firingMatch":"ALL","orphan":false,"group":false}]'
+    http_version: 
+  recorded_at: Thu, 26 Nov 2015 11:13:28 GMT
+recorded_with: VCR 3.0.0

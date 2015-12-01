@@ -1,0 +1,162 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://jdoe:password@localhost:8080/hawkular/inventory/tenant
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Encoding:
+      - gzip
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/9
+      Pragma:
+      - no-cache
+      Date:
+      - Tue, 01 Dec 2015 11:18:04 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '85'
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAAKvmUlBQKkgsyVBSsFJQ0i+xNrIwMDJLMjbTtUhLNdE1MTY2
+        0rUwSbbQNTUySTU0N040s0hKU9IB6cpMAeshSgNXLQAnmwH5aQAAAA==
+    http_version:
+  recorded_at: Tue, 01 Dec 2015 11:18:04 GMT
+- request:
+    method: get
+    uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/snert/resourceTypes/WildFly%20Server/resources
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Hawkular-Tenant:
+      - 28026b36-8fe4-4332-84c8-524e173a68bf
+      Tenantid:
+      - 28026b36-8fe4-4332-84c8-524e173a68bf
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Encoding:
+      - gzip
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/9
+      Pragma:
+      - no-cache
+      Date:
+      - Tue, 01 Dec 2015 11:18:04 GMT
+      X-Total-Count:
+      - '1'
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '170'
+      Link:
+      - <http://localhost:8080/hawkular/inventory/feeds/snert/resourceTypes/WildFly%20Server/resources>;
+        rel="current"
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAAItWqOZSUFAqSCzJUFKwUlDSL7E2sjAwMksyNtO1SEs10TUx
+        NjbStTBJttA1NTJJNTQ3TjSzSErTT7MuzkstKtEvgtB1PvnJiTl1dUo6INNK
+        KgtSQaaBjKbI8BLr8MycFLecSlUjg+DUorLUIrAFQDPzEnPBVihBFSigSmem
+        YJMEytWCHYhDt0I02N5YiC+gZqD6j6tWIRYAJJoICzQBAAA=
+    http_version:
+  recorded_at: Tue, 01 Dec 2015 11:18:04 GMT
+- request:
+    method: get
+    uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/snert/resources/snert~Local~~/data?dataType=configuration
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Hawkular-Tenant:
+      - 28026b36-8fe4-4332-84c8-524e173a68bf
+      Tenantid:
+      - 28026b36-8fe4-4332-84c8-524e173a68bf
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Encoding:
+      - gzip
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/9
+      Pragma:
+      - no-cache
+      Date:
+      - Tue, 01 Dec 2015 11:18:04 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '208'
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAAFVOyw6CMBC88xVNz1aeYiMnPHEwSoLxvtKiRmxJH3ow8O1C
+        DSZmD5vZmZ2Zt4cQ7sBcMdog7JssokGUnuOU0IYnJInjiNCkpmQVJTxcx5DS
+        c+M3mRZcGV9997CTNbTD4LOslqK5XawCc5MCLyb3J7SWT/bvEY14K61gKGdM
+        ca1dbLB04+Sj4MSVnr4nKnRU3nZXoKTa52VVHI6zsFSS2dqgPTxcAC7gdbct
+        qFlQSG3ETLqqeCR6V+t3/6/s9R+Sdz0XEwEAAA==
+    http_version:
+  recorded_at: Tue, 01 Dec 2015 11:18:04 GMT
+recorded_with: VCR 3.0.0
