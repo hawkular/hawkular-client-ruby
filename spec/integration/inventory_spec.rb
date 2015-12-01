@@ -84,6 +84,21 @@ module Hawkular::Inventory::RSpec
       resources = client.list_resources_for_type('snert', 'WildFly Server')
 
       expect(resources.size).to be(1)
+      wf = resources.first
+      expect(wf.properties.size).to be(0)
+    end
+
+    it 'Should list WildFlys with props' do
+      creds = { username: 'jdoe', password: 'password' }
+
+      client = Hawkular::Inventory::InventoryClient.new(INVENTORY_BASE, creds)
+      client.impersonate
+
+      resources = client.list_resources_for_type('snert', 'WildFly Server', true)
+
+      expect(resources.size).to be(1)
+      wf = resources.first
+      expect(wf.properties['Hostname']).to eq('snert')
     end
 
     it 'Should list URLs' do

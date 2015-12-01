@@ -61,12 +61,15 @@ module Hawkular::Inventory
       val
     end
 
-    # List the resources for the passed feed and resource type.
+    # List the resources for the passed feed and resource type. The representation for
+    # resources under a feed are sparse and additional data must be retrived separately.
+    # It is possible though to also obtain runtime properties by setting #fetch_properties to true.
     # @param [String] feed The id of the feed the type lives under. Can be nil for feedless types
     # @param [String] type Name of the type to look for. Can be obtained from {ResourceType}.id.
     #   Must not be nil
+    # @param [Boolean] fetch_properties Shall additional runtime properties be fetched?
     # @return [Array<Resource>] List of resources. Can be empty
-    def list_resources_for_type(feed, type)
+    def list_resources_for_type(feed, type, fetch_properties = false)
       fail 'Type must not be nil' unless type
       the_type = hawk_escape type
       if feed.nil?
@@ -77,8 +80,24 @@ module Hawkular::Inventory
         ret = http_get('/feeds/' + the_feed + '/resourceTypes/' + the_type + '/resources')
       end
       val = []
-      ret.each { |r| val.push(Resource.new(r)) }
+      ret.each do |r|
+        if fetch_properties && !feed.nil?
+          p = get_config_data_for_resource(r['id'], feed)
+          r['properties'] = p['value']
+        end
+        val.push(Resource.new(r))
+      end
       val
+    end
+
+    # Retrieve runtime properties for the passed resource
+    # @param [String] resource_id Id of the resource to read properties from
+    # @param [String] feed Feed of the resource
+    # @return [Hash<String,Object] Hash with additional data
+    def get_config_data_for_resource(resource_id, feed)
+      the_id = hawk_escape resource_id
+      the_feed = hawk_escape feed
+      http_get('feeds/' + the_feed + '/resources/' + the_id + '/data?dataType=configuration')
     end
 
     # Obtain the child resources of the passed resource. In case of a WildFly server,
@@ -257,7 +276,7 @@ module Hawkular::Inventory
     def initialize(res_hash)
       @id = res_hash['id']
       @path = res_hash['path']
-      @properties = res_hash['properties']
+      @properties = res_hash['properties'] || {}
       @type_path = res_hash['type']['path']
       @_hash = res_hash
 
