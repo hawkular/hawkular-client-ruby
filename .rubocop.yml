@@ -11,4 +11,4 @@ Documentation:
 Style/ClassAndModuleChildren:
   Enabled: false
 Metrics/LineLength:
-  Max: 100
+  Max: 120
