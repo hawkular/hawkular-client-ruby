@@ -18,7 +18,7 @@ module Hawkular
 
       def initialize(json = nil)
         super(json)
-        unless json.nil? # rubocop:disable Style/GuardClause
+        unless json.nil?
           @tenant_id = @json['tenantId']
           @data_retention = @json['dataRetention']
           @tags = @json['tags']

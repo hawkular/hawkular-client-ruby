@@ -32,7 +32,7 @@ module Hawkular
         headers: {}
       }.merge(options)
 
-      fail 'You need to provide an entrypoint' if entrypoint.nil?
+      raise 'You need to provide an entrypoint' if entrypoint.nil?
     end
 
     def http_get(suburl, headers = {})
@@ -98,7 +98,7 @@ module Hawkular
       options[:user]            = @credentials[:username]
       options[:password]        = @credentials[:password]
       # strip @endpoint in case suburl is absolute
-      suburl = suburl[@entrypoint.length, suburl.length] if suburl.match(/^http/)
+      suburl = suburl[@entrypoint.length, suburl.length] if suburl =~ /^http/
       RestClient::Resource.new(@entrypoint, options)[suburl]
     end
 
@@ -147,7 +147,7 @@ module Hawkular
     # @param param_hash [Hash] key-values pairs
     # @return [String] complete query string to append to a base url
     def generate_query_params(param_hash = {})
-      return '' if param_hash.size == 0
+      return '' if param_hash.empty?
 
       num = count_non_nil_values(param_hash)
 
@@ -157,11 +157,11 @@ module Hawkular
       param_hash.each  do |k, v|
         next if not_suitable?(v)
 
-        if v.instance_of? Array
-          part = "#{k}=#{v.join(',')}"
-        else
-          part = "#{k}=#{v}"
-        end
+        part =  if v.instance_of?(Array)
+                  "#{k}=#{v.join(',')}"
+                else
+                  "#{k}=#{v}"
+                end
 
         ret += hawk_escape part
 
@@ -174,7 +174,7 @@ module Hawkular
     private
 
     def not_suitable?(v)
-      v.nil? || (v.instance_of? Array) && v.size == 0
+      v.nil? || (v.instance_of? Array) && v.empty?
     end
 
     def count_non_nil_values(param_hash)
@@ -195,17 +195,14 @@ module Hawkular
     end
 
     def handle_fault(f)
-      if f.respond_to?(:http_body) && !f.http_body.nil?
-        begin
-          json_body = JSON.parse(f.http_body)
-          fault_message = json_body['errorMsg'] || f.http_body
-        rescue JSON::ParserError
-          fault_message = f.http_body
-        end
-        fail HawkularException, fault_message
-      else
-        fail f
+      raise f if f.respond_to?(:http_body) && !f.http_body.nil?
+      begin
+        json_body = JSON.parse(f.http_body)
+        fault_message = json_body['errorMsg'] || f.http_body
+      rescue JSON::ParserError
+        fault_message = f.http_body
       end
+      raise HawkularException, fault_message
     end
   end
 

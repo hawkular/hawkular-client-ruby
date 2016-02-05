@@ -89,7 +89,7 @@ describe 'No_Tenant' do
       rescue # rubocop:disable Lint/HandleExceptions
         # This is good
       else
-        fail 'The call should have failed due to missing tenant'
+        raise 'The call should have failed due to missing tenant'
       end
     end
   end
