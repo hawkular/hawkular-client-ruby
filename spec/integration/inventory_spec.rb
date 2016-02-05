@@ -2,7 +2,7 @@ require "#{File.dirname(__FILE__)}/../vcr/vcr_setup"
 require "#{File.dirname(__FILE__)}/../spec_helper"
 
 module Hawkular::Inventory::RSpec
-  INVENTORY_BASE = 'http://localhost:8080/hawkular/inventory'
+  INVENTORY_BASE = 'http://localhost:8080/hawkular/inventory'.freeze
   describe 'Tenants', :vcr do
     it 'Should Get Tenant For Explicit Credentials' do
       creds = { username: 'jdoe', password: 'password' }
@@ -124,7 +124,7 @@ module Hawkular::Inventory::RSpec
 
       expect(resources.size).to be(1)
       resource = resources[0]
-      expect(resource.instance_of? Hawkular::Inventory::Resource).to be_truthy
+      expect(resource.instance_of?(Hawkular::Inventory::Resource)).to be_truthy
       expect(resource.properties.size).to be(5)
       expect(resource.properties['url']).to eq('http://bsd.de')
     end

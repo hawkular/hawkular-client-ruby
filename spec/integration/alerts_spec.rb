@@ -2,7 +2,7 @@ require "#{File.dirname(__FILE__)}/../vcr/vcr_setup"
 require "#{File.dirname(__FILE__)}/../spec_helper"
 
 module Hawkular::Alerts::RSpec
-  ALERTS_BASE = 'http://localhost:8080/hawkular/alerts'
+  ALERTS_BASE = 'http://localhost:8080/hawkular/alerts'.freeze
   creds = { username: 'jdoe', password: 'password' }
 
   describe 'Alert/Triggers', :vcr do

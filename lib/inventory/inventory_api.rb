@@ -70,7 +70,7 @@ module Hawkular::Inventory
     # @param [Boolean] fetch_properties Shall additional runtime properties be fetched?
     # @return [Array<Resource>] List of resources. Can be empty
     def list_resources_for_type(feed, type, fetch_properties = false)
-      fail 'Type must not be nil' unless type
+      raise 'Type must not be nil' unless type
       the_type = hawk_escape type
       if feed.nil?
         ret = http_get('resourceTypes/' + the_type + '/resources')
@@ -207,7 +207,7 @@ module Hawkular::Inventory
       if filter.empty?
         found = true
       else
-        found = false unless filter[:type] == (metric_new.type) || filter[:type].nil?
+        found = false unless filter[:type] == metric_new.type || filter[:type].nil?
         found = false unless filter[:match].nil? || metric_new.id.include?(filter[:match])
       end
       found

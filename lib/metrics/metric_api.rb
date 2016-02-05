@@ -43,12 +43,12 @@ module Hawkular::Metrics
     # types (counters, gauges, availabilities).
     class Metrics
       # @param client [Client]
-      # @param metricType [String] metric type (one of "counter", "gauge", "availability")
+      # @param metric_type [String] metric type (one of "counter", "gauge", "availability")
       # @param resource [String] REST resource name for accessing metrics
       #    of given type (one of "counters", "gauges", "availability")
-      def initialize(client, metricType, resource)
+      def initialize(client, metric_type, resource)
         @client = client
-        @type = metricType
+        @type = metric_type
         @resource = resource
       end
 
@@ -84,9 +84,10 @@ module Hawkular::Metrics
       end
 
       # update tags for given metric definition
-      # @param metricDefinition [MetricDefinition]
-      def update_tags(metricDefinition)
-        @client.http_put("/#{@resource}/#{metricDefinition.id}/tags", metricDefinition.hash[:tags])
+      # @param metric_definition [MetricDefinition]
+      def update_tags(metric_definition)
+        path = "/#{@resource}/#{metric_definition.id}/tags"
+        @client.http_put(path, metric_definition.hash[:tags])
       end
 
       # Push metric data
