@@ -52,6 +52,27 @@ describe 'Base Spec' do
     c = Hawkular::BaseClient.new('not-needed-for-this-test')
     ret = c.generate_query_params params
 
-    expect(ret).to eql('')
+    expect(ret).to eq('')
+  end
+
+  it 'should escape numbers' do
+    c = Hawkular::BaseClient.new('not-needed-for-this-test')
+    ret = c.hawk_escape 12_345
+
+    expect(ret).to eq('12345')
+  end
+
+  it 'should escape alpha' do
+    c = Hawkular::BaseClient.new('not-needed-for-this-test')
+    ret = c.hawk_escape 'a12345'
+
+    expect(ret).to eq('a12345')
+  end
+
+  it 'should escape strange stuff' do
+    c = Hawkular::BaseClient.new('not-needed-for-this-test')
+    ret = c.hawk_escape 'a1%2 3|45/'
+
+    expect(ret).to eq('a1%252%203%7c45%2f')
   end
 end

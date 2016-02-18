@@ -3,6 +3,10 @@
 This document describes the relevant changes beween releases of the
 _hawkular-client_ project.
 
+=== V 0.2.1
+
+* Add support to create items in inventory
+
 === V 0.2.0
 
 * Add support for Hawkular-Inventory and Hawkular-Alerts

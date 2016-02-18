@@ -146,7 +146,7 @@ module Hawkular::Metrics
       end
     end
 
-    # Class that interracts with "gauge" metric types
+    # Class that interacts with "gauge" metric types
     class Gauges < Metrics
       # @param client [Client]
       def initialize(client)
