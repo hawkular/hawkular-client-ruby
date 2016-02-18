@@ -11,8 +11,7 @@ module Hawkular::Inventory::RSpec
 
       tenant = client.get_tenant(creds)
 
-      expect tenant.nil?
-      expect tenant.eql?('28026b36-8fe4-4332-84c8-524e173a68bf')
+      expect(tenant).to eq('28026b36-8fe4-4332-84c8-524e173a68bf')
     end
 
     it 'Should Get Tenant For Implicit Credentials' do
@@ -22,9 +21,7 @@ module Hawkular::Inventory::RSpec
 
       tenant = client.get_tenant
 
-      expect tenant.nil?
-
-      expect tenant.eql?('28026b36-8fe4-4332-84c8-524e173a68bf')
+      expect(tenant).to eq('28026b36-8fe4-4332-84c8-524e173a68bf')
     end
   end
 

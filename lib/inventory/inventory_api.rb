@@ -41,9 +41,7 @@ module Hawkular::Inventory
     # @return [Array<String>] List of feed ids
     def list_feeds(_environment = 'test')
       ret = http_get('feeds')
-      val = []
-      ret.each { |f| val.push(f['id']) }
-      val
+      ret.map { |f| f['id'] }
     end
 
     # List resource types. If no need is given all types are listed
@@ -56,15 +54,13 @@ module Hawkular::Inventory
         the_feed = hawk_escape feed
         ret = http_get('/feeds/' + the_feed + '/resourceTypes')
       end
-      val = []
-      ret.each { |rt| val.push(ResourceType.new(rt)) }
-      val
+      ret.map { |rt| ResourceType.new(rt) }
     end
 
     # List the resources for the passed feed and resource type. The representation for
     # resources under a feed are sparse and additional data must be retrived separately.
     # It is possible though to also obtain runtime properties by setting #fetch_properties to true.
-    # @param [String] feed The id of the feed the type lives under. Can be nil for feedless types
+    # @param [String] feed The id of the feed the type lives under. Can be nil for all feeds
     # @param [String] type Name of the type to look for. Can be obtained from {ResourceType}.id.
     #   Must not be nil
     # @param [Boolean] fetch_properties Shall additional runtime properties be fetched?
@@ -79,15 +75,13 @@ module Hawkular::Inventory
         the_feed = hawk_escape feed
         ret = http_get('/feeds/' + the_feed + '/resourceTypes/' + the_type + '/resources')
       end
-      val = []
-      ret.each do |r|
+      ret.map do |r|
         if fetch_properties && !feed.nil?
           p = get_config_data_for_resource(r['id'], feed)
           r['properties'] = p['value']
         end
-        val.push(Resource.new(r))
+        Resource.new(r)
       end
-      val
     end
 
     # Retrieve runtime properties for the passed resource
@@ -97,7 +91,8 @@ module Hawkular::Inventory
     def get_config_data_for_resource(resource_id, feed)
       the_id = hawk_escape resource_id
       the_feed = hawk_escape feed
-      http_get('feeds/' + the_feed + '/resources/' + the_id + '/data?dataType=configuration')
+      query = generate_query_params dataType: 'configuration'
+      http_get('feeds/' + the_feed + '/resources/' + the_id + '/data' + query)
     rescue
       {}
     end
@@ -105,43 +100,42 @@ module Hawkular::Inventory
     # Obtain the child resources of the passed resource. In case of a WildFly server,
     # those would be Datasources, Deployments and so on.
     # @param [Resource] parent_resource Resource to obtain children from
+    # @param [Boolean] recursive Whether to fetch also all the children of children of ...
     # @return [Array<Resource>] List of resources that are children of the given parent resource.
     #   Can be empty
-    def list_child_resources(parent_resource)
+    def list_child_resources(parent_resource, recursive = false)
       the_feed = hawk_escape parent_resource.feed
       the_id = hawk_escape parent_resource.id
 
       ret = http_get('/feeds/' + the_feed +
-                     '/resources/' + the_id + '/children')
-      val = []
-      ret.each { |r| val.push(Resource.new(r)) }
-      val
+                     '/resources/' + the_id +
+                     (recursive ? '/recursiveChildren' : '/children'))
+      ret.map { |r| Resource.new(r) }
     end
 
     # Obtain a list of relationships starting at the passed resource
     # @param [Resource] resource One end of the relationship
+    # @param [String] named Name of the relationship
     # @return [Array<Relationship>] List of relationships
-    def list_relationships(resource)
+    def list_relationships(resource, named = nil)
       the_feed = hawk_escape resource.feed
       the_id = hawk_escape resource.id
-
-      ret = http_get('/feeds/' + the_feed + '/resources/' + the_id + '/relationships')
-      val = []
-      ret.each { |r| val.push(Relationship.new(r)) }
-      val
+      query = named.nil? ? '' : (generate_query_params named: named)
+      ret = http_get("/feeds/#{the_feed}/resources/#{the_id}/relationships#{query}")
+      ret.map { |r| Relationship.new(r) }
     rescue
       []
     end
 
     # Obtain a list of relationships for the passed feed
     # @param [String] feed_id Id of the feed
+    # @param [String] named Name of the relationship
     # @return [Array<Relationship>] List of relationships
-    def list_relationships_for_feed(feed_id)
+    def list_relationships_for_feed(feed_id, named = nil)
       the_feed = hawk_escape feed_id
-      ret = http_get('/feeds/' + the_feed + '/relationships')
-      val = []
-      ret.each { |r| val.push(Relationship.new(r)) }
-      val
+      query = named.nil? ? '' : (generate_query_params named: named)
+      ret = http_get("/feeds/#{the_feed}/relationships#{query}")
+      ret.map { |r| Relationship.new(r) }
     rescue
       []
     end
@@ -166,9 +160,50 @@ module Hawkular::Inventory
     #             rel.to_h)
     # end
 
-    # def list_metrics_for_resource_type
-    #   # TODO implement me
-    # end
+    # List the metrics for the passed feed and metric type. If feed is not passed,
+    # all the metrics across all the feeds of a given type will be retrieved
+    # @param [String] feed The id of the feed the type lives under. Can be nil for all feeds
+    # @param [String] type Name of the metric type to look for. Can be obtained from {MetricType}.id.
+    #   Must not be nil
+    # @return [Array<Metric>] List of metrics. Can be empty
+    def list_metrics_for_metric_type(feed, type)
+      fail 'Type must not be nil' unless type
+      the_type = hawk_escape type
+      if feed.nil?
+        ret = http_get('metricTypes/' + the_type + '/metrics')
+      else
+        the_feed = hawk_escape feed
+        ret = http_get('/feeds/' + the_feed + '/metricTypes/' + the_type + '/metrics')
+      end
+      ret.map { |m| Metric.new(m) }
+    end
+
+    # List the metrics for the passed feed and all the resources of given resource type.
+    # If feed is not passed, all the metrics across all the feeds of a resource type will be retrieved
+    # This method may perform multiple REST calls.
+    # @param [String] feed The id of the feed the type lives under. Can be nil for all feeds
+    # @param [String] type Name of the resource type to look for. Can be obtained from {ResourceType}.id.
+    #   Must not be nil
+    # @return [Array<Metric>] List of metrics. Can be empty
+    def list_metrics_for_resource_type(feed, type)
+      fail 'Type must not be nil' unless type
+      the_type = hawk_escape type
+      if feed.nil?
+        ret = http_get('resourceTypes/' + the_type + '/resources')
+      else
+        the_feed = hawk_escape feed
+        ret = http_get('/feeds/' + the_feed + '/resourceTypes/' + the_type + '/resources')
+      end
+      ret.flat_map do |r|
+        path = CanonicalPath.parse(r['path'])
+        if path.feed_id.nil?
+          nested_ret = http_get('/feeds/' + path.feed_id + '/resources/' + path.resource_ids.join('/') + '/metrics')
+        else
+          nested_ret = http_get('/' + path.environment_id + '/resources/' + path.resource_ids.join('/') + '/metrics')
+        end
+        nested_ret.map { |m| Metric.new(m) }
+      end
+    end
 
     # List metric (definitions) for the passed resource. It is possible to filter down the
     #   result by a filter to only return a subset. The
@@ -191,13 +226,12 @@ module Hawkular::Inventory
       ret = http_get('/feeds/' +
                            the_feed + '/resources/' +
                            the_id + '/metrics')
-      val = []
-      ret.each do |m|
+      with_nils = ret.map do |m|
         metric_new = Metric.new(m)
         found = should_include?(metric_new, filter)
-        val.push(metric_new) if found
+        metric_new if found
       end
-      val
+      with_nils.compact
     end
 
     private
@@ -290,7 +324,7 @@ module Hawkular::Inventory
           @feed = val
         when 'e'
           @env = val
-        when 'n'
+        when 'r'
           @name = val.nil? ? id : val
         end
       end
@@ -330,7 +364,7 @@ module Hawkular::Inventory
           @feed = val
         when 'e'
           @env = val
-        when 'n'
+        when 'm'
           @name = val.nil? ? id : val
         end
       end
@@ -373,6 +407,83 @@ module Hawkular::Inventory
       hash['name'] = @name
       hash['id'] = @id
       hash
+    end
+  end
+
+  class CanonicalPath
+    attr_reader :tenant_id
+    attr_reader :feed_id
+    attr_reader :environment_id
+    attr_reader :resource_ids
+    attr_reader :metric_id
+    attr_reader :resource_type_id
+    attr_reader :metric_type_id
+
+    def initialize(hash)
+      fail 'At least tenant_id must be specified' if hash[:tenant_id].to_s.strip.length == 0
+      @tenant_id = hash[:tenant_id]
+      @feed_id = hash[:feed_id]
+      @environment_id = hash[:environment_id]
+      @resource_type_id = hash[:resource_type_id]
+      @metric_type_id = hash[:metric_type_id]
+      @resource_ids = hash[:resource_ids]
+      @metric_id = hash[:metric_id]
+    end
+
+    # rubocop:disable Metrics/CyclomaticComplexity
+    def self.parse(path)
+      fail 'CanonicalPath must not be nil or emtpy' if path.to_s.strip.length == 0
+      tmp = path.split('/')
+      hash = {}
+      tmp.each do |pair|
+        (key, val) = pair.split(';')
+        case key
+        when 't'
+          hash[:tenant_id] = val
+        when 'f'
+          hash[:feed_id] = val
+        when 'e'
+          hash[:environment_id] = val
+        when 'm'
+          hash[:metric_id] = val
+        when 'r'
+          hash[:resource_ids] = [] if hash[:resource_ids].nil?
+          hash[:resource_ids].push(val)
+        when 'mt'
+          hash[:metric_type_id] = val
+        when 'rt'
+          hash[:resource_type_id] = val
+        end
+      end
+      CanonicalPath.new(hash)
+    end
+    # rubocop:enable Metrics/CyclomaticComplexity
+
+    def ==(other)
+      self.eql?(other) || other.class == self.class && other.state == state
+    end
+
+    def to_s
+      ret = "/t;#{@tenant_id}"
+      ret += "/f;#{@feed_id}" unless @feed_id.nil?
+      ret += "/e;#{@environment_id}" unless @environment_id.nil?
+      ret += "/rt;#{@resource_type_id}" unless @resource_type_id.nil?
+      ret += "/mt;#{@metric_type_id}" unless @metric_type_id.nil?
+      ret += "/m;#{@metric_id}" unless @metric_id.nil?
+      ret += resources_chunk.to_s
+      ret
+    end
+
+    protected
+
+    def state
+      [@tenant_id, @feed_id, @environment_id, @resource_ids, @metric_id, @metric_type_id, @resource_type_id]
+    end
+
+    private
+
+    def resources_chunk
+      @resource_ids.map { |r| "/r;#{r}" }.join unless @resource_ids.nil?
     end
   end
 end
