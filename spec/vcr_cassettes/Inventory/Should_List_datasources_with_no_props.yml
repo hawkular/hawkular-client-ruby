@@ -11,17 +11,15 @@ http_interactions:
       - application/json
       Accept-Encoding:
       - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.0.rc1 (linux-gnu x86_64) ruby/2.2.4p230
       Content-Type:
       - application/json
-      User-Agent:
-      - Ruby
   response:
     status:
       code: 200
       message: OK
     headers:
-      Content-Encoding:
-      - gzip
       Expires:
       - '0'
       Cache-Control:
@@ -29,27 +27,29 @@ http_interactions:
       X-Powered-By:
       - Undertow/1
       Server:
-      - WildFly/9
+      - WildFly/10
       Pragma:
       - no-cache
       Date:
-      - Tue, 01 Dec 2015 13:25:38 GMT
+      - Thu, 18 Feb 2016 22:30:15 GMT
       Connection:
       - keep-alive
       Content-Type:
       - application/json
       Content-Length:
-      - '85'
+      - '105'
     body:
       encoding: ASCII-8BIT
-      string: !binary |-
-        H4sIAAAAAAAAAKvmUlBQKkgsyVBSsFJQ0i+xNrIwMDJLMjbTtUhLNdE1MTY2
-        0rUwSbbQNTUySTU0N040s0hKU9IB6cpMAeshSgNXLQAnmwH5aQAAAA==
+      string: |-
+        {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf",
+          "id" : "28026b36-8fe4-4332-84c8-524e173a68bf"
+        }
     http_version: 
-  recorded_at: Tue, 01 Dec 2015 13:25:38 GMT
+  recorded_at: Thu, 18 Feb 2016 22:30:15 GMT
 - request:
     method: get
-    uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/snert/resourceTypes/Datasource/resources
+    uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/resourceTypes/Datasource/resources
     body:
       encoding: US-ASCII
       string: ''
@@ -58,21 +58,19 @@ http_interactions:
       - application/json
       Accept-Encoding:
       - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.0.rc1 (linux-gnu x86_64) ruby/2.2.4p230
       Hawkular-Tenant:
       - 28026b36-8fe4-4332-84c8-524e173a68bf
       Tenantid:
       - 28026b36-8fe4-4332-84c8-524e173a68bf
       Content-Type:
       - application/json
-      User-Agent:
-      - Ruby
   response:
     status:
       code: 200
       message: OK
     headers:
-      Content-Encoding:
-      - gzip
       Expires:
       - '0'
       Cache-Control:
@@ -80,11 +78,11 @@ http_interactions:
       X-Powered-By:
       - Undertow/1
       Server:
-      - WildFly/9
+      - WildFly/10
       Pragma:
       - no-cache
       Date:
-      - Tue, 01 Dec 2015 13:25:38 GMT
+      - Thu, 18 Feb 2016 22:30:16 GMT
       X-Total-Count:
       - '2'
       Connection:
@@ -92,24 +90,37 @@ http_interactions:
       Content-Type:
       - application/json
       Content-Length:
-      - '228'
+      - '863'
       Link:
-      - <http://localhost:8080/hawkular/inventory/feeds/snert/resourceTypes/Datasource/resources>;
+      - <http://localhost:8080/hawkular/inventory/feeds/f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/resourceTypes/Datasource/resources>;
         rel="current"
     body:
       encoding: ASCII-8BIT
-      string: !binary |-
-        H4sIAAAAAAAAANWRTQuCQBCG7/6KZaFby9ZqtiTdIoK6dRQPo64UfoW7EhL6
-        2/MjMspOXuq0vDPMu8/Ma6ObhhC+gDphtEKYKovxGTNd3SQ8EAYxdJ0Rbnic
-        LJgh5ksdTO4GNLBkIjJFs+6tDqkHUVW96QnbytyVhVQiXvugQKZ55glZ1xtF
-        OrnewTXMI8g2RzxtaFRxEQ1NgzYKTlmb56etde2WQNya48/W2X9v1PWyRRqY
-        QnbP7XTgD4PXE9DBA9Av62vl9BcC2YvCi1II/y2QnntUIC/rayVy7vZEzXMk
-        AwAA
+      string: |-
+        [ {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/r;Local~~/r;Local~%2Fsubsystem=datasources%2Fdata-source=ExampleDS",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/rt;Datasource",
+            "name" : "Datasource",
+            "id" : "Datasource"
+          },
+          "name" : "ExampleDS",
+          "id" : "Local~/subsystem=datasources/data-source=ExampleDS"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/r;Local~~/r;Local~%2Fsubsystem=datasources%2Fdata-source=KeycloakDS",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/rt;Datasource",
+            "name" : "Datasource",
+            "id" : "Datasource"
+          },
+          "name" : "KeycloakDS",
+          "id" : "Local~/subsystem=datasources/data-source=KeycloakDS"
+        } ]
     http_version: 
-  recorded_at: Tue, 01 Dec 2015 13:25:38 GMT
+  recorded_at: Thu, 18 Feb 2016 22:30:16 GMT
 - request:
     method: get
-    uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/snert/resources/snert~Local~%2Fsubsystem=datasources%2Fdata-source=HawkularDS/data?dataType=configuration
+    uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/resources/Local~%2Fsubsystem=datasources%2Fdata-source=ExampleDS/data?dataType=configuration
     body:
       encoding: US-ASCII
       string: ''
@@ -118,21 +129,19 @@ http_interactions:
       - application/json
       Accept-Encoding:
       - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.0.rc1 (linux-gnu x86_64) ruby/2.2.4p230
       Hawkular-Tenant:
       - 28026b36-8fe4-4332-84c8-524e173a68bf
       Tenantid:
       - 28026b36-8fe4-4332-84c8-524e173a68bf
       Content-Type:
       - application/json
-      User-Agent:
-      - Ruby
   response:
     status:
       code: 404
       message: Not Found
     headers:
-      Content-Encoding:
-      - gzip
       Expires:
       - '0'
       Cache-Control:
@@ -140,35 +149,34 @@ http_interactions:
       X-Powered-By:
       - Undertow/1
       Server:
-      - WildFly/9
+      - WildFly/10
       Pragma:
       - no-cache
       Date:
-      - Tue, 01 Dec 2015 13:25:38 GMT
+      - Thu, 18 Feb 2016 22:30:16 GMT
       Connection:
       - keep-alive
       Content-Type:
       - application/json
       Content-Length:
-      - '420'
+      - '500'
     body:
       encoding: ASCII-8BIT
-      string: !binary |-
-        H4sIAAAAAAAAAO1TQW+CMBi9+ysaLl4EN2GOaDipyZZsuuh2IhwqFGhWW9KW
-        GWL0t68FlC1qYjJ3WLJwgO/xfY/Xx/s2LQAMxDnjzyIxwAAYUwbGUMIJlVgW
-        IGY5jQCjANICsBjIFCmMELbGNAEZlKkYAN8fQcooDiF50YjflcOee9PrL+2+
-        6cbIMR3b7pmuE7rmXc9Bt/c27LvLuBsPBUVcdnl13z0xRbELOmCOCJQo8juA
-        I+K1sXiBHFE5i9sKYQR5i9nbfDRRna9FhoQ/R4LlPEQKuKoUXeZLUQiJVl6k
-        bKk+I/6ARIXryqxK7wGu33MC+XhxrD1kVEJMxRnlTRwU9BgJX/XHOMk5lJjR
-        IAiMjk5RhBQJETpEG1XrXJVDmqRMVsNTDqgGnR/9yldXNVODokKNn1ljgKAk
-        3XYadq6PrmSLFGdTuKqUNT+vVnYQP1d+lC2VJ8YRn9QW1WoZT6y09tnC9ENR
-        MF5YMMPWikWIWPsMnBJ2vWOfS8S/HZctyMU+7ffmd136sjYnhOFoT/RtKw+t
-        ICiftq3tJ+uISmvrBQAA
+      string: |-
+        {
+          "errorMsg" : "No DataEntity found on any of the following paths: [[CanonicalPaths[/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/r;Local~%2Fsubsystem=datasources%2Fdata-source=ExampleDS/d;configuration]]]",
+          "details" : {
+            "entityType" : "DataEntity",
+            "path" : [ [ {
+              "paths" : [ "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/r;Local~%2Fsubsystem=datasources%2Fdata-source=ExampleDS/d;configuration" ]
+            } ] ]
+          }
+        }
     http_version: 
-  recorded_at: Tue, 01 Dec 2015 13:25:38 GMT
+  recorded_at: Thu, 18 Feb 2016 22:30:16 GMT
 - request:
     method: get
-    uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/snert/resources/snert~Local~%2Fsubsystem=datasources%2Fdata-source=KeycloakDS/data?dataType=configuration
+    uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/resources/Local~%2Fsubsystem=datasources%2Fdata-source=KeycloakDS/data?dataType=configuration
     body:
       encoding: US-ASCII
       string: ''
@@ -177,21 +185,19 @@ http_interactions:
       - application/json
       Accept-Encoding:
       - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.0.rc1 (linux-gnu x86_64) ruby/2.2.4p230
       Hawkular-Tenant:
       - 28026b36-8fe4-4332-84c8-524e173a68bf
       Tenantid:
       - 28026b36-8fe4-4332-84c8-524e173a68bf
       Content-Type:
       - application/json
-      User-Agent:
-      - Ruby
   response:
     status:
       code: 404
       message: Not Found
     headers:
-      Content-Encoding:
-      - gzip
       Expires:
       - '0'
       Cache-Control:
@@ -199,30 +205,29 @@ http_interactions:
       X-Powered-By:
       - Undertow/1
       Server:
-      - WildFly/9
+      - WildFly/10
       Pragma:
       - no-cache
       Date:
-      - Tue, 01 Dec 2015 13:25:38 GMT
+      - Thu, 18 Feb 2016 22:30:16 GMT
       Connection:
       - keep-alive
       Content-Type:
       - application/json
       Content-Length:
-      - '423'
+      - '502'
     body:
       encoding: ASCII-8BIT
-      string: !binary |-
-        H4sIAAAAAAAAAO1TwW6CQBS8+xUbLl4EW7WWaDyph6atGm1PhMMKD9i47prd
-        pYYY/fbugkobNTGpPTRpOMAb3htmh3mbCkIWCMHFq4wt1EHWiKMBVnjIFFEZ
-        injKQsQZwixDPEIqAY1RyteExWiFVSI7yPP6mHFGAkwnBvHqqttw7xrtebNt
-        uxG07Faz2bDdVuDaD40W3D82cdudR/WoKxkIVRfFfffCNcXOr6EpUKwg9GpI
-        AO1ViZxgAUyNo6pGOIXebPw+7Q9151u2AulNQfJUBKCBm0oxZTqXmVSw7IXa
-        luIz8g9I1Lip7KLsPUMWUI4Xg9mp9oAzhQmTF5SXcdDQUyg93R+ROBVYEc58
-        37dqJkUhaBIqTYg2uja5yocMSZ6skicf0A0mP+aVp69iZg/KArV+Zo2F/Jx0
-        WyvZhTm6li0TshrhZaGs/Hl7ZUfxU+1H3lJ4Yp3wKWPRXi0XsZPg9SKlWDiE
-        fWgKLjIHr4iz5CFQ55CBc8Jud+xLifi347oFudqnw978rktf1uaMMBIeiL5t
-        5bEV+fnTtrL9BCrxBVXrBQAA
+      string: |-
+        {
+          "errorMsg" : "No DataEntity found on any of the following paths: [[CanonicalPaths[/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/r;Local~%2Fsubsystem=datasources%2Fdata-source=KeycloakDS/d;configuration]]]",
+          "details" : {
+            "entityType" : "DataEntity",
+            "path" : [ [ {
+              "paths" : [ "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/r;Local~%2Fsubsystem=datasources%2Fdata-source=KeycloakDS/d;configuration" ]
+            } ] ]
+          }
+        }
     http_version: 
-  recorded_at: Tue, 01 Dec 2015 13:25:38 GMT
-recorded_with: VCR 3.0.0
+  recorded_at: Thu, 18 Feb 2016 22:30:16 GMT
+recorded_with: VCR 3.0.1

@@ -11,17 +11,15 @@ http_interactions:
       - application/json
       Accept-Encoding:
       - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.0.rc1 (linux-gnu x86_64) ruby/2.2.4p230
       Content-Type:
       - application/json
-      User-Agent:
-      - Ruby
   response:
     status:
       code: 200
       message: OK
     headers:
-      Content-Encoding:
-      - gzip
       Expires:
       - '0'
       Cache-Control:
@@ -29,24 +27,26 @@ http_interactions:
       X-Powered-By:
       - Undertow/1
       Server:
-      - WildFly/9
+      - WildFly/10
       Pragma:
       - no-cache
       Date:
-      - Tue, 10 Nov 2015 14:01:18 GMT
+      - Thu, 18 Feb 2016 22:30:16 GMT
       Connection:
       - keep-alive
       Content-Type:
       - application/json
       Content-Length:
-      - '85'
+      - '105'
     body:
       encoding: ASCII-8BIT
-      string: !binary |-
-        H4sIAAAAAAAAAKvmUlBQKkgsyVBSsFJQ0i+xNrIwMDJLMjbTtUhLNdE1MTY2
-        0rUwSbbQNTUySTU0N040s0hKU9IB6cpMAeshSgNXLQAnmwH5aQAAAA==
+      string: |-
+        {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf",
+          "id" : "28026b36-8fe4-4332-84c8-524e173a68bf"
+        }
     http_version: 
-  recorded_at: Tue, 10 Nov 2015 14:01:18 GMT
+  recorded_at: Thu, 18 Feb 2016 22:30:16 GMT
 - request:
     method: get
     uri: http://jdoe:password@localhost:8080/hawkular/inventory/resourceTypes/URL/resources
@@ -58,17 +58,19 @@ http_interactions:
       - application/json
       Accept-Encoding:
       - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.0.rc1 (linux-gnu x86_64) ruby/2.2.4p230
+      Hawkular-Tenant:
+      - 28026b36-8fe4-4332-84c8-524e173a68bf
+      Tenantid:
+      - 28026b36-8fe4-4332-84c8-524e173a68bf
       Content-Type:
       - application/json
-      User-Agent:
-      - Ruby
   response:
     status:
       code: 200
       message: OK
     headers:
-      Content-Encoding:
-      - gzip
       Expires:
       - '0'
       Cache-Control:
@@ -76,11 +78,11 @@ http_interactions:
       X-Powered-By:
       - Undertow/1
       Server:
-      - WildFly/9
+      - WildFly/10
       Pragma:
       - no-cache
       Date:
-      - Tue, 10 Nov 2015 14:01:22 GMT
+      - Thu, 18 Feb 2016 22:30:16 GMT
       X-Total-Count:
       - '1'
       Connection:
@@ -88,18 +90,28 @@ http_interactions:
       Content-Type:
       - application/json
       Content-Length:
-      - '269'
+      - '489'
       Link:
       - <http://localhost:8080/hawkular/inventory/resourceTypes/URL/resources>; rel="current"
     body:
       encoding: ASCII-8BIT
-      string: !binary |-
-        H4sIAAAAAAAAAJ2QP0/DMBDF934KKzNOHNtxnGZiZwIxIQb/uZKItLacq6oK
-        9buTWC0CFiTWu/d+7969kI8NIUU0OBRkS4oKe64ZV1YoqncgqRSCUy2dpg2X
-        ULfCKG13FfQIM1apb4RyToCHplWdVczIrm2l5I0Bbw2Xxd3Kx3OElb+G/Scu
-        Yf/8+JBZi3302bxOlsElJ8QUIiQcYf6WM5ze6dtxpD7szXh4Cgmz0c6+9HCj
-        YTIjUhemCRyCp+Gwimop21pJphlT+ocyhhOkRWfPGXYfjRt+wRLsAwI13ieY
-        80EFr3mpVckZK2vd3eTHNOXtgBi3VXU97KvUteifP95cyOsnvhJ0f8oBAAA=
+      string: |-
+        [ {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/e;test/r;536cc3ede5769b60a49774425aedba24",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/rt;URL",
+            "id" : "URL"
+          },
+          "properties" : {
+            "trait-collected-on" : 1455834600285,
+            "trait-powered-by" : "Apache",
+            "created" : 1455833583048,
+            "hwk-gui-domainSort" : "bsd.de",
+            "trait-remote-address" : "212.86.200.189",
+            "url" : "http://bsd.de"
+          },
+          "id" : "536cc3ede5769b60a49774425aedba24"
+        } ]
     http_version: 
-  recorded_at: Tue, 10 Nov 2015 14:01:22 GMT
-recorded_with: VCR 3.0.0
+  recorded_at: Thu, 18 Feb 2016 22:30:16 GMT
+recorded_with: VCR 3.0.1

@@ -1,14 +1,26 @@
-MethodLength:
-  Enabled: false
+# possible values:
+# https://github.com/bbatsov/rubocop/blob/master/config/
+
+#
+# Overrides
+#
+CyclomaticComplexity:
+  Severity: refactor
+Metrics/LineLength:
+  Max: 120
+
+#
+# Enabled/Disabled
+#
 ClassLength:
-  Enabled: false
-ModuleLength:
-  Enabled: false
-Metrics/AbcSize:
   Enabled: false
 Documentation:
   Enabled: false
+MethodLength:
+  Enabled: false
+Metrics/AbcSize:
+  Enabled: false
+ModuleLength:
+  Enabled: false
 Style/ClassAndModuleChildren:
   Enabled: false
-Metrics/LineLength:
-  Max: 120
