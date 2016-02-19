@@ -118,13 +118,9 @@ module Hawkular::Inventory
     # @param [String] named Name of the relationship
     # @return [Array<Relationship>] List of relationships
     def list_relationships(resource, named = nil)
-      the_feed = hawk_escape resource.feed
-      the_id = hawk_escape resource.id
       query = named.nil? ? '' : (generate_query_params named: named)
-      ret = http_get("/feeds/#{the_feed}/resources/#{the_id}/relationships#{query}")
+      ret = http_get("/path#{resource.path}/relationships#{query}")
       ret.map { |r| Relationship.new(r) }
-    rescue
-      []
     end
 
     # Obtain a list of relationships for the passed feed
@@ -138,6 +134,13 @@ module Hawkular::Inventory
       ret.map { |r| Relationship.new(r) }
     rescue
       []
+    end
+
+    # Retrieve a single entity from inventory by its canonical path
+    # @param [CanonicalPath] path canonical path of the entity
+    # @return inventory entity
+    def get_entity(path)
+      http_get("path#{path}")
     end
 
     # [15:01:51]  <jkremser>	pilhuhn, this works for me curl -XPOST
@@ -162,6 +165,7 @@ module Hawkular::Inventory
 
     # List the metrics for the passed feed and metric type. If feed is not passed,
     # all the metrics across all the feeds of a given type will be retrieved
+    # This method may perform multiple REST calls.
     # @param [String] feed The id of the feed the type lives under. Can be nil for all feeds
     # @param [String] type Name of the metric type to look for. Can be obtained from {MetricType}.id.
     #   Must not be nil
@@ -170,12 +174,20 @@ module Hawkular::Inventory
       fail 'Type must not be nil' unless type
       the_type = hawk_escape type
       if feed.nil?
-        ret = http_get('metricTypes/' + the_type + '/metrics')
+        type_hash = http_get('metricTypes/' + the_type)
       else
         the_feed = hawk_escape feed
-        ret = http_get('/feeds/' + the_feed + '/metricTypes/' + the_type + '/metrics')
+        type_hash = http_get("/feeds/#{the_feed}/metricTypes/#{the_type}")
       end
-      ret.map { |m| Metric.new(m) }
+
+      rels = list_relationships(ResourceType.new(type_hash), 'defines')
+      rels.map do |rel|
+        path = CanonicalPath.parse(rel.target_id.to_s)
+        metric_hash = get_entity path
+        Metric.new(metric_hash)
+      end
+    rescue
+      []
     end
 
     # List the metrics for the passed feed and all the resources of given resource type.
@@ -192,14 +204,14 @@ module Hawkular::Inventory
         ret = http_get('resourceTypes/' + the_type + '/resources')
       else
         the_feed = hawk_escape feed
-        ret = http_get('/feeds/' + the_feed + '/resourceTypes/' + the_type + '/resources')
+        ret = http_get('feeds/' + the_feed + '/resourceTypes/' + the_type + '/resources')
       end
       ret.flat_map do |r|
         path = CanonicalPath.parse(r['path'])
-        if path.feed_id.nil?
-          nested_ret = http_get('/feeds/' + path.feed_id + '/resources/' + path.resource_ids.join('/') + '/metrics')
+        if !path.feed_id.nil?
+          nested_ret = http_get('feeds/' + path.feed_id + '/resources/' + path.resource_ids.join('/') + '/metrics')
         else
-          nested_ret = http_get('/' + path.environment_id + '/resources/' + path.resource_ids.join('/') + '/metrics')
+          nested_ret = http_get(path.environment_id + '/resources/' + path.resource_ids.join('/') + '/metrics')
         end
         nested_ret.map { |m| Metric.new(m) }
       end

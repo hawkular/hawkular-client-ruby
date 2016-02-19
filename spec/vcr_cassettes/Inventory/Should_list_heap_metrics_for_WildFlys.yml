@@ -11,17 +11,15 @@ http_interactions:
       - application/json
       Accept-Encoding:
       - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.0.rc1 (linux-gnu x86_64) ruby/2.2.4p230
       Content-Type:
       - application/json
-      User-Agent:
-      - Ruby
   response:
     status:
       code: 200
       message: OK
     headers:
-      Content-Encoding:
-      - gzip
       Expires:
       - '0'
       Cache-Control:
@@ -29,27 +27,29 @@ http_interactions:
       X-Powered-By:
       - Undertow/1
       Server:
-      - WildFly/9
+      - WildFly/10
       Pragma:
       - no-cache
       Date:
-      - Fri, 06 Nov 2015 21:24:41 GMT
+      - Thu, 18 Feb 2016 22:30:17 GMT
       Connection:
       - keep-alive
       Content-Type:
       - application/json
       Content-Length:
-      - '85'
+      - '105'
     body:
       encoding: ASCII-8BIT
-      string: !binary |-
-        H4sIAAAAAAAAAKvmUlBQKkgsyVBSsFJQ0i+xNrIwMDJLMjbTtUhLNdE1MTY2
-        0rUwSbbQNTUySTU0N040s0hKU9IB6cpMAeshSgNXLQAnmwH5aQAAAA==
-    http_version:
-  recorded_at: Fri, 06 Nov 2015 21:24:41 GMT
+      string: |-
+        {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf",
+          "id" : "28026b36-8fe4-4332-84c8-524e173a68bf"
+        }
+    http_version: 
+  recorded_at: Thu, 18 Feb 2016 22:30:17 GMT
 - request:
     method: get
-    uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/snert/resourceTypes/WildFly%20Server/resources
+    uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/resourceTypes/WildFly%20Server/resources
     body:
       encoding: US-ASCII
       string: ''
@@ -58,17 +58,19 @@ http_interactions:
       - application/json
       Accept-Encoding:
       - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.0.rc1 (linux-gnu x86_64) ruby/2.2.4p230
+      Hawkular-Tenant:
+      - 28026b36-8fe4-4332-84c8-524e173a68bf
+      Tenantid:
+      - 28026b36-8fe4-4332-84c8-524e173a68bf
       Content-Type:
       - application/json
-      User-Agent:
-      - Ruby
   response:
     status:
       code: 200
       message: OK
     headers:
-      Content-Encoding:
-      - gzip
       Expires:
       - '0'
       Cache-Control:
@@ -76,11 +78,11 @@ http_interactions:
       X-Powered-By:
       - Undertow/1
       Server:
-      - WildFly/9
+      - WildFly/10
       Pragma:
       - no-cache
       Date:
-      - Fri, 06 Nov 2015 21:24:41 GMT
+      - Thu, 18 Feb 2016 22:30:17 GMT
       X-Total-Count:
       - '1'
       Connection:
@@ -88,22 +90,28 @@ http_interactions:
       Content-Type:
       - application/json
       Content-Length:
-      - '177'
+      - '351'
       Link:
-      - <http://localhost:8080/hawkular/inventory/feeds/snert/resourceTypes/WildFly%20Server/resources>;
+      - <http://localhost:8080/hawkular/inventory/feeds/f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/resourceTypes/WildFly%20Server/resources>;
         rel="current"
     body:
       encoding: ASCII-8BIT
-      string: !binary |-
-        H4sIAAAAAAAAAItWqOZSUFAqSCzJUFKwUlDSL7E2sjAwMksyNtO1SEs10TUx
-        NjbStTBJttA1NTJJNTQ3TjSzSErTT7UuSS0u0U+zLs5LLSrRL4LQdT75yYk5
-        dXVKOiBDSyoLUkGGgmyghh0l1uGZOSluOZWqRgbBqUVlqUVge4BG5yXmgm1S
-        gipQQJXOTMEmCZSrBbsTh26FaLC9sRDPQM1A9SZXrUIsAH0JV21CAQAA
-    http_version:
-  recorded_at: Fri, 06 Nov 2015 21:24:41 GMT
+      string: |-
+        [ {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/r;Local~~",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/rt;WildFly%20Server",
+            "name" : "WildFly Server",
+            "id" : "WildFly Server"
+          },
+          "name" : "localhost/Local",
+          "id" : "Local~~"
+        } ]
+    http_version: 
+  recorded_at: Thu, 18 Feb 2016 22:30:17 GMT
 - request:
     method: get
-    uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/snert/resources/snert~Local~~/metrics
+    uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/resources/Local~~/metrics
     body:
       encoding: US-ASCII
       string: ''
@@ -112,17 +120,19 @@ http_interactions:
       - application/json
       Accept-Encoding:
       - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.0.rc1 (linux-gnu x86_64) ruby/2.2.4p230
+      Hawkular-Tenant:
+      - 28026b36-8fe4-4332-84c8-524e173a68bf
+      Tenantid:
+      - 28026b36-8fe4-4332-84c8-524e173a68bf
       Content-Type:
       - application/json
-      User-Agent:
-      - Ruby
   response:
     status:
       code: 200
       message: OK
     headers:
-      Content-Encoding:
-      - gzip
       Expires:
       - '0'
       Cache-Control:
@@ -130,11 +140,11 @@ http_interactions:
       X-Powered-By:
       - Undertow/1
       Server:
-      - WildFly/9
+      - WildFly/10
       Pragma:
       - no-cache
       Date:
-      - Fri, 06 Nov 2015 21:24:41 GMT
+      - Thu, 18 Feb 2016 22:30:17 GMT
       X-Total-Count:
       - '14'
       Connection:
@@ -142,36 +152,187 @@ http_interactions:
       Content-Type:
       - application/json
       Content-Length:
-      - '800'
+      - '10779'
       Link:
-      - <http://localhost:8080/hawkular/inventory/feeds/snert/resources/snert~Local~~/metrics>;
+      - <http://localhost:8080/hawkular/inventory/feeds/f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/resources/Local~~/metrics>;
         rel="current"
     body:
       encoding: ASCII-8BIT
-      string: !binary |-
-        H4sIAAAAAAAAANVZ0Y6iMBR9369oSOZtjLPquGZ9YhzX3WR1EsVMNpN5QKxO
-        N4AuFDNmI9++FYFBbaGUKuwLgcI997ScHO4tL+DvJwCUtY7fFPAVKHXcbXTu
-        Gu1Zs13rLGCr1mo2G7VOy+jU7hst+PlLU293Zos67GLo4vqi69rQwXWrO/zh
-        j/2b+4fg2v+5MnTTJ9eP/lDzn5E5/2Zubxp36nLpwKWO4ZxcPMMZOQ4hdpDh
-        +ke3JtDZmBCTszH845FM5ExDFlRu92zxdg33bPfUZZDHXckMCSlbtwKOSggN
-        PqIBgQXnoCCEBCEgSMJ5NsIB3Ohp1I8Go3VQBup0EI+iuYy8BGsXLLbMiUTc
-        ArG8HEnlNSEUYc672+vKeQitlbNNSOQ71NfkcurC+eWlmpmd9vYOQSAZApIB
-        sdAefmn9SS6lMaHZWkplw6sWdt5r64HXPFQDow2Mn5lA10Ur262Ou6URFPOE
-        A2Jw9xTtkt5GS1vE2ljTkOdsVMZVFfIY/oZG8qnqSTmdopgKIkwBOfeepiOt
-        PxYWND11EUmzJyNP1AzW15a19uZAfY7sZUIshzEy0Ft5Nr68bjk50N5lHAqO
-        A8FRmLidZuCzRcZBjFdLWRyq6oT99zVyKm2EqQzFrCOELMEGqZmLuCBzKvJM
-        kM659J5ltLLDxqG3siyEcSm9C4sFR9cQhoKzQHEnzMzA3dLQyQm2NhQepcsn
-        fGtD/b28jjdKzttiJp6XppEYOF+3G69bgWY3yFq6EFTD8CzPDL82gx45PHqO
-        jonNlaCMLDYc7ycBAQY9cBpe5APHmYlbSmlUBZXF5FTVCoy2I3ulml4ORTmb
-        rTl6gaJFGD21zJ3j/P2DMOvS/bMCRZhoBXbh8ku09pJXeJVddfEaDKkE/oft
-        5WyaYvZBcMvaaGalLuKGadOR54dM5qU74kdPWNIPNQqBHC0f9bearFY034+1
-        M0oFG1DZv9dUlkBUzd9/r6Gz94uNjkx9hkyEt766XocFFXQupQzOzMn1PwyD
-        0wBw/Hh+NWTgnguBg0iErdI0EC88O+cOvP4DiWqq0D8iAAA=
-    http_version:
-  recorded_at: Fri, 06 Nov 2015 21:24:41 GMT
+      string: |-
+        [ {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/m;MI~R~%5Bf1cb161f-4de3-44b9-a2a4-bdc5a2064f88%2FLocal~~%5D~MT~WildFly%20Memory%20Metrics~Accumulated%20GC%20Duration",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/mt;WildFly%20Memory%20Metrics~Accumulated%20GC%20Duration",
+            "name" : "WildFly Memory Metrics~Accumulated GC Duration",
+            "unit" : "NONE",
+            "type" : "COUNTER",
+            "collectionInterval" : 60,
+            "id" : "WildFly Memory Metrics~Accumulated GC Duration"
+          },
+          "name" : "WildFly Memory Metrics~Accumulated GC Duration",
+          "id" : "MI~R~[f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/Local~~]~MT~WildFly Memory Metrics~Accumulated GC Duration"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/m;MI~R~%5Bf1cb161f-4de3-44b9-a2a4-bdc5a2064f88%2FLocal~~%5D~MT~WildFly%20Memory%20Metrics~Heap%20Used",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/mt;WildFly%20Memory%20Metrics~Heap%20Used",
+            "name" : "WildFly Memory Metrics~Heap Used",
+            "unit" : "BYTES",
+            "type" : "GAUGE",
+            "collectionInterval" : 30,
+            "id" : "WildFly Memory Metrics~Heap Used"
+          },
+          "name" : "WildFly Memory Metrics~Heap Used",
+          "id" : "MI~R~[f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/Local~~]~MT~WildFly Memory Metrics~Heap Used"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/m;MI~R~%5Bf1cb161f-4de3-44b9-a2a4-bdc5a2064f88%2FLocal~~%5D~MT~WildFly%20Aggregated%20Web%20Metrics~Aggregated%20Active%20Web%20Sessions",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/mt;WildFly%20Aggregated%20Web%20Metrics~Aggregated%20Active%20Web%20Sessions",
+            "name" : "WildFly Aggregated Web Metrics~Aggregated Active Web Sessions",
+            "unit" : "NONE",
+            "type" : "GAUGE",
+            "collectionInterval" : 60,
+            "id" : "WildFly Aggregated Web Metrics~Aggregated Active Web Sessions"
+          },
+          "name" : "WildFly Aggregated Web Metrics~Aggregated Active Web Sessions",
+          "id" : "MI~R~[f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/Local~~]~MT~WildFly Aggregated Web Metrics~Aggregated Active Web Sessions"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/m;MI~R~%5Bf1cb161f-4de3-44b9-a2a4-bdc5a2064f88%2FLocal~~%5D~MT~WildFly%20Memory%20Metrics~NonHeap%20Committed",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/mt;WildFly%20Memory%20Metrics~NonHeap%20Committed",
+            "name" : "WildFly Memory Metrics~NonHeap Committed",
+            "unit" : "NONE",
+            "type" : "GAUGE",
+            "collectionInterval" : 60,
+            "id" : "WildFly Memory Metrics~NonHeap Committed"
+          },
+          "name" : "WildFly Memory Metrics~NonHeap Committed",
+          "id" : "MI~R~[f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/Local~~]~MT~WildFly Memory Metrics~NonHeap Committed"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/m;MI~R~%5Bf1cb161f-4de3-44b9-a2a4-bdc5a2064f88%2FLocal~~%5D~MT~WildFly%20Memory%20Metrics~NonHeap%20Used",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/mt;WildFly%20Memory%20Metrics~NonHeap%20Used",
+            "name" : "WildFly Memory Metrics~NonHeap Used",
+            "unit" : "NONE",
+            "type" : "GAUGE",
+            "collectionInterval" : 30,
+            "id" : "WildFly Memory Metrics~NonHeap Used"
+          },
+          "name" : "WildFly Memory Metrics~NonHeap Used",
+          "id" : "MI~R~[f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/Local~~]~MT~WildFly Memory Metrics~NonHeap Used"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/m;MI~R~%5Bf1cb161f-4de3-44b9-a2a4-bdc5a2064f88%2FLocal~~%5D~MT~WildFly%20Aggregated%20Web%20Metrics~Aggregated%20Expired%20Web%20Sessions",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/mt;WildFly%20Aggregated%20Web%20Metrics~Aggregated%20Expired%20Web%20Sessions",
+            "name" : "WildFly Aggregated Web Metrics~Aggregated Expired Web Sessions",
+            "unit" : "NONE",
+            "type" : "COUNTER",
+            "collectionInterval" : 60,
+            "id" : "WildFly Aggregated Web Metrics~Aggregated Expired Web Sessions"
+          },
+          "name" : "WildFly Aggregated Web Metrics~Aggregated Expired Web Sessions",
+          "id" : "MI~R~[f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/Local~~]~MT~WildFly Aggregated Web Metrics~Aggregated Expired Web Sessions"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/m;MI~R~%5Bf1cb161f-4de3-44b9-a2a4-bdc5a2064f88%2FLocal~~%5D~MT~WildFly%20Memory%20Metrics~Heap%20Max",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/mt;WildFly%20Memory%20Metrics~Heap%20Max",
+            "name" : "WildFly Memory Metrics~Heap Max",
+            "unit" : "NONE",
+            "type" : "GAUGE",
+            "collectionInterval" : 60,
+            "id" : "WildFly Memory Metrics~Heap Max"
+          },
+          "name" : "WildFly Memory Metrics~Heap Max",
+          "id" : "MI~R~[f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/Local~~]~MT~WildFly Memory Metrics~Heap Max"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/m;MI~R~%5Bf1cb161f-4de3-44b9-a2a4-bdc5a2064f88%2FLocal~~%5D~MT~WildFly%20Threading%20Metrics~Thread%20Count",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/mt;WildFly%20Threading%20Metrics~Thread%20Count",
+            "name" : "WildFly Threading Metrics~Thread Count",
+            "unit" : "NONE",
+            "type" : "GAUGE",
+            "collectionInterval" : 120,
+            "id" : "WildFly Threading Metrics~Thread Count"
+          },
+          "name" : "WildFly Threading Metrics~Thread Count",
+          "id" : "MI~R~[f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/Local~~]~MT~WildFly Threading Metrics~Thread Count"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/m;MI~R~%5Bf1cb161f-4de3-44b9-a2a4-bdc5a2064f88%2FLocal~~%5D~MT~WildFly%20Aggregated%20Web%20Metrics~Aggregated%20Servlet%20Request%20Count",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/mt;WildFly%20Aggregated%20Web%20Metrics~Aggregated%20Servlet%20Request%20Count",
+            "name" : "WildFly Aggregated Web Metrics~Aggregated Servlet Request Count",
+            "unit" : "NONE",
+            "type" : "COUNTER",
+            "collectionInterval" : 60,
+            "id" : "WildFly Aggregated Web Metrics~Aggregated Servlet Request Count"
+          },
+          "name" : "WildFly Aggregated Web Metrics~Aggregated Servlet Request Count",
+          "id" : "MI~R~[f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/Local~~]~MT~WildFly Aggregated Web Metrics~Aggregated Servlet Request Count"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/m;MI~R~%5Bf1cb161f-4de3-44b9-a2a4-bdc5a2064f88%2FLocal~~%5D~MT~WildFly%20Aggregated%20Web%20Metrics~Aggregated%20Max%20Active%20Web%20Sessions",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/mt;WildFly%20Aggregated%20Web%20Metrics~Aggregated%20Max%20Active%20Web%20Sessions",
+            "name" : "WildFly Aggregated Web Metrics~Aggregated Max Active Web Sessions",
+            "unit" : "NONE",
+            "type" : "GAUGE",
+            "collectionInterval" : 60,
+            "id" : "WildFly Aggregated Web Metrics~Aggregated Max Active Web Sessions"
+          },
+          "name" : "WildFly Aggregated Web Metrics~Aggregated Max Active Web Sessions",
+          "id" : "MI~R~[f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/Local~~]~MT~WildFly Aggregated Web Metrics~Aggregated Max Active Web Sessions"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/m;MI~R~%5Bf1cb161f-4de3-44b9-a2a4-bdc5a2064f88%2FLocal~~%5D~MT~WildFly%20Memory%20Metrics~Heap%20Committed",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/mt;WildFly%20Memory%20Metrics~Heap%20Committed",
+            "name" : "WildFly Memory Metrics~Heap Committed",
+            "unit" : "NONE",
+            "type" : "GAUGE",
+            "collectionInterval" : 60,
+            "id" : "WildFly Memory Metrics~Heap Committed"
+          },
+          "name" : "WildFly Memory Metrics~Heap Committed",
+          "id" : "MI~R~[f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/Local~~]~MT~WildFly Memory Metrics~Heap Committed"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/m;MI~R~%5Bf1cb161f-4de3-44b9-a2a4-bdc5a2064f88%2FLocal~~%5D~MT~WildFly%20Aggregated%20Web%20Metrics~Aggregated%20Rejected%20Web%20Sessions",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/mt;WildFly%20Aggregated%20Web%20Metrics~Aggregated%20Rejected%20Web%20Sessions",
+            "name" : "WildFly Aggregated Web Metrics~Aggregated Rejected Web Sessions",
+            "unit" : "NONE",
+            "type" : "COUNTER",
+            "collectionInterval" : 60,
+            "id" : "WildFly Aggregated Web Metrics~Aggregated Rejected Web Sessions"
+          },
+          "name" : "WildFly Aggregated Web Metrics~Aggregated Rejected Web Sessions",
+          "id" : "MI~R~[f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/Local~~]~MT~WildFly Aggregated Web Metrics~Aggregated Rejected Web Sessions"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/m;MI~R~%5Bf1cb161f-4de3-44b9-a2a4-bdc5a2064f88%2FLocal~~%5D~MT~WildFly%20Aggregated%20Web%20Metrics~Aggregated%20Servlet%20Request%20Time",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/mt;WildFly%20Aggregated%20Web%20Metrics~Aggregated%20Servlet%20Request%20Time",
+            "name" : "WildFly Aggregated Web Metrics~Aggregated Servlet Request Time",
+            "unit" : "NONE",
+            "type" : "COUNTER",
+            "collectionInterval" : 60,
+            "id" : "WildFly Aggregated Web Metrics~Aggregated Servlet Request Time"
+          },
+          "name" : "WildFly Aggregated Web Metrics~Aggregated Servlet Request Time",
+          "id" : "MI~R~[f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/Local~~]~MT~WildFly Aggregated Web Metrics~Aggregated Servlet Request Time"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/m;AI~R~%5Bf1cb161f-4de3-44b9-a2a4-bdc5a2064f88%2FLocal~~%5D~AT~Server%20Availability~App%20Server",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/mt;Server%20Availability~App%20Server",
+            "name" : "Server Availability~App Server",
+            "unit" : "NONE",
+            "type" : "AVAILABILITY",
+            "collectionInterval" : 30,
+            "id" : "Server Availability~App Server"
+          },
+          "name" : "Server Availability~App Server",
+          "id" : "AI~R~[f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/Local~~]~AT~Server Availability~App Server"
+        } ]
+    http_version: 
+  recorded_at: Thu, 18 Feb 2016 22:30:17 GMT
 - request:
     method: get
-    uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/snert/resources/snert~Local~~/metrics
+    uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/resources/Local~~/metrics
     body:
       encoding: US-ASCII
       string: ''
@@ -180,17 +341,19 @@ http_interactions:
       - application/json
       Accept-Encoding:
       - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.0.rc1 (linux-gnu x86_64) ruby/2.2.4p230
+      Hawkular-Tenant:
+      - 28026b36-8fe4-4332-84c8-524e173a68bf
+      Tenantid:
+      - 28026b36-8fe4-4332-84c8-524e173a68bf
       Content-Type:
       - application/json
-      User-Agent:
-      - Ruby
   response:
     status:
       code: 200
       message: OK
     headers:
-      Content-Encoding:
-      - gzip
       Expires:
       - '0'
       Cache-Control:
@@ -198,11 +361,11 @@ http_interactions:
       X-Powered-By:
       - Undertow/1
       Server:
-      - WildFly/9
+      - WildFly/10
       Pragma:
       - no-cache
       Date:
-      - Fri, 06 Nov 2015 21:24:41 GMT
+      - Thu, 18 Feb 2016 22:30:17 GMT
       X-Total-Count:
       - '14'
       Connection:
@@ -210,36 +373,187 @@ http_interactions:
       Content-Type:
       - application/json
       Content-Length:
-      - '800'
+      - '10779'
       Link:
-      - <http://localhost:8080/hawkular/inventory/feeds/snert/resources/snert~Local~~/metrics>;
+      - <http://localhost:8080/hawkular/inventory/feeds/f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/resources/Local~~/metrics>;
         rel="current"
     body:
       encoding: ASCII-8BIT
-      string: !binary |-
-        H4sIAAAAAAAAANVZ0Y6iMBR9369oSOZtjLPquGZ9YhzX3WR1EsVMNpN5QKxO
-        N4AuFDNmI9++FYFBbaGUKuwLgcI997ScHO4tL+DvJwCUtY7fFPAVKHXcbXTu
-        Gu1Zs13rLGCr1mo2G7VOy+jU7hst+PlLU293Zos67GLo4vqi69rQwXWrO/zh
-        j/2b+4fg2v+5MnTTJ9eP/lDzn5E5/2Zubxp36nLpwKWO4ZxcPMMZOQ4hdpDh
-        +ke3JtDZmBCTszH845FM5ExDFlRu92zxdg33bPfUZZDHXckMCSlbtwKOSggN
-        PqIBgQXnoCCEBCEgSMJ5NsIB3Ohp1I8Go3VQBup0EI+iuYy8BGsXLLbMiUTc
-        ArG8HEnlNSEUYc672+vKeQitlbNNSOQ71NfkcurC+eWlmpmd9vYOQSAZApIB
-        sdAefmn9SS6lMaHZWkplw6sWdt5r64HXPFQDow2Mn5lA10Ur262Ou6URFPOE
-        A2Jw9xTtkt5GS1vE2ljTkOdsVMZVFfIY/oZG8qnqSTmdopgKIkwBOfeepiOt
-        PxYWND11EUmzJyNP1AzW15a19uZAfY7sZUIshzEy0Ft5Nr68bjk50N5lHAqO
-        A8FRmLidZuCzRcZBjFdLWRyq6oT99zVyKm2EqQzFrCOELMEGqZmLuCBzKvJM
-        kM659J5ltLLDxqG3siyEcSm9C4sFR9cQhoKzQHEnzMzA3dLQyQm2NhQepcsn
-        fGtD/b28jjdKzttiJp6XppEYOF+3G69bgWY3yFq6EFTD8CzPDL82gx45PHqO
-        jonNlaCMLDYc7ycBAQY9cBpe5APHmYlbSmlUBZXF5FTVCoy2I3ulml4ORTmb
-        rTl6gaJFGD21zJ3j/P2DMOvS/bMCRZhoBXbh8ku09pJXeJVddfEaDKkE/oft
-        5WyaYvZBcMvaaGalLuKGadOR54dM5qU74kdPWNIPNQqBHC0f9bearFY034+1
-        M0oFG1DZv9dUlkBUzd9/r6Gz94uNjkx9hkyEt766XocFFXQupQzOzMn1PwyD
-        0wBw/Hh+NWTgnguBg0iErdI0EC88O+cOvP4DiWqq0D8iAAA=
-    http_version:
-  recorded_at: Fri, 06 Nov 2015 21:24:41 GMT
+      string: |-
+        [ {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/m;MI~R~%5Bf1cb161f-4de3-44b9-a2a4-bdc5a2064f88%2FLocal~~%5D~MT~WildFly%20Memory%20Metrics~Accumulated%20GC%20Duration",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/mt;WildFly%20Memory%20Metrics~Accumulated%20GC%20Duration",
+            "name" : "WildFly Memory Metrics~Accumulated GC Duration",
+            "unit" : "NONE",
+            "type" : "COUNTER",
+            "collectionInterval" : 60,
+            "id" : "WildFly Memory Metrics~Accumulated GC Duration"
+          },
+          "name" : "WildFly Memory Metrics~Accumulated GC Duration",
+          "id" : "MI~R~[f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/Local~~]~MT~WildFly Memory Metrics~Accumulated GC Duration"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/m;MI~R~%5Bf1cb161f-4de3-44b9-a2a4-bdc5a2064f88%2FLocal~~%5D~MT~WildFly%20Memory%20Metrics~Heap%20Used",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/mt;WildFly%20Memory%20Metrics~Heap%20Used",
+            "name" : "WildFly Memory Metrics~Heap Used",
+            "unit" : "BYTES",
+            "type" : "GAUGE",
+            "collectionInterval" : 30,
+            "id" : "WildFly Memory Metrics~Heap Used"
+          },
+          "name" : "WildFly Memory Metrics~Heap Used",
+          "id" : "MI~R~[f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/Local~~]~MT~WildFly Memory Metrics~Heap Used"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/m;MI~R~%5Bf1cb161f-4de3-44b9-a2a4-bdc5a2064f88%2FLocal~~%5D~MT~WildFly%20Aggregated%20Web%20Metrics~Aggregated%20Active%20Web%20Sessions",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/mt;WildFly%20Aggregated%20Web%20Metrics~Aggregated%20Active%20Web%20Sessions",
+            "name" : "WildFly Aggregated Web Metrics~Aggregated Active Web Sessions",
+            "unit" : "NONE",
+            "type" : "GAUGE",
+            "collectionInterval" : 60,
+            "id" : "WildFly Aggregated Web Metrics~Aggregated Active Web Sessions"
+          },
+          "name" : "WildFly Aggregated Web Metrics~Aggregated Active Web Sessions",
+          "id" : "MI~R~[f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/Local~~]~MT~WildFly Aggregated Web Metrics~Aggregated Active Web Sessions"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/m;MI~R~%5Bf1cb161f-4de3-44b9-a2a4-bdc5a2064f88%2FLocal~~%5D~MT~WildFly%20Memory%20Metrics~NonHeap%20Committed",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/mt;WildFly%20Memory%20Metrics~NonHeap%20Committed",
+            "name" : "WildFly Memory Metrics~NonHeap Committed",
+            "unit" : "NONE",
+            "type" : "GAUGE",
+            "collectionInterval" : 60,
+            "id" : "WildFly Memory Metrics~NonHeap Committed"
+          },
+          "name" : "WildFly Memory Metrics~NonHeap Committed",
+          "id" : "MI~R~[f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/Local~~]~MT~WildFly Memory Metrics~NonHeap Committed"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/m;MI~R~%5Bf1cb161f-4de3-44b9-a2a4-bdc5a2064f88%2FLocal~~%5D~MT~WildFly%20Memory%20Metrics~NonHeap%20Used",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/mt;WildFly%20Memory%20Metrics~NonHeap%20Used",
+            "name" : "WildFly Memory Metrics~NonHeap Used",
+            "unit" : "NONE",
+            "type" : "GAUGE",
+            "collectionInterval" : 30,
+            "id" : "WildFly Memory Metrics~NonHeap Used"
+          },
+          "name" : "WildFly Memory Metrics~NonHeap Used",
+          "id" : "MI~R~[f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/Local~~]~MT~WildFly Memory Metrics~NonHeap Used"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/m;MI~R~%5Bf1cb161f-4de3-44b9-a2a4-bdc5a2064f88%2FLocal~~%5D~MT~WildFly%20Aggregated%20Web%20Metrics~Aggregated%20Expired%20Web%20Sessions",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/mt;WildFly%20Aggregated%20Web%20Metrics~Aggregated%20Expired%20Web%20Sessions",
+            "name" : "WildFly Aggregated Web Metrics~Aggregated Expired Web Sessions",
+            "unit" : "NONE",
+            "type" : "COUNTER",
+            "collectionInterval" : 60,
+            "id" : "WildFly Aggregated Web Metrics~Aggregated Expired Web Sessions"
+          },
+          "name" : "WildFly Aggregated Web Metrics~Aggregated Expired Web Sessions",
+          "id" : "MI~R~[f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/Local~~]~MT~WildFly Aggregated Web Metrics~Aggregated Expired Web Sessions"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/m;MI~R~%5Bf1cb161f-4de3-44b9-a2a4-bdc5a2064f88%2FLocal~~%5D~MT~WildFly%20Memory%20Metrics~Heap%20Max",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/mt;WildFly%20Memory%20Metrics~Heap%20Max",
+            "name" : "WildFly Memory Metrics~Heap Max",
+            "unit" : "NONE",
+            "type" : "GAUGE",
+            "collectionInterval" : 60,
+            "id" : "WildFly Memory Metrics~Heap Max"
+          },
+          "name" : "WildFly Memory Metrics~Heap Max",
+          "id" : "MI~R~[f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/Local~~]~MT~WildFly Memory Metrics~Heap Max"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/m;MI~R~%5Bf1cb161f-4de3-44b9-a2a4-bdc5a2064f88%2FLocal~~%5D~MT~WildFly%20Threading%20Metrics~Thread%20Count",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/mt;WildFly%20Threading%20Metrics~Thread%20Count",
+            "name" : "WildFly Threading Metrics~Thread Count",
+            "unit" : "NONE",
+            "type" : "GAUGE",
+            "collectionInterval" : 120,
+            "id" : "WildFly Threading Metrics~Thread Count"
+          },
+          "name" : "WildFly Threading Metrics~Thread Count",
+          "id" : "MI~R~[f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/Local~~]~MT~WildFly Threading Metrics~Thread Count"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/m;MI~R~%5Bf1cb161f-4de3-44b9-a2a4-bdc5a2064f88%2FLocal~~%5D~MT~WildFly%20Aggregated%20Web%20Metrics~Aggregated%20Servlet%20Request%20Count",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/mt;WildFly%20Aggregated%20Web%20Metrics~Aggregated%20Servlet%20Request%20Count",
+            "name" : "WildFly Aggregated Web Metrics~Aggregated Servlet Request Count",
+            "unit" : "NONE",
+            "type" : "COUNTER",
+            "collectionInterval" : 60,
+            "id" : "WildFly Aggregated Web Metrics~Aggregated Servlet Request Count"
+          },
+          "name" : "WildFly Aggregated Web Metrics~Aggregated Servlet Request Count",
+          "id" : "MI~R~[f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/Local~~]~MT~WildFly Aggregated Web Metrics~Aggregated Servlet Request Count"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/m;MI~R~%5Bf1cb161f-4de3-44b9-a2a4-bdc5a2064f88%2FLocal~~%5D~MT~WildFly%20Aggregated%20Web%20Metrics~Aggregated%20Max%20Active%20Web%20Sessions",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/mt;WildFly%20Aggregated%20Web%20Metrics~Aggregated%20Max%20Active%20Web%20Sessions",
+            "name" : "WildFly Aggregated Web Metrics~Aggregated Max Active Web Sessions",
+            "unit" : "NONE",
+            "type" : "GAUGE",
+            "collectionInterval" : 60,
+            "id" : "WildFly Aggregated Web Metrics~Aggregated Max Active Web Sessions"
+          },
+          "name" : "WildFly Aggregated Web Metrics~Aggregated Max Active Web Sessions",
+          "id" : "MI~R~[f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/Local~~]~MT~WildFly Aggregated Web Metrics~Aggregated Max Active Web Sessions"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/m;MI~R~%5Bf1cb161f-4de3-44b9-a2a4-bdc5a2064f88%2FLocal~~%5D~MT~WildFly%20Memory%20Metrics~Heap%20Committed",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/mt;WildFly%20Memory%20Metrics~Heap%20Committed",
+            "name" : "WildFly Memory Metrics~Heap Committed",
+            "unit" : "NONE",
+            "type" : "GAUGE",
+            "collectionInterval" : 60,
+            "id" : "WildFly Memory Metrics~Heap Committed"
+          },
+          "name" : "WildFly Memory Metrics~Heap Committed",
+          "id" : "MI~R~[f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/Local~~]~MT~WildFly Memory Metrics~Heap Committed"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/m;MI~R~%5Bf1cb161f-4de3-44b9-a2a4-bdc5a2064f88%2FLocal~~%5D~MT~WildFly%20Aggregated%20Web%20Metrics~Aggregated%20Rejected%20Web%20Sessions",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/mt;WildFly%20Aggregated%20Web%20Metrics~Aggregated%20Rejected%20Web%20Sessions",
+            "name" : "WildFly Aggregated Web Metrics~Aggregated Rejected Web Sessions",
+            "unit" : "NONE",
+            "type" : "COUNTER",
+            "collectionInterval" : 60,
+            "id" : "WildFly Aggregated Web Metrics~Aggregated Rejected Web Sessions"
+          },
+          "name" : "WildFly Aggregated Web Metrics~Aggregated Rejected Web Sessions",
+          "id" : "MI~R~[f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/Local~~]~MT~WildFly Aggregated Web Metrics~Aggregated Rejected Web Sessions"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/m;MI~R~%5Bf1cb161f-4de3-44b9-a2a4-bdc5a2064f88%2FLocal~~%5D~MT~WildFly%20Aggregated%20Web%20Metrics~Aggregated%20Servlet%20Request%20Time",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/mt;WildFly%20Aggregated%20Web%20Metrics~Aggregated%20Servlet%20Request%20Time",
+            "name" : "WildFly Aggregated Web Metrics~Aggregated Servlet Request Time",
+            "unit" : "NONE",
+            "type" : "COUNTER",
+            "collectionInterval" : 60,
+            "id" : "WildFly Aggregated Web Metrics~Aggregated Servlet Request Time"
+          },
+          "name" : "WildFly Aggregated Web Metrics~Aggregated Servlet Request Time",
+          "id" : "MI~R~[f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/Local~~]~MT~WildFly Aggregated Web Metrics~Aggregated Servlet Request Time"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/m;AI~R~%5Bf1cb161f-4de3-44b9-a2a4-bdc5a2064f88%2FLocal~~%5D~AT~Server%20Availability~App%20Server",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/mt;Server%20Availability~App%20Server",
+            "name" : "Server Availability~App Server",
+            "unit" : "NONE",
+            "type" : "AVAILABILITY",
+            "collectionInterval" : 30,
+            "id" : "Server Availability~App Server"
+          },
+          "name" : "Server Availability~App Server",
+          "id" : "AI~R~[f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/Local~~]~AT~Server Availability~App Server"
+        } ]
+    http_version: 
+  recorded_at: Thu, 18 Feb 2016 22:30:17 GMT
 - request:
     method: get
-    uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/snert/resources/snert~Local~~/metrics
+    uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/resources/Local~~/metrics
     body:
       encoding: US-ASCII
       string: ''
@@ -248,17 +562,19 @@ http_interactions:
       - application/json
       Accept-Encoding:
       - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.0.rc1 (linux-gnu x86_64) ruby/2.2.4p230
+      Hawkular-Tenant:
+      - 28026b36-8fe4-4332-84c8-524e173a68bf
+      Tenantid:
+      - 28026b36-8fe4-4332-84c8-524e173a68bf
       Content-Type:
       - application/json
-      User-Agent:
-      - Ruby
   response:
     status:
       code: 200
       message: OK
     headers:
-      Content-Encoding:
-      - gzip
       Expires:
       - '0'
       Cache-Control:
@@ -266,11 +582,11 @@ http_interactions:
       X-Powered-By:
       - Undertow/1
       Server:
-      - WildFly/9
+      - WildFly/10
       Pragma:
       - no-cache
       Date:
-      - Fri, 06 Nov 2015 21:24:41 GMT
+      - Thu, 18 Feb 2016 22:30:17 GMT
       X-Total-Count:
       - '14'
       Connection:
@@ -278,31 +594,182 @@ http_interactions:
       Content-Type:
       - application/json
       Content-Length:
-      - '800'
+      - '10779'
       Link:
-      - <http://localhost:8080/hawkular/inventory/feeds/snert/resources/snert~Local~~/metrics>;
+      - <http://localhost:8080/hawkular/inventory/feeds/f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/resources/Local~~/metrics>;
         rel="current"
     body:
       encoding: ASCII-8BIT
-      string: !binary |-
-        H4sIAAAAAAAAANVZ0Y6iMBR9369oSOZtjLPquGZ9YhzX3WR1EsVMNpN5QKxO
-        N4AuFDNmI9++FYFBbaGUKuwLgcI997ScHO4tL+DvJwCUtY7fFPAVKHXcbXTu
-        Gu1Zs13rLGCr1mo2G7VOy+jU7hst+PlLU293Zos67GLo4vqi69rQwXWrO/zh
-        j/2b+4fg2v+5MnTTJ9eP/lDzn5E5/2Zubxp36nLpwKWO4ZxcPMMZOQ4hdpDh
-        +ke3JtDZmBCTszH845FM5ExDFlRu92zxdg33bPfUZZDHXckMCSlbtwKOSggN
-        PqIBgQXnoCCEBCEgSMJ5NsIB3Ohp1I8Go3VQBup0EI+iuYy8BGsXLLbMiUTc
-        ArG8HEnlNSEUYc672+vKeQitlbNNSOQ71NfkcurC+eWlmpmd9vYOQSAZApIB
-        sdAefmn9SS6lMaHZWkplw6sWdt5r64HXPFQDow2Mn5lA10Ur262Ou6URFPOE
-        A2Jw9xTtkt5GS1vE2ljTkOdsVMZVFfIY/oZG8qnqSTmdopgKIkwBOfeepiOt
-        PxYWND11EUmzJyNP1AzW15a19uZAfY7sZUIshzEy0Ft5Nr68bjk50N5lHAqO
-        A8FRmLidZuCzRcZBjFdLWRyq6oT99zVyKm2EqQzFrCOELMEGqZmLuCBzKvJM
-        kM659J5ltLLDxqG3siyEcSm9C4sFR9cQhoKzQHEnzMzA3dLQyQm2NhQepcsn
-        fGtD/b28jjdKzttiJp6XppEYOF+3G69bgWY3yFq6EFTD8CzPDL82gx45PHqO
-        jonNlaCMLDYc7ycBAQY9cBpe5APHmYlbSmlUBZXF5FTVCoy2I3ulml4ORTmb
-        rTl6gaJFGD21zJ3j/P2DMOvS/bMCRZhoBXbh8ku09pJXeJVddfEaDKkE/oft
-        5WyaYvZBcMvaaGalLuKGadOR54dM5qU74kdPWNIPNQqBHC0f9bearFY034+1
-        M0oFG1DZv9dUlkBUzd9/r6Gz94uNjkx9hkyEt766XocFFXQupQzOzMn1PwyD
-        0wBw/Hh+NWTgnguBg0iErdI0EC88O+cOvP4DiWqq0D8iAAA=
-    http_version:
-  recorded_at: Fri, 06 Nov 2015 21:24:41 GMT
-recorded_with: VCR 3.0.0
+      string: |-
+        [ {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/m;MI~R~%5Bf1cb161f-4de3-44b9-a2a4-bdc5a2064f88%2FLocal~~%5D~MT~WildFly%20Memory%20Metrics~Accumulated%20GC%20Duration",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/mt;WildFly%20Memory%20Metrics~Accumulated%20GC%20Duration",
+            "name" : "WildFly Memory Metrics~Accumulated GC Duration",
+            "unit" : "NONE",
+            "type" : "COUNTER",
+            "collectionInterval" : 60,
+            "id" : "WildFly Memory Metrics~Accumulated GC Duration"
+          },
+          "name" : "WildFly Memory Metrics~Accumulated GC Duration",
+          "id" : "MI~R~[f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/Local~~]~MT~WildFly Memory Metrics~Accumulated GC Duration"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/m;MI~R~%5Bf1cb161f-4de3-44b9-a2a4-bdc5a2064f88%2FLocal~~%5D~MT~WildFly%20Memory%20Metrics~Heap%20Used",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/mt;WildFly%20Memory%20Metrics~Heap%20Used",
+            "name" : "WildFly Memory Metrics~Heap Used",
+            "unit" : "BYTES",
+            "type" : "GAUGE",
+            "collectionInterval" : 30,
+            "id" : "WildFly Memory Metrics~Heap Used"
+          },
+          "name" : "WildFly Memory Metrics~Heap Used",
+          "id" : "MI~R~[f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/Local~~]~MT~WildFly Memory Metrics~Heap Used"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/m;MI~R~%5Bf1cb161f-4de3-44b9-a2a4-bdc5a2064f88%2FLocal~~%5D~MT~WildFly%20Aggregated%20Web%20Metrics~Aggregated%20Active%20Web%20Sessions",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/mt;WildFly%20Aggregated%20Web%20Metrics~Aggregated%20Active%20Web%20Sessions",
+            "name" : "WildFly Aggregated Web Metrics~Aggregated Active Web Sessions",
+            "unit" : "NONE",
+            "type" : "GAUGE",
+            "collectionInterval" : 60,
+            "id" : "WildFly Aggregated Web Metrics~Aggregated Active Web Sessions"
+          },
+          "name" : "WildFly Aggregated Web Metrics~Aggregated Active Web Sessions",
+          "id" : "MI~R~[f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/Local~~]~MT~WildFly Aggregated Web Metrics~Aggregated Active Web Sessions"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/m;MI~R~%5Bf1cb161f-4de3-44b9-a2a4-bdc5a2064f88%2FLocal~~%5D~MT~WildFly%20Memory%20Metrics~NonHeap%20Committed",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/mt;WildFly%20Memory%20Metrics~NonHeap%20Committed",
+            "name" : "WildFly Memory Metrics~NonHeap Committed",
+            "unit" : "NONE",
+            "type" : "GAUGE",
+            "collectionInterval" : 60,
+            "id" : "WildFly Memory Metrics~NonHeap Committed"
+          },
+          "name" : "WildFly Memory Metrics~NonHeap Committed",
+          "id" : "MI~R~[f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/Local~~]~MT~WildFly Memory Metrics~NonHeap Committed"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/m;MI~R~%5Bf1cb161f-4de3-44b9-a2a4-bdc5a2064f88%2FLocal~~%5D~MT~WildFly%20Memory%20Metrics~NonHeap%20Used",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/mt;WildFly%20Memory%20Metrics~NonHeap%20Used",
+            "name" : "WildFly Memory Metrics~NonHeap Used",
+            "unit" : "NONE",
+            "type" : "GAUGE",
+            "collectionInterval" : 30,
+            "id" : "WildFly Memory Metrics~NonHeap Used"
+          },
+          "name" : "WildFly Memory Metrics~NonHeap Used",
+          "id" : "MI~R~[f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/Local~~]~MT~WildFly Memory Metrics~NonHeap Used"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/m;MI~R~%5Bf1cb161f-4de3-44b9-a2a4-bdc5a2064f88%2FLocal~~%5D~MT~WildFly%20Aggregated%20Web%20Metrics~Aggregated%20Expired%20Web%20Sessions",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/mt;WildFly%20Aggregated%20Web%20Metrics~Aggregated%20Expired%20Web%20Sessions",
+            "name" : "WildFly Aggregated Web Metrics~Aggregated Expired Web Sessions",
+            "unit" : "NONE",
+            "type" : "COUNTER",
+            "collectionInterval" : 60,
+            "id" : "WildFly Aggregated Web Metrics~Aggregated Expired Web Sessions"
+          },
+          "name" : "WildFly Aggregated Web Metrics~Aggregated Expired Web Sessions",
+          "id" : "MI~R~[f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/Local~~]~MT~WildFly Aggregated Web Metrics~Aggregated Expired Web Sessions"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/m;MI~R~%5Bf1cb161f-4de3-44b9-a2a4-bdc5a2064f88%2FLocal~~%5D~MT~WildFly%20Memory%20Metrics~Heap%20Max",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/mt;WildFly%20Memory%20Metrics~Heap%20Max",
+            "name" : "WildFly Memory Metrics~Heap Max",
+            "unit" : "NONE",
+            "type" : "GAUGE",
+            "collectionInterval" : 60,
+            "id" : "WildFly Memory Metrics~Heap Max"
+          },
+          "name" : "WildFly Memory Metrics~Heap Max",
+          "id" : "MI~R~[f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/Local~~]~MT~WildFly Memory Metrics~Heap Max"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/m;MI~R~%5Bf1cb161f-4de3-44b9-a2a4-bdc5a2064f88%2FLocal~~%5D~MT~WildFly%20Threading%20Metrics~Thread%20Count",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/mt;WildFly%20Threading%20Metrics~Thread%20Count",
+            "name" : "WildFly Threading Metrics~Thread Count",
+            "unit" : "NONE",
+            "type" : "GAUGE",
+            "collectionInterval" : 120,
+            "id" : "WildFly Threading Metrics~Thread Count"
+          },
+          "name" : "WildFly Threading Metrics~Thread Count",
+          "id" : "MI~R~[f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/Local~~]~MT~WildFly Threading Metrics~Thread Count"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/m;MI~R~%5Bf1cb161f-4de3-44b9-a2a4-bdc5a2064f88%2FLocal~~%5D~MT~WildFly%20Aggregated%20Web%20Metrics~Aggregated%20Servlet%20Request%20Count",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/mt;WildFly%20Aggregated%20Web%20Metrics~Aggregated%20Servlet%20Request%20Count",
+            "name" : "WildFly Aggregated Web Metrics~Aggregated Servlet Request Count",
+            "unit" : "NONE",
+            "type" : "COUNTER",
+            "collectionInterval" : 60,
+            "id" : "WildFly Aggregated Web Metrics~Aggregated Servlet Request Count"
+          },
+          "name" : "WildFly Aggregated Web Metrics~Aggregated Servlet Request Count",
+          "id" : "MI~R~[f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/Local~~]~MT~WildFly Aggregated Web Metrics~Aggregated Servlet Request Count"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/m;MI~R~%5Bf1cb161f-4de3-44b9-a2a4-bdc5a2064f88%2FLocal~~%5D~MT~WildFly%20Aggregated%20Web%20Metrics~Aggregated%20Max%20Active%20Web%20Sessions",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/mt;WildFly%20Aggregated%20Web%20Metrics~Aggregated%20Max%20Active%20Web%20Sessions",
+            "name" : "WildFly Aggregated Web Metrics~Aggregated Max Active Web Sessions",
+            "unit" : "NONE",
+            "type" : "GAUGE",
+            "collectionInterval" : 60,
+            "id" : "WildFly Aggregated Web Metrics~Aggregated Max Active Web Sessions"
+          },
+          "name" : "WildFly Aggregated Web Metrics~Aggregated Max Active Web Sessions",
+          "id" : "MI~R~[f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/Local~~]~MT~WildFly Aggregated Web Metrics~Aggregated Max Active Web Sessions"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/m;MI~R~%5Bf1cb161f-4de3-44b9-a2a4-bdc5a2064f88%2FLocal~~%5D~MT~WildFly%20Memory%20Metrics~Heap%20Committed",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/mt;WildFly%20Memory%20Metrics~Heap%20Committed",
+            "name" : "WildFly Memory Metrics~Heap Committed",
+            "unit" : "NONE",
+            "type" : "GAUGE",
+            "collectionInterval" : 60,
+            "id" : "WildFly Memory Metrics~Heap Committed"
+          },
+          "name" : "WildFly Memory Metrics~Heap Committed",
+          "id" : "MI~R~[f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/Local~~]~MT~WildFly Memory Metrics~Heap Committed"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/m;MI~R~%5Bf1cb161f-4de3-44b9-a2a4-bdc5a2064f88%2FLocal~~%5D~MT~WildFly%20Aggregated%20Web%20Metrics~Aggregated%20Rejected%20Web%20Sessions",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/mt;WildFly%20Aggregated%20Web%20Metrics~Aggregated%20Rejected%20Web%20Sessions",
+            "name" : "WildFly Aggregated Web Metrics~Aggregated Rejected Web Sessions",
+            "unit" : "NONE",
+            "type" : "COUNTER",
+            "collectionInterval" : 60,
+            "id" : "WildFly Aggregated Web Metrics~Aggregated Rejected Web Sessions"
+          },
+          "name" : "WildFly Aggregated Web Metrics~Aggregated Rejected Web Sessions",
+          "id" : "MI~R~[f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/Local~~]~MT~WildFly Aggregated Web Metrics~Aggregated Rejected Web Sessions"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/m;MI~R~%5Bf1cb161f-4de3-44b9-a2a4-bdc5a2064f88%2FLocal~~%5D~MT~WildFly%20Aggregated%20Web%20Metrics~Aggregated%20Servlet%20Request%20Time",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/mt;WildFly%20Aggregated%20Web%20Metrics~Aggregated%20Servlet%20Request%20Time",
+            "name" : "WildFly Aggregated Web Metrics~Aggregated Servlet Request Time",
+            "unit" : "NONE",
+            "type" : "COUNTER",
+            "collectionInterval" : 60,
+            "id" : "WildFly Aggregated Web Metrics~Aggregated Servlet Request Time"
+          },
+          "name" : "WildFly Aggregated Web Metrics~Aggregated Servlet Request Time",
+          "id" : "MI~R~[f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/Local~~]~MT~WildFly Aggregated Web Metrics~Aggregated Servlet Request Time"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/m;AI~R~%5Bf1cb161f-4de3-44b9-a2a4-bdc5a2064f88%2FLocal~~%5D~AT~Server%20Availability~App%20Server",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/mt;Server%20Availability~App%20Server",
+            "name" : "Server Availability~App Server",
+            "unit" : "NONE",
+            "type" : "AVAILABILITY",
+            "collectionInterval" : 30,
+            "id" : "Server Availability~App Server"
+          },
+          "name" : "Server Availability~App Server",
+          "id" : "AI~R~[f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/Local~~]~AT~Server Availability~App Server"
+        } ]
+    http_version: 
+  recorded_at: Thu, 18 Feb 2016 22:30:17 GMT
+recorded_with: VCR 3.0.1

@@ -49,7 +49,7 @@ http_interactions:
   recorded_at: Thu, 18 Feb 2016 22:30:14 GMT
 - request:
     method: get
-    uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/resourceTypes
+    uri: http://jdoe:password@localhost:8080/hawkular/inventory/resourceTypes
     body:
       encoding: US-ASCII
       string: ''
@@ -82,22 +82,24 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Thu, 18 Feb 2016 22:30:15 GMT
+      - Thu, 18 Feb 2016 22:30:14 GMT
       X-Total-Count:
-      - '18'
+      - '19'
       Connection:
       - keep-alive
       Content-Type:
       - application/json
       Content-Length:
-      - '3053'
+      - '3134'
       Link:
-      - <http://localhost:8080/hawkular/inventory/feeds/f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/resourceTypes>;
-        rel="current"
+      - <http://localhost:8080/hawkular/inventory/resourceTypes>; rel="current"
     body:
       encoding: ASCII-8BIT
       string: |-
         [ {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/rt;URL",
+          "id" : "URL"
+        }, {
           "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;f1cb161f-4de3-44b9-a2a4-bdc5a2064f88/rt;Operating%20System",
           "name" : "Operating System",
           "id" : "Operating System"
@@ -171,5 +173,5 @@ http_interactions:
           "id" : "Hawkular WildFly Agent"
         } ]
     http_version: 
-  recorded_at: Thu, 18 Feb 2016 22:30:15 GMT
+  recorded_at: Thu, 18 Feb 2016 22:30:14 GMT
 recorded_with: VCR 3.0.1
