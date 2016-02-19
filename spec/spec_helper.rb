@@ -1,6 +1,7 @@
 require 'hawkular'
 require 'metrics/metrics_client'
 require 'inventory/inventory_api'
+require 'tokens/tokens_api'
 require 'alerts/alerts_api'
 require 'rspec/core'
 require 'rspec/mocks'

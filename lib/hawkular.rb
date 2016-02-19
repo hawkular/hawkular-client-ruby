@@ -202,7 +202,7 @@ module Hawkular
         rescue JSON::ParserError
           fault_message = f.http_body
         end
-        fail HawkularException, fault_message
+        fail HawkularException.new(fault_message, (f.respond_to?(:http_code) ? f.http_code : 0))
       else
         fail f
       end
@@ -210,13 +210,13 @@ module Hawkular
   end
 
   # Specialized exception to be thrown
-  # when the interction with Hawkular fails
+  # when the interaction with Hawkular fails
   class HawkularException < StandardError
-    def initialize(message)
+    def initialize(message, status_code = 0)
       @message = message
-      super
+      @status_code = status_code
+      super(message)
     end
-
-    attr_reader :message
+    attr_reader :message, :status_code
   end
 end
