@@ -29,6 +29,7 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency('webmock')
   gem.add_development_dependency('vcr')
   gem.add_development_dependency('rubocop', '= 0.34.2')
+  gem.add_development_dependency('coveralls')
 
   gem.rdoc_options << '--title' << gem.name <<
     '--main' << 'README.rdoc' << '--line-numbers' << '--inline-source'

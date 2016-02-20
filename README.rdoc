@@ -1,3 +1,6 @@
+{<img src="https://coveralls.io/repos/github/hawkular/hawkular-client-ruby/badge.svg?branch=master" alt="Coverage Status" />}[https://coveralls.io/github/hawkular/hawkular-client-ruby?branch=master]
+{<img src="https://travis-ci.org/hawkular/hawkular-client-ruby.svg?branch=master" alt="Build Status" />}[https://travis-ci.org/hawkular/hawkular-client-ruby]
+
 = hawkular-client-ruby
 
 A Ruby Hawkular Client.
