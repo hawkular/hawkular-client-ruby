@@ -8,6 +8,9 @@ require 'rspec/mocks'
 require 'socket'
 require 'uri'
 require 'yaml'
+require 'coveralls'
+
+Coveralls.wear!
 
 module Hawkular::Metrics::RSpec
   def setup_client(options = {})
