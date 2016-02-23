@@ -1,3 +1,7 @@
+# This needs to go before all requires to be able to record full coverage
+require 'coveralls'
+Coveralls.wear!
+# Now the application requires.
 require 'hawkular'
 require 'metrics/metrics_client'
 require 'inventory/inventory_api'
@@ -8,9 +12,6 @@ require 'rspec/mocks'
 require 'socket'
 require 'uri'
 require 'yaml'
-require 'coveralls'
-
-Coveralls.wear!
 
 module Hawkular::Metrics::RSpec
   def setup_client(options = {})
