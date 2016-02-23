@@ -50,6 +50,8 @@ module Hawkular
     # @param [String] url_part Part of an url to be escaped
     # @return [String] escaped url_part as new string
     def hawk_escape(url_part)
+      return url_part.to_s if url_part.is_a?(Numeric)
+
       sub_url = url_part.dup
       sub_url.gsub!('%', '%25')
       sub_url.gsub!(' ', '%20')
@@ -171,6 +173,17 @@ module Hawkular
       ret
     end
 
+    # Specialized exception to be thrown
+    # when the interaction with Hawkular fails
+    class HawkularException < StandardError
+      def initialize(message, status_code = 0)
+        @message = message
+        @status_code = status_code
+        super(message)
+      end
+      attr_reader :message, :status_code
+    end
+
     private
 
     def not_suitable?(v)
@@ -207,16 +220,5 @@ module Hawkular
         fail f
       end
     end
-  end
-
-  # Specialized exception to be thrown
-  # when the interaction with Hawkular fails
-  class HawkularException < StandardError
-    def initialize(message, status_code = 0)
-      @message = message
-      @status_code = status_code
-      super(message)
-    end
-    attr_reader :message, :status_code
   end
 end

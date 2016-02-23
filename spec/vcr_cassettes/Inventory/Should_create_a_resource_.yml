@@ -1,0 +1,355 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/
+    body:
+      encoding: UTF-8
+      string: '{"properties":{},"id":"feed_may_exist","name":null,"outgoing":{},"incoming":{}}'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '79'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 409
+      message: Conflict
+    headers:
+      Content-Encoding:
+      - gzip
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Fri, 19 Feb 2016 10:41:32 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '370'
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAAJWQzW7CMBCE7zzFKpdcktAmKY1AnCoqcWgrUXqKImTwhlhN
+        4sh2SyPEu9d2+BG0qqh88do7szvftgfgoBBcPMm1A0NwHhEpbJgqgFFwTZU2
+        RBVjt69GYXITDpbRwE9yjP04ikI/iVeJfxfGeHsfkUGyzPv5KNeiRUXaBX4x
+        qdzMhYJIWCLWQEqBhLYgcK2/UCANYFIrptrTzAv5UWNLCUSB5BUCz0EVCA2X
+        TDFeyyGk6bxtUKZzrEmtMg+mVKbX7KxbZ1gSpbN6erVy7K54rQirpatrXuL4
+        9eVt9jDRfd0Eg2Xvf75tlmWOZ5hS1PpSGqRbXRvKNuaUWsrnKivRLQa0laT6
+        dDL9qszI7tXhYh0UZPP+URIRsPpTm3LRBqRhQcUplkGX3YHMqnfeyYbRg8k1
+        SH5zEIaRQV2w5plUaJMcSO0zHIPONDbb0KFzfrj9K5YB/neoC6KHXsjsbdfb
+        fQOfEN7S6wIAAA==
+    http_version: 
+  recorded_at: Fri, 19 Feb 2016 10:41:32 GMT
+- request:
+    method: get
+    uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/feed_may_exist
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Encoding:
+      - gzip
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Fri, 19 Feb 2016 10:41:32 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '102'
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAAKvmUlBQKkgsyVBSsFJQ0i+xNrIwMDJLMjbTtUhLNdE1MTY2
+        0rUwSbbQNTUySTU0N040s0hK00+zTktNTYnPTayMT63ILC5R0gEZk5kCNgRN
+        iqsWADiVKMdkAAAA
+    http_version: 
+  recorded_at: Fri, 19 Feb 2016 10:41:32 GMT
+- request:
+    method: post
+    uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/feed_may_exist/resourceTypes
+    body:
+      encoding: UTF-8
+      string: '{"properties":{},"id":"rt-123","name":"ResourceType","outgoing":{},"incoming":{}}'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '81'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 409
+      message: Conflict
+    headers:
+      Content-Encoding:
+      - gzip
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Fri, 19 Feb 2016 10:41:32 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '109'
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAABXMMQqAMAwF0L2n+HTp4gncHT1EodEGaiNNRIt4d+n+eK8D
+        PLUmbdXdY4ZfqrF13GwZnBDqVUpALI1i6qCH1RTRoHIQZINlwinKxlJ1xuB+
+        Gmsii1x0pC8+9/2FU7bnawAAAA==
+    http_version: 
+  recorded_at: Fri, 19 Feb 2016 10:41:32 GMT
+- request:
+    method: get
+    uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/feed_may_exist/resourceTypes/rt-123
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Encoding:
+      - gzip
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Fri, 19 Feb 2016 10:41:33 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '130'
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAAC3MQQ6CMBBA0T2naLp2UpmpdWJvYdyTAtPIAiVlTCTGuxPQ
+        9fv5n8oYOyW9W3Mx1mlEPmJoKQBn8eCJENh3DCf0Up8pBW6zyzGL9M2Ylkbe
+        w6yuaCwKNZI9bMNHGmUfXmV+vkont2WSHw39Dv+6+q5ugH8sgQAAAA==
+    http_version: 
+  recorded_at: Fri, 19 Feb 2016 10:41:33 GMT
+- request:
+    method: post
+    uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/feed_may_exist/resources
+    body:
+      encoding: UTF-8
+      string: '{"properties":{"version":1.0},"id":"r123","name":"My Resource","outgoing":{},"incoming":{},"resourceTypePath":"/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;feed_may_exist/rt;rt-123"}'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '179'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 409
+      message: Conflict
+    headers:
+      Content-Encoding:
+      - gzip
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Fri, 19 Feb 2016 10:41:33 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '109'
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAABXMMQqAMAwF0L2n+HTp4gncHT1EodEGaiNNRIt4d+n+eK8D
+        PLUmbdXdY4ZfqrF13GwZnBDqVUpALI1i6qCH1RTRoHIQZINlwinKxlJ1xuB+
+        Gmsii1x0pC8+9/2FU7bnawAAAA==
+    http_version: 
+  recorded_at: Fri, 19 Feb 2016 10:41:33 GMT
+- request:
+    method: get
+    uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/feed_may_exist/resources/r123
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Encoding:
+      - gzip
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Fri, 19 Feb 2016 10:41:33 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '185'
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAAK2PQQ7CIBBF956CsBbbAlYiZ3Bj3De0DpFFWwJobJre3YJt
+        4wFczv8z7/8Zdwhhq8IDozPCWZBU5LSsWUmEBk44Y5QI3ghypByKE1OlqHWm
+        pQa4V60aKngbHzInXUEZ3kdaGCxE2jgP/4EH6QJZ+TOyU21KwFfw/dM1cIuR
+        i2nuyVouZm1KrazrLbhgwP90e4Hzpu+iUhzybXfjXwa0Rnx/W+EJPX0A9wC4
+        kz0BAAA=
+    http_version: 
+  recorded_at: Fri, 19 Feb 2016 10:41:33 GMT
+- request:
+    method: get
+    uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/feed_may_exist/resources/r123
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Encoding:
+      - gzip
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Fri, 19 Feb 2016 10:41:33 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '185'
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAAK2PQQ7CIBBF956CsBbbAlYiZ3Bj3De0DpFFWwJobJre3YJt
+        4wFczv8z7/8Zdwhhq8IDozPCWZBU5LSsWUmEBk44Y5QI3ghypByKE1OlqHWm
+        pQa4V60aKngbHzInXUEZ3kdaGCxE2jgP/4EH6QJZ+TOyU21KwFfw/dM1cIuR
+        i2nuyVouZm1KrazrLbhgwP90e4Hzpu+iUhzybXfjXwa0Rnx/W+EJPX0A9wC4
+        kz0BAAA=
+    http_version: 
+  recorded_at: Fri, 19 Feb 2016 10:41:33 GMT
+recorded_with: VCR 3.0.0

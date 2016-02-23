@@ -26,7 +26,7 @@ module Hawkular::Token::RSpec
       begin
         client.create_token(creds)
         fail 'Should have failed with 401'
-      rescue Hawkular::HawkularException => exception
+      rescue Hawkular::BaseClient::HawkularException => exception
         expect(exception.status_code).to be(401)
       end
     end
@@ -37,7 +37,7 @@ module Hawkular::Token::RSpec
       begin
         client.create_token(creds)
         fail 'Should have failed with 401'
-      rescue Hawkular::HawkularException => exception
+      rescue Hawkular::BaseClient::HawkularException => exception
         expect(exception.status_code).to be(401)
       end
     end

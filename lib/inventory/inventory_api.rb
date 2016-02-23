@@ -52,9 +52,26 @@ module Hawkular::Inventory
         ret = http_get('/resourceTypes')
       else
         the_feed = hawk_escape feed
-        ret = http_get('/feeds/' + the_feed + '/resourceTypes')
+        ret = http_get("/feeds/#{the_feed}/resourceTypes")
       end
       ret.map { |rt| ResourceType.new(rt) }
+    end
+
+    # Return all resources for a feed
+    # @param [String] feed Id of the feed that hosts the resources
+    # @param [Boolean] fetch_properties Should the config data be fetched too
+    # @return [Array<Resource>] List of resources, which can be empty.
+    def list_resources_for_feed(feed, fetch_properties = false)
+      fail 'Feed must be given' unless feed
+      the_feed = hawk_escape feed
+      ret = http_get("/feeds/#{the_feed}/resources")
+      ret.map do |r|
+        if fetch_properties
+          p = get_config_data_for_resource(r['id'], feed)
+          r['properties'] = p['value']
+        end
+        Resource.new(r)
+      end
     end
 
     # List the resources for the passed feed and resource type. The representation for
@@ -69,11 +86,11 @@ module Hawkular::Inventory
       fail 'Type must not be nil' unless type
       the_type = hawk_escape type
       if feed.nil?
-        ret = http_get('resourceTypes/' + the_type + '/resources')
+        ret = http_get("resourceTypes/#{the_type}/resources")
       else
 
         the_feed = hawk_escape feed
-        ret = http_get('/feeds/' + the_feed + '/resourceTypes/' + the_type + '/resources')
+        ret = http_get("/feeds/#{the_feed}/resourceTypes/#{the_type}/resources")
       end
       ret.map do |r|
         if fetch_properties && !feed.nil?
@@ -92,7 +109,7 @@ module Hawkular::Inventory
       the_id = hawk_escape resource_id
       the_feed = hawk_escape feed
       query = generate_query_params dataType: 'configuration'
-      http_get('feeds/' + the_feed + '/resources/' + the_id + '/data' + query)
+      http_get("feeds/#{the_feed}/resources/#{the_id}/data#{query}")
     rescue
       {}
     end
@@ -107,9 +124,8 @@ module Hawkular::Inventory
       the_feed = hawk_escape parent_resource.feed
       the_id = hawk_escape parent_resource.id
 
-      ret = http_get('/feeds/' + the_feed +
-                     '/resources/' + the_id +
-                     (recursive ? '/recursiveChildren' : '/children'))
+      which_children = (recursive ? '/recursiveChildren' : '/children')
+      ret = http_get("/feeds/#{the_feed}/resources/#{the_id}#{which_children}")
       ret.map { |r| Resource.new(r) }
     end
 
@@ -174,7 +190,7 @@ module Hawkular::Inventory
       fail 'Type must not be nil' unless type
       the_type = hawk_escape type
       if feed.nil?
-        type_hash = http_get('metricTypes/' + the_type)
+        type_hash = http_get("metricTypes/#{the_type}")
       else
         the_feed = hawk_escape feed
         type_hash = http_get("/feeds/#{the_feed}/metricTypes/#{the_type}")
@@ -201,17 +217,17 @@ module Hawkular::Inventory
       fail 'Type must not be nil' unless type
       the_type = hawk_escape type
       if feed.nil?
-        ret = http_get('resourceTypes/' + the_type + '/resources')
+        ret = http_get("resourceTypes/#{the_type}/resources")
       else
         the_feed = hawk_escape feed
-        ret = http_get('feeds/' + the_feed + '/resourceTypes/' + the_type + '/resources')
+        ret = http_get("feeds/#{the_feed}/resourceTypes/#{the_type}/resources")
       end
       ret.flat_map do |r|
         path = CanonicalPath.parse(r['path'])
         if !path.feed_id.nil?
-          nested_ret = http_get('feeds/' + path.feed_id + '/resources/' + path.resource_ids.join('/') + '/metrics')
+          nested_ret = http_get("feeds/#{path.feed_id}/resources/#{path.resource_ids.join('/')}/metrics")
         else
-          nested_ret = http_get(path.environment_id + '/resources/' + path.resource_ids.join('/') + '/metrics')
+          nested_ret = http_get("#{path.environment_id}/resources/#{path.resource_ids.join('/')}/metrics")
         end
         nested_ret.map { |m| Metric.new(m) }
       end
@@ -223,7 +239,7 @@ module Hawkular::Inventory
     # @param [Hash{Symbol=>String}] filter for 'type' and 'match'
     #   Metric type can be one of 'GAUGE', 'COUNTER', 'AVAILABILITY'. If a key is missing
     #   it will not be used for filtering
-    # @return [Aray<Metric>] List of metrics that can be empty.
+    # @return [Array<Metric>] List of metrics that can be empty.
     # @example
     #    # Filter by type and match on metrics id
     #    client.list_metrics_for_resource(wild_fly, type: 'GAUGE', match: 'Metrics~Heap')
@@ -235,9 +251,7 @@ module Hawkular::Inventory
       the_feed = hawk_escape resource.feed
       the_id = hawk_escape resource.id
 
-      ret = http_get('/feeds/' +
-                           the_feed + '/resources/' +
-                           the_id + '/metrics')
+      ret = http_get("/feeds/#{the_feed}/resources/#{the_id}/metrics")
       with_nils = ret.map do |m|
         metric_new = Metric.new(m)
         found = should_include?(metric_new, filter)
@@ -246,7 +260,185 @@ module Hawkular::Inventory
       with_nils.compact
     end
 
+    # Create a new feed
+    # @param [String] feed_id  Id of a feed - required
+    # @param [String] feed_name A display name for the feed
+    # @return [Object]
+    def create_feed(feed_id, feed_name = nil)
+      feed = create_blueprint
+      feed[:id] = feed_id
+      feed[:name] = feed_name
+
+      begin
+        return http_post('/feeds/', feed)
+      rescue HawkularException  => error
+        # 409 We already exist -> that is ok
+        if error.status_code == 409
+          the_feed = hawk_escape feed_id
+          http_get("/feeds/#{the_feed}")
+        else
+          raise
+        end
+      end
+    end
+
+    # Delete the feed with the passed feed id.
+    # @param feed Id of the feed to be deleted.
+    def delete_feed(feed)
+      the_feed = hawk_escape feed
+      http_delete("/feeds/#{the_feed}")
+    end
+
+    # Create a new resource type
+    # @param [String] feed_id Id of the feed to add the type to
+    # @param [String] type_id Id of the new type
+    # @param [String] type_name Name of the type
+    # @return [ResourceType] ResourceType object just created
+    def create_resource_type(feed_id, type_id, type_name)
+      the_feed = hawk_escape feed_id
+
+      type = create_blueprint
+      type[:id] = type_id
+      type[:name] = type_name
+
+      begin
+        res = http_post("/feeds/#{the_feed}/resourceTypes", type)
+      rescue HawkularException => error
+        # 409 We already exist -> that is ok
+        if error.status_code == 409
+          the_type = hawk_escape type_id
+          res = http_get("/feeds/#{the_feed}/resourceTypes/#{the_type}")
+        else
+          raise
+        end
+      end
+      ResourceType.new(res)
+    end
+
+    # Create a resource of a given type under a given feed. To retrieve that resource
+    # you need to call {#get_resource}
+    # @param [String] feed_id Id of the feed to add the resource to
+    # @param [String] type_path Path of the resource type of this resource
+    # @param [String] resource_id Id of the resource
+    # @param [String] resource_name Name of the resource
+    # @param [Hash<String,Object>] properties Additional properties. Those are not the config-properties
+    # TODO allow to create this as child of another resource
+    def create_resource(feed_id, type_path, resource_id, resource_name = nil, properties = {})
+      the_feed = hawk_escape feed_id
+
+      res = create_blueprint
+      res[:properties] = properties
+      res[:id] = resource_id
+      res[:name] = resource_name
+      res[:resourceTypePath] = type_path
+
+      begin
+        http_post("/feeds/#{the_feed}/resources", res)
+      rescue HawkularException => error
+        # 409 We already exist -> that is ok
+        raise unless error.status_code == 409
+      end
+
+      get_resource feed_id, resource_id, false
+    end
+
+    # Return the resource object for the passed id
+    # @param [String] feed_id Id of the feed this resource belongs to
+    # @param [String] res_id Id of the resource to fetch
+    # @param [Boolean] fetch_resource_config Should the resource config data be fetched?
+    def get_resource(feed_id, res_id, fetch_resource_config = true)
+      the_feed = hawk_escape feed_id
+      the_resource = hawk_escape res_id
+
+      res = http_get("/feeds/#{the_feed}/resources/#{the_resource}")
+      if fetch_resource_config
+        p = get_config_data_for_resource(res_id, feed_id)
+        res['properties'].merge p['value'] unless p['value'].nil?
+      end
+      Resource.new(res)
+    end
+
+    # Create a new metric type for a feed
+    # @param [String] feed_id Id of the feed
+    # @param [String] metric_type_id Id of the metric type to create
+    # @param [String] type Type of the Metric. Allowed are GAUGE,COUNTER, AVAILABILITY
+    # @param [String] unit Unit of the metric
+    # @param [Numeric] collection_interval
+    # @return [MetricType] Type just created or the one from the server if it already existed.
+    def create_metric_type(feed_id, metric_type_id, type = 'GAUGE', unit = 'NONE', collection_interval = 60)
+      the_feed = hawk_escape feed_id
+
+      metric_kind = type.nil? ? 'GAUGE' : type.upcase
+      fail "Unknown type #{metric_kind}" unless %w(GAUGE COUNTER AVAILABILITY').include?(metric_kind)
+
+      mt = build_metric_type_hash(collection_interval, metric_kind, metric_type_id, unit)
+
+      begin
+        http_post("/feeds/#{the_feed}/metricTypes", mt)
+      rescue HawkularException => error
+        # 409 We already exist -> that is ok
+        raise unless error.status_code == 409
+      end
+
+      res = http_get("/feeds/#{the_feed}/metricTypes/#{metric_type_id}")
+
+      MetricType.new(res)
+    end
+
+    def build_metric_type_hash(collection_interval, metric_kind, metric_type_id, unit)
+      mt = {}
+      mt['id'] = metric_type_id
+      mt['type'] = metric_kind
+      mt['unit'] = unit.nil? ? 'NONE' : unit.upcase
+      mt['collectionInterval'] = collection_interval.nil? ? 60 : collection_interval
+      mt
+    end
+
+    # Create a Metric and associate it with a resource.
+    # @param [String] feed_id Id of the feed
+    # @param [String] metric_id Id of the metric
+    # @param [String] type_path Full path of the MetricType
+    # @param [String] resource_id Id of the resource to associate the metric with
+    # @return [Metric] The metric created or if it already existed the version from the server
+    def create_metric_for_resource(feed_id, metric_id, type_path, resource_id)
+      the_feed = hawk_escape feed_id
+      the_resource = hawk_escape resource_id
+
+      m = {}
+      m['id'] = metric_id
+      m['metricTypePath'] = type_path
+
+      begin
+        http_post("/feeds/#{the_feed}/metrics", m)
+      rescue HawkularException => error
+        # 409 We already exist -> that is ok
+        raise unless error.status_code == 409
+      end
+
+      ret = http_get("/feeds/#{the_feed}/metrics/#{metric_id}")
+      the_metric = Metric.new(ret)
+
+      begin
+        http_post("/feeds/#{the_feed}/resources/#{the_resource}/metrics", [the_metric.path])
+      rescue HawkularException => error
+        # 409 We already exist -> that is ok
+        raise unless error.status_code == 409
+      end
+      the_metric
+    end
+
     private
+
+    # Creates a hash with the fields required by the Blueprint api in Hawkular-Inventory
+    def create_blueprint
+      res = {}
+      res[:properties] = {}
+      res[:id] = nil
+      res[:name] = nil
+      res[:outgoing] = {}
+      res[:incoming] = {}
+      res
+    end
 
     def should_include?(metric_new, filter)
       found = true
@@ -285,7 +477,9 @@ module Hawkular::Inventory
       @properties = rt_hash['properties']
       @_hash = rt_hash.dup
 
-      tmp = path.split('/')
+      return if @path.nil?
+
+      tmp = @path.split('/')
       tmp.each do |pair|
         (key, val) = pair.split(';')
         case key
@@ -345,6 +539,41 @@ module Hawkular::Inventory
 
     def to_h
       @_hash.deep_dup
+    end
+  end
+
+  class MetricType
+    # @return [String] Full path of the metric (type)
+    attr_reader :path
+    # @return [String] Name of the metric
+    attr_reader :name
+    attr_reader :id
+    attr_reader :feed
+    attr_reader :unit
+    # @return [Long] collection interval in seconds
+    attr_reader :collection_interval
+
+    def initialize(type_hash)
+      @id = type_hash['id']
+      @path = type_hash['path']
+      @name = type_hash['name'] || @id
+      @_hash = type_hash.dup
+
+      tmp = path.split('/')
+      tmp.each do |pair|
+        (key, val) = pair.split(';')
+        case key
+        when 'f'
+          @feed = val
+        when 'e'
+          @env = val
+        when 'n'
+          @name = val.nil? ? id : val
+        end
+      end
+      @type = type_hash['type']
+      @unit = type_hash['unit']
+      @collection_interval = type_hash['collectionInterval']
     end
   end
 

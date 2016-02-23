@@ -233,6 +233,132 @@ module Hawkular::Inventory::RSpec
       expect(metrics.size).to be(14)
     end
 
+    it 'Should create a feed' do
+      feed_id = 'feed_1123sdncisud6237ui23hjbdscuzsad'
+      creds = { username: 'jdoe', password: 'password' }
+      client = Hawkular::Inventory::InventoryClient.new(INVENTORY_BASE, creds)
+
+      ret = client.create_feed feed_id
+      expect(ret).to_not be_nil
+      expect(ret['id']).to eq(feed_id)
+    end
+
+    it 'Should create and delete feed' do
+      feed_id = 'feed_1123sdn'
+      creds = { username: 'jdoe', password: 'password' }
+      client = Hawkular::Inventory::InventoryClient.new(INVENTORY_BASE, creds)
+
+      ret = client.create_feed feed_id
+      expect(ret).to_not be_nil
+      expect(ret['id']).to eq(feed_id)
+
+      client.delete_feed feed_id
+
+      feed_list = client.list_feeds
+      expect(feed_list).not_to include(feed_id)
+    end
+
+    it 'Should create a feed again' do
+      feed_id = 'feed_1123sdncisud6237ui2378789vvgX'
+      creds = { username: 'jdoe', password: 'password' }
+      client = Hawkular::Inventory::InventoryClient.new(INVENTORY_BASE, creds)
+
+      client.create_feed feed_id
+      client.create_feed feed_id
+    end
+
+    it 'Should create a resourcetype' do
+      feed_id = 'feed_may_exist'
+      creds = { username: 'jdoe', password: 'password' }
+      client = Hawkular::Inventory::InventoryClient.new(INVENTORY_BASE, creds)
+      client.create_feed feed_id
+
+      ret = client.create_resource_type feed_id, 'rt-123', 'ResourceType'
+      expect(ret.id).to eq('rt-123')
+      expect(ret.name).to eq('ResourceType')
+      expect(ret.path).to include('/rt;rt-123')
+      expect(ret.path).to include('/f;feed_may_exist')
+    end
+
+    it 'Should create a resource ' do
+      feed_id = 'feed_may_exist'
+      creds = { username: 'jdoe', password: 'password' }
+      client = Hawkular::Inventory::InventoryClient.new(INVENTORY_BASE, creds)
+      client.create_feed feed_id
+      ret = client.create_resource_type feed_id, 'rt-123', 'ResourceType'
+      type_path = ret.path
+
+      client.create_resource feed_id, type_path, 'r123', 'My Resource', 'version' => 1.0
+
+      r = client.get_resource(feed_id, 'r123', false)
+      expect(r.id).to eq('r123')
+      expect(r.properties).not_to be_empty
+    end
+
+    it 'Should create a resource with metric' do
+      feed_id = 'feed_may_exist'
+      creds = { username: 'jdoe', password: 'password' }
+      client = Hawkular::Inventory::InventoryClient.new(INVENTORY_BASE, creds)
+      client.create_feed feed_id
+      ret = client.create_resource_type feed_id, 'rt-123', 'ResourceType'
+      type_path = ret.path
+
+      client.create_resource feed_id, type_path, 'r124', 'My Resource', 'version' => 1.0
+
+      r = client.get_resource(feed_id, 'r124', false)
+      expect(r.id).to eq('r124')
+      expect(r.properties).not_to be_empty
+
+      r = client.create_metric_type feed_id, 'mt-124'
+      expect(r).not_to be_nil
+      expect(r.id).to eq('mt-124')
+
+      r = client.create_metric_for_resource feed_id, 'm-124', r.path, 'r124'
+      expect(r).not_to be_nil
+      expect(r.id).to eq('m-124')
+    end
+
+    it 'Should create and get a resource' do
+      feed_id = 'feed_may_exist'
+      creds = { username: 'jdoe', password: 'password' }
+      client = Hawkular::Inventory::InventoryClient.new(INVENTORY_BASE, creds)
+      client.create_feed feed_id
+      ret = client.create_resource_type feed_id, 'rt-123', 'ResourceType'
+      type_path = ret.path
+
+      client.create_resource feed_id, type_path, 'r125', 'My Resource', 'version' => 1.0
+
+      r = client.get_resource(feed_id, 'r125', true)
+      expect(r.id).to eq('r125')
+      expect(r.properties).not_to be_empty
+    end
+
+    it 'Should not find an unknown resource' do
+      feed_id = 'feed_may_exist'
+      creds = { username: 'jdoe', password: 'password' }
+      client = Hawkular::Inventory::InventoryClient.new(INVENTORY_BASE, creds)
+
+      begin
+        client.get_resource(feed_id, '*bla does not exist*')
+        expect(true).to be(false)
+      rescue
+        puts 'Yep, this works'
+      end
+    end
+
+    it 'Should reject unknown metric type' do
+      feed_id = 'feed_may_exist'
+      creds = { username: 'jdoe', password: 'password' }
+      client = Hawkular::Inventory::InventoryClient.new(INVENTORY_BASE, creds)
+
+      begin
+        client.create_metric_type feed_id, 'abc', 'FOOBaR'
+        expect(true).to be(false)
+      rescue
+        puts 'Yep, this works'
+      end
+    end
+
     # TODO: enable when inventory supports it
     # it 'Should return the version' do
     #   data = @client.get_version_and_status
