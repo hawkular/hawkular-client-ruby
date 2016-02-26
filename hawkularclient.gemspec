@@ -23,7 +23,7 @@ Gem::Specification.new do |gem|
 
   gem.add_runtime_dependency('rest-client')
   gem.add_development_dependency('shoulda')
-  gem.add_development_dependency('rspec-rails', '~> 2.6')
+  gem.add_development_dependency('rspec-rails', '~> 3.0')
   gem.add_development_dependency('rake')
   gem.add_development_dependency('yard')
   gem.add_development_dependency('webmock')
