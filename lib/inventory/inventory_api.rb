@@ -11,7 +11,7 @@ module Hawkular::Inventory
     # Create a new Inventory Client
     # @param hash [Hash{String=>Object}] a hash containing base url of Hawkular-inventory - e.g
     #   entrypoint: http://localhost:8080/hawkular/inventory
-    # and another sub-hash containing the hash with username, password, token(optional)
+    # and another sub-hash containing the hash with username[String], password[String], token(optional)
     def initialize(hash)
       hash[:entrypoint] ||= 'http://localhost:8080/hawkular/inventory'
       hash[:credentials] ||= {}

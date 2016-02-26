@@ -6,6 +6,7 @@ require 'hawkular_all'
 require 'rspec/core'
 require 'rspec/mocks'
 require 'socket'
+require 'tokens/tokens_api'
 require 'uri'
 require 'yaml'
 
