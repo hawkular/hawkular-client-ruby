@@ -313,9 +313,15 @@ module Hawkular::Inventory::RSpec
       expect(r).not_to be_nil
       expect(r.id).to eq('mt-124')
 
-      r = client.create_metric_for_resource feed_id, 'm-124', r.path, 'r124'
-      expect(r).not_to be_nil
-      expect(r.id).to eq('m-124')
+      m = client.create_metric_for_resource feed_id, 'm-124', r.path, 'r124'
+      expect(m).not_to be_nil
+      expect(m.id).to eq('m-124')
+      expect(m.name).to eq('m-124')
+
+      m = client.create_metric_for_resource feed_id, 'm-124-1', r.path, 'r124', 'Metric1'
+      expect(m).not_to be_nil
+      expect(m.id).to eq('m-124-1')
+      expect(m.name).to eq('Metric1')
     end
 
     it 'Should create and get a resource' do
