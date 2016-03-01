@@ -302,15 +302,13 @@ module Hawkular::Inventory
       type[:name] = type_name
 
       begin
-        res = http_post("/feeds/#{the_feed}/resourceTypes", type)
+        http_post("/feeds/#{the_feed}/resourceTypes", type)
       rescue HawkularException => error
         # 409 We already exist -> that is ok
-        if error.status_code == 409
-          the_type = hawk_escape type_id
-          res = http_get("/feeds/#{the_feed}/resourceTypes/#{the_type}")
-        else
-          raise
-        end
+        raise unless error.status_code == 409
+      ensure
+        the_type = hawk_escape type_id
+        res = http_get("/feeds/#{the_feed}/resourceTypes/#{the_type}")
       end
       ResourceType.new(res)
     end
@@ -385,27 +383,20 @@ module Hawkular::Inventory
       MetricType.new(res)
     end
 
-    def build_metric_type_hash(collection_interval, metric_kind, metric_type_id, unit)
-      mt = {}
-      mt['id'] = metric_type_id
-      mt['type'] = metric_kind
-      mt['unit'] = unit.nil? ? 'NONE' : unit.upcase
-      mt['collectionInterval'] = collection_interval.nil? ? 60 : collection_interval
-      mt
-    end
-
     # Create a Metric and associate it with a resource.
     # @param [String] feed_id Id of the feed
     # @param [String] metric_id Id of the metric
     # @param [String] type_path Full path of the MetricType
     # @param [String] resource_id Id of the resource to associate the metric with
+    # @param [String] a (display) name for the metric. If nil, #metric_id is used.
     # @return [Metric] The metric created or if it already existed the version from the server
-    def create_metric_for_resource(feed_id, metric_id, type_path, resource_id)
+    def create_metric_for_resource(feed_id, metric_id, type_path, resource_id, metric_name = nil)
       the_feed = hawk_escape feed_id
       the_resource = hawk_escape resource_id
 
       m = {}
       m['id'] = metric_id
+      m['name'] = (metric_name.nil?) ? metric_id : metric_name
       m['metricTypePath'] = type_path
 
       begin
@@ -438,6 +429,15 @@ module Hawkular::Inventory
       res[:outgoing] = {}
       res[:incoming] = {}
       res
+    end
+
+    def build_metric_type_hash(collection_interval, metric_kind, metric_type_id, unit)
+      mt = {}
+      mt['id'] = metric_type_id
+      mt['type'] = metric_kind
+      mt['unit'] = unit.nil? ? 'NONE' : unit.upcase
+      mt['collectionInterval'] = collection_interval.nil? ? 60 : collection_interval
+      mt
     end
 
     def should_include?(metric_new, filter)
@@ -594,7 +594,8 @@ module Hawkular::Inventory
     def initialize(metric_hash)
       @id = metric_hash['id']
       @path = metric_hash['path']
-      @name = metric_hash['name'] || @id
+      m_name = metric_hash['name']
+      @name = !m_name.nil? ? m_name : @id
       @_hash = metric_hash.dup
 
       tmp = path.split('/')
@@ -605,8 +606,6 @@ module Hawkular::Inventory
           @feed = val
         when 'e'
           @env = val
-        when 'm'
-          @name = val.nil? ? id : val
         end
       end
       @type = metric_hash['type']['type']
