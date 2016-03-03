@@ -140,4 +140,44 @@ module Hawkular::Alerts::RSpec
   #     expect(data).not_to be_nil
   #   end
   # end
+
+  describe 'Alert/Events', :vcr do
+
+    VCR.configure do |c|
+      c.default_cassette_options = {
+        :match_requests_on => [:method, VCR.request_matchers.uri_without_params(:startTime, :endTime)]
+      }
+    end
+
+    it 'Should list events' do
+      client = Hawkular::Alerts::AlertsClient.new(ALERTS_BASE, creds)
+
+      events = client.list_events
+
+      expect(events).to_not be_nil
+      expect(events.size).to be(12)
+    end
+
+    it 'Should list events using criteria' do
+      now = Time.new.to_i
+      startTime = (now - 7_200) * 1000
+      endTime = now * 1000
+
+      client = Hawkular::Alerts::AlertsClient.new(ALERTS_BASE, creds)
+
+      events = client.list_events('startTime' => startTime, 'endTime' => endTime)
+
+      expect(events).to_not be_nil
+      expect(events.size).to be(1)
+    end
+
+    it 'Should not list events using criteria' do
+      client = Hawkular::Alerts::AlertsClient.new(ALERTS_BASE, creds)
+
+      events = client.list_events('startTime' => 0, 'endTime' => 1000)
+
+      expect(events).to_not be_nil
+      expect(events.size).to be(0)
+    end
+  end
 end
