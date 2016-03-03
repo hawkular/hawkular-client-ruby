@@ -2,8 +2,10 @@ require 'hawkular'
 require 'ostruct'
 
 # Alerts module provides access to Hawkular-Alerts.
-# There are two main parts here: Triggers, that define alertable conditions
-# and Alerts that represent a fired trigger.
+# There are three main parts here:
+#   Triggers, that define alertable conditions
+#     Alerts, that represent a fired Alert trigger
+#     Events, that represent a fired Event trigger or an externally injected event (hawkular, not miq event)
 # @see http://www.hawkular.org/docs/rest/rest-alerts.html
 module Hawkular::Alerts
   # Interface to use to talk to the Hawkular-Alerts component.
@@ -67,9 +69,11 @@ module Hawkular::Alerts
     end
 
     # List fired alerts
+    # @param [Hash]criteria optional query criteria
     # @return [Array<Alert>] List of alerts in the system. Can be empty
-    def list_alerts
-      ret = http_get('/')
+    def list_alerts(criteria = {})
+      query = generate_query_params(criteria)
+      ret = http_get('/' + query)
       val = []
       ret.each { |a| val.push(Alert.new(a)) }
       val
@@ -108,6 +112,17 @@ module Hawkular::Alerts
       http_put(sub_url, {})
 
       true
+    end
+
+    # List Events given optional criteria
+    # @param [Hash] criteria optional query criteria
+    # @return [Array<Event>] List of all alerts in the system. Can be empty
+    def list_events(*criteria)
+      query = generate_query_params(*criteria)
+      ret = http_get('/events' + query)
+      val = []
+      ret.each { |e| val.push(Event.new(e)) }
+      val
     end
   end
 
@@ -183,11 +198,21 @@ module Hawkular::Alerts
 
   # Representation of one alert.
   # The name of the members are literally what they are in the JSON sent from the
-  # server and not 'rubyfied'. So 'alertId' and not 'alert_ic'
+  # server and not 'rubyfied'. So 'alertId' and not 'alert_id'
   # Check http://www.hawkular.org/docs/rest/rest-alerts.html#Alert for details
   class Alert < OpenStruct
     def initialize(alert_hash)
       super(alert_hash)
+    end
+  end
+
+  # Representation of one event.
+  # The name of the members are literally what they are in the JSON sent from the
+  # server and not 'rubyfied'. So 'eventId' and not 'event_id'
+  # Check http://www.hawkular.org/docs/rest/rest-alerts.html#Event for details
+  class Event < OpenStruct
+    def initialize(event_hash)
+      super(event_hash)
     end
   end
 end
