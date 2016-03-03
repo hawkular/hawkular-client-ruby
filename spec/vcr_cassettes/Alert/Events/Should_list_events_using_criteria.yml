@@ -1,0 +1,79 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://jdoe:password@localhost:8080/hawkular/alerts/events?endTime=1457025122000&startTime=1457017922000
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Encoding:
+      - gzip
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Thu, 03 Mar 2016 17:12:02 GMT
+      X-Total-Count:
+      - '1'
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '1096'
+      Link:
+      - <http://localhost:8080/hawkular/alerts/events?startTime=1457017922000&endTime=1457025122000>;
+        rel="current", <http://localhost:8080/hawkular/alerts/events?startTime=1457017922000&endTime=1457025122000&page=0>;
+        rel="last"
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAAO2ZX0/jOBDAv0rVZ1Kc2LGd5al0u2xPlEVtb++hqpCbuBBd
+        mlSOg5ZD7We/cf4dYVMEHLe6hyBByYzHnhn/xh7C8rEv72WsFw872f/UH16O
+        Z4v+SV/LWMR6EoDI4ciha0wtvpHEIhg7Fic+t1yHSJthQfl6AxahGfvb9+nN
+        xejG9+012ZCNtfGQZxEqAksQyqy1zwKJsS0oRaeXiS8iyyYuQ7bnUs48bjki
+        cGkQICvwSGARRMGQ+cTy1oEnCQ+48Newlq/DLXjbsD3pB0KLeZIp3wRyEyex
+        vOkX0sm7fDMLCS1vE/XQyMwPbR59P9tmEeiD3sWo9zlTQodJ3LuWypqGcaZl
+        b5Oo3jKfaWWmSuLC9LEvIqmqhF8MZ+dDUCuZ5q5fCRNZ/01eVrbXQt+B7ak+
+        e82enW7OXrWKOsvXORyerFTRstv15lLdS2USo8LbW6lK1eIOxt4lUdDfg0rc
+        pibwyjzfjzeEuK9nN7P8KjbBMC52A0x7RzbcECZTX4W7/OkdYOgiYdPx9Hw8
+        g+e2csxloxrGOIuiamDOVCFIQaJCbWj9Orn42kH3b6ETmU4+h6lYRzC7Vpks
+        ROP4uWQGa0T3INqIKG3KhibvacvgqdD+Xb7Hl/UxNRU74/IfYRR8iR56U7mF
+        /YYPCNNPD8cQBHgmh9lh+frgDofVYbo4vHEdyMhWbtdSfdvU9WTgzNMRVCFu
+        QhXGt83o0mfH8t4EvN3JGEa+r6TLjX/3yV7aT5PAuPVlMptcXfxTjPPFbDJa
+        3Cwm03FefSJaQGxzqXXuMCpliRbRT0K4mmoZRubrSbCvDtF6+1VaBrEv/AAf
+        gLrl8rH2KtXgRX1rOhSmsQvwWrUIozofs+FiXBwnQVgg9//bs+c+QgLm4V+m
+        TWgKJ3EgfzSl//2uWLZlN8/jLA5NH7FNf7pBnpVc3cD8miKHBUMl/dKXydVo
+        Nh7Oi0Tv4HZJCk+ufs+TnYBI6EQZr/PmqD6APzkIDRC4D/Blea/m5BKYRcn7
+        MMnS76UCe5zlikZTVwFYjV40lAiUFG4G8B5WwhgNzI/qm+xXJ0e5h33FHjnG
+        PXYIcnHHfcf9R3HvcuyyNu7rgmhwXwHYzn1ZFAX3NrVdNOCIcxdiJx6lL3LP
+        4c8k5yj33EVud9533H8Y99RxHbeN+7ogmtyXALZyXxVFwT1BnjfgDDNKHI4J
+        917CnhCGODqGPSHU9jrsO+w/DnuK2tucuh4a2FcAtmNf1kSBPSY2tDmIIk6w
+        Z5p3/BL3ro0cRo9x7yKOHbvjvuP+w7j3EOGt3FcF0XxnWwLYyn1VFGV77xE8
+        IC63GUOMEeq+zD10OZwd5Z4CBbzjvuP+o7hniPJ27quCeP6/ihzAVu6roqja
+        e2NPmEeZy4jn2c5+tXr6krd86auFzlLw9Nv1+Ap8Ff6fxaQo//28HqiK145B
+        ra0E1ZD96m+PwUj3DRoAAA==
+    http_version: 
+  recorded_at: Thu, 03 Mar 2016 17:12:02 GMT
+recorded_with: VCR 3.0.1
