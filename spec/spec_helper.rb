@@ -2,11 +2,7 @@
 require 'coveralls'
 Coveralls.wear!
 # Now the application requires.
-require 'hawkular'
-require 'metrics/metrics_client'
-require 'inventory/inventory_api'
-require 'tokens/tokens_api'
-require 'alerts/alerts_api'
+require 'hawkular_all'
 require 'rspec/core'
 require 'rspec/mocks'
 require 'socket'

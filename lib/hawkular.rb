@@ -105,17 +105,6 @@ module Hawkular
     end
 
     # @!visibility private
-    def base_url
-      url = URI.parse(@entrypoint)
-      "#{url.scheme}://#{url.host}:#{url.port}"
-    end
-
-    # @!visibility private
-    def self.parse_response(response)
-      JSON.parse(response)
-    end
-
-    # @!visibility private
     def http_headers(headers = {})
       {}.merge(tenant_header)
         .merge(token_header)
