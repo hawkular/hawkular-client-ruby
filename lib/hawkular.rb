@@ -21,7 +21,7 @@ module Hawkular
       @credentials = {
         username: nil,
         password: nil,
-        token:    nil
+        token: nil
       }.merge(credentials)
       @options = {
         tenant: nil,
@@ -93,12 +93,12 @@ module Hawkular
     # @!visibility private
     def rest_client(suburl)
       options[:timeout] = ENV['HAWKULARCLIENT_REST_TIMEOUT'] if ENV['HAWKULARCLIENT_REST_TIMEOUT']
-      options[:ssl_ca_file]     = @options[:ssl_ca_file]
-      options[:verify_ssl]      = @options[:verify_ssl]
+      options[:ssl_ca_file] = @options[:ssl_ca_file]
+      options[:verify_ssl] = @options[:verify_ssl]
       options[:ssl_client_cert] = @options[:ssl_client_cert]
-      options[:ssl_client_key]  = @options[:ssl_client_key]
-      options[:user]            = @credentials[:username]
-      options[:password]        = @credentials[:password]
+      options[:ssl_client_key] = @options[:ssl_client_key]
+      options[:user] = @credentials[:username]
+      options[:password] = @credentials[:password]
       # strip @endpoint in case suburl is absolute
       suburl = suburl[@entrypoint.length, suburl.length] if suburl.match(/^http/)
       RestClient::Resource.new(@entrypoint, options)[suburl]
@@ -142,35 +142,19 @@ module Hawkular
       encoded.rstrip!
     end
 
-    # Generate a query string from the passed hash.
-    # This string starts with a `?` if the hash is
-    # not empty.
+    # Generate a query string from the passed hash, starting with '?'
     # Values may be an array, in which case the array values are joined together by `,`.
-    # @param param_hash [Hash] key-values pairs
-    # @return [String] complete query string to append to a base url
-    def generate_query_params(param_hash = {})
-      return '' if param_hash.size == 0
+    # @param params [Hash] key-values pairs
+    # @return [String] complete query string to append to a base url, '' if no valid params
+    def generate_query_params(params = {})
+      params = params.select { |_k, v| !(v.nil? || ((v.instance_of? Array) && v.empty?)) }
+      return '' if params.empty?
 
-      num = count_non_nil_values(param_hash)
-
-      i = 0
-      ret = ''
-      ret = '?' if num > 0
-      param_hash.each  do |k, v|
-        next if not_suitable?(v)
-
-        if v.instance_of? Array
-          part = "#{k}=#{v.join(',')}"
-        else
-          part = "#{k}=#{v}"
-        end
-
-        ret += hawk_escape part
-
-        i += 1
-        ret += '&' if i < num
+      params.inject('?') do |ret, (k, v)|
+        ret += '&' unless ret == '?'
+        part = (v.instance_of? Array) ? "#{k}=#{v.join(',')}" : "#{k}=#{v}"
+        ret + hawk_escape(part)
       end
-      ret
     end
 
     # Specialized exception to be thrown
@@ -181,22 +165,11 @@ module Hawkular
         @status_code = status_code
         super(message)
       end
+
       attr_reader :message, :status_code
     end
 
     private
-
-    def not_suitable?(v)
-      v.nil? || (v.instance_of? Array) && v.size == 0
-    end
-
-    def count_non_nil_values(param_hash)
-      num = 0
-      param_hash.each do |_k, v|
-        num += 1 unless not_suitable?(v)
-      end
-      num
-    end
 
     def token_header
       @credentials[:token].nil? ? {} : { 'Authorization' => "Bearer #{@credentials[:token]}" }
