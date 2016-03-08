@@ -22,7 +22,6 @@ end
 module Hawkular::Operations
   # Client class to interact with the agent via websockets
   class OperationsClient < Hawkular::BaseClient
-
     # Create a new OperationsClient
     # @param entrypoint [String] base url of Hawkular - e.g http://localhost:8080
     # @param credentials [Hash{String=>String}] Hash of {username, password} or token
@@ -30,7 +29,7 @@ module Hawkular::Operations
       super(entrypoint, credentials)
       url = "ws://#{entrypoint}/hawkular/command-gateway/ui/ws"
       @ws = WebSocket::Client::Simple.connect url
-      # todo: once the socket is open, the server sends to client its ui session id, we need to store it here
+      # TODO: once the socket is open, the server sends to client its ui session id, we need to store it here
       @ws.on :open do
         @ws.send 'Make me a sandwich'
       end

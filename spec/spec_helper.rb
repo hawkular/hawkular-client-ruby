@@ -47,6 +47,12 @@ end
 
 RSpec.configure do |config|
   config.include Hawkular::Metrics::RSpec
+  config.include Hawkular::Operations::RSpec
+
+  # skip the tests that require websocket communication (cannot be recorded by VCR)
+  if ENV['WEBSOCKET_ON'].nil? || ENV['WEBSOCKET_ON'] != '1'
+    config.filter_run_excluding :websocket
+  end
 
   # Sometimes one wants to check if the real api has
   # changed, so turn off VCR and use live connections

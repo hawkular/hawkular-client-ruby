@@ -18,6 +18,8 @@ module Hawkular::Operations::RSpec
 
   describe 'Operation', :websocket do
     before(:all) do
+      VCR.turn_off!(ignore_cassettes: true)
+      WebMock.allow_net_connect!
       @creds = { username: 'jdoe', password: 'password' }
       inventory_client = InventoryClient.new(credentials: @creds)
       @tenant_id = inventory_client.get_tenant
@@ -36,6 +38,13 @@ module Hawkular::Operations::RSpec
         @client.close_connection!
         @client = nil
         @ws = nil
+      end
+    end
+
+    after(:all) do
+      if ENV['VCR_OFF'] != '1'
+        VCR.turn_on!
+        WebMock.disable_net_connect!
       end
     end
 
