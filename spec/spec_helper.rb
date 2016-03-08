@@ -6,7 +6,6 @@ require 'hawkular_all'
 require 'rspec/core'
 require 'rspec/mocks'
 require 'socket'
-require 'tokens/tokens_api'
 require 'uri'
 require 'yaml'
 
@@ -31,6 +30,18 @@ module Hawkular::Metrics::RSpec
     @config ||= YAML.load(
       File.read(File.expand_path('endpoint.yml', File.dirname(__FILE__)))
     )
+  end
+end
+
+module Hawkular::Operations::RSpec
+  SLEEP_SECONDS = 0.025
+  MAX_ATTEMPTS = 50
+
+  def wait_for(object)
+    sleep_interval = SLEEP_SECONDS * (ENV['VCR_OFF'] == '1' ? 1 : 10)
+    attempt = 0
+    sleep sleep_interval while object[:data].nil? && (attempt += 1) < MAX_ATTEMPTS
+    attempt == MAX_ATTEMPTS ? {} : object[:data]
   end
 end
 
