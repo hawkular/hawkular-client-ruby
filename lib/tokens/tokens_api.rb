@@ -7,8 +7,7 @@ module Hawkular::Token
     # Create a new Secret Store client
     # @param entrypoint [String] base url of Hawkular - e.g http://localhost:8080
     # @param credentials [Hash{String=>String}] Hash of username, password
-    def initialize(entrypoint = nil, credentials = {})
-      @entrypoint = entrypoint
+    def initialize(entrypoint = 'http://localhost:8080', credentials = {})
       super(entrypoint, credentials)
     end
 
