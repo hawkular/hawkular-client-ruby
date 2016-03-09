@@ -254,9 +254,32 @@ module Hawkular::Operations::RSpec
       expect(actual_data['serverRefreshIndicator']).to eq('RELOAD-REQUIRED')
     end
 
-    xit 'add deployment should be doable' do
+    it 'add deployment should be doable' do
       # TODO: implement + local path
-      # war_file = IO.binread('/home/jkremser/sample.war')
+      wf_server_resource_id = 'Local~~'
+      war_file = IO.binread('/home/jkremser/sample.war')
+      app_name = 'sample.war'
+      wf_path = CanonicalPath.new(tenant_id: @tenant_id,
+                                  feed_id: @feed_id,
+                                  resource_ids: [wf_server_resource_id]).to_s
+
+      actual_data = {}
+      @client.add_deployment(resource_path: wf_path,
+                             destination_file_name: app_name,
+                             file_binary_content: war_file) do |on|
+        on.success do |data|
+          actual_data[:data] = data
+        end
+        on.failure do |error|
+          actual_data[:data] = {}
+          puts 'error callback was called, reason: ' + error.to_s
+        end
+      end
+      actual_data = wait_for actual_data
+      expect(actual_data['status']).to eq('OK')
+      expect(actual_data['message']).to start_with('Performed [Deploy] on')
+      expect(actual_data['destinationFileName']).to eq(app_name)
+      expect(actual_data['resourcePath']).to eq(wf_path)
     end
 
     xit 'add datasource should be doable' do

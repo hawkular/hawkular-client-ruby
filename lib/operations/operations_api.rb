@@ -52,13 +52,13 @@ module Hawkular::Operations
       # note: if we start using the secured WS, change the protocol to wss://
       url = "ws://#{entrypoint}/hawkular/command-gateway/ui/ws"
       @ws = Simple.connect url do |client|
-        client.on :message do |msg|
+        client.on(:message, once: true) do |msg|
           parsed_message = msg.data.to_msg_hash
           puts parsed_message if ENV['HAWKULARCLIENT_LOG_RESPONSE']
           case parsed_message[:operationName]
           when 'WelcomeResponse'
             @session_id = parsed_message[:data]['sessionId']
-            client.remove_listener :message
+            # client.remove_listener :message
           end
         end
       end
@@ -103,10 +103,40 @@ module Hawkular::Operations
       invoke_operation_helper(operation_payload, operation_name, &block)
     end
 
-    private
-
     # rubocop:disable Metrics/CyclomaticComplexity
     # rubocop:disable Metrics/BlockNesting
+    def add_deployment(hash, &block)
+      check_params_for_deploy(hash, &block)
+      hash[:enabled] ||= true
+
+      # register a callback handler for this operation
+      @ws.on :message do |msg|
+        parsed = msg.data.to_msg_hash
+        case parsed[:operationName]
+        when 'DeployApplicationResponse'
+          if parsed[:data]['resourcePath'] == hash[:resource_path]
+            success = parsed[:data]['status'] == 'OK'
+            success ? block.perform(:success, parsed[:data]) : block.perform(:failure, parsed[:data]['message'])
+            client.remove_listener :message
+          end
+        when 'GenericErrorResponse'
+          failure.call(parsed == {} ? 'error' : parsed[:data]['errorMessage'])
+          client.remove_listener :message
+        end
+      end unless block.nil?
+
+      operation = {
+        resourcePath: hash[:resource_path],
+        destinationFileName: hash[:destination_file_name],
+        enabled: hash[:enabled],
+        authentication: @credentials.delete_if { |_, v| v.nil? }
+      }
+      # sends a message that will actually run the operation
+      @ws.send "DeployApplicationRequest=#{operation.to_json}#{hash[:file_binary_content]}", type: :binary
+    end
+
+    private
+
     def invoke_operation_helper(operation_payload, operation_name = nil, &block)
       # fallback to generic 'ExecuteOperation' if nothing is specified
       operation_name ||= 'ExecuteOperation'
@@ -137,5 +167,18 @@ module Hawkular::Operations
     end
     # rubocop:enable Metrics/CyclomaticComplexity
     # rubocop:enable Metrics/BlockNesting
+
+    def check_params(hash, &block)
+      fail 'Handshake with server has not been done.' unless @ws.open?
+      fail 'resource_path must be specified' if hash[:resource_path].nil?
+      fail 'block must have the perform method defined. include Hawkular::Operations' unless
+          block.nil? || block.respond_to?('perform')
+    end
+
+    def check_params_for_deploy(hash, &block)
+      check_params hash, &block
+      fail 'destination_file_name must be specified' if hash[:destination_file_name].nil?
+      fail 'file_binary_content must be specified' if hash[:file_binary_content].nil?
+    end
   end
 end
