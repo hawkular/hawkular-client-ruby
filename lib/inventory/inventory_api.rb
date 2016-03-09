@@ -9,13 +9,13 @@ module Hawkular::Inventory
   # Client class to interact with Hawkular Inventory
   class InventoryClient < Hawkular::BaseClient
     # Create a new Inventory Client
-    # @param entrypoint [String] base url of Hawkular-inventory - e.g
-    #   http://localhost:8080/hawkular/inventory
-    # @param credentials [Hash{String=>String}] Hash of username, password, token(optional)
-    def initialize(entrypoint = nil, credentials = {})
-      @entrypoint = entrypoint
-
-      super(entrypoint, credentials)
+    # @param hash [Hash{String=>Object}] a hash containing base url of Hawkular-inventory - e.g
+    #   entrypoint: http://localhost:8080/hawkular/inventory
+    # and another sub-hash containing the hash with username, password, token(optional)
+    def initialize(hash)
+      hash[:entrypoint] ||= 'http://localhost:8080/hawkular/inventory'
+      hash[:credentials] ||= {}
+      super(hash[:entrypoint], hash[:credentials])
     end
 
     # Retrieve the tenant id for the passed credentials.
@@ -32,7 +32,7 @@ module Hawkular::Inventory
     end
 
     # TODO: revisit and potentially move to Base ?
-    def impersonate(credentials = {})
+    def impersonate!(credentials = {})
       @tenant = get_tenant(credentials)
       @options[:tenant] = @tenant
     end

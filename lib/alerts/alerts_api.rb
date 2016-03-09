@@ -13,7 +13,7 @@ module Hawkular::Alerts
   #   http://localhost:8080/hawkular/alerts
   # @param credentials [Hash{String=>String}] Hash of username, password, token(optional)
   class AlertsClient < Hawkular::BaseClient
-    def initialize(entrypoint = nil, credentials = {})
+    def initialize(entrypoint = 'http://localhost:8080/hawkular/alerts', credentials = {})
       @entrypoint = entrypoint
 
       super(entrypoint, credentials)
