@@ -1,6 +1,10 @@
 require "#{File.dirname(__FILE__)}/../vcr/vcr_setup"
 require "#{File.dirname(__FILE__)}/../spec_helper"
 
+include Hawkular::Inventory
+include Hawkular::Operations
+
+# WebSocket communication cannot be faked via VCR cassettes
 module Hawkular::Operations::RSpec
   HOST = 'localhost:8080'
   describe 'Websocket connection' do
