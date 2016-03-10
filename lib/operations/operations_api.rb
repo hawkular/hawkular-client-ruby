@@ -105,6 +105,7 @@ module Hawkular::Operations
 
     # rubocop:disable Metrics/CyclomaticComplexity
     # rubocop:disable Metrics/BlockNesting
+    # TODO: docs
     def add_deployment(hash, &block)
       check_params_for_deploy(hash, &block)
       hash[:enabled] ||= true
@@ -133,6 +134,12 @@ module Hawkular::Operations
       }
       # sends a message that will actually run the operation
       @ws.send "DeployApplicationRequest=#{operation.to_json}#{hash[:file_binary_content]}", type: :binary
+    end
+
+    def add_datasource(hash, &block)
+      # TODO: auth can be taken from the initialize method and the hash can be enriched
+      check_params_for_add_datasource(hash, &block)
+      invoke_specific_operation(hash, 'AddDatasource', &block)
     end
 
     private
@@ -168,17 +175,25 @@ module Hawkular::Operations
     # rubocop:enable Metrics/CyclomaticComplexity
     # rubocop:enable Metrics/BlockNesting
 
-    def check_params(hash, &block)
+    def check_params(_hash, &block)
       fail 'Handshake with server has not been done.' unless @ws.open?
-      fail 'resource_path must be specified' if hash[:resource_path].nil?
       fail 'block must have the perform method defined. include Hawkular::Operations' unless
           block.nil? || block.respond_to?('perform')
     end
 
     def check_params_for_deploy(hash, &block)
       check_params hash, &block
+      fail 'resource_path must be specified' if hash[:resource_path].nil?
       fail 'destination_file_name must be specified' if hash[:destination_file_name].nil?
       fail 'file_binary_content must be specified' if hash[:file_binary_content].nil?
+    end
+
+    def check_params_for_add_datasource(hash, &block)
+      check_params hash, &block
+      [:resourcePath, :xaDatasource, :datasourceName, :jndiName,
+       :driverName, :driverClass, :connectionUrl].each do |property|
+        fail "#{property} must be specified" if hash[property].nil?
+      end
     end
   end
 end

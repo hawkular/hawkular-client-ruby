@@ -154,32 +154,6 @@ module Hawkular::Operations::RSpec
       end.to raise_error(RuntimeError, /Handshake with server has not been done./)
     end
 
-    xit 'Remove deployment should be performed and eventually respond with success' do
-      wf_server_resource_id = 'Local~~'
-      alerts_war_resource_id = 'Local~%2Fdeployment%3Dhawkular-alerts-actions-email.war'
-      path = CanonicalPath.new(tenant_id: @tenant_id,
-                               feed_id: @feed_id,
-                               resource_ids: [wf_server_resource_id, alerts_war_resource_id])
-      remove_deployment = {
-        operationName: 'Remove',
-        resourcePath: path.to_s,
-        authentication: @creds
-      }
-      actual_data = {}
-      @client.invoke_generic_operation(remove_deployment) do |on|
-        on.success do |data|
-          actual_data[:data] = data
-        end
-        on.failure do |error|
-          actual_data[:data] = { 'status' => 'ERROR' }
-          puts 'error callback was called, reason: ' + error.to_s
-        end
-      end
-      actual_data = wait_for actual_data
-      expect(actual_data['status']).to eq('OK')
-      expect(actual_data['message']).to start_with('Performed [Remove] on')
-    end
-
     it 'Redeploy can be run multiple times in parallel' do
       wf_server_resource_id = 'Local~~'
       alerts_war_resource_id = 'Local~%2Fdeployment%3Dhawkular-alerts-actions-email.war'
@@ -224,41 +198,10 @@ module Hawkular::Operations::RSpec
       expect(actual_data['message']).to start_with('Performed [Redeploy] on')
     end
 
-    # TODO: enable this test once we have the add_datasource operation implemented so that we can add back removed DS
-    # the test works, but it can be run only once per new Hawkular server
-    xit 'Remove datasource should be performed and eventually respond with success' do
-      wf_server_resource_id = 'Local~~'
-      datasource_resource_id = 'Local~%2Fsubsystem%3Ddatasources%2Fdata-source%3DExampleDS'
-      path = CanonicalPath.new(tenant_id: @tenant_id,
-                               feed_id: @feed_id,
-                               resource_ids: [wf_server_resource_id, datasource_resource_id])
-
-      operation = {
-        resourcePath: path.to_s,
-        authentication: @creds
-      }
-
-      actual_data = {}
-      @client.invoke_specific_operation(operation, 'RemoveDatasource') do |on|
-        on.success do |data|
-          actual_data[:data] = data
-        end
-        on.failure do |error|
-          actual_data[:data] = {}
-          puts 'error callback was called, reason: ' + error.to_s
-        end
-      end
-      actual_data = wait_for actual_data
-      expect(actual_data['status']).to eq('OK')
-      expect(actual_data['message']).to start_with('Performed [Remove] on')
-      expect(actual_data['serverRefreshIndicator']).to eq('RELOAD-REQUIRED')
-    end
-
     it 'add deployment should be doable' do
-      # TODO: implement + local path
       wf_server_resource_id = 'Local~~'
-      war_file = IO.binread('/home/jkremser/sample.war')
       app_name = 'sample.war'
+      war_file = IO.binread("#{File.dirname(__FILE__)}/../resources/#{app_name}")
       wf_path = CanonicalPath.new(tenant_id: @tenant_id,
                                   feed_id: @feed_id,
                                   resource_ids: [wf_server_resource_id]).to_s
@@ -282,8 +225,103 @@ module Hawkular::Operations::RSpec
       expect(actual_data['resourcePath']).to eq(wf_path)
     end
 
-    xit 'add datasource should be doable' do
-      # TODO: implement
+    it 'Remove deployment should be performed and eventually respond with success' do
+      wf_server_resource_id = 'Local~~'
+      sample_app_resource_id = 'Local~%2Fdeployment=sample.war'
+      path = CanonicalPath.new(tenant_id: @tenant_id,
+                               feed_id: @feed_id,
+                               resource_ids: [wf_server_resource_id, sample_app_resource_id])
+      remove_deployment = {
+        operationName: 'Remove',
+        resourcePath: path.to_s,
+        authentication: @creds
+      }
+      actual_data = {}
+      @client.invoke_generic_operation(remove_deployment) do |on|
+        on.success do |data|
+          actual_data[:data] = data
+        end
+        on.failure do |error|
+          actual_data[:data] = { 'status' => 'ERROR' }
+          puts 'error callback was called, reason: ' + error.to_s
+        end
+      end
+      actual_data = wait_for actual_data
+      expect(actual_data['status']).to eq('OK')
+      expect(actual_data['message']).to start_with('Performed [Remove] on')
+    end
+
+    it 'Add datasource should be doable' do
+      wf_server_resource_id = 'Local~~'
+      wf_path = CanonicalPath.new(tenant_id: @tenant_id,
+                                  feed_id: @feed_id,
+                                  resource_ids: [wf_server_resource_id]).to_s
+      payload = {
+        # compulsory fields
+        resourcePath: wf_path,
+        xaDatasource: false,
+        datasourceName: 'CreatedByRubyDS',
+        jndiName: 'java:jboss/datasources/CreatedByRubyDS',
+        driverName: 'h2',
+        # this is probably a bug (driver class should be already defined in driver)
+        driverClass: 'org.h2.Driver',
+        connectionUrl: 'dbc:h2:mem:ruby;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE',
+        authentication: @creds,
+
+        # optional
+        datasourceProperties: {
+          someKey: 'someValue'
+        },
+        userName: 'sa',
+        password: 'sa',
+        securityDomain: 'other'
+        # xaDataSourceClass: 'clazz' for xa DS
+      }
+
+      actual_data = {}
+      @client.add_datasource(payload) do |on|
+        on.success do |data|
+          actual_data[:data] = data
+        end
+        on.failure do |error|
+          actual_data[:data] = { 'status' => 'ERROR' }
+          puts 'error callback was called, reason: ' + error.to_s
+        end
+      end
+      actual_data = wait_for actual_data
+      expect(actual_data['status']).to eq('OK')
+      expect(actual_data['message']).to start_with('Added Datasource')
+      expect(actual_data['xaDatasource']).to be_falsey
+      expect(actual_data['datasourceName']).to eq(payload[:datasourceName])
+      expect(actual_data['resourcePath']).to eq(payload[:resourcePath])
+    end
+
+    it 'Remove datasource should be performed and eventually respond with success' do
+      wf_server_resource_id = 'Local~~'
+      datasource_resource_id = 'Local~%2Fsubsystem%3Ddatasources%2Fdata-source%3DCreatedByRubyDS'
+      path = CanonicalPath.new(tenant_id: @tenant_id,
+                               feed_id: @feed_id,
+                               resource_ids: [wf_server_resource_id, datasource_resource_id])
+
+      operation = {
+        resourcePath: path.to_s,
+        authentication: @creds
+      }
+
+      actual_data = {}
+      @client.invoke_specific_operation(operation, 'RemoveDatasource') do |on|
+        on.success do |data|
+          actual_data[:data] = data
+        end
+        on.failure do |error|
+          actual_data[:data] = {}
+          puts 'error callback was called, reason: ' + error.to_s
+        end
+      end
+      actual_data = wait_for actual_data
+      expect(actual_data['status']).to eq('OK')
+      expect(actual_data['message']).to start_with('Performed [Remove] on')
+      expect(actual_data['serverRefreshIndicator']).to eq('RELOAD-REQUIRED')
     end
   end
 end
