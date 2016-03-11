@@ -1,4 +1,6 @@
 require 'hawkular'
+require 'websocket-client-simple'
+require 'json'
 
 # Inventory module provides access to the Hawkular Inventory REST API.
 # @see http://www.hawkular.org/docs/rest/rest-inventory.html
@@ -416,6 +418,24 @@ module Hawkular::Inventory
         raise unless error.status_code == 409
       end
       the_metric
+    end
+
+    # Listen on inventory changes regarding the resources
+    def resource_events
+      tenant_id = get_tenant
+      url = "#{entrypoint.gsub(/https?/, 'ws')}/ws/events?tenantId=#{tenant_id}"
+      @ws = WebSocket::Client::Simple.connect url do |client|
+        client.on :message do |msg|
+          parsed_message = JSON.parse(msg.data)
+          yield Resource.new(parsed_message)
+        end
+      end
+    end
+
+    # Stop listening on inventory events.
+    # this method closes the web socket connection
+    def no_more_events!
+      @ws.close
     end
 
     private
