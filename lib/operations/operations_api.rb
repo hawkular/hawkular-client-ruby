@@ -31,24 +31,29 @@ module Hawkular::Operations
     # helper for parsing the "OperationName=json_payload" messages
     class WebSocket::Frame::Data
       def to_msg_hash
-        hash = {}
         chunks = split('=', 2)
-        hash[:operationName] = chunks[0]
-        hash[:data] = JSON.parse(chunks[1])
-        hash
+        {
+          operationName: chunks[0],
+          data: JSON.parse(chunks[1])
+        }
       rescue
         {}
       end
     end
 
-    # Create a new OperationsClient
-    # @param hash [Hash{String=>Object}] a hash containing: host [String] base url of Hawkular -
-    # e.g http://localhost:8080
-    # and credentials [Hash{String=>String}] Hash of {username, password} or token
-    def initialize(hash)
-      hash[:host] ||= 'localhost:8080'
-      hash[:credentials] ||= {}
-      super(hash[:host], hash[:credentials])
+    # Initialize new OperationsClient
+    #
+    # @param [Hash] args Arguments for client
+    #
+    # @option args [String]  :host base url of Hawkular - e.g http://localhost:8080
+    # @option args [Hash{String=>String}]  :credentials Hash of {username, password} or token
+    #
+    # @example
+    #   Hawkular::Operations::OperationsClient.new(credentials: {username: 'jdoe', password: 'password'})
+    def initialize(args)
+      args[:host] ||= 'localhost:8080'
+      args[:credentials] ||= {}
+      super(args[:host], args[:credentials])
       # note: if we start using the secured WS, change the protocol to wss://
       url = "ws://#{entrypoint}/hawkular/command-gateway/ui/ws"
       @ws = Simple.connect url do |client|
@@ -58,7 +63,6 @@ module Hawkular::Operations
           case parsed_message[:operationName]
           when 'WelcomeResponse'
             @session_id = parsed_message[:data]['sessionId']
-            # client.remove_listener :message
           end
         end
       end
@@ -71,88 +75,137 @@ module Hawkular::Operations
     end
 
     # Invokes a generic operation on the Wildfly agent
-    # (the operation name must be specified in the operation_payload hash)
-    # Note: if success and failure callbacks are omitted the client will not wait for the Response message
-    # @param operation_payload [Hash{String=>Object}] a hash containing: resourcePath [String] denoting the resource on
+    # (the operation name must be specified in the hash)
+    # Note: if success and failure callbacks are omitted, the client will not wait for the Response message
+    # @param hash [Hash{String=>Object}] a hash containing: resourcePath [String] denoting the resource on
     # which the operation is about to run, operationName [String]
-    # and the credentials [Hash{String=>String}] Hash of {username, password} or token
-    # @param block [OperationCallback] callback that after the operation is done
-    def invoke_generic_operation(operation_payload, &block)
-      fail 'Handshake with server has not been done.' unless @ws.open?
-      fail 'Operation must be specified' if operation_payload.nil? || operation_payload[:operationName].nil?
-      fail 'block must have the perform method defined. include Hawkular::Operations' unless
-          block.nil? || block.respond_to?('perform')
+    # @param callback [Block] callback that is run after the operation is done
+    def invoke_generic_operation(hash, &callback)
+      required = [:resourcePath, :operationName]
+      check_pre_conditions hash, required, &callback
 
-      invoke_operation_helper(operation_payload, nil, &block)
+      invoke_operation_helper(hash, &callback)
     end
 
     # Invokes operation on the wildfly agent that has it's own message type
     # @param operation_payload [Hash{String=>Object}] a hash containing: resourcePath [String] denoting
     # the resource on which the operation is about to run
-    # and the credentials [Hash{String=>String}] Hash of {username, password} or token
     # @param operation_name [String] the name of the operation. This must correspond with the message type, they can be
     # found here https://git.io/v2h1a (Use only the first part of the name without the Request/Response suffix), e.g.
     # RemoveDatasource (and not RemoveDatasourceRequest)
-    # @param block [OperationCallback] callback that after the operation is done
-    def invoke_specific_operation(operation_payload, operation_name, &block)
-      fail 'Handshake with server has not been done.' unless @ws.open?
-      fail 'Operation must be specified' if operation_payload.nil? || operation_name.nil?
-      fail 'block must have the perform method defined. include Hawkular::Operations' unless
-          block.nil? || block.respond_to?('perform')
+    # @param callback [Block] callback that is run after the operation is done
+    def invoke_specific_operation(operation_payload, operation_name, &callback)
+      fail 'Operation must be specified' if operation_name.nil?
+      required = [:resourcePath]
+      check_pre_conditions operation_payload, required, &callback
 
-      invoke_operation_helper(operation_payload, operation_name, &block)
+      invoke_operation_helper(operation_payload, operation_name, &callback)
     end
 
-    # rubocop:disable Metrics/CyclomaticComplexity
-    # rubocop:disable Metrics/BlockNesting
-    # TODO: docs
-    def add_deployment(hash, &block)
-      check_params_for_deploy(hash, &block)
+    # Deploys a war file into WildFly
+    #
+    # @param [Hash] hash Arguments for deployment
+    # @option hash [String]  :resource_path canonical path of the WildFly server into which we deploy
+    # @option hash [String]  :destination_file_name resulting file name
+    # @option hash [String]  :binary_content binary content representing the war file
+    # @option hash [String]  :enabled whether the deployment should be enabled or not
+    #
+    # @param callback [Block] callback that is run after the operation is done
+    def add_deployment(hash, &callback)
       hash[:enabled] ||= true
+      required = [:resource_path, :destination_file_name, :binary_content]
+      check_pre_conditions hash, required, &callback
 
-      # register a callback handler for this operation
-      @ws.on :message do |msg|
-        parsed = msg.data.to_msg_hash
-        case parsed[:operationName]
-        when 'DeployApplicationResponse'
-          if parsed[:data]['resourcePath'] == hash[:resource_path]
-            success = parsed[:data]['status'] == 'OK'
-            success ? block.perform(:success, parsed[:data]) : block.perform(:failure, parsed[:data]['message'])
-            client.remove_listener :message
-          end
-        when 'GenericErrorResponse'
-          failure.call(parsed == {} ? 'error' : parsed[:data]['errorMessage'])
-          client.remove_listener :message
-        end
-      end unless block.nil?
-
-      operation = {
-        resourcePath: hash[:resource_path],
-        destinationFileName: hash[:destination_file_name],
-        enabled: hash[:enabled],
-        authentication: @credentials.delete_if { |_, v| v.nil? }
-      }
-      # sends a message that will actually run the operation
-      @ws.send "DeployApplicationRequest=#{operation.to_json}#{hash[:file_binary_content]}", type: :binary
+      operation_payload = prepare_payload_hash([:binary_content], hash)
+      invoke_operation_helper(operation_payload, 'DeployApplication', hash[:binary_content], &callback)
     end
 
-    def add_datasource(hash, &block)
-      # TODO: auth can be taken from the initialize method and the hash can be enriched
-      check_params_for_add_datasource(hash, &block)
-      invoke_specific_operation(hash, 'AddDatasource', &block)
+    # Adds a new datasource
+    #
+    # @param [Hash] hash Arguments for the datasource
+    # @option hash [String]  :resourcePath canonical path of the WildFly server into which we add datasource
+    # @option hash [String]  :xaDatasource XA DS or normal
+    # @option hash [String]  :datasourceName name of the datasource
+    # @option hash [String]  :jndiName JNDI name
+    # @option hash [String]  :driverName this is internal name of the driver in Hawkular
+    # @option hash [String]  :driverClass class of driver
+    # @option hash [String]  :connectionUrl jdbc connection string
+    # @option hash [String]  :datasourceProperties optional properties
+    # @option hash [String]  :username username to DB
+    # @option hash [String]  :password password to DB
+    #
+    # @param callback [Block] callback that is run after the operation is done
+    def add_datasource(hash, &callback)
+      required = [:resourcePath, :xaDatasource, :datasourceName, :jndiName, :driverName, :driverClass, :connectionUrl]
+      check_pre_conditions hash, required, &callback
+
+      invoke_specific_operation(hash, 'AddDatasource', &callback)
+    end
+
+    # Adds a new datasource
+    #
+    # @param [Hash] hash Arguments for the datasource
+    # @option hash [String]  :resource_path canonical path of the WildFly server into which we add driver
+    # @option hash [String]  :driver_jar_name name of the jar file
+    # @option hash [String]  :driver_name name of the jdbc driver (when adding datasource, this is the driverName)
+    # @option hash [String]  :module_name name of the JBoss module into which the driver will be installed - 'foo.bar'
+    # @option hash [String]  :driver_class fully specified java class of the driver - e.q. 'com.mysql.jdbc.Driver'
+    # @option hash [String]  :binary_content driver jar file bits
+    #
+    # @param callback [Block] callback that is run after the operation is done
+    def add_jdbc_driver(hash, &callback)
+      required = [:resource_path, :driver_jar_name, :driver_name, :module_name, :driver_class, :binary_content]
+      check_pre_conditions hash, required, &callback
+
+      operation_payload = prepare_payload_hash([:binary_content], hash)
+      invoke_operation_helper(operation_payload, 'AddJdbcDriver', hash[:binary_content], &callback)
+    end
+
+    # Exports the JDR report
+    #
+    # @param [String] resource_path canonical path of the WildFly server
+    # @param callback [Block] callback that is run after the operation is done
+    def export_jdr(resource_path, &callback)
+      fail 'resource_path must be specified' if resource_path.nil?
+      check_pre_conditions(&callback)
+
+      invoke_specific_operation({ resourcePath: resource_path }, 'ExportJdr', &callback)
     end
 
     private
 
-    def invoke_operation_helper(operation_payload, operation_name = nil, &block)
+    def invoke_operation_helper(operation_payload, operation_name = nil, binary_content = nil, &callback)
       # fallback to generic 'ExecuteOperation' if nothing is specified
       operation_name ||= 'ExecuteOperation'
+      add_credentials! operation_payload
 
-      # register a callback handler for this operation
+      handle_message(operation_name, operation_payload, &callback) unless callback.nil?
+
+      # sends a message that will actually run the operation
+      payload = "#{operation_name}Request=#{operation_payload.to_json}"
+      payload += binary_content unless binary_content.nil?
+      @ws.send payload, type: binary_content.nil? ? :text : :binary
+    end
+
+    def check_pre_conditions(hash = {}, params = [], &callback)
+      fail 'Handshake with server has not been done.' unless @ws.open?
+      fail 'Hash cannot be nil.' if hash.nil?
+      fail 'callback must have the perform method defined. include Hawkular::Operations' unless
+          callback.nil? || callback.respond_to?('perform')
+      params.each do |property|
+        fail "Hash property #{property} must be specified" if hash[property].nil?
+      end
+    end
+
+    def add_credentials!(hash)
+      hash[:authentication] = @credentials.delete_if { |_, v| v.nil? }
+    end
+
+    def handle_message(operation_name, operation_payload, &callback)
+      # register a callback handler
       @ws.on :message do |msg|
         parsed = msg.data.to_msg_hash
-        # TODO: do this on the WS client lvl and also for client -> server comm
-        # puts "\nreceived WebSocket msg: #{parsed}\n" if ENV['HAWKULARCLIENT_LOG_RESPONSE']
+        OperationsClient.log_message(parsed)
         case parsed[:operationName]
         when "#{operation_name}Response"
           same_path = parsed[:data]['resourcePath'] == operation_payload[:resourcePath]
@@ -160,40 +213,32 @@ module Hawkular::Operations
           same_name = parsed[:data]['operationName'] == operation_payload[:operationName]
           if same_path # using the resource path as a correlation id
             success = same_name && parsed[:data]['status'] == 'OK'
-            success ? block.perform(:success, parsed[:data]) : block.perform(:failure, parsed[:data]['message'])
+            success ? callback.perform(:success, parsed[:data]) : callback.perform(:failure, parsed[:data]['message'])
             client.remove_listener :message
           end
         when 'GenericErrorResponse'
-          failure.call(parsed == {} ? 'error' : parsed[:data]['errorMessage'])
+          OperationsClient.handle_error parsed, &callback
           client.remove_listener :message
         end
-      end unless block.nil?
-
-      # sends a message that will actually run the operation
-      @ws.send "#{operation_name}Request=#{operation_payload.to_json}"
-    end
-    # rubocop:enable Metrics/CyclomaticComplexity
-    # rubocop:enable Metrics/BlockNesting
-
-    def check_params(_hash, &block)
-      fail 'Handshake with server has not been done.' unless @ws.open?
-      fail 'block must have the perform method defined. include Hawkular::Operations' unless
-          block.nil? || block.respond_to?('perform')
-    end
-
-    def check_params_for_deploy(hash, &block)
-      check_params hash, &block
-      fail 'resource_path must be specified' if hash[:resource_path].nil?
-      fail 'destination_file_name must be specified' if hash[:destination_file_name].nil?
-      fail 'file_binary_content must be specified' if hash[:file_binary_content].nil?
-    end
-
-    def check_params_for_add_datasource(hash, &block)
-      check_params hash, &block
-      [:resourcePath, :xaDatasource, :datasourceName, :jndiName,
-       :driverName, :driverClass, :connectionUrl].each do |property|
-        fail "#{property} must be specified" if hash[property].nil?
       end
+    end
+
+    def self.handle_error(parsed_message, &callback)
+      callback.perform(:failure, parsed_message == {} ? 'error' : parsed_message[:data]['errorMessage'])
+    end
+
+    def self.log_message(message)
+      puts "\nreceived WebSocket msg: #{message}\n" if ENV['HAWKULARCLIENT_LOG_RESPONSE']
+    end
+
+    def prepare_payload_hash(ignored_params, hash)
+      # it filters out ignored params and convert keys from snake_case to camelCase
+      hash.select { |k, _| !ignored_params.include? k }.map { |k, v| [to_camel_case(k.to_s).to_sym, v] }.to_h
+    end
+
+    def to_camel_case(str)
+      ret = str.split('_').collect(&:capitalize).join
+      ret[0, 1].downcase + ret[1..-1]
     end
   end
 end
