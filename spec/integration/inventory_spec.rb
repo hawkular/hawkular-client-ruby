@@ -1,5 +1,6 @@
 require "#{File.dirname(__FILE__)}/../vcr/vcr_setup"
 require "#{File.dirname(__FILE__)}/../spec_helper"
+require 'securerandom'
 
 module Hawkular::Inventory::RSpec
   describe 'Tenants', :vcr do
@@ -265,6 +266,47 @@ module Hawkular::Inventory::RSpec
       feed_id = 'feed_may_exist'
 
       expect { @client.create_metric_type feed_id, 'abc', 'FOOBaR' }.to raise_error(RuntimeError, /Unknown type FOOBAR/)
+    end
+
+    it 'Client should listen on resource events', :websocket do
+      # turn VCR off
+      VCR.eject_cassette
+      VCR.turn_off!(ignore_cassettes: true)
+      WebMock.allow_net_connect!
+
+      prefix = SecureRandom.uuid
+      id_1 = prefix + '-r126'
+      id_2 = prefix + '-r127'
+      id_3 = prefix + '-r128'
+      actual_data = {}
+      @client.resource_events do |resource|
+        actual_data[resource.id] = resource
+      end
+
+      feed_id = 'feed_may_exist'
+      @client.create_feed feed_id
+      ret = @client.create_resource_type feed_id, 'rt-123', 'ResourceType'
+      type_path = ret.path
+
+      # create 3 resources
+      @client.create_resource feed_id, type_path, id_1, 'My Resource 1', 'version' => 1.0
+      @client.create_resource feed_id, type_path, id_2, 'My Resource 2', 'version' => 1.1
+      @client.no_more_events!
+      @client.create_resource feed_id, type_path, id_3, 'My Resource 3', 'version' => 1.2
+
+      # wait for the data
+      sleep 2
+      expect(actual_data[id_1]).not_to be_nil
+      expect(actual_data[id_1].properties['version']).to eq(1.0)
+      expect(actual_data[id_2]).not_to be_nil
+      expect(actual_data[id_2].properties['version']).to eq(1.1)
+      expect(actual_data[id_3]).to be_nil
+
+      # turn VCR on again if enabled
+      if ENV['VCR_OFF'] != '1'
+        VCR.turn_on!
+        WebMock.disable_net_connect!
+      end
     end
 
     # TODO: enable when inventory supports it
