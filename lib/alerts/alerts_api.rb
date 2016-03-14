@@ -55,6 +55,63 @@ module Hawkular::Alerts
       trigger
     end
 
+    def bulk_load_triggers(hash)
+      http_post 'import/all', hash
+    end
+
+    def create_trigger(trigger, conditions = [], dampenings = [], _actions = [])
+      full_trigger = {}
+      full_trigger[:trigger] = trigger.to_h
+      conds = []
+      conditions.each { |c| conds.push(c.to_h) }
+      full_trigger[:conditions] = conds
+      damps = []
+      dampenings.each { |d| damps.push(d.to_h) } unless dampenings.nil?
+      full_trigger[:dampenings] = damps
+
+      http_post 'triggers/trigger', full_trigger
+    end
+
+    def delete_trigger(trigger_id)
+      http_delete "/triggers/#{trigger_id}"
+    end
+
+    def get_action_definition(action_plugin = nil)
+      if action_plugin.nil?
+        plugins = http_get('plugins')
+      else
+        plugins = [action_plugin]
+      end
+      ret = {}
+      plugins.each do |p|
+        ret[p] = http_get("/plugins/#{p}")
+      end
+      ret
+    end
+
+    def create_action(plugin, action_id, properties = {})
+      the_plugin = hawk_escape plugin
+      # Check if plugin exists
+      http_get("/plugins/#{the_plugin}")
+
+      params = { actionId: action_id, actionPlugin: plugin, properties: properties }
+      ret = http_post('/actions', params)
+      Trigger::Action.new(ret)
+    end
+
+    def get_action(plugin, action_id)
+      the_plugin = hawk_escape plugin
+      the_action_id = hawk_escape action_id
+      ret = http_get "/actions/#{the_plugin}/#{the_action_id}"
+      Trigger::Action.new(ret)
+    end
+
+    def delete_action(plugin, action_id)
+      the_plugin = hawk_escape plugin
+      the_action_id = hawk_escape action_id
+      http_delete "/actions/#{the_plugin}/#{the_action_id}"
+    end
+
     # Obtain the alerts for the Trigger with the passed id
     # @param [String] trigger_id Id of the trigger that has fired the alerts
     # @return [Array<Alert>] List of alerts for the trigger. Can be empty
@@ -131,17 +188,24 @@ module Hawkular::Alerts
   end
 
   # Representation of one Trigger
+  ## (22 known properties: "enabled", "autoResolveMatch", "name", "memberOf", "autoEnable",
+  # "firingMatch", "tags", "id", "source", "tenantId", "eventText", "context", "eventType",
+  # "autoResolveAlerts", "dataIdMap", "eventCategory", "autoDisable", "type", "description",
+  # "severity", "autoResolve", "actions"])
   class Trigger
-    attr_reader :id, :name, :context, :actions, :auto_disable, :auto_enable
-    attr_reader :auto_resolve, :auto_resolve_alerts
-    attr_reader :tenant, :description, :group, :severity
-    attr_reader :conditions, :dampenings, :event_type
-    attr_accessor :enabled
+    attr_accessor :id, :name, :context, :actions, :auto_disable, :auto_enable
+    attr_accessor :auto_resolve, :auto_resolve_alerts
+    attr_accessor :tenant, :description, :group, :severity, :event_type
+    attr_reader :conditions, :dampenings
+    attr_accessor :enabled, :actions
 
     def initialize(trigger_hash)
+      return if trigger_hash.nil?
+
       @_hash = trigger_hash
       @conditions = []
       @dampenings = []
+      @actions = []
       @id = trigger_hash['id']
       @name = trigger_hash['name']
       @enabled = trigger_hash['enabled']
@@ -153,41 +217,66 @@ module Hawkular::Alerts
       @description = trigger_hash['description']
       @auto_enable = trigger_hash['autoEnable']
       @auto_disable = trigger_hash['autoDisable']
+      # acts = trigger_hash['actions']
+      # acts.each { |a| @actions.push(Action.new(a)) } unless acts.nil?
     end
 
-    #     def enable
-    #       @enabled = true
-    #       @_hash['enabled'] = true
-    #       url = '/triggers/' + @id
-    #       Hawkular::BaseClient.http_put(url, @_hash)
-    #     end
-    #
-    #     def disable
-    #       @enabled = false
-    #       url = '/triggers/' + @id
-    #       AlertsClient.http_put(url, self)
-    #     end
+    def to_h
+      trigger_hash = {}
+      trigger_hash['id'] = @id unless @id.nil?
+      trigger_hash['name'] = @name unless @name.nil?
+      trigger_hash['enabled'] = @enabled unless @enabled.nil?
+      trigger_hash['severity'] = @severity unless @severity.nil?
+      trigger_hash['autoResolve'] = @auto_resolve unless @auto_resolve.nil?
+      trigger_hash['autoResolveAlerts'] = @auto_resolve_alerts unless @auto_resolve_alerts.nil?
+      trigger_hash['eventType'] = @event_type unless @event_type.nil?
+      trigger_hash['tenantId'] = @tenant unless @tenant.nil?
+      trigger_hash['description'] = @description unless @description.nil?
+      trigger_hash['autoEnable'] = @auto_enable unless @auto_enable.nil?
+      trigger_hash['autoDisable'] = @auto_disable unless @auto_disable.nil?
+
+      trigger_hash['actions'] = []
+      @actions.each { |d| trigger_hash['actions'].push d.to_h }
+
+      trigger_hash
+    end
 
     # Representing of one Condition
     class Condition
-      attr_reader :condition_id, :type, :operator_low, :operator_high, :threshold_low
-      attr_reader :in_range, :threshold_high
+      attr_accessor :condition_id, :type, :operator, :threshold
+      attr_accessor :trigger_mode, :data_id
+      attr_reader :condition_set_size, :condition_set_index, :trigger_id
 
       def initialize(cond_hash)
         @condition_id = cond_hash['conditionId']
         @type = cond_hash['type']
-        @operator_low = cond_hash['operatorLow']
-        @operator_high = cond_hash['operatorHigh']
-        @threshold_low = cond_hash['thresholdLow']
-        @threshold_high = cond_hash['thresholdHigh']
-        @in_range = cond_hash['inRange']
+        @operator = cond_hash['operator']
+        @threshold = cond_hash['threshold']
+        @type = cond_hash['type']
+        @trigger_mode = cond_hash['triggerMode']
+        @data_id = cond_hash['dataId']
+        @trigger_id = cond_hash['triggerId']
+      end
+
+      def to_h
+        cond_hash = {}
+        cond_hash['conditionId'] = @condition_id
+        cond_hash['type'] = @type
+        cond_hash['operator'] = @operator
+        cond_hash['threshold'] = @threshold
+        cond_hash['type'] = @type
+        cond_hash['triggerMode'] = @trigger_mode
+        cond_hash['dataId'] = @data_id
+        cond_hash['triggerId'] = @trigger_id
+        cond_hash
       end
     end
 
     # Representation of one Dampening setting
     class Dampening
-      attr_reader :dampening_id, :type, :eval_true_setting, :eval_total_setting, :eval_time_setting
-      attr_reader :current_evals
+      attr_accessor :dampening_id, :type, :eval_true_setting, :eval_total_setting,
+                    :eval_time_setting
+      attr_accessor :current_evals
 
       def initialize(damp_hash)
         @current_evals = {}
@@ -196,6 +285,28 @@ module Hawkular::Alerts
         @eval_true_setting = damp_hash['evalTrueSetting']
         @eval_total_setting = damp_hash['evalTotalSetting']
         @eval_time_setting = damp_hash['evalTimeSetting']
+      end
+    end
+
+    class Action
+      attr_accessor :action_plugin, :action_id, :states, :tenant_id
+
+      def initialize(action_hash)
+        return if action_hash.nil?
+
+        @action_plugin = action_hash['actionPlugin']
+        @action_id = action_hash['actionId']
+        @tenant_id = action_hash['tenantId']
+        @states = action_hash['states']
+      end
+
+      def to_h
+        action_hash = {}
+        action_hash['actionPlugin'] = @action_plugin
+        action_hash['actionId'] = @action_id
+        action_hash['tenantId'] = @tenant_id
+        action_hash['states'] = @states
+        action_hash
       end
     end
   end

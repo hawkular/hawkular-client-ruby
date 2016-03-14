@@ -52,7 +52,11 @@ module Hawkular
     def hawk_escape(url_part)
       return url_part.to_s if url_part.is_a?(Numeric)
 
-      sub_url = url_part.dup
+      if url_part.is_a? Symbol
+        sub_url = url_part.to_s
+      else
+        sub_url = url_part.dup
+      end
       sub_url.gsub!('%', '%25')
       sub_url.gsub!(' ', '%20')
       sub_url.gsub!('[', '%5b')
