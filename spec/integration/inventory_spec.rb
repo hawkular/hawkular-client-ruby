@@ -7,8 +7,8 @@ module Hawkular::Inventory::RSpec
     it 'Should Get Tenant For Explicit Credentials' do
       # get the client for given endpoint for given credentials
       creds = { username: 'jdoe', password: 'password' }
-      client = Hawkular::Inventory::InventoryClient.new(entrypoint: 'http://localhost:8080/hawkular/inventory',
-                                                        credentials: creds)
+      client = Hawkular::Inventory::InventoryClient.create(entrypoint: 'http://localhost:8080/hawkular/inventory',
+                                                           credentials: creds)
 
       tenant = client.get_tenant(creds)
 
@@ -17,7 +17,7 @@ module Hawkular::Inventory::RSpec
 
     it 'Should Get Tenant For Implicit Credentials' do
       creds = { username: 'jdoe', password: 'password' }
-      client = Hawkular::Inventory::InventoryClient.new(credentials: creds)
+      client = Hawkular::Inventory::InventoryClient.create(credentials: creds)
 
       tenant = client.get_tenant
 
@@ -31,7 +31,7 @@ module Hawkular::Inventory::RSpec
         username: 'jdoe',
         password: 'password'
       }
-      @client = Hawkular::Inventory::InventoryClient.new(credentials: @creds)
+      @client = Hawkular::Inventory::InventoryClient.create(credentials: @creds)
       @state = {
         hostname: 'localhost.localdomain',
         feed: nil
@@ -268,7 +268,7 @@ module Hawkular::Inventory::RSpec
       expect { @client.create_metric_type feed_id, 'abc', 'FOOBaR' }.to raise_error(RuntimeError, /Unknown type FOOBAR/)
     end
 
-    it 'Client should listen on resource events', :websocket do
+    it 'Client should listen on various inventory events', :websocket do
       # turn VCR off
       VCR.eject_cassette
       VCR.turn_off!(ignore_cassettes: true)
@@ -278,29 +278,61 @@ module Hawkular::Inventory::RSpec
       id_1 = prefix + '-r126'
       id_2 = prefix + '-r127'
       id_3 = prefix + '-r128'
-      actual_data = {}
-      @client.resource_events do |resource|
-        actual_data[resource.id] = resource
+
+      new_resource_events = {}
+      resources_closable = @client.events do |resource|
+        new_resource_events[resource.id] = resource
       end
 
-      feed_id = 'feed_may_exist'
+      deleted_feed_events = {}
+      feed_deleted_closable = @client.events('feed', 'deleted') do |feed|
+        deleted_feed_events[feed.id] = feed
+      end
+
+      new_resource_types_events = {}
+      resource_type_closable = @client.events('resourcetype') do |resource_type|
+        new_resource_types_events[resource_type.id] = resource_type
+      end
+
+      registered_feed_events = {}
+      feeds_closable = @client.events('feed', 'created') do |feed|
+        registered_feed_events[feed.id] = feed
+      end
+
+      feed_id = prefix + '-feed'
+      resource_type_id = prefix + '-rt-123'
+      resource_type_name = 'ResourceType'
       @client.create_feed feed_id
-      ret = @client.create_resource_type feed_id, 'rt-123', 'ResourceType'
+      ret = @client.create_resource_type feed_id, resource_type_id, resource_type_name
       type_path = ret.path
 
       # create 3 resources
       @client.create_resource feed_id, type_path, id_1, 'My Resource 1', 'version' => 1.0
       @client.create_resource feed_id, type_path, id_2, 'My Resource 2', 'version' => 1.1
-      @client.no_more_events!
+      resources_closable.close
       @client.create_resource feed_id, type_path, id_3, 'My Resource 3', 'version' => 1.2
+
+      @client.delete_feed feed_id
 
       # wait for the data
       sleep 2
-      expect(actual_data[id_1]).not_to be_nil
-      expect(actual_data[id_1].properties['version']).to eq(1.0)
-      expect(actual_data[id_2]).not_to be_nil
-      expect(actual_data[id_2].properties['version']).to eq(1.1)
-      expect(actual_data[id_3]).to be_nil
+      [feed_deleted_closable, resource_type_closable, feeds_closable].each(&:close)
+      expect(new_resource_events[id_1]).not_to be_nil
+      expect(new_resource_events[id_1].properties['version']).to eq(1.0)
+      expect(new_resource_events[id_2]).not_to be_nil
+      expect(new_resource_events[id_2].properties['version']).to eq(1.1)
+      # resource with id_3 should not be among events, because we stopped listening before creating the 3rd one
+      expect(new_resource_events[id_3]).to be_nil
+
+      expect(registered_feed_events[feed_id]).not_to be_nil
+      expect(registered_feed_events[feed_id].id).to eq(feed_id)
+
+      expect(deleted_feed_events[feed_id]).not_to be_nil
+      expect(deleted_feed_events[feed_id].id).to eq(feed_id)
+
+      expect(new_resource_types_events[resource_type_id]).not_to be_nil
+      expect(new_resource_types_events[resource_type_id].id).to eq(resource_type_id)
+      expect(new_resource_types_events[resource_type_id].name).to eq(resource_type_name)
 
       # turn VCR on again if enabled
       if ENV['VCR_OFF'] != '1'

@@ -11,13 +11,22 @@ module Hawkular::Inventory
   # Client class to interact with Hawkular Inventory
   class InventoryClient < Hawkular::BaseClient
     # Create a new Inventory Client
+    # @param entrypoint [String] base url of Hawkular-inventory - e.g
+    #   http://localhost:8080/hawkular/inventory
+    # @param credentials [Hash{String=>String}] Hash of username, password, token(optional)
+    def initialize(entrypoint = nil, credentials = {})
+      @entrypoint = entrypoint
+      super(entrypoint, credentials)
+    end
+
+    # Creates a new Inventory Client
     # @param hash [Hash{String=>Object}] a hash containing base url of Hawkular-inventory - e.g
     #   entrypoint: http://localhost:8080/hawkular/inventory
     # and another sub-hash containing the hash with username[String], password[String], token(optional)
-    def initialize(hash)
+    def self.create(hash)
       hash[:entrypoint] ||= 'http://localhost:8080/hawkular/inventory'
       hash[:credentials] ||= {}
-      super(hash[:entrypoint], hash[:credentials])
+      InventoryClient.new(hash[:entrypoint], hash[:credentials])
     end
 
     # Retrieve the tenant id for the passed credentials.
@@ -380,9 +389,9 @@ module Hawkular::Inventory
         raise unless error.status_code == 409
       end
 
-      res = http_get("/feeds/#{the_feed}/metricTypes/#{metric_type_id}")
+      new_mt = http_get("/feeds/#{the_feed}/metricTypes/#{metric_type_id}")
 
-      MetricType.new(res)
+      MetricType.new(new_mt)
     end
 
     # Create a Metric and associate it with a resource.
@@ -390,7 +399,7 @@ module Hawkular::Inventory
     # @param [String] metric_id Id of the metric
     # @param [String] type_path Full path of the MetricType
     # @param [String] resource_id Id of the resource to associate the metric with
-    # @param [String] a (display) name for the metric. If nil, #metric_id is used.
+    # @param [String] metric_name a (display) name for the metric. If nil, #metric_id is used.
     # @return [Metric] The metric created or if it already existed the version from the server
     def create_metric_for_resource(feed_id, metric_id, type_path, resource_id, metric_name = nil)
       the_feed = hawk_escape feed_id
@@ -420,14 +429,30 @@ module Hawkular::Inventory
       the_metric
     end
 
-    # Listen on inventory changes regarding the resources
-    def resource_events
+    # Listen on inventory changes
+    # @param [String] type Type of entity for which we want the events.
+    # Allowed values: resource, metric, resourcetype, metrictype, feed, environment, operationtype, metadatapack
+    # @param [String] action What types of events are we interested in.
+    # Allowed values: created, updated, deleted, copied, registered
+    def events(type = 'resource', action = 'created')
       tenant_id = get_tenant
-      url = "#{entrypoint.gsub(/https?/, 'ws')}/ws/events?tenantId=#{tenant_id}"
+      url = "#{entrypoint.gsub(/https?/, 'ws')}/ws/events?tenantId=#{tenant_id}&type=#{type}&action=#{action}"
       @ws = WebSocket::Client::Simple.connect url do |client|
         client.on :message do |msg|
           parsed_message = JSON.parse(msg.data)
-          yield Resource.new(parsed_message)
+          entity = case type
+                   when 'resource'
+                     Resource.new(parsed_message)
+                   when 'resourcetype'
+                     ResourceType.new(parsed_message)
+                   when 'metric'
+                     Metric.new(parsed_message)
+                   when 'metrictype'
+                     MetricType.new(parsed_message)
+                   else
+                     BaseEntity.new(parsed_message)
+                   end
+          yield entity
         end
       end
     end
@@ -472,30 +497,27 @@ module Hawkular::Inventory
     end
   end
 
-  # A ResourceType is like a class definition for {Resource}s
-  # ResourceTypes are currently unique per feed, but one can assume
-  # that a two types with the same name of two different feeds are
-  # (more or less) the same.
-  class ResourceType
-    # @return [String] Full path of the type
+  # A Basic inventory entity with id, name, path and optional properties
+  class BaseEntity
+    # @return [String] Full path of the entity
     attr_reader :path
-    # @return [String] Name of the type
+    # @return [String] Name of the entity
     attr_reader :name
-    # @return [String] Name of the type
+    # @return [String] Name of the entity
     attr_reader :id
-    # @return [String] Feed this type belongs to
+    # @return [String] Feed this entity belongs to (or nil in case of a feedless entity)
     attr_reader :feed
-    # @return [String] Environment this Type belongs to - currently unused
+    # @return [String] Name of the environment for this entity
     attr_reader :env
-    # @return [String] Properties of this type
+    # @return [String] Properties of this entity
     attr_reader :properties
 
-    def initialize(rt_hash)
-      @id = rt_hash['id']
-      @path = rt_hash['path']
-      @name = rt_hash['name'] || rt_hash['id']
-      @properties = rt_hash['properties']
-      @_hash = rt_hash.dup
+    def initialize(hash)
+      @id = hash['id']
+      @path = hash['path']
+      @name = hash['name'] || @id
+      @properties = hash['properties'] || {}
+      @_hash = hash.dup
 
       return if @path.nil?
 
@@ -518,79 +540,38 @@ module Hawkular::Inventory
     end
   end
 
-  # A Resource is an instantiation of a {ResourceType}
-  class Resource
-    # @return [String] Full path of the resource including feed id
-    attr_reader :path
-    # @return [String] Name of the resource
-    attr_reader :name
-    # @return [String] Name of the resource
-    attr_reader :id
-    # @return [String] Name of the feed for this resource
-    attr_reader :feed
-    # @return [String] Name of the environment for this resource -- currently unused
-    attr_reader :env
-    # @return [String] Full path of the {ResourceType}
-    attr_reader :type_path
-    # @return [Hash<String,Object>] Hash with additional, resource specific properties
-    attr_reader :properties
-
-    def initialize(res_hash)
-      @id = res_hash['id']
-      @path = res_hash['path']
-      @properties = res_hash['properties'] || {}
-      @type_path = res_hash['type']['path']
-      @_hash = res_hash
-
-      tmp = @path.split('/')
-      tmp.each do |pair|
-        (key, val) = pair.split(';')
-        case key
-        when 'f'
-          @feed = val
-        when 'e'
-          @env = val
-        when 'r'
-          @name = val.nil? ? id : val
-        end
-      end
-      self
-    end
-
-    def to_h
-      @_hash.deep_dup
+  # A ResourceType is like a class definition for {Resource}s
+  # ResourceTypes are currently unique per feed, but one can assume
+  # that a two types with the same name of two different feeds are
+  # (more or less) the same.
+  class ResourceType < BaseEntity
+    def initialize(rt_hash)
+      super(rt_hash)
     end
   end
 
-  class MetricType
-    # @return [String] Full path of the metric (type)
-    attr_reader :path
-    # @return [String] Name of the metric
-    attr_reader :name
-    attr_reader :id
-    attr_reader :feed
+  # A Resource is an instantiation of a {ResourceType}
+  class Resource < BaseEntity
+    # @return [String] Full path of the {ResourceType}
+    attr_reader :type_path
+
+    def initialize(res_hash)
+      super(res_hash)
+      @type = res_hash['type']
+      @type_path = res_hash['type']['path']
+    end
+  end
+
+  class MetricType < BaseEntity
+    # @return [String] GAUGE, COUNTER, etc.
+    attr_reader :type
+    # @return [String] metric unit such as NONE, BYTES, etc.
     attr_reader :unit
     # @return [Long] collection interval in seconds
     attr_reader :collection_interval
 
     def initialize(type_hash)
-      @id = type_hash['id']
-      @path = type_hash['path']
-      @name = type_hash['name'] || @id
-      @_hash = type_hash.dup
-
-      tmp = path.split('/')
-      tmp.each do |pair|
-        (key, val) = pair.split(';')
-        case key
-        when 'f'
-          @feed = val
-        when 'e'
-          @env = val
-        when 'n'
-          @name = val.nil? ? id : val
-        end
-      end
+      super(type_hash)
       @type = type_hash['type']
       @unit = type_hash['unit']
       @collection_interval = type_hash['collectionInterval']
@@ -598,43 +579,20 @@ module Hawkular::Inventory
   end
 
   # Definition of a Metric inside the inventory.
-  class Metric
-    # @return [String] Full path of the metric (definition)
-    attr_reader :path
-    # @return [String] Name of the metric
-    attr_reader :name
-    attr_reader :id
-    attr_reader :feed
-    attr_reader :env
+  class Metric < BaseEntity
+    # @return [String] GAUGE, COUNTER, etc.
     attr_reader :type
+    # @return [String] metric unit such as NONE, BYTES, etc.
     attr_reader :unit
     # @return [Long] collection interval in seconds
     attr_reader :collection_interval
 
     def initialize(metric_hash)
-      @id = metric_hash['id']
-      @path = metric_hash['path']
-      m_name = metric_hash['name']
-      @name = !m_name.nil? ? m_name : @id
-      @_hash = metric_hash.dup
-
-      tmp = path.split('/')
-      tmp.each do |pair|
-        (key, val) = pair.split(';')
-        case key
-        when 'f'
-          @feed = val
-        when 'e'
-          @env = val
-        end
-      end
+      super(metric_hash)
       @type = metric_hash['type']['type']
+      @type_path = metric_hash['type']['path']
       @unit = metric_hash['type']['unit']
-      @collection_interval = metric_hash['collectionInterval']
-    end
-
-    def to_h
-      @_hash.dup
+      @collection_interval = metric_hash['type']['collectionInterval']
     end
   end
 
