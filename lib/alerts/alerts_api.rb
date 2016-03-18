@@ -194,7 +194,7 @@ module Hawkular::Alerts
   # "severity", "autoResolve", "actions"])
   class Trigger
     attr_accessor :id, :name, :context, :actions, :auto_disable, :auto_enable
-    attr_accessor :auto_resolve, :auto_resolve_alerts
+    attr_accessor :auto_resolve, :auto_resolve_alerts, :tags, :type
     attr_accessor :tenant, :description, :group, :severity, :event_type
     attr_reader :conditions, :dampenings
     attr_accessor :enabled, :actions
@@ -217,6 +217,9 @@ module Hawkular::Alerts
       @description = trigger_hash['description']
       @auto_enable = trigger_hash['autoEnable']
       @auto_disable = trigger_hash['autoDisable']
+      @context = trigger_hash['context']
+      @type = trigger_hash['type']
+      @tags = trigger_hash['tags']
       # acts = trigger_hash['actions']
       # acts.each { |a| @actions.push(Action.new(a)) } unless acts.nil?
     end
@@ -234,6 +237,9 @@ module Hawkular::Alerts
       trigger_hash['description'] = @description unless @description.nil?
       trigger_hash['autoEnable'] = @auto_enable unless @auto_enable.nil?
       trigger_hash['autoDisable'] = @auto_disable unless @auto_disable.nil?
+      trigger_hash['context'] = @context unless @context.nil?
+      trigger_hash['type'] = @type unless @type.nil?
+      trigger_hash['tags'] = @tags unless @tags.nil?
 
       trigger_hash['actions'] = []
       @actions.each { |d| trigger_hash['actions'].push d.to_h }
