@@ -1,4 +1,4 @@
-require 'hawkular'
+require 'hawkular/base_client'
 require 'websocket-client-simple'
 require 'json'
 
