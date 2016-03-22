@@ -1,0 +1,249 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://jdoe:password@localhost:8080/hawkular/inventory/resourceTypes
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Tue, 22 Mar 2016 21:35:54 GMT
+      X-Total-Count:
+      - '19'
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '3134'
+      Link:
+      - <http://localhost:8080/hawkular/inventory/resourceTypes>; rel="current"
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        [ {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/rt;URL",
+          "id" : "URL"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;50991ba5-529f-433a-a21f-e779ab16228f/rt;Operating%20System",
+          "name" : "Operating System",
+          "id" : "Operating System"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;50991ba5-529f-433a-a21f-e779ab16228f/rt;File%20Store",
+          "name" : "File Store",
+          "id" : "File Store"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;50991ba5-529f-433a-a21f-e779ab16228f/rt;Memory",
+          "name" : "Memory",
+          "id" : "Memory"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;50991ba5-529f-433a-a21f-e779ab16228f/rt;Processor",
+          "name" : "Processor",
+          "id" : "Processor"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;50991ba5-529f-433a-a21f-e779ab16228f/rt;WildFly%20Server",
+          "name" : "WildFly Server",
+          "id" : "WildFly Server"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;50991ba5-529f-433a-a21f-e779ab16228f/rt;Datasource",
+          "name" : "Datasource",
+          "id" : "Datasource"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;50991ba5-529f-433a-a21f-e779ab16228f/rt;JDBC%20Driver",
+          "name" : "JDBC Driver",
+          "id" : "JDBC Driver"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;50991ba5-529f-433a-a21f-e779ab16228f/rt;Deployment",
+          "name" : "Deployment",
+          "id" : "Deployment"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;50991ba5-529f-433a-a21f-e779ab16228f/rt;Singleton%20EJB",
+          "name" : "Singleton EJB",
+          "id" : "Singleton EJB"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;50991ba5-529f-433a-a21f-e779ab16228f/rt;Stateless%20Session%20EJB",
+          "name" : "Stateless Session EJB",
+          "id" : "Stateless Session EJB"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;50991ba5-529f-433a-a21f-e779ab16228f/rt;Message%20Driven%20EJB",
+          "name" : "Message Driven EJB",
+          "id" : "Message Driven EJB"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;50991ba5-529f-433a-a21f-e779ab16228f/rt;Servlet",
+          "name" : "Servlet",
+          "id" : "Servlet"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;50991ba5-529f-433a-a21f-e779ab16228f/rt;SubDeployment",
+          "name" : "SubDeployment",
+          "id" : "SubDeployment"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;50991ba5-529f-433a-a21f-e779ab16228f/rt;Transaction%20Manager",
+          "name" : "Transaction Manager",
+          "id" : "Transaction Manager"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;50991ba5-529f-433a-a21f-e779ab16228f/rt;Messaging%20Server",
+          "name" : "Messaging Server",
+          "id" : "Messaging Server"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;50991ba5-529f-433a-a21f-e779ab16228f/rt;JMS%20Topic",
+          "name" : "JMS Topic",
+          "id" : "JMS Topic"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;50991ba5-529f-433a-a21f-e779ab16228f/rt;JMS%20Queue",
+          "name" : "JMS Queue",
+          "id" : "JMS Queue"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;50991ba5-529f-433a-a21f-e779ab16228f/rt;Hawkular%20WildFly%20Agent",
+          "name" : "Hawkular WildFly Agent",
+          "id" : "Hawkular WildFly Agent"
+        } ]
+    http_version: 
+  recorded_at: Tue, 22 Mar 2016 21:35:54 GMT
+- request:
+    method: get
+    uri: http://jdoe:password@localhost:8080/hawkular/inventory/resourceTypes
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Tue, 22 Mar 2016 21:35:54 GMT
+      X-Total-Count:
+      - '19'
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '3134'
+      Link:
+      - <http://localhost:8080/hawkular/inventory/resourceTypes>; rel="current"
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        [ {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/rt;URL",
+          "id" : "URL"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;50991ba5-529f-433a-a21f-e779ab16228f/rt;Operating%20System",
+          "name" : "Operating System",
+          "id" : "Operating System"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;50991ba5-529f-433a-a21f-e779ab16228f/rt;File%20Store",
+          "name" : "File Store",
+          "id" : "File Store"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;50991ba5-529f-433a-a21f-e779ab16228f/rt;Memory",
+          "name" : "Memory",
+          "id" : "Memory"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;50991ba5-529f-433a-a21f-e779ab16228f/rt;Processor",
+          "name" : "Processor",
+          "id" : "Processor"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;50991ba5-529f-433a-a21f-e779ab16228f/rt;WildFly%20Server",
+          "name" : "WildFly Server",
+          "id" : "WildFly Server"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;50991ba5-529f-433a-a21f-e779ab16228f/rt;Datasource",
+          "name" : "Datasource",
+          "id" : "Datasource"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;50991ba5-529f-433a-a21f-e779ab16228f/rt;JDBC%20Driver",
+          "name" : "JDBC Driver",
+          "id" : "JDBC Driver"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;50991ba5-529f-433a-a21f-e779ab16228f/rt;Deployment",
+          "name" : "Deployment",
+          "id" : "Deployment"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;50991ba5-529f-433a-a21f-e779ab16228f/rt;Singleton%20EJB",
+          "name" : "Singleton EJB",
+          "id" : "Singleton EJB"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;50991ba5-529f-433a-a21f-e779ab16228f/rt;Stateless%20Session%20EJB",
+          "name" : "Stateless Session EJB",
+          "id" : "Stateless Session EJB"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;50991ba5-529f-433a-a21f-e779ab16228f/rt;Message%20Driven%20EJB",
+          "name" : "Message Driven EJB",
+          "id" : "Message Driven EJB"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;50991ba5-529f-433a-a21f-e779ab16228f/rt;Servlet",
+          "name" : "Servlet",
+          "id" : "Servlet"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;50991ba5-529f-433a-a21f-e779ab16228f/rt;SubDeployment",
+          "name" : "SubDeployment",
+          "id" : "SubDeployment"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;50991ba5-529f-433a-a21f-e779ab16228f/rt;Transaction%20Manager",
+          "name" : "Transaction Manager",
+          "id" : "Transaction Manager"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;50991ba5-529f-433a-a21f-e779ab16228f/rt;Messaging%20Server",
+          "name" : "Messaging Server",
+          "id" : "Messaging Server"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;50991ba5-529f-433a-a21f-e779ab16228f/rt;JMS%20Topic",
+          "name" : "JMS Topic",
+          "id" : "JMS Topic"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;50991ba5-529f-433a-a21f-e779ab16228f/rt;JMS%20Queue",
+          "name" : "JMS Queue",
+          "id" : "JMS Queue"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;50991ba5-529f-433a-a21f-e779ab16228f/rt;Hawkular%20WildFly%20Agent",
+          "name" : "Hawkular WildFly Agent",
+          "id" : "Hawkular WildFly Agent"
+        } ]
+    http_version: 
+  recorded_at: Tue, 22 Mar 2016 21:35:54 GMT
+recorded_with: VCR 3.0.1

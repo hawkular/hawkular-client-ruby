@@ -1,4 +1,4 @@
-require 'hawkular'
+require 'hawkular/base_client'
 
 # Token module provides access to the Secret Store REST API.
 module Hawkular::Token

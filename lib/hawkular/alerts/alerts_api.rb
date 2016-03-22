@@ -1,4 +1,4 @@
-require 'hawkular'
+require 'hawkular/base_client'
 require 'ostruct'
 
 # Alerts module provides access to Hawkular-Alerts.

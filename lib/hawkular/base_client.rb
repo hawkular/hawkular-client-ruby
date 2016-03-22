@@ -2,9 +2,6 @@ require 'base64'
 require 'addressable/uri'
 
 module Hawkular
-  module Metrics
-  end
-
   # This is the base functionality for all the clients,
   # that inherit from it. You should not directly use it,
   # but through the more specialized clients.

@@ -1,0 +1,89 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://jdoe:password@localhost:8080/hawkular/metrics/status
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Encoding:
+      - gzip
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '154'
+      Date:
+      - Tue, 22 Mar 2016 21:35:55 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAAC2LOQ7CMBAA/+KajeKYHNCFI0BBE0f0trMrrZQDOSYN4u8Y
+        iWqKmXmLOwbPbtHoV3Yo9kJ3ddudT2IjbuNzwBGnYALPEzzQL5ExSROpkjRp
+        eDID6PYIHlf+OZCFMspVcT68eAjQ+HmECwfQ11rG8+8LsjYjkiYvcyRpeyJK
+        t7vSZNJWqpBOfL6bgfA0mgAAAA==
+    http_version: 
+  recorded_at: Tue, 22 Mar 2016 21:35:55 GMT
+- request:
+    method: get
+    uri: http://jdoe:password@localhost:8080/hawkular/metrics/status
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Encoding:
+      - gzip
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '154'
+      Date:
+      - Tue, 22 Mar 2016 21:35:55 GMT
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAAC2LOQ7CMBAA/+KajeKYHNCFI0BBE0f0trMrrZQDOSYN4u8Y
+        iWqKmXmLOwbPbtHoV3Yo9kJ3ddudT2IjbuNzwBGnYALPEzzQL5ExSROpkjRp
+        eDID6PYIHlf+OZCFMspVcT68eAjQ+HmECwfQ11rG8+8LsjYjkiYvcyRpeyJK
+        t7vSZNJWqpBOfL6bgfA0mgAAAA==
+    http_version: 
+  recorded_at: Tue, 22 Mar 2016 21:35:55 GMT
+recorded_with: VCR 3.0.1
