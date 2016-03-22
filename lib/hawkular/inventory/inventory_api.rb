@@ -1,4 +1,4 @@
-require 'hawkular'
+require 'hawkular/base_client'
 require 'websocket-client-simple'
 require 'json'
 
@@ -531,6 +531,10 @@ module Hawkular::Inventory
           @env = val
         end
       end
+    end
+
+    def ==(other)
+      self.eql?(other) || other.class == self.class && other.id == @id
     end
 
     # Returns a hash representation of the resource type
