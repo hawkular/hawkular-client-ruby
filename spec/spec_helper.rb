@@ -12,8 +12,8 @@ require 'yaml'
 module Hawkular::Metrics::RSpec
   def setup_client(options = {})
     credentials = {
-      username: config['user'],
-      password: config['password']
+      username: options[:username].nil? ? config['user'] : options[:username],
+      password: options[:password].nil? ? config['password'] : options[:password]
     }
     @client = Hawkular::Metrics::Client.new(config['url'],
                                             credentials, options)

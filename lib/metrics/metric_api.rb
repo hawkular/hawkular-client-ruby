@@ -114,10 +114,15 @@ module Hawkular::Metrics
       # @param starts [Integer] optional timestamp (default now - 8h)
       # @param ends [Integer] optional timestamp (default now)
       # @param bucketDuration [String] optional interval (default no aggregation)
+      # @param percentiles [String] optional percentiles to calculate
+      # @param limit [Integer] optional limit the number of data points returned
+      # @param order [String] optional Data point sort order, based on timestamp (ASC, DESC)
       # @return [Array[Hash]] datapoints
       # @see #push_data #push_data for datapoint detail
-      def get_data(id, starts: nil, ends: nil, bucketDuration: nil, buckets: nil)
-        params = { start: starts, end: ends, bucketDuration: bucketDuration, buckets: buckets }
+      def get_data(id, starts: nil, ends: nil, bucketDuration: nil, buckets: nil, percentiles: nil, limit: nil,
+                   order: nil)
+        params = { start: starts, end: ends, bucketDuration: bucketDuration, buckets: buckets,
+                   percentiles: percentiles, limit: limit, order: order }
         resp = @client.http_get("/#{@resource}/#{ERB::Util.url_encode(id)}/data/?" +
                  encode_params(params))
         resp.is_a?(Array) ? resp : [] # API returns no content (empty Hash) instead of empty array

@@ -198,6 +198,42 @@ describe 'Counter metrics' do
     end
   end
 
+  it 'Should get metrics with limit and order' do
+    @client = setup_client(username: 'jdoe', password: 'password')
+    id = '33c6a285-495a-4442-a818-974b03408a6f'
+    now = 1_458_666_669_263
+
+    VCR.use_cassette('Counter_metrics/Should get metrics with limit and order',
+                     erb: { id: id, ends: now - t4h, starts: now - (2 * t4h),
+                            minus20: now - 20, minus30: now - 30, minus10: now - 10,
+                            now: now }, record: :none
+                    ) do
+      # create counter
+      @client.counters.create(id: id)
+
+      # push 3  values with timestamps
+      @client.counters.push_data(id, [{ value: 1, timestamp: now - 30 },
+                                      { value: 2, timestamp: now - 20 },
+                                      { value: 3, timestamp: now - 10 }])
+
+      data = @client.counters.get_data(id)
+      expect(data.size).to be 3
+
+      # push one value without timestamp (which means now)
+      @client.counters.push_data(id, value: 4)
+      data = @client.counters.get_data(id)
+      expect(data.size).to be 4
+
+      # retrieve values with limit
+      data = @client.counters.get_data(id, limit: 1)
+      expect(data.size).to be 1
+
+      # retrieve values from past
+      data = @client.counters.get_data(id, starts: now - (2 * t4h), ends: now - t4h)
+      expect(data.empty?).to be true
+    end
+  end
+
   it 'Should push metric data to non-existing counter' do
     id = SecureRandom.uuid
 
