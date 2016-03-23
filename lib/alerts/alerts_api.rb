@@ -55,10 +55,19 @@ module Hawkular::Alerts
       trigger
     end
 
-    def bulk_load_triggers(hash)
+    # Import multiple trigger or action definitions specified as a hash to the server.
+    # @param [Hash] hash The hash with the trigger and action definitions.
+    #               see the https://git.io/va5UO for more details about the structure
+    # @return [Hash] The newly entities as hash
+    def bulk_import_triggers(hash)
       http_post 'import/all', hash
     end
 
+    # Creates the trigger definition.
+    # @param [Trigger] trigger The trigger to be created
+    # @param [Array<Condition>] conditions Array of associated conditions
+    # @param [Array<Dampening>] dampenings Array of associated dampenings
+    # @return [Trigger] The newly created trigger
     def create_trigger(trigger, conditions = [], dampenings = [], _actions = [])
       full_trigger = {}
       full_trigger[:trigger] = trigger.to_h
@@ -72,10 +81,14 @@ module Hawkular::Alerts
       http_post 'triggers/trigger', full_trigger
     end
 
+    # Deletes the trigger definition.
+    # @param [String] trigger_id Id of the trigger to delete
     def delete_trigger(trigger_id)
       http_delete "/triggers/#{trigger_id}"
     end
 
+    # Obtains action definition/plugin from the server.
+    # @param [String] action_plugin Id of the action plugin to fetch. If nil, all the plugins are fetched
     def get_action_definition(action_plugin = nil)
       if action_plugin.nil?
         plugins = http_get('plugins')
@@ -89,16 +102,25 @@ module Hawkular::Alerts
       ret
     end
 
+    # Creates the action.
+    # @param [String] plugin The id of action definition/plugin
+    # @param [String] action_id The id of action
+    # @param [Hash] properties Troperties of action
+    # @return [Action] The newly created action
     def create_action(plugin, action_id, properties = {})
       the_plugin = hawk_escape plugin
       # Check if plugin exists
       http_get("/plugins/#{the_plugin}")
 
-      params = { actionId: action_id, actionPlugin: plugin, properties: properties }
-      ret = http_post('/actions', params)
+      payload = { actionId: action_id, actionPlugin: plugin, properties: properties }
+      ret = http_post('/actions', payload)
       Trigger::Action.new(ret)
     end
 
+    # Obtains one action of given action plugin from the server.
+    # @param [String] plugin Id of the action plugin
+    # @param [String] action_id Id of the action
+    # @return [Action] the selected trigger
     def get_action(plugin, action_id)
       the_plugin = hawk_escape plugin
       the_action_id = hawk_escape action_id
@@ -106,6 +128,9 @@ module Hawkular::Alerts
       Trigger::Action.new(ret)
     end
 
+    # Deletes the action of given action plugin.
+    # @param [String] plugin Id of the action plugin
+    # @param [String] action_id Id of the action
     def delete_action(plugin, action_id)
       the_plugin = hawk_escape plugin
       the_action_id = hawk_escape action_id
@@ -226,21 +251,20 @@ module Hawkular::Alerts
 
     def to_h
       trigger_hash = {}
-      trigger_hash['id'] = @id unless @id.nil?
-      trigger_hash['name'] = @name unless @name.nil?
-      trigger_hash['enabled'] = @enabled unless @enabled.nil?
-      trigger_hash['severity'] = @severity unless @severity.nil?
-      trigger_hash['autoResolve'] = @auto_resolve unless @auto_resolve.nil?
-      trigger_hash['autoResolveAlerts'] = @auto_resolve_alerts unless @auto_resolve_alerts.nil?
-      trigger_hash['eventType'] = @event_type unless @event_type.nil?
-      trigger_hash['tenantId'] = @tenant unless @tenant.nil?
-      trigger_hash['description'] = @description unless @description.nil?
-      trigger_hash['autoEnable'] = @auto_enable unless @auto_enable.nil?
-      trigger_hash['autoDisable'] = @auto_disable unless @auto_disable.nil?
-      trigger_hash['context'] = @context unless @context.nil?
-      trigger_hash['type'] = @type unless @type.nil?
-      trigger_hash['tags'] = @tags unless @tags.nil?
+      to_camel = lambda do |x|
+        ret = x.to_s.split('_').collect(&:capitalize).join
+        ret[0, 1].downcase + ret[1..-1]
+      end
+      fields = [:id, :name, :enabled, :severity, :auto_resolve, :auto_resolve_alerts, :event_type,
+                :description, :auto_enable, :auto_disable, :context, :type, :tags]
 
+      fields.each do |field|
+        camelized_field = to_camel.call(field)
+        field_value = __send__ field
+        trigger_hash[camelized_field] = field_value unless field_value.nil?
+      end
+
+      trigger_hash['tenantId'] = @tenant unless @tenant.nil?
       trigger_hash['actions'] = []
       @actions.each { |d| trigger_hash['actions'].push d.to_h }
 

@@ -55,7 +55,7 @@ module Hawkular::Alerts::RSpec
       json = IO.read('spec/integration/hello-world-definitions.json')
       trigger_hash = JSON.parse(json)
 
-      @client.bulk_load_triggers trigger_hash
+      @client.bulk_import_triggers trigger_hash
 
       trigger = @client.get_single_trigger 'hello-world-trigger', true
       expect(trigger).not_to be_nil
@@ -100,6 +100,7 @@ module Hawkular::Alerts::RSpec
         expect(trigger.conditions.size).to be(1)
         expect(trigger.dampenings.size).to be(0)
       ensure
+        # rubocop:disable Lint/HandleExceptions
         begin
           @client.delete_trigger(t.id)
         rescue
@@ -110,6 +111,7 @@ module Hawkular::Alerts::RSpec
         rescue
           # I am not interested
         end
+        # rubocop:enable Lint/HandleExceptions
       end
     end
 
@@ -361,8 +363,8 @@ module Hawkular::Alerts::RSpec
 
         metric_client.push_data(gauges: data)
 
-        # wait 2s for the alert engine to work
-        sleep 2
+        # wait 2s for the alert engine to work if we are live
+        sleep 2 if VCR.current_cassette.recording?
 
         # see if alert has fired
         alerts = @client.get_alerts_for_trigger 'my-cool-email-trigger'
@@ -370,6 +372,7 @@ module Hawkular::Alerts::RSpec
         alerts.each { |al| @client.resolve_alert(al.id, 'Heiko', 'Hello Ruby World :-)') }
 
       ensure
+        # rubocop:disable Lint/HandleExceptions
         begin
           @client.delete_trigger(t.id)
         rescue
@@ -385,6 +388,7 @@ module Hawkular::Alerts::RSpec
         rescue
           # I am not interested
         end
+        # rubocop:enable Lint/HandleExceptions
       end
     end
   end
