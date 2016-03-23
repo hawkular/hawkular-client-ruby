@@ -6,6 +6,7 @@ _hawkular-client_ project.
 === V 0.2.1
 
 * Add support to create items in inventory
+* Add support to percentiles, limit and order parameters in Metrics API
 
 === V 0.2.0
 
