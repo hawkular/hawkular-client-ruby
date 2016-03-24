@@ -1,17 +1,22 @@
 == Changes
 
-This document describes the relevant changes beween releases of the
+This document describes the relevant changes between releases of the
 _hawkular-client_ project.
 
 === V 0.2.1
 
 * Add support to create items in inventory
 * Add support to percentiles, limit and order parameters in Metrics API
+* Add support to run operations on WildFly agent via websockets
+* Add support to create items in alerts
+* Add support for auth tokens (can be created by the client on the server)
+* Add support to consume inventory events via websockets
+* Add support to (offline) test websockets by recorded communication (VCR)
 
 === V 0.2.0
 
 * Add support for Hawkular-Inventory and Hawkular-Alerts
-* Reshuffeling of inner classes
+* Reshuffling of inner classes
 * The sub-url that is passed to `http_*` methods is escaped via
   `Addressable::URI.escape()`
 
@@ -23,5 +28,5 @@ _hawkular-client_ project.
 === V 0.1.1
 
 * Add VCR tests
-* Metrics::Client.new now requries a hash for credentials
+* Metrics::Client.new now requires a hash for credentials
 * Code cleanup and enforcement via RuboCop
