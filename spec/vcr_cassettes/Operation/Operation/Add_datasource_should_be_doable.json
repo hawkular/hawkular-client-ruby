@@ -1,0 +1,26 @@
+[
+  [
+    {
+      "operation": "read",
+      "type": "text",
+      "data": "WelcomeResponse={\"sessionId\":\"qcwrm1xFu6tGw4f3vpA4dGJp5g-3MS7AH0QbD6iA\"}"
+    },
+    {
+      "operation": "write",
+      "data": "AddDatasourceRequest={\"resourcePath\":\"/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;41df9f9c-72a6-457b-a0ee-ee1740846254/r;Local~~\",\"xaDatasource\":false,\"datasourceName\":\"CreatedByRubyDSrandom\",\"jndiName\":\"java:jboss/datasources/CreatedByRubyDSrandom\",\"driverName\":\"h2\",\"driverClass\":\"org.h2.Driver\",\"connectionUrl\":\"dbc:h2:mem:ruby;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE\",\"datasourceProperties\":{\"someKey\":\"someValue\"},\"userName\":\"sa\",\"password\":\"sa\",\"securityDomain\":\"other\",\"authentication\":{\"username\":\"jdoe\",\"password\":\"password\"}}"
+    },
+    {
+      "operation": "read",
+      "type": "text",
+      "data": "GenericSuccessResponse={\"message\":\"The request has been forwarded to feed [41df9f9c-72a6-457b-a0ee-ee1740846254] (MessageId=ID:3e7fdf11-f160-11e5-a0e2-cd57e90697e0)\"}"
+    },
+    {
+      "operation": "read",
+      "type": "text",
+      "data": "AddDatasourceResponse={\"xaDatasource\":false,\"datasourceName\":\"CreatedByRubyDSrandom\",\"resourcePath\":\"/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;41df9f9c-72a6-457b-a0ee-ee1740846254/r;Local~~\",\"destinationSessionId\":\"qcwrm1xFu6tGw4f3vpA4dGJp5g-3MS7AH0QbD6iA\",\"status\":\"OK\",\"message\":\"Added Datasource: CreatedByRubyDSrandom\"}"
+    },
+    {
+      "operation": "close"
+    }
+  ]
+]

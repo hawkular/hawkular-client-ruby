@@ -5,37 +5,69 @@ require 'securerandom'
 include Hawkular::Inventory
 include Hawkular::Operations
 
-# WebSocket communication cannot be faked via VCR cassettes
+# examples for operations, it uses the websocket communication
 module Hawkular::Operations::RSpec
   HOST = 'localhost:8080'
-  describe 'Websocket connection' do
-    it 'should be established', :websocket do
-      client = OperationsClient.new(host: HOST,
-                                    credentials: {
-                                      username: 'jdoe',
-                                      password: 'password'
-                                    })
-      ws = client.ws
-      expect(ws).not_to be nil
-      expect(ws.open?).to be true
+  describe 'Operation/Websocket connection', vcr: { decode_compressed_response: true } do
+    let(:example) do |e|
+      e
+    end
+
+    it 'should be established' do
+      VCR::WebSocket.configure do |c|
+        c.hook_uris = [HOST]
+      end
+
+      VCR::WebSocket.record(example, self) do
+        client = OperationsClient.new(host: HOST,
+                                      wait_time: 0,
+                                      credentials: {
+                                        username: 'jdoe',
+                                        password: 'password'
+                                      })
+        ws = client.ws
+        expect(ws).not_to be nil
+        expect(ws.open?).to be true
+      end
     end
   end
 
-  describe 'Operation', :websocket do
+  describe 'Operation/Operation', :websocket, vcr: { decode_compressed_response: true } do
+    let(:example) do |e|
+      e
+    end
+
     before(:all) do
-      VCR.turn_off!(ignore_cassettes: true)
-      WebMock.allow_net_connect!
-      @creds = { username: 'jdoe', password: 'password' }
-      inventory_client = InventoryClient.new(credentials: @creds)
-      @tenant_id = inventory_client.get_tenant
-      @feed_id = inventory_client.list_feeds[0]
-      @random_uuid = SecureRandom.uuid
+      # TODO: erb substitution
+      VCR.use_cassette('Operation/Helpers/get_tenant', decode_compressed_response: true) do
+        @creds = { username: 'jdoe', password: 'password' }
+        inventory_client = InventoryClient.create(credentials: @creds)
+        @tenant_id = inventory_client.get_tenant
+        # @feed_id = inventory_client.list_feeds[0]
+        @feed_id = '41df9f9c-72a6-457b-a0ee-ee1740846254'
+        # @random_uuid = SecureRandom.uuid  comment this out once the erb support is there
+        @random_uuid = 'random'
+      end
     end
 
     before(:each) do |ex|
       unless ex.metadata[:skip_open]
-        @client = OperationsClient.new(credentials: @creds)
+        @client = OperationsClient.new(credentials: @creds,
+                                       wait_time: 0)
         @ws = @client.ws
+      end
+    end
+
+    around(:each) do |ex|
+      if ex.metadata[:websocket]
+        VCR::WebSocket.configure do |c|
+          c.hook_uris = [HOST]
+        end
+        VCR::WebSocket.record(ex, self) do
+          ex.run
+        end
+      else
+        ex.run
       end
     end
 
@@ -44,13 +76,6 @@ module Hawkular::Operations::RSpec
         @client.close_connection!
         @client = nil
         @ws = nil
-      end
-    end
-
-    after(:all) do
-      if ENV['VCR_OFF'] != '1'
-        VCR.turn_on!
-        WebMock.disable_net_connect!
       end
     end
 
@@ -137,7 +162,7 @@ module Hawkular::Operations::RSpec
       expect(actual_data[:error]).to start_with('Could not perform [Redeploy] on')
     end
 
-    it 'Disable/Undeploy should be performed and eventually respond with success' do
+    it 'Undeploy should be performed and eventually respond with success' do
       wf_server_resource_id = 'Local~~'
       alerts_war_resource_id = 'Local~%2Fdeployment%3Dhawkular-alerts-actions-email.war'
       path = CanonicalPath.new(tenant_id: @tenant_id,
@@ -267,7 +292,7 @@ module Hawkular::Operations::RSpec
       expect(actual_data['message']).to start_with('Performed [Redeploy] on')
     end
 
-    it 'add deployment should be doable' do
+    it 'Add deployment should be doable' do
       wf_server_resource_id = 'Local~~'
       app_name = 'sample.war'
       war_file = IO.binread("#{File.dirname(__FILE__)}/../resources/#{app_name}")

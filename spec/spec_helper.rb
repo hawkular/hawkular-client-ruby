@@ -34,11 +34,12 @@ module Hawkular::Metrics::RSpec
 end
 
 module Hawkular::Operations::RSpec
-  SLEEP_SECONDS = 0.05
-  MAX_ATTEMPTS = 50
+  SLEEP_SECONDS = 0.04
+  MAX_ATTEMPTS = 60
 
   def wait_for(object)
-    sleep_interval = SLEEP_SECONDS * (ENV['VCR_OFF'] == '1' ? 1 : 10)
+    fast = VCR::WebSocket.cassette && !VCR::WebSocket.cassette.recording?
+    sleep_interval = SLEEP_SECONDS * (fast ? 1 : 10)
     attempt = 0
     sleep sleep_interval while object[:data].nil? && (attempt += 1) < MAX_ATTEMPTS
     if attempt == MAX_ATTEMPTS
@@ -54,10 +55,8 @@ RSpec.configure do |config|
   config.include Hawkular::Metrics::RSpec
   config.include Hawkular::Operations::RSpec
 
-  # skip the tests that require websocket communication (cannot be recorded by VCR)
-  if ENV['WEBSOCKET_ON'].nil? || ENV['WEBSOCKET_ON'] != '1'
-    config.filter_run_excluding :websocket
-  end
+  # skip the tests that have the :skip metadata on them
+  config.filter_run_excluding :skip
 
   # Sometimes one wants to check if the real api has
   # changed, so turn off VCR and use live connections
@@ -65,6 +64,7 @@ RSpec.configure do |config|
   if ENV['VCR_OFF'] == '1'
     VCR.eject_cassette
     VCR.turn_off!(ignore_cassettes: true)
+    VCR::WebSocket.turn_off!
     WebMock.allow_net_connect!
     puts 'VCR is turned off!'
   end

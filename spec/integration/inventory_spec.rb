@@ -3,7 +3,7 @@ require "#{File.dirname(__FILE__)}/../spec_helper"
 require 'securerandom'
 
 module Hawkular::Inventory::RSpec
-  describe 'Tenants', :vcr do
+  describe 'Inventory/Tenants', :vcr do
     it 'Should Get Tenant For Explicit Credentials' do
       # get the client for given endpoint for given credentials
       creds = { username: 'jdoe', password: 'password' }
@@ -268,76 +268,81 @@ module Hawkular::Inventory::RSpec
       expect { @client.create_metric_type feed_id, 'abc', 'FOOBaR' }.to raise_error(RuntimeError, /Unknown type FOOBAR/)
     end
 
+    let(:example) do |e|
+      e
+    end
+
     it 'Client should listen on various inventory events', :websocket do
-      # turn VCR off
-      VCR.eject_cassette
-      VCR.turn_off!(ignore_cassettes: true)
-      WebMock.allow_net_connect!
-
-      prefix = SecureRandom.uuid
-      id_1 = prefix + '-r126'
-      id_2 = prefix + '-r127'
-      id_3 = prefix + '-r128'
-
-      new_resource_events = {}
-      resources_closable = @client.events do |resource|
-        new_resource_events[resource.id] = resource
+      VCR::WebSocket.configure do |c|
+        c.hook_uris = ['localhost:8080']
       end
 
-      deleted_feed_events = {}
-      feed_deleted_closable = @client.events('feed', 'deleted') do |feed|
-        deleted_feed_events[feed.id] = feed
-      end
+      VCR::WebSocket.record(example, self) do
+        # TODO: erb
+        # prefix = SecureRandom.uuid
+        prefix = 'random'
 
-      new_resource_types_events = {}
-      resource_type_closable = @client.events('resourcetype') do |resource_type|
-        new_resource_types_events[resource_type.id] = resource_type
-      end
+        id_1 = prefix + '-r126'
+        id_2 = prefix + '-r127'
+        id_3 = prefix + '-r128'
 
-      registered_feed_events = {}
-      feeds_closable = @client.events('feed', 'created') do |feed|
-        registered_feed_events[feed.id] = feed
-      end
+        new_resource_events = {}
+        resources_closable = @client.events do |resource|
+          new_resource_events[resource.id] = resource
+        end
 
-      feed_id = prefix + '-feed'
-      resource_type_id = prefix + '-rt-123'
-      resource_type_name = 'ResourceType'
-      @client.create_feed feed_id
-      ret = @client.create_resource_type feed_id, resource_type_id, resource_type_name
-      type_path = ret.path
+        deleted_feed_events = {}
+        feed_deleted_closable = @client.events('feed', 'deleted') do |feed|
+          deleted_feed_events[feed.id] = feed
+        end
 
-      # create 3 resources
-      @client.create_resource feed_id, type_path, id_1, 'My Resource 1', 'version' => 1.0
-      @client.create_resource feed_id, type_path, id_2, 'My Resource 2', 'version' => 1.1
-      resources_closable.close
-      @client.create_resource feed_id, type_path, id_3, 'My Resource 3', 'version' => 1.2
+        new_resource_types_events = {}
+        resource_type_closable = @client.events('resourcetype') do |resource_type|
+          new_resource_types_events[resource_type.id] = resource_type
+        end
 
-      @client.delete_feed feed_id
+        registered_feed_events = {}
+        feeds_closable = @client.events('feed', 'created') do |feed|
+          registered_feed_events[feed.id] = feed
+        end
 
-      # wait for the data
-      sleep 2
-      [feed_deleted_closable, resource_type_closable, feeds_closable].each(&:close)
-      expect(new_resource_events[id_1]).not_to be_nil
-      expect(new_resource_events[id_1].properties['version']).to eq(1.0)
-      expect(new_resource_events[id_2]).not_to be_nil
-      expect(new_resource_events[id_2].properties['version']).to eq(1.1)
-      # resource with id_3 should not be among events, because we stopped listening before creating the 3rd one
-      expect(new_resource_events[id_3]).to be_nil
+        feed_id = prefix + '-feed'
+        resource_type_id = prefix + '-rt-123'
+        resource_type_name = 'ResourceType'
 
-      expect(registered_feed_events[feed_id]).not_to be_nil
-      expect(registered_feed_events[feed_id].id).to eq(feed_id)
+        VCR.use_cassette('Inventory/Helpers/generate_some_events_for_websocket') do
+          @client.create_feed feed_id
+          ret = @client.create_resource_type feed_id, resource_type_id, resource_type_name
+          type_path = ret.path
 
-      expect(deleted_feed_events[feed_id]).not_to be_nil
-      expect(deleted_feed_events[feed_id].id).to eq(feed_id)
+          # create 3 resources
+          @client.create_resource feed_id, type_path, id_1, 'My Resource 1', 'version' => 1.0
+          @client.create_resource feed_id, type_path, id_2, 'My Resource 2', 'version' => 1.1
+          resources_closable.close
+          @client.create_resource feed_id, type_path, id_3, 'My Resource 3', 'version' => 1.2
 
-      expect(new_resource_types_events[resource_type_id]).not_to be_nil
-      expect(new_resource_types_events[resource_type_id].id).to eq(resource_type_id)
-      expect(new_resource_types_events[resource_type_id].name).to eq(resource_type_name)
+          @client.delete_feed feed_id
+        end
 
-      # turn VCR on again if enabled
-      if ENV['VCR_OFF'] != '1'
-        VCR.turn_on!
-        WebMock.disable_net_connect!
+        # wait for the data
+        sleep 2 if !VCR::WebSocket.cassette || VCR::WebSocket.cassette.recording?
+        [feed_deleted_closable, resource_type_closable, feeds_closable].each(&:close)
+        expect(new_resource_events[id_1]).not_to be_nil
+        expect(new_resource_events[id_1].properties['version']).to eq(1.0)
+        expect(new_resource_events[id_2]).not_to be_nil
+        expect(new_resource_events[id_2].properties['version']).to eq(1.1)
+        # resource with id_3 should not be among events, because we stopped listening before creating the 3rd one
+        expect(new_resource_events[id_3]).to be_nil
+
+        expect(registered_feed_events[feed_id]).not_to be_nil
+        expect(registered_feed_events[feed_id].id).to eq(feed_id)
+
+        expect(deleted_feed_events[feed_id]).not_to be_nil
+        expect(deleted_feed_events[feed_id].id).to eq(feed_id)
+
+        expect(new_resource_types_events[resource_type_id]).not_to be_nil
+        expect(new_resource_types_events[resource_type_id].id).to eq(resource_type_id)
+        expect(new_resource_types_events[resource_type_id].name).to eq(resource_type_name)
       end
     end
 
