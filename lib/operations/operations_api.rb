@@ -236,7 +236,7 @@ module Hawkular::Operations
 
     def prepare_payload_hash(ignored_params, hash)
       # it filters out ignored params and convert keys from snake_case to camelCase
-      hash.select { |k, _| !ignored_params.include? k }.map { |k, v| [to_camel_case(k.to_s).to_sym, v] }.to_h
+      Hash[hash.select { |k, _| !ignored_params.include? k }.map { |k, v| [to_camel_case(k.to_s).to_sym, v] }]
     end
 
     def to_camel_case(str)
