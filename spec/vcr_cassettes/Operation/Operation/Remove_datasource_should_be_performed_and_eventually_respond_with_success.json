@@ -1,0 +1,26 @@
+[
+  [
+    {
+      "operation": "read",
+      "type": "text",
+      "data": "WelcomeResponse={\"sessionId\":\"-umm9fxmv4Y-DjjyC78VeAUYA5nWSyQ0p8nz2E_o\"}"
+    },
+    {
+      "operation": "write",
+      "data": "RemoveDatasourceRequest={\"resourcePath\":\"/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;41df9f9c-72a6-457b-a0ee-ee1740846254/r;Local~~/r;Local~%2Fsubsystem%3Ddatasources%2Fdata-source%3DCreatedByRubyDSrandom\",\"authentication\":{\"username\":\"jdoe\",\"password\":\"password\"}}"
+    },
+    {
+      "operation": "read",
+      "type": "text",
+      "data": "GenericSuccessResponse={\"message\":\"The request has been forwarded to feed [41df9f9c-72a6-457b-a0ee-ee1740846254] (MessageId=ID:447d60ec-f160-11e5-a0e2-cd57e90697e0)\"}"
+    },
+    {
+      "operation": "read",
+      "type": "text",
+      "data": "RemoveDatasourceResponse={\"resourcePath\":\"/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;41df9f9c-72a6-457b-a0ee-ee1740846254/r;Local~~/r;Local~%2Fsubsystem%3Ddatasources%2Fdata-source%3DCreatedByRubyDSrandom\",\"destinationSessionId\":\"-umm9fxmv4Y-DjjyC78VeAUYA5nWSyQ0p8nz2E_o\",\"status\":\"OK\",\"message\":\"Performed [Remove] on a [Datasource] given by Inventory path [/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;41df9f9c-72a6-457b-a0ee-ee1740846254/r;Local~~/r;Local~%2Fsubsystem%3Ddatasources%2Fdata-source%3DCreatedByRubyDSrandom]\",\"serverRefreshIndicator\":\"RELOAD-REQUIRED\"}"
+    },
+    {
+      "operation": "close"
+    }
+  ]
+]

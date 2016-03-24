@@ -13,7 +13,7 @@ A Ruby Hawkular Client.
 * Start a feature/bugfix branch
 * Commit and push until you are happy with your contribution
 * Make sure to add tests for it. This is important so I don't break it in a future version unintentionally.
-* Run your code through RuboCop (which is default when running `rake`) and fix complaints.
+* Run your code through RuboCop (which is default when running +rake+) and fix complaints.
 * When you open a pull request, watch out for failures on Travis.
 * Please try not to mess with the Rakefile, version, or history. If you want to have your own version, or is
   otherwise necessary, that is fine, but please isolate to its own commit so we can cherry-pick around it.
@@ -23,12 +23,12 @@ A Ruby Hawkular Client.
 Integration tests are recorded and played against cassettes recorded with VCR
 (http://www.relishapp.com/vcr/vcr/docs)
 
-* Edit the endpoint properties in the file `spec/endpoint.yml`(user, password and host name) if needed
+* Edit the endpoint properties in the file +spec/endpoint.yml+ (user, password and host name) if needed
 * From command line run
     rake spec
-* To run the tests against a live server, set VCR_OFF to 1 as in
+* To run the tests against a live server, set +VCR_OFF+ to +1+ as in
     VCR_OFF=1 rake spec
-* To run the tests for operations against a live server using the WebSockets, set WEBSOCKET_ON to 1 as in
+* To run the tests for operations against a live server using the WebSockets, set +WEBSOCKET_ON+ to +1+ as in
     WEBSOCKET_ON=1 rake spec
 (WebSocket communication can't be recorded by VCR)
 

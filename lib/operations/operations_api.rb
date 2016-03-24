@@ -47,12 +47,14 @@ module Hawkular::Operations
     #
     # @option args [String]  :host base url of Hawkular - e.g http://localhost:8080
     # @option args [Hash{String=>String}]  :credentials Hash of {username, password} or token
+    # @option args [Fixnum]  :wait_time Time in seconds describing how long the constructor should block - handshake
     #
     # @example
     #   Hawkular::Operations::OperationsClient.new(credentials: {username: 'jdoe', password: 'password'})
     def initialize(args)
       args[:host] ||= 'localhost:8080'
       args[:credentials] ||= {}
+      args[:wait_time] ||= 0.5
       super(args[:host], args[:credentials])
       # note: if we start using the secured WS, change the protocol to wss://
       url = "ws://#{entrypoint}/hawkular/command-gateway/ui/ws"
@@ -66,7 +68,7 @@ module Hawkular::Operations
           end
         end
       end
-      sleep 1
+      sleep args[:wait_time]
     end
 
     # Closes the WebSocket connection
@@ -202,6 +204,7 @@ module Hawkular::Operations
     end
 
     def handle_message(operation_name, operation_payload, &callback)
+      client = @ws
       # register a callback handler
       @ws.on :message do |msg|
         parsed = msg.data.to_msg_hash
@@ -233,7 +236,7 @@ module Hawkular::Operations
 
     def prepare_payload_hash(ignored_params, hash)
       # it filters out ignored params and convert keys from snake_case to camelCase
-      hash.select { |k, _| !ignored_params.include? k }.map { |k, v| [to_camel_case(k.to_s).to_sym, v] }.to_h
+      Hash[hash.select { |k, _| !ignored_params.include? k }.map { |k, v| [to_camel_case(k.to_s).to_sym, v] }]
     end
 
     def to_camel_case(str)
