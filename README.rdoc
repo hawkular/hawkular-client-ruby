@@ -1,5 +1,6 @@
-{<img src="https://coveralls.io/repos/github/hawkular/hawkular-client-ruby/badge.svg?branch=master" alt="Coverage Status" />}[https://coveralls.io/github/hawkular/hawkular-client-ruby?branch=master]
 {<img src="https://travis-ci.org/hawkular/hawkular-client-ruby.svg?branch=master" alt="Build Status" />}[https://travis-ci.org/hawkular/hawkular-client-ruby]
+{<img src="https://coveralls.io/repos/github/hawkular/hawkular-client-ruby/badge.svg?branch=master" alt="Coverage Status" />}[https://coveralls.io/github/hawkular/hawkular-client-ruby?branch=master]
+{<img src="https://codeclimate.com/github/hawkular/hawkular-client-ruby/badges/gpa.svg" />}[https://codeclimate.com/github/hawkular/hawkular-client-ruby]
 
 = hawkular-client-ruby
 
@@ -28,9 +29,6 @@ Integration tests are recorded and played against cassettes recorded with VCR
     rake spec
 * To run the tests against a live server, set +VCR_OFF+ to +1+ as in
     VCR_OFF=1 rake spec
-* To run the tests for operations against a live server using the WebSockets, set +WEBSOCKET_ON+ to +1+ as in
-    WEBSOCKET_ON=1 rake spec
-(WebSocket communication can't be recorded by VCR)
 
 == Logging
 
