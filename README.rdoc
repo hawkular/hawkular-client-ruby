@@ -6,6 +6,8 @@
 
 A Ruby Hawkular Client.
 
+Documentation[http://www.hawkular.org/hawkular-client-ruby/]
+
 == Contributing to hawkular-client-ruby
 
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet
