@@ -62,6 +62,16 @@
     <iframe id="search_frame"></iframe>
 
     <div id="content"><div id='filecontents'>
+<p><a href="https://travis-ci.org/hawkular/hawkular-client-ruby"><img
+src="https://travis-ci.org/hawkular/hawkular-client-ruby.svg?branch=master"
+alt="Build Status" /></a> <a
+href="https://coveralls.io/github/hawkular/hawkular-client-ruby?branch=master"><img
+src="https://coveralls.io/repos/github/hawkular/hawkular-client-ruby/badge.svg?branch=master"
+alt="Coverage Status" /></a> <a
+href="https://codeclimate.com/github/hawkular/hawkular-client-ruby"><img
+src="https://codeclimate.com/github/hawkular/hawkular-client-ruby/badges/gpa.svg"
+/></a></p>
+
 <h1 id="label-hawkular-client-ruby">hawkular-client-ruby</h1>
 
 <p>A Ruby Hawkular Client.</p>
@@ -83,18 +93,34 @@ requested it and/or contributed it</p>
 <p>Make sure to add tests for it. This is important so I don&#39;t break it in
 a future version unintentionally.</p>
 </li><li>
+<p>Run your code through RuboCop (which is default when running
+<code>rake</code>) and fix complaints.</p>
+</li><li>
+<p>When you open a pull request, watch out for failures on Travis.</p>
+</li><li>
 <p>Please try not to mess with the Rakefile, version, or history. If you want
 to have your own version, or is otherwise necessary, that is fine, but
-please isolate to its own commit so I can cherry-pick around it.</p>
+please isolate to its own commit so we can cherry-pick around it.</p>
 </li></ul>
 
 <h2 id="label-Running+the+tests">Running the tests</h2>
+
+<p>Integration tests are recorded and played against cassettes recorded with
+VCR (<a
+href="http://www.relishapp.com/vcr/vcr/docs">www.relishapp.com/vcr/vcr/docs</a>)</p>
 <ul><li>
-<p>Copy the file spec/endpoint.yml.example to spec/endpoint.yml</p>
+<p>Edit the endpoint properties in the file <code>spec/endpoint.yml</code>
+(user, password and host name) if needed</p>
 </li><li>
-<p>Edit the endpoint properties (user, password and host name)</p>
+<p>From command line run</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_rake'>rake</span> <span class='id identifier rubyid_spec'>spec</span>
+</code></pre>
 </li><li>
-<p>From command line run =&gt; rake spec</p>
+<p>To run the tests against a live server, set <code>VCR_OFF</code> to
+<code>1</code> as in</p>
+
+<pre class="code ruby"><code class="ruby">VCR_OFF=1 rake spec</code></pre>
 </li></ul>
 
 <h2 id="label-Logging">Logging</h2>
@@ -114,9 +140,9 @@ href="http://yardoc.org">yardoc.org</a></p>
 </div></div>
 
     <div id="footer">
-  Generated on Tue Jul 28 15:29:21 2015 by
+  Generated on Tue Mar 29 18:42:45 2016 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.8.7.6 (ruby-2.2.2).
+  0.8.7.6 (ruby-2.2.4).
 </div>
 
   </body>

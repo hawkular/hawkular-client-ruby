@@ -73,10 +73,12 @@
   
     <dt class="r1">Inherits:</dt>
     <dd class="r1">
-      <span class="inheritName">Object</span>
+      <span class="inheritName"><span class='object_link'><a href="../BaseClient.html" title="Hawkular::BaseClient (class)">BaseClient</a></span></span>
       
         <ul class="fullTree">
           <li>Object</li>
+          
+            <li class="next"><span class='object_link'><a href="../BaseClient.html" title="Hawkular::BaseClient (class)">BaseClient</a></span></li>
           
             <li class="next">Hawkular::Metrics::Client</li>
           
@@ -94,14 +96,25 @@
   
   
     <dt class="r2 last">Defined in:</dt>
-    <dd class="r2 last">lib/hawkularclient.rb<span class="defines">,<br />
-  lib/metrics/metric_api.rb,<br /> lib/metrics/tenant_api.rb</span>
+    <dd class="r2 last">lib/metrics/metric_api.rb<span class="defines">,<br />
+  lib/metrics/tenant_api.rb,<br /> lib/metrics/metrics_client.rb</span>
 </dd>
   
 </dl>
 <div class="clear"></div>
 
-<h2>Defined Under Namespace</h2>
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>Client to access the Hawkular_metrics subsystem</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><h2>Defined Under Namespace</h2>
 <p class="children">
   
     
@@ -250,7 +263,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#http_delete-instance_method" title="#http_delete (instance method)">- (Object) <strong>http_delete</strong>(suburl, headers = {}) </a>
+      <a href="#fetch_version_and_status-instance_method" title="#fetch_version_and_status (instance method)">- (Hash{String=&gt;String}) <strong>fetch_version_and_status</strong> </a>
     
 
     
@@ -264,7 +277,10 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Return version and status information for the used version of
+Hawkular-Metrics.</p>
+</div></span>
   
 </li>
 
@@ -272,73 +288,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#http_get-instance_method" title="#http_get (instance method)">- (Object) <strong>http_get</strong>(suburl, headers = {}) </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'></div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#http_post-instance_method" title="#http_post (instance method)">- (Object) <strong>http_post</strong>(suburl, hash, headers = {}) </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'></div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#http_put-instance_method" title="#http_put (instance method)">- (Object) <strong>http_put</strong>(suburl, hash, headers = {}) </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'></div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#initialize-instance_method" title="#initialize (instance method)">- (Client) <strong>initialize</strong>(entrypoint = &#39;http://localhost:8080/hawkular/metrics&#39;, username = nil, password = nil, options = {}) </a>
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (Client) <strong>initialize</strong>(entrypoint = &#39;http://localhost:8080/hawkular/metrics&#39;, credentials = {}, options = {}) </a>
     
 
     
@@ -356,30 +306,6 @@
   
     <span class="summary_desc"><div class='inline'>
 <p>Construct a new Hawkular Metrics client class.</p>
-</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#now-instance_method" title="#now (instance method)">- (Integer) <strong>now</strong> </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'>
-<p>timestamp of current time.</p>
 </div></span>
   
 </li>
@@ -412,13 +338,24 @@
     </ul>
   
 
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods inherited from <span class='object_link'><a href="../BaseClient.html" title="Hawkular::BaseClient (class)">BaseClient</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../BaseClient.html#base_64_credentials-instance_method" title="Hawkular::BaseClient#base_64_credentials (method)">#base_64_credentials</a></span>, <span class='object_link'><a href="../BaseClient.html#generate_query_params-instance_method" title="Hawkular::BaseClient#generate_query_params (method)">#generate_query_params</a></span>, <span class='object_link'><a href="../BaseClient.html#hawk_escape-instance_method" title="Hawkular::BaseClient#hawk_escape (method)">#hawk_escape</a></span>, <span class='object_link'><a href="../BaseClient.html#http_delete-instance_method" title="Hawkular::BaseClient#http_delete (method)">#http_delete</a></span>, <span class='object_link'><a href="../BaseClient.html#http_get-instance_method" title="Hawkular::BaseClient#http_get (method)">#http_get</a></span>, <span class='object_link'><a href="../BaseClient.html#http_post-instance_method" title="Hawkular::BaseClient#http_post (method)">#http_post</a></span>, <span class='object_link'><a href="../BaseClient.html#http_put-instance_method" title="Hawkular::BaseClient#http_put (method)">#http_put</a></span>, <span class='object_link'><a href="../BaseClient.html#now-instance_method" title="Hawkular::BaseClient#now (method)">#now</a></span></p>
 <div id="constructor_details" class="method_details_list">
   <h2>Constructor Details</h2>
   
     <div class="method_details first">
   <h3 class="signature first" id="initialize-instance_method">
   
-    - (<tt><span class='object_link'><a href="" title="Hawkular::Metrics::Client (class)">Client</a></span></tt>) <strong>initialize</strong>(entrypoint = &#39;http://localhost:8080/hawkular/metrics&#39;, username = nil, password = nil, options = {}) 
+    - (<tt><span class='object_link'><a href="" title="Hawkular::Metrics::Client (class)">Client</a></span></tt>) <strong>initialize</strong>(entrypoint = &#39;http://localhost:8080/hawkular/metrics&#39;, credentials = {}, options = {}) 
   
 
   
@@ -442,7 +379,9 @@
 <p>initialize with Hawkular-tenant option</p>
 </div></p>
       
-      <pre class="example code"><code><span class='const'>Hawkular</span><span class='op'>::</span><span class='const'>Metrics</span><span class='op'>::</span><span class='const'>Client</span><span class='op'>::</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>http://server</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>username</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>password</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span><span class='lbrace'>{</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>tenant</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>your tenant ID</span><span class='tstring_end'>&quot;</span></span><span class='rbrace'>}</span><span class='rparen'>)</span></code></pre>
+      <pre class="example code"><code><span class='const'>Hawkular</span><span class='op'>::</span><span class='const'>Metrics</span><span class='op'>::</span><span class='const'>Client</span><span class='op'>::</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>http://server</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+  <span class='lbrace'>{</span><span class='label'>username:</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>username</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span><span class='label'>password:</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>password</span><span class='tstring_end'>&quot;</span></span><span class='rbrace'>}</span><span class='comma'>,</span>
+                       <span class='lbrace'>{</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>tenant</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>your tenant ID</span><span class='tstring_end'>&quot;</span></span><span class='rbrace'>}</span><span class='rparen'>)</span></code></pre>
     
   </div>
 <p class="tag_title">Parameters:</p>
@@ -459,31 +398,28 @@
         <em class="default">(defaults to: <tt>&#39;http://localhost:8080/hawkular/metrics&#39;</tt>)</em>
       
       
-    </li>
-  
-    <li>
-      
-        <span class='name'>username</span>
-      
-      
-        <span class='type'>(<tt>String</tt>)</span>
-      
-      
-        <em class="default">(defaults to: <tt>nil</tt>)</em>
-      
+        &mdash;
+        <div class='inline'>
+<p>Base url of the Hawkular (metrics) server</p>
+</div>
       
     </li>
   
     <li>
       
-        <span class='name'>password</span>
+        <span class='name'>credentials</span>
       
       
-        <span class='type'>(<tt>String</tt>)</span>
+        <span class='type'></span>
       
       
-        <em class="default">(defaults to: <tt>nil</tt>)</em>
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
       
+      
+        &mdash;
+        <div class='inline'>
+<p>Hash of username, password, token(optional)</p>
+</div>
       
     </li>
   
@@ -514,33 +450,29 @@
       <pre class="lines">
 
 
-58
-59
-60
-61
-62
-63
-64
-65
-66
-67
-68
-69</pre>
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkularclient.rb', line 58</span>
+      <pre class="code"><span class="info file"># File 'lib/metrics/metrics_client.rb', line 41</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_entrypoint'>entrypoint</span><span class='op'>=</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>http://localhost:8080/hawkular/metrics</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span><span class='id identifier rubyid_username'>username</span><span class='op'>=</span><span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_password'>password</span><span class='op'>=</span><span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
-  <span class='ivar'>@entrypoint</span> <span class='op'>=</span> <span class='id identifier rubyid_entrypoint'>entrypoint</span>
-  <span class='ivar'>@credentials</span> <span class='op'>=</span> <span class='lbrace'>{</span> <span class='symbol'>:username</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_username'>username</span><span class='comma'>,</span> <span class='symbol'>:password</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_password'>password</span> <span class='rbrace'>}</span>
-  <span class='ivar'>@options</span> <span class='op'>=</span> <span class='lbrace'>{</span>
-    <span class='symbol'>:tenant</span> <span class='op'>=&gt;</span> <span class='kw'>nil</span><span class='comma'>,</span>
-  <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_entrypoint'>entrypoint</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>http://localhost:8080/hawkular/metrics</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
+               <span class='id identifier rubyid_credentials'>credentials</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span>
+               <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
 
-  <span class='ivar'>@tenants</span> <span class='op'>=</span> <span class='const'>Client</span><span class='op'>::</span><span class='const'>Tenants</span><span class='op'>::</span><span class='id identifier rubyid_new'>new</span> <span class='kw'>self</span>
-  <span class='ivar'>@counters</span> <span class='op'>=</span> <span class='const'>Client</span><span class='op'>::</span><span class='const'>Counters</span><span class='op'>::</span><span class='id identifier rubyid_new'>new</span> <span class='kw'>self</span>
-  <span class='ivar'>@gauges</span> <span class='op'>=</span> <span class='const'>Client</span><span class='op'>::</span><span class='const'>Gauges</span><span class='op'>::</span><span class='id identifier rubyid_new'>new</span> <span class='kw'>self</span>
-  <span class='ivar'>@avail</span> <span class='op'>=</span> <span class='const'>Client</span><span class='op'>::</span><span class='const'>Availability</span><span class='op'>::</span><span class='id identifier rubyid_new'>new</span> <span class='kw'>self</span>
+  <span class='kw'>super</span><span class='lparen'>(</span><span class='id identifier rubyid_entrypoint'>entrypoint</span><span class='comma'>,</span> <span class='id identifier rubyid_credentials'>credentials</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
+  <span class='ivar'>@tenants</span> <span class='op'>=</span> <span class='const'>Client</span><span class='op'>::</span><span class='const'>Tenants</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='kw'>self</span>
+  <span class='ivar'>@counters</span> <span class='op'>=</span> <span class='const'>Client</span><span class='op'>::</span><span class='const'>Counters</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='kw'>self</span>
+  <span class='ivar'>@gauges</span> <span class='op'>=</span> <span class='const'>Client</span><span class='op'>::</span><span class='const'>Gauges</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='kw'>self</span>
+  <span class='ivar'>@avail</span> <span class='op'>=</span> <span class='const'>Client</span><span class='op'>::</span><span class='const'>Availability</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='kw'>self</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -598,12 +530,12 @@
       <pre class="lines">
 
 
-47
-48
-49</pre>
+29
+30
+31</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkularclient.rb', line 47</span>
+      <pre class="code"><span class="info file"># File 'lib/metrics/metrics_client.rb', line 29</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_avail'>avail</span>
   <span class='ivar'>@avail</span>
@@ -659,12 +591,12 @@
       <pre class="lines">
 
 
-43
-44
-45</pre>
+25
+26
+27</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkularclient.rb', line 43</span>
+      <pre class="code"><span class="info file"># File 'lib/metrics/metrics_client.rb', line 25</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_counters'>counters</span>
   <span class='ivar'>@counters</span>
@@ -720,12 +652,12 @@
       <pre class="lines">
 
 
-45
-46
-47</pre>
+27
+28
+29</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkularclient.rb', line 45</span>
+      <pre class="code"><span class="info file"># File 'lib/metrics/metrics_client.rb', line 27</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_gauges'>gauges</span>
   <span class='ivar'>@gauges</span>
@@ -781,12 +713,12 @@
       <pre class="lines">
 
 
-41
-42
-43</pre>
+23
+24
+25</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkularclient.rb', line 41</span>
+      <pre class="code"><span class="info file"># File 'lib/metrics/metrics_client.rb', line 23</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_tenants'>tenants</span>
   <span class='ivar'>@tenants</span>
@@ -804,181 +736,9 @@
 
     
       <div class="method_details first">
-  <h3 class="signature first" id="http_delete-instance_method">
+  <h3 class="signature first" id="fetch_version_and_status-instance_method">
   
-    - (<tt>Object</tt>) <strong>http_delete</strong>(suburl, headers = {}) 
-  
-
-  
-
-  
-</h3><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-105
-106
-107
-108
-109
-110
-111
-112
-113</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkularclient.rb', line 105</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_http_delete'>http_delete</span><span class='lparen'>(</span><span class='id identifier rubyid_suburl'>suburl</span><span class='comma'>,</span> <span class='id identifier rubyid_headers'>headers</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
-  <span class='kw'>begin</span>
-    <span class='id identifier rubyid_res'>res</span> <span class='op'>=</span> <span class='id identifier rubyid_rest_client'>rest_client</span><span class='lparen'>(</span><span class='id identifier rubyid_suburl'>suburl</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='id identifier rubyid_http_headers'>http_headers</span><span class='lparen'>(</span><span class='id identifier rubyid_headers'>headers</span><span class='rparen'>)</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_res'>res</span><span class='embexpr_end'>}</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='const'>ENV</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>HAWKULARCLIENT_LOG_RESPONSE</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
-    <span class='id identifier rubyid_res'>res</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span> <span class='op'>?</span> <span class='lbrace'>{</span><span class='rbrace'>}</span> <span class='op'>:</span> <span class='const'>JSON</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='id identifier rubyid_res'>res</span><span class='rparen'>)</span>
-  <span class='kw'>rescue</span>
-    <span class='id identifier rubyid_handle_fault'>handle_fault</span> <span class='gvar'>$!</span>
-  <span class='kw'>end</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="http_get-instance_method">
-  
-    - (<tt>Object</tt>) <strong>http_get</strong>(suburl, headers = {}) 
-  
-
-  
-
-  
-</h3><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-72
-73
-74
-75
-76
-77
-78
-79
-80</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkularclient.rb', line 72</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_http_get'>http_get</span><span class='lparen'>(</span><span class='id identifier rubyid_suburl'>suburl</span><span class='comma'>,</span> <span class='id identifier rubyid_headers'>headers</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
-  <span class='kw'>begin</span>
-    <span class='id identifier rubyid_res'>res</span> <span class='op'>=</span> <span class='id identifier rubyid_rest_client'>rest_client</span><span class='lparen'>(</span><span class='id identifier rubyid_suburl'>suburl</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='id identifier rubyid_http_headers'>http_headers</span><span class='lparen'>(</span><span class='id identifier rubyid_headers'>headers</span><span class='rparen'>)</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_res'>res</span><span class='embexpr_end'>}</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='const'>ENV</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>HAWKULARCLIENT_LOG_RESPONSE</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
-    <span class='id identifier rubyid_res'>res</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span> <span class='op'>?</span> <span class='lbrace'>{</span><span class='rbrace'>}</span> <span class='op'>:</span> <span class='const'>JSON</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='id identifier rubyid_res'>res</span><span class='rparen'>)</span>
-  <span class='kw'>rescue</span>
-    <span class='id identifier rubyid_handle_fault'>handle_fault</span> <span class='gvar'>$!</span>
-  <span class='kw'>end</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="http_post-instance_method">
-  
-    - (<tt>Object</tt>) <strong>http_post</strong>(suburl, hash, headers = {}) 
-  
-
-  
-
-  
-</h3><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-83
-84
-85
-86
-87
-88
-89
-90
-91
-92</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkularclient.rb', line 83</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_http_post'>http_post</span><span class='lparen'>(</span><span class='id identifier rubyid_suburl'>suburl</span><span class='comma'>,</span> <span class='id identifier rubyid_hash'>hash</span><span class='comma'>,</span> <span class='id identifier rubyid_headers'>headers</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
-  <span class='kw'>begin</span>
-    <span class='id identifier rubyid_body'>body</span> <span class='op'>=</span> <span class='const'>JSON</span><span class='period'>.</span><span class='id identifier rubyid_generate'>generate</span><span class='lparen'>(</span><span class='id identifier rubyid_hash'>hash</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_res'>res</span> <span class='op'>=</span> <span class='id identifier rubyid_rest_client'>rest_client</span><span class='lparen'>(</span><span class='id identifier rubyid_suburl'>suburl</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_post'>post</span><span class='lparen'>(</span><span class='id identifier rubyid_body'>body</span><span class='comma'>,</span> <span class='id identifier rubyid_http_headers'>http_headers</span><span class='lparen'>(</span><span class='id identifier rubyid_headers'>headers</span><span class='rparen'>)</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_res'>res</span><span class='embexpr_end'>}</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='const'>ENV</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>HAWKULARCLIENT_LOG_RESPONSE</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
-    <span class='id identifier rubyid_res'>res</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span> <span class='op'>?</span> <span class='lbrace'>{</span><span class='rbrace'>}</span> <span class='op'>:</span> <span class='const'>JSON</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='id identifier rubyid_res'>res</span><span class='rparen'>)</span>
-  <span class='kw'>rescue</span>
-    <span class='id identifier rubyid_handle_fault'>handle_fault</span> <span class='gvar'>$!</span>
-  <span class='kw'>end</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="http_put-instance_method">
-  
-    - (<tt>Object</tt>) <strong>http_put</strong>(suburl, hash, headers = {}) 
-  
-
-  
-
-  
-</h3><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-94
-95
-96
-97
-98
-99
-100
-101
-102
-103</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkularclient.rb', line 94</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_http_put'>http_put</span><span class='lparen'>(</span><span class='id identifier rubyid_suburl'>suburl</span><span class='comma'>,</span> <span class='id identifier rubyid_hash'>hash</span><span class='comma'>,</span> <span class='id identifier rubyid_headers'>headers</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
-  <span class='kw'>begin</span>
-    <span class='id identifier rubyid_body'>body</span> <span class='op'>=</span> <span class='const'>JSON</span><span class='period'>.</span><span class='id identifier rubyid_generate'>generate</span><span class='lparen'>(</span><span class='id identifier rubyid_hash'>hash</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_res'>res</span> <span class='op'>=</span> <span class='id identifier rubyid_rest_client'>rest_client</span><span class='lparen'>(</span><span class='id identifier rubyid_suburl'>suburl</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_put'>put</span><span class='lparen'>(</span><span class='id identifier rubyid_body'>body</span><span class='comma'>,</span> <span class='id identifier rubyid_http_headers'>http_headers</span><span class='lparen'>(</span><span class='id identifier rubyid_headers'>headers</span><span class='rparen'>)</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_res'>res</span><span class='embexpr_end'>}</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='const'>ENV</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>HAWKULARCLIENT_LOG_RESPONSE</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
-    <span class='id identifier rubyid_res'>res</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span> <span class='op'>?</span> <span class='lbrace'>{</span><span class='rbrace'>}</span> <span class='op'>:</span> <span class='const'>JSON</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='id identifier rubyid_res'>res</span><span class='rparen'>)</span>
-  <span class='kw'>rescue</span>
-    <span class='id identifier rubyid_handle_fault'>handle_fault</span> <span class='gvar'>$!</span>
-  <span class='kw'>end</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="now-instance_method">
-  
-    - (<tt>Integer</tt>) <strong>now</strong> 
+    - (<tt>Hash{String=&gt;String}</tt>) <strong>fetch_version_and_status</strong> 
   
 
   
@@ -987,7 +747,8 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>timestamp of current time</p>
+<p>Return version and status information for the used version of
+Hawkular-Metrics</p>
 
 
   </div>
@@ -1000,13 +761,14 @@
     <li>
       
       
-        <span class='type'>(<tt>Integer</tt>)</span>
+        <span class='type'>(<tt>Hash{String=&gt;String}</tt>)</span>
       
       
       
         &mdash;
         <div class='inline'>
-<p>timestamp</p>
+<p>(&#39;Implementation-Version&#39;, &#39;Built-From-Git-SHA1&#39;,
+&#39;Status&#39;)</p>
 </div>
       
     </li>
@@ -1019,15 +781,15 @@
       <pre class="lines">
 
 
-151
-152
-153</pre>
+18
+19
+20</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkularclient.rb', line 151</span>
+      <pre class="code"><span class="info file"># File 'lib/metrics/metric_api.rb', line 18</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_now'>now</span>
-  <span class='const'>Integer</span><span class='lparen'>(</span><span class='const'>Time</span><span class='op'>::</span><span class='id identifier rubyid_now'>now</span><span class='period'>.</span><span class='id identifier rubyid_to_f'>to_f</span> <span class='op'>*</span> <span class='int'>1000</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_fetch_version_and_status'>fetch_version_and_status</span>
+  <span class='id identifier rubyid_http_get'>http_get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/status</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1062,14 +824,16 @@
 </div></p>
       
       <pre class="example code"><code><span class='id identifier rubyid_client'>client</span> <span class='op'>=</span> <span class='const'>Hawkular</span><span class='op'>::</span><span class='const'>Metrics</span><span class='op'>::</span><span class='id identifier rubyid_client'>client</span><span class='op'>::</span><span class='id identifier rubyid_new'>new</span>
-<span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_push_data'>push_data</span><span class='lparen'>(</span><span class='label'>counters:</span> <span class='lbracket'>[</span><span class='lbrace'>{</span><span class='symbol'>:id</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>counter1</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='symbol'>:data</span> <span class='op'>=&gt;</span> <span class='lbracket'>[</span><span class='lbrace'>{</span><span class='symbol'>:value</span> <span class='op'>=&gt;</span> <span class='int'>1</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='lbrace'>{</span><span class='symbol'>:value</span> <span class='op'>=&gt;</span> <span class='int'>2</span><span class='rbrace'>}</span><span class='rbracket'>]</span><span class='rbrace'>}</span><span class='comma'>,</span><span class='lbrace'>{</span><span class='symbol'>:id</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>counter2</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='symbol'>:data</span> <span class='op'>=&gt;</span> <span class='lbracket'>[</span><span class='lbrace'>{</span><span class='symbol'>:value</span> <span class='op'>=&gt;</span> <span class='int'>1</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='lbrace'>{</span><span class='symbol'>:value</span> <span class='op'>=&gt;</span> <span class='int'>3</span><span class='rbrace'>}</span><span class='rbracket'>]</span><span class='rbrace'>}</span><span class='rbracket'>]</span><span class='rparen'>)</span></code></pre>
+<span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_push_data'>push_data</span><span class='lparen'>(</span><span class='label'>counters:</span> <span class='lbracket'>[</span><span class='lbrace'>{</span><span class='symbol'>:id</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>counter1</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='symbol'>:data</span> <span class='op'>=&gt;</span> <span class='lbracket'>[</span><span class='lbrace'>{</span><span class='symbol'>:value</span> <span class='op'>=&gt;</span> <span class='int'>1</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='lbrace'>{</span><span class='symbol'>:value</span> <span class='op'>=&gt;</span> <span class='int'>2</span><span class='rbrace'>}</span><span class='rbracket'>]</span><span class='rbrace'>}</span><span class='comma'>,</span>
+                    <span class='lbrace'>{</span><span class='symbol'>:id</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>counter2</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='symbol'>:data</span> <span class='op'>=&gt;</span> <span class='lbracket'>[</span><span class='lbrace'>{</span><span class='symbol'>:value</span> <span class='op'>=&gt;</span> <span class='int'>1</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='lbrace'>{</span><span class='symbol'>:value</span> <span class='op'>=&gt;</span> <span class='int'>3</span><span class='rbrace'>}</span><span class='rbracket'>]</span><span class='rbrace'>}</span><span class='rbracket'>]</span><span class='rparen'>)</span></code></pre>
     
       
         <p class="example_title"><div class='inline'>
 <p>push gauge and availability datapoints</p>
 </div></p>
       
-      <pre class="example code"><code><span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_push_data'>push_data</span><span class='lparen'>(</span><span class='label'>gauges:</span> <span class='lbracket'>[</span><span class='lbrace'>{</span><span class='symbol'>:id</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gauge1</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='symbol'>:data</span> <span class='op'>=&gt;</span> <span class='lbracket'>[</span><span class='lbrace'>{</span><span class='symbol'>:value</span> <span class='op'>=&gt;</span> <span class='int'>1</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='lbrace'>{</span><span class='symbol'>:value</span> <span class='op'>=&gt;</span> <span class='int'>2</span><span class='rbrace'>}</span><span class='rbracket'>]</span><span class='rbrace'>}</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='label'>availabilities:</span> <span class='lbracket'>[</span><span class='lbrace'>{</span><span class='symbol'>:id</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>avail1</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='symbol'>:data</span> <span class='op'>=&gt;</span> <span class='lbracket'>[</span><span class='lbrace'>{</span><span class='symbol'>:value</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>up</span><span class='tstring_end'>&quot;</span></span><span class='rbrace'>}</span><span class='rbracket'>]</span><span class='rbrace'>}</span><span class='rbracket'>]</span><span class='rparen'>)</span></code></pre>
+      <pre class="example code"><code><span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_push_data'>push_data</span><span class='lparen'>(</span><span class='label'>gauges:</span> <span class='lbracket'>[</span><span class='lbrace'>{</span><span class='symbol'>:id</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gauge1</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='symbol'>:data</span> <span class='op'>=&gt;</span> <span class='lbracket'>[</span><span class='lbrace'>{</span><span class='symbol'>:value</span> <span class='op'>=&gt;</span> <span class='int'>1</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='lbrace'>{</span><span class='symbol'>:value</span> <span class='op'>=&gt;</span> <span class='int'>2</span><span class='rbrace'>}</span><span class='rbracket'>]</span><span class='rbrace'>}</span><span class='rbracket'>]</span><span class='comma'>,</span>
+                       <span class='label'>availabilities:</span> <span class='lbracket'>[</span><span class='lbrace'>{</span><span class='symbol'>:id</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>avail1</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='symbol'>:data</span> <span class='op'>=&gt;</span> <span class='lbracket'>[</span><span class='lbrace'>{</span><span class='symbol'>:value</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>up</span><span class='tstring_end'>&quot;</span></span><span class='rbrace'>}</span><span class='rbracket'>]</span><span class='rbrace'>}</span><span class='rbracket'>]</span><span class='rparen'>)</span></code></pre>
     
   </div>
 <p class="tag_title">Parameters:</p>
@@ -1117,35 +881,25 @@
       <pre class="lines">
 
 
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
 33
 34
-35</pre>
+35
+36
+37
+38
+39
+40</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/metrics/metric_api.rb', line 23</span>
+      <pre class="code"><span class="info file"># File 'lib/metrics/metric_api.rb', line 33</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_push_data'>push_data</span><span class='lparen'>(</span><span class='label'>gauges:</span> <span class='lbracket'>[</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='label'>counters:</span> <span class='lbracket'>[</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='label'>availabilities:</span> <span class='lbracket'>[</span><span class='rbracket'>]</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_gauges'>gauges</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_g'>g</span><span class='op'>|</span>
-    <span class='id identifier rubyid_default_timestamp'>default_timestamp</span> <span class='id identifier rubyid_g'>g</span><span class='lbracket'>[</span><span class='symbol'>:data</span><span class='rbracket'>]</span>
-  <span class='rbrace'>}</span>
-  <span class='id identifier rubyid_counters'>counters</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_g'>g</span><span class='op'>|</span>
-    <span class='id identifier rubyid_default_timestamp'>default_timestamp</span> <span class='id identifier rubyid_g'>g</span><span class='lbracket'>[</span><span class='symbol'>:data</span><span class='rbracket'>]</span>
-  <span class='rbrace'>}</span>
-  <span class='id identifier rubyid_availabilities'>availabilities</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_g'>g</span><span class='op'>|</span>
-    <span class='id identifier rubyid_default_timestamp'>default_timestamp</span> <span class='id identifier rubyid_g'>g</span><span class='lbracket'>[</span><span class='symbol'>:data</span><span class='rbracket'>]</span>
-  <span class='rbrace'>}</span>
-  <span class='id identifier rubyid_data'>data</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='symbol'>:gauges</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_gauges'>gauges</span><span class='comma'>,</span> <span class='symbol'>:counters</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_counters'>counters</span><span class='comma'>,</span> <span class='symbol'>:availabilities</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_availabilities'>availabilities</span><span class='rbrace'>}</span>
-  <span class='id identifier rubyid_http_post'>http_post</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/metrics/data</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_data'>data</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_gauges'>gauges</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_g'>g</span><span class='op'>|</span> <span class='id identifier rubyid_default_timestamp'>default_timestamp</span> <span class='id identifier rubyid_g'>g</span><span class='lbracket'>[</span><span class='symbol'>:data</span><span class='rbracket'>]</span> <span class='rbrace'>}</span>
+  <span class='id identifier rubyid_counters'>counters</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_g'>g</span><span class='op'>|</span> <span class='id identifier rubyid_default_timestamp'>default_timestamp</span> <span class='id identifier rubyid_g'>g</span><span class='lbracket'>[</span><span class='symbol'>:data</span><span class='rbracket'>]</span> <span class='rbrace'>}</span>
+  <span class='id identifier rubyid_availabilities'>availabilities</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_g'>g</span><span class='op'>|</span> <span class='id identifier rubyid_default_timestamp'>default_timestamp</span> <span class='id identifier rubyid_g'>g</span><span class='lbracket'>[</span><span class='symbol'>:data</span><span class='rbracket'>]</span> <span class='rbrace'>}</span>
+
+  <span class='id identifier rubyid_data'>data</span> <span class='op'>=</span> <span class='lbrace'>{</span> <span class='label'>gauges:</span> <span class='id identifier rubyid_gauges'>gauges</span><span class='comma'>,</span> <span class='label'>counters:</span> <span class='id identifier rubyid_counters'>counters</span><span class='comma'>,</span> <span class='label'>availabilities:</span> <span class='id identifier rubyid_availabilities'>availabilities</span> <span class='rbrace'>}</span>
+  <span class='id identifier rubyid_http_post'>http_post</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/metrics/data</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_data'>data</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1157,9 +911,9 @@
 </div>
 
     <div id="footer">
-  Generated on Tue Jul 28 15:29:21 2015 by
+  Generated on Tue Mar 29 18:42:45 2016 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.8.7.6 (ruby-2.2.2).
+  0.8.7.6 (ruby-2.2.4).
 </div>
 
   </body>

@@ -79,8 +79,8 @@
   
   
     <dt class="r1 last">Defined in:</dt>
-    <dd class="r1 last">lib/hawkularclient.rb<span class="defines">,<br />
-  lib/metrics/types.rb,<br /> lib/hawkularclient.rb,<br /> lib/metrics/version.rb,<br /> lib/metrics/metric_api.rb,<br /> lib/metrics/tenant_api.rb</span>
+    <dd class="r1 last">lib/metrics/metrics_client.rb<span class="defines">,<br />
+  lib/hawkular.rb,<br /> lib/metrics/types.rb,<br /> lib/metrics/tenant_api.rb,<br /> lib/metrics/metric_api.rb</span>
 </dd>
   
 </dl>
@@ -105,8 +105,10 @@
 </div></p>
       
       <pre class="example code"><code><span class='comment'># create client instance
-</span><span class='id identifier rubyid_client'>client</span> <span class='op'>=</span> <span class='const'>Hawkular</span><span class='op'>::</span><span class='const'>Metrics</span><span class='op'>::</span><span class='const'>Client</span><span class='op'>::</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>http://server</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>username</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>password</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span><span class='lbrace'>{</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>tenant</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>your tenant ID</span><span class='tstring_end'>&quot;</span></span><span class='rbrace'>}</span><span class='rparen'>)</span>
-<span class='comment'># push gauge metric data for metric called &quot;myGauge&quot; (no need to create metric definition unless you wish to specify data retention)
+</span><span class='id identifier rubyid_client'>client</span> <span class='op'>=</span> <span class='const'>Hawkular</span><span class='op'>::</span><span class='const'>Metrics</span><span class='op'>::</span><span class='const'>Client</span><span class='op'>::</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>http://server</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>username</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+              <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>password</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span><span class='lbrace'>{</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>tenant</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>your tenant ID</span><span class='tstring_end'>&quot;</span></span><span class='rbrace'>}</span><span class='rparen'>)</span>
+<span class='comment'># push gauge metric data for metric called &quot;myGauge&quot; (no need to create metric definition
+</span><span class='comment'># unless you wish to specify data retention)
 </span><span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_gauges'>gauges</span><span class='period'>.</span><span class='id identifier rubyid_push_data'>push_data</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>myGauge</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='lbrace'>{</span><span class='symbol'>:value</span> <span class='op'>=&gt;</span> <span class='float'>3.1415925</span><span class='rbrace'>}</span><span class='rparen'>)</span></code></pre>
     
   </div>
@@ -125,22 +127,10 @@
     
   
     
-      <strong class="classes">Classes:</strong> <span class='object_link'><a href="Metrics/BaseObject.html" title="Hawkular::Metrics::BaseObject (class)">BaseObject</a></span>, <span class='object_link'><a href="Metrics/Client.html" title="Hawkular::Metrics::Client (class)">Client</a></span>, <span class='object_link'><a href="Metrics/HawkularException.html" title="Hawkular::Metrics::HawkularException (class)">HawkularException</a></span>, <span class='object_link'><a href="Metrics/MetricDefinition.html" title="Hawkular::Metrics::MetricDefinition (class)">MetricDefinition</a></span>, <span class='object_link'><a href="Metrics/Tenant.html" title="Hawkular::Metrics::Tenant (class)">Tenant</a></span>
+      <strong class="classes">Classes:</strong> <span class='object_link'><a href="Metrics/BaseObject.html" title="Hawkular::Metrics::BaseObject (class)">BaseObject</a></span>, <span class='object_link'><a href="Metrics/Client.html" title="Hawkular::Metrics::Client (class)">Client</a></span>, <span class='object_link'><a href="Metrics/MetricDefinition.html" title="Hawkular::Metrics::MetricDefinition (class)">MetricDefinition</a></span>, <span class='object_link'><a href="Metrics/Tenant.html" title="Hawkular::Metrics::Tenant (class)">Tenant</a></span>
     
   
 </p>
-
-  <h2>Constant Summary</h2>
-  
-    <dl class="constants">
-      
-        <dt id="VERSION-constant" class="">VERSION =
-          
-        </dt>
-        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>0.1.0</span><span class='tstring_end'>&quot;</span></span></pre></dd>
-      
-    </dl>
-  
 
 
 
@@ -153,9 +143,9 @@
 </div>
 
     <div id="footer">
-  Generated on Tue Jul 28 15:29:21 2015 by
+  Generated on Tue Mar 29 18:42:45 2016 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.8.7.6 (ruby-2.2.2).
+  0.8.7.6 (ruby-2.2.4).
 </div>
 
   </body>
