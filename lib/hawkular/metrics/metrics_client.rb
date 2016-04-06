@@ -1,12 +1,12 @@
 
-require 'hawkular'
+require 'hawkular/base_client'
 require 'json'
 require 'rest-client'
 require 'English'
 
-require 'metrics/types'
-require 'metrics/tenant_api'
-require 'metrics/metric_api'
+require 'hawkular/metrics/types'
+require 'hawkular/metrics/tenant_api'
+require 'hawkular/metrics/metric_api'
 
 # Metrics module provides access to Hawkular Metrics REST API
 # @see http://www.hawkular.org/docs/rest/rest-metrics.html Hawkular Metrics REST API Documentation

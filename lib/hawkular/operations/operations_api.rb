@@ -1,4 +1,4 @@
-require 'hawkular'
+require 'hawkular/base_client'
 require 'websocket-client-simple'
 require 'json'
 
@@ -20,13 +20,13 @@ class Proc
   end
 end
 
-# Operations module allows invoking operation on the wildfly agent.
+# Operations module allows invoking operation on the WildFly agent.
 module Hawkular::Operations
   # Client class to interact with the agent via websockets
   class OperationsClient < Hawkular::BaseClient
     include WebSocket::Client
 
-    attr_accessor :ws
+    attr_accessor :ws, :session_id
 
     # helper for parsing the "OperationName=json_payload" messages
     class WebSocket::Frame::Data
@@ -76,7 +76,7 @@ module Hawkular::Operations
       @ws.close
     end
 
-    # Invokes a generic operation on the Wildfly agent
+    # Invokes a generic operation on the WildFly agent
     # (the operation name must be specified in the hash)
     # Note: if success and failure callbacks are omitted, the client will not wait for the Response message
     # @param hash [Hash{String=>Object}] a hash containing: resourcePath [String] denoting the resource on
@@ -89,7 +89,7 @@ module Hawkular::Operations
       invoke_operation_helper(hash, &callback)
     end
 
-    # Invokes operation on the wildfly agent that has it's own message type
+    # Invokes operation on the WildFly agent that has it's own message type
     # @param operation_payload [Hash{String=>Object}] a hash containing: resourcePath [String] denoting
     # the resource on which the operation is about to run
     # @param operation_name [String] the name of the operation. This must correspond with the message type, they can be
