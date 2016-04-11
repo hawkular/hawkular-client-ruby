@@ -3,21 +3,21 @@
     {
       "operation": "read",
       "type": "text",
-      "data": "WelcomeResponse={\"sessionId\":\"sbFU9VhlW0WAtB4xAkXCjqBPIbi0zlQ3GJJP9SnT\"}"
+      "data": "WelcomeResponse={\"sessionId\":\"D81EmhsShV22hk4gNJrNgfIrnvwMVez_KkmkOaPj\"}"
     },
     {
       "operation": "write",
-      "data": "ExecuteOperationRequest={\"operationName\":\"Redeploy\",\"resourcePath\":\"/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;41df9f9c-72a6-457b-a0ee-ee1740846254/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-alerts-actions-email.war\",\"authentication\":{\"username\":\"jdoe\",\"password\":\"password\"}}"
+      "data": "ExecuteOperationRequest={\"operationName\":\"Redeploy\",\"resourcePath\":\"/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;33f22c4a-445a-4f90-a25e-caeff9579a10/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-alerts-actions-email.war\",\"authentication\":{\"username\":\"jdoe\",\"password\":\"password\"}}"
     },
     {
       "operation": "read",
       "type": "text",
-      "data": "GenericSuccessResponse={\"message\":\"The request has been forwarded to feed [41df9f9c-72a6-457b-a0ee-ee1740846254] (MessageId=ID:3a52625c-f160-11e5-a0e2-cd57e90697e0)\"}"
+      "data": "GenericSuccessResponse={\"message\":\"The request has been forwarded to feed [33f22c4a-445a-4f90-a25e-caeff9579a10] (MessageId=ID:329101d3-fb44-11e5-b1c9-a1ce6a627f23)\"}"
     },
     {
       "operation": "read",
       "type": "text",
-      "data": "ExecuteOperationResponse={\"operationName\":\"Redeploy\",\"resourcePath\":\"/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;41df9f9c-72a6-457b-a0ee-ee1740846254/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-alerts-actions-email.war\",\"destinationSessionId\":\"sbFU9VhlW0WAtB4xAkXCjqBPIbi0zlQ3GJJP9SnT\",\"status\":\"OK\",\"message\":\"Performed [Redeploy] on a [DMR Node] given by Inventory path [/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;41df9f9c-72a6-457b-a0ee-ee1740846254/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-alerts-actions-email.war]\"}"
+      "data": "ExecuteOperationResponse={\"operationName\":\"Redeploy\",\"resourcePath\":\"/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;33f22c4a-445a-4f90-a25e-caeff9579a10/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-alerts-actions-email.war\",\"destinationSessionId\":\"D81EmhsShV22hk4gNJrNgfIrnvwMVez_KkmkOaPj\",\"status\":\"OK\",\"message\":\"Performed [Redeploy] on a [DMR Node] given by Inventory path [/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;33f22c4a-445a-4f90-a25e-caeff9579a10/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-alerts-actions-email.war]\"}"
     },
     {
       "operation": "close"

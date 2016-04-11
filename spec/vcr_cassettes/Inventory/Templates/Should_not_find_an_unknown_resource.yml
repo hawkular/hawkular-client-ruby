@@ -20,8 +20,6 @@ http_interactions:
       code: 404
       message: Not Found
     headers:
-      Content-Encoding:
-      - gzip
       Expires:
       - '0'
       Cache-Control:
@@ -33,22 +31,25 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Mon, 15 Feb 2016 15:49:14 GMT
+      - Mon, 11 Apr 2016 16:51:45 GMT
       Connection:
       - keep-alive
       Content-Type:
       - application/json
       Content-Length:
-      - '231'
+      - '372'
     body:
       encoding: ASCII-8BIT
-      string: !binary |-
-        H4sIAAAAAAAAALWPwWrDMAyG730KYdilLKRzssw0x503xtgtmOIkcmvwrGK7
-        bKHk3We72yMMgyz9v4Q+XTcADL0n/xKODPbAXgneMdDFTwiaLm4GcqDcAqQh
-        nrJmLX0Zd4Sziqewh2F4Vo6cmZR9y8pQx56LHe/GpquExrZqm4ZXop1E9chb
-        fHhqVCdGXeteI86HT7Uc8NuEWPt+O1p1x3czYUifo5hi8bZSSnafYWeMytiQ
-        Wa+pzvgumrh8LGcsB/zRl/ZkZ8xsDOndJn7FcFPZv/AykGXXCrJk62b9ASB2
-        xwtsAQAA
+      string: |-
+        {
+          "errorMsg" : "No Resource found on any of the following paths: [[CanonicalPaths[/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;feed_may_exist/r;%2Abla%20does%20not%20exist%2A]]]",
+          "details" : {
+            "entityType" : "Resource",
+            "path" : [ [ {
+              "paths" : [ "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;feed_may_exist/r;%2Abla%20does%20not%20exist%2A" ]
+            } ] ]
+          }
+        }
     http_version: 
-  recorded_at: Mon, 15 Feb 2016 15:49:14 GMT
-recorded_with: VCR 3.0.0
+  recorded_at: Mon, 11 Apr 2016 16:51:45 GMT
+recorded_with: VCR 3.0.1

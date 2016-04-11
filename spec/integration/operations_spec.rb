@@ -14,13 +14,13 @@ module Hawkular::Operations::RSpec
     end
 
     it 'should be established' do
-      VCR::WebSocket.configure do |c|
+      WebSocketVCR.configure do |c|
         c.hook_uris = [HOST]
       end
 
-      VCR::WebSocket.record(example, self) do
+      WebSocketVCR.record(example, self) do
         client = OperationsClient.new(host: HOST,
-                                      wait_time: 0,
+                                      wait_time: WebSocketVCR.live? ? 1.5 : 0,
                                       credentials: {
                                         username: 'jdoe',
                                         password: 'password'
@@ -38,14 +38,13 @@ module Hawkular::Operations::RSpec
     end
 
     before(:all) do
-      # TODO: erb substitution
       VCR.use_cassette('Operation/Helpers/get_tenant', decode_compressed_response: true) do
         @creds = { username: 'jdoe', password: 'password' }
         inventory_client = InventoryClient.create(credentials: @creds)
         @tenant_id = inventory_client.get_tenant
-        # @feed_id = inventory_client.list_feeds[0]
-        @feed_id = '41df9f9c-72a6-457b-a0ee-ee1740846254'
-        # @random_uuid = SecureRandom.uuid  comment this out once the erb support is there
+        VCR.use_cassette('Operation/Helpers/get_feed', decode_compressed_response: true) do
+          @feed_id = inventory_client.list_feeds[0]
+        end
         @random_uuid = 'random'
       end
     end
@@ -53,17 +52,17 @@ module Hawkular::Operations::RSpec
     before(:each) do |ex|
       unless ex.metadata[:skip_open]
         @client = OperationsClient.new(credentials: @creds,
-                                       wait_time: 0)
+                                       wait_time: WebSocketVCR.live? ? 1.5 : 0)
         @ws = @client.ws
       end
     end
 
     around(:each) do |ex|
       if ex.metadata[:websocket]
-        VCR::WebSocket.configure do |c|
+        WebSocketVCR.configure do |c|
           c.hook_uris = [HOST]
         end
-        VCR::WebSocket.record(ex, self) do
+        WebSocketVCR.record(ex, self) do
           ex.run
         end
       else
