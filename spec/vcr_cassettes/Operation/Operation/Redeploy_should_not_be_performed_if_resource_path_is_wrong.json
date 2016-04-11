@@ -3,21 +3,21 @@
     {
       "operation": "read",
       "type": "text",
-      "data": "WelcomeResponse={\"sessionId\":\"TvqzZKGxHaDUu-QHO1Huh2Yj8iPAwRqQUQVHkN7u\"}"
+      "data": "WelcomeResponse={\"sessionId\":\"43-JJwrYjacaVjWtUXmNc6Y6kphr6OXzbxbgsfic\"}"
     },
     {
       "operation": "write",
-      "data": "ExecuteOperationRequest={\"operationName\":\"Redeploy\",\"resourcePath\":\"/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;41df9f9c-72a6-457b-a0ee-ee1740846254/r;Local~~/r;Local~%2Fdeployment%3Dnon-existent.war\",\"authentication\":{\"username\":\"jdoe\",\"password\":\"password\"}}"
+      "data": "ExecuteOperationRequest={\"operationName\":\"Redeploy\",\"resourcePath\":\"/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;33f22c4a-445a-4f90-a25e-caeff9579a10/r;Local~~/r;Local~%2Fdeployment%3Dnon-existent.war\",\"authentication\":{\"username\":\"jdoe\",\"password\":\"password\"}}"
     },
     {
       "operation": "read",
       "type": "text",
-      "data": "GenericSuccessResponse={\"message\":\"The request has been forwarded to feed [41df9f9c-72a6-457b-a0ee-ee1740846254] (MessageId=ID:3cb4e2d7-f160-11e5-a0e2-cd57e90697e0)\"}"
+      "data": "GenericSuccessResponse={\"message\":\"The request has been forwarded to feed [33f22c4a-445a-4f90-a25e-caeff9579a10] (MessageId=ID:360b0d35-fb44-11e5-b1c9-a1ce6a627f23)\"}"
     },
     {
       "operation": "read",
       "type": "text",
-      "data": "ExecuteOperationResponse={\"resourcePath\":\"/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;41df9f9c-72a6-457b-a0ee-ee1740846254/r;Local~~/r;Local~%2Fdeployment%3Dnon-existent.war\",\"destinationSessionId\":\"TvqzZKGxHaDUu-QHO1Huh2Yj8iPAwRqQUQVHkN7u\",\"status\":\"ERROR\",\"message\":\"Could not perform [Redeploy] on a [DMR Node] given by inventory path [/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;41df9f9c-72a6-457b-a0ee-ee1740846254/r;Local~~/r;Local~%2Fdeployment%3Dnon-existent.war] requested on [2016-03-24T01:32Z]: Cannot execute operation: unknown resource [/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;41df9f9c-72a6-457b-a0ee-ee1740846254/r;Local~~/r;Local~%2Fdeployment%3Dnon-existent.war]\"}"
+      "data": "ExecuteOperationResponse={\"resourcePath\":\"/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;33f22c4a-445a-4f90-a25e-caeff9579a10/r;Local~~/r;Local~%2Fdeployment%3Dnon-existent.war\",\"destinationSessionId\":\"43-JJwrYjacaVjWtUXmNc6Y6kphr6OXzbxbgsfic\",\"status\":\"ERROR\",\"message\":\"Could not perform [Redeploy] on a [DMR Node] given by inventory path [/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;33f22c4a-445a-4f90-a25e-caeff9579a10/r;Local~~/r;Local~%2Fdeployment%3Dnon-existent.war] requested on [2016-04-05T15:36Z]: Cannot execute operation: unknown resource [/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;33f22c4a-445a-4f90-a25e-caeff9579a10/r;Local~~/r;Local~%2Fdeployment%3Dnon-existent.war]\"}"
     },
     {
       "operation": "close"

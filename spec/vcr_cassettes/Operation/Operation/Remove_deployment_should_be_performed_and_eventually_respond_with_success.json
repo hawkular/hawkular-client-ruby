@@ -3,21 +3,21 @@
     {
       "operation": "read",
       "type": "text",
-      "data": "WelcomeResponse={\"sessionId\":\"86-Iz-ZjXmGJyMLJfLGRNU9PdVLM6b7746A9jR_6\"}"
+      "data": "WelcomeResponse={\"sessionId\":\"ooyUICUPRH9DYgcp97vj4MyBnvBZmbDDk86mkBio\"}"
     },
     {
       "operation": "write",
-      "data": "ExecuteOperationRequest={\"operationName\":\"Remove\",\"resourcePath\":\"/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;41df9f9c-72a6-457b-a0ee-ee1740846254/r;Local~~/r;Local~%2Fdeployment=sample.war\",\"authentication\":{\"username\":\"jdoe\",\"password\":\"password\"}}"
+      "data": "ExecuteOperationRequest={\"operationName\":\"Remove\",\"resourcePath\":\"/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;33f22c4a-445a-4f90-a25e-caeff9579a10/r;Local~~/r;Local~%2Fdeployment=sample.war\",\"authentication\":{\"username\":\"jdoe\",\"password\":\"password\"}}"
     },
     {
       "operation": "read",
       "type": "text",
-      "data": "GenericSuccessResponse={\"message\":\"The request has been forwarded to feed [41df9f9c-72a6-457b-a0ee-ee1740846254] (MessageId=ID:439d3a3f-f160-11e5-a0e2-cd57e90697e0)\"}"
+      "data": "GenericSuccessResponse={\"message\":\"The request has been forwarded to feed [33f22c4a-445a-4f90-a25e-caeff9579a10] (MessageId=ID:99066924-fb44-11e5-b1c9-a1ce6a627f23)\"}"
     },
     {
       "operation": "read",
       "type": "text",
-      "data": "ExecuteOperationResponse={\"operationName\":\"Remove\",\"resourcePath\":\"/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;41df9f9c-72a6-457b-a0ee-ee1740846254/r;Local~~/r;Local~%2Fdeployment=sample.war\",\"destinationSessionId\":\"86-Iz-ZjXmGJyMLJfLGRNU9PdVLM6b7746A9jR_6\",\"status\":\"OK\",\"message\":\"Performed [Remove] on a [DMR Node] given by Inventory path [/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;41df9f9c-72a6-457b-a0ee-ee1740846254/r;Local~~/r;Local~%2Fdeployment=sample.war]\"}"
+      "data": "ExecuteOperationResponse={\"operationName\":\"Remove\",\"resourcePath\":\"/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;33f22c4a-445a-4f90-a25e-caeff9579a10/r;Local~~/r;Local~%2Fdeployment=sample.war\",\"destinationSessionId\":\"ooyUICUPRH9DYgcp97vj4MyBnvBZmbDDk86mkBio\",\"status\":\"OK\",\"message\":\"Performed [Remove] on a [DMR Node] given by Inventory path [/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;33f22c4a-445a-4f90-a25e-caeff9579a10/r;Local~~/r;Local~%2Fdeployment=sample.war]\",\"serverRefreshIndicator\":\"RELOAD-REQUIRED\"}"
     },
     {
       "operation": "close"
