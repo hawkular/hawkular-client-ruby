@@ -37,7 +37,6 @@ module Hawkular::Inventory::RSpec
       VCR.use_cassette('Inventory/Helpers/get_feeds', options) do
         feeds = @client.list_feeds
         @state = {
-          hostname: 'dhcp-10-40-1-43.brq.redhat.com',
           feed_uuid: feeds[0]
         }
       end
@@ -99,7 +98,7 @@ module Hawkular::Inventory::RSpec
 
       expect(resources.size).to be(1)
       wf = resources.first
-      expect(wf.properties['Hostname']).to eq(@state[:hostname])
+      expect(wf.properties['Hostname']).not_to be_empty
     end
 
     it 'Should List datasources with no props' do

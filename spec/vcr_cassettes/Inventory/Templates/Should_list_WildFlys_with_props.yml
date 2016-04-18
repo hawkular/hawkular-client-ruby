@@ -106,7 +106,7 @@ http_interactions:
             "Version" : "1.0.0.Alpha13-SNAPSHOT",
             "Server State" : "running",
             "Product Name" : "Hawkular",
-            "Hostname" : "<%= hostname %>"
+            "Hostname" : "localhost.localdomain"
           },
           "name" : "configuration"
         }
