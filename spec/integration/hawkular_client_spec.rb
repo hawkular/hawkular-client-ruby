@@ -158,7 +158,7 @@ module Hawkular::Client::RSpec
     context 'and Operations client', vcr: { decode_compressed_response: true } do
       include Hawkular::Operations::RSpec
 
-      VCR::WebSocket.configure do |c|
+      WebSocketVCR.configure do |c|
         c.hook_uris = ['localhost:8080']
       end
 
@@ -175,7 +175,7 @@ module Hawkular::Client::RSpec
         wf_server_resource_id = 'Local~~'
         alerts_war_resource_id = 'Local~%2Fdeployment%3Dhawkular-alerts-actions-email.war'
 
-        VCR::WebSocket.record(example, self) do
+        WebSocketVCR.record(example, self) do
           path = Hawkular::Inventory::CanonicalPath.new(tenant_id: tenant_id,
                                                         feed_id: feed_id,
                                                         resource_ids: [wf_server_resource_id, alerts_war_resource_id])
@@ -218,7 +218,7 @@ module Hawkular::Client::RSpec
       end
 
       xit 'Should both reuse the websocket connection', :websocket do
-        VCR::WebSocket.record(example, self) do
+        WebSocketVCR.record(example, self) do
         end
       end
     end

@@ -10,6 +10,7 @@ VCR.configure do |c|
   c.configure_rspec_metadata!
 end
 
-VCR::WebSocket.configure do |c|
-  c.cassette_library_dir = 'spec/vcr_cassettes'
+WebSocketVCR.configure do |c|
+  c.json_cassettes = true
+  c.cassette_library_dir = VCR.configuration.cassette_library_dir
 end
