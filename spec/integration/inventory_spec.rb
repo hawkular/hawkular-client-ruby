@@ -120,6 +120,17 @@ module Hawkular::Inventory::RSpec
       expect(children.size).to be(21)
     end
 
+    it 'Should list children of nested resource' do
+      wildfly_res_id = 'Local~~'
+      datasource_res_id = 'Local~/subsystem=datasources/data-source=ExampleDS'
+      datasource = @client.get_resource(@state[:feed], [wildfly_res_id, datasource_res_id])
+      expect(datasource.name).to eq('ExampleDS')
+
+      children = @client.list_child_resources(datasource)
+
+      expect(children.size).to be(0)
+    end
+
     it 'Should list recursive children of WildFly' do
       resources = @client.list_resources_for_type(@state[:feed], 'WildFly Server')
       wild_fly = resources[0]
@@ -164,6 +175,22 @@ module Hawkular::Inventory::RSpec
       metrics = @client.list_metrics_for_resource_type(@state[:feed], 'WildFly Server')
 
       expect(metrics.size).to be(14)
+    end
+
+    it 'Should return config data of given resource' do
+      config = @client.get_config_data_for_resource('Local~~', @state[:feed])
+
+      expect(config['value']['Server State']).to eq('running')
+      expect(config['value']['Product Name']).to eq('Hawkular')
+    end
+
+    it 'Should return config data of given nested resource' do
+      wildfly_res_id = 'Local~~'
+      datasource_res_id = 'Local~/subsystem=datasources/data-source=ExampleDS'
+      config = @client.get_config_data_for_resource([wildfly_res_id, datasource_res_id], @state[:feed])
+
+      expect(config['value']['Username']).to eq('sa')
+      expect(config['value']['Driver Name']).to eq('h2')
     end
 
     it 'Should create a feed' do
@@ -240,6 +267,30 @@ module Hawkular::Inventory::RSpec
       expect(m).not_to be_nil
       expect(m.id).to eq('m-124-1')
       expect(m.name).to eq('Metric1')
+    end
+
+    it 'Should create a nested resource and metric on it' do
+      new_feed_id = 'feed_may_exist'
+      @client.create_feed new_feed_id
+      ret = @client.create_resource_type new_feed_id, 'rt-123-1', 'ResourceType'
+      type_path = ret.path
+
+      @client.create_resource new_feed_id, type_path, 'r124-a', 'Res-a'
+      nested_resource = @client.create_resource_under_resource new_feed_id, type_path, ['r124-a'], 'r124-b', 'Res-a'
+      expect(nested_resource.path).to include('r;r124-a/r;r124-b')
+
+      mt = @client.create_metric_type new_feed_id, 'mt-124-a'
+      expect(mt).not_to be_nil
+      expect(mt.id).to eq('mt-124-a')
+
+      m_name = 'MetricUnderNestedResource'
+      m = @client.create_metric_for_resource new_feed_id, 'm-124-a', mt.path, %w(r124-a r124-b), m_name
+      expect(m.id).to eq('m-124-a')
+      expect(m.name).to eq(m_name)
+
+      metrics = @client.list_metrics_for_resource nested_resource
+      expect(metrics.size).to eq(1)
+      expect(metrics[0].id).to eq(m.id)
     end
 
     it 'Should create and get a resource' do
