@@ -1,0 +1,52 @@
+[
+  [
+    {
+      "operation": "read",
+      "type": "text",
+      "data": "{\n  \"path\" : \"/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= uuid_prefix %>-feed/r;<%= uuid_prefix %>-r126\",\n  \"type\" : {\n    \"path\" : \"/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= uuid_prefix %>-feed/rt;<%= uuid_prefix %>-rt-123\",\n    \"name\" : \"ResourceType\",\n    \"id\" : \"<%= uuid_prefix %>-rt-123\"\n  },\n  \"properties\" : {\n    \"version\" : 1.0\n  },\n  \"name\" : \"My Resource 1\",\n  \"id\" : \"<%= uuid_prefix %>-r126\"\n}"
+    },
+    {
+      "operation": "read",
+      "type": "text",
+      "data": "{\n  \"path\" : \"/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= uuid_prefix %>-feed/r;<%= uuid_prefix %>-r127\",\n  \"type\" : {\n    \"path\" : \"/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= uuid_prefix %>-feed/rt;<%= uuid_prefix %>-rt-123\",\n    \"name\" : \"ResourceType\",\n    \"id\" : \"<%= uuid_prefix %>-rt-123\"\n  },\n  \"properties\" : {\n    \"version\" : 1.1\n  },\n  \"name\" : \"My Resource 2\",\n  \"id\" : \"<%= uuid_prefix %>-r127\"\n}"
+    },
+    {
+      "operation": "close"
+    }
+  ],
+  [
+    {
+      "operation": "read",
+      "type": "text",
+      "data": "{\n  \"path\" : \"/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= uuid_prefix %>-feed\",\n  \"id\" : \"<%= uuid_prefix %>-feed\"\n}"
+    },
+    {
+      "operation": "close"
+    }
+  ],
+  [
+    {
+      "operation": "read",
+      "type": "text",
+      "data": "{\n  \"path\" : \"/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= uuid_prefix %>-feed/rt;<%= uuid_prefix %>-rt-123\",\n  \"name\" : \"ResourceType\",\n  \"id\" : \"<%= uuid_prefix %>-rt-123\"\n}"
+    },
+    {
+      "operation": "close"
+    }
+  ],
+  [
+    {
+      "operation": "read",
+      "type": "text",
+      "data": "{\n  \"path\" : \"/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= uuid_prefix %>-feed\",\n  \"id\" : \"<%= uuid_prefix %>-feed\"\n}"
+    },
+    {
+      "operation": "close"
+    },
+    {
+      "operation": "read",
+      "type": "close",
+      "data": ""
+    }
+  ]
+]

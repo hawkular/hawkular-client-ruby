@@ -1,0 +1,2369 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/<%= feed_uuid %>/resourceTypes/WildFly%20Server/resources
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Thu, 21 Apr 2016 00:54:36 GMT
+      X-Total-Count:
+      - '1'
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '351'
+      Link:
+      - <http://localhost:8080/hawkular/inventory/feeds/<%= feed_uuid %>/resourceTypes/WildFly%20Server/resources>;
+        rel="current"
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        [ {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;WildFly%20Server",
+            "name" : "WildFly Server",
+            "id" : "WildFly Server"
+          },
+          "name" : "localhost/Local",
+          "id" : "Local~~"
+        } ]
+    http_version: 
+  recorded_at: Thu, 21 Apr 2016 00:54:36 GMT
+- request:
+    method: get
+    uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/<%= feed_uuid %>/resources/Local~~/recursiveChildren
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Thu, 21 Apr 2016 00:54:38 GMT
+      X-Total-Count:
+      - '251'
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '159115'
+      Link:
+      - <http://localhost:8080/hawkular/inventory/feeds/<%= feed_uuid %>/resources/Local~~/recursiveChildren>;
+        rel="current"
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        [ {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fsubsystem%3Ddatasources%2Fdata-source%3DExampleDS",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Datasource",
+            "name" : "Datasource",
+            "id" : "Datasource"
+          },
+          "name" : "ExampleDS",
+          "id" : "Local~/subsystem=datasources/data-source=ExampleDS"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fsubsystem%3Ddatasources%2Fdata-source%3DKeycloakDS",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Datasource",
+            "name" : "Datasource",
+            "id" : "Datasource"
+          },
+          "name" : "KeycloakDS",
+          "id" : "Local~/subsystem=datasources/data-source=KeycloakDS"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fsubsystem%3Ddatasources%2Fjdbc-driver%3Dh2",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;JDBC%20Driver",
+            "name" : "JDBC Driver",
+            "id" : "JDBC Driver"
+          },
+          "name" : "h2",
+          "id" : "Local~/subsystem=datasources/jdbc-driver=h2"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-command-gateway-war.war",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Deployment",
+            "name" : "Deployment",
+            "id" : "Deployment"
+          },
+          "name" : "hawkular-command-gateway-war.war",
+          "id" : "Local~/deployment=hawkular-command-gateway-war.war"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-alerts-actions-email.war",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Deployment",
+            "name" : "Deployment",
+            "id" : "Deployment"
+          },
+          "name" : "hawkular-alerts-actions-email.war",
+          "id" : "Local~/deployment=hawkular-alerts-actions-email.war"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-wildfly-agent-download.war",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Deployment",
+            "name" : "Deployment",
+            "id" : "Deployment"
+          },
+          "name" : "hawkular-wildfly-agent-download.war",
+          "id" : "Local~/deployment=hawkular-wildfly-agent-download.war"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-avail-creator.war",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Deployment",
+            "name" : "Deployment",
+            "id" : "Deployment"
+          },
+          "name" : "hawkular-avail-creator.war",
+          "id" : "Local~/deployment=hawkular-avail-creator.war"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dsecret-store.war",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Deployment",
+            "name" : "Deployment",
+            "id" : "Deployment"
+          },
+          "name" : "secret-store.war",
+          "id" : "Local~/deployment=secret-store.war"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-inventory-dist.war",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Deployment",
+            "name" : "Deployment",
+            "id" : "Deployment"
+          },
+          "name" : "hawkular-inventory-dist.war",
+          "id" : "Local~/deployment=hawkular-inventory-dist.war"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-alerts-rest.war",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Deployment",
+            "name" : "Deployment",
+            "id" : "Deployment"
+          },
+          "name" : "hawkular-alerts-rest.war",
+          "id" : "Local~/deployment=hawkular-alerts-rest.war"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-accounts-events-backend.war",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Deployment",
+            "name" : "Deployment",
+            "id" : "Deployment"
+          },
+          "name" : "hawkular-accounts-events-backend.war",
+          "id" : "Local~/deployment=hawkular-accounts-events-backend.war"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-pinger.war",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Deployment",
+            "name" : "Deployment",
+            "id" : "Deployment"
+          },
+          "name" : "hawkular-pinger.war",
+          "id" : "Local~/deployment=hawkular-pinger.war"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-rest-api.war",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Deployment",
+            "name" : "Deployment",
+            "id" : "Deployment"
+          },
+          "name" : "hawkular-rest-api.war",
+          "id" : "Local~/deployment=hawkular-rest-api.war"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-metrics-component.war",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Deployment",
+            "name" : "Deployment",
+            "id" : "Deployment"
+          },
+          "name" : "hawkular-metrics-component.war",
+          "id" : "Local~/deployment=hawkular-metrics-component.war"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-commons-embedded-cassandra-ear.ear",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Deployment",
+            "name" : "Deployment",
+            "id" : "Deployment"
+          },
+          "name" : "hawkular-commons-embedded-cassandra-ear.ear",
+          "id" : "Local~/deployment=hawkular-commons-embedded-cassandra-ear.ear"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-accounts.war",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Deployment",
+            "name" : "Deployment",
+            "id" : "Deployment"
+          },
+          "name" : "hawkular-accounts.war",
+          "id" : "Local~/deployment=hawkular-accounts.war"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-btm-server.war",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Deployment",
+            "name" : "Deployment",
+            "id" : "Deployment"
+          },
+          "name" : "hawkular-btm-server.war",
+          "id" : "Local~/deployment=hawkular-btm-server.war"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dkeycloak-server.war",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Deployment",
+            "name" : "Deployment",
+            "id" : "Deployment"
+          },
+          "name" : "keycloak-server.war",
+          "id" : "Local~/deployment=keycloak-server.war"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-console.war",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Deployment",
+            "name" : "Deployment",
+            "id" : "Deployment"
+          },
+          "name" : "hawkular-console.war",
+          "id" : "Local~/deployment=hawkular-console.war"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fsubsystem%3Dtransactions",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Transaction%20Manager",
+            "name" : "Transaction Manager",
+            "id" : "Transaction Manager"
+          },
+          "name" : "Transaction Manager",
+          "id" : "Local~/subsystem=transactions"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fsubsystem%3Dmessaging-activemq%2Fserver%3Ddefault",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Messaging%20Server",
+            "name" : "Messaging Server",
+            "id" : "Messaging Server"
+          },
+          "name" : "Messaging Server [default]",
+          "id" : "Local~/subsystem=messaging-activemq/server=default"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fsubsystem%3Dhawkular-wildfly-agent",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Hawkular%20WildFly%20Agent",
+            "name" : "Hawkular WildFly Agent",
+            "id" : "Hawkular WildFly Agent"
+          },
+          "name" : "Hawkular WildFly Agent",
+          "id" : "Local~/subsystem=hawkular-wildfly-agent"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-command-gateway-war.war/r;Local~%2Fdeployment%3Dhawkular-command-gateway-war.war%2Fsubsystem%3Dejb3%2Fsingleton-bean%3DRequestRewriter",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Singleton%20EJB",
+            "name" : "Singleton EJB",
+            "id" : "Singleton EJB"
+          },
+          "name" : "Singleton EJB [RequestRewriter]",
+          "id" : "Local~/deployment=hawkular-command-gateway-war.war/subsystem=ejb3/singleton-bean=RequestRewriter"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-command-gateway-war.war/r;Local~%2Fdeployment%3Dhawkular-command-gateway-war.war%2Fsubsystem%3Dejb3%2Fsingleton-bean%3DCassandraSessionInitializer",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Singleton%20EJB",
+            "name" : "Singleton EJB",
+            "id" : "Singleton EJB"
+          },
+          "name" : "Singleton EJB [CassandraSessionInitializer]",
+          "id" : "Local~/deployment=hawkular-command-gateway-war.war/subsystem=ejb3/singleton-bean=CassandraSessionInitializer"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-command-gateway-war.war/r;Local~%2Fdeployment%3Dhawkular-command-gateway-war.war%2Fsubsystem%3Dejb3%2Fsingleton-bean%3DSecretStoreSchemaInitializer",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Singleton%20EJB",
+            "name" : "Singleton EJB",
+            "id" : "Singleton EJB"
+          },
+          "name" : "Singleton EJB [SecretStoreSchemaInitializer]",
+          "id" : "Local~/deployment=hawkular-command-gateway-war.war/subsystem=ejb3/singleton-bean=SecretStoreSchemaInitializer"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-command-gateway-war.war/r;Local~%2Fdeployment%3Dhawkular-command-gateway-war.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DPermissionCheckerImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [PermissionCheckerImpl]",
+          "id" : "Local~/deployment=hawkular-command-gateway-war.war/subsystem=ejb3/stateless-session-bean=PermissionCheckerImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-command-gateway-war.war/r;Local~%2Fdeployment%3Dhawkular-command-gateway-war.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DOrganizationServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [OrganizationServiceImpl]",
+          "id" : "Local~/deployment=hawkular-command-gateway-war.war/subsystem=ejb3/stateless-session-bean=OrganizationServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-command-gateway-war.war/r;Local~%2Fdeployment%3Dhawkular-command-gateway-war.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DTokenService",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [TokenService]",
+          "id" : "Local~/deployment=hawkular-command-gateway-war.war/subsystem=ejb3/stateless-session-bean=TokenService"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-command-gateway-war.war/r;Local~%2Fdeployment%3Dhawkular-command-gateway-war.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DOrganizationJoinRequestServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [OrganizationJoinRequestServiceImpl]",
+          "id" : "Local~/deployment=hawkular-command-gateway-war.war/subsystem=ejb3/stateless-session-bean=OrganizationJoinRequestServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-command-gateway-war.war/r;Local~%2Fdeployment%3Dhawkular-command-gateway-war.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DRoleServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [RoleServiceImpl]",
+          "id" : "Local~/deployment=hawkular-command-gateway-war.war/subsystem=ejb3/stateless-session-bean=RoleServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-command-gateway-war.war/r;Local~%2Fdeployment%3Dhawkular-command-gateway-war.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DInvitationServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [InvitationServiceImpl]",
+          "id" : "Local~/deployment=hawkular-command-gateway-war.war/subsystem=ejb3/stateless-session-bean=InvitationServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-command-gateway-war.war/r;Local~%2Fdeployment%3Dhawkular-command-gateway-war.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DOperationServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [OperationServiceImpl]",
+          "id" : "Local~/deployment=hawkular-command-gateway-war.war/subsystem=ejb3/stateless-session-bean=OperationServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-command-gateway-war.war/r;Local~%2Fdeployment%3Dhawkular-command-gateway-war.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DUserSettingsServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [UserSettingsServiceImpl]",
+          "id" : "Local~/deployment=hawkular-command-gateway-war.war/subsystem=ejb3/stateless-session-bean=UserSettingsServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-command-gateway-war.war/r;Local~%2Fdeployment%3Dhawkular-command-gateway-war.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DPermissionServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [PermissionServiceImpl]",
+          "id" : "Local~/deployment=hawkular-command-gateway-war.war/subsystem=ejb3/stateless-session-bean=PermissionServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-command-gateway-war.war/r;Local~%2Fdeployment%3Dhawkular-command-gateway-war.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DPersonaServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [PersonaServiceImpl]",
+          "id" : "Local~/deployment=hawkular-command-gateway-war.war/subsystem=ejb3/stateless-session-bean=PersonaServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-command-gateway-war.war/r;Local~%2Fdeployment%3Dhawkular-command-gateway-war.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DOrganizationMembershipServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [OrganizationMembershipServiceImpl]",
+          "id" : "Local~/deployment=hawkular-command-gateway-war.war/subsystem=ejb3/stateless-session-bean=OrganizationMembershipServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-command-gateway-war.war/r;Local~%2Fdeployment%3Dhawkular-command-gateway-war.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DResourceServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [ResourceServiceImpl]",
+          "id" : "Local~/deployment=hawkular-command-gateway-war.war/subsystem=ejb3/stateless-session-bean=ResourceServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-command-gateway-war.war/r;Local~%2Fdeployment%3Dhawkular-command-gateway-war.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DUserServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [UserServiceImpl]",
+          "id" : "Local~/deployment=hawkular-command-gateway-war.war/subsystem=ejb3/stateless-session-bean=UserServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-command-gateway-war.war/r;Local~%2Fdeployment%3Dhawkular-command-gateway-war.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DPersonaResourceRoleServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [PersonaResourceRoleServiceImpl]",
+          "id" : "Local~/deployment=hawkular-command-gateway-war.war/subsystem=ejb3/stateless-session-bean=PersonaResourceRoleServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-alerts-actions-email.war/r;Local~%2Fdeployment%3Dhawkular-alerts-actions-email.war%2Fsubsystem%3Dejb3%2Fsingleton-bean%3DBusActionPluginRegister",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Singleton%20EJB",
+            "name" : "Singleton EJB",
+            "id" : "Singleton EJB"
+          },
+          "name" : "Singleton EJB [BusActionPluginRegister]",
+          "id" : "Local~/deployment=hawkular-alerts-actions-email.war/subsystem=ejb3/singleton-bean=BusActionPluginRegister"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-alerts-actions-email.war/r;Local~%2Fdeployment%3Dhawkular-alerts-actions-email.war%2Fsubsystem%3Dejb3%2Fmessage-driven-bean%3DBusActionPluginListener",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Message%20Driven%20EJB",
+            "name" : "Message Driven EJB",
+            "id" : "Message Driven EJB"
+          },
+          "name" : "Message Driven EJB [BusActionPluginListener]",
+          "id" : "Local~/deployment=hawkular-alerts-actions-email.war/subsystem=ejb3/message-driven-bean=BusActionPluginListener"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-wildfly-agent-download.war/r;Local~%2Fdeployment%3Dhawkular-wildfly-agent-download.war%2Fsubsystem%3Dundertow%2Fservlet%3Dorg.hawkular.component.wildflymonitor.WildFlyAgentServlet",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Servlet",
+            "name" : "Servlet",
+            "id" : "Servlet"
+          },
+          "name" : "Servlet [org.hawkular.component.wildflymonitor.WildFlyAgentServlet]",
+          "id" : "Local~/deployment=hawkular-wildfly-agent-download.war/subsystem=undertow/servlet=org.hawkular.component.wildflymonitor.WildFlyAgentServlet"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-wildfly-agent-download.war/r;Local~%2Fdeployment%3Dhawkular-wildfly-agent-download.war%2Fsubsystem%3Dejb3%2Fsingleton-bean%3DCassandraSessionInitializer",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Singleton%20EJB",
+            "name" : "Singleton EJB",
+            "id" : "Singleton EJB"
+          },
+          "name" : "Singleton EJB [CassandraSessionInitializer]",
+          "id" : "Local~/deployment=hawkular-wildfly-agent-download.war/subsystem=ejb3/singleton-bean=CassandraSessionInitializer"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-wildfly-agent-download.war/r;Local~%2Fdeployment%3Dhawkular-wildfly-agent-download.war%2Fsubsystem%3Dejb3%2Fsingleton-bean%3DRequestRewriter",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Singleton%20EJB",
+            "name" : "Singleton EJB",
+            "id" : "Singleton EJB"
+          },
+          "name" : "Singleton EJB [RequestRewriter]",
+          "id" : "Local~/deployment=hawkular-wildfly-agent-download.war/subsystem=ejb3/singleton-bean=RequestRewriter"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-wildfly-agent-download.war/r;Local~%2Fdeployment%3Dhawkular-wildfly-agent-download.war%2Fsubsystem%3Dejb3%2Fsingleton-bean%3DSecretStoreSchemaInitializer",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Singleton%20EJB",
+            "name" : "Singleton EJB",
+            "id" : "Singleton EJB"
+          },
+          "name" : "Singleton EJB [SecretStoreSchemaInitializer]",
+          "id" : "Local~/deployment=hawkular-wildfly-agent-download.war/subsystem=ejb3/singleton-bean=SecretStoreSchemaInitializer"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-wildfly-agent-download.war/r;Local~%2Fdeployment%3Dhawkular-wildfly-agent-download.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DPersonaResourceRoleServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [PersonaResourceRoleServiceImpl]",
+          "id" : "Local~/deployment=hawkular-wildfly-agent-download.war/subsystem=ejb3/stateless-session-bean=PersonaResourceRoleServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-wildfly-agent-download.war/r;Local~%2Fdeployment%3Dhawkular-wildfly-agent-download.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DInvitationServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [InvitationServiceImpl]",
+          "id" : "Local~/deployment=hawkular-wildfly-agent-download.war/subsystem=ejb3/stateless-session-bean=InvitationServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-wildfly-agent-download.war/r;Local~%2Fdeployment%3Dhawkular-wildfly-agent-download.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DRoleServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [RoleServiceImpl]",
+          "id" : "Local~/deployment=hawkular-wildfly-agent-download.war/subsystem=ejb3/stateless-session-bean=RoleServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-wildfly-agent-download.war/r;Local~%2Fdeployment%3Dhawkular-wildfly-agent-download.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DTokenService",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [TokenService]",
+          "id" : "Local~/deployment=hawkular-wildfly-agent-download.war/subsystem=ejb3/stateless-session-bean=TokenService"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-wildfly-agent-download.war/r;Local~%2Fdeployment%3Dhawkular-wildfly-agent-download.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DOperationServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [OperationServiceImpl]",
+          "id" : "Local~/deployment=hawkular-wildfly-agent-download.war/subsystem=ejb3/stateless-session-bean=OperationServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-wildfly-agent-download.war/r;Local~%2Fdeployment%3Dhawkular-wildfly-agent-download.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DUserSettingsServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [UserSettingsServiceImpl]",
+          "id" : "Local~/deployment=hawkular-wildfly-agent-download.war/subsystem=ejb3/stateless-session-bean=UserSettingsServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-wildfly-agent-download.war/r;Local~%2Fdeployment%3Dhawkular-wildfly-agent-download.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DResourceServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [ResourceServiceImpl]",
+          "id" : "Local~/deployment=hawkular-wildfly-agent-download.war/subsystem=ejb3/stateless-session-bean=ResourceServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-wildfly-agent-download.war/r;Local~%2Fdeployment%3Dhawkular-wildfly-agent-download.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DOrganizationServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [OrganizationServiceImpl]",
+          "id" : "Local~/deployment=hawkular-wildfly-agent-download.war/subsystem=ejb3/stateless-session-bean=OrganizationServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-wildfly-agent-download.war/r;Local~%2Fdeployment%3Dhawkular-wildfly-agent-download.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DOrganizationJoinRequestServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [OrganizationJoinRequestServiceImpl]",
+          "id" : "Local~/deployment=hawkular-wildfly-agent-download.war/subsystem=ejb3/stateless-session-bean=OrganizationJoinRequestServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-wildfly-agent-download.war/r;Local~%2Fdeployment%3Dhawkular-wildfly-agent-download.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DPermissionServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [PermissionServiceImpl]",
+          "id" : "Local~/deployment=hawkular-wildfly-agent-download.war/subsystem=ejb3/stateless-session-bean=PermissionServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-wildfly-agent-download.war/r;Local~%2Fdeployment%3Dhawkular-wildfly-agent-download.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DPermissionCheckerImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [PermissionCheckerImpl]",
+          "id" : "Local~/deployment=hawkular-wildfly-agent-download.war/subsystem=ejb3/stateless-session-bean=PermissionCheckerImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-wildfly-agent-download.war/r;Local~%2Fdeployment%3Dhawkular-wildfly-agent-download.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DPersonaServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [PersonaServiceImpl]",
+          "id" : "Local~/deployment=hawkular-wildfly-agent-download.war/subsystem=ejb3/stateless-session-bean=PersonaServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-wildfly-agent-download.war/r;Local~%2Fdeployment%3Dhawkular-wildfly-agent-download.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DOrganizationMembershipServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [OrganizationMembershipServiceImpl]",
+          "id" : "Local~/deployment=hawkular-wildfly-agent-download.war/subsystem=ejb3/stateless-session-bean=OrganizationMembershipServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-wildfly-agent-download.war/r;Local~%2Fdeployment%3Dhawkular-wildfly-agent-download.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DUserServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [UserServiceImpl]",
+          "id" : "Local~/deployment=hawkular-wildfly-agent-download.war/subsystem=ejb3/stateless-session-bean=UserServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-avail-creator.war/r;Local~%2Fdeployment%3Dhawkular-avail-creator.war%2Fsubsystem%3Dejb3%2Fsingleton-bean%3DAvailPublisher",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Singleton%20EJB",
+            "name" : "Singleton EJB",
+            "id" : "Singleton EJB"
+          },
+          "name" : "Singleton EJB [AvailPublisher]",
+          "id" : "Local~/deployment=hawkular-avail-creator.war/subsystem=ejb3/singleton-bean=AvailPublisher"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-avail-creator.war/r;Local~%2Fdeployment%3Dhawkular-avail-creator.war%2Fsubsystem%3Dejb3%2Fmessage-driven-bean%3DMetricReceiver",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Message%20Driven%20EJB",
+            "name" : "Message Driven EJB",
+            "id" : "Message Driven EJB"
+          },
+          "name" : "Message Driven EJB [MetricReceiver]",
+          "id" : "Local~/deployment=hawkular-avail-creator.war/subsystem=ejb3/message-driven-bean=MetricReceiver"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dsecret-store.war/r;Local~%2Fdeployment%3Dsecret-store.war%2Fsubsystem%3Dundertow%2Fservlet%3Dorg.keycloak.secretstore.control.JaxRsActivator",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Servlet",
+            "name" : "Servlet",
+            "id" : "Servlet"
+          },
+          "name" : "Servlet [org.keycloak.secretstore.control.JaxRsActivator]",
+          "id" : "Local~/deployment=secret-store.war/subsystem=undertow/servlet=org.keycloak.secretstore.control.JaxRsActivator"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dsecret-store.war/r;Local~%2Fdeployment%3Dsecret-store.war%2Fsubsystem%3Dundertow%2Fservlet%3Dorg.keycloak.secretstore.boundary.QRCodeServlet",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Servlet",
+            "name" : "Servlet",
+            "id" : "Servlet"
+          },
+          "name" : "Servlet [org.keycloak.secretstore.boundary.QRCodeServlet]",
+          "id" : "Local~/deployment=secret-store.war/subsystem=undertow/servlet=org.keycloak.secretstore.boundary.QRCodeServlet"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dsecret-store.war/r;Local~%2Fdeployment%3Dsecret-store.war%2Fsubsystem%3Dejb3%2Fsingleton-bean%3DRequestRewriter",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Singleton%20EJB",
+            "name" : "Singleton EJB",
+            "id" : "Singleton EJB"
+          },
+          "name" : "Singleton EJB [RequestRewriter]",
+          "id" : "Local~/deployment=secret-store.war/subsystem=ejb3/singleton-bean=RequestRewriter"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dsecret-store.war/r;Local~%2Fdeployment%3Dsecret-store.war%2Fsubsystem%3Dejb3%2Fsingleton-bean%3DSecretStoreSchemaInitializer",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Singleton%20EJB",
+            "name" : "Singleton EJB",
+            "id" : "Singleton EJB"
+          },
+          "name" : "Singleton EJB [SecretStoreSchemaInitializer]",
+          "id" : "Local~/deployment=secret-store.war/subsystem=ejb3/singleton-bean=SecretStoreSchemaInitializer"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dsecret-store.war/r;Local~%2Fdeployment%3Dsecret-store.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DTokenEndpoint",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [TokenEndpoint]",
+          "id" : "Local~/deployment=secret-store.war/subsystem=ejb3/stateless-session-bean=TokenEndpoint"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dsecret-store.war/r;Local~%2Fdeployment%3Dsecret-store.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DTokenService",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [TokenService]",
+          "id" : "Local~/deployment=secret-store.war/subsystem=ejb3/stateless-session-bean=TokenService"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-inventory-dist.war/r;Local~%2Fdeployment%3Dhawkular-inventory-dist.war%2Fsubsystem%3Dundertow%2Fservlet%3Dorg.hawkular.inventory.rest.HawkularRestApi",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Servlet",
+            "name" : "Servlet",
+            "id" : "Servlet"
+          },
+          "name" : "Servlet [org.hawkular.inventory.rest.HawkularRestApi]",
+          "id" : "Local~/deployment=hawkular-inventory-dist.war/subsystem=undertow/servlet=org.hawkular.inventory.rest.HawkularRestApi"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-inventory-dist.war/r;Local~%2Fdeployment%3Dhawkular-inventory-dist.war%2Fsubsystem%3Dejb3%2Fsingleton-bean%3DSecretStoreSchemaInitializer",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Singleton%20EJB",
+            "name" : "Singleton EJB",
+            "id" : "Singleton EJB"
+          },
+          "name" : "Singleton EJB [SecretStoreSchemaInitializer]",
+          "id" : "Local~/deployment=hawkular-inventory-dist.war/subsystem=ejb3/singleton-bean=SecretStoreSchemaInitializer"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-inventory-dist.war/r;Local~%2Fdeployment%3Dhawkular-inventory-dist.war%2Fsubsystem%3Dejb3%2Fsingleton-bean%3DInventoryJNDIPublisher",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Singleton%20EJB",
+            "name" : "Singleton EJB",
+            "id" : "Singleton EJB"
+          },
+          "name" : "Singleton EJB [InventoryJNDIPublisher]",
+          "id" : "Local~/deployment=hawkular-inventory-dist.war/subsystem=ejb3/singleton-bean=InventoryJNDIPublisher"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-inventory-dist.war/r;Local~%2Fdeployment%3Dhawkular-inventory-dist.war%2Fsubsystem%3Dejb3%2Fsingleton-bean%3DRequestRewriter",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Singleton%20EJB",
+            "name" : "Singleton EJB",
+            "id" : "Singleton EJB"
+          },
+          "name" : "Singleton EJB [RequestRewriter]",
+          "id" : "Local~/deployment=hawkular-inventory-dist.war/subsystem=ejb3/singleton-bean=RequestRewriter"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-inventory-dist.war/r;Local~%2Fdeployment%3Dhawkular-inventory-dist.war%2Fsubsystem%3Dejb3%2Fsingleton-bean%3DCassandraSessionInitializer",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Singleton%20EJB",
+            "name" : "Singleton EJB",
+            "id" : "Singleton EJB"
+          },
+          "name" : "Singleton EJB [CassandraSessionInitializer]",
+          "id" : "Local~/deployment=hawkular-inventory-dist.war/subsystem=ejb3/singleton-bean=CassandraSessionInitializer"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-inventory-dist.war/r;Local~%2Fdeployment%3Dhawkular-inventory-dist.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DUserSettingsServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [UserSettingsServiceImpl]",
+          "id" : "Local~/deployment=hawkular-inventory-dist.war/subsystem=ejb3/stateless-session-bean=UserSettingsServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-inventory-dist.war/r;Local~%2Fdeployment%3Dhawkular-inventory-dist.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DOrganizationMembershipServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [OrganizationMembershipServiceImpl]",
+          "id" : "Local~/deployment=hawkular-inventory-dist.war/subsystem=ejb3/stateless-session-bean=OrganizationMembershipServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-inventory-dist.war/r;Local~%2Fdeployment%3Dhawkular-inventory-dist.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DPermissionServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [PermissionServiceImpl]",
+          "id" : "Local~/deployment=hawkular-inventory-dist.war/subsystem=ejb3/stateless-session-bean=PermissionServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-inventory-dist.war/r;Local~%2Fdeployment%3Dhawkular-inventory-dist.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DPersonaServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [PersonaServiceImpl]",
+          "id" : "Local~/deployment=hawkular-inventory-dist.war/subsystem=ejb3/stateless-session-bean=PersonaServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-inventory-dist.war/r;Local~%2Fdeployment%3Dhawkular-inventory-dist.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DOrganizationServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [OrganizationServiceImpl]",
+          "id" : "Local~/deployment=hawkular-inventory-dist.war/subsystem=ejb3/stateless-session-bean=OrganizationServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-inventory-dist.war/r;Local~%2Fdeployment%3Dhawkular-inventory-dist.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DOrganizationJoinRequestServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [OrganizationJoinRequestServiceImpl]",
+          "id" : "Local~/deployment=hawkular-inventory-dist.war/subsystem=ejb3/stateless-session-bean=OrganizationJoinRequestServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-inventory-dist.war/r;Local~%2Fdeployment%3Dhawkular-inventory-dist.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DTokenService",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [TokenService]",
+          "id" : "Local~/deployment=hawkular-inventory-dist.war/subsystem=ejb3/stateless-session-bean=TokenService"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-inventory-dist.war/r;Local~%2Fdeployment%3Dhawkular-inventory-dist.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DInvitationServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [InvitationServiceImpl]",
+          "id" : "Local~/deployment=hawkular-inventory-dist.war/subsystem=ejb3/stateless-session-bean=InvitationServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-inventory-dist.war/r;Local~%2Fdeployment%3Dhawkular-inventory-dist.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DResourceServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [ResourceServiceImpl]",
+          "id" : "Local~/deployment=hawkular-inventory-dist.war/subsystem=ejb3/stateless-session-bean=ResourceServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-inventory-dist.war/r;Local~%2Fdeployment%3Dhawkular-inventory-dist.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DPermissionCheckerImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [PermissionCheckerImpl]",
+          "id" : "Local~/deployment=hawkular-inventory-dist.war/subsystem=ejb3/stateless-session-bean=PermissionCheckerImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-inventory-dist.war/r;Local~%2Fdeployment%3Dhawkular-inventory-dist.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DOperationServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [OperationServiceImpl]",
+          "id" : "Local~/deployment=hawkular-inventory-dist.war/subsystem=ejb3/stateless-session-bean=OperationServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-inventory-dist.war/r;Local~%2Fdeployment%3Dhawkular-inventory-dist.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DRoleServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [RoleServiceImpl]",
+          "id" : "Local~/deployment=hawkular-inventory-dist.war/subsystem=ejb3/stateless-session-bean=RoleServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-inventory-dist.war/r;Local~%2Fdeployment%3Dhawkular-inventory-dist.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DPersonaResourceRoleServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [PersonaResourceRoleServiceImpl]",
+          "id" : "Local~/deployment=hawkular-inventory-dist.war/subsystem=ejb3/stateless-session-bean=PersonaResourceRoleServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-inventory-dist.war/r;Local~%2Fdeployment%3Dhawkular-inventory-dist.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DUserServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [UserServiceImpl]",
+          "id" : "Local~/deployment=hawkular-inventory-dist.war/subsystem=ejb3/stateless-session-bean=UserServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-alerts-rest.war/r;Local~%2Fdeployment%3Dhawkular-alerts-rest.war%2Fsubsystem%3Dundertow%2Fservlet%3Dorg.hawkular.alerts.rest.HawkularAlertsApp",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Servlet",
+            "name" : "Servlet",
+            "id" : "Servlet"
+          },
+          "name" : "Servlet [org.hawkular.alerts.rest.HawkularAlertsApp]",
+          "id" : "Local~/deployment=hawkular-alerts-rest.war/subsystem=undertow/servlet=org.hawkular.alerts.rest.HawkularAlertsApp"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-alerts-rest.war/r;Local~%2Fdeployment%3Dhawkular-alerts-rest.war%2Fsubsystem%3Dejb3%2Fsingleton-bean%3DDataDrivenGroupCacheManager",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Singleton%20EJB",
+            "name" : "Singleton EJB",
+            "id" : "Singleton EJB"
+          },
+          "name" : "Singleton EJB [DataDrivenGroupCacheManager]",
+          "id" : "Local~/deployment=hawkular-alerts-rest.war/subsystem=ejb3/singleton-bean=DataDrivenGroupCacheManager"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-alerts-rest.war/r;Local~%2Fdeployment%3Dhawkular-alerts-rest.war%2Fsubsystem%3Dejb3%2Fsingleton-bean%3DDroolsRulesEngineImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Singleton%20EJB",
+            "name" : "Singleton EJB",
+            "id" : "Singleton EJB"
+          },
+          "name" : "Singleton EJB [DroolsRulesEngineImpl]",
+          "id" : "Local~/deployment=hawkular-alerts-rest.war/subsystem=ejb3/singleton-bean=DroolsRulesEngineImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-alerts-rest.war/r;Local~%2Fdeployment%3Dhawkular-alerts-rest.war%2Fsubsystem%3Dejb3%2Fsingleton-bean%3DCassandraSessionInitializer",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Singleton%20EJB",
+            "name" : "Singleton EJB",
+            "id" : "Singleton EJB"
+          },
+          "name" : "Singleton EJB [CassandraSessionInitializer]",
+          "id" : "Local~/deployment=hawkular-alerts-rest.war/subsystem=ejb3/singleton-bean=CassandraSessionInitializer"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-alerts-rest.war/r;Local~%2Fdeployment%3Dhawkular-alerts-rest.war%2Fsubsystem%3Dejb3%2Fsingleton-bean%3DSecretStoreSchemaInitializer",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Singleton%20EJB",
+            "name" : "Singleton EJB",
+            "id" : "Singleton EJB"
+          },
+          "name" : "Singleton EJB [SecretStoreSchemaInitializer]",
+          "id" : "Local~/deployment=hawkular-alerts-rest.war/subsystem=ejb3/singleton-bean=SecretStoreSchemaInitializer"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-alerts-rest.war/r;Local~%2Fdeployment%3Dhawkular-alerts-rest.war%2Fsubsystem%3Dejb3%2Fsingleton-bean%3DAlertsEngineImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Singleton%20EJB",
+            "name" : "Singleton EJB",
+            "id" : "Singleton EJB"
+          },
+          "name" : "Singleton EJB [AlertsEngineImpl]",
+          "id" : "Local~/deployment=hawkular-alerts-rest.war/subsystem=ejb3/singleton-bean=AlertsEngineImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-alerts-rest.war/r;Local~%2Fdeployment%3Dhawkular-alerts-rest.war%2Fsubsystem%3Dejb3%2Fsingleton-bean%3DAlertsContext",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Singleton%20EJB",
+            "name" : "Singleton EJB",
+            "id" : "Singleton EJB"
+          },
+          "name" : "Singleton EJB [AlertsContext]",
+          "id" : "Local~/deployment=hawkular-alerts-rest.war/subsystem=ejb3/singleton-bean=AlertsContext"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-alerts-rest.war/r;Local~%2Fdeployment%3Dhawkular-alerts-rest.war%2Fsubsystem%3Dejb3%2Fsingleton-bean%3DCacheManager",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Singleton%20EJB",
+            "name" : "Singleton EJB",
+            "id" : "Singleton EJB"
+          },
+          "name" : "Singleton EJB [CacheManager]",
+          "id" : "Local~/deployment=hawkular-alerts-rest.war/subsystem=ejb3/singleton-bean=CacheManager"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-alerts-rest.war/r;Local~%2Fdeployment%3Dhawkular-alerts-rest.war%2Fsubsystem%3Dejb3%2Fsingleton-bean%3DPartitionManagerImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Singleton%20EJB",
+            "name" : "Singleton EJB",
+            "id" : "Singleton EJB"
+          },
+          "name" : "Singleton EJB [PartitionManagerImpl]",
+          "id" : "Local~/deployment=hawkular-alerts-rest.war/subsystem=ejb3/singleton-bean=PartitionManagerImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-alerts-rest.war/r;Local~%2Fdeployment%3Dhawkular-alerts-rest.war%2Fsubsystem%3Dejb3%2Fsingleton-bean%3DAlertEngineRegister",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Singleton%20EJB",
+            "name" : "Singleton EJB",
+            "id" : "Singleton EJB"
+          },
+          "name" : "Singleton EJB [AlertEngineRegister]",
+          "id" : "Local~/deployment=hawkular-alerts-rest.war/subsystem=ejb3/singleton-bean=AlertEngineRegister"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-alerts-rest.war/r;Local~%2Fdeployment%3Dhawkular-alerts-rest.war%2Fsubsystem%3Dejb3%2Fsingleton-bean%3DRequestRewriter",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Singleton%20EJB",
+            "name" : "Singleton EJB",
+            "id" : "Singleton EJB"
+          },
+          "name" : "Singleton EJB [RequestRewriter]",
+          "id" : "Local~/deployment=hawkular-alerts-rest.war/subsystem=ejb3/singleton-bean=RequestRewriter"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-alerts-rest.war/r;Local~%2Fdeployment%3Dhawkular-alerts-rest.war%2Fsubsystem%3Dejb3%2Fmessage-driven-bean%3DAlertDataListener",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Message%20Driven%20EJB",
+            "name" : "Message Driven EJB",
+            "id" : "Message Driven EJB"
+          },
+          "name" : "Message Driven EJB [AlertDataListener]",
+          "id" : "Local~/deployment=hawkular-alerts-rest.war/subsystem=ejb3/message-driven-bean=AlertDataListener"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-alerts-rest.war/r;Local~%2Fdeployment%3Dhawkular-alerts-rest.war%2Fsubsystem%3Dejb3%2Fmessage-driven-bean%3DAvailDataListener",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Message%20Driven%20EJB",
+            "name" : "Message Driven EJB",
+            "id" : "Message Driven EJB"
+          },
+          "name" : "Message Driven EJB [AvailDataListener]",
+          "id" : "Local~/deployment=hawkular-alerts-rest.war/subsystem=ejb3/message-driven-bean=AvailDataListener"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-alerts-rest.war/r;Local~%2Fdeployment%3Dhawkular-alerts-rest.war%2Fsubsystem%3Dejb3%2Fmessage-driven-bean%3DActionPluginRegistrationListener",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Message%20Driven%20EJB",
+            "name" : "Message Driven EJB",
+            "id" : "Message Driven EJB"
+          },
+          "name" : "Message Driven EJB [ActionPluginRegistrationListener]",
+          "id" : "Local~/deployment=hawkular-alerts-rest.war/subsystem=ejb3/message-driven-bean=ActionPluginRegistrationListener"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-alerts-rest.war/r;Local~%2Fdeployment%3Dhawkular-alerts-rest.war%2Fsubsystem%3Dejb3%2Fmessage-driven-bean%3DMetricDataListener",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Message%20Driven%20EJB",
+            "name" : "Message Driven EJB",
+            "id" : "Message Driven EJB"
+          },
+          "name" : "Message Driven EJB [MetricDataListener]",
+          "id" : "Local~/deployment=hawkular-alerts-rest.war/subsystem=ejb3/message-driven-bean=MetricDataListener"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-alerts-rest.war/r;Local~%2Fdeployment%3Dhawkular-alerts-rest.war%2Fsubsystem%3Dejb3%2Fmessage-driven-bean%3DActionPluginResponsesListener",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Message%20Driven%20EJB",
+            "name" : "Message Driven EJB",
+            "id" : "Message Driven EJB"
+          },
+          "name" : "Message Driven EJB [ActionPluginResponsesListener]",
+          "id" : "Local~/deployment=hawkular-alerts-rest.war/subsystem=ejb3/message-driven-bean=ActionPluginResponsesListener"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-alerts-rest.war/r;Local~%2Fdeployment%3Dhawkular-alerts-rest.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DPermissionCheckerImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [PermissionCheckerImpl]",
+          "id" : "Local~/deployment=hawkular-alerts-rest.war/subsystem=ejb3/stateless-session-bean=PermissionCheckerImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-alerts-rest.war/r;Local~%2Fdeployment%3Dhawkular-alerts-rest.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DRoleServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [RoleServiceImpl]",
+          "id" : "Local~/deployment=hawkular-alerts-rest.war/subsystem=ejb3/stateless-session-bean=RoleServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-alerts-rest.war/r;Local~%2Fdeployment%3Dhawkular-alerts-rest.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DInvitationServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [InvitationServiceImpl]",
+          "id" : "Local~/deployment=hawkular-alerts-rest.war/subsystem=ejb3/stateless-session-bean=InvitationServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-alerts-rest.war/r;Local~%2Fdeployment%3Dhawkular-alerts-rest.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DPersonaResourceRoleServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [PersonaResourceRoleServiceImpl]",
+          "id" : "Local~/deployment=hawkular-alerts-rest.war/subsystem=ejb3/stateless-session-bean=PersonaResourceRoleServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-alerts-rest.war/r;Local~%2Fdeployment%3Dhawkular-alerts-rest.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DTokenService",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [TokenService]",
+          "id" : "Local~/deployment=hawkular-alerts-rest.war/subsystem=ejb3/stateless-session-bean=TokenService"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-alerts-rest.war/r;Local~%2Fdeployment%3Dhawkular-alerts-rest.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DOperationServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [OperationServiceImpl]",
+          "id" : "Local~/deployment=hawkular-alerts-rest.war/subsystem=ejb3/stateless-session-bean=OperationServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-alerts-rest.war/r;Local~%2Fdeployment%3Dhawkular-alerts-rest.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DCassDefinitionsServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [CassDefinitionsServiceImpl]",
+          "id" : "Local~/deployment=hawkular-alerts-rest.war/subsystem=ejb3/stateless-session-bean=CassDefinitionsServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-alerts-rest.war/r;Local~%2Fdeployment%3Dhawkular-alerts-rest.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DOrganizationMembershipServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [OrganizationMembershipServiceImpl]",
+          "id" : "Local~/deployment=hawkular-alerts-rest.war/subsystem=ejb3/stateless-session-bean=OrganizationMembershipServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-alerts-rest.war/r;Local~%2Fdeployment%3Dhawkular-alerts-rest.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DUserServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [UserServiceImpl]",
+          "id" : "Local~/deployment=hawkular-alerts-rest.war/subsystem=ejb3/stateless-session-bean=UserServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-alerts-rest.war/r;Local~%2Fdeployment%3Dhawkular-alerts-rest.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DPersonaServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [PersonaServiceImpl]",
+          "id" : "Local~/deployment=hawkular-alerts-rest.war/subsystem=ejb3/stateless-session-bean=PersonaServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-alerts-rest.war/r;Local~%2Fdeployment%3Dhawkular-alerts-rest.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DPermissionServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [PermissionServiceImpl]",
+          "id" : "Local~/deployment=hawkular-alerts-rest.war/subsystem=ejb3/stateless-session-bean=PermissionServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-alerts-rest.war/r;Local~%2Fdeployment%3Dhawkular-alerts-rest.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DOrganizationJoinRequestServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [OrganizationJoinRequestServiceImpl]",
+          "id" : "Local~/deployment=hawkular-alerts-rest.war/subsystem=ejb3/stateless-session-bean=OrganizationJoinRequestServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-alerts-rest.war/r;Local~%2Fdeployment%3Dhawkular-alerts-rest.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DCassAlertsServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [CassAlertsServiceImpl]",
+          "id" : "Local~/deployment=hawkular-alerts-rest.war/subsystem=ejb3/stateless-session-bean=CassAlertsServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-alerts-rest.war/r;Local~%2Fdeployment%3Dhawkular-alerts-rest.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DUserSettingsServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [UserSettingsServiceImpl]",
+          "id" : "Local~/deployment=hawkular-alerts-rest.war/subsystem=ejb3/stateless-session-bean=UserSettingsServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-alerts-rest.war/r;Local~%2Fdeployment%3Dhawkular-alerts-rest.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DResourceServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [ResourceServiceImpl]",
+          "id" : "Local~/deployment=hawkular-alerts-rest.war/subsystem=ejb3/stateless-session-bean=ResourceServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-alerts-rest.war/r;Local~%2Fdeployment%3Dhawkular-alerts-rest.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DOrganizationServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [OrganizationServiceImpl]",
+          "id" : "Local~/deployment=hawkular-alerts-rest.war/subsystem=ejb3/stateless-session-bean=OrganizationServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-alerts-rest.war/r;Local~%2Fdeployment%3Dhawkular-alerts-rest.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DCassActionsServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [CassActionsServiceImpl]",
+          "id" : "Local~/deployment=hawkular-alerts-rest.war/subsystem=ejb3/stateless-session-bean=CassActionsServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-accounts-events-backend.war/r;Local~%2Fdeployment%3Dhawkular-accounts-events-backend.war%2Fsubsystem%3Dundertow%2Fservlet%3Dorg.hawkular.accounts.events.control.JaxRsActivator",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Servlet",
+            "name" : "Servlet",
+            "id" : "Servlet"
+          },
+          "name" : "Servlet [org.hawkular.accounts.events.control.JaxRsActivator]",
+          "id" : "Local~/deployment=hawkular-accounts-events-backend.war/subsystem=undertow/servlet=org.hawkular.accounts.events.control.JaxRsActivator"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-pinger.war/r;Local~%2Fdeployment%3Dhawkular-pinger.war%2Fsubsystem%3Dejb3%2Fsingleton-bean%3DMetricPublisher",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Singleton%20EJB",
+            "name" : "Singleton EJB",
+            "id" : "Singleton EJB"
+          },
+          "name" : "Singleton EJB [MetricPublisher]",
+          "id" : "Local~/deployment=hawkular-pinger.war/subsystem=ejb3/singleton-bean=MetricPublisher"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-pinger.war/r;Local~%2Fdeployment%3Dhawkular-pinger.war%2Fsubsystem%3Dejb3%2Fsingleton-bean%3DPingManager",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Singleton%20EJB",
+            "name" : "Singleton EJB",
+            "id" : "Singleton EJB"
+          },
+          "name" : "Singleton EJB [PingManager]",
+          "id" : "Local~/deployment=hawkular-pinger.war/subsystem=ejb3/singleton-bean=PingManager"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-pinger.war/r;Local~%2Fdeployment%3Dhawkular-pinger.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DPinger",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [Pinger]",
+          "id" : "Local~/deployment=hawkular-pinger.war/subsystem=ejb3/stateless-session-bean=Pinger"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-pinger.war/r;Local~%2Fdeployment%3Dhawkular-pinger.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DTraitsPublisher",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [TraitsPublisher]",
+          "id" : "Local~/deployment=hawkular-pinger.war/subsystem=ejb3/stateless-session-bean=TraitsPublisher"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-rest-api.war/r;Local~%2Fdeployment%3Dhawkular-rest-api.war%2Fsubsystem%3Dundertow%2Fservlet%3DHystrixMetricsStreamServlet",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Servlet",
+            "name" : "Servlet",
+            "id" : "Servlet"
+          },
+          "name" : "Servlet [HystrixMetricsStreamServlet]",
+          "id" : "Local~/deployment=hawkular-rest-api.war/subsystem=undertow/servlet=HystrixMetricsStreamServlet"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-rest-api.war/r;Local~%2Fdeployment%3Dhawkular-rest-api.war%2Fsubsystem%3Dundertow%2Fservlet%3Dorg.hawkular.rest.HawkularRestApi",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Servlet",
+            "name" : "Servlet",
+            "id" : "Servlet"
+          },
+          "name" : "Servlet [org.hawkular.rest.HawkularRestApi]",
+          "id" : "Local~/deployment=hawkular-rest-api.war/subsystem=undertow/servlet=org.hawkular.rest.HawkularRestApi"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-rest-api.war/r;Local~%2Fdeployment%3Dhawkular-rest-api.war%2Fsubsystem%3Dejb3%2Fsingleton-bean%3DSecretStoreSchemaInitializer",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Singleton%20EJB",
+            "name" : "Singleton EJB",
+            "id" : "Singleton EJB"
+          },
+          "name" : "Singleton EJB [SecretStoreSchemaInitializer]",
+          "id" : "Local~/deployment=hawkular-rest-api.war/subsystem=ejb3/singleton-bean=SecretStoreSchemaInitializer"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-rest-api.war/r;Local~%2Fdeployment%3Dhawkular-rest-api.war%2Fsubsystem%3Dejb3%2Fsingleton-bean%3DCassandraSessionInitializer",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Singleton%20EJB",
+            "name" : "Singleton EJB",
+            "id" : "Singleton EJB"
+          },
+          "name" : "Singleton EJB [CassandraSessionInitializer]",
+          "id" : "Local~/deployment=hawkular-rest-api.war/subsystem=ejb3/singleton-bean=CassandraSessionInitializer"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-rest-api.war/r;Local~%2Fdeployment%3Dhawkular-rest-api.war%2Fsubsystem%3Dejb3%2Fsingleton-bean%3DRequestRewriter",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Singleton%20EJB",
+            "name" : "Singleton EJB",
+            "id" : "Singleton EJB"
+          },
+          "name" : "Singleton EJB [RequestRewriter]",
+          "id" : "Local~/deployment=hawkular-rest-api.war/subsystem=ejb3/singleton-bean=RequestRewriter"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-rest-api.war/r;Local~%2Fdeployment%3Dhawkular-rest-api.war%2Fsubsystem%3Dejb3%2Fmessage-driven-bean%3DCommandEventListener",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Message%20Driven%20EJB",
+            "name" : "Message Driven EJB",
+            "id" : "Message Driven EJB"
+          },
+          "name" : "Message Driven EJB [CommandEventListener]",
+          "id" : "Local~/deployment=hawkular-rest-api.war/subsystem=ejb3/message-driven-bean=CommandEventListener"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-rest-api.war/r;Local~%2Fdeployment%3Dhawkular-rest-api.war%2Fsubsystem%3Dejb3%2Fmessage-driven-bean%3DInventoryEventListener",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Message%20Driven%20EJB",
+            "name" : "Message Driven EJB",
+            "id" : "Message Driven EJB"
+          },
+          "name" : "Message Driven EJB [InventoryEventListener]",
+          "id" : "Local~/deployment=hawkular-rest-api.war/subsystem=ejb3/message-driven-bean=InventoryEventListener"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-rest-api.war/r;Local~%2Fdeployment%3Dhawkular-rest-api.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DUserSettingsServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [UserSettingsServiceImpl]",
+          "id" : "Local~/deployment=hawkular-rest-api.war/subsystem=ejb3/stateless-session-bean=UserSettingsServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-rest-api.war/r;Local~%2Fdeployment%3Dhawkular-rest-api.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DOrganizationMembershipServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [OrganizationMembershipServiceImpl]",
+          "id" : "Local~/deployment=hawkular-rest-api.war/subsystem=ejb3/stateless-session-bean=OrganizationMembershipServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-rest-api.war/r;Local~%2Fdeployment%3Dhawkular-rest-api.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DPermissionServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [PermissionServiceImpl]",
+          "id" : "Local~/deployment=hawkular-rest-api.war/subsystem=ejb3/stateless-session-bean=PermissionServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-rest-api.war/r;Local~%2Fdeployment%3Dhawkular-rest-api.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DTokenService",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [TokenService]",
+          "id" : "Local~/deployment=hawkular-rest-api.war/subsystem=ejb3/stateless-session-bean=TokenService"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-rest-api.war/r;Local~%2Fdeployment%3Dhawkular-rest-api.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DRoleServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [RoleServiceImpl]",
+          "id" : "Local~/deployment=hawkular-rest-api.war/subsystem=ejb3/stateless-session-bean=RoleServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-rest-api.war/r;Local~%2Fdeployment%3Dhawkular-rest-api.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DPersonaServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [PersonaServiceImpl]",
+          "id" : "Local~/deployment=hawkular-rest-api.war/subsystem=ejb3/stateless-session-bean=PersonaServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-rest-api.war/r;Local~%2Fdeployment%3Dhawkular-rest-api.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DUserServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [UserServiceImpl]",
+          "id" : "Local~/deployment=hawkular-rest-api.war/subsystem=ejb3/stateless-session-bean=UserServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-rest-api.war/r;Local~%2Fdeployment%3Dhawkular-rest-api.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DPermissionCheckerImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [PermissionCheckerImpl]",
+          "id" : "Local~/deployment=hawkular-rest-api.war/subsystem=ejb3/stateless-session-bean=PermissionCheckerImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-rest-api.war/r;Local~%2Fdeployment%3Dhawkular-rest-api.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DOperationServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [OperationServiceImpl]",
+          "id" : "Local~/deployment=hawkular-rest-api.war/subsystem=ejb3/stateless-session-bean=OperationServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-rest-api.war/r;Local~%2Fdeployment%3Dhawkular-rest-api.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DInvitationServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [InvitationServiceImpl]",
+          "id" : "Local~/deployment=hawkular-rest-api.war/subsystem=ejb3/stateless-session-bean=InvitationServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-rest-api.war/r;Local~%2Fdeployment%3Dhawkular-rest-api.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DPersonaResourceRoleServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [PersonaResourceRoleServiceImpl]",
+          "id" : "Local~/deployment=hawkular-rest-api.war/subsystem=ejb3/stateless-session-bean=PersonaResourceRoleServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-rest-api.war/r;Local~%2Fdeployment%3Dhawkular-rest-api.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DOrganizationServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [OrganizationServiceImpl]",
+          "id" : "Local~/deployment=hawkular-rest-api.war/subsystem=ejb3/stateless-session-bean=OrganizationServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-rest-api.war/r;Local~%2Fdeployment%3Dhawkular-rest-api.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DOrganizationJoinRequestServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [OrganizationJoinRequestServiceImpl]",
+          "id" : "Local~/deployment=hawkular-rest-api.war/subsystem=ejb3/stateless-session-bean=OrganizationJoinRequestServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-rest-api.war/r;Local~%2Fdeployment%3Dhawkular-rest-api.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DResourceServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [ResourceServiceImpl]",
+          "id" : "Local~/deployment=hawkular-rest-api.war/subsystem=ejb3/stateless-session-bean=ResourceServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-metrics-component.war/r;Local~%2Fdeployment%3Dhawkular-metrics-component.war%2Fsubsystem%3Dundertow%2Fservlet%3Dorg.hawkular.metrics.api.jaxrs.HawkularMetricsRestApp",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Servlet",
+            "name" : "Servlet",
+            "id" : "Servlet"
+          },
+          "name" : "Servlet [org.hawkular.metrics.api.jaxrs.HawkularMetricsRestApp]",
+          "id" : "Local~/deployment=hawkular-metrics-component.war/subsystem=undertow/servlet=org.hawkular.metrics.api.jaxrs.HawkularMetricsRestApp"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-metrics-component.war/r;Local~%2Fdeployment%3Dhawkular-metrics-component.war%2Fsubsystem%3Dundertow%2Fservlet%3DstaticContent",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Servlet",
+            "name" : "Servlet",
+            "id" : "Servlet"
+          },
+          "name" : "Servlet [staticContent]",
+          "id" : "Local~/deployment=hawkular-metrics-component.war/subsystem=undertow/servlet=staticContent"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-metrics-component.war/r;Local~%2Fdeployment%3Dhawkular-metrics-component.war%2Fsubsystem%3Dejb3%2Fsingleton-bean%3DCassandraSessionInitializer",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Singleton%20EJB",
+            "name" : "Singleton EJB",
+            "id" : "Singleton EJB"
+          },
+          "name" : "Singleton EJB [CassandraSessionInitializer]",
+          "id" : "Local~/deployment=hawkular-metrics-component.war/subsystem=ejb3/singleton-bean=CassandraSessionInitializer"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-metrics-component.war/r;Local~%2Fdeployment%3Dhawkular-metrics-component.war%2Fsubsystem%3Dejb3%2Fsingleton-bean%3DRequestRewriter",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Singleton%20EJB",
+            "name" : "Singleton EJB",
+            "id" : "Singleton EJB"
+          },
+          "name" : "Singleton EJB [RequestRewriter]",
+          "id" : "Local~/deployment=hawkular-metrics-component.war/subsystem=ejb3/singleton-bean=RequestRewriter"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-metrics-component.war/r;Local~%2Fdeployment%3Dhawkular-metrics-component.war%2Fsubsystem%3Dejb3%2Fsingleton-bean%3DSecretStoreSchemaInitializer",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Singleton%20EJB",
+            "name" : "Singleton EJB",
+            "id" : "Singleton EJB"
+          },
+          "name" : "Singleton EJB [SecretStoreSchemaInitializer]",
+          "id" : "Local~/deployment=hawkular-metrics-component.war/subsystem=ejb3/singleton-bean=SecretStoreSchemaInitializer"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-metrics-component.war/r;Local~%2Fdeployment%3Dhawkular-metrics-component.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DOrganizationJoinRequestServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [OrganizationJoinRequestServiceImpl]",
+          "id" : "Local~/deployment=hawkular-metrics-component.war/subsystem=ejb3/stateless-session-bean=OrganizationJoinRequestServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-metrics-component.war/r;Local~%2Fdeployment%3Dhawkular-metrics-component.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DOrganizationServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [OrganizationServiceImpl]",
+          "id" : "Local~/deployment=hawkular-metrics-component.war/subsystem=ejb3/stateless-session-bean=OrganizationServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-metrics-component.war/r;Local~%2Fdeployment%3Dhawkular-metrics-component.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DPersonaServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [PersonaServiceImpl]",
+          "id" : "Local~/deployment=hawkular-metrics-component.war/subsystem=ejb3/stateless-session-bean=PersonaServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-metrics-component.war/r;Local~%2Fdeployment%3Dhawkular-metrics-component.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DPermissionCheckerImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [PermissionCheckerImpl]",
+          "id" : "Local~/deployment=hawkular-metrics-component.war/subsystem=ejb3/stateless-session-bean=PermissionCheckerImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-metrics-component.war/r;Local~%2Fdeployment%3Dhawkular-metrics-component.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DUserServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [UserServiceImpl]",
+          "id" : "Local~/deployment=hawkular-metrics-component.war/subsystem=ejb3/stateless-session-bean=UserServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-metrics-component.war/r;Local~%2Fdeployment%3Dhawkular-metrics-component.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DOrganizationMembershipServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [OrganizationMembershipServiceImpl]",
+          "id" : "Local~/deployment=hawkular-metrics-component.war/subsystem=ejb3/stateless-session-bean=OrganizationMembershipServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-metrics-component.war/r;Local~%2Fdeployment%3Dhawkular-metrics-component.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DInvitationServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [InvitationServiceImpl]",
+          "id" : "Local~/deployment=hawkular-metrics-component.war/subsystem=ejb3/stateless-session-bean=InvitationServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-metrics-component.war/r;Local~%2Fdeployment%3Dhawkular-metrics-component.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DRoleServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [RoleServiceImpl]",
+          "id" : "Local~/deployment=hawkular-metrics-component.war/subsystem=ejb3/stateless-session-bean=RoleServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-metrics-component.war/r;Local~%2Fdeployment%3Dhawkular-metrics-component.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DOperationServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [OperationServiceImpl]",
+          "id" : "Local~/deployment=hawkular-metrics-component.war/subsystem=ejb3/stateless-session-bean=OperationServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-metrics-component.war/r;Local~%2Fdeployment%3Dhawkular-metrics-component.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DTokenService",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [TokenService]",
+          "id" : "Local~/deployment=hawkular-metrics-component.war/subsystem=ejb3/stateless-session-bean=TokenService"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-metrics-component.war/r;Local~%2Fdeployment%3Dhawkular-metrics-component.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DPersonaResourceRoleServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [PersonaResourceRoleServiceImpl]",
+          "id" : "Local~/deployment=hawkular-metrics-component.war/subsystem=ejb3/stateless-session-bean=PersonaResourceRoleServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-metrics-component.war/r;Local~%2Fdeployment%3Dhawkular-metrics-component.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DUserSettingsServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [UserSettingsServiceImpl]",
+          "id" : "Local~/deployment=hawkular-metrics-component.war/subsystem=ejb3/stateless-session-bean=UserSettingsServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-metrics-component.war/r;Local~%2Fdeployment%3Dhawkular-metrics-component.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DPermissionServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [PermissionServiceImpl]",
+          "id" : "Local~/deployment=hawkular-metrics-component.war/subsystem=ejb3/stateless-session-bean=PermissionServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-metrics-component.war/r;Local~%2Fdeployment%3Dhawkular-metrics-component.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DResourceServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [ResourceServiceImpl]",
+          "id" : "Local~/deployment=hawkular-metrics-component.war/subsystem=ejb3/stateless-session-bean=ResourceServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-commons-embedded-cassandra-ear.ear/r;Local~%2Fdeployment%3Dhawkular-commons-embedded-cassandra-ear.ear%2Fsubdeployment%3Dhawkular-commons-embedded-cassandra-service-0.4.0.Final.jar",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;SubDeployment",
+            "name" : "SubDeployment",
+            "id" : "SubDeployment"
+          },
+          "name" : "SubDeployment [hawkular-commons-embedded-cassandra-service-0.4.0.Final.jar]",
+          "id" : "Local~/deployment=hawkular-commons-embedded-cassandra-ear.ear/subdeployment=hawkular-commons-embedded-cassandra-service-0.4.0.Final.jar"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-accounts.war/r;Local~%2Fdeployment%3Dhawkular-accounts.war%2Fsubsystem%3Dundertow%2Fservlet%3Dorg.hawkular.accounts.backend.control.JaxRsActivator",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Servlet",
+            "name" : "Servlet",
+            "id" : "Servlet"
+          },
+          "name" : "Servlet [org.hawkular.accounts.backend.control.JaxRsActivator]",
+          "id" : "Local~/deployment=hawkular-accounts.war/subsystem=undertow/servlet=org.hawkular.accounts.backend.control.JaxRsActivator"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-accounts.war/r;Local~%2Fdeployment%3Dhawkular-accounts.war%2Fsubsystem%3Dejb3%2Fsingleton-bean%3DInvitationDispatcher",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Singleton%20EJB",
+            "name" : "Singleton EJB",
+            "id" : "Singleton EJB"
+          },
+          "name" : "Singleton EJB [InvitationDispatcher]",
+          "id" : "Local~/deployment=hawkular-accounts.war/subsystem=ejb3/singleton-bean=InvitationDispatcher"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-accounts.war/r;Local~%2Fdeployment%3Dhawkular-accounts.war%2Fsubsystem%3Dejb3%2Fsingleton-bean%3DRequestRewriter",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Singleton%20EJB",
+            "name" : "Singleton EJB",
+            "id" : "Singleton EJB"
+          },
+          "name" : "Singleton EJB [RequestRewriter]",
+          "id" : "Local~/deployment=hawkular-accounts.war/subsystem=ejb3/singleton-bean=RequestRewriter"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-accounts.war/r;Local~%2Fdeployment%3Dhawkular-accounts.war%2Fsubsystem%3Dejb3%2Fsingleton-bean%3DJoinRequestNotificationDispatcher",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Singleton%20EJB",
+            "name" : "Singleton EJB",
+            "id" : "Singleton EJB"
+          },
+          "name" : "Singleton EJB [JoinRequestNotificationDispatcher]",
+          "id" : "Local~/deployment=hawkular-accounts.war/subsystem=ejb3/singleton-bean=JoinRequestNotificationDispatcher"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-accounts.war/r;Local~%2Fdeployment%3Dhawkular-accounts.war%2Fsubsystem%3Dejb3%2Fsingleton-bean%3DEmailDispatcherImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Singleton%20EJB",
+            "name" : "Singleton EJB",
+            "id" : "Singleton EJB"
+          },
+          "name" : "Singleton EJB [EmailDispatcherImpl]",
+          "id" : "Local~/deployment=hawkular-accounts.war/subsystem=ejb3/singleton-bean=EmailDispatcherImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-accounts.war/r;Local~%2Fdeployment%3Dhawkular-accounts.war%2Fsubsystem%3Dejb3%2Fsingleton-bean%3DCassandraSessionInitializer",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Singleton%20EJB",
+            "name" : "Singleton EJB",
+            "id" : "Singleton EJB"
+          },
+          "name" : "Singleton EJB [CassandraSessionInitializer]",
+          "id" : "Local~/deployment=hawkular-accounts.war/subsystem=ejb3/singleton-bean=CassandraSessionInitializer"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-accounts.war/r;Local~%2Fdeployment%3Dhawkular-accounts.war%2Fsubsystem%3Dejb3%2Fsingleton-bean%3DTemplateServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Singleton%20EJB",
+            "name" : "Singleton EJB",
+            "id" : "Singleton EJB"
+          },
+          "name" : "Singleton EJB [TemplateServiceImpl]",
+          "id" : "Local~/deployment=hawkular-accounts.war/subsystem=ejb3/singleton-bean=TemplateServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-accounts.war/r;Local~%2Fdeployment%3Dhawkular-accounts.war%2Fsubsystem%3Dejb3%2Fsingleton-bean%3DSecretStoreSchemaInitializer",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Singleton%20EJB",
+            "name" : "Singleton EJB",
+            "id" : "Singleton EJB"
+          },
+          "name" : "Singleton EJB [SecretStoreSchemaInitializer]",
+          "id" : "Local~/deployment=hawkular-accounts.war/subsystem=ejb3/singleton-bean=SecretStoreSchemaInitializer"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-accounts.war/r;Local~%2Fdeployment%3Dhawkular-accounts.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DRoleEndpoint",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [RoleEndpoint]",
+          "id" : "Local~/deployment=hawkular-accounts.war/subsystem=ejb3/stateless-session-bean=RoleEndpoint"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-accounts.war/r;Local~%2Fdeployment%3Dhawkular-accounts.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DPermissionCheckerImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [PermissionCheckerImpl]",
+          "id" : "Local~/deployment=hawkular-accounts.war/subsystem=ejb3/stateless-session-bean=PermissionCheckerImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-accounts.war/r;Local~%2Fdeployment%3Dhawkular-accounts.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DRoleServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [RoleServiceImpl]",
+          "id" : "Local~/deployment=hawkular-accounts.war/subsystem=ejb3/stateless-session-bean=RoleServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-accounts.war/r;Local~%2Fdeployment%3Dhawkular-accounts.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DUserSettingsEndpoint",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [UserSettingsEndpoint]",
+          "id" : "Local~/deployment=hawkular-accounts.war/subsystem=ejb3/stateless-session-bean=UserSettingsEndpoint"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-accounts.war/r;Local~%2Fdeployment%3Dhawkular-accounts.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DInvitationEndpoint",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [InvitationEndpoint]",
+          "id" : "Local~/deployment=hawkular-accounts.war/subsystem=ejb3/stateless-session-bean=InvitationEndpoint"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-accounts.war/r;Local~%2Fdeployment%3Dhawkular-accounts.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DPersonaResourceRoleServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [PersonaResourceRoleServiceImpl]",
+          "id" : "Local~/deployment=hawkular-accounts.war/subsystem=ejb3/stateless-session-bean=PersonaResourceRoleServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-accounts.war/r;Local~%2Fdeployment%3Dhawkular-accounts.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DOrganizationJoinEndpoint",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [OrganizationJoinEndpoint]",
+          "id" : "Local~/deployment=hawkular-accounts.war/subsystem=ejb3/stateless-session-bean=OrganizationJoinEndpoint"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-accounts.war/r;Local~%2Fdeployment%3Dhawkular-accounts.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DPermissionEndpoint",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [PermissionEndpoint]",
+          "id" : "Local~/deployment=hawkular-accounts.war/subsystem=ejb3/stateless-session-bean=PermissionEndpoint"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-accounts.war/r;Local~%2Fdeployment%3Dhawkular-accounts.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DPersonaServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [PersonaServiceImpl]",
+          "id" : "Local~/deployment=hawkular-accounts.war/subsystem=ejb3/stateless-session-bean=PersonaServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-accounts.war/r;Local~%2Fdeployment%3Dhawkular-accounts.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DPermissionServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [PermissionServiceImpl]",
+          "id" : "Local~/deployment=hawkular-accounts.war/subsystem=ejb3/stateless-session-bean=PermissionServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-accounts.war/r;Local~%2Fdeployment%3Dhawkular-accounts.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DOrganizationMembershipServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [OrganizationMembershipServiceImpl]",
+          "id" : "Local~/deployment=hawkular-accounts.war/subsystem=ejb3/stateless-session-bean=OrganizationMembershipServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-accounts.war/r;Local~%2Fdeployment%3Dhawkular-accounts.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DUserServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [UserServiceImpl]",
+          "id" : "Local~/deployment=hawkular-accounts.war/subsystem=ejb3/stateless-session-bean=UserServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-accounts.war/r;Local~%2Fdeployment%3Dhawkular-accounts.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DResourceServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [ResourceServiceImpl]",
+          "id" : "Local~/deployment=hawkular-accounts.war/subsystem=ejb3/stateless-session-bean=ResourceServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-accounts.war/r;Local~%2Fdeployment%3Dhawkular-accounts.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DOrganizationEndpoint",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [OrganizationEndpoint]",
+          "id" : "Local~/deployment=hawkular-accounts.war/subsystem=ejb3/stateless-session-bean=OrganizationEndpoint"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-accounts.war/r;Local~%2Fdeployment%3Dhawkular-accounts.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DOrganizationServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [OrganizationServiceImpl]",
+          "id" : "Local~/deployment=hawkular-accounts.war/subsystem=ejb3/stateless-session-bean=OrganizationServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-accounts.war/r;Local~%2Fdeployment%3Dhawkular-accounts.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DOrganizationJoinRequestServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [OrganizationJoinRequestServiceImpl]",
+          "id" : "Local~/deployment=hawkular-accounts.war/subsystem=ejb3/stateless-session-bean=OrganizationJoinRequestServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-accounts.war/r;Local~%2Fdeployment%3Dhawkular-accounts.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DInvitationServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [InvitationServiceImpl]",
+          "id" : "Local~/deployment=hawkular-accounts.war/subsystem=ejb3/stateless-session-bean=InvitationServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-accounts.war/r;Local~%2Fdeployment%3Dhawkular-accounts.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DPersonaEndpoint",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [PersonaEndpoint]",
+          "id" : "Local~/deployment=hawkular-accounts.war/subsystem=ejb3/stateless-session-bean=PersonaEndpoint"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-accounts.war/r;Local~%2Fdeployment%3Dhawkular-accounts.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DUserSettingsServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [UserSettingsServiceImpl]",
+          "id" : "Local~/deployment=hawkular-accounts.war/subsystem=ejb3/stateless-session-bean=UserSettingsServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-accounts.war/r;Local~%2Fdeployment%3Dhawkular-accounts.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DTokenService",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [TokenService]",
+          "id" : "Local~/deployment=hawkular-accounts.war/subsystem=ejb3/stateless-session-bean=TokenService"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-accounts.war/r;Local~%2Fdeployment%3Dhawkular-accounts.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DOrganizationMembershipEndpoint",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [OrganizationMembershipEndpoint]",
+          "id" : "Local~/deployment=hawkular-accounts.war/subsystem=ejb3/stateless-session-bean=OrganizationMembershipEndpoint"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-accounts.war/r;Local~%2Fdeployment%3Dhawkular-accounts.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DOperationServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [OperationServiceImpl]",
+          "id" : "Local~/deployment=hawkular-accounts.war/subsystem=ejb3/stateless-session-bean=OperationServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-btm-server.war/r;Local~%2Fdeployment%3Dhawkular-btm-server.war%2Fsubsystem%3Dundertow%2Fservlet%3Dorg.hawkular.btm.server.rest.HawkularBTMApp",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Servlet",
+            "name" : "Servlet",
+            "id" : "Servlet"
+          },
+          "name" : "Servlet [org.hawkular.btm.server.rest.HawkularBTMApp]",
+          "id" : "Local~/deployment=hawkular-btm-server.war/subsystem=undertow/servlet=org.hawkular.btm.server.rest.HawkularBTMApp"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-btm-server.war/r;Local~%2Fdeployment%3Dhawkular-btm-server.war%2Fsubsystem%3Dejb3%2Fsingleton-bean%3DCassandraSessionInitializer",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Singleton%20EJB",
+            "name" : "Singleton EJB",
+            "id" : "Singleton EJB"
+          },
+          "name" : "Singleton EJB [CassandraSessionInitializer]",
+          "id" : "Local~/deployment=hawkular-btm-server.war/subsystem=ejb3/singleton-bean=CassandraSessionInitializer"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-btm-server.war/r;Local~%2Fdeployment%3Dhawkular-btm-server.war%2Fsubsystem%3Dejb3%2Fsingleton-bean%3DSecretStoreSchemaInitializer",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Singleton%20EJB",
+            "name" : "Singleton EJB",
+            "id" : "Singleton EJB"
+          },
+          "name" : "Singleton EJB [SecretStoreSchemaInitializer]",
+          "id" : "Local~/deployment=hawkular-btm-server.war/subsystem=ejb3/singleton-bean=SecretStoreSchemaInitializer"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-btm-server.war/r;Local~%2Fdeployment%3Dhawkular-btm-server.war%2Fsubsystem%3Dejb3%2Fsingleton-bean%3DRequestRewriter",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Singleton%20EJB",
+            "name" : "Singleton EJB",
+            "id" : "Singleton EJB"
+          },
+          "name" : "Singleton EJB [RequestRewriter]",
+          "id" : "Local~/deployment=hawkular-btm-server.war/subsystem=ejb3/singleton-bean=RequestRewriter"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-btm-server.war/r;Local~%2Fdeployment%3Dhawkular-btm-server.war%2Fsubsystem%3Dejb3%2Fsingleton-bean%3DElasticsearchBootstrap",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Singleton%20EJB",
+            "name" : "Singleton EJB",
+            "id" : "Singleton EJB"
+          },
+          "name" : "Singleton EJB [ElasticsearchBootstrap]",
+          "id" : "Local~/deployment=hawkular-btm-server.war/subsystem=ejb3/singleton-bean=ElasticsearchBootstrap"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-btm-server.war/r;Local~%2Fdeployment%3Dhawkular-btm-server.war%2Fsubsystem%3Dejb3%2Fmessage-driven-bean%3DBusinessTransaction_FragmentCompletionTimeDeriver",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Message%20Driven%20EJB",
+            "name" : "Message Driven EJB",
+            "id" : "Message Driven EJB"
+          },
+          "name" : "Message Driven EJB [BusinessTransaction_FragmentCompletionTimeDeriver]",
+          "id" : "Local~/deployment=hawkular-btm-server.war/subsystem=ejb3/message-driven-bean=BusinessTransaction_FragmentCompletionTimeDeriver"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-btm-server.war/r;Local~%2Fdeployment%3Dhawkular-btm-server.war%2Fsubsystem%3Dejb3%2Fmessage-driven-bean%3DBTxnCompletionInformation_BTxnCompletionTimeDeriver",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Message%20Driven%20EJB",
+            "name" : "Message Driven EJB",
+            "id" : "Message Driven EJB"
+          },
+          "name" : "Message Driven EJB [BTxnCompletionInformation_BTxnCompletionTimeDeriver]",
+          "id" : "Local~/deployment=hawkular-btm-server.war/subsystem=ejb3/message-driven-bean=BTxnCompletionInformation_BTxnCompletionTimeDeriver"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-btm-server.war/r;Local~%2Fdeployment%3Dhawkular-btm-server.war%2Fsubsystem%3Dejb3%2Fmessage-driven-bean%3DBusinessTransaction_NotificationDeriver",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Message%20Driven%20EJB",
+            "name" : "Message Driven EJB",
+            "id" : "Message Driven EJB"
+          },
+          "name" : "Message Driven EJB [BusinessTransaction_NotificationDeriver]",
+          "id" : "Local~/deployment=hawkular-btm-server.war/subsystem=ejb3/message-driven-bean=BusinessTransaction_NotificationDeriver"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-btm-server.war/r;Local~%2Fdeployment%3Dhawkular-btm-server.war%2Fsubsystem%3Dejb3%2Fmessage-driven-bean%3DBusinessTransaction_CommunicationDetailsDeriver",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Message%20Driven%20EJB",
+            "name" : "Message Driven EJB",
+            "id" : "Message Driven EJB"
+          },
+          "name" : "Message Driven EJB [BusinessTransaction_CommunicationDetailsDeriver]",
+          "id" : "Local~/deployment=hawkular-btm-server.war/subsystem=ejb3/message-driven-bean=BusinessTransaction_CommunicationDetailsDeriver"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-btm-server.war/r;Local~%2Fdeployment%3Dhawkular-btm-server.war%2Fsubsystem%3Dejb3%2Fmessage-driven-bean%3DCommunicationDetails_Store",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Message%20Driven%20EJB",
+            "name" : "Message Driven EJB",
+            "id" : "Message Driven EJB"
+          },
+          "name" : "Message Driven EJB [CommunicationDetails_Store]",
+          "id" : "Local~/deployment=hawkular-btm-server.war/subsystem=ejb3/message-driven-bean=CommunicationDetails_Store"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-btm-server.war/r;Local~%2Fdeployment%3Dhawkular-btm-server.war%2Fsubsystem%3Dejb3%2Fmessage-driven-bean%3DBTxnCompletionInformation_BTxnCompletionInformationProcessor",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Message%20Driven%20EJB",
+            "name" : "Message Driven EJB",
+            "id" : "Message Driven EJB"
+          },
+          "name" : "Message Driven EJB [BTxnCompletionInformation_BTxnCompletionInformationProcessor]",
+          "id" : "Local~/deployment=hawkular-btm-server.war/subsystem=ejb3/message-driven-bean=BTxnCompletionInformation_BTxnCompletionInformationProcessor"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-btm-server.war/r;Local~%2Fdeployment%3Dhawkular-btm-server.war%2Fsubsystem%3Dejb3%2Fmessage-driven-bean%3DCommunicationDetails_Cache",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Message%20Driven%20EJB",
+            "name" : "Message Driven EJB",
+            "id" : "Message Driven EJB"
+          },
+          "name" : "Message Driven EJB [CommunicationDetails_Cache]",
+          "id" : "Local~/deployment=hawkular-btm-server.war/subsystem=ejb3/message-driven-bean=CommunicationDetails_Cache"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-btm-server.war/r;Local~%2Fdeployment%3Dhawkular-btm-server.war%2Fsubsystem%3Dejb3%2Fmessage-driven-bean%3DFragmentCompletionTimes_Store",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Message%20Driven%20EJB",
+            "name" : "Message Driven EJB",
+            "id" : "Message Driven EJB"
+          },
+          "name" : "Message Driven EJB [FragmentCompletionTimes_Store]",
+          "id" : "Local~/deployment=hawkular-btm-server.war/subsystem=ejb3/message-driven-bean=FragmentCompletionTimes_Store"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-btm-server.war/r;Local~%2Fdeployment%3Dhawkular-btm-server.war%2Fsubsystem%3Dejb3%2Fmessage-driven-bean%3DBusinessTransactions_Store",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Message%20Driven%20EJB",
+            "name" : "Message Driven EJB",
+            "id" : "Message Driven EJB"
+          },
+          "name" : "Message Driven EJB [BusinessTransactions_Store]",
+          "id" : "Local~/deployment=hawkular-btm-server.war/subsystem=ejb3/message-driven-bean=BusinessTransactions_Store"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-btm-server.war/r;Local~%2Fdeployment%3Dhawkular-btm-server.war%2Fsubsystem%3Dejb3%2Fmessage-driven-bean%3DBusinessTransaction_NodeDetailsDeriver",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Message%20Driven%20EJB",
+            "name" : "Message Driven EJB",
+            "id" : "Message Driven EJB"
+          },
+          "name" : "Message Driven EJB [BusinessTransaction_NodeDetailsDeriver]",
+          "id" : "Local~/deployment=hawkular-btm-server.war/subsystem=ejb3/message-driven-bean=BusinessTransaction_NodeDetailsDeriver"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-btm-server.war/r;Local~%2Fdeployment%3Dhawkular-btm-server.war%2Fsubsystem%3Dejb3%2Fmessage-driven-bean%3DBusinessTransaction_BTxnCompletionInformationInitiator",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Message%20Driven%20EJB",
+            "name" : "Message Driven EJB",
+            "id" : "Message Driven EJB"
+          },
+          "name" : "Message Driven EJB [BusinessTransaction_BTxnCompletionInformationInitiator]",
+          "id" : "Local~/deployment=hawkular-btm-server.war/subsystem=ejb3/message-driven-bean=BusinessTransaction_BTxnCompletionInformationInitiator"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-btm-server.war/r;Local~%2Fdeployment%3Dhawkular-btm-server.war%2Fsubsystem%3Dejb3%2Fmessage-driven-bean%3DBTxnCompletionTimes_Store",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Message%20Driven%20EJB",
+            "name" : "Message Driven EJB",
+            "id" : "Message Driven EJB"
+          },
+          "name" : "Message Driven EJB [BTxnCompletionTimes_Store]",
+          "id" : "Local~/deployment=hawkular-btm-server.war/subsystem=ejb3/message-driven-bean=BTxnCompletionTimes_Store"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-btm-server.war/r;Local~%2Fdeployment%3Dhawkular-btm-server.war%2Fsubsystem%3Dejb3%2Fmessage-driven-bean%3DNodeDetails_Store",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Message%20Driven%20EJB",
+            "name" : "Message Driven EJB",
+            "id" : "Message Driven EJB"
+          },
+          "name" : "Message Driven EJB [NodeDetails_Store]",
+          "id" : "Local~/deployment=hawkular-btm-server.war/subsystem=ejb3/message-driven-bean=NodeDetails_Store"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-btm-server.war/r;Local~%2Fdeployment%3Dhawkular-btm-server.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DOrganizationJoinRequestServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [OrganizationJoinRequestServiceImpl]",
+          "id" : "Local~/deployment=hawkular-btm-server.war/subsystem=ejb3/stateless-session-bean=OrganizationJoinRequestServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-btm-server.war/r;Local~%2Fdeployment%3Dhawkular-btm-server.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DUserServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [UserServiceImpl]",
+          "id" : "Local~/deployment=hawkular-btm-server.war/subsystem=ejb3/stateless-session-bean=UserServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-btm-server.war/r;Local~%2Fdeployment%3Dhawkular-btm-server.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DPermissionServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [PermissionServiceImpl]",
+          "id" : "Local~/deployment=hawkular-btm-server.war/subsystem=ejb3/stateless-session-bean=PermissionServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-btm-server.war/r;Local~%2Fdeployment%3Dhawkular-btm-server.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DUserSettingsServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [UserSettingsServiceImpl]",
+          "id" : "Local~/deployment=hawkular-btm-server.war/subsystem=ejb3/stateless-session-bean=UserSettingsServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-btm-server.war/r;Local~%2Fdeployment%3Dhawkular-btm-server.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DOrganizationServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [OrganizationServiceImpl]",
+          "id" : "Local~/deployment=hawkular-btm-server.war/subsystem=ejb3/stateless-session-bean=OrganizationServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-btm-server.war/r;Local~%2Fdeployment%3Dhawkular-btm-server.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DOrganizationMembershipServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [OrganizationMembershipServiceImpl]",
+          "id" : "Local~/deployment=hawkular-btm-server.war/subsystem=ejb3/stateless-session-bean=OrganizationMembershipServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-btm-server.war/r;Local~%2Fdeployment%3Dhawkular-btm-server.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DPersonaServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [PersonaServiceImpl]",
+          "id" : "Local~/deployment=hawkular-btm-server.war/subsystem=ejb3/stateless-session-bean=PersonaServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-btm-server.war/r;Local~%2Fdeployment%3Dhawkular-btm-server.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DInvitationServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [InvitationServiceImpl]",
+          "id" : "Local~/deployment=hawkular-btm-server.war/subsystem=ejb3/stateless-session-bean=InvitationServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-btm-server.war/r;Local~%2Fdeployment%3Dhawkular-btm-server.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DRoleServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [RoleServiceImpl]",
+          "id" : "Local~/deployment=hawkular-btm-server.war/subsystem=ejb3/stateless-session-bean=RoleServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-btm-server.war/r;Local~%2Fdeployment%3Dhawkular-btm-server.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DOperationServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [OperationServiceImpl]",
+          "id" : "Local~/deployment=hawkular-btm-server.war/subsystem=ejb3/stateless-session-bean=OperationServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-btm-server.war/r;Local~%2Fdeployment%3Dhawkular-btm-server.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DPersonaResourceRoleServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [PersonaResourceRoleServiceImpl]",
+          "id" : "Local~/deployment=hawkular-btm-server.war/subsystem=ejb3/stateless-session-bean=PersonaResourceRoleServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-btm-server.war/r;Local~%2Fdeployment%3Dhawkular-btm-server.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DTokenService",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [TokenService]",
+          "id" : "Local~/deployment=hawkular-btm-server.war/subsystem=ejb3/stateless-session-bean=TokenService"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-btm-server.war/r;Local~%2Fdeployment%3Dhawkular-btm-server.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DPermissionCheckerImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [PermissionCheckerImpl]",
+          "id" : "Local~/deployment=hawkular-btm-server.war/subsystem=ejb3/stateless-session-bean=PermissionCheckerImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-btm-server.war/r;Local~%2Fdeployment%3Dhawkular-btm-server.war%2Fsubsystem%3Dejb3%2Fstateless-session-bean%3DResourceServiceImpl",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Stateless%20Session%20EJB",
+            "name" : "Stateless Session EJB",
+            "id" : "Stateless Session EJB"
+          },
+          "name" : "Stateless Session EJB [ResourceServiceImpl]",
+          "id" : "Local~/deployment=hawkular-btm-server.war/subsystem=ejb3/stateless-session-bean=ResourceServiceImpl"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dkeycloak-server.war/r;Local~%2Fdeployment%3Dkeycloak-server.war%2Fsubsystem%3Dundertow%2Fservlet%3DKeycloak%20REST%20Interface",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Servlet",
+            "name" : "Servlet",
+            "id" : "Servlet"
+          },
+          "name" : "Servlet [Keycloak REST Interface]",
+          "id" : "Local~/deployment=keycloak-server.war/subsystem=undertow/servlet=Keycloak REST Interface"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-console.war/r;Local~%2Fdeployment%3Dhawkular-console.war%2Fsubsystem%3Dundertow%2Fservlet%3Dorg.hawkular.console.configuration.KeycloakConfigurationServlet",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Servlet",
+            "name" : "Servlet",
+            "id" : "Servlet"
+          },
+          "name" : "Servlet [org.hawkular.console.configuration.KeycloakConfigurationServlet]",
+          "id" : "Local~/deployment=hawkular-console.war/subsystem=undertow/servlet=org.hawkular.console.configuration.KeycloakConfigurationServlet"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fsubsystem%3Dmessaging-activemq%2Fserver%3Ddefault/r;Local~%2Fsubsystem%3Dmessaging-activemq%2Fserver%3Ddefault%2Fjms-topic%3DHawkularMetricData",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;JMS%20Topic",
+            "name" : "JMS Topic",
+            "id" : "JMS Topic"
+          },
+          "name" : "JMS Topic [HawkularMetricData]",
+          "id" : "Local~/subsystem=messaging-activemq/server=default/jms-topic=HawkularMetricData"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fsubsystem%3Dmessaging-activemq%2Fserver%3Ddefault/r;Local~%2Fsubsystem%3Dmessaging-activemq%2Fserver%3Ddefault%2Fjms-topic%3DFragmentCompletionTimes",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;JMS%20Topic",
+            "name" : "JMS Topic",
+            "id" : "JMS Topic"
+          },
+          "name" : "JMS Topic [FragmentCompletionTimes]",
+          "id" : "Local~/subsystem=messaging-activemq/server=default/jms-topic=FragmentCompletionTimes"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fsubsystem%3Dmessaging-activemq%2Fserver%3Ddefault/r;Local~%2Fsubsystem%3Dmessaging-activemq%2Fserver%3Ddefault%2Fjms-topic%3DCommunicationDetails",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;JMS%20Topic",
+            "name" : "JMS Topic",
+            "id" : "JMS Topic"
+          },
+          "name" : "JMS Topic [CommunicationDetails]",
+          "id" : "Local~/subsystem=messaging-activemq/server=default/jms-topic=CommunicationDetails"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fsubsystem%3Dmessaging-activemq%2Fserver%3Ddefault/r;Local~%2Fsubsystem%3Dmessaging-activemq%2Fserver%3Ddefault%2Fjms-topic%3DNodeDetails",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;JMS%20Topic",
+            "name" : "JMS Topic",
+            "id" : "JMS Topic"
+          },
+          "name" : "JMS Topic [NodeDetails]",
+          "id" : "Local~/subsystem=messaging-activemq/server=default/jms-topic=NodeDetails"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fsubsystem%3Dmessaging-activemq%2Fserver%3Ddefault/r;Local~%2Fsubsystem%3Dmessaging-activemq%2Fserver%3Ddefault%2Fjms-topic%3DNotifications",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;JMS%20Topic",
+            "name" : "JMS Topic",
+            "id" : "JMS Topic"
+          },
+          "name" : "JMS Topic [Notifications]",
+          "id" : "Local~/subsystem=messaging-activemq/server=default/jms-topic=Notifications"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fsubsystem%3Dmessaging-activemq%2Fserver%3Ddefault/r;Local~%2Fsubsystem%3Dmessaging-activemq%2Fserver%3Ddefault%2Fjms-topic%3DBTxnCompletionTimes",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;JMS%20Topic",
+            "name" : "JMS Topic",
+            "id" : "JMS Topic"
+          },
+          "name" : "JMS Topic [BTxnCompletionTimes]",
+          "id" : "Local~/subsystem=messaging-activemq/server=default/jms-topic=BTxnCompletionTimes"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fsubsystem%3Dmessaging-activemq%2Fserver%3Ddefault/r;Local~%2Fsubsystem%3Dmessaging-activemq%2Fserver%3Ddefault%2Fjms-topic%3DBusinessTransactions",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;JMS%20Topic",
+            "name" : "JMS Topic",
+            "id" : "JMS Topic"
+          },
+          "name" : "JMS Topic [BusinessTransactions]",
+          "id" : "Local~/subsystem=messaging-activemq/server=default/jms-topic=BusinessTransactions"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fsubsystem%3Dmessaging-activemq%2Fserver%3Ddefault/r;Local~%2Fsubsystem%3Dmessaging-activemq%2Fserver%3Ddefault%2Fjms-topic%3DBTxnCompletionInformation",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;JMS%20Topic",
+            "name" : "JMS Topic",
+            "id" : "JMS Topic"
+          },
+          "name" : "JMS Topic [BTxnCompletionInformation]",
+          "id" : "Local~/subsystem=messaging-activemq/server=default/jms-topic=BTxnCompletionInformation"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fsubsystem%3Dmessaging-activemq%2Fserver%3Ddefault/r;Local~%2Fsubsystem%3Dmessaging-activemq%2Fserver%3Ddefault%2Fjms-topic%3DHawkularAlertData",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;JMS%20Topic",
+            "name" : "JMS Topic",
+            "id" : "JMS Topic"
+          },
+          "name" : "JMS Topic [HawkularAlertData]",
+          "id" : "Local~/subsystem=messaging-activemq/server=default/jms-topic=HawkularAlertData"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fsubsystem%3Dmessaging-activemq%2Fserver%3Ddefault/r;Local~%2Fsubsystem%3Dmessaging-activemq%2Fserver%3Ddefault%2Fjms-topic%3DHawkularCommandEvent",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;JMS%20Topic",
+            "name" : "JMS Topic",
+            "id" : "JMS Topic"
+          },
+          "name" : "JMS Topic [HawkularCommandEvent]",
+          "id" : "Local~/subsystem=messaging-activemq/server=default/jms-topic=HawkularCommandEvent"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fsubsystem%3Dmessaging-activemq%2Fserver%3Ddefault/r;Local~%2Fsubsystem%3Dmessaging-activemq%2Fserver%3Ddefault%2Fjms-topic%3DHawkularAccountsEvents",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;JMS%20Topic",
+            "name" : "JMS Topic",
+            "id" : "JMS Topic"
+          },
+          "name" : "JMS Topic [HawkularAccountsEvents]",
+          "id" : "Local~/subsystem=messaging-activemq/server=default/jms-topic=HawkularAccountsEvents"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fsubsystem%3Dmessaging-activemq%2Fserver%3Ddefault/r;Local~%2Fsubsystem%3Dmessaging-activemq%2Fserver%3Ddefault%2Fjms-topic%3DHawkularInventoryChanges",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;JMS%20Topic",
+            "name" : "JMS Topic",
+            "id" : "JMS Topic"
+          },
+          "name" : "JMS Topic [HawkularInventoryChanges]",
+          "id" : "Local~/subsystem=messaging-activemq/server=default/jms-topic=HawkularInventoryChanges"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fsubsystem%3Dmessaging-activemq%2Fserver%3Ddefault/r;Local~%2Fsubsystem%3Dmessaging-activemq%2Fserver%3Ddefault%2Fjms-topic%3DHawkularAvailData",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;JMS%20Topic",
+            "name" : "JMS Topic",
+            "id" : "JMS Topic"
+          },
+          "name" : "JMS Topic [HawkularAvailData]",
+          "id" : "Local~/subsystem=messaging-activemq/server=default/jms-topic=HawkularAvailData"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fsubsystem%3Dmessaging-activemq%2Fserver%3Ddefault/r;Local~%2Fsubsystem%3Dmessaging-activemq%2Fserver%3Ddefault%2Fjms-topic%3DHawkularAlertsActionsTopic",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;JMS%20Topic",
+            "name" : "JMS Topic",
+            "id" : "JMS Topic"
+          },
+          "name" : "JMS Topic [HawkularAlertsActionsTopic]",
+          "id" : "Local~/subsystem=messaging-activemq/server=default/jms-topic=HawkularAlertsActionsTopic"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fsubsystem%3Dmessaging-activemq%2Fserver%3Ddefault/r;Local~%2Fsubsystem%3Dmessaging-activemq%2Fserver%3Ddefault%2Fjms-queue%3Dhawkular%2Fmetrics%2Favailability%2Fnew",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;JMS%20Queue",
+            "name" : "JMS Queue",
+            "id" : "JMS Queue"
+          },
+          "name" : "JMS Queue [hawkular/metrics/availability/new]",
+          "id" : "Local~/subsystem=messaging-activemq/server=default/jms-queue=hawkular/metrics/availability/new"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fsubsystem%3Dmessaging-activemq%2Fserver%3Ddefault/r;Local~%2Fsubsystem%3Dmessaging-activemq%2Fserver%3Ddefault%2Fjms-queue%3DExpiryQueue",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;JMS%20Queue",
+            "name" : "JMS Queue",
+            "id" : "JMS Queue"
+          },
+          "name" : "JMS Queue [ExpiryQueue]",
+          "id" : "Local~/subsystem=messaging-activemq/server=default/jms-queue=ExpiryQueue"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fsubsystem%3Dmessaging-activemq%2Fserver%3Ddefault/r;Local~%2Fsubsystem%3Dmessaging-activemq%2Fserver%3Ddefault%2Fjms-queue%3Dhawkular%2Fmetrics%2Fcounters%2Fnew",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;JMS%20Queue",
+            "name" : "JMS Queue",
+            "id" : "JMS Queue"
+          },
+          "name" : "JMS Queue [hawkular/metrics/counters/new]",
+          "id" : "Local~/subsystem=messaging-activemq/server=default/jms-queue=hawkular/metrics/counters/new"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fsubsystem%3Dmessaging-activemq%2Fserver%3Ddefault/r;Local~%2Fsubsystem%3Dmessaging-activemq%2Fserver%3Ddefault%2Fjms-queue%3DHawkularAlertsActionsResponseQueue",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;JMS%20Queue",
+            "name" : "JMS Queue",
+            "id" : "JMS Queue"
+          },
+          "name" : "JMS Queue [HawkularAlertsActionsResponseQueue]",
+          "id" : "Local~/subsystem=messaging-activemq/server=default/jms-queue=HawkularAlertsActionsResponseQueue"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fsubsystem%3Dmessaging-activemq%2Fserver%3Ddefault/r;Local~%2Fsubsystem%3Dmessaging-activemq%2Fserver%3Ddefault%2Fjms-queue%3DHawkularAlertsPluginsQueue",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;JMS%20Queue",
+            "name" : "JMS Queue",
+            "id" : "JMS Queue"
+          },
+          "name" : "JMS Queue [HawkularAlertsPluginsQueue]",
+          "id" : "Local~/subsystem=messaging-activemq/server=default/jms-queue=HawkularAlertsPluginsQueue"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fsubsystem%3Dmessaging-activemq%2Fserver%3Ddefault/r;Local~%2Fsubsystem%3Dmessaging-activemq%2Fserver%3Ddefault%2Fjms-queue%3DDLQ",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;JMS%20Queue",
+            "name" : "JMS Queue",
+            "id" : "JMS Queue"
+          },
+          "name" : "JMS Queue [DLQ]",
+          "id" : "Local~/subsystem=messaging-activemq/server=default/jms-queue=DLQ"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fsubsystem%3Dmessaging-activemq%2Fserver%3Ddefault/r;Local~%2Fsubsystem%3Dmessaging-activemq%2Fserver%3Ddefault%2Fjms-queue%3Dhawkular%2Fmetrics%2Fgauges%2Fnew",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;JMS%20Queue",
+            "name" : "JMS Queue",
+            "id" : "JMS Queue"
+          },
+          "name" : "JMS Queue [hawkular/metrics/gauges/new]",
+          "id" : "Local~/subsystem=messaging-activemq/server=default/jms-queue=hawkular/metrics/gauges/new"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-commons-embedded-cassandra-ear.ear/r;Local~%2Fdeployment%3Dhawkular-commons-embedded-cassandra-ear.ear%2Fsubdeployment%3Dhawkular-commons-embedded-cassandra-service-0.4.0.Final.jar/r;Local~%2Fdeployment%3Dhawkular-commons-embedded-cassandra-ear.ear%2Fsubdeployment%3Dhawkular-commons-embedded-cassandra-service-0.4.0.Final.jar%2Fsubsystem%3Dejb3%2Fsingleton-bean%3DEmbeddedCassandraService",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Singleton%20EJB",
+            "name" : "Singleton EJB",
+            "id" : "Singleton EJB"
+          },
+          "name" : "Singleton EJB [EmbeddedCassandraService]",
+          "id" : "Local~/deployment=hawkular-commons-embedded-cassandra-ear.ear/subdeployment=hawkular-commons-embedded-cassandra-service-0.4.0.Final.jar/subsystem=ejb3/singleton-bean=EmbeddedCassandraService"
+        } ]
+    http_version: 
+  recorded_at: Thu, 21 Apr 2016 00:54:38 GMT
+recorded_with: VCR 3.0.1

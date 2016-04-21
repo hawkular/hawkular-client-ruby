@@ -8,6 +8,7 @@ require 'rspec/mocks'
 require 'socket'
 require 'uri'
 require 'yaml'
+require 'json'
 
 module Hawkular::Metrics::RSpec
   def setup_client(options = {})
@@ -89,7 +90,7 @@ module Hawkular::Operations::RSpec
   MAX_ATTEMPTS = 60
 
   def wait_for(object)
-    fast = VCR::WebSocket.cassette && !VCR::WebSocket.cassette.recording?
+    fast = WebSocketVCR.cassette && !WebSocketVCR.cassette.recording?
     sleep_interval = SLEEP_SECONDS * (fast ? 1 : 10)
     attempt = 0
     sleep sleep_interval while object[:data].nil? && (attempt += 1) < MAX_ATTEMPTS
@@ -102,7 +103,53 @@ module Hawkular::Operations::RSpec
   end
 end
 
+# globally used helper functions
+module Helpers
+  def make_template(base_directory, cassette_name, bindings)
+    cassette = cassette_name.gsub(/\s+/, '_')
+    input_file_path = "#{VCR.configuration.cassette_library_dir}/#{base_directory}/tmp/#{cassette}.yml"
+    return unless File.exist? input_file_path
+    output_file_path = "#{VCR.configuration.cassette_library_dir}/#{base_directory}/Templates/#{cassette}.yml"
+
+    dirname = File.dirname(output_file_path)
+    # make sure the directory structure is there
+    FileUtils.mkdir_p(dirname) unless File.directory?(dirname)
+
+    text = File.read(input_file_path)
+    bindings.select { |_, v| v.size >= 3 }.each do |k, v|
+      text.gsub! v, "<%= #{k} %>"
+    end
+
+    File.open(output_file_path, 'w') { |file| file.write text }
+    File.delete(input_file_path)
+  end
+
+  def record(prefix, bindings, explicit_cassette_name, example: nil)
+    run = lambda do
+      example.run unless example.nil?
+      yield if block_given?
+    end
+
+    if (!example.nil? && example.metadata[:update_template]) || ENV['VCR_UPDATE'] == '1'
+      VCR.use_cassette(prefix + '/tmp/' + explicit_cassette_name,
+                       decode_compressed_response: true,
+                       record: :all) do
+        run.call
+      end
+      make_template prefix, explicit_cassette_name, bindings
+    else
+      VCR.use_cassette(prefix + '/Templates/' + explicit_cassette_name,
+                       decode_compressed_response: true,
+                       erb: bindings,
+                       record: :none) do
+        run.call
+      end
+    end
+  end
+end
+
 RSpec.configure do |config|
+  config.include Helpers
   config.include Hawkular::Metrics::RSpec
   config.include Hawkular::Operations::RSpec
 
@@ -115,7 +162,7 @@ RSpec.configure do |config|
   if ENV['VCR_OFF'] == '1'
     VCR.eject_cassette
     VCR.turn_off!(ignore_cassettes: true)
-    VCR::WebSocket.turn_off!
+    WebSocketVCR.turn_off!
     WebMock.allow_net_connect!
     puts 'VCR is turned off!'
   end
