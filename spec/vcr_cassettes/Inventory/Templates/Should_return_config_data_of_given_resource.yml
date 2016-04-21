@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/feed_may_exist/resources/*bla%20does%20not%20exist*
+    uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/<%= feed_uuid %>/resources/Local~~/data?dataType=configuration
     body:
       encoding: US-ASCII
       string: ''
@@ -17,8 +17,8 @@ http_interactions:
       - Ruby
   response:
     status:
-      code: 404
-      message: Not Found
+      code: 200
+      message: OK
     headers:
       Expires:
       - '0'
@@ -31,25 +31,27 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Thu, 21 Apr 2016 00:54:42 GMT
+      - Thu, 21 Apr 2016 00:54:39 GMT
       Connection:
       - keep-alive
       Content-Type:
       - application/json
       Content-Length:
-      - '372'
+      - '351'
     body:
       encoding: ASCII-8BIT
       string: |-
         {
-          "errorMsg" : "No Resource found on any of the following paths: [[CanonicalPaths[/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;feed_may_exist/r;%2Abla%20does%20not%20exist%2A]]]",
-          "details" : {
-            "entityType" : "Resource",
-            "path" : [ [ {
-              "paths" : [ "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;feed_may_exist/r;%2Abla%20does%20not%20exist%2A" ]
-            } ] ]
-          }
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/d;configuration",
+          "value" : {
+            "Bound Address" : "127.0.0.1",
+            "Version" : "1.0.0.Alpha13-SNAPSHOT",
+            "Server State" : "running",
+            "Product Name" : "Hawkular",
+            "Hostname" : "localhost.localdomain"
+          },
+          "name" : "configuration"
         }
     http_version: 
-  recorded_at: Thu, 21 Apr 2016 00:54:42 GMT
+  recorded_at: Thu, 21 Apr 2016 00:54:39 GMT
 recorded_with: VCR 3.0.1

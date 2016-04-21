@@ -31,7 +31,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Mon, 11 Apr 2016 16:51:39 GMT
+      - Thu, 21 Apr 2016 00:54:35 GMT
       X-Total-Count:
       - '1'
       Connection:
@@ -39,7 +39,7 @@ http_interactions:
       Content-Type:
       - application/json
       Content-Length:
-      - '489'
+      - '341'
       Link:
       - <http://localhost:8080/hawkular/inventory/resourceTypes/URL/resources>; rel="current"
     body:
@@ -52,15 +52,11 @@ http_interactions:
             "id" : "URL"
           },
           "properties" : {
-            "trait-collected-on" : 1460393480039,
-            "trait-powered-by" : "Apache",
-            "created" : 1460393407820,
-            "hwk-gui-domainSort" : "bsd.de",
-            "trait-remote-address" : "212.86.200.189",
+            "hwk-gui-domainSort" : "http://bsd.de",
             "url" : "http://bsd.de"
           },
           "id" : "536cc3ede5769b60a49774425aedba24"
         } ]
     http_version: 
-  recorded_at: Mon, 11 Apr 2016 16:51:39 GMT
+  recorded_at: Thu, 21 Apr 2016 00:54:35 GMT
 recorded_with: VCR 3.0.1

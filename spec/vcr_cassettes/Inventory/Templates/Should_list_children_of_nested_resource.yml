@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://jdoe:password@localhost:8080/hawkular/inventory/tenant
+    uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/<%= feed_uuid %>/resources/Local~~/Local~%2Fsubsystem=datasources%2Fdata-source=ExampleDS
     body:
       encoding: US-ASCII
       string: ''
@@ -31,25 +31,31 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Thu, 21 Apr 2016 00:54:42 GMT
+      - Thu, 21 Apr 2016 00:54:36 GMT
       Connection:
       - keep-alive
       Content-Type:
       - application/json
       Content-Length:
-      - '105'
+      - '431'
     body:
       encoding: ASCII-8BIT
       string: |-
         {
-          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf",
-          "id" : "28026b36-8fe4-4332-84c8-524e173a68bf"
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fsubsystem%3Ddatasources%2Fdata-source%3DExampleDS",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;Datasource",
+            "name" : "Datasource",
+            "id" : "Datasource"
+          },
+          "name" : "ExampleDS",
+          "id" : "Local~/subsystem=datasources/data-source=ExampleDS"
         }
     http_version: 
-  recorded_at: Thu, 21 Apr 2016 00:54:42 GMT
+  recorded_at: Thu, 21 Apr 2016 00:54:36 GMT
 - request:
     method: get
-    uri: http://jdoe:password@localhost:8080/hawkular/inventory/tenant
+    uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/<%= feed_uuid %>/resources/Local~~/Local~%2Fsubsystem=datasources%2Fdata-source=ExampleDS/data?dataType=configuration
     body:
       encoding: US-ASCII
       string: ''
@@ -78,25 +84,33 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Thu, 21 Apr 2016 00:54:42 GMT
+      - Thu, 21 Apr 2016 00:54:36 GMT
       Connection:
       - keep-alive
       Content-Type:
       - application/json
       Content-Length:
-      - '105'
+      - '462'
     body:
       encoding: ASCII-8BIT
       string: |-
         {
-          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf",
-          "id" : "28026b36-8fe4-4332-84c8-524e173a68bf"
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fsubsystem%3Ddatasources%2Fdata-source%3DExampleDS/d;configuration",
+          "value" : {
+            "Username" : "sa",
+            "Driver Name" : "h2",
+            "JNDI Name" : "java:jboss/datasources/ExampleDS",
+            "Connection URL" : "jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE",
+            "Enabled" : "true",
+            "Password" : "sa"
+          },
+          "name" : "configuration"
         }
     http_version: 
-  recorded_at: Thu, 21 Apr 2016 00:54:42 GMT
+  recorded_at: Thu, 21 Apr 2016 00:54:36 GMT
 - request:
     method: get
-    uri: http://jdoe:password@localhost:8080/hawkular/inventory/tenant
+    uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/<%= feed_uuid %>/resources/Local~~/Local~%2Fsubsystem=datasources%2Fdata-source=ExampleDS/children
     body:
       encoding: US-ASCII
       string: ''
@@ -125,67 +139,21 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Thu, 21 Apr 2016 00:54:42 GMT
+      - Thu, 21 Apr 2016 00:54:36 GMT
+      X-Total-Count:
+      - "-1"
       Connection:
       - keep-alive
       Content-Type:
       - application/json
       Content-Length:
-      - '105'
+      - '3'
+      Link:
+      - <http://localhost:8080/hawkular/inventory/feeds/<%= feed_uuid %>/resources/Local~~/Local~%2Fsubsystem%3Ddatasources%2Fdata-source%3DExampleDS/children>;
+        rel="current"
     body:
       encoding: ASCII-8BIT
-      string: |-
-        {
-          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf",
-          "id" : "28026b36-8fe4-4332-84c8-524e173a68bf"
-        }
+      string: "[ ]"
     http_version: 
-  recorded_at: Thu, 21 Apr 2016 00:54:42 GMT
-- request:
-    method: get
-    uri: http://jdoe:password@localhost:8080/hawkular/inventory/tenant
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Accept:
-      - application/json
-      Accept-Encoding:
-      - gzip, deflate
-      Content-Type:
-      - application/json
-      User-Agent:
-      - Ruby
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Expires:
-      - '0'
-      Cache-Control:
-      - no-cache, no-store, must-revalidate
-      X-Powered-By:
-      - Undertow/1
-      Server:
-      - WildFly/10
-      Pragma:
-      - no-cache
-      Date:
-      - Thu, 21 Apr 2016 00:54:43 GMT
-      Connection:
-      - keep-alive
-      Content-Type:
-      - application/json
-      Content-Length:
-      - '105'
-    body:
-      encoding: ASCII-8BIT
-      string: |-
-        {
-          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf",
-          "id" : "28026b36-8fe4-4332-84c8-524e173a68bf"
-        }
-    http_version: 
-  recorded_at: Thu, 21 Apr 2016 00:54:43 GMT
+  recorded_at: Thu, 21 Apr 2016 00:54:36 GMT
 recorded_with: VCR 3.0.1

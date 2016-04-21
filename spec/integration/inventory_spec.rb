@@ -26,6 +26,8 @@ module Hawkular::Inventory::RSpec
   end
 
   describe 'Inventory' do
+    URL_RESOURCE = 'http://bsd.de'
+
     before(:all) do
       @creds = {
         username: 'jdoe',
@@ -40,6 +42,26 @@ module Hawkular::Inventory::RSpec
           feed_uuid: feeds[0]
         }
       end
+
+      # create 1 URL resource and its metrics
+      VCR.use_cassette('Inventory/Helpers/create_url', options) do
+        rest_client = RestClient::Resource.new('http://localhost:8080/hawkular/api/urls',
+                                               user: @creds[:username],
+                                               password: @creds[:password]
+                                              )
+        url_json = {
+          url: URL_RESOURCE
+        }.to_json
+
+        begin
+          rest_client.post(url_json, content_type: 'application/json')
+        rescue
+          puts 'failed to create the url'
+          # no big deal, the url is probably already there
+        end
+      end
+
+      sleep 2 if ENV['VCR_UPDATE'] == '1' || ENV['VCR_OFF'] == '1'
     end
 
     after(:all) do
@@ -115,8 +137,9 @@ module Hawkular::Inventory::RSpec
       expect(resources.size).to be(1)
       resource = resources[0]
       expect(resource.instance_of? Hawkular::Inventory::Resource).to be_truthy
-      expect(resource.properties.size).to be(6)
-      expect(resource.properties['url']).to eq('http://bsd.de')
+      # depends how pinger is fast
+      expect(2..6).to cover(resource.properties.size)
+      expect(resource.properties['url']).to eq(URL_RESOURCE)
     end
 
     it 'Should list metrics for WildFlys' do
@@ -139,6 +162,17 @@ module Hawkular::Inventory::RSpec
       children = @client.list_child_resources(wild_fly)
 
       expect(children.size).to be(22)
+    end
+
+    it 'Should list children of nested resource' do
+      wildfly_res_id = 'Local~~'
+      datasource_res_id = 'Local~/subsystem=datasources/data-source=ExampleDS'
+      datasource = @client.get_resource(feed_id, [wildfly_res_id, datasource_res_id])
+      expect(datasource.name).to eq('ExampleDS')
+
+      children = @client.list_child_resources(datasource)
+
+      expect(children.size).to be(0)
     end
 
     it 'Should list recursive children of WildFly' do
@@ -185,6 +219,22 @@ module Hawkular::Inventory::RSpec
       metrics = @client.list_metrics_for_resource_type(feed_id, 'WildFly Server')
 
       expect(metrics.size).to be(14)
+    end
+
+    it 'Should return config data of given resource' do
+      config = @client.get_config_data_for_resource(feed_id, 'Local~~')
+
+      expect(config['value']['Server State']).to eq('running')
+      expect(config['value']['Product Name']).to eq('Hawkular')
+    end
+
+    it 'Should return config data of given nested resource' do
+      wildfly_res_id = 'Local~~'
+      datasource_res_id = 'Local~/subsystem=datasources/data-source=ExampleDS'
+      config = @client.get_config_data_for_resource(feed_id, [wildfly_res_id, datasource_res_id])
+
+      expect(config['value']['Username']).to eq('sa')
+      expect(config['value']['Driver Name']).to eq('h2')
     end
 
     it 'Should create a feed' do
@@ -248,19 +298,43 @@ module Hawkular::Inventory::RSpec
       expect(r.id).to eq('r124')
       expect(r.properties).not_to be_empty
 
-      r = @client.create_metric_type new_feed_id, 'mt-124'
-      expect(r).not_to be_nil
-      expect(r.id).to eq('mt-124')
+      mt = @client.create_metric_type new_feed_id, 'mt-124'
+      expect(mt).not_to be_nil
+      expect(mt.id).to eq('mt-124')
 
-      m = @client.create_metric_for_resource new_feed_id, 'm-124', r.path, 'r124'
+      m = @client.create_metric_for_resource new_feed_id, 'm-124', mt.path, 'r124'
       expect(m).not_to be_nil
       expect(m.id).to eq('m-124')
       expect(m.name).to eq('m-124')
 
-      m = @client.create_metric_for_resource new_feed_id, 'm-124-1', r.path, 'r124', 'Metric1'
+      m = @client.create_metric_for_resource new_feed_id, 'm-124-1', mt.path, 'r124', 'Metric1'
       expect(m).not_to be_nil
       expect(m.id).to eq('m-124-1')
       expect(m.name).to eq('Metric1')
+    end
+
+    it 'Should create a nested resource and metric on it' do
+      new_feed_id = 'feed_may_exist'
+      @client.create_feed new_feed_id
+      ret = @client.create_resource_type new_feed_id, 'rt-123-1', 'ResourceType'
+      type_path = ret.path
+
+      @client.create_resource new_feed_id, type_path, 'r124-a', 'Res-a'
+      nested_resource = @client.create_resource_under_resource new_feed_id, type_path, ['r124-a'], 'r124-b', 'Res-a'
+      expect(nested_resource.path).to include('r;r124-a/r;r124-b')
+
+      mt = @client.create_metric_type new_feed_id, 'mt-124-a'
+      expect(mt).not_to be_nil
+      expect(mt.id).to eq('mt-124-a')
+
+      m_name = 'MetricUnderNestedResource'
+      m = @client.create_metric_for_resource new_feed_id, 'm-124-a', mt.path, %w(r124-a r124-b), m_name
+      expect(m.id).to eq('m-124-a')
+      expect(m.name).to eq(m_name)
+
+      metrics = @client.list_metrics_for_resource nested_resource
+      expect(metrics.size).to eq(1)
+      expect(metrics[0].id).to eq(m.id)
     end
 
     it 'Should create and get a resource' do

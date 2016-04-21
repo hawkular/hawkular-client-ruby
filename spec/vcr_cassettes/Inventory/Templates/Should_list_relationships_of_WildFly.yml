@@ -31,7 +31,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Mon, 11 Apr 2016 16:51:40 GMT
+      - Thu, 21 Apr 2016 00:54:38 GMT
       X-Total-Count:
       - '1'
       Connection:
@@ -39,7 +39,7 @@ http_interactions:
       Content-Type:
       - application/json
       Content-Length:
-      - '357'
+      - '351'
       Link:
       - <http://localhost:8080/hawkular/inventory/feeds/<%= feed_uuid %>/resourceTypes/WildFly%20Server/resources>;
         rel="current"
@@ -53,11 +53,11 @@ http_interactions:
             "name" : "WildFly Server",
             "id" : "WildFly Server"
           },
-          "name" : "dhcp-10-40-1-43/Local",
+          "name" : "localhost/Local",
           "id" : "Local~~"
         } ]
     http_version: 
-  recorded_at: Mon, 11 Apr 2016 16:51:40 GMT
+  recorded_at: Thu, 21 Apr 2016 00:54:38 GMT
 - request:
     method: get
     uri: http://jdoe:password@localhost:8080/hawkular/inventory/path/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/relationships
@@ -89,7 +89,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Mon, 11 Apr 2016 16:51:40 GMT
+      - Thu, 21 Apr 2016 00:54:38 GMT
       X-Total-Count:
       - '61'
       Connection:
@@ -343,22 +343,22 @@ http_interactions:
           "id" : "aww0-9a8-1d05-1hc0",
           "name" : "incorporates",
           "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
-          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/m;MI~R~%5B<%= feed_uuid %>%2FLocal~~%5D~MT~WildFly%20Memory%20Metrics~NonHeap%20Committed"
+          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/m;MI~R~%5B<%= feed_uuid %>%2FLocal~~%5D~MT~WildFly%20Memory%20Metrics~Accumulated%20GC%20Duration"
         }, {
           "id" : "awww-9a8-1d05-1hj4",
           "name" : "incorporates",
           "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
-          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/m;MI~R~%5B<%= feed_uuid %>%2FLocal~~%5D~MT~WildFly%20Aggregated%20Web%20Metrics~Aggregated%20Servlet%20Request%20Count"
+          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/m;MI~R~%5B<%= feed_uuid %>%2FLocal~~%5D~MT~WildFly%20Aggregated%20Web%20Metrics~Aggregated%20Servlet%20Request%20Time"
         }, {
           "id" : "awxs-9a8-1d05-1hq8",
           "name" : "incorporates",
           "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
-          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/m;MI~R~%5B<%= feed_uuid %>%2FLocal~~%5D~MT~WildFly%20Aggregated%20Web%20Metrics~Aggregated%20Active%20Web%20Sessions"
+          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/m;MI~R~%5B<%= feed_uuid %>%2FLocal~~%5D~MT~WildFly%20Threading%20Metrics~Thread%20Count"
         }, {
           "id" : "awyo-9a8-1d05-1hxc",
           "name" : "incorporates",
           "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
-          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/m;MI~R~%5B<%= feed_uuid %>%2FLocal~~%5D~MT~WildFly%20Memory%20Metrics~NonHeap%20Used"
+          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/m;MI~R~%5B<%= feed_uuid %>%2FLocal~~%5D~MT~WildFly%20Memory%20Metrics~Heap%20Max"
         }, {
           "id" : "awzk-9a8-1d05-1i4g",
           "name" : "incorporates",
@@ -368,22 +368,22 @@ http_interactions:
           "id" : "ax0g-9a8-1d05-1ibk",
           "name" : "incorporates",
           "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
-          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/m;MI~R~%5B<%= feed_uuid %>%2FLocal~~%5D~MT~WildFly%20Memory%20Metrics~Heap%20Max"
+          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/m;MI~R~%5B<%= feed_uuid %>%2FLocal~~%5D~MT~WildFly%20Aggregated%20Web%20Metrics~Aggregated%20Servlet%20Request%20Count"
         }, {
           "id" : "ax1c-9a8-1d05-1iio",
           "name" : "incorporates",
           "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
-          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/m;MI~R~%5B<%= feed_uuid %>%2FLocal~~%5D~MT~WildFly%20Threading%20Metrics~Thread%20Count"
+          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/m;MI~R~%5B<%= feed_uuid %>%2FLocal~~%5D~MT~WildFly%20Memory%20Metrics~NonHeap%20Committed"
         }, {
           "id" : "ax28-9a8-1d05-1ips",
           "name" : "incorporates",
           "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
-          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/m;MI~R~%5B<%= feed_uuid %>%2FLocal~~%5D~MT~WildFly%20Memory%20Metrics~Accumulated%20GC%20Duration"
+          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/m;MI~R~%5B<%= feed_uuid %>%2FLocal~~%5D~MT~WildFly%20Aggregated%20Web%20Metrics~Aggregated%20Rejected%20Web%20Sessions"
         }, {
           "id" : "ax34-9a8-1d05-1iww",
           "name" : "incorporates",
           "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
-          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/m;MI~R~%5B<%= feed_uuid %>%2FLocal~~%5D~MT~WildFly%20Aggregated%20Web%20Metrics~Aggregated%20Expired%20Web%20Sessions"
+          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/m;MI~R~%5B<%= feed_uuid %>%2FLocal~~%5D~MT~WildFly%20Aggregated%20Web%20Metrics~Aggregated%20Active%20Web%20Sessions"
         }, {
           "id" : "ax40-9a8-1d05-1j40",
           "name" : "incorporates",
@@ -393,17 +393,17 @@ http_interactions:
           "id" : "ax4w-9a8-1d05-1jb4",
           "name" : "incorporates",
           "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
-          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/m;MI~R~%5B<%= feed_uuid %>%2FLocal~~%5D~MT~WildFly%20Aggregated%20Web%20Metrics~Aggregated%20Servlet%20Request%20Time"
+          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/m;MI~R~%5B<%= feed_uuid %>%2FLocal~~%5D~MT~WildFly%20Aggregated%20Web%20Metrics~Aggregated%20Max%20Active%20Web%20Sessions"
         }, {
           "id" : "ax5s-9a8-1d05-1ji8",
           "name" : "incorporates",
           "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
-          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/m;MI~R~%5B<%= feed_uuid %>%2FLocal~~%5D~MT~WildFly%20Aggregated%20Web%20Metrics~Aggregated%20Rejected%20Web%20Sessions"
+          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/m;MI~R~%5B<%= feed_uuid %>%2FLocal~~%5D~MT~WildFly%20Aggregated%20Web%20Metrics~Aggregated%20Expired%20Web%20Sessions"
         }, {
           "id" : "ax6o-9a8-1d05-1jpc",
           "name" : "incorporates",
           "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
-          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/m;MI~R~%5B<%= feed_uuid %>%2FLocal~~%5D~MT~WildFly%20Aggregated%20Web%20Metrics~Aggregated%20Max%20Active%20Web%20Sessions"
+          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/m;MI~R~%5B<%= feed_uuid %>%2FLocal~~%5D~MT~WildFly%20Memory%20Metrics~NonHeap%20Used"
         }, {
           "id" : "ax7k-9a8-1d05-1jwg",
           "name" : "incorporates",
@@ -411,5 +411,5 @@ http_interactions:
           "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/m;AI~R~%5B<%= feed_uuid %>%2FLocal~~%5D~AT~Server%20Availability~App%20Server"
         } ]
     http_version: 
-  recorded_at: Mon, 11 Apr 2016 16:51:40 GMT
+  recorded_at: Thu, 21 Apr 2016 00:54:38 GMT
 recorded_with: VCR 3.0.1
