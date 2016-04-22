@@ -3,6 +3,11 @@
 This document describes the relevant changes between releases of the
 _hawkular-client_ project.
 
+=== V 0.2.2
+
+* Bug fix to correctly read resource info for resources that are not directly below a feed.
+  Issue #54[https://github.com/hawkular/hawkular-client-ruby/issues/54]
+
 === V 0.2.1
 
 * Add support to create items in inventory
