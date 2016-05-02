@@ -26,6 +26,7 @@ module Hawkular
         verify_ssl: OpenSSL::SSL::VERIFY_PEER,
         ssl_client_cert: nil,
         ssl_client_key: nil,
+        http_proxy_uri: nil,
         headers: {}
       }.merge(options)
 
@@ -98,6 +99,7 @@ module Hawkular
       options[:verify_ssl] = @options[:verify_ssl]
       options[:ssl_client_cert] = @options[:ssl_client_cert]
       options[:ssl_client_key] = @options[:ssl_client_key]
+      options[:proxy] = @options[:http_proxy_uri]
       options[:user] = @credentials[:username]
       options[:password] = @credentials[:password]
       # strip @endpoint in case suburl is absolute

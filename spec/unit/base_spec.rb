@@ -75,4 +75,13 @@ describe 'Base Spec' do
 
     expect(ret).to eq('a1%252%203%7c45%2f')
   end
+
+  it 'should pass http_proxy_uri to rest_client' do
+    proxy_uri = 'http://myproxy.com'
+    c = Hawkular::BaseClient.new('not-needed-for-this-test', {},
+                                 http_proxy_uri: proxy_uri)
+    rc = c.rest_client('myurl')
+
+    expect(rc.options[:proxy]).to eq(proxy_uri)
+  end
 end
