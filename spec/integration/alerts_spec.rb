@@ -3,7 +3,7 @@ require "#{File.dirname(__FILE__)}/../spec_helper"
 
 module Hawkular::Alerts::RSpec
   ALERTS_BASE = 'http://localhost:8080/hawkular/alerts'
-  creds = { username: 'jdoe', password: 'password' }
+  creds = { username: 'hwr', password: 'Abcd1234+' }
 
   describe 'Alert/Triggers', vcr: { decode_compressed_response: true } do
     before(:each) do
@@ -288,11 +288,23 @@ module Hawkular::Alerts::RSpec
     end
 
     it 'Should create an event' do
-      client = Hawkular::Alerts::AlertsClient.new(ALERTS_BASE, creds)
+      the_id = "test-event@#{Time.new.to_i}"
+      VCR.use_cassette('Alert/Events/Should_create_an_event',
+                       erb: { id: the_id }, record: :none,
+                       decode_compressed_response: true
+      ) do
 
-      client.create_event('myEvent-123','MyCategory','Li la lu', {:message => 'This is a test'})
+        client = Hawkular::Alerts::AlertsClient.new(ALERTS_BASE, creds)
+
+
+        the_event = client.create_event(the_id, 'MyCategory', 'Li la lu',
+                                        context: {message: 'This is a test'},
+                                        tags: {:tag_name => 'tag-value'})
+
+        expect(the_event['id']).to eql(the_id)
+        expect(the_event['category']).to eql('MyCategory')
+      end
     end
-
   end
 
   describe 'Alert/EndToEnd', vcr: { decode_compressed_response: true } do

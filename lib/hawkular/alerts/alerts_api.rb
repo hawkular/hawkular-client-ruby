@@ -215,14 +215,14 @@ module Hawkular::Alerts
     # @param [String] id Id of the event must be unique
     # @param [String] category Event category for further distinction
     # @param [String] text Some text to the user
-    # @param [Hash<String,Object>] context Additional context information.
-    def create_event(id, category, text, context = {})
+    # @param [Hash<String,Object>] extras additional parameters
+    def create_event(id, category, text, extras)
       event = {}
       event['id'] = id
       event['ctime'] = Time.now.to_i * 1000
       event['category'] = category
       event['text'] = text
-      event['context'] = context unless context.nil?
+      event.merge!(extras) { |key, v1, v2| v1 }
 
       http_post('/events', event)
     end
