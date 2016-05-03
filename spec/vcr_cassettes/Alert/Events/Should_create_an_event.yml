@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: http://hwr:Abcd1234%2B@localhost:8080/hawkular/alerts/events
+    uri: http://jdoe:password@localhost:8080/hawkular/alerts/events
     body:
       encoding: UTF-8
       string: '{"id":"<%= id %>","ctime":1462300161000,"category":"MyCategory","text":"Li
