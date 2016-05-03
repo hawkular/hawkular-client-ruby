@@ -3,7 +3,7 @@ require "#{File.dirname(__FILE__)}/../spec_helper"
 
 module Hawkular::Alerts::RSpec
   ALERTS_BASE = 'http://localhost:8080/hawkular/alerts'
-  creds = { username: 'hwr', password: 'Abcd1234+' }
+  creds = { username: 'jdoe', password: 'password' }
 
   describe 'Alert/Triggers', vcr: { decode_compressed_response: true } do
     before(:each) do
