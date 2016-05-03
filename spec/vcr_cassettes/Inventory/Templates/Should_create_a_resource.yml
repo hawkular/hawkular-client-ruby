@@ -22,8 +22,6 @@ http_interactions:
       code: 409
       message: Conflict
     headers:
-      Content-Encoding:
-      - gzip
       Expires:
       - '0'
       Cache-Control:
@@ -35,27 +33,36 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Fri, 19 Feb 2016 10:41:32 GMT
+      - Mon, 11 Apr 2016 16:51:43 GMT
       Connection:
       - keep-alive
       Content-Type:
       - application/json
       Content-Length:
-      - '370'
+      - '747'
     body:
       encoding: ASCII-8BIT
-      string: !binary |-
-        H4sIAAAAAAAAAJWQzW7CMBCE7zzFKpdcktAmKY1AnCoqcWgrUXqKImTwhlhN
-        4sh2SyPEu9d2+BG0qqh88do7szvftgfgoBBcPMm1A0NwHhEpbJgqgFFwTZU2
-        RBVjt69GYXITDpbRwE9yjP04ikI/iVeJfxfGeHsfkUGyzPv5KNeiRUXaBX4x
-        qdzMhYJIWCLWQEqBhLYgcK2/UCANYFIrptrTzAv5UWNLCUSB5BUCz0EVCA2X
-        TDFeyyGk6bxtUKZzrEmtMg+mVKbX7KxbZ1gSpbN6erVy7K54rQirpatrXuL4
-        9eVt9jDRfd0Eg2Xvf75tlmWOZ5hS1PpSGqRbXRvKNuaUWsrnKivRLQa0laT6
-        dDL9qszI7tXhYh0UZPP+URIRsPpTm3LRBqRhQcUplkGX3YHMqnfeyYbRg8k1
-        SH5zEIaRQV2w5plUaJMcSO0zHIPONDbb0KFzfrj9K5YB/neoC6KHXsjsbdfb
-        fQOfEN7S6wIAAA==
+      string: |-
+        {
+          "errorMsg" : "Feed with id 'Feed[path='/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;feed_may_exist']' has been already registered. Entity with id 'feed_may_exist' already exists at some of the positions: [[Types[Tenant], Ids[28026b36-8fe4-4332-84c8-524e173a68bf], Related[, rel='contains', role=SOURCE], Types[Feed], Ids[feed_may_exist]]]",
+          "details" : {
+            "entityId" : "feed_may_exist",
+            "paths" : [ [ {
+              "types" : [ "org.hawkular.inventory.api.model.Tenant" ]
+            }, {
+              "ids" : [ "28026b36-8fe4-4332-84c8-524e173a68bf" ]
+            }, {
+              "relationshipName" : "contains",
+              "entityRole" : "SOURCE"
+            }, {
+              "types" : [ "org.hawkular.inventory.api.model.Feed" ]
+            }, {
+              "ids" : [ "feed_may_exist" ]
+            } ] ]
+          }
+        }
     http_version: 
-  recorded_at: Fri, 19 Feb 2016 10:41:32 GMT
+  recorded_at: Mon, 11 Apr 2016 16:51:43 GMT
 - request:
     method: get
     uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/feed_may_exist
@@ -76,8 +83,6 @@ http_interactions:
       code: 200
       message: OK
     headers:
-      Content-Encoding:
-      - gzip
       Expires:
       - '0'
       Cache-Control:
@@ -89,21 +94,22 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Fri, 19 Feb 2016 10:41:32 GMT
+      - Mon, 11 Apr 2016 16:51:43 GMT
       Connection:
       - keep-alive
       Content-Type:
       - application/json
       Content-Length:
-      - '102'
+      - '100'
     body:
       encoding: ASCII-8BIT
-      string: !binary |-
-        H4sIAAAAAAAAAKvmUlBQKkgsyVBSsFJQ0i+xNrIwMDJLMjbTtUhLNdE1MTY2
-        0rUwSbbQNTUySTU0N040s0hK00+zTktNTYnPTayMT63ILC5R0gEZk5kCNgRN
-        iqsWADiVKMdkAAAA
+      string: |-
+        {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;feed_may_exist",
+          "id" : "feed_may_exist"
+        }
     http_version: 
-  recorded_at: Fri, 19 Feb 2016 10:41:32 GMT
+  recorded_at: Mon, 11 Apr 2016 16:51:43 GMT
 - request:
     method: post
     uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/feed_may_exist/resourceTypes
@@ -126,8 +132,6 @@ http_interactions:
       code: 409
       message: Conflict
     headers:
-      Content-Encoding:
-      - gzip
       Expires:
       - '0'
       Cache-Control:
@@ -139,21 +143,22 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Fri, 19 Feb 2016 10:41:32 GMT
+      - Mon, 11 Apr 2016 16:51:43 GMT
       Connection:
       - keep-alive
       Content-Type:
       - application/json
       Content-Length:
-      - '109'
+      - '107'
     body:
       encoding: ASCII-8BIT
-      string: !binary |-
-        H4sIAAAAAAAAABXMMQqAMAwF0L2n+HTp4gncHT1EodEGaiNNRIt4d+n+eK8D
-        PLUmbdXdY4ZfqrF13GwZnBDqVUpALI1i6qCH1RTRoHIQZINlwinKxlJ1xuB+
-        Gmsii1x0pC8+9/2FU7bnawAAAA==
+      string: |-
+        {
+          "errorMsg" : "Entity with id 'null' already exists at some of the positions: null",
+          "details" : { }
+        }
     http_version: 
-  recorded_at: Fri, 19 Feb 2016 10:41:32 GMT
+  recorded_at: Mon, 11 Apr 2016 16:51:43 GMT
 - request:
     method: get
     uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/feed_may_exist/resourceTypes/rt-123
@@ -174,8 +179,6 @@ http_interactions:
       code: 200
       message: OK
     headers:
-      Content-Encoding:
-      - gzip
       Expires:
       - '0'
       Cache-Control:
@@ -187,21 +190,23 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Fri, 19 Feb 2016 10:41:33 GMT
+      - Mon, 11 Apr 2016 16:51:43 GMT
       Connection:
       - keep-alive
       Content-Type:
       - application/json
       Content-Length:
-      - '130'
+      - '129'
     body:
       encoding: ASCII-8BIT
-      string: !binary |-
-        H4sIAAAAAAAAAC3MQQ6CMBBA0T2naLp2UpmpdWJvYdyTAtPIAiVlTCTGuxPQ
-        9fv5n8oYOyW9W3Mx1mlEPmJoKQBn8eCJENh3DCf0Up8pBW6zyzGL9M2Ylkbe
-        w6yuaCwKNZI9bMNHGmUfXmV+vkont2WSHw39Dv+6+q5ugH8sgQAAAA==
+      string: |-
+        {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;feed_may_exist/rt;rt-123",
+          "name" : "ResourceType",
+          "id" : "rt-123"
+        }
     http_version: 
-  recorded_at: Fri, 19 Feb 2016 10:41:33 GMT
+  recorded_at: Mon, 11 Apr 2016 16:51:43 GMT
 - request:
     method: post
     uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/feed_may_exist/resources
@@ -221,11 +226,9 @@ http_interactions:
       - Ruby
   response:
     status:
-      code: 409
-      message: Conflict
+      code: 201
+      message: Created
     headers:
-      Content-Encoding:
-      - gzip
       Expires:
       - '0'
       Cache-Control:
@@ -236,22 +239,34 @@ http_interactions:
       - WildFly/10
       Pragma:
       - no-cache
+      Location:
+      - http://localhost:8080/hawkular/inventory/feeds/feed_may_exist/resources/r123
       Date:
-      - Fri, 19 Feb 2016 10:41:33 GMT
+      - Mon, 11 Apr 2016 16:51:43 GMT
       Connection:
       - keep-alive
       Content-Type:
       - application/json
       Content-Length:
-      - '109'
+      - '317'
     body:
       encoding: ASCII-8BIT
-      string: !binary |-
-        H4sIAAAAAAAAABXMMQqAMAwF0L2n+HTp4gncHT1EodEGaiNNRIt4d+n+eK8D
-        PLUmbdXdY4ZfqrF13GwZnBDqVUpALI1i6qCH1RTRoHIQZINlwinKxlJ1xuB+
-        Gmsii1x0pC8+9/2FU7bnawAAAA==
+      string: |-
+        {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;feed_may_exist/r;r123",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;feed_may_exist/rt;rt-123",
+            "name" : "ResourceType",
+            "id" : "rt-123"
+          },
+          "properties" : {
+            "version" : 1.0
+          },
+          "name" : "My Resource",
+          "id" : "r123"
+        }
     http_version: 
-  recorded_at: Fri, 19 Feb 2016 10:41:33 GMT
+  recorded_at: Mon, 11 Apr 2016 16:51:43 GMT
 - request:
     method: get
     uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/feed_may_exist/resources/r123
@@ -272,8 +287,6 @@ http_interactions:
       code: 200
       message: OK
     headers:
-      Content-Encoding:
-      - gzip
       Expires:
       - '0'
       Cache-Control:
@@ -285,23 +298,31 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Fri, 19 Feb 2016 10:41:33 GMT
+      - Mon, 11 Apr 2016 16:51:43 GMT
       Connection:
       - keep-alive
       Content-Type:
       - application/json
       Content-Length:
-      - '185'
+      - '317'
     body:
       encoding: ASCII-8BIT
-      string: !binary |-
-        H4sIAAAAAAAAAK2PQQ7CIBBF956CsBbbAlYiZ3Bj3De0DpFFWwJobJre3YJt
-        4wFczv8z7/8Zdwhhq8IDozPCWZBU5LSsWUmEBk44Y5QI3ghypByKE1OlqHWm
-        pQa4V60aKngbHzInXUEZ3kdaGCxE2jgP/4EH6QJZ+TOyU21KwFfw/dM1cIuR
-        i2nuyVouZm1KrazrLbhgwP90e4Hzpu+iUhzybXfjXwa0Rnx/W+EJPX0A9wC4
-        kz0BAAA=
+      string: |-
+        {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;feed_may_exist/r;r123",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;feed_may_exist/rt;rt-123",
+            "name" : "ResourceType",
+            "id" : "rt-123"
+          },
+          "properties" : {
+            "version" : 1.0
+          },
+          "name" : "My Resource",
+          "id" : "r123"
+        }
     http_version: 
-  recorded_at: Fri, 19 Feb 2016 10:41:33 GMT
+  recorded_at: Mon, 11 Apr 2016 16:51:43 GMT
 - request:
     method: get
     uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/feed_may_exist/resources/r123
@@ -322,8 +343,6 @@ http_interactions:
       code: 200
       message: OK
     headers:
-      Content-Encoding:
-      - gzip
       Expires:
       - '0'
       Cache-Control:
@@ -335,21 +354,29 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Fri, 19 Feb 2016 10:41:33 GMT
+      - Mon, 11 Apr 2016 16:51:43 GMT
       Connection:
       - keep-alive
       Content-Type:
       - application/json
       Content-Length:
-      - '185'
+      - '317'
     body:
       encoding: ASCII-8BIT
-      string: !binary |-
-        H4sIAAAAAAAAAK2PQQ7CIBBF956CsBbbAlYiZ3Bj3De0DpFFWwJobJre3YJt
-        4wFczv8z7/8Zdwhhq8IDozPCWZBU5LSsWUmEBk44Y5QI3ghypByKE1OlqHWm
-        pQa4V60aKngbHzInXUEZ3kdaGCxE2jgP/4EH6QJZ+TOyU21KwFfw/dM1cIuR
-        i2nuyVouZm1KrazrLbhgwP90e4Hzpu+iUhzybXfjXwa0Rnx/W+EJPX0A9wC4
-        kz0BAAA=
+      string: |-
+        {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;feed_may_exist/r;r123",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;feed_may_exist/rt;rt-123",
+            "name" : "ResourceType",
+            "id" : "rt-123"
+          },
+          "properties" : {
+            "version" : 1.0
+          },
+          "name" : "My Resource",
+          "id" : "r123"
+        }
     http_version: 
-  recorded_at: Fri, 19 Feb 2016 10:41:33 GMT
-recorded_with: VCR 3.0.0
+  recorded_at: Mon, 11 Apr 2016 16:51:43 GMT
+recorded_with: VCR 3.0.1

@@ -33,7 +33,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Mon, 29 Feb 2016 11:18:11 GMT
+      - Mon, 11 Apr 2016 16:51:43 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -62,7 +62,7 @@ http_interactions:
           }
         }
     http_version: 
-  recorded_at: Mon, 29 Feb 2016 11:18:11 GMT
+  recorded_at: Mon, 11 Apr 2016 16:51:43 GMT
 - request:
     method: get
     uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/feed_may_exist
@@ -94,7 +94,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Mon, 29 Feb 2016 11:18:11 GMT
+      - Mon, 11 Apr 2016 16:51:43 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -109,7 +109,7 @@ http_interactions:
           "id" : "feed_may_exist"
         }
     http_version: 
-  recorded_at: Mon, 29 Feb 2016 11:18:11 GMT
+  recorded_at: Mon, 11 Apr 2016 16:51:43 GMT
 - request:
     method: post
     uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/feed_may_exist/resourceTypes
@@ -143,7 +143,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Mon, 29 Feb 2016 11:18:11 GMT
+      - Mon, 11 Apr 2016 16:51:43 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -158,7 +158,7 @@ http_interactions:
           "details" : { }
         }
     http_version: 
-  recorded_at: Mon, 29 Feb 2016 11:18:11 GMT
+  recorded_at: Mon, 11 Apr 2016 16:51:43 GMT
 - request:
     method: get
     uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/feed_may_exist/resourceTypes/rt-123
@@ -190,7 +190,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Mon, 29 Feb 2016 11:18:11 GMT
+      - Mon, 11 Apr 2016 16:51:43 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -206,7 +206,7 @@ http_interactions:
           "id" : "rt-123"
         }
     http_version: 
-  recorded_at: Mon, 29 Feb 2016 11:18:11 GMT
+  recorded_at: Mon, 11 Apr 2016 16:51:43 GMT
 - request:
     method: post
     uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/feed_may_exist/resources
@@ -226,8 +226,8 @@ http_interactions:
       - Ruby
   response:
     status:
-      code: 409
-      message: Conflict
+      code: 201
+      message: Created
     headers:
       Expires:
       - '0'
@@ -239,23 +239,34 @@ http_interactions:
       - WildFly/10
       Pragma:
       - no-cache
+      Location:
+      - http://localhost:8080/hawkular/inventory/feeds/feed_may_exist/resources/r124
       Date:
-      - Mon, 29 Feb 2016 11:18:11 GMT
+      - Mon, 11 Apr 2016 16:51:43 GMT
       Connection:
       - keep-alive
       Content-Type:
       - application/json
       Content-Length:
-      - '107'
+      - '317'
     body:
       encoding: ASCII-8BIT
       string: |-
         {
-          "errorMsg" : "Entity with id 'null' already exists at some of the positions: null",
-          "details" : { }
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;feed_may_exist/r;r124",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;feed_may_exist/rt;rt-123",
+            "name" : "ResourceType",
+            "id" : "rt-123"
+          },
+          "properties" : {
+            "version" : 1.0
+          },
+          "name" : "My Resource",
+          "id" : "r124"
         }
     http_version: 
-  recorded_at: Mon, 29 Feb 2016 11:18:11 GMT
+  recorded_at: Mon, 11 Apr 2016 16:51:43 GMT
 - request:
     method: get
     uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/feed_may_exist/resources/r124
@@ -287,7 +298,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Mon, 29 Feb 2016 11:18:11 GMT
+      - Mon, 11 Apr 2016 16:51:43 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -311,7 +322,7 @@ http_interactions:
           "id" : "r124"
         }
     http_version: 
-  recorded_at: Mon, 29 Feb 2016 11:18:11 GMT
+  recorded_at: Mon, 11 Apr 2016 16:51:43 GMT
 - request:
     method: get
     uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/feed_may_exist/resources/r124
@@ -343,7 +354,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Mon, 29 Feb 2016 11:18:11 GMT
+      - Mon, 11 Apr 2016 16:51:43 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -367,7 +378,7 @@ http_interactions:
           "id" : "r124"
         }
     http_version: 
-  recorded_at: Mon, 29 Feb 2016 11:18:11 GMT
+  recorded_at: Mon, 11 Apr 2016 16:51:43 GMT
 - request:
     method: post
     uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/feed_may_exist/metricTypes
@@ -387,8 +398,8 @@ http_interactions:
       - Ruby
   response:
     status:
-      code: 409
-      message: Conflict
+      code: 201
+      message: Created
     headers:
       Expires:
       - '0'
@@ -400,23 +411,28 @@ http_interactions:
       - WildFly/10
       Pragma:
       - no-cache
+      Location:
+      - http://localhost:8080/hawkular/inventory/feeds/feed_may_exist/metricTypes/mt-124
       Date:
-      - Mon, 29 Feb 2016 11:18:11 GMT
+      - Mon, 11 Apr 2016 16:51:43 GMT
       Connection:
       - keep-alive
       Content-Type:
       - application/json
       Content-Length:
-      - '107'
+      - '170'
     body:
       encoding: ASCII-8BIT
       string: |-
         {
-          "errorMsg" : "Entity with id 'null' already exists at some of the positions: null",
-          "details" : { }
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;feed_may_exist/mt;mt-124",
+          "unit" : "NONE",
+          "type" : "GAUGE",
+          "collectionInterval" : 60,
+          "id" : "mt-124"
         }
     http_version: 
-  recorded_at: Mon, 29 Feb 2016 11:18:11 GMT
+  recorded_at: Mon, 11 Apr 2016 16:51:43 GMT
 - request:
     method: get
     uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/feed_may_exist/metricTypes/mt-124
@@ -448,7 +464,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Mon, 29 Feb 2016 11:18:11 GMT
+      - Mon, 11 Apr 2016 16:51:43 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -466,7 +482,7 @@ http_interactions:
           "id" : "mt-124"
         }
     http_version: 
-  recorded_at: Mon, 29 Feb 2016 11:18:11 GMT
+  recorded_at: Mon, 11 Apr 2016 16:51:43 GMT
 - request:
     method: post
     uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/feed_may_exist/metrics
@@ -486,8 +502,8 @@ http_interactions:
       - Ruby
   response:
     status:
-      code: 409
-      message: Conflict
+      code: 201
+      message: Created
     headers:
       Expires:
       - '0'
@@ -499,23 +515,33 @@ http_interactions:
       - WildFly/10
       Pragma:
       - no-cache
+      Location:
+      - http://localhost:8080/hawkular/inventory/feeds/feed_may_exist/metrics/m-124
       Date:
-      - Mon, 29 Feb 2016 11:18:11 GMT
+      - Mon, 11 Apr 2016 16:51:44 GMT
       Connection:
       - keep-alive
       Content-Type:
       - application/json
       Content-Length:
-      - '107'
+      - '314'
     body:
       encoding: ASCII-8BIT
       string: |-
         {
-          "errorMsg" : "Entity with id 'null' already exists at some of the positions: null",
-          "details" : { }
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;feed_may_exist/m;m-124",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;feed_may_exist/mt;mt-124",
+            "unit" : "NONE",
+            "type" : "GAUGE",
+            "collectionInterval" : 60,
+            "id" : "mt-124"
+          },
+          "name" : "m-124",
+          "id" : "m-124"
         }
     http_version: 
-  recorded_at: Mon, 29 Feb 2016 11:18:11 GMT
+  recorded_at: Mon, 11 Apr 2016 16:51:44 GMT
 - request:
     method: get
     uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/feed_may_exist/metrics/m-124
@@ -547,7 +573,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Mon, 29 Feb 2016 11:18:11 GMT
+      - Mon, 11 Apr 2016 16:51:44 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -570,7 +596,7 @@ http_interactions:
           "id" : "m-124"
         }
     http_version: 
-  recorded_at: Mon, 29 Feb 2016 11:18:12 GMT
+  recorded_at: Mon, 11 Apr 2016 16:51:44 GMT
 - request:
     method: post
     uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/feed_may_exist/resources/r124/metrics
@@ -590,8 +616,8 @@ http_interactions:
       - Ruby
   response:
     status:
-      code: 409
-      message: Conflict
+      code: 204
+      message: No Content
     headers:
       Expires:
       - '0'
@@ -604,27 +630,12 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Mon, 29 Feb 2016 11:18:12 GMT
-      Connection:
-      - keep-alive
-      Content-Type:
-      - application/json
-      Content-Length:
-      - '359'
+      - Mon, 11 Apr 2016 16:51:44 GMT
     body:
-      encoding: ASCII-8BIT
-      string: |-
-        {
-          "errorMsg" : "Relation with id 'incorporates' already exists at some of the positions: [[CanonicalPaths[/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;feed_may_exist/r;r124]]]",
-          "details" : {
-            "relationshipNameOrId" : "incorporates",
-            "paths" : [ [ {
-              "paths" : [ "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;feed_may_exist/r;r124" ]
-            } ] ]
-          }
-        }
+      encoding: UTF-8
+      string: ''
     http_version: 
-  recorded_at: Mon, 29 Feb 2016 11:18:12 GMT
+  recorded_at: Mon, 11 Apr 2016 16:51:44 GMT
 - request:
     method: post
     uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/feed_may_exist/metrics
@@ -644,8 +655,8 @@ http_interactions:
       - Ruby
   response:
     status:
-      code: 409
-      message: Conflict
+      code: 201
+      message: Created
     headers:
       Expires:
       - '0'
@@ -657,23 +668,33 @@ http_interactions:
       - WildFly/10
       Pragma:
       - no-cache
+      Location:
+      - http://localhost:8080/hawkular/inventory/feeds/feed_may_exist/metrics/m-124-1
       Date:
-      - Mon, 29 Feb 2016 11:18:12 GMT
+      - Mon, 11 Apr 2016 16:51:44 GMT
       Connection:
       - keep-alive
       Content-Type:
       - application/json
       Content-Length:
-      - '107'
+      - '320'
     body:
       encoding: ASCII-8BIT
       string: |-
         {
-          "errorMsg" : "Entity with id 'null' already exists at some of the positions: null",
-          "details" : { }
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;feed_may_exist/m;m-124-1",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;feed_may_exist/mt;mt-124",
+            "unit" : "NONE",
+            "type" : "GAUGE",
+            "collectionInterval" : 60,
+            "id" : "mt-124"
+          },
+          "name" : "Metric1",
+          "id" : "m-124-1"
         }
     http_version: 
-  recorded_at: Mon, 29 Feb 2016 11:18:12 GMT
+  recorded_at: Mon, 11 Apr 2016 16:51:44 GMT
 - request:
     method: get
     uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/feed_may_exist/metrics/m-124-1
@@ -705,7 +726,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Mon, 29 Feb 2016 11:18:12 GMT
+      - Mon, 11 Apr 2016 16:51:44 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -728,7 +749,7 @@ http_interactions:
           "id" : "m-124-1"
         }
     http_version: 
-  recorded_at: Mon, 29 Feb 2016 11:18:12 GMT
+  recorded_at: Mon, 11 Apr 2016 16:51:44 GMT
 - request:
     method: post
     uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/feed_may_exist/resources/r124/metrics
@@ -748,8 +769,8 @@ http_interactions:
       - Ruby
   response:
     status:
-      code: 409
-      message: Conflict
+      code: 204
+      message: No Content
     headers:
       Expires:
       - '0'
@@ -762,25 +783,10 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Mon, 29 Feb 2016 11:18:12 GMT
-      Connection:
-      - keep-alive
-      Content-Type:
-      - application/json
-      Content-Length:
-      - '359'
+      - Mon, 11 Apr 2016 16:51:44 GMT
     body:
-      encoding: ASCII-8BIT
-      string: |-
-        {
-          "errorMsg" : "Relation with id 'incorporates' already exists at some of the positions: [[CanonicalPaths[/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;feed_may_exist/r;r124]]]",
-          "details" : {
-            "relationshipNameOrId" : "incorporates",
-            "paths" : [ [ {
-              "paths" : [ "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;feed_may_exist/r;r124" ]
-            } ] ]
-          }
-        }
+      encoding: UTF-8
+      string: ''
     http_version: 
-  recorded_at: Mon, 29 Feb 2016 11:18:12 GMT
-recorded_with: VCR 3.0.0
+  recorded_at: Mon, 11 Apr 2016 16:51:44 GMT
+recorded_with: VCR 3.0.1
