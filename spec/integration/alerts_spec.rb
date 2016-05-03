@@ -286,6 +286,13 @@ module Hawkular::Alerts::RSpec
       expect(events).to_not be_nil
       expect(events.size).to be(0)
     end
+
+    it 'Should create an event' do
+      client = Hawkular::Alerts::AlertsClient.new(ALERTS_BASE, creds)
+
+      client.create_event('myEvent-123','MyCategory','Li la lu', {:message => 'This is a test'})
+    end
+
   end
 
   describe 'Alert/EndToEnd', vcr: { decode_compressed_response: true } do
