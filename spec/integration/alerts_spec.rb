@@ -292,14 +292,12 @@ module Hawkular::Alerts::RSpec
       VCR.use_cassette('Alert/Events/Should_create_an_event',
                        erb: { id: the_id }, record: :none,
                        decode_compressed_response: true
-      ) do
-
+                      ) do
         client = Hawkular::Alerts::AlertsClient.new(ALERTS_BASE, creds)
 
-
         the_event = client.create_event(the_id, 'MyCategory', 'Li la lu',
-                                        context: {message: 'This is a test'},
-                                        tags: {:tag_name => 'tag-value'})
+                                        context: { message: 'This is a test' },
+                                        tags: { tag_name: 'tag-value' })
 
         expect(the_event['id']).to eql(the_id)
         expect(the_event['category']).to eql('MyCategory')

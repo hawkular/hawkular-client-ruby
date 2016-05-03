@@ -222,7 +222,7 @@ module Hawkular::Alerts
       event['ctime'] = Time.now.to_i * 1000
       event['category'] = category
       event['text'] = text
-      event.merge!(extras) { |key, v1, v2| v1 }
+      event.merge!(extras) { |_key, v1, _v2| v1 }
 
       http_post('/events', event)
     end
