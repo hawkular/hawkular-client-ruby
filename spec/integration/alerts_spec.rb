@@ -166,6 +166,163 @@ module Hawkular::Alerts::RSpec
     end
   end
 
+  describe 'Alert/Groups', vcr: { decode_compressed_response: true } do
+    before(:each) do
+      @client = Hawkular::Alerts::AlertsClient.new(ALERTS_BASE, creds)
+    end
+
+    it 'Should operate a complex group trigger' do
+      # Create a group trigger
+      t = Hawkular::Alerts::Trigger.new({})
+      t.enabled = false
+      t.id = 'a-group-trigger'
+      t.name = 'A Group Trigger'
+      t.severity = :HIGH
+      t.description = 'A Group Trigger generated from test'
+
+      # Create a condition
+      c = Hawkular::Alerts::Trigger::Condition.new({})
+      c.trigger_mode = :FIRING
+      c.type = :THRESHOLD
+      c.data_id = 'my-metric-id'
+      c.operator = :LT
+      c.threshold = 5
+
+      # Create a group condition
+      # no members yet
+      gc = Hawkular::Alerts::Trigger::GroupConditionsInfo.new([c])
+
+      # Create a member
+      m1 = Hawkular::Alerts::Trigger::GroupMemberInfo.new
+      m1.group_id = 'a-group-trigger'
+      m1.member_id = 'member1'
+      m1.member_name = 'Member One'
+      m1.data_id_map = { 'my-metric-id' => 'my-metric-id-member1' }
+
+      # Create a second member
+      m2 = Hawkular::Alerts::Trigger::GroupMemberInfo.new
+      m2.group_id = 'a-group-trigger'
+      m2.member_id = 'member2'
+      m2.member_name = 'Member Two'
+      m2.data_id_map = { 'my-metric-id' => 'my-metric-id-member2' }
+
+      # Create a dampening for the group trigger
+      d = Hawkular::Alerts::Trigger::Dampening.new(
+        'triggerId'        => 'a-group-trigger',
+        'triggerMode'      => :FIRING,
+        'type'             => :STRICT,
+        'evalTrueSetting'  => 2,
+        'evalTotalSetting' => 2
+      )
+
+      # Create a second condition
+      c2 = Hawkular::Alerts::Trigger::Condition.new({})
+      c2.trigger_mode = :FIRING
+      c2.type = :THRESHOLD
+      c2.data_id = 'my-metric-id2'
+      c2.operator = :GT
+      c2.threshold = 50
+
+      # Create the second group condition
+      # member2 is an orphan so, no need to update it into the data_id_member_map
+      gc2 = Hawkular::Alerts::Trigger::GroupConditionsInfo.new([c, c2])
+      gc2.data_id_member_map = {
+        'my-metric-id'  => { 'member1' => 'my-metric-id-member1' },
+        'my-metric-id2' => { 'member1' => 'my-metric-id2-member1' }
+      }
+
+      begin
+        group_trigger = @client.create_group_trigger t
+        expect(group_trigger).not_to be_nil
+        expect(group_trigger.type).to eq('GROUP')
+
+        created_conditions = @client.set_group_conditions t.id, :FIRING, gc
+        expect(created_conditions.size).to be(1)
+
+        member1 = @client.create_member_trigger m1
+        expect(member1.type).to eq('MEMBER')
+
+        full_member1 = @client.get_single_trigger member1.id, true
+        expect(full_member1).not_to be_nil
+        expect(full_member1.id).to eq('member1')
+        expect(full_member1.conditions.size).to be(1)
+        expect(full_member1.conditions[0].data_id).to eq('my-metric-id-member1')
+
+        members = @client.list_members t.id
+        expect(members.size).to be(1)
+
+        member2 = @client.create_member_trigger m2
+        expect(member2.type).to eq('MEMBER')
+
+        full_member2 = @client.get_single_trigger member2.id, true
+        expect(full_member2).not_to be_nil
+        expect(full_member2.id).to eq('member2')
+        expect(full_member2.conditions.size).to be(1)
+        expect(full_member2.conditions[0].data_id).to eq('my-metric-id-member2')
+
+        members = @client.list_members t.id
+        expect(members.size).to be(2)
+
+        member2 = @client.orphan_member member2.id
+        expect(member2.type).to eq('ORPHAN')
+
+        members = @client.list_members t.id
+        expect(members.size).to be(1)
+
+        orphans = @client.list_members t.id, true
+        expect(orphans.size).to be(2)
+
+        group_dampening = @client.create_group_dampening d
+        expect(group_dampening).not_to be_nil
+        expect(group_dampening.type).to eq('STRICT')
+
+        full_member1 = @client.get_single_trigger member1.id, true
+        expect(full_member1).not_to be_nil
+        expect(full_member1.id).to eq('member1')
+        expect(full_member1.dampenings.size).to be(1)
+        expect(full_member1.dampenings[0].eval_true_setting).to be(2)
+        expect(full_member1.dampenings[0].eval_total_setting).to be(2)
+
+        group_trigger.tags = { 'group-tname' => 'group-tvalue' }
+        group_trigger = @client.update_group_trigger group_trigger
+
+        full_member1 = @client.get_single_trigger member1.id, false
+        expect(full_member1).not_to be_nil
+        expect(full_member1.tags['group-tname']).to eq('group-tvalue')
+
+        created_conditions = @client.set_group_conditions t.id, :FIRING, gc2
+        expect(created_conditions.size).to be(2)
+
+        full_member1 = @client.get_single_trigger member1.id, true
+        expect(full_member1).not_to be_nil
+        expect(full_member1.conditions.size).to be(2)
+
+        group_dampening.type = :RELAXED_COUNT
+        group_dampening.eval_true_setting = 2
+        group_dampening.eval_total_setting = 4
+        group_dampening = @client.update_group_dampening group_dampening
+
+        group_trigger.context = { 'alert-profiles' => 'profile1' }
+        @client.update_group_trigger group_trigger
+
+        @client.delete_group_dampening group_dampening.trigger_id, group_dampening.dampening_id
+
+        full_member1 = @client.get_single_trigger member1.id, true
+        expect(full_member1).not_to be_nil
+        expect(full_member1.context['alert-profiles']).to eq('profile1')
+        expect(full_member1.dampenings.size).to be(0)
+      ensure
+        # rubocop:disable Lint/HandleExceptions
+        begin
+          @client.delete_group_trigger(t.id)
+        rescue
+          # I am not interested
+        end
+        # rubocop:enable Lint/HandleExceptions
+      end
+    end
+  end
+
   describe 'Alert/Alerts', :vcr do
     it 'Should list alerts' do
       client = Hawkular::Alerts::AlertsClient.new(ALERTS_BASE, creds)
