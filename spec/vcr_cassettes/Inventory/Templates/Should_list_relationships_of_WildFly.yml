@@ -31,7 +31,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Mon, 11 Apr 2016 16:51:40 GMT
+      - Thu, 05 May 2016 11:18:43 GMT
       X-Total-Count:
       - '1'
       Connection:
@@ -39,7 +39,7 @@ http_interactions:
       Content-Type:
       - application/json
       Content-Length:
-      - '357'
+      - '351'
       Link:
       - <http://localhost:8080/hawkular/inventory/feeds/<%= feed_uuid %>/resourceTypes/WildFly%20Server/resources>;
         rel="current"
@@ -53,14 +53,14 @@ http_interactions:
             "name" : "WildFly Server",
             "id" : "WildFly Server"
           },
-          "name" : "dhcp-10-40-1-43/Local",
+          "name" : "localhost/Local",
           "id" : "Local~~"
         } ]
     http_version: 
-  recorded_at: Mon, 11 Apr 2016 16:51:40 GMT
+  recorded_at: Thu, 05 May 2016 11:18:43 GMT
 - request:
     method: get
-    uri: http://jdoe:password@localhost:8080/hawkular/inventory/path/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/relationships
+    uri: http://jdoe:password@localhost:8080/hawkular/inventory/path/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/relationships?sort=__targetCp
     body:
       encoding: US-ASCII
       string: ''
@@ -89,7 +89,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Mon, 11 Apr 2016 16:51:40 GMT
+      - Thu, 05 May 2016 11:18:43 GMT
       X-Total-Count:
       - '61'
       Connection:
@@ -99,74 +99,214 @@ http_interactions:
       Content-Length:
       - '20294'
       Link:
-      - <http://localhost:8080/hawkular/inventory/path/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/relationships>;
+      - <http://localhost:8080/hawkular/inventory/path/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/relationships?sort=__targetCp>;
         rel="current"
     body:
       encoding: ASCII-8BIT
       string: |-
         [ {
+          "id" : "ax7k-9a8-1d05-1jwg",
+          "name" : "incorporates",
+          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/m;AI~R~%5B<%= feed_uuid %>%2FLocal~~%5D~AT~Server%20Availability~App%20Server"
+        }, {
+          "id" : "ax6o-9a8-1d05-1jpc",
+          "name" : "incorporates",
+          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/m;MI~R~%5B<%= feed_uuid %>%2FLocal~~%5D~MT~WildFly%20Aggregated%20Web%20Metrics~Aggregated%20Active%20Web%20Sessions"
+        }, {
+          "id" : "ax5s-9a8-1d05-1ji8",
+          "name" : "incorporates",
+          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/m;MI~R~%5B<%= feed_uuid %>%2FLocal~~%5D~MT~WildFly%20Aggregated%20Web%20Metrics~Aggregated%20Expired%20Web%20Sessions"
+        }, {
+          "id" : "ax1c-9a8-1d05-1iio",
+          "name" : "incorporates",
+          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/m;MI~R~%5B<%= feed_uuid %>%2FLocal~~%5D~MT~WildFly%20Aggregated%20Web%20Metrics~Aggregated%20Max%20Active%20Web%20Sessions"
+        }, {
+          "id" : "ax40-9a8-1d05-1j40",
+          "name" : "incorporates",
+          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/m;MI~R~%5B<%= feed_uuid %>%2FLocal~~%5D~MT~WildFly%20Aggregated%20Web%20Metrics~Aggregated%20Rejected%20Web%20Sessions"
+        }, {
+          "id" : "awyo-9a8-1d05-1hxc",
+          "name" : "incorporates",
+          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/m;MI~R~%5B<%= feed_uuid %>%2FLocal~~%5D~MT~WildFly%20Aggregated%20Web%20Metrics~Aggregated%20Servlet%20Request%20Count"
+        }, {
+          "id" : "awww-9a8-1d05-1hj4",
+          "name" : "incorporates",
+          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/m;MI~R~%5B<%= feed_uuid %>%2FLocal~~%5D~MT~WildFly%20Aggregated%20Web%20Metrics~Aggregated%20Servlet%20Request%20Time"
+        }, {
+          "id" : "aww0-9a8-1d05-1hc0",
+          "name" : "incorporates",
+          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/m;MI~R~%5B<%= feed_uuid %>%2FLocal~~%5D~MT~WildFly%20Memory%20Metrics~Accumulated%20GC%20Duration"
+        }, {
+          "id" : "ax28-9a8-1d05-1ips",
+          "name" : "incorporates",
+          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/m;MI~R~%5B<%= feed_uuid %>%2FLocal~~%5D~MT~WildFly%20Memory%20Metrics~Heap%20Committed"
+        }, {
+          "id" : "ax34-9a8-1d05-1iww",
+          "name" : "incorporates",
+          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/m;MI~R~%5B<%= feed_uuid %>%2FLocal~~%5D~MT~WildFly%20Memory%20Metrics~Heap%20Max"
+        }, {
+          "id" : "awxs-9a8-1d05-1hq8",
+          "name" : "incorporates",
+          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/m;MI~R~%5B<%= feed_uuid %>%2FLocal~~%5D~MT~WildFly%20Memory%20Metrics~Heap%20Used"
+        }, {
+          "id" : "ax0g-9a8-1d05-1ibk",
+          "name" : "incorporates",
+          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/m;MI~R~%5B<%= feed_uuid %>%2FLocal~~%5D~MT~WildFly%20Memory%20Metrics~NonHeap%20Committed"
+        }, {
+          "id" : "awzk-9a8-1d05-1i4g",
+          "name" : "incorporates",
+          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/m;MI~R~%5B<%= feed_uuid %>%2FLocal~~%5D~MT~WildFly%20Memory%20Metrics~NonHeap%20Used"
+        }, {
+          "id" : "ax4w-9a8-1d05-1jb4",
+          "name" : "incorporates",
+          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/m;MI~R~%5B<%= feed_uuid %>%2FLocal~~%5D~MT~WildFly%20Threading%20Metrics~Thread%20Count"
+        }, {
           "id" : "h5s-3k0-1g5x-9a8",
           "name" : "defines",
           "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;WildFly%20Server",
           "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~"
         }, {
-          "id" : "axeo-9a8-1hqt-c0sg",
-          "name" : "isParentOf",
-          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
-          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fsubsystem%3Ddatasources%2Fdata-source%3DExampleDS"
+          "id" : "h4w-1s0-153p-9a8",
+          "name" : "contains",
+          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>",
+          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~"
         }, {
-          "id" : "axls-9a8-1hqt-c0zk",
-          "name" : "isParentOf",
+          "id" : "avwg-9a8-153p-bzeo",
+          "name" : "contains",
           "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
-          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fsubsystem%3Ddatasources%2Fdata-source%3DKeycloakDS"
-        }, {
-          "id" : "axsw-9a8-1hqt-c16o",
-          "name" : "isParentOf",
-          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
-          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fsubsystem%3Ddatasources%2Fjdbc-driver%3Dh2"
-        }, {
-          "id" : "ay00-9a8-1hqt-c1ds",
-          "name" : "isParentOf",
-          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
-          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-command-gateway-war.war"
-        }, {
-          "id" : "ay74-9a8-1hqt-c1kw",
-          "name" : "isParentOf",
-          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
-          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-alerts-actions-email.war"
-        }, {
-          "id" : "aye8-9a8-1hqt-c1s0",
-          "name" : "isParentOf",
-          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
-          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-wildfly-agent-download.war"
-        }, {
-          "id" : "aylc-9a8-1hqt-c1z4",
-          "name" : "isParentOf",
-          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
-          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-avail-creator.war"
-        }, {
-          "id" : "aysg-9a8-1hqt-c268",
-          "name" : "isParentOf",
-          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
-          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dsecret-store.war"
-        }, {
-          "id" : "ayzk-9a8-1hqt-c2dc",
-          "name" : "isParentOf",
-          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
-          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-inventory-dist.war"
-        }, {
-          "id" : "az6o-9a8-1hqt-c2kg",
-          "name" : "isParentOf",
-          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
-          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-alerts-rest.war"
+          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/d;configuration"
         }, {
           "id" : "azds-9a8-1hqt-c2rk",
           "name" : "isParentOf",
           "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
           "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-accounts-events-backend.war"
         }, {
+          "id" : "azc0-9a8-153p-c2rk",
+          "name" : "contains",
+          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-accounts-events-backend.war"
+        }, {
+          "id" : "b0dc-9a8-1hqt-c3r4",
+          "name" : "isParentOf",
+          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-accounts.war"
+        }, {
+          "id" : "b0bk-9a8-153p-c3r4",
+          "name" : "contains",
+          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-accounts.war"
+        }, {
+          "id" : "ay74-9a8-1hqt-c1kw",
+          "name" : "isParentOf",
+          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-alerts-actions-email.war"
+        }, {
+          "id" : "ay5c-9a8-153p-c1kw",
+          "name" : "contains",
+          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-alerts-actions-email.war"
+        }, {
+          "id" : "az6o-9a8-1hqt-c2kg",
+          "name" : "isParentOf",
+          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-alerts-rest.war"
+        }, {
+          "id" : "az4w-9a8-153p-c2kg",
+          "name" : "contains",
+          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-alerts-rest.war"
+        }, {
+          "id" : "aylc-9a8-1hqt-c1z4",
+          "name" : "isParentOf",
+          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-avail-creator.war"
+        }, {
+          "id" : "ayjk-9a8-153p-c1z4",
+          "name" : "contains",
+          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-avail-creator.war"
+        }, {
+          "id" : "b0kg-9a8-1hqt-c3y8",
+          "name" : "isParentOf",
+          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-btm-server.war"
+        }, {
+          "id" : "b0io-9a8-153p-c3y8",
+          "name" : "contains",
+          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-btm-server.war"
+        }, {
+          "id" : "ay00-9a8-1hqt-c1ds",
+          "name" : "isParentOf",
+          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-command-gateway-war.war"
+        }, {
+          "id" : "axy8-9a8-153p-c1ds",
+          "name" : "contains",
+          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-command-gateway-war.war"
+        }, {
+          "id" : "b068-9a8-1hqt-c3k0",
+          "name" : "isParentOf",
+          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-commons-embedded-cassandra-ear.ear"
+        }, {
+          "id" : "b04g-9a8-153p-c3k0",
+          "name" : "contains",
+          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-commons-embedded-cassandra-ear.ear"
+        }, {
+          "id" : "b0yo-9a8-1hqt-c4cg",
+          "name" : "isParentOf",
+          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-console.war"
+        }, {
+          "id" : "b0ww-9a8-153p-c4cg",
+          "name" : "contains",
+          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-console.war"
+        }, {
+          "id" : "ayzk-9a8-1hqt-c2dc",
+          "name" : "isParentOf",
+          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-inventory-dist.war"
+        }, {
+          "id" : "ayxs-9a8-153p-c2dc",
+          "name" : "contains",
+          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-inventory-dist.war"
+        }, {
+          "id" : "azz4-9a8-1hqt-c3cw",
+          "name" : "isParentOf",
+          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-metrics-component.war"
+        }, {
+          "id" : "azxc-9a8-153p-c3cw",
+          "name" : "contains",
+          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-metrics-component.war"
+        }, {
           "id" : "azkw-9a8-1hqt-c2yo",
           "name" : "isParentOf",
+          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-pinger.war"
+        }, {
+          "id" : "azj4-9a8-153p-c2yo",
+          "name" : "contains",
           "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
           "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-pinger.war"
         }, {
@@ -175,241 +315,101 @@ http_interactions:
           "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
           "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-rest-api.war"
         }, {
-          "id" : "azz4-9a8-1hqt-c3cw",
-          "name" : "isParentOf",
-          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
-          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-metrics-component.war"
-        }, {
-          "id" : "b068-9a8-1hqt-c3k0",
-          "name" : "isParentOf",
-          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
-          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-commons-embedded-cassandra-ear.ear"
-        }, {
-          "id" : "b0dc-9a8-1hqt-c3r4",
-          "name" : "isParentOf",
-          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
-          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-accounts.war"
-        }, {
-          "id" : "b0kg-9a8-1hqt-c3y8",
-          "name" : "isParentOf",
-          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
-          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-btm-server.war"
-        }, {
-          "id" : "b0rk-9a8-1hqt-c45c",
-          "name" : "isParentOf",
-          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
-          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dkeycloak-server.war"
-        }, {
-          "id" : "b0yo-9a8-1hqt-c4cg",
-          "name" : "isParentOf",
-          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
-          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-console.war"
-        }, {
-          "id" : "b15s-9a8-1hqt-c4jk",
-          "name" : "isParentOf",
-          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
-          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fsubsystem%3Dtransactions"
-        }, {
-          "id" : "b1cw-9a8-1hqt-c4qo",
-          "name" : "isParentOf",
-          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
-          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fsubsystem%3Dmessaging-activemq%2Fserver%3Ddefault"
-        }, {
-          "id" : "b1k0-9a8-1hqt-c4xs",
-          "name" : "isParentOf",
-          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
-          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fsubsystem%3Dhawkular-wildfly-agent"
-        }, {
-          "id" : "avwg-9a8-153p-bzeo",
+          "id" : "azq8-9a8-153p-c35s",
           "name" : "contains",
           "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
-          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/d;configuration"
+          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-rest-api.war"
         }, {
-          "id" : "axcw-9a8-153p-c0sg",
-          "name" : "contains",
+          "id" : "aye8-9a8-1hqt-c1s0",
+          "name" : "isParentOf",
           "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
-          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fsubsystem%3Ddatasources%2Fdata-source%3DExampleDS"
-        }, {
-          "id" : "axk0-9a8-153p-c0zk",
-          "name" : "contains",
-          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
-          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fsubsystem%3Ddatasources%2Fdata-source%3DKeycloakDS"
-        }, {
-          "id" : "axr4-9a8-153p-c16o",
-          "name" : "contains",
-          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
-          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fsubsystem%3Ddatasources%2Fjdbc-driver%3Dh2"
-        }, {
-          "id" : "axy8-9a8-153p-c1ds",
-          "name" : "contains",
-          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
-          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-command-gateway-war.war"
-        }, {
-          "id" : "ay5c-9a8-153p-c1kw",
-          "name" : "contains",
-          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
-          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-alerts-actions-email.war"
+          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-wildfly-agent-download.war"
         }, {
           "id" : "aycg-9a8-153p-c1s0",
           "name" : "contains",
           "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
           "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-wildfly-agent-download.war"
         }, {
-          "id" : "ayjk-9a8-153p-c1z4",
-          "name" : "contains",
+          "id" : "b0rk-9a8-1hqt-c45c",
+          "name" : "isParentOf",
           "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
-          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-avail-creator.war"
-        }, {
-          "id" : "ayqo-9a8-153p-c268",
-          "name" : "contains",
-          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
-          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dsecret-store.war"
-        }, {
-          "id" : "ayxs-9a8-153p-c2dc",
-          "name" : "contains",
-          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
-          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-inventory-dist.war"
-        }, {
-          "id" : "az4w-9a8-153p-c2kg",
-          "name" : "contains",
-          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
-          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-alerts-rest.war"
-        }, {
-          "id" : "azc0-9a8-153p-c2rk",
-          "name" : "contains",
-          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
-          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-accounts-events-backend.war"
-        }, {
-          "id" : "azj4-9a8-153p-c2yo",
-          "name" : "contains",
-          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
-          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-pinger.war"
-        }, {
-          "id" : "azq8-9a8-153p-c35s",
-          "name" : "contains",
-          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
-          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-rest-api.war"
-        }, {
-          "id" : "azxc-9a8-153p-c3cw",
-          "name" : "contains",
-          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
-          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-metrics-component.war"
-        }, {
-          "id" : "b04g-9a8-153p-c3k0",
-          "name" : "contains",
-          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
-          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-commons-embedded-cassandra-ear.ear"
-        }, {
-          "id" : "b0bk-9a8-153p-c3r4",
-          "name" : "contains",
-          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
-          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-accounts.war"
-        }, {
-          "id" : "b0io-9a8-153p-c3y8",
-          "name" : "contains",
-          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
-          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-btm-server.war"
+          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dkeycloak-server.war"
         }, {
           "id" : "b0ps-9a8-153p-c45c",
           "name" : "contains",
           "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
           "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dkeycloak-server.war"
         }, {
-          "id" : "b0ww-9a8-153p-c4cg",
-          "name" : "contains",
+          "id" : "aysg-9a8-1hqt-c268",
+          "name" : "isParentOf",
           "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
-          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-console.war"
+          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dsecret-store.war"
         }, {
-          "id" : "b140-9a8-153p-c4jk",
+          "id" : "ayqo-9a8-153p-c268",
           "name" : "contains",
           "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
-          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fsubsystem%3Dtransactions"
+          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dsecret-store.war"
         }, {
-          "id" : "b1b4-9a8-153p-c4qo",
+          "id" : "axeo-9a8-1hqt-c0sg",
+          "name" : "isParentOf",
+          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fsubsystem%3Ddatasources%2Fdata-source%3DExampleDS"
+        }, {
+          "id" : "axcw-9a8-153p-c0sg",
           "name" : "contains",
           "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
-          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fsubsystem%3Dmessaging-activemq%2Fserver%3Ddefault"
+          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fsubsystem%3Ddatasources%2Fdata-source%3DExampleDS"
+        }, {
+          "id" : "axls-9a8-1hqt-c0zk",
+          "name" : "isParentOf",
+          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fsubsystem%3Ddatasources%2Fdata-source%3DKeycloakDS"
+        }, {
+          "id" : "axk0-9a8-153p-c0zk",
+          "name" : "contains",
+          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fsubsystem%3Ddatasources%2Fdata-source%3DKeycloakDS"
+        }, {
+          "id" : "axsw-9a8-1hqt-c16o",
+          "name" : "isParentOf",
+          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fsubsystem%3Ddatasources%2Fjdbc-driver%3Dh2"
+        }, {
+          "id" : "axr4-9a8-153p-c16o",
+          "name" : "contains",
+          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fsubsystem%3Ddatasources%2Fjdbc-driver%3Dh2"
+        }, {
+          "id" : "b1k0-9a8-1hqt-c4xs",
+          "name" : "isParentOf",
+          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fsubsystem%3Dhawkular-wildfly-agent"
         }, {
           "id" : "b1i8-9a8-153p-c4xs",
           "name" : "contains",
           "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
           "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fsubsystem%3Dhawkular-wildfly-agent"
         }, {
-          "id" : "h4w-1s0-153p-9a8",
+          "id" : "b1cw-9a8-1hqt-c4qo",
+          "name" : "isParentOf",
+          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fsubsystem%3Dmessaging-activemq%2Fserver%3Ddefault"
+        }, {
+          "id" : "b1b4-9a8-153p-c4qo",
           "name" : "contains",
-          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>",
-          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~"
-        }, {
-          "id" : "aww0-9a8-1d05-1hc0",
-          "name" : "incorporates",
           "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
-          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/m;MI~R~%5B<%= feed_uuid %>%2FLocal~~%5D~MT~WildFly%20Memory%20Metrics~NonHeap%20Committed"
+          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fsubsystem%3Dmessaging-activemq%2Fserver%3Ddefault"
         }, {
-          "id" : "awww-9a8-1d05-1hj4",
-          "name" : "incorporates",
+          "id" : "b15s-9a8-1hqt-c4jk",
+          "name" : "isParentOf",
           "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
-          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/m;MI~R~%5B<%= feed_uuid %>%2FLocal~~%5D~MT~WildFly%20Aggregated%20Web%20Metrics~Aggregated%20Servlet%20Request%20Count"
+          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fsubsystem%3Dtransactions"
         }, {
-          "id" : "awxs-9a8-1d05-1hq8",
-          "name" : "incorporates",
+          "id" : "b140-9a8-153p-c4jk",
+          "name" : "contains",
           "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
-          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/m;MI~R~%5B<%= feed_uuid %>%2FLocal~~%5D~MT~WildFly%20Aggregated%20Web%20Metrics~Aggregated%20Active%20Web%20Sessions"
-        }, {
-          "id" : "awyo-9a8-1d05-1hxc",
-          "name" : "incorporates",
-          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
-          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/m;MI~R~%5B<%= feed_uuid %>%2FLocal~~%5D~MT~WildFly%20Memory%20Metrics~NonHeap%20Used"
-        }, {
-          "id" : "awzk-9a8-1d05-1i4g",
-          "name" : "incorporates",
-          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
-          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/m;MI~R~%5B<%= feed_uuid %>%2FLocal~~%5D~MT~WildFly%20Memory%20Metrics~Heap%20Committed"
-        }, {
-          "id" : "ax0g-9a8-1d05-1ibk",
-          "name" : "incorporates",
-          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
-          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/m;MI~R~%5B<%= feed_uuid %>%2FLocal~~%5D~MT~WildFly%20Memory%20Metrics~Heap%20Max"
-        }, {
-          "id" : "ax1c-9a8-1d05-1iio",
-          "name" : "incorporates",
-          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
-          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/m;MI~R~%5B<%= feed_uuid %>%2FLocal~~%5D~MT~WildFly%20Threading%20Metrics~Thread%20Count"
-        }, {
-          "id" : "ax28-9a8-1d05-1ips",
-          "name" : "incorporates",
-          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
-          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/m;MI~R~%5B<%= feed_uuid %>%2FLocal~~%5D~MT~WildFly%20Memory%20Metrics~Accumulated%20GC%20Duration"
-        }, {
-          "id" : "ax34-9a8-1d05-1iww",
-          "name" : "incorporates",
-          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
-          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/m;MI~R~%5B<%= feed_uuid %>%2FLocal~~%5D~MT~WildFly%20Aggregated%20Web%20Metrics~Aggregated%20Expired%20Web%20Sessions"
-        }, {
-          "id" : "ax40-9a8-1d05-1j40",
-          "name" : "incorporates",
-          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
-          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/m;MI~R~%5B<%= feed_uuid %>%2FLocal~~%5D~MT~WildFly%20Memory%20Metrics~Heap%20Used"
-        }, {
-          "id" : "ax4w-9a8-1d05-1jb4",
-          "name" : "incorporates",
-          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
-          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/m;MI~R~%5B<%= feed_uuid %>%2FLocal~~%5D~MT~WildFly%20Aggregated%20Web%20Metrics~Aggregated%20Servlet%20Request%20Time"
-        }, {
-          "id" : "ax5s-9a8-1d05-1ji8",
-          "name" : "incorporates",
-          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
-          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/m;MI~R~%5B<%= feed_uuid %>%2FLocal~~%5D~MT~WildFly%20Aggregated%20Web%20Metrics~Aggregated%20Rejected%20Web%20Sessions"
-        }, {
-          "id" : "ax6o-9a8-1d05-1jpc",
-          "name" : "incorporates",
-          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
-          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/m;MI~R~%5B<%= feed_uuid %>%2FLocal~~%5D~MT~WildFly%20Aggregated%20Web%20Metrics~Aggregated%20Max%20Active%20Web%20Sessions"
-        }, {
-          "id" : "ax7k-9a8-1d05-1jwg",
-          "name" : "incorporates",
-          "source" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
-          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/m;AI~R~%5B<%= feed_uuid %>%2FLocal~~%5D~AT~Server%20Availability~App%20Server"
+          "target" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fsubsystem%3Dtransactions"
         } ]
     http_version: 
-  recorded_at: Mon, 11 Apr 2016 16:51:40 GMT
+  recorded_at: Thu, 05 May 2016 11:18:43 GMT
 recorded_with: VCR 3.0.1

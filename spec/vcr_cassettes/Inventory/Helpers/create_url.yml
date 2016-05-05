@@ -1,24 +1,26 @@
 ---
 http_interactions:
 - request:
-    method: get
-    uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds
+    method: post
+    uri: http://jdoe:password@localhost:8080/hawkular/api/urls
     body:
-      encoding: US-ASCII
-      string: ''
+      encoding: UTF-8
+      string: '{"url":"http://bsd.de"}'
     headers:
       Accept:
-      - application/json
+      - "*/*; q=0.5, application/xml"
       Accept-Encoding:
       - gzip, deflate
       Content-Type:
       - application/json
+      Content-Length:
+      - '23'
       User-Agent:
       - Ruby
   response:
     status:
-      code: 200
-      message: OK
+      code: 201
+      message: Created
     headers:
       Expires:
       - '0'
@@ -30,25 +32,17 @@ http_interactions:
       - WildFly/10
       Pragma:
       - no-cache
+      Location:
+      - http://127.0.0.1:8080/hawkular/inventory/test/resources/536cc3ede5769b60a49774425aedba24
       Date:
       - Thu, 05 May 2016 11:18:36 GMT
-      X-Total-Count:
-      - '1'
       Connection:
       - keep-alive
-      Content-Type:
-      - application/json
       Content-Length:
-      - '148'
-      Link:
-      - <http://localhost:8080/hawkular/inventory/feeds>; rel="current"
+      - '0'
     body:
-      encoding: ASCII-8BIT
-      string: |-
-        [ {
-          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;5958668a-b073-4098-b265-587b45c659ee",
-          "id" : "5958668a-b073-4098-b265-587b45c659ee"
-        } ]
+      encoding: UTF-8
+      string: ''
     http_version: 
   recorded_at: Thu, 05 May 2016 11:18:36 GMT
 recorded_with: VCR 3.0.1

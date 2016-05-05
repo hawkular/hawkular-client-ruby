@@ -31,7 +31,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Mon, 11 Apr 2016 16:51:39 GMT
+      - Thu, 05 May 2016 11:18:41 GMT
       X-Total-Count:
       - '18'
       Connection:
@@ -120,5 +120,5 @@ http_interactions:
           "id" : "Hawkular WildFly Agent"
         } ]
     http_version: 
-  recorded_at: Mon, 11 Apr 2016 16:51:39 GMT
+  recorded_at: Thu, 05 May 2016 11:18:41 GMT
 recorded_with: VCR 3.0.1
