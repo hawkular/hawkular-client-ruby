@@ -34,7 +34,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 04 May 2016 15:45:45 GMT
+      - Fri, 06 May 2016 13:28:05 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -46,13 +46,13 @@ http_interactions:
       string: '{"tenantId":"28026b36-8fe4-4332-84c8-524e173a68bf","id":"a-group-trigger","name":"A
         Group Trigger","description":"A Group Trigger generated from test","type":"GROUP","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"HIGH","autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","enabled":false,"firingMatch":"ALL","source":"_none_"}'
     http_version: 
-  recorded_at: Wed, 04 May 2016 15:45:45 GMT
+  recorded_at: Fri, 06 May 2016 13:28:05 GMT
 - request:
     method: put
     uri: http://jdoe:password@localhost:8080/hawkular/alerts/triggers/groups/a-group-trigger/conditions/FIRING
     body:
       encoding: UTF-8
-      string: '{"conditions":[{"conditionId":null,"type":"THRESHOLD","operator":"LT","threshold":5,"triggerMode":"FIRING","dataId":"my-metric-id","triggerId":null}],"dataIdMemberMap":{}}'
+      string: '{"conditions":[{"conditionId":null,"type":"THRESHOLD","operator":"LT","threshold":5,"triggerMode":"FIRING","dataId":"my-metric-id","data2Id":null,"data2Multiplier":null,"triggerId":null}],"dataIdMemberMap":{}}'
     headers:
       Accept:
       - application/json
@@ -61,7 +61,7 @@ http_interactions:
       Content-Type:
       - application/json
       Content-Length:
-      - '171'
+      - '209'
       User-Agent:
       - Ruby
   response:
@@ -80,7 +80,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 04 May 2016 15:45:45 GMT
+      - Fri, 06 May 2016 13:28:05 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -91,7 +91,7 @@ http_interactions:
       encoding: ASCII-8BIT
       string: '[{"tenantId":"28026b36-8fe4-4332-84c8-524e173a68bf","triggerId":"a-group-trigger","triggerMode":"FIRING","type":"THRESHOLD","conditionSetSize":1,"conditionSetIndex":1,"conditionId":"28026b36-8fe4-4332-84c8-524e173a68bf-a-group-trigger-FIRING-1-1","dataId":"my-metric-id","operator":"LT","threshold":5.0}]'
     http_version: 
-  recorded_at: Wed, 04 May 2016 15:45:45 GMT
+  recorded_at: Fri, 06 May 2016 13:28:05 GMT
 - request:
     method: post
     uri: http://jdoe:password@localhost:8080/hawkular/alerts/triggers/groups/members
@@ -126,7 +126,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 04 May 2016 15:45:45 GMT
+      - Fri, 06 May 2016 13:28:05 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -138,7 +138,7 @@ http_interactions:
       string: '{"tenantId":"28026b36-8fe4-4332-84c8-524e173a68bf","id":"member1","name":"Member
         One","description":"A Group Trigger generated from test","type":"MEMBER","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"HIGH","autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","dataIdMap":{"my-metric-id":"my-metric-id-member1"},"memberOf":"a-group-trigger","enabled":false,"firingMatch":"ALL","source":"_none_"}'
     http_version: 
-  recorded_at: Wed, 04 May 2016 15:45:45 GMT
+  recorded_at: Fri, 06 May 2016 13:28:05 GMT
 - request:
     method: get
     uri: http://jdoe:password@localhost:8080/hawkular/alerts/triggers/member1
@@ -170,7 +170,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 04 May 2016 15:45:45 GMT
+      - Fri, 06 May 2016 13:28:05 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -182,7 +182,7 @@ http_interactions:
       string: '{"tenantId":"28026b36-8fe4-4332-84c8-524e173a68bf","id":"member1","name":"Member
         One","description":"A Group Trigger generated from test","type":"MEMBER","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"HIGH","autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","dataIdMap":{"my-metric-id":"my-metric-id-member1"},"memberOf":"a-group-trigger","enabled":false,"firingMatch":"ALL","source":"_none_"}'
     http_version: 
-  recorded_at: Wed, 04 May 2016 15:45:45 GMT
+  recorded_at: Fri, 06 May 2016 13:28:05 GMT
 - request:
     method: get
     uri: http://jdoe:password@localhost:8080/hawkular/alerts/triggers/member1/conditions
@@ -214,7 +214,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 04 May 2016 15:45:45 GMT
+      - Fri, 06 May 2016 13:28:05 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -225,7 +225,7 @@ http_interactions:
       encoding: ASCII-8BIT
       string: '[{"tenantId":"28026b36-8fe4-4332-84c8-524e173a68bf","triggerId":"member1","triggerMode":"FIRING","type":"THRESHOLD","conditionSetSize":1,"conditionSetIndex":1,"conditionId":"28026b36-8fe4-4332-84c8-524e173a68bf-member1-FIRING-1-1","dataId":"my-metric-id-member1","operator":"LT","threshold":5.0}]'
     http_version: 
-  recorded_at: Wed, 04 May 2016 15:45:45 GMT
+  recorded_at: Fri, 06 May 2016 13:28:05 GMT
 - request:
     method: get
     uri: http://jdoe:password@localhost:8080/hawkular/alerts/triggers/member1/dampenings
@@ -257,7 +257,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 04 May 2016 15:45:45 GMT
+      - Fri, 06 May 2016 13:28:05 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -268,7 +268,7 @@ http_interactions:
       encoding: ASCII-8BIT
       string: "[]"
     http_version: 
-  recorded_at: Wed, 04 May 2016 15:45:45 GMT
+  recorded_at: Fri, 06 May 2016 13:28:05 GMT
 - request:
     method: get
     uri: http://jdoe:password@localhost:8080/hawkular/alerts/triggers/groups/a-group-trigger/members?includeOrphans=false
@@ -300,7 +300,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 04 May 2016 15:45:46 GMT
+      - Fri, 06 May 2016 13:28:05 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -312,7 +312,7 @@ http_interactions:
       string: '[{"tenantId":"28026b36-8fe4-4332-84c8-524e173a68bf","id":"member1","name":"Member
         One","description":"A Group Trigger generated from test","type":"MEMBER","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"HIGH","autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","dataIdMap":{"my-metric-id":"my-metric-id-member1"},"memberOf":"a-group-trigger","enabled":false,"firingMatch":"ALL","source":"_none_"}]'
     http_version: 
-  recorded_at: Wed, 04 May 2016 15:45:46 GMT
+  recorded_at: Fri, 06 May 2016 13:28:05 GMT
 - request:
     method: post
     uri: http://jdoe:password@localhost:8080/hawkular/alerts/triggers/groups/members
@@ -347,7 +347,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 04 May 2016 15:45:46 GMT
+      - Fri, 06 May 2016 13:28:05 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -359,7 +359,7 @@ http_interactions:
       string: '{"tenantId":"28026b36-8fe4-4332-84c8-524e173a68bf","id":"member2","name":"Member
         Two","description":"A Group Trigger generated from test","type":"MEMBER","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"HIGH","autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","dataIdMap":{"my-metric-id":"my-metric-id-member2"},"memberOf":"a-group-trigger","enabled":false,"firingMatch":"ALL","source":"_none_"}'
     http_version: 
-  recorded_at: Wed, 04 May 2016 15:45:46 GMT
+  recorded_at: Fri, 06 May 2016 13:28:05 GMT
 - request:
     method: get
     uri: http://jdoe:password@localhost:8080/hawkular/alerts/triggers/member2
@@ -391,7 +391,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 04 May 2016 15:45:46 GMT
+      - Fri, 06 May 2016 13:28:05 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -403,7 +403,7 @@ http_interactions:
       string: '{"tenantId":"28026b36-8fe4-4332-84c8-524e173a68bf","id":"member2","name":"Member
         Two","description":"A Group Trigger generated from test","type":"MEMBER","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"HIGH","autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","dataIdMap":{"my-metric-id":"my-metric-id-member2"},"memberOf":"a-group-trigger","enabled":false,"firingMatch":"ALL","source":"_none_"}'
     http_version: 
-  recorded_at: Wed, 04 May 2016 15:45:46 GMT
+  recorded_at: Fri, 06 May 2016 13:28:05 GMT
 - request:
     method: get
     uri: http://jdoe:password@localhost:8080/hawkular/alerts/triggers/member2/conditions
@@ -435,7 +435,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 04 May 2016 15:45:46 GMT
+      - Fri, 06 May 2016 13:28:05 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -446,7 +446,7 @@ http_interactions:
       encoding: ASCII-8BIT
       string: '[{"tenantId":"28026b36-8fe4-4332-84c8-524e173a68bf","triggerId":"member2","triggerMode":"FIRING","type":"THRESHOLD","conditionSetSize":1,"conditionSetIndex":1,"conditionId":"28026b36-8fe4-4332-84c8-524e173a68bf-member2-FIRING-1-1","dataId":"my-metric-id-member2","operator":"LT","threshold":5.0}]'
     http_version: 
-  recorded_at: Wed, 04 May 2016 15:45:46 GMT
+  recorded_at: Fri, 06 May 2016 13:28:05 GMT
 - request:
     method: get
     uri: http://jdoe:password@localhost:8080/hawkular/alerts/triggers/member2/dampenings
@@ -478,7 +478,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 04 May 2016 15:45:46 GMT
+      - Fri, 06 May 2016 13:28:05 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -489,7 +489,7 @@ http_interactions:
       encoding: ASCII-8BIT
       string: "[]"
     http_version: 
-  recorded_at: Wed, 04 May 2016 15:45:46 GMT
+  recorded_at: Fri, 06 May 2016 13:28:05 GMT
 - request:
     method: get
     uri: http://jdoe:password@localhost:8080/hawkular/alerts/triggers/groups/a-group-trigger/members?includeOrphans=false
@@ -521,7 +521,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 04 May 2016 15:45:46 GMT
+      - Fri, 06 May 2016 13:28:05 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -534,7 +534,7 @@ http_interactions:
         One","description":"A Group Trigger generated from test","type":"MEMBER","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"HIGH","autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","dataIdMap":{"my-metric-id":"my-metric-id-member1"},"memberOf":"a-group-trigger","enabled":false,"firingMatch":"ALL","source":"_none_"},{"tenantId":"28026b36-8fe4-4332-84c8-524e173a68bf","id":"member2","name":"Member
         Two","description":"A Group Trigger generated from test","type":"MEMBER","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"HIGH","autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","dataIdMap":{"my-metric-id":"my-metric-id-member2"},"memberOf":"a-group-trigger","enabled":false,"firingMatch":"ALL","source":"_none_"}]'
     http_version: 
-  recorded_at: Wed, 04 May 2016 15:45:46 GMT
+  recorded_at: Fri, 06 May 2016 13:28:05 GMT
 - request:
     method: post
     uri: http://jdoe:password@localhost:8080/hawkular/alerts/triggers/groups/members/member2/orphan
@@ -568,7 +568,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 04 May 2016 15:45:46 GMT
+      - Fri, 06 May 2016 13:28:05 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -579,7 +579,7 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Wed, 04 May 2016 15:45:46 GMT
+  recorded_at: Fri, 06 May 2016 13:28:05 GMT
 - request:
     method: get
     uri: http://jdoe:password@localhost:8080/hawkular/alerts/triggers/member2
@@ -611,7 +611,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 04 May 2016 15:45:46 GMT
+      - Fri, 06 May 2016 13:28:05 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -623,7 +623,7 @@ http_interactions:
       string: '{"tenantId":"28026b36-8fe4-4332-84c8-524e173a68bf","id":"member2","name":"Member
         Two","description":"A Group Trigger generated from test","type":"ORPHAN","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"HIGH","autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","dataIdMap":{"my-metric-id":"my-metric-id-member2"},"memberOf":"a-group-trigger","enabled":false,"firingMatch":"ALL","source":"_none_"}'
     http_version: 
-  recorded_at: Wed, 04 May 2016 15:45:46 GMT
+  recorded_at: Fri, 06 May 2016 13:28:05 GMT
 - request:
     method: get
     uri: http://jdoe:password@localhost:8080/hawkular/alerts/triggers/groups/a-group-trigger/members?includeOrphans=false
@@ -655,7 +655,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 04 May 2016 15:45:46 GMT
+      - Fri, 06 May 2016 13:28:05 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -667,7 +667,7 @@ http_interactions:
       string: '[{"tenantId":"28026b36-8fe4-4332-84c8-524e173a68bf","id":"member1","name":"Member
         One","description":"A Group Trigger generated from test","type":"MEMBER","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"HIGH","autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","dataIdMap":{"my-metric-id":"my-metric-id-member1"},"memberOf":"a-group-trigger","enabled":false,"firingMatch":"ALL","source":"_none_"}]'
     http_version: 
-  recorded_at: Wed, 04 May 2016 15:45:46 GMT
+  recorded_at: Fri, 06 May 2016 13:28:05 GMT
 - request:
     method: get
     uri: http://jdoe:password@localhost:8080/hawkular/alerts/triggers/groups/a-group-trigger/members?includeOrphans=true
@@ -699,7 +699,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 04 May 2016 15:45:46 GMT
+      - Fri, 06 May 2016 13:28:05 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -712,7 +712,7 @@ http_interactions:
         One","description":"A Group Trigger generated from test","type":"MEMBER","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"HIGH","autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","dataIdMap":{"my-metric-id":"my-metric-id-member1"},"memberOf":"a-group-trigger","enabled":false,"firingMatch":"ALL","source":"_none_"},{"tenantId":"28026b36-8fe4-4332-84c8-524e173a68bf","id":"member2","name":"Member
         Two","description":"A Group Trigger generated from test","type":"ORPHAN","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"HIGH","autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","dataIdMap":{"my-metric-id":"my-metric-id-member2"},"memberOf":"a-group-trigger","enabled":false,"firingMatch":"ALL","source":"_none_"}]'
     http_version: 
-  recorded_at: Wed, 04 May 2016 15:45:46 GMT
+  recorded_at: Fri, 06 May 2016 13:28:05 GMT
 - request:
     method: post
     uri: http://jdoe:password@localhost:8080/hawkular/alerts/triggers/groups/a-group-trigger/dampenings
@@ -746,7 +746,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 04 May 2016 15:45:46 GMT
+      - Fri, 06 May 2016 13:28:05 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -757,7 +757,7 @@ http_interactions:
       encoding: ASCII-8BIT
       string: '{"tenantId":"28026b36-8fe4-4332-84c8-524e173a68bf","triggerId":"a-group-trigger","triggerMode":"FIRING","type":"STRICT","evalTrueSetting":2,"evalTotalSetting":2,"evalTimeSetting":0,"dampeningId":"28026b36-8fe4-4332-84c8-524e173a68bf-a-group-trigger-FIRING"}'
     http_version: 
-  recorded_at: Wed, 04 May 2016 15:45:46 GMT
+  recorded_at: Fri, 06 May 2016 13:28:05 GMT
 - request:
     method: get
     uri: http://jdoe:password@localhost:8080/hawkular/alerts/triggers/member1
@@ -789,7 +789,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 04 May 2016 15:45:46 GMT
+      - Fri, 06 May 2016 13:28:06 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -801,7 +801,7 @@ http_interactions:
       string: '{"tenantId":"28026b36-8fe4-4332-84c8-524e173a68bf","id":"member1","name":"Member
         One","description":"A Group Trigger generated from test","type":"MEMBER","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"HIGH","autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","dataIdMap":{"my-metric-id":"my-metric-id-member1"},"memberOf":"a-group-trigger","enabled":false,"firingMatch":"ALL","source":"_none_"}'
     http_version: 
-  recorded_at: Wed, 04 May 2016 15:45:46 GMT
+  recorded_at: Fri, 06 May 2016 13:28:06 GMT
 - request:
     method: get
     uri: http://jdoe:password@localhost:8080/hawkular/alerts/triggers/member1/conditions
@@ -833,7 +833,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 04 May 2016 15:45:46 GMT
+      - Fri, 06 May 2016 13:28:06 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -844,7 +844,7 @@ http_interactions:
       encoding: ASCII-8BIT
       string: '[{"tenantId":"28026b36-8fe4-4332-84c8-524e173a68bf","triggerId":"member1","triggerMode":"FIRING","type":"THRESHOLD","conditionSetSize":1,"conditionSetIndex":1,"conditionId":"28026b36-8fe4-4332-84c8-524e173a68bf-member1-FIRING-1-1","dataId":"my-metric-id-member1","operator":"LT","threshold":5.0}]'
     http_version: 
-  recorded_at: Wed, 04 May 2016 15:45:46 GMT
+  recorded_at: Fri, 06 May 2016 13:28:06 GMT
 - request:
     method: get
     uri: http://jdoe:password@localhost:8080/hawkular/alerts/triggers/member1/dampenings
@@ -876,7 +876,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 04 May 2016 15:45:46 GMT
+      - Fri, 06 May 2016 13:28:06 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -887,7 +887,7 @@ http_interactions:
       encoding: ASCII-8BIT
       string: '[{"tenantId":"28026b36-8fe4-4332-84c8-524e173a68bf","triggerId":"member1","triggerMode":"FIRING","type":"STRICT","evalTrueSetting":2,"evalTotalSetting":2,"evalTimeSetting":0,"dampeningId":"28026b36-8fe4-4332-84c8-524e173a68bf-member1-FIRING"}]'
     http_version: 
-  recorded_at: Wed, 04 May 2016 15:45:46 GMT
+  recorded_at: Fri, 06 May 2016 13:28:06 GMT
 - request:
     method: put
     uri: http://jdoe:password@localhost:8080/hawkular/alerts/triggers/groups/a-group-trigger/
@@ -922,7 +922,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 04 May 2016 15:45:46 GMT
+      - Fri, 06 May 2016 13:28:06 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -933,7 +933,7 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Wed, 04 May 2016 15:45:46 GMT
+  recorded_at: Fri, 06 May 2016 13:28:06 GMT
 - request:
     method: get
     uri: http://jdoe:password@localhost:8080/hawkular/alerts/triggers/a-group-trigger
@@ -965,7 +965,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 04 May 2016 15:45:46 GMT
+      - Fri, 06 May 2016 13:28:06 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -977,7 +977,7 @@ http_interactions:
       string: '{"tenantId":"28026b36-8fe4-4332-84c8-524e173a68bf","id":"a-group-trigger","name":"A
         Group Trigger","description":"A Group Trigger generated from test","type":"GROUP","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"HIGH","tags":{"group-tname":"group-tvalue"},"autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","enabled":false,"firingMatch":"ALL","source":"_none_"}'
     http_version: 
-  recorded_at: Wed, 04 May 2016 15:45:46 GMT
+  recorded_at: Fri, 06 May 2016 13:28:06 GMT
 - request:
     method: get
     uri: http://jdoe:password@localhost:8080/hawkular/alerts/triggers/member1
@@ -1009,7 +1009,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 04 May 2016 15:45:46 GMT
+      - Fri, 06 May 2016 13:28:06 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -1021,13 +1021,13 @@ http_interactions:
       string: '{"tenantId":"28026b36-8fe4-4332-84c8-524e173a68bf","id":"member1","name":"Member
         One","description":"A Group Trigger generated from test","type":"MEMBER","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"HIGH","tags":{"group-tname":"group-tvalue"},"autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","dataIdMap":{"my-metric-id":"my-metric-id-member1"},"memberOf":"a-group-trigger","enabled":false,"firingMatch":"ALL","source":"_none_"}'
     http_version: 
-  recorded_at: Wed, 04 May 2016 15:45:46 GMT
+  recorded_at: Fri, 06 May 2016 13:28:06 GMT
 - request:
     method: put
     uri: http://jdoe:password@localhost:8080/hawkular/alerts/triggers/groups/a-group-trigger/conditions/FIRING
     body:
       encoding: UTF-8
-      string: '{"conditions":[{"conditionId":null,"type":"THRESHOLD","operator":"LT","threshold":5,"triggerMode":"FIRING","dataId":"my-metric-id","triggerId":null},{"conditionId":null,"type":"THRESHOLD","operator":"GT","threshold":50,"triggerMode":"FIRING","dataId":"my-metric-id2","triggerId":null}],"dataIdMemberMap":{"my-metric-id":{"member1":"my-metric-id-member1"},"my-metric-id2":{"member1":"my-metric-id2-member1"}}}'
+      string: '{"conditions":[{"conditionId":null,"type":"THRESHOLD","operator":"LT","threshold":5,"triggerMode":"FIRING","dataId":"my-metric-id","data2Id":null,"data2Multiplier":null,"triggerId":null},{"conditionId":null,"type":"THRESHOLD","operator":"GT","threshold":50,"triggerMode":"FIRING","dataId":"my-metric-id2","data2Id":null,"data2Multiplier":null,"triggerId":null}],"dataIdMemberMap":{"my-metric-id":{"member1":"my-metric-id-member1"},"my-metric-id2":{"member1":"my-metric-id2-member1"}}}'
     headers:
       Accept:
       - application/json
@@ -1036,7 +1036,7 @@ http_interactions:
       Content-Type:
       - application/json
       Content-Length:
-      - '408'
+      - '484'
       User-Agent:
       - Ruby
   response:
@@ -1055,7 +1055,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 04 May 2016 15:45:46 GMT
+      - Fri, 06 May 2016 13:28:06 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -1066,7 +1066,7 @@ http_interactions:
       encoding: ASCII-8BIT
       string: '[{"tenantId":"28026b36-8fe4-4332-84c8-524e173a68bf","triggerId":"a-group-trigger","triggerMode":"FIRING","type":"THRESHOLD","conditionSetSize":2,"conditionSetIndex":1,"conditionId":"28026b36-8fe4-4332-84c8-524e173a68bf-a-group-trigger-FIRING-2-1","dataId":"my-metric-id","operator":"LT","threshold":5.0},{"tenantId":"28026b36-8fe4-4332-84c8-524e173a68bf","triggerId":"a-group-trigger","triggerMode":"FIRING","type":"THRESHOLD","conditionSetSize":2,"conditionSetIndex":2,"conditionId":"28026b36-8fe4-4332-84c8-524e173a68bf-a-group-trigger-FIRING-2-2","dataId":"my-metric-id2","operator":"GT","threshold":50.0}]'
     http_version: 
-  recorded_at: Wed, 04 May 2016 15:45:46 GMT
+  recorded_at: Fri, 06 May 2016 13:28:06 GMT
 - request:
     method: get
     uri: http://jdoe:password@localhost:8080/hawkular/alerts/triggers/member1
@@ -1098,7 +1098,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 04 May 2016 15:45:46 GMT
+      - Fri, 06 May 2016 13:28:06 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -1110,7 +1110,7 @@ http_interactions:
       string: '{"tenantId":"28026b36-8fe4-4332-84c8-524e173a68bf","id":"member1","name":"Member
         One","description":"A Group Trigger generated from test","type":"MEMBER","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"HIGH","tags":{"group-tname":"group-tvalue"},"autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","dataIdMap":{"my-metric-id":"my-metric-id-member1"},"memberOf":"a-group-trigger","enabled":false,"firingMatch":"ALL","source":"_none_"}'
     http_version: 
-  recorded_at: Wed, 04 May 2016 15:45:46 GMT
+  recorded_at: Fri, 06 May 2016 13:28:06 GMT
 - request:
     method: get
     uri: http://jdoe:password@localhost:8080/hawkular/alerts/triggers/member1/conditions
@@ -1142,7 +1142,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 04 May 2016 15:45:46 GMT
+      - Fri, 06 May 2016 13:28:06 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -1153,7 +1153,7 @@ http_interactions:
       encoding: ASCII-8BIT
       string: '[{"tenantId":"28026b36-8fe4-4332-84c8-524e173a68bf","triggerId":"member1","triggerMode":"FIRING","type":"THRESHOLD","conditionSetSize":2,"conditionSetIndex":1,"conditionId":"28026b36-8fe4-4332-84c8-524e173a68bf-member1-FIRING-2-1","dataId":"my-metric-id-member1","operator":"LT","threshold":5.0},{"tenantId":"28026b36-8fe4-4332-84c8-524e173a68bf","triggerId":"member1","triggerMode":"FIRING","type":"THRESHOLD","conditionSetSize":2,"conditionSetIndex":2,"conditionId":"28026b36-8fe4-4332-84c8-524e173a68bf-member1-FIRING-2-2","dataId":"my-metric-id2-member1","operator":"GT","threshold":50.0}]'
     http_version: 
-  recorded_at: Wed, 04 May 2016 15:45:46 GMT
+  recorded_at: Fri, 06 May 2016 13:28:06 GMT
 - request:
     method: get
     uri: http://jdoe:password@localhost:8080/hawkular/alerts/triggers/member1/dampenings
@@ -1185,7 +1185,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 04 May 2016 15:45:46 GMT
+      - Fri, 06 May 2016 13:28:06 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -1196,7 +1196,7 @@ http_interactions:
       encoding: ASCII-8BIT
       string: '[{"tenantId":"28026b36-8fe4-4332-84c8-524e173a68bf","triggerId":"member1","triggerMode":"FIRING","type":"STRICT","evalTrueSetting":2,"evalTotalSetting":2,"evalTimeSetting":0,"dampeningId":"28026b36-8fe4-4332-84c8-524e173a68bf-member1-FIRING"}]'
     http_version: 
-  recorded_at: Wed, 04 May 2016 15:45:46 GMT
+  recorded_at: Fri, 06 May 2016 13:28:06 GMT
 - request:
     method: put
     uri: http://jdoe:password@localhost:8080/hawkular/alerts/triggers/groups/a-group-trigger/dampenings/28026b36-8fe4-4332-84c8-524e173a68bf-a-group-trigger-FIRING
@@ -1230,7 +1230,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 04 May 2016 15:45:46 GMT
+      - Fri, 06 May 2016 13:28:06 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -1241,7 +1241,7 @@ http_interactions:
       encoding: ASCII-8BIT
       string: '{"tenantId":"28026b36-8fe4-4332-84c8-524e173a68bf","triggerId":"a-group-trigger","triggerMode":"FIRING","type":"RELAXED_COUNT","evalTrueSetting":2,"evalTotalSetting":4,"evalTimeSetting":0,"dampeningId":"28026b36-8fe4-4332-84c8-524e173a68bf-a-group-trigger-FIRING"}'
     http_version: 
-  recorded_at: Wed, 04 May 2016 15:45:46 GMT
+  recorded_at: Fri, 06 May 2016 13:28:06 GMT
 - request:
     method: put
     uri: http://jdoe:password@localhost:8080/hawkular/alerts/triggers/groups/a-group-trigger/
@@ -1276,7 +1276,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 04 May 2016 15:45:46 GMT
+      - Fri, 06 May 2016 13:28:06 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -1287,7 +1287,7 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Wed, 04 May 2016 15:45:46 GMT
+  recorded_at: Fri, 06 May 2016 13:28:06 GMT
 - request:
     method: get
     uri: http://jdoe:password@localhost:8080/hawkular/alerts/triggers/a-group-trigger
@@ -1319,7 +1319,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 04 May 2016 15:45:46 GMT
+      - Fri, 06 May 2016 13:28:06 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -1331,7 +1331,7 @@ http_interactions:
       string: '{"tenantId":"28026b36-8fe4-4332-84c8-524e173a68bf","id":"a-group-trigger","name":"A
         Group Trigger","description":"A Group Trigger generated from test","type":"GROUP","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"HIGH","context":{"alert-profiles":"profile1"},"tags":{"group-tname":"group-tvalue"},"autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","enabled":false,"firingMatch":"ALL","source":"_none_"}'
     http_version: 
-  recorded_at: Wed, 04 May 2016 15:45:46 GMT
+  recorded_at: Fri, 06 May 2016 13:28:06 GMT
 - request:
     method: delete
     uri: http://jdoe:password@localhost:8080/hawkular/alerts/triggers/groups/a-group-trigger/dampenings/28026b36-8fe4-4332-84c8-524e173a68bf-a-group-trigger-FIRING
@@ -1363,7 +1363,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 04 May 2016 15:45:46 GMT
+      - Fri, 06 May 2016 13:28:06 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -1374,7 +1374,7 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Wed, 04 May 2016 15:45:46 GMT
+  recorded_at: Fri, 06 May 2016 13:28:06 GMT
 - request:
     method: get
     uri: http://jdoe:password@localhost:8080/hawkular/alerts/triggers/member1
@@ -1406,7 +1406,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 04 May 2016 15:45:46 GMT
+      - Fri, 06 May 2016 13:28:06 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -1418,7 +1418,7 @@ http_interactions:
       string: '{"tenantId":"28026b36-8fe4-4332-84c8-524e173a68bf","id":"member1","name":"Member
         One","description":"A Group Trigger generated from test","type":"MEMBER","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"HIGH","context":{"alert-profiles":"profile1"},"tags":{"group-tname":"group-tvalue"},"autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","dataIdMap":{"my-metric-id":"my-metric-id-member1"},"memberOf":"a-group-trigger","enabled":false,"firingMatch":"ALL","source":"_none_"}'
     http_version: 
-  recorded_at: Wed, 04 May 2016 15:45:46 GMT
+  recorded_at: Fri, 06 May 2016 13:28:06 GMT
 - request:
     method: get
     uri: http://jdoe:password@localhost:8080/hawkular/alerts/triggers/member1/conditions
@@ -1450,7 +1450,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 04 May 2016 15:45:46 GMT
+      - Fri, 06 May 2016 13:28:06 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -1461,7 +1461,7 @@ http_interactions:
       encoding: ASCII-8BIT
       string: '[{"tenantId":"28026b36-8fe4-4332-84c8-524e173a68bf","triggerId":"member1","triggerMode":"FIRING","type":"THRESHOLD","conditionSetSize":2,"conditionSetIndex":1,"conditionId":"28026b36-8fe4-4332-84c8-524e173a68bf-member1-FIRING-2-1","dataId":"my-metric-id-member1","operator":"LT","threshold":5.0},{"tenantId":"28026b36-8fe4-4332-84c8-524e173a68bf","triggerId":"member1","triggerMode":"FIRING","type":"THRESHOLD","conditionSetSize":2,"conditionSetIndex":2,"conditionId":"28026b36-8fe4-4332-84c8-524e173a68bf-member1-FIRING-2-2","dataId":"my-metric-id2-member1","operator":"GT","threshold":50.0}]'
     http_version: 
-  recorded_at: Wed, 04 May 2016 15:45:46 GMT
+  recorded_at: Fri, 06 May 2016 13:28:06 GMT
 - request:
     method: get
     uri: http://jdoe:password@localhost:8080/hawkular/alerts/triggers/member1/dampenings
@@ -1493,7 +1493,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 04 May 2016 15:45:46 GMT
+      - Fri, 06 May 2016 13:28:06 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -1504,7 +1504,182 @@ http_interactions:
       encoding: ASCII-8BIT
       string: "[]"
     http_version: 
-  recorded_at: Wed, 04 May 2016 15:45:46 GMT
+  recorded_at: Fri, 06 May 2016 13:28:06 GMT
+- request:
+    method: put
+    uri: http://jdoe:password@localhost:8080/hawkular/alerts/triggers/groups/a-group-trigger/conditions/FIRING
+    body:
+      encoding: UTF-8
+      string: '{"conditions":[{"conditionId":null,"type":"THRESHOLD","operator":"LT","threshold":5,"triggerMode":"FIRING","dataId":"my-metric-id","data2Id":null,"data2Multiplier":null,"triggerId":null},{"conditionId":null,"type":"THRESHOLD","operator":"GT","threshold":50,"triggerMode":"FIRING","dataId":"my-metric-id2","data2Id":null,"data2Multiplier":null,"triggerId":null},{"conditionId":null,"type":"COMPARE","operator":"GT","threshold":null,"triggerMode":"FIRING","dataId":"my-metric-id3","data2Id":"my-metric-id4","data2Multiplier":1,"triggerId":null}],"dataIdMemberMap":{"my-metric-id":{"member1":"my-metric-id-member1"},"my-metric-id2":{"member1":"my-metric-id2-member1"},"my-metric-id3":{"member1":"my-metric-id3-member1"},"my-metric-id4":{"member1":"my-metric-id4-member1"}}}'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '770'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Fri, 06 May 2016 13:28:06 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '943'
+    body:
+      encoding: ASCII-8BIT
+      string: '[{"tenantId":"28026b36-8fe4-4332-84c8-524e173a68bf","triggerId":"a-group-trigger","triggerMode":"FIRING","type":"THRESHOLD","conditionSetSize":3,"conditionSetIndex":1,"conditionId":"28026b36-8fe4-4332-84c8-524e173a68bf-a-group-trigger-FIRING-3-1","dataId":"my-metric-id","operator":"LT","threshold":5.0},{"tenantId":"28026b36-8fe4-4332-84c8-524e173a68bf","triggerId":"a-group-trigger","triggerMode":"FIRING","type":"THRESHOLD","conditionSetSize":3,"conditionSetIndex":2,"conditionId":"28026b36-8fe4-4332-84c8-524e173a68bf-a-group-trigger-FIRING-3-2","dataId":"my-metric-id2","operator":"GT","threshold":50.0},{"tenantId":"28026b36-8fe4-4332-84c8-524e173a68bf","triggerId":"a-group-trigger","triggerMode":"FIRING","type":"COMPARE","conditionSetSize":3,"conditionSetIndex":3,"conditionId":"28026b36-8fe4-4332-84c8-524e173a68bf-a-group-trigger-FIRING-3-3","dataId":"my-metric-id3","operator":"GT","data2Id":"my-metric-id4","data2Multiplier":1.0}]'
+    http_version: 
+  recorded_at: Fri, 06 May 2016 13:28:06 GMT
+- request:
+    method: get
+    uri: http://jdoe:password@localhost:8080/hawkular/alerts/triggers/member1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Fri, 06 May 2016 13:28:06 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '552'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"tenantId":"28026b36-8fe4-4332-84c8-524e173a68bf","id":"member1","name":"Member
+        One","description":"A Group Trigger generated from test","type":"MEMBER","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"HIGH","context":{"alert-profiles":"profile1"},"tags":{"group-tname":"group-tvalue"},"autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","dataIdMap":{"my-metric-id":"my-metric-id-member1"},"memberOf":"a-group-trigger","enabled":false,"firingMatch":"ALL","source":"_none_"}'
+    http_version: 
+  recorded_at: Fri, 06 May 2016 13:28:06 GMT
+- request:
+    method: get
+    uri: http://jdoe:password@localhost:8080/hawkular/alerts/triggers/member1/conditions
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Fri, 06 May 2016 13:28:06 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '927'
+    body:
+      encoding: ASCII-8BIT
+      string: '[{"tenantId":"28026b36-8fe4-4332-84c8-524e173a68bf","triggerId":"member1","triggerMode":"FIRING","type":"THRESHOLD","conditionSetSize":3,"conditionSetIndex":1,"conditionId":"28026b36-8fe4-4332-84c8-524e173a68bf-member1-FIRING-3-1","dataId":"my-metric-id-member1","operator":"LT","threshold":5.0},{"tenantId":"28026b36-8fe4-4332-84c8-524e173a68bf","triggerId":"member1","triggerMode":"FIRING","type":"THRESHOLD","conditionSetSize":3,"conditionSetIndex":2,"conditionId":"28026b36-8fe4-4332-84c8-524e173a68bf-member1-FIRING-3-2","dataId":"my-metric-id2-member1","operator":"GT","threshold":50.0},{"tenantId":"28026b36-8fe4-4332-84c8-524e173a68bf","triggerId":"member1","triggerMode":"FIRING","type":"COMPARE","conditionSetSize":3,"conditionSetIndex":3,"conditionId":"28026b36-8fe4-4332-84c8-524e173a68bf-member1-FIRING-3-3","dataId":"my-metric-id3-member1","operator":"GT","data2Id":"my-metric-id4-member1","data2Multiplier":1.0}]'
+    http_version: 
+  recorded_at: Fri, 06 May 2016 13:28:06 GMT
+- request:
+    method: get
+    uri: http://jdoe:password@localhost:8080/hawkular/alerts/triggers/member1/dampenings
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Fri, 06 May 2016 13:28:06 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '2'
+    body:
+      encoding: ASCII-8BIT
+      string: "[]"
+    http_version: 
+  recorded_at: Fri, 06 May 2016 13:28:06 GMT
 - request:
     method: delete
     uri: http://jdoe:password@localhost:8080/hawkular/alerts/triggers/groups/a-group-trigger
@@ -1536,7 +1711,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 04 May 2016 15:45:46 GMT
+      - Fri, 06 May 2016 13:28:06 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -1547,5 +1722,5 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Wed, 04 May 2016 15:45:46 GMT
+  recorded_at: Fri, 06 May 2016 13:28:06 GMT
 recorded_with: VCR 3.0.1

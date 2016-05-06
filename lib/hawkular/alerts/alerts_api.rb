@@ -360,7 +360,7 @@ module Hawkular::Alerts
     # Representing of one Condition
     class Condition
       attr_accessor :condition_id, :type, :operator, :threshold
-      attr_accessor :trigger_mode, :data_id
+      attr_accessor :trigger_mode, :data_id, :data2_id, :data2_multiplier
       attr_reader :condition_set_size, :condition_set_index, :trigger_id
 
       def initialize(cond_hash)
@@ -371,6 +371,8 @@ module Hawkular::Alerts
         @type = cond_hash['type']
         @trigger_mode = cond_hash['triggerMode']
         @data_id = cond_hash['dataId']
+        @data2_id = cond_hash['data2Id']
+        @data2_multiplier = cond_hash['data2Multiplier']
         @trigger_id = cond_hash['triggerId']
       end
 
@@ -383,6 +385,8 @@ module Hawkular::Alerts
         cond_hash['type'] = @type
         cond_hash['triggerMode'] = @trigger_mode
         cond_hash['dataId'] = @data_id
+        cond_hash['data2Id'] = @data2_id
+        cond_hash['data2Multiplier'] = @data2_multiplier
         cond_hash['triggerId'] = @trigger_id
         cond_hash
       end

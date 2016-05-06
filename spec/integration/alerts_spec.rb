@@ -231,6 +231,25 @@ module Hawkular::Alerts::RSpec
         'my-metric-id2' => { 'member1' => 'my-metric-id2-member1' }
       }
 
+      # Create a third condition of type compare
+      c3 = Hawkular::Alerts::Trigger::Condition.new({})
+      c3.trigger_mode = :FIRING
+      c3.type = :COMPARE
+      c3.data_id = 'my-metric-id3'
+      c3.operator = :GT
+      c3.data2_id = 'my-metric-id4'
+      c3.data2_multiplier = 1
+
+      # Create the thrid group condition
+      # member 2 is still an orphan, no need to update it into the data_id_member_map
+      gc3 = Hawkular::Alerts::Trigger::GroupConditionsInfo.new([c, c2, c3])
+      gc3.data_id_member_map = {
+        'my-metric-id'  => { 'member1' => 'my-metric-id-member1' },
+        'my-metric-id2' => { 'member1' => 'my-metric-id2-member1' },
+        'my-metric-id3' => { 'member1' => 'my-metric-id3-member1' },
+        'my-metric-id4' => { 'member1' => 'my-metric-id4-member1' }
+      }
+
       begin
         group_trigger = @client.create_group_trigger t
         expect(group_trigger).not_to be_nil
@@ -311,6 +330,13 @@ module Hawkular::Alerts::RSpec
         expect(full_member1).not_to be_nil
         expect(full_member1.context['alert-profiles']).to eq('profile1')
         expect(full_member1.dampenings.size).to be(0)
+
+        created_conditions = @client.set_group_conditions t.id, :FIRING, gc3
+        expect(created_conditions.size).to be(3)
+
+        full_member1 = @client.get_single_trigger member1.id, true
+        expect(full_member1).not_to be_nil
+        expect(full_member1.conditions.size).to be(3)
       ensure
         # rubocop:disable Lint/HandleExceptions
         begin
