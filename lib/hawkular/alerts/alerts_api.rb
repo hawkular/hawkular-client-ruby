@@ -81,10 +81,93 @@ module Hawkular::Alerts
       http_post 'triggers/trigger', full_trigger
     end
 
+    # Creates the group trigger definition.
+    # @param [Trigger] trigger The group trigger to be created
+    # @return [Trigger] The newly created group trigger
+    def create_group_trigger(trigger)
+      ret = http_post 'triggers/groups', trigger.to_h
+      Trigger.new(ret)
+    end
+
+    # Updates a given group trigger definition
+    # @param [Trigger] trigger the group trigger to be updated
+    # @return [Trigger] The updated group trigger
+    def update_group_trigger(trigger)
+      http_put "triggers/groups/#{trigger.id}/", trigger.to_h
+      get_single_trigger trigger.id, false
+    end
+
+    # Creates the group conditions definitions.
+    # @param [String] trigger_id ID of the group trigger to set conditions
+    # @param [String] trigger_mode Mode of the trigger where conditions are attached (:FIRING, :AUTORESOLVE)
+    # @param [GroupConditionsInfo] group_conditions_info the conditions to set into the group trigger with the mapping
+    #                                                    with the data_id members map
+    # @return [Array<Condition>] conditions Array of associated conditions
+    def set_group_conditions(trigger_id, trigger_mode, group_conditions_info)
+      ret = http_put "triggers/groups/#{trigger_id}/conditions/#{trigger_mode}", group_conditions_info.to_h
+      conditions = []
+      ret.each { |c| conditions.push(Trigger::Condition.new(c)) }
+      conditions
+    end
+
+    # Creates a member trigger
+    # @param [GroupMemberInfo] group_member_info the group member to be added
+    # @return [Trigger] the newly created member trigger
+    def create_member_trigger(group_member_info)
+      ret = http_post 'triggers/groups/members', group_member_info.to_h
+      Trigger.new(ret)
+    end
+
+    # Detaches a member trigger from its group trigger
+    # @param [String] trigger_id ID of the member trigger to detach
+    # @return [Trigger] the orphan trigger
+    def orphan_member(trigger_id)
+      http_post "triggers/groups/members/#{trigger_id}/orphan", {}
+      get_single_trigger trigger_id, false
+    end
+
+    # Lists members of a group trigger
+    # @param [String] trigger_id ID of the group trigger to list members
+    # @param [boolean] orphans flag to include orphans
+    # @return [Array<Trigger>] Members found
+    def list_members(trigger_id, orphans = false)
+      ret = http_get "triggers/groups/#{trigger_id}/members?includeOrphans=#{orphans}"
+      ret.collect { |t| Trigger.new(t) }
+    end
+
+    # Creates a dampening for a group trigger
+    # @param [Dampening] dampening the dampening to create
+    # @return [Dampening] the newly created dampening
+    def create_group_dampening(dampening)
+      ret = http_post "triggers/groups/#{dampening.trigger_id}/dampenings", dampening.to_h
+      Trigger::Dampening.new(ret)
+    end
+
+    # Updates a dampening for a group trigger
+    # @param [Dampening] dampening the dampening to update
+    # @return [Dampening] the updated dampening
+    def update_group_dampening(dampening)
+      ret = http_put "triggers/groups/#{dampening.trigger_id}/dampenings/#{dampening.dampening_id}", dampening.to_h
+      Trigger::Dampening.new(ret)
+    end
+
+    # Deletes the dampening of a group trigger
+    # @param [String] trigger_id ID of the group trigger
+    # @param [String] dampening_id ID
+    def delete_group_dampening(trigger_id, dampening_id)
+      http_delete "/triggers/groups/#{trigger_id}/dampenings/#{dampening_id}"
+    end
+
     # Deletes the trigger definition.
-    # @param [String] trigger_id Id of the trigger to delete
+    # @param [String] trigger_id ID of the trigger to delete
     def delete_trigger(trigger_id)
       http_delete "/triggers/#{trigger_id}"
+    end
+
+    # Deletes the group trigger definition.
+    # @param [String] trigger_id ID of the group trigger to delete
+    def delete_group_trigger(trigger_id)
+      http_delete "/triggers/groups/#{trigger_id}"
     end
 
     # Obtains action definition/plugin from the server.
@@ -220,7 +303,7 @@ module Hawkular::Alerts
   class Trigger
     attr_accessor :id, :name, :context, :actions, :auto_disable, :auto_enable
     attr_accessor :auto_resolve, :auto_resolve_alerts, :tags, :type
-    attr_accessor :tenant, :description, :group, :severity, :event_type
+    attr_accessor :tenant, :description, :group, :severity, :event_type, :event_category, :member_of, :data_id_map
     attr_reader :conditions, :dampenings
     attr_accessor :enabled, :actions
 
@@ -238,6 +321,9 @@ module Hawkular::Alerts
       @auto_resolve = trigger_hash['autoResolve']
       @auto_resolve_alerts = trigger_hash['autoResolveAlerts']
       @event_type = trigger_hash['eventType']
+      @event_category = trigger_hash['eventCategory']
+      @member_of = trigger_hash['memberOf']
+      @data_id_map = trigger_hash['dataIdMap']
       @tenant = trigger_hash['tenantId']
       @description = trigger_hash['description']
       @auto_enable = trigger_hash['autoEnable']
@@ -255,8 +341,8 @@ module Hawkular::Alerts
         ret = x.to_s.split('_').collect(&:capitalize).join
         ret[0, 1].downcase + ret[1..-1]
       end
-      fields = [:id, :name, :enabled, :severity, :auto_resolve, :auto_resolve_alerts, :event_type,
-                :description, :auto_enable, :auto_disable, :context, :type, :tags]
+      fields = [:id, :name, :enabled, :severity, :auto_resolve, :auto_resolve_alerts, :event_type, :event_category,
+                :description, :auto_enable, :auto_disable, :context, :type, :tags, :member_of, :data_id_map]
 
       fields.each do |field|
         camelized_field = to_camel.call(field)
@@ -274,7 +360,7 @@ module Hawkular::Alerts
     # Representing of one Condition
     class Condition
       attr_accessor :condition_id, :type, :operator, :threshold
-      attr_accessor :trigger_mode, :data_id
+      attr_accessor :trigger_mode, :data_id, :data2_id, :data2_multiplier
       attr_reader :condition_set_size, :condition_set_index, :trigger_id
 
       def initialize(cond_hash)
@@ -285,6 +371,8 @@ module Hawkular::Alerts
         @type = cond_hash['type']
         @trigger_mode = cond_hash['triggerMode']
         @data_id = cond_hash['dataId']
+        @data2_id = cond_hash['data2Id']
+        @data2_multiplier = cond_hash['data2Multiplier']
         @trigger_id = cond_hash['triggerId']
       end
 
@@ -297,24 +385,81 @@ module Hawkular::Alerts
         cond_hash['type'] = @type
         cond_hash['triggerMode'] = @trigger_mode
         cond_hash['dataId'] = @data_id
+        cond_hash['data2Id'] = @data2_id
+        cond_hash['data2Multiplier'] = @data2_multiplier
         cond_hash['triggerId'] = @trigger_id
+        cond_hash
+      end
+    end
+
+    # Representing of one GroupConditionsInfo
+    # - The data_id_member_map should be null if the group has no members.
+    # - The data_id_member_map should be null if this is a [data-driven] group trigger.
+    #   In this case the member triggers are removed and will be re-populated as incoming data demands.
+    # - For [non-data-driven] group triggers with existing members the data_id_member_map is handled as follows.
+    #   For members not included in the dataIdMemberMap their most recently supplied dataIdMap will be used.
+    #   This means that it is not necessary to supply mappings if the new condition set uses only dataIds found
+    #   in the old condition set. If the new conditions introduce new dataIds a full dataIdMemberMap must be supplied.
+    class GroupConditionsInfo
+      attr_accessor :conditions, :data_id_member_map
+
+      def initialize(conditions)
+        @conditions = conditions
+        @data_id_member_map = {}
+      end
+
+      def to_h
+        cond_hash = {}
+        cond_hash['conditions'] = []
+        @conditions.each { |c| cond_hash['conditions'].push(c.to_h) }
+        cond_hash['dataIdMemberMap'] = @data_id_member_map
+        cond_hash
+      end
+    end
+
+    # Representing of one GroupMemberInfo
+    class GroupMemberInfo
+      attr_accessor :group_id, :member_id, :member_name, :member_description
+      attr_accessor :member_context, :member_tags, :data_id_map
+
+      def to_h
+        cond_hash = {}
+        cond_hash['groupId'] = @group_id
+        cond_hash['memberId'] = @member_id
+        cond_hash['memberName'] = @member_name
+        cond_hash['memberDescription'] = @member_description
+        cond_hash['memberContext'] = @member_context
+        cond_hash['memberTags'] = @member_tags
+        cond_hash['dataIdMap'] = @data_id_map
         cond_hash
       end
     end
 
     # Representation of one Dampening setting
     class Dampening
-      attr_accessor :dampening_id, :type, :eval_true_setting, :eval_total_setting,
+      attr_accessor :dampening_id, :trigger_id, :type, :eval_true_setting, :eval_total_setting,
                     :eval_time_setting
       attr_accessor :current_evals
 
       def initialize(damp_hash)
         @current_evals = {}
         @dampening_id = damp_hash['dampeningId']
+        @trigger_id = damp_hash['triggerId']
         @type = damp_hash['type']
         @eval_true_setting = damp_hash['evalTrueSetting']
         @eval_total_setting = damp_hash['evalTotalSetting']
         @eval_time_setting = damp_hash['evalTimeSetting']
+      end
+
+      def to_h
+        cond_hash = {}
+        cond_hash['dampeningId'] = @dampening_id
+        cond_hash['triggerId'] = @trigger_id
+        cond_hash['type'] = @type
+        cond_hash['evalTrueSetting'] = @eval_true_setting
+        cond_hash['evalTotalSetting'] = @eval_total_setting
+        cond_hash['evalTimeSetting'] = @eval_time_setting
+        cond_hash
       end
     end
 
