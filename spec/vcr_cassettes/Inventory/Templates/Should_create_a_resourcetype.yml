@@ -35,7 +35,7 @@ http_interactions:
       Location:
       - http://localhost:8080/hawkular/inventory/feeds/feed_may_exist
       Date:
-      - Mon, 11 Apr 2016 16:51:42 GMT
+      - Thu, 05 May 2016 11:18:45 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -50,7 +50,7 @@ http_interactions:
           "id" : "feed_may_exist"
         }
     http_version: 
-  recorded_at: Mon, 11 Apr 2016 16:51:42 GMT
+  recorded_at: Thu, 05 May 2016 11:18:45 GMT
 - request:
     method: post
     uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/feed_may_exist/resourceTypes
@@ -86,7 +86,7 @@ http_interactions:
       Location:
       - http://localhost:8080/hawkular/inventory/feeds/feed_may_exist/resourceTypes/rt-123
       Date:
-      - Mon, 11 Apr 2016 16:51:43 GMT
+      - Thu, 05 May 2016 11:18:45 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -102,7 +102,7 @@ http_interactions:
           "id" : "rt-123"
         }
     http_version: 
-  recorded_at: Mon, 11 Apr 2016 16:51:43 GMT
+  recorded_at: Thu, 05 May 2016 11:18:45 GMT
 - request:
     method: get
     uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/feed_may_exist/resourceTypes/rt-123
@@ -134,7 +134,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Mon, 11 Apr 2016 16:51:43 GMT
+      - Thu, 05 May 2016 11:18:45 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -150,5 +150,5 @@ http_interactions:
           "id" : "rt-123"
         }
     http_version: 
-  recorded_at: Mon, 11 Apr 2016 16:51:43 GMT
+  recorded_at: Thu, 05 May 2016 11:18:45 GMT
 recorded_with: VCR 3.0.1

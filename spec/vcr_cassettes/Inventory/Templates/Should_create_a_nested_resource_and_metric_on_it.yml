@@ -33,7 +33,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Thu, 05 May 2016 11:18:46 GMT
+      - Thu, 05 May 2016 11:18:47 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -62,7 +62,7 @@ http_interactions:
           }
         }
     http_version: 
-  recorded_at: Thu, 05 May 2016 11:18:46 GMT
+  recorded_at: Thu, 05 May 2016 11:18:47 GMT
 - request:
     method: get
     uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/feed_may_exist
@@ -94,7 +94,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Thu, 05 May 2016 11:18:46 GMT
+      - Thu, 05 May 2016 11:18:47 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -109,13 +109,13 @@ http_interactions:
           "id" : "feed_may_exist"
         }
     http_version: 
-  recorded_at: Thu, 05 May 2016 11:18:46 GMT
+  recorded_at: Thu, 05 May 2016 11:18:47 GMT
 - request:
     method: post
     uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/feed_may_exist/resourceTypes
     body:
       encoding: UTF-8
-      string: '{"properties":{},"id":"rt-123","name":"ResourceType","outgoing":{},"incoming":{}}'
+      string: '{"properties":{},"id":"rt-123-1","name":"ResourceType","outgoing":{},"incoming":{}}'
     headers:
       Accept:
       - application/json
@@ -124,13 +124,13 @@ http_interactions:
       Content-Type:
       - application/json
       Content-Length:
-      - '81'
+      - '83'
       User-Agent:
       - Ruby
   response:
     status:
-      code: 409
-      message: Conflict
+      code: 201
+      message: Created
     headers:
       Expires:
       - '0'
@@ -142,26 +142,29 @@ http_interactions:
       - WildFly/10
       Pragma:
       - no-cache
+      Location:
+      - http://localhost:8080/hawkular/inventory/feeds/feed_may_exist/resourceTypes/rt-123-1
       Date:
-      - Thu, 05 May 2016 11:18:46 GMT
+      - Thu, 05 May 2016 11:18:47 GMT
       Connection:
       - keep-alive
       Content-Type:
       - application/json
       Content-Length:
-      - '107'
+      - '133'
     body:
       encoding: ASCII-8BIT
       string: |-
         {
-          "errorMsg" : "Entity with id 'null' already exists at some of the positions: null",
-          "details" : { }
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;feed_may_exist/rt;rt-123-1",
+          "name" : "ResourceType",
+          "id" : "rt-123-1"
         }
     http_version: 
-  recorded_at: Thu, 05 May 2016 11:18:46 GMT
+  recorded_at: Thu, 05 May 2016 11:18:47 GMT
 - request:
     method: get
-    uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/feed_may_exist/resourceTypes/rt-123
+    uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/feed_may_exist/resourceTypes/rt-123-1
     body:
       encoding: US-ASCII
       string: ''
@@ -190,29 +193,29 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Thu, 05 May 2016 11:18:46 GMT
+      - Thu, 05 May 2016 11:18:47 GMT
       Connection:
       - keep-alive
       Content-Type:
       - application/json
       Content-Length:
-      - '129'
+      - '133'
     body:
       encoding: ASCII-8BIT
       string: |-
         {
-          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;feed_may_exist/rt;rt-123",
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;feed_may_exist/rt;rt-123-1",
           "name" : "ResourceType",
-          "id" : "rt-123"
+          "id" : "rt-123-1"
         }
     http_version: 
-  recorded_at: Thu, 05 May 2016 11:18:46 GMT
+  recorded_at: Thu, 05 May 2016 11:18:47 GMT
 - request:
     method: post
     uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/feed_may_exist/resources
     body:
       encoding: UTF-8
-      string: '{"properties":{"version":1.0},"id":"r124","name":"My Resource","outgoing":{},"incoming":{},"resourceTypePath":"/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;feed_may_exist/rt;rt-123"}'
+      string: '{"properties":{},"id":"r124-a","name":"Res-a","outgoing":{},"incoming":{},"resourceTypePath":"/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;feed_may_exist/rt;rt-123-1"}'
     headers:
       Accept:
       - application/json
@@ -221,7 +224,7 @@ http_interactions:
       Content-Type:
       - application/json
       Content-Length:
-      - '179'
+      - '164'
       User-Agent:
       - Ruby
   response:
@@ -240,36 +243,33 @@ http_interactions:
       Pragma:
       - no-cache
       Location:
-      - http://localhost:8080/hawkular/inventory/feeds/feed_may_exist/resources/r124
+      - http://localhost:8080/hawkular/inventory/feeds/feed_may_exist/resources/r124-a
       Date:
-      - Thu, 05 May 2016 11:18:46 GMT
+      - Thu, 05 May 2016 11:18:47 GMT
       Connection:
       - keep-alive
       Content-Type:
       - application/json
       Content-Length:
-      - '317'
+      - '275'
     body:
       encoding: ASCII-8BIT
       string: |-
         {
-          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;feed_may_exist/r;r124",
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;feed_may_exist/r;r124-a",
           "type" : {
-            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;feed_may_exist/rt;rt-123",
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;feed_may_exist/rt;rt-123-1",
             "name" : "ResourceType",
-            "id" : "rt-123"
+            "id" : "rt-123-1"
           },
-          "properties" : {
-            "version" : 1.0
-          },
-          "name" : "My Resource",
-          "id" : "r124"
+          "name" : "Res-a",
+          "id" : "r124-a"
         }
     http_version: 
-  recorded_at: Thu, 05 May 2016 11:18:46 GMT
+  recorded_at: Thu, 05 May 2016 11:18:47 GMT
 - request:
     method: get
-    uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/feed_may_exist/resources/r124
+    uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/feed_may_exist/resources/r124-a
     body:
       encoding: US-ASCII
       string: ''
@@ -298,34 +298,88 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Thu, 05 May 2016 11:18:46 GMT
+      - Thu, 05 May 2016 11:18:47 GMT
       Connection:
       - keep-alive
       Content-Type:
       - application/json
       Content-Length:
-      - '317'
+      - '275'
     body:
       encoding: ASCII-8BIT
       string: |-
         {
-          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;feed_may_exist/r;r124",
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;feed_may_exist/r;r124-a",
           "type" : {
-            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;feed_may_exist/rt;rt-123",
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;feed_may_exist/rt;rt-123-1",
             "name" : "ResourceType",
-            "id" : "rt-123"
+            "id" : "rt-123-1"
           },
-          "properties" : {
-            "version" : 1.0
-          },
-          "name" : "My Resource",
-          "id" : "r124"
+          "name" : "Res-a",
+          "id" : "r124-a"
         }
     http_version: 
-  recorded_at: Thu, 05 May 2016 11:18:46 GMT
+  recorded_at: Thu, 05 May 2016 11:18:47 GMT
+- request:
+    method: post
+    uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/feed_may_exist/resources/r124-a
+    body:
+      encoding: UTF-8
+      string: '{"properties":{},"id":"r124-b","name":"Res-a","outgoing":{},"incoming":{},"resourceTypePath":"/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;feed_may_exist/rt;rt-123-1"}'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '164'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Location:
+      - http://localhost:8080/hawkular/inventory/feeds/feed_may_exist/resources/r124-a/r124-b
+      Date:
+      - Thu, 05 May 2016 11:18:47 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '284'
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;feed_may_exist/r;r124-a/r;r124-b",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;feed_may_exist/rt;rt-123-1",
+            "name" : "ResourceType",
+            "id" : "rt-123-1"
+          },
+          "name" : "Res-a",
+          "id" : "r124-b"
+        }
+    http_version: 
+  recorded_at: Thu, 05 May 2016 11:18:47 GMT
 - request:
     method: get
-    uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/feed_may_exist/resources/r124
+    uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/feed_may_exist/resources/r124-a/r124-b
     body:
       encoding: US-ASCII
       string: ''
@@ -354,37 +408,34 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Thu, 05 May 2016 11:18:46 GMT
+      - Thu, 05 May 2016 11:18:47 GMT
       Connection:
       - keep-alive
       Content-Type:
       - application/json
       Content-Length:
-      - '317'
+      - '284'
     body:
       encoding: ASCII-8BIT
       string: |-
         {
-          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;feed_may_exist/r;r124",
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;feed_may_exist/r;r124-a/r;r124-b",
           "type" : {
-            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;feed_may_exist/rt;rt-123",
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;feed_may_exist/rt;rt-123-1",
             "name" : "ResourceType",
-            "id" : "rt-123"
+            "id" : "rt-123-1"
           },
-          "properties" : {
-            "version" : 1.0
-          },
-          "name" : "My Resource",
-          "id" : "r124"
+          "name" : "Res-a",
+          "id" : "r124-b"
         }
     http_version: 
-  recorded_at: Thu, 05 May 2016 11:18:46 GMT
+  recorded_at: Thu, 05 May 2016 11:18:47 GMT
 - request:
     method: post
     uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/feed_may_exist/metricTypes
     body:
       encoding: UTF-8
-      string: '{"id":"mt-124","type":"GAUGE","unit":"NONE","collectionInterval":60}'
+      string: '{"id":"mt-124-a","type":"GAUGE","unit":"NONE","collectionInterval":60}'
     headers:
       Accept:
       - application/json
@@ -393,7 +444,7 @@ http_interactions:
       Content-Type:
       - application/json
       Content-Length:
-      - '68'
+      - '70'
       User-Agent:
       - Ruby
   response:
@@ -412,30 +463,30 @@ http_interactions:
       Pragma:
       - no-cache
       Location:
-      - http://localhost:8080/hawkular/inventory/feeds/feed_may_exist/metricTypes/mt-124
+      - http://localhost:8080/hawkular/inventory/feeds/feed_may_exist/metricTypes/mt-124-a
       Date:
-      - Thu, 05 May 2016 11:18:46 GMT
+      - Thu, 05 May 2016 11:18:47 GMT
       Connection:
       - keep-alive
       Content-Type:
       - application/json
       Content-Length:
-      - '170'
+      - '174'
     body:
       encoding: ASCII-8BIT
       string: |-
         {
-          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;feed_may_exist/mt;mt-124",
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;feed_may_exist/mt;mt-124-a",
           "unit" : "NONE",
           "type" : "GAUGE",
           "collectionInterval" : 60,
-          "id" : "mt-124"
+          "id" : "mt-124-a"
         }
     http_version: 
-  recorded_at: Thu, 05 May 2016 11:18:46 GMT
+  recorded_at: Thu, 05 May 2016 11:18:47 GMT
 - request:
     method: get
-    uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/feed_may_exist/metricTypes/mt-124
+    uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/feed_may_exist/metricTypes/mt-124-a
     body:
       encoding: US-ASCII
       string: ''
@@ -464,31 +515,31 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Thu, 05 May 2016 11:18:46 GMT
+      - Thu, 05 May 2016 11:18:47 GMT
       Connection:
       - keep-alive
       Content-Type:
       - application/json
       Content-Length:
-      - '170'
+      - '174'
     body:
       encoding: ASCII-8BIT
       string: |-
         {
-          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;feed_may_exist/mt;mt-124",
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;feed_may_exist/mt;mt-124-a",
           "unit" : "NONE",
           "type" : "GAUGE",
           "collectionInterval" : 60,
-          "id" : "mt-124"
+          "id" : "mt-124-a"
         }
     http_version: 
-  recorded_at: Thu, 05 May 2016 11:18:46 GMT
+  recorded_at: Thu, 05 May 2016 11:18:47 GMT
 - request:
     method: post
     uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/feed_may_exist/metrics
     body:
       encoding: UTF-8
-      string: '{"id":"m-124","name":"m-124","metricTypePath":"/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;feed_may_exist/mt;mt-124"}'
+      string: '{"id":"m-124-a","name":"MetricUnderNestedResource","metricTypePath":"/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;feed_may_exist/mt;mt-124-a"}'
     headers:
       Accept:
       - application/json
@@ -497,7 +548,7 @@ http_interactions:
       Content-Type:
       - application/json
       Content-Length:
-      - '115'
+      - '139'
       User-Agent:
       - Ruby
   response:
@@ -516,35 +567,35 @@ http_interactions:
       Pragma:
       - no-cache
       Location:
-      - http://localhost:8080/hawkular/inventory/feeds/feed_may_exist/metrics/m-124
+      - http://localhost:8080/hawkular/inventory/feeds/feed_may_exist/metrics/m-124-a
       Date:
-      - Thu, 05 May 2016 11:18:46 GMT
+      - Thu, 05 May 2016 11:18:47 GMT
       Connection:
       - keep-alive
       Content-Type:
       - application/json
       Content-Length:
-      - '314'
+      - '342'
     body:
       encoding: ASCII-8BIT
       string: |-
         {
-          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;feed_may_exist/m;m-124",
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;feed_may_exist/m;m-124-a",
           "type" : {
-            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;feed_may_exist/mt;mt-124",
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;feed_may_exist/mt;mt-124-a",
             "unit" : "NONE",
             "type" : "GAUGE",
             "collectionInterval" : 60,
-            "id" : "mt-124"
+            "id" : "mt-124-a"
           },
-          "name" : "m-124",
-          "id" : "m-124"
+          "name" : "MetricUnderNestedResource",
+          "id" : "m-124-a"
         }
     http_version: 
-  recorded_at: Thu, 05 May 2016 11:18:46 GMT
+  recorded_at: Thu, 05 May 2016 11:18:47 GMT
 - request:
     method: get
-    uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/feed_may_exist/metrics/m-124
+    uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/feed_may_exist/metrics/m-124-a
     body:
       encoding: US-ASCII
       string: ''
@@ -573,189 +624,36 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Thu, 05 May 2016 11:18:46 GMT
+      - Thu, 05 May 2016 11:18:47 GMT
       Connection:
       - keep-alive
       Content-Type:
       - application/json
       Content-Length:
-      - '314'
+      - '342'
     body:
       encoding: ASCII-8BIT
       string: |-
         {
-          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;feed_may_exist/m;m-124",
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;feed_may_exist/m;m-124-a",
           "type" : {
-            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;feed_may_exist/mt;mt-124",
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;feed_may_exist/mt;mt-124-a",
             "unit" : "NONE",
             "type" : "GAUGE",
             "collectionInterval" : 60,
-            "id" : "mt-124"
+            "id" : "mt-124-a"
           },
-          "name" : "m-124",
-          "id" : "m-124"
+          "name" : "MetricUnderNestedResource",
+          "id" : "m-124-a"
         }
     http_version: 
-  recorded_at: Thu, 05 May 2016 11:18:46 GMT
+  recorded_at: Thu, 05 May 2016 11:18:47 GMT
 - request:
     method: post
-    uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/feed_may_exist/resources/r124/metrics
+    uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/feed_may_exist/resources/r124-a/r124-b/metrics
     body:
       encoding: UTF-8
-      string: '["/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;feed_may_exist/m;m-124"]'
-    headers:
-      Accept:
-      - application/json
-      Accept-Encoding:
-      - gzip, deflate
-      Content-Type:
-      - application/json
-      Content-Length:
-      - '68'
-      User-Agent:
-      - Ruby
-  response:
-    status:
-      code: 204
-      message: No Content
-    headers:
-      Expires:
-      - '0'
-      Cache-Control:
-      - no-cache, no-store, must-revalidate
-      X-Powered-By:
-      - Undertow/1
-      Server:
-      - WildFly/10
-      Pragma:
-      - no-cache
-      Date:
-      - Thu, 05 May 2016 11:18:46 GMT
-    body:
-      encoding: UTF-8
-      string: ''
-    http_version: 
-  recorded_at: Thu, 05 May 2016 11:18:46 GMT
-- request:
-    method: post
-    uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/feed_may_exist/metrics
-    body:
-      encoding: UTF-8
-      string: '{"id":"m-124-1","name":"Metric1","metricTypePath":"/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;feed_may_exist/mt;mt-124"}'
-    headers:
-      Accept:
-      - application/json
-      Accept-Encoding:
-      - gzip, deflate
-      Content-Type:
-      - application/json
-      Content-Length:
-      - '119'
-      User-Agent:
-      - Ruby
-  response:
-    status:
-      code: 201
-      message: Created
-    headers:
-      Expires:
-      - '0'
-      Cache-Control:
-      - no-cache, no-store, must-revalidate
-      X-Powered-By:
-      - Undertow/1
-      Server:
-      - WildFly/10
-      Pragma:
-      - no-cache
-      Location:
-      - http://localhost:8080/hawkular/inventory/feeds/feed_may_exist/metrics/m-124-1
-      Date:
-      - Thu, 05 May 2016 11:18:46 GMT
-      Connection:
-      - keep-alive
-      Content-Type:
-      - application/json
-      Content-Length:
-      - '320'
-    body:
-      encoding: ASCII-8BIT
-      string: |-
-        {
-          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;feed_may_exist/m;m-124-1",
-          "type" : {
-            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;feed_may_exist/mt;mt-124",
-            "unit" : "NONE",
-            "type" : "GAUGE",
-            "collectionInterval" : 60,
-            "id" : "mt-124"
-          },
-          "name" : "Metric1",
-          "id" : "m-124-1"
-        }
-    http_version: 
-  recorded_at: Thu, 05 May 2016 11:18:46 GMT
-- request:
-    method: get
-    uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/feed_may_exist/metrics/m-124-1
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Accept:
-      - application/json
-      Accept-Encoding:
-      - gzip, deflate
-      Content-Type:
-      - application/json
-      User-Agent:
-      - Ruby
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Expires:
-      - '0'
-      Cache-Control:
-      - no-cache, no-store, must-revalidate
-      X-Powered-By:
-      - Undertow/1
-      Server:
-      - WildFly/10
-      Pragma:
-      - no-cache
-      Date:
-      - Thu, 05 May 2016 11:18:46 GMT
-      Connection:
-      - keep-alive
-      Content-Type:
-      - application/json
-      Content-Length:
-      - '320'
-    body:
-      encoding: ASCII-8BIT
-      string: |-
-        {
-          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;feed_may_exist/m;m-124-1",
-          "type" : {
-            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;feed_may_exist/mt;mt-124",
-            "unit" : "NONE",
-            "type" : "GAUGE",
-            "collectionInterval" : 60,
-            "id" : "mt-124"
-          },
-          "name" : "Metric1",
-          "id" : "m-124-1"
-        }
-    http_version: 
-  recorded_at: Thu, 05 May 2016 11:18:46 GMT
-- request:
-    method: post
-    uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/feed_may_exist/resources/r124/metrics
-    body:
-      encoding: UTF-8
-      string: '["/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;feed_may_exist/m;m-124-1"]'
+      string: '["/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;feed_may_exist/m;m-124-a"]'
     headers:
       Accept:
       - application/json
@@ -789,4 +687,64 @@ http_interactions:
       string: ''
     http_version: 
   recorded_at: Thu, 05 May 2016 11:18:47 GMT
+- request:
+    method: get
+    uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/feed_may_exist/resources/r124-a/r124-b/metrics?sort=id
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Thu, 05 May 2016 11:18:48 GMT
+      X-Total-Count:
+      - '1'
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '346'
+      Link:
+      - <http://localhost:8080/hawkular/inventory/feeds/feed_may_exist/resources/r124-a/r124-b/metrics?sort=id>;
+        rel="current"
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        [ {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;feed_may_exist/m;m-124-a",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;feed_may_exist/mt;mt-124-a",
+            "unit" : "NONE",
+            "type" : "GAUGE",
+            "collectionInterval" : 60,
+            "id" : "mt-124-a"
+          },
+          "name" : "MetricUnderNestedResource",
+          "id" : "m-124-a"
+        } ]
+    http_version: 
+  recorded_at: Thu, 05 May 2016 11:18:48 GMT
 recorded_with: VCR 3.0.1

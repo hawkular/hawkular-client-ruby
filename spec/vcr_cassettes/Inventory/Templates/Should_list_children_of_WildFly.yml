@@ -31,7 +31,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Mon, 11 Apr 2016 16:51:39 GMT
+      - Thu, 05 May 2016 11:18:42 GMT
       X-Total-Count:
       - '1'
       Connection:
@@ -39,7 +39,7 @@ http_interactions:
       Content-Type:
       - application/json
       Content-Length:
-      - '357'
+      - '351'
       Link:
       - <http://localhost:8080/hawkular/inventory/feeds/<%= feed_uuid %>/resourceTypes/WildFly%20Server/resources>;
         rel="current"
@@ -53,11 +53,11 @@ http_interactions:
             "name" : "WildFly Server",
             "id" : "WildFly Server"
           },
-          "name" : "dhcp-10-40-1-43/Local",
+          "name" : "localhost/Local",
           "id" : "Local~~"
         } ]
     http_version: 
-  recorded_at: Mon, 11 Apr 2016 16:51:39 GMT
+  recorded_at: Thu, 05 May 2016 11:18:42 GMT
 - request:
     method: get
     uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/<%= feed_uuid %>/resources/Local~~/children
@@ -89,7 +89,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Mon, 11 Apr 2016 16:51:39 GMT
+      - Thu, 05 May 2016 11:18:42 GMT
       X-Total-Count:
       - '22'
       Connection:
@@ -304,5 +304,5 @@ http_interactions:
           "id" : "Local~/subsystem=hawkular-wildfly-agent"
         } ]
     http_version: 
-  recorded_at: Mon, 11 Apr 2016 16:51:39 GMT
+  recorded_at: Thu, 05 May 2016 11:18:42 GMT
 recorded_with: VCR 3.0.1

@@ -31,7 +31,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Mon, 11 Apr 2016 16:51:39 GMT
+      - Thu, 05 May 2016 11:18:41 GMT
       X-Total-Count:
       - '2'
       Connection:
@@ -66,7 +66,7 @@ http_interactions:
           "id" : "Local~/subsystem=datasources/data-source=KeycloakDS"
         } ]
     http_version: 
-  recorded_at: Mon, 11 Apr 2016 16:51:39 GMT
+  recorded_at: Thu, 05 May 2016 11:18:41 GMT
 - request:
     method: get
     uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/<%= feed_uuid %>/resources/Local~%2Fsubsystem=datasources%2Fdata-source=ExampleDS/data?dataType=configuration
@@ -98,7 +98,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Mon, 11 Apr 2016 16:51:39 GMT
+      - Thu, 05 May 2016 11:18:41 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -118,7 +118,7 @@ http_interactions:
           }
         }
     http_version: 
-  recorded_at: Mon, 11 Apr 2016 16:51:39 GMT
+  recorded_at: Thu, 05 May 2016 11:18:41 GMT
 - request:
     method: get
     uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/<%= feed_uuid %>/resources/Local~%2Fsubsystem=datasources%2Fdata-source=KeycloakDS/data?dataType=configuration
@@ -150,7 +150,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Mon, 11 Apr 2016 16:51:39 GMT
+      - Thu, 05 May 2016 11:18:41 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -170,5 +170,5 @@ http_interactions:
           }
         }
     http_version: 
-  recorded_at: Mon, 11 Apr 2016 16:51:39 GMT
+  recorded_at: Thu, 05 May 2016 11:18:41 GMT
 recorded_with: VCR 3.0.1
