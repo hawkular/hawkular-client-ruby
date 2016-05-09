@@ -293,6 +293,22 @@ module Hawkular::Alerts
       query = generate_query_params(*criteria)
       http_get('/events' + query).map { |e| Event.new(e) }
     end
+
+    # Inject an event into Hawkular-alerts
+    # @param [String] id Id of the event must be unique
+    # @param [String] category Event category for further distinction
+    # @param [String] text Some text to the user
+    # @param [Hash<String,Object>] extras additional parameters
+    def create_event(id, category, text, extras)
+      event = {}
+      event['id'] = id
+      event['ctime'] = Time.now.to_i * 1000
+      event['category'] = category
+      event['text'] = text
+      event.merge!(extras) { |_key, v1, _v2| v1 }
+
+      http_post('/events', event)
+    end
   end
 
   # Representation of one Trigger
