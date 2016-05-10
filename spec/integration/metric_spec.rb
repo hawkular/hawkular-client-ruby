@@ -149,18 +149,19 @@ describe 'Counter metrics' do
 
   it 'Should get metrics with limit and order' do
     @client = setup_client(username: 'jdoe', password: 'password')
-    id = '33c6a285-495a-4442-a818-974b03408a6f'
-    now = 1_458_666_669_263
+    id = SecureRandom.uuid
+    now = 1_462_872_284_000
 
     VCR.use_cassette('Counter_metrics/Should get metrics with limit and order',
+                     decode_compressed_response: true,
                      erb: { id: id, ends: now - t4h, starts: now - (2 * t4h),
-                            minus20: now - 20, minus30: now - 30, minus10: now - 10,
+                            minus10: now - 10, minus20: now - 20, minus30: now - 30,
                             now: now }, record: :none
                     ) do
       # create counter
       @client.counters.create(id: id)
 
-      # push 3  values with timestamps
+      # push 3 values with timestamps
       @client.counters.push_data(id, [{ value: 1, timestamp: now - 30 },
                                       { value: 2, timestamp: now - 20 },
                                       { value: 3, timestamp: now - 10 }])
@@ -174,12 +175,55 @@ describe 'Counter metrics' do
       expect(data.size).to be 4
 
       # retrieve values with limit
-      data = @client.counters.get_data(id, limit: 1)
+      data = @client.counters.get_data(id, limit: 1, order: 'DESC')
       expect(data.size).to be 1
+      expect(data.first['value']).to be 4
 
       # retrieve values from past
       data = @client.counters.get_data(id, starts: now - (2 * t4h), ends: now - t4h)
       expect(data.empty?).to be true
+    end
+  end
+
+  it 'Should get metrics as bucketed results' do
+    @client = setup_client(username: 'jdoe', password: 'password')
+    id = SecureRandom.uuid
+    now = @client.now
+
+    VCR.use_cassette('Counter_metrics/Should get metrics as bucketed results',
+                     decode_compressed_response: true,
+                     erb: { id: id, now: now }, record: :none
+                    ) do
+      # create counter
+      @client.counters.create(id: id)
+
+      # push 10 values with timestamps
+      @client.counters.push_data(id, [{ value: 110, timestamp: now - 110 },
+                                      { value: 100, timestamp: now - 100 },
+                                      { value: 90, timestamp: now - 90 },
+                                      { value: 80, timestamp: now - 80 },
+                                      { value: 70, timestamp: now - 70 },
+                                      { value: 60, timestamp: now - 60 },
+                                      { value: 50, timestamp: now - 50 },
+                                      { value: 40, timestamp: now - 40 },
+                                      { value: 30, timestamp: now - 30 },
+                                      { value: 20, timestamp: now - 20 },
+                                      { value: 10, timestamp: now - 10 }])
+      ERR = 0.001
+      data = @client.counters.get_data(id, starts: now - 105, ends: now - 5, buckets: 5)
+      expect(data.size).to be 5
+      expect(data.first['avg']).to be_within(ERR).of(95.0)
+      expect(data.first['max']).to be_within(ERR).of(100.0)
+      expect(data.first['samples']).to be 2
+
+      data = @client.counters.get_data(id, starts: now - 105, ends: now - 5, buckets: 2)
+      expect(data.size).to be 2
+      expect(data.first['avg']).to be_within(ERR).of(80.0)
+      expect(data.first['samples']).to be 5
+
+      data = @client.counters.get_data(id, starts: now - 105, ends: now - 5, bucketDuration: '50ms')
+      expect(data.size).to be 2
+      expect(data.first['avg']).to be_within(ERR).of(80.0)
     end
   end
 

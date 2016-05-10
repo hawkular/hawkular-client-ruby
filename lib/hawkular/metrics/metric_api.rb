@@ -113,6 +113,7 @@ module Hawkular::Metrics
       # @param id [String] metric definition id
       # @param starts [Integer] optional timestamp (default now - 8h)
       # @param ends [Integer] optional timestamp (default now)
+      # @param buckets [Integer] optional desired number of buckets over the specified timerange
       # @param bucketDuration [String] optional interval (default no aggregation)
       # @param percentiles [String] optional percentiles to calculate
       # @param limit [Integer] optional limit the number of data points returned
