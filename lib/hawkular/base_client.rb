@@ -182,8 +182,8 @@ module Hawkular
     end
 
     def tenant_header
-      @options[:tenant].nil? ? {} : { :'Hawkular-Tenant' => @options[:tenant],
-                                      'tenantId' => @options[:tenant] }
+      @options[:tenant].nil? ? { 'Hawkular-Tenant' => 'hawkular' } : { :'Hawkular-Tenant' => @options[:tenant],
+                                                                       'tenantId'         => @options[:tenant] }
     end
 
     def handle_fault(f)
