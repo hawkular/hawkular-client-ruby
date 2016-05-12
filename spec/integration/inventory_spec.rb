@@ -3,6 +3,7 @@ require "#{File.dirname(__FILE__)}/../spec_helper"
 require 'securerandom'
 
 module Hawkular::Inventory::RSpec
+  include Hawkular::Inventory
   describe 'Inventory/Tenants', vcr: { decode_compressed_response: true } do
     it 'Should Get Tenant For Explicit Credentials' do
       # get the client for given endpoint for given credentials
@@ -78,6 +79,10 @@ module Hawkular::Inventory::RSpec
       @state[:feed_uuid]
     end
 
+    let(:wildfly_type) do
+      CanonicalPath.new(feed_id: feed_id, resource_type_id: hawk_escape_id('WildFly Server'))
+    end
+
     around(:each) do |example|
       record('Inventory', @state, cassette_name, example: example)
     end
@@ -108,7 +113,7 @@ module Hawkular::Inventory::RSpec
     end
 
     it 'Should list WildFlys' do
-      resources = @client.list_resources_for_type(feed_id, 'WildFly Server')
+      resources = @client.list_resources_for_type(wildfly_type.to_s)
 
       expect(resources.size).to be(1)
       wf = resources.first
@@ -116,7 +121,7 @@ module Hawkular::Inventory::RSpec
     end
 
     it 'Should list WildFlys with props' do
-      resources = @client.list_resources_for_type(feed_id, 'WildFly Server', true)
+      resources = @client.list_resources_for_type(wildfly_type.to_s, fetch_properties: true)
 
       expect(resources.size).to be(1)
       wf = resources.first
@@ -124,7 +129,8 @@ module Hawkular::Inventory::RSpec
     end
 
     it 'Should List datasources with no props' do
-      resources = @client.list_resources_for_type(feed_id, 'Datasource', true)
+      type_path = CanonicalPath.new(feed_id: feed_id, resource_type_id: hawk_escape_id('Datasource'))
+      resources = @client.list_resources_for_type(type_path.to_s, fetch_properties: true)
 
       expect(resources.size).to be(2)
       wf = resources.first
@@ -132,7 +138,8 @@ module Hawkular::Inventory::RSpec
     end
 
     it 'Should list URLs' do
-      resources = @client.list_resources_for_type(nil, 'URL')
+      type_path = CanonicalPath.new(resource_type_id: hawk_escape_id('URL'))
+      resources = @client.list_resources_for_type(type_path.to_s)
 
       expect(resources.size).to be(1)
       resource = resources[0]
@@ -143,95 +150,94 @@ module Hawkular::Inventory::RSpec
     end
 
     it 'Should list metrics for WildFlys' do
-      resources = @client.list_resources_for_type(feed_id, 'WildFly Server')
-      expect(resources.size).to be(1)
-
+      resources = @client.list_resources_for_type(wildfly_type.to_s)
       wild_fly = resources[0]
 
-      metrics = @client.list_metrics_for_resource(wild_fly)
+      metrics = @client.list_metrics_for_resource(wild_fly.path)
 
       expect(metrics.size).to be(14)
     end
 
     it 'Should list children of WildFly' do
-      resources = @client.list_resources_for_type(feed_id, 'WildFly Server')
-      expect(resources.size).to be(1)
-
+      resources = @client.list_resources_for_type(wildfly_type.to_s)
       wild_fly = resources[0]
 
-      children = @client.list_child_resources(wild_fly)
+      children = @client.list_child_resources(wild_fly.path)
 
       expect(children.size).to be(22)
     end
 
     it 'Should list children of nested resource' do
-      wildfly_res_id = 'Local~~'
-      datasource_res_id = 'Local~/subsystem=datasources/data-source=ExampleDS'
-      datasource = @client.get_resource(feed_id, [wildfly_res_id, datasource_res_id])
+      wildfly_res_id = hawk_escape_id 'Local~~'
+      datasource_res_id = hawk_escape_id 'Local~/subsystem=datasources/data-source=ExampleDS'
+      resource_path = CanonicalPath.new(feed_id: feed_id, resource_ids: [wildfly_res_id, datasource_res_id])
+      datasource = @client.get_resource(resource_path.to_s)
       expect(datasource.name).to eq('ExampleDS')
 
-      children = @client.list_child_resources(datasource)
+      children = @client.list_child_resources(datasource.path)
 
       expect(children.size).to be(0)
     end
 
     it 'Should list recursive children of WildFly' do
-      resources = @client.list_resources_for_type(feed_id, 'WildFly Server')
+      resources = @client.list_resources_for_type(wildfly_type.to_s)
       wild_fly = resources[0]
 
-      children = @client.list_child_resources(wild_fly, recursive: true)
+      children = @client.list_child_resources(wild_fly.path, recursive: true)
 
       expect(children.size).to be(251)
     end
 
     it 'Should list relationships of WildFly' do
-      resources = @client.list_resources_for_type(feed_id, 'WildFly Server')
+      resources = @client.list_resources_for_type(wildfly_type.to_s)
       wild_fly = resources[0]
 
-      rels = @client.list_relationships(wild_fly)
+      rels = @client.list_relationships(wild_fly.path)
 
       expect(rels.size).to be(61)
     end
 
     it 'Should list heap metrics for WildFlys' do
-      resources = @client.list_resources_for_type(feed_id, 'WildFly Server')
-      expect(resources.size).to be(1)
-
+      resources = @client.list_resources_for_type(wildfly_type.to_s)
       wild_fly = resources[0]
 
-      metrics = @client.list_metrics_for_resource(wild_fly, type: 'GAUGE', match: 'Metrics~Heap')
+      metrics = @client.list_metrics_for_resource(wild_fly.path, type: 'GAUGE', match: 'Metrics~Heap')
       expect(metrics.size).to be(3)
 
-      metrics = @client.list_metrics_for_resource(wild_fly, match: 'Metrics~Heap')
+      metrics = @client.list_metrics_for_resource(wild_fly.path, match: 'Metrics~Heap')
       expect(metrics.size).to be(3)
 
-      metrics = @client.list_metrics_for_resource(wild_fly, type: 'GAUGE')
+      metrics = @client.list_metrics_for_resource(wild_fly.path, type: 'GAUGE')
       expect(metrics.size).to be(8)
     end
 
     it 'Should list metrics of given metric type' do
-      metrics = @client.list_metrics_for_metric_type(feed_id, 'Total Space')
+      type_path = CanonicalPath.new(feed_id: feed_id, metric_type_id: hawk_escape_id('Total Space'))
+      metrics = @client.list_metrics_for_metric_type(type_path)
 
       expect(metrics.size).to be(7)
     end
 
     it 'Should list metrics of given resource type' do
-      metrics = @client.list_metrics_for_resource_type(feed_id, 'WildFly Server')
+      metrics = @client.list_metrics_for_resource_type(wildfly_type.to_s)
 
       expect(metrics.size).to be(14)
     end
 
     it 'Should return config data of given resource' do
-      config = @client.get_config_data_for_resource(feed_id, 'Local~~')
+      resource_path = CanonicalPath.new(feed_id: feed_id, resource_ids: [hawk_escape_id('Local~~')])
+      config = @client.get_config_data_for_resource(resource_path)
 
       expect(config['value']['Server State']).to eq('running')
       expect(config['value']['Product Name']).to eq('Hawkular')
     end
 
     it 'Should return config data of given nested resource' do
-      wildfly_res_id = 'Local~~'
-      datasource_res_id = 'Local~/subsystem=datasources/data-source=ExampleDS'
-      config = @client.get_config_data_for_resource(feed_id, [wildfly_res_id, datasource_res_id])
+      wildfly_res_id = hawk_escape_id 'Local~~'
+      datasource_res_id = hawk_escape_id 'Local~/subsystem=datasources/data-source=ExampleDS'
+      resource_path = CanonicalPath.new(feed_id: feed_id, resource_ids: [wildfly_res_id, datasource_res_id])
+
+      config = @client.get_config_data_for_resource(resource_path)
 
       expect(config['value']['Username']).to eq('sa')
       expect(config['value']['Driver Name']).to eq('h2')
@@ -279,9 +285,11 @@ module Hawkular::Inventory::RSpec
       ret = @client.create_resource_type new_feed_id, 'rt-123', 'ResourceType'
       type_path = ret.path
 
-      @client.create_resource new_feed_id, type_path, 'r123', 'My Resource', 'version' => 1.0
+      @client.create_resource type_path, 'r123', 'My Resource', 'version' => 1.0
 
-      r = @client.get_resource(new_feed_id, 'r123', false)
+      resource_path = CanonicalPath.new(feed_id: new_feed_id, resource_ids: ['r123'])
+
+      r = @client.get_resource(resource_path, false)
       expect(r.id).to eq('r123')
       expect(r.properties).not_to be_empty
     end
@@ -292,9 +300,10 @@ module Hawkular::Inventory::RSpec
       ret = @client.create_resource_type new_feed_id, 'rt-123', 'ResourceType'
       type_path = ret.path
 
-      @client.create_resource new_feed_id, type_path, 'r124', 'My Resource', 'version' => 1.0
+      @client.create_resource type_path, 'r124', 'My Resource', 'version' => 1.0
+      resource_path = CanonicalPath.new(feed_id: new_feed_id, resource_ids: ['r124'])
 
-      r = @client.get_resource(new_feed_id, 'r124', false)
+      r = @client.get_resource(resource_path, false)
       expect(r.id).to eq('r124')
       expect(r.properties).not_to be_empty
 
@@ -302,12 +311,12 @@ module Hawkular::Inventory::RSpec
       expect(mt).not_to be_nil
       expect(mt.id).to eq('mt-124')
 
-      m = @client.create_metric_for_resource new_feed_id, 'm-124', mt.path, 'r124'
+      m = @client.create_metric_for_resource mt.path, r.path, 'm-124'
       expect(m).not_to be_nil
       expect(m.id).to eq('m-124')
       expect(m.name).to eq('m-124')
 
-      m = @client.create_metric_for_resource new_feed_id, 'm-124-1', mt.path, 'r124', 'Metric1'
+      m = @client.create_metric_for_resource mt.path, r.path, 'm-124-1', 'Metric1'
       expect(m).not_to be_nil
       expect(m.id).to eq('m-124-1')
       expect(m.name).to eq('Metric1')
@@ -319,8 +328,8 @@ module Hawkular::Inventory::RSpec
       ret = @client.create_resource_type new_feed_id, 'rt-123-1', 'ResourceType'
       type_path = ret.path
 
-      @client.create_resource new_feed_id, type_path, 'r124-a', 'Res-a'
-      nested_resource = @client.create_resource_under_resource new_feed_id, type_path, ['r124-a'], 'r124-b', 'Res-a'
+      parent = @client.create_resource type_path, 'r124-a', 'Res-a'
+      nested_resource = @client.create_resource_under_resource type_path, parent.path, 'r124-b', 'Res-a'
       expect(nested_resource.path).to include('r;r124-a/r;r124-b')
 
       mt = @client.create_metric_type new_feed_id, 'mt-124-a'
@@ -328,11 +337,11 @@ module Hawkular::Inventory::RSpec
       expect(mt.id).to eq('mt-124-a')
 
       m_name = 'MetricUnderNestedResource'
-      m = @client.create_metric_for_resource new_feed_id, 'm-124-a', mt.path, %w(r124-a r124-b), m_name
+      m = @client.create_metric_for_resource mt.path, nested_resource.path, 'm-124-a', m_name
       expect(m.id).to eq('m-124-a')
       expect(m.name).to eq(m_name)
 
-      metrics = @client.list_metrics_for_resource nested_resource
+      metrics = @client.list_metrics_for_resource nested_resource.path
       expect(metrics.size).to eq(1)
       expect(metrics[0].id).to eq(m.id)
     end
@@ -343,17 +352,18 @@ module Hawkular::Inventory::RSpec
       ret = @client.create_resource_type new_feed_id, 'rt-123', 'ResourceType'
       type_path = ret.path
 
-      @client.create_resource new_feed_id, type_path, 'r125', 'My Resource', 'version' => 1.0
+      r1 = @client.create_resource type_path, 'r125', 'My Resource', 'version' => 1.0
 
-      r = @client.get_resource(new_feed_id, 'r125', true)
-      expect(r.id).to eq('r125')
-      expect(r.properties).not_to be_empty
+      r2 = @client.get_resource(r1.path, true)
+      expect(r2.id).to eq('r125')
+      expect(r1.id).to eq(r2.id)
+      expect(r2.properties).not_to be_empty
     end
 
     it 'Should not find an unknown resource' do
       new_feed_id = 'feed_may_exist'
-
-      expect { @client.get_resource(new_feed_id, '*bla does not exist*') }
+      path = CanonicalPath.new(feed_id: new_feed_id, resource_ids: [hawk_escape_id('*bla does not exist*')])
+      expect { @client.get_resource(path) }
         .to raise_error(Hawkular::BaseClient::HawkularException, /No Resource found/)
     end
 
@@ -419,10 +429,10 @@ module Hawkular::Inventory::RSpec
           type_path = ret.path
 
           # create 3 resources
-          @client.create_resource new_feed_id, type_path, id_1, 'My Resource 1', 'version' => 1.0
-          @client.create_resource new_feed_id, type_path, id_2, 'My Resource 2', 'version' => 1.1
+          @client.create_resource type_path, id_1, 'My Resource 1', 'version' => 1.0
+          @client.create_resource type_path, id_2, 'My Resource 2', 'version' => 1.1
           resources_closable.close
-          @client.create_resource new_feed_id, type_path, id_3, 'My Resource 3', 'version' => 1.2
+          @client.create_resource type_path, id_3, 'My Resource 3', 'version' => 1.2
 
           @client.delete_feed new_feed_id
         end

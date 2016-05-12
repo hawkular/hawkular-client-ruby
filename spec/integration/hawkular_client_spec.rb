@@ -62,8 +62,10 @@ module Hawkular::Client::RSpec
       end
 
       it 'Should both list WildFlys' do
-        resources1 = @client.list_resources_for_type(@state[:feed], 'WildFly Server')
-        resources2 = @hawkular_client.inventory_list_resources_for_type(@state[:feed], 'WildFly Server')
+        path = Hawkular::Inventory::CanonicalPath.new(feed_id: @state[:feed],
+                                                      resource_type_id: hawk_escape_id('WildFly Server'))
+        resources1 = @client.list_resources_for_type(path.to_s)
+        resources2 = @hawkular_client.inventory_list_resources_for_type(path)
 
         expect(resources1).to match_array(resources2)
       end
