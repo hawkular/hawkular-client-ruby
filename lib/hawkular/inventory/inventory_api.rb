@@ -55,7 +55,7 @@ module Hawkular::Inventory
       ret.map { |f| f['id'] }
     end
 
-    # List resource types. If no need is given all types are listed
+    # List resource types. If no feed_id is given all types are listed
     # @param [String] feed_id The id of the feed the type lives under. Can be nil for feedless types
     # @return [Array<ResourceType>] List of types, that can be empty
     def list_resource_types(feed_id = nil)
@@ -72,40 +72,40 @@ module Hawkular::Inventory
     # @param [String] feed_id Id of the feed that hosts the resources
     # @param [Boolean] fetch_properties Should the config data be fetched too
     # @return [Array<Resource>] List of resources, which can be empty.
-    def list_resources_for_feed(feed_id, fetch_properties = false)
+    def list_resources_for_feed(feed_id, fetch_properties = false, filter = {})
       fail 'Feed id must be given' unless feed_id
       the_feed = hawk_escape_id feed
       ret = http_get("/feeds/#{the_feed}/resources")
-      ret.map do |r|
+      to_filter = ret.map do |r|
         if fetch_properties
-          p = get_config_data_for_resource(feed_id, r['id'])
+          p = get_config_data_for_resource(r['path'])
           r['properties'] = p['value']
         end
         Resource.new(r)
       end
+      filter_entities(to_filter, filter)
     end
 
-    # List the resources for the passed feed and resource type. The representation for
-    # resources under a feed are sparse and additional data must be retrived separately.
+    # List the resources for the passed resource type. The representation for
+    # resources under a feed are sparse and additional data must be retrieved separately.
     # It is possible though to also obtain runtime properties by setting #fetch_properties to true.
-    # @param [String] feed_id The id of the feed the type lives under. Can be nil for all feeds
-    # @param [String] type Name of the type to look for. Can be obtained from {ResourceType}.id.
-    #   Must not be nil
+    # @param [String] resource_type_path Canonical path of the resource type. Can be obtained from {ResourceType}.path.
+    #   Must not be nil. The tenant_id in the canonical path doesn't have to be there.
     # @param [Boolean] fetch_properties Shall additional runtime properties be fetched?
     # @return [Array<Resource>] List of resources. Can be empty
-    def list_resources_for_type(feed_id, type, fetch_properties = false)
-      fail 'Type must not be nil' unless type
-      the_type = hawk_escape_id type
+    def list_resources_for_type(resource_type_path, fetch_properties = false)
+      path = resource_type_path.is_a?(CanonicalPath) ? resource_type_path : CanonicalPath.parse(resource_type_path)
+      resource_type_id = path.resource_type_id
+      feed_id = path.feed_id
       if feed_id.nil?
-        ret = http_get("resourceTypes/#{the_type}/resources")
+        ret = http_get("resourceTypes/#{resource_type_id}/resources")
       else
 
-        the_feed = hawk_escape_id feed_id
-        ret = http_get("/feeds/#{the_feed}/resourceTypes/#{the_type}/resources")
+        ret = http_get("/feeds/#{feed_id}/resourceTypes/#{resource_type_id}/resources")
       end
       ret.map do |r|
         if fetch_properties && !feed_id.nil?
-          p = get_config_data_for_resource(feed_id, r['id'])
+          p = get_config_data_for_resource(r['path'])
           r['properties'] = p['value']
         end
         Resource.new(r)
@@ -113,50 +113,45 @@ module Hawkular::Inventory
     end
 
     # Retrieve runtime properties for the passed resource
-    # @param [String] feed_id Feed of the resource
-    # @param [Array<String>] res_ids Ids of the resource to read properties from (parent to child order)
+    # @param [String] resource_path Canonical path of the resource to read properties from.
     # @return [Hash<String,Object] Hash with additional data
-    #
-    # WARNING: changing the order of params, feed_id goes first (breaking change)
-    def get_config_data_for_resource(feed_id, res_ids)
-      resource_path = if res_ids.is_a?(Array)
-                        res_ids.map { |id| hawk_escape_id id }.join('/')
-                      else
-                        hawk_escape_id res_ids
-                      end
-      the_feed = hawk_escape_id feed_id
+    def get_config_data_for_resource(resource_path)
+      path = resource_path.is_a?(CanonicalPath) ? resource_path : CanonicalPath.parse(resource_path)
+      resource_path = path.resource_ids.join('/')
+      feed_id = path.feed_id
       query = generate_query_params dataType: 'configuration'
-      http_get("feeds/#{the_feed}/resources/#{resource_path}/data#{query}")
+      http_get("feeds/#{feed_id}/resources/#{resource_path}/data#{query}")
     rescue
       {}
     end
 
     # Obtain the child resources of the passed resource. In case of a WildFly server,
     # those would be Datasources, Deployments and so on.
-    # @param [Resource] parent_resource Resource to obtain children from
+    # @param [String] parent_res_path Canonical path of the resource to obtain children from.
     # @param [Boolean] recursive Whether to fetch also all the children of children of ...
     # @return [Array<Resource>] List of resources that are children of the given parent resource.
     #   Can be empty
-    def list_child_resources(parent_resource, recursive = false)
-      the_feed = hawk_escape_id parent_resource.feed
-      resource_path_escaped = CanonicalPath.parse(parent_resource.path).resource_ids.join('/')
-
+    def list_child_resources(parent_res_path, recursive = false)
+      path = parent_res_path.is_a?(CanonicalPath) ? parent_res_path : CanonicalPath.parse(parent_res_path)
+      parent_resource_path = path.resource_ids.join('/')
+      feed_id = path.feed_id
       which_children = (recursive ? '/recursiveChildren' : '/children')
-      ret = http_get("/feeds/#{the_feed}/resources/#{resource_path_escaped}#{which_children}")
+      ret = http_get("/feeds/#{feed_id}/resources/#{parent_resource_path}#{which_children}")
       ret.map { |r| Resource.new(r) }
     end
 
     # Obtain a list of relationships starting at the passed resource
-    # @param [Resource] resource One end of the relationship
+    # @param [String] entity_path Canonical path of the entity that forms the one end of the relationship
     # @param [String] named Name of the relationship
     # @return [Array<Relationship>] List of relationships
-    def list_relationships(resource, named = nil)
+    def list_relationships(entity_path, named = nil)
+      path = entity_path.is_a?(CanonicalPath) ? entity_path : CanonicalPath.parse(entity_path)
       query_params = {
         sort: '__targetCp'
       }
       query_params[:named] = named unless named.nil?
       query = generate_query_params query_params
-      ret = http_get("/path#{resource.path}/relationships#{query}")
+      ret = http_get("/path#{path}/relationships#{query}")
       ret.map { |r| Relationship.new(r) }
     end
 
@@ -178,10 +173,11 @@ module Hawkular::Inventory
     end
 
     # Retrieve a single entity from inventory by its canonical path
-    # @param [CanonicalPath] path canonical path of the entity
+    # @param [String] path canonical path of the entity
     # @return inventory entity
     def get_entity(path)
-      http_get("path#{path}")
+      c_path = path.is_a?(CanonicalPath) ? path : CanonicalPath.parse(path)
+      http_get("path#{c_path}")
     end
 
     # [15:01:51]  <jkremser>	pilhuhn, this works for me curl -XPOST
@@ -204,48 +200,46 @@ module Hawkular::Inventory
     #             rel.to_h)
     # end
 
-    # List the metrics for the passed feed and metric type. If feed is not passed,
+    # List the metrics for the passed metric type. If feed is not passed in the path,
     # all the metrics across all the feeds of a given type will be retrieved
     # This method may perform multiple REST calls.
-    # @param [String] feed_id The id of the feed the type lives under. Can be nil for all feeds
-    # @param [String] type Name of the metric type to look for. Can be obtained from {MetricType}.id.
-    #   Must not be nil
+    # @param [String] metric_type_path Canonical path of the resource type to look for. Can be obtained from
+    #   {MetricType}.path. Must not be nil. The tenant_id in the canonical path doesn't have to be there.
     # @return [Array<Metric>] List of metrics. Can be empty
-    def list_metrics_for_metric_type(feed_id, type)
-      fail 'Type must not be nil' unless type
-      the_type = hawk_escape_id type
+    def list_metrics_for_metric_type(metric_type_path)
+      path = metric_type_path.is_a?(CanonicalPath) ? metric_type_path : CanonicalPath.parse(metric_type_path)
+      metric_type_id = path.metric_type_id
+      feed_id = path.feed_id
       if feed_id.nil?
-        type_hash = http_get("metricTypes/#{the_type}")
+        type_hash = http_get("metricTypes/#{metric_type_id}")
       else
-        the_feed = hawk_escape_id feed_id
-        type_hash = http_get("/feeds/#{the_feed}/metricTypes/#{the_type}")
+        type_hash = http_get("/feeds/#{feed_id}/metricTypes/#{metric_type_id}")
       end
 
-      rels = list_relationships(ResourceType.new(type_hash), 'defines')
-      rels.map do |rel|
-        path = CanonicalPath.parse(rel.target_id.to_s)
-        metric_hash = get_entity path
+      relations = list_relationships(type_hash['path'], 'defines')
+      relations.map do |rel|
+        metric_hash = get_entity rel.target_id.to_s
         Metric.new(metric_hash)
       end
     rescue
       []
     end
 
-    # List the metrics for the passed feed and all the resources of given resource type.
-    # If feed is not passed, all the metrics across all the feeds of a resource type will be retrieved
-    # This method may perform multiple REST calls.
-    # @param [String] feed The id of the feed the type lives under. Can be nil for all feeds
-    # @param [String] type Name of the resource type to look for. Can be obtained from {ResourceType}.id.
-    #   Must not be nil
+    # List the metrics for all the resources of a given resource type.
+    # If feed is not passed in the resource type canonical path, all the metrics across all the feeds of a resource
+    # type will be retrieved. This method may perform multiple REST calls.
+    # @param [String] resource_type_path Canonical path of the resource type to look for. Can be obtained from
+    #   {ResourceType}.path. Must not be nil. The tenant_id in the canonical path doesn't have to be there.
     # @return [Array<Metric>] List of metrics. Can be empty
-    def list_metrics_for_resource_type(feed, type)
-      fail 'Type must not be nil' unless type
-      the_type = hawk_escape_id type
-      if feed.nil?
-        ret = http_get("resourceTypes/#{the_type}/resources")
+    def list_metrics_for_resource_type(resource_type_path)
+      path = resource_type_path.is_a?(CanonicalPath) ? resource_type_path : CanonicalPath.parse(resource_type_path)
+      resource_type_id = path.resource_type_id
+      feed_id = path.feed_id
+
+      if feed_id.nil?
+        ret = http_get("resourceTypes/#{resource_type_id}/resources")
       else
-        the_feed = hawk_escape_id feed
-        ret = http_get("feeds/#{the_feed}/resourceTypes/#{the_type}/resources")
+        ret = http_get("feeds/#{feed_id}/resourceTypes/#{resource_type_id}/resources")
       end
       ret.flat_map do |r|
         path = CanonicalPath.parse(r['path'])
@@ -261,7 +255,7 @@ module Hawkular::Inventory
 
     # List metric (definitions) for the passed resource. It is possible to filter down the
     #   result by a filter to only return a subset. The
-    # @param [Resource] resource
+    # @param [String] resource_path Canonical path of the resource.
     # @param [Hash{Symbol=>String}] filter for 'type' and 'match'
     #   Metric type can be one of 'GAUGE', 'COUNTER', 'AVAILABILITY'. If a key is missing
     #   it will not be used for filtering
@@ -273,18 +267,15 @@ module Hawkular::Inventory
     #    client.list_metrics_for_resource(wild_fly, type: 'COUNTER')
     #    # Don't filter, return all metric definitions
     #    client.list_metrics_for_resource(wild_fly)
-    def list_metrics_for_resource(resource, filter = {})
-      the_feed = hawk_escape_id resource.feed
-      resource_path_escaped = CanonicalPath.parse(resource.path).resource_ids.join('/')
+    def list_metrics_for_resource(resource_path, filter = {})
+      path = resource_path.is_a?(CanonicalPath) ? resource_path : CanonicalPath.parse(resource_path)
+      feed_id = path.feed_id
+      resource_path_escaped = path.resource_ids.join('/')
 
       query = generate_query_params sort: 'id'
-      ret = http_get("/feeds/#{the_feed}/resources/#{resource_path_escaped}/metrics#{query}")
-      with_nils = ret.map do |m|
-        metric_new = Metric.new(m)
-        found = should_include?(metric_new, filter)
-        metric_new if found
-      end
-      with_nils.compact
+      ret = http_get("/feeds/#{feed_id}/resources/#{resource_path_escaped}/metrics#{query}")
+      to_filter = ret.map { |m| Metric.new(m) }
+      filter_entities(to_filter, filter)
     end
 
     # Create a new feed
@@ -340,62 +331,61 @@ module Hawkular::Inventory
       ResourceType.new(res)
     end
 
-    # Create a resource of a given type under a given feed. To retrieve that resource
+    # Create a resource of a given type. To retrieve that resource
     # you need to call {#get_resource}
-    # @param [String] feed_id Id of the feed to add the resource to
-    # @param [String] type_path Path of the resource type of this resource
-    # @param [String] resource_id Id of the resource
-    # @param [String] resource_name Name of the resource
+    # @param [String] resource_type_path Canonical path of the new resource's type.
+    # @param [String] resource_id Id of the new resource
+    # @param [String] resource_name Name of the new resource
     # @param [Hash<String,Object>] properties Additional properties. Those are not the config-properties
-    def create_resource(feed_id, type_path, resource_id, resource_name = nil, properties = {})
-      create_resource_under_resource(feed_id, type_path, [], resource_id, resource_name, properties)
+    def create_resource(resource_type_path, resource_id, resource_name = nil, properties = {})
+      create_resource_under_resource(resource_type_path, nil, resource_id, resource_name, properties)
     end
 
-    # Create a resource of a given type under a given feed. To retrieve that resource
+    # Create a resource of a given type under a given resource. To retrieve that resource
     # you need to call {#get_resource}
-    # @param [String] feed_id Id of the feed to add the resource to
-    # @param [String] type_path Path of the resource type of this resource
-    # @param [Array<String>] parent_resource_ids Ids of the resources under which we create this resource
-    #                                            (parent to child order)
+    # @param [String] res_type_path Canonical path of the new resource's type.
+    # @param [String] parent_res_path Canonical path of the resource under which we create this resource.
+    #   If nil, the top-lvl resource will be created.
     # @param [String] resource_id Id of the resource
     # @param [String] resource_name Name of the resource
     # @param [Hash<String,Object>] properties Additional properties. Those are not the config-properties
-    def create_resource_under_resource(feed_id, type_path, parent_resource_ids, resource_id, resource_name = nil,
+    def create_resource_under_resource(res_type_path, parent_res_path, resource_id, resource_name = nil,
                                        properties = {})
-      the_feed = hawk_escape_id feed_id
+      type_path = res_type_path.is_a?(CanonicalPath) ? res_type_path : CanonicalPath.parse(res_type_path)
+      feed_id = type_path.feed_id
 
       res = create_blueprint
       res[:properties] = properties
       res[:id] = resource_id
       res[:name] = resource_name
-      res[:resourceTypePath] = type_path
+      res[:resourceTypePath] = type_path.to_s
 
       begin
-        if parent_resource_ids.empty?
-          http_post("/feeds/#{the_feed}/resources", res)
+        if parent_res_path.nil?
+          res = http_post("/feeds/#{feed_id}/resources", res)
         else
-          parent_resource_path = parent_resource_ids.map { |id| hawk_escape_id id }.join('/')
-          http_post("/feeds/#{the_feed}/resources/#{parent_resource_path}", res)
+          path = parent_res_path.is_a?(CanonicalPath) ? parent_res_path : CanonicalPath.parse(parent_res_path)
+          resource_path = path.resource_ids.join('/')
+          res = http_post("/feeds/#{feed_id}/resources/#{resource_path}", res)
         end
       rescue HawkularException => error
         # 409 We already exist -> that is ok
         raise unless error.status_code == 409
       end
-
-      get_resource feed_id, parent_resource_ids << resource_id, false
+      Resource.new(res)
     end
 
-    # Return the resource object for the passed id
-    # @param [String] feed_id Id of the feed this resource belongs to
-    # @param [Array<String>] res_ids Ids of the resource to fetch (parent to child order)
+    # Return the resource object for the passed path
+    # @param [String] resource_path Canonical path of the resource to fetch.
     # @param [Boolean] fetch_resource_config Should the resource config data be fetched?
-    def get_resource(feed_id, res_ids, fetch_resource_config = true)
-      the_feed = hawk_escape_id feed_id
-      res_path = res_ids.is_a?(Array) ? (res_ids.map { |id| hawk_escape_id id }.join('/')) : hawk_escape_id(res_ids)
+    def get_resource(resource_path, fetch_resource_config = true)
+      path = resource_path.is_a?(CanonicalPath) ? resource_path : CanonicalPath.parse(resource_path)
+      feed_id = path.feed_id
+      res_path = path.resource_ids.join('/')
 
-      res = http_get("/feeds/#{the_feed}/resources/#{res_path}")
+      res = http_get("/feeds/#{feed_id}/resources/#{res_path}")
       if fetch_resource_config
-        p = get_config_data_for_resource(feed_id, res_ids)
+        p = get_config_data_for_resource(resource_path)
         res['properties'] ||= {}
         res['properties'].merge p['value'] unless p['value'].nil?
       end
@@ -430,28 +420,34 @@ module Hawkular::Inventory
     end
 
     # Create a Metric and associate it with a resource.
-    # @param [String] feed_id Id of the feed
+    # @param [String] metric_type_path Canonical path of the metric type of the new metric.
+    # @param [String] resource_path Canonical path of the resource to which we want to associate the metric.
     # @param [String] metric_id Id of the metric
-    # @param [String] type_path Full path of the MetricType
-    # @param [Array<String>] res_ids Ids of the resource to associate the metric with (from parent to child)
     # @param [String] metric_name a (display) name for the metric. If nil, #metric_id is used.
     # @return [Metric] The metric created or if it already existed the version from the server
-    def create_metric_for_resource(feed_id, metric_id, type_path, res_ids, metric_name = nil)
-      the_feed = hawk_escape_id feed_id
-      res_path = res_ids.is_a?(Array) ? (res_ids.map { |id| hawk_escape_id id }.join('/')) : hawk_escape_id(res_ids)
+    def create_metric_for_resource(metric_type_path, resource_path, metric_id, metric_name = nil)
+      type_path = metric_type_path.is_a?(CanonicalPath) ? metric_type_path : CanonicalPath.parse(metric_type_path)
+      feed_id = type_path.feed_id
+      res_path = resource_path.is_a?(CanonicalPath) ? resource_path : CanonicalPath.parse(resource_path)
+      res_path_str = res_path.resource_ids.join('/')
 
       m = {}
       m['id'] = metric_id
       m['name'] = metric_name || metric_id
-      m['metricTypePath'] = type_path
+      m['metricTypePath'] = type_path.to_s
 
       begin
-        http_post("/feeds/#{the_feed}/metrics", m)
+        http_post("/feeds/#{feed_id}/metrics", m)
+      rescue HawkularException => error
+        # 409 We already exist -> that is ok
+        raise unless error.status_code == 409
+      end
 
-        ret = http_get("/feeds/#{the_feed}/metrics/#{metric_id}")
-        the_metric = Metric.new(ret)
+      ret = http_get("/feeds/#{feed_id}/metrics/#{metric_id}")
+      the_metric = Metric.new(ret)
 
-        http_post("/feeds/#{the_feed}/resources/#{res_path}/metrics", [the_metric.path])
+      begin
+        http_post("/feeds/#{feed_id}/resources/#{res_path_str}/metrics", [the_metric.path])
       rescue HawkularException => error
         # 409 We already exist -> that is ok
         raise unless error.status_code == 409
@@ -515,15 +511,17 @@ module Hawkular::Inventory
       mt
     end
 
-    def should_include?(metric_new, filter)
-      found = true
-      if filter.empty?
+    def filter_entities(entities, filter)
+      entities.select do |entity|
         found = true
-      else
-        found = false unless filter[:type] == (metric_new.type) || filter[:type].nil?
-        found = false unless filter[:match].nil? || metric_new.id.include?(filter[:match])
+        if filter.empty?
+          found = true
+        else
+          found = false unless filter[:type] == (entity.type) || filter[:type].nil?
+          found = false unless filter[:match].nil? || entity.id.include?(filter[:match])
+        end
+        found
       end
-      found
     end
   end
 
@@ -672,7 +670,6 @@ module Hawkular::Inventory
     attr_reader :metric_type_id
 
     def initialize(hash)
-      fail 'At least tenant_id must be specified' if hash[:tenant_id].to_s.strip.length == 0
       @tenant_id = hash[:tenant_id]
       @feed_id = hash[:feed_id]
       @environment_id = hash[:environment_id]
