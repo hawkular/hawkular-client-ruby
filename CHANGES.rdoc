@@ -3,6 +3,24 @@
 This document describes the relevant changes between releases of the
 _hawkular-client_ project.
 
+=== V 1.0.0
+* This major release contains changes that *may break the backward compatibility*, more info here: link:api_breaking_changes.rdoc
+* To use the client use the <code>require 'hawkular/hawkular_client'</code> instead of <code>require 'hawkular_all'</code>
+* Inventory client has been rewritten to use the cannonical paths
+* New supoort for group triggers in alert sub-client
+* New method for creating event in the hawkular alert component
+* New method for listing the available operation types on a resource type in inventory
+* Hawkular-Tenant HTTP header is automatically added to each HTTP request
+* New support for proxy option in the internal rest_client
+* Improved VCR tests - some changing parameters in the data can be parametrized and the cassettes are stored as templates. Now, it's also possible to record those templates with <code>VCR_UPDATE=1</code>
+* Tests are run also on ruby 2.3.0
+* Couple of new tests
+
+=== V 0.2.2
+
+* Bug fix to correctly read resource info for resources that are not directly below a feed.
+  Issue #54[https://github.com/hawkular/hawkular-client-ruby/issues/54]
+
 === V 0.2.1
 
 * Add support to create items in inventory
@@ -17,16 +35,16 @@ _hawkular-client_ project.
 
 * Add support for Hawkular-Inventory and Hawkular-Alerts
 * Reshuffling of inner classes
-* The sub-url that is passed to `http_*` methods is escaped via
-  `Addressable::URI.escape()`
+* The sub-url that is passed to +http_*+ methods is escaped via
+  +Addressable::URI.escape()+
 
 
 === V 0.1.2
 
-* Fix exception handling - this was missing `require 'English'`
+* Fix exception handling - this was missing <code>require 'English'</code>
 
 === V 0.1.1
 
 * Add VCR tests
-* Metrics::Client.new now requires a hash for credentials
+* +Metrics::Client.new+ now requires a hash for credentials
 * Code cleanup and enforcement via RuboCop

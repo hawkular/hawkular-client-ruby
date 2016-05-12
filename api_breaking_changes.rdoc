@@ -1,0 +1,79 @@
+== Breaking changes in the major releases
+
+=== 1.0.0
+
+To use the client use the <code>require 'hawkular/hawkular_client'</code> instead of <code>require 'hawkular_all'</code>
+
+---
+
+While it's still possible to use individual component clients (inventory, alert, metrics, operation, token), the preferred way is to use
+the unified client that has reference on those 'sub-clients':
+
+<code>::Hawkular::Client.new(:entrypoint => 'http://localhost:8080', :credentials => {username: 'jdoe', password: 'password'})</code>
+
+See the link:spec/integraion/hawkular_client_spec.rb to see more details.
+
+
+---
+
+In the <code>lib/hawkular/inventory/inventory_api.rb</code> all following methods have different signatures (+old+ -> +new+):
+
+<code>list_resources_for_type(feed_id, type, fetch_properties = false)</code>
+->
+<code>list_resources_for_type(type_path, fetch_properties = false, filter = {})</code>
+
+
+<code>get_config_data_for_resource(feed_id, res_ids)</code>
+->
+<code>get_config_data_for_resource(resource_path)</code>
+
+
+<code>def list_child_resources(Resource parent_resource, recursive = false)</code>
+->
+<code>def list_child_resources(parent_resource_path, recursive = false)</code>
+
+
+<code>list_relationships(Resource resource, named = nil)</code>
+->
+<code>list_relationships(path, named = nil)</code>
+
+
+<code>list_relationships_for_feed(feed_id, named = nil)</code>
+->
+<code>list_relationships_for_feed(path, named = nil)</code>
+
+
+<code>list_metrics_for_metric_type(feed_id, type)</code>
+->
+<code>list_metrics_for_metric_type(met_type_path)</code>
+
+
+<code>list_metrics_for_resource_type(feed, type)</code>
+->
+<code>list_metrics_for_resource_type(res_type_path)</code>
+
+
+<code>list_metrics_for_resource(Resource resource, filter = {})</code>
+->
+<code>list_metrics_for_resource(resource_path, filter = {})</code>
+
+
+<code>create_resource(feed_id, type_path, resource_id, resource_name = nil, properties = {})</code>
+->
+<code>create_resource(type_path, resource_id, resource_name = nil, properties = {})</code>
+
+
+<code>create_resource_under_resource(feed_id, type_path, parent_resource_ids, resource_id, resource_name = nil, properties = {})</code>
+->
+<code>create_resource_under_resource(type_path, parent_resource_path, resource_id, resource_name = nil, properties = {})</code>
+
+
+<code>get_resource(feed_id, res_ids, fetch_resource_config = true)</code>
+->
+<code>get_resource(res_path, fetch_resource_config = true)</code>
+
+
+<code>create_metric_for_resource(feed_id, metric_id, type_path, res_ids, metric_name = nil)</code>
+->
+<code>create_metric_for_resource(metric_type_path, resource_path, metric_id, metric_name = nil)</code>
+
