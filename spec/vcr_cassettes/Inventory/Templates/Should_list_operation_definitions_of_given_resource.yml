@@ -1,0 +1,185 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/<%= feed_uuid %>/resourceTypes/WildFly%20Server/resources
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Hawkular-Tenant:
+      - hawkular
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Thu, 12 May 2016 16:05:20 GMT
+      X-Total-Count:
+      - '1'
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '351'
+      Link:
+      - <http://localhost:8080/hawkular/inventory/feeds/<%= feed_uuid %>/resourceTypes/WildFly%20Server/resources>;
+        rel="current"
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        [ {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;WildFly%20Server",
+            "name" : "WildFly Server",
+            "id" : "WildFly Server"
+          },
+          "name" : "localhost/Local",
+          "id" : "Local~~"
+        } ]
+    http_version: 
+  recorded_at: Thu, 12 May 2016 16:05:20 GMT
+- request:
+    method: get
+    uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/<%= feed_uuid %>/resources/Local~~
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Hawkular-Tenant:
+      - hawkular
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Thu, 12 May 2016 16:05:20 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '347'
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/r;Local~~",
+          "type" : {
+            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;WildFly%20Server",
+            "name" : "WildFly Server",
+            "id" : "WildFly Server"
+          },
+          "name" : "localhost/Local",
+          "id" : "Local~~"
+        }
+    http_version: 
+  recorded_at: Thu, 12 May 2016 16:05:20 GMT
+- request:
+    method: get
+    uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/<%= feed_uuid %>/resourceTypes/WildFly%20Server/operationTypes
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Hawkular-Tenant:
+      - hawkular
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Thu, 12 May 2016 16:05:20 GMT
+      X-Total-Count:
+      - '4'
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '667'
+      Link:
+      - <http://localhost:8080/hawkular/inventory/feeds/<%= feed_uuid %>/resourceTypes/WildFly%20Server/operationTypes>;
+        rel="current"
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        [ {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;WildFly%20Server/ot;JDR",
+          "name" : "JDR",
+          "id" : "JDR"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;WildFly%20Server/ot;Reload",
+          "name" : "Reload",
+          "id" : "Reload"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;WildFly%20Server/ot;Shutdown",
+          "name" : "Shutdown",
+          "id" : "Shutdown"
+        }, {
+          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;<%= feed_uuid %>/rt;WildFly%20Server/ot;Deploy",
+          "name" : "Deploy",
+          "id" : "Deploy"
+        } ]
+    http_version: 
+  recorded_at: Thu, 12 May 2016 16:05:20 GMT
+recorded_with: VCR 3.0.1

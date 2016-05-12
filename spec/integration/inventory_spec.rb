@@ -244,16 +244,22 @@ module Hawkular::Inventory::RSpec
     end
 
     it 'Should list operation definitions of given resource type' do
-      wild_flies = @client.list_resources_for_type(feed_id, 'WildFly Server')
-      resource_type_path = wild_flies[0].type_path
+      operation_definitions = @client.list_operation_definitions(wildfly_type.to_s)
 
-      operation_types = @client.list_operation_definitions(resource_type_path)
+      expect(operation_definitions).not_to be_empty
+      expect(operation_definitions).to include('JDR')
+      expect(operation_definitions).to include('Reload')
+      expect(operation_definitions).to include('Shutdown')
+      expect(operation_definitions).to include('Deploy')
+    end
 
-      expect(operation_types).not_to be_empty
-      expect(operation_types).to include('JDR')
-      expect(operation_types).to include('Reload')
-      expect(operation_types).to include('Shutdown')
-      expect(operation_types).to include('Deploy')
+    it 'Should list operation definitions of given resource' do
+      resources = @client.list_resources_for_type(wildfly_type.to_s)
+      wild_fly = resources[0]
+      operation_definitions = @client.list_operation_definitions_for_resource(wild_fly.path.to_s)
+
+      expect(operation_definitions).not_to be_empty
+      expect(operation_definitions).to include('JDR')
     end
 
     it 'Should create a feed' do
