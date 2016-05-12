@@ -4,7 +4,7 @@ This document describes the relevant changes between releases of the
 _hawkular-client_ project.
 
 === V 1.0.0
-* This major release contains changes that *may break the backward compatibility*, more info here: link:api_breaking_changes.rdoc
+* This major release contains changes that <b>may break the backward compatibility</b>, more info here: link:api_breaking_changes.rdoc
 * To use the client use the <code>require 'hawkular/hawkular_client'</code> instead of <code>require 'hawkular_all'</code>
 * Inventory client has been rewritten to use the cannonical paths
 * New supoort for group triggers in alert sub-client
