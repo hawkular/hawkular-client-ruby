@@ -243,6 +243,19 @@ module Hawkular::Inventory::RSpec
       expect(config['value']['Driver Name']).to eq('h2')
     end
 
+    it 'Should list operation definitions of given resource type' do
+      wild_flies = @client.list_resources_for_type(feed_id, 'WildFly Server')
+      resource_type_path = wild_flies[0].type_path
+
+      operation_types = @client.list_operation_definitions(resource_type_path)
+
+      expect(operation_types).not_to be_empty
+      expect(operation_types).to include('JDR')
+      expect(operation_types).to include('Reload')
+      expect(operation_types).to include('Shutdown')
+      expect(operation_types).to include('Deploy')
+    end
+
     it 'Should create a feed' do
       new_feed_id = 'feed_1123sdncisud6237ui23hjbdscuzsad'
       ret = @client.create_feed new_feed_id
