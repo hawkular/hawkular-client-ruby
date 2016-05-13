@@ -419,6 +419,25 @@ module Hawkular::Inventory
       MetricType.new(new_mt)
     end
 
+    # List operation definitions (types) for a given resource type
+    # @param [String] resource_type_path canonical path of the resource type entity
+    # @return [Array<String>] List of operation type ids
+    def list_operation_definitions(resource_type_path)
+      parsed_path = CanonicalPath.parse(resource_type_path.to_s)
+      feed_id = parsed_path.feed_id
+      resource_type_id = parsed_path.resource_type_id
+      ret = http_get("/feeds/#{feed_id}/resourceTypes/#{resource_type_id}/operationTypes")
+      ret.map { |ot| ot['id'] }
+    end
+
+    # List operation definitions (types) for a given resource
+    # @param [String] resource_path canonical path of the resource entity
+    # @return [Array<String>] List of operation type ids
+    def list_operation_definitions_for_resource(resource_path)
+      resource = get_resource(resource_path.to_s, false)
+      list_operation_definitions(resource.type_path)
+    end
+
     # Create a Metric and associate it with a resource.
     # @param [String] metric_type_path Canonical path of the metric type of the new metric.
     # @param [String] resource_path Canonical path of the resource to which we want to associate the metric.
