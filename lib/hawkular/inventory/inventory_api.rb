@@ -508,6 +508,10 @@ module Hawkular::Inventory
       @ws.close
     end
 
+    def to_s
+      'inventory'
+    end
+
     private
 
     # Creates a hash with the fields required by the Blueprint api in Hawkular-Inventory

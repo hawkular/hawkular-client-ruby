@@ -49,6 +49,10 @@ module Hawkular
       @operations ||= init_operations_client
     end
 
+    def to_s
+      'client'
+    end
+
     private
 
     # this is in a dedicated method, because constructor opens the websocket connection to make the handshake

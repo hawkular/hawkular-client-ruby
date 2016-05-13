@@ -54,3 +54,6 @@ nb-configuration.xml
 
 # OSX
 .DS_Store
+
+#cli
+.irbrc.rb_history

@@ -21,6 +21,10 @@ module Hawkular::Metrics
           Hawkular::Metrics::Tenant.new(t)
         end
       end
+
+      def to_s
+        'tenants'
+      end
     end
   end
 end
