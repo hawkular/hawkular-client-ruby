@@ -46,7 +46,7 @@ module Hawkular::Operations
     # @param [Hash] args Arguments for client
     #
     # @option args [String]  :host base url of Hawkular - e.g http://localhost:8080
-    # @option args [Hash{String=>String}]  :credentials Hash of {username, password} or token
+    # @option args [Hash{String=>String}]  :credentials Hash of (username password) or token
     # @option args [Fixnum]  :wait_time Time in seconds describing how long the constructor should block - handshake
     #
     # @example

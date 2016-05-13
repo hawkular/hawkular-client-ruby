@@ -8,6 +8,11 @@ A Ruby Hawkular Client.
 
 Documentation[http://www.hawkular.org/hawkular-client-ruby/]
 
+== Changelog
+
+See {CHANGELOG}[link:file.CHANGES.html] for a list of changes and 
+{API-Breaking-Changes}[link:file.api_breaking_changes.html] for a list of api-breaking changes.
+
 == Contributing to hawkular-client-ruby
 
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet
