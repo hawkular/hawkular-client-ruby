@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>
+  File: api_breaking_changes
+  
+    &mdash; Documentation by YARD 0.8.7.6
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '';
+  framesUrl = "frames.html#!file.api_breaking_changes.html";
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index</a> &raquo; 
+    <span class="title">File: api_breaking_changes</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><div id='filecontents'>
+<h2 id="label-Breaking+changes+in+the+major+releases">Breaking changes in the major releases</h2>
+
+<h3 id="label-1.0.0">1.0.0</h3>
+
+<p>To use the client use the <code>require
+&#39;hawkular/hawkular_client&#39;</code> instead of <code>require
+&#39;hawkular_all&#39;</code></p>
+<hr>
+
+<p>While it&#39;s still possible to use individual component clients
+(inventory, alert, metrics, operation, token), the preferred way is to use
+the unified client that has reference on those &#39;sub-clients&#39;:</p>
+
+<p><code>::Hawkular::Client.new(:entrypoint =&gt;
+&#39;http://localhost:8080&#39;, :credentials =&gt; {username:
+&#39;jdoe&#39;, password: &#39;password&#39;})</code></p>
+
+<p>See the <a
+href="spec/integraion/hawkular_client_spec.rb">spec/integraion/hawkular_client_spec.rb</a>
+to see more details.</p>
+<hr>
+
+<p>In the <code>lib/hawkular/inventory/inventory_api.rb</code> all following
+methods have different signatures (<code>old</code> -&gt;
+<code>new</code>):</p>
+
+<p><code>list_resources_for_type(feed_id, type, fetch_properties =
+false)</code> -&gt; <code>list_resources_for_type(type_path,
+fetch_properties = false, filter = {})</code></p>
+
+<p><code>get_config_data_for_resource(feed_id, res_ids)</code> -&gt;
+<code>get_config_data_for_resource(resource_path)</code></p>
+
+<p><code>def list_child_resources(Resource parent_resource, recursive =
+false)</code> -&gt; <code>def list_child_resources(parent_resource_path,
+recursive = false)</code></p>
+
+<p><code>list_relationships(Resource resource, named = nil)</code> -&gt;
+<code>list_relationships(path, named = nil)</code></p>
+
+<p><code>list_relationships_for_feed(feed_id, named = nil)</code> -&gt;
+<code>list_relationships_for_feed(path, named = nil)</code></p>
+
+<p><code>list_metrics_for_metric_type(feed_id, type)</code> -&gt;
+<code>list_metrics_for_metric_type(met_type_path)</code></p>
+
+<p><code>list_metrics_for_resource_type(feed, type)</code> -&gt;
+<code>list_metrics_for_resource_type(res_type_path)</code></p>
+
+<p><code>list_metrics_for_resource(Resource resource, filter = {})</code>
+-&gt; <code>list_metrics_for_resource(resource_path, filter = {})</code></p>
+
+<p><code>create_resource(feed_id, type_path, resource_id, resource_name = nil,
+properties = {})</code> -&gt; <code>create_resource(type_path, resource_id,
+resource_name = nil, properties = {})</code></p>
+
+<p><code>create_resource_under_resource(feed_id, type_path,
+parent_resource_ids, resource_id, resource_name = nil, properties =
+{})</code> -&gt; <code>create_resource_under_resource(type_path,
+parent_resource_path, resource_id, resource_name = nil, properties =
+{})</code></p>
+
+<p><code>get_resource(feed_id, res_ids, fetch_resource_config = true)</code>
+-&gt; <code>get_resource(res_path, fetch_resource_config = true)</code></p>
+
+<p><code>create_metric_for_resource(feed_id, metric_id, type_path, res_ids,
+metric_name = nil)</code> -&gt;
+<code>create_metric_for_resource(metric_type_path, resource_path,
+metric_id, metric_name = nil)</code></p>
+</div></div>
+
+    <div id="footer">
+  Generated on Fri May 13 14:32:39 2016 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.7.6 (ruby-2.2.4).
+</div>
+
+  </body>
+</html>

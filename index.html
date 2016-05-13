@@ -76,6 +76,14 @@ src="https://codeclimate.com/github/hawkular/hawkular-client-ruby/badges/gpa.svg
 
 <p>A Ruby Hawkular Client.</p>
 
+<p><a href="http://www.hawkular.org/hawkular-client-ruby/">Documentation</a></p>
+
+<h2 id="label-Changelog">Changelog</h2>
+
+<p>See <a href="file.CHANGES.html">CHANGELOG</a> for a list of changes and  <a
+href="file.api_breaking_changes.html">API-Breaking-Changes</a> for a list
+of api-breaking changes.</p>
+
 <h2 id="label-Contributing+to+hawkular-client-ruby">Contributing to hawkular-client-ruby</h2>
 <ul><li>
 <p>Check out the latest master to make sure the feature hasn&#39;t been
@@ -121,6 +129,16 @@ href="http://www.relishapp.com/vcr/vcr/docs">www.relishapp.com/vcr/vcr/docs</a>)
 <code>1</code> as in</p>
 
 <pre class="code ruby"><code class="ruby">VCR_OFF=1 rake spec</code></pre>
+</li><li>
+<p>To update the VCR tapes that supports it, set <code>VCR_UPDATE</code> to
+<code>1</code> as in</p>
+
+<pre class="code ruby"><code class="ruby">VCR_UPDATE=1 rake spec</code></pre>
+</li><li>
+<p>To run the tests for operations against a live server using the WebSockets,
+set <code>WEBSOCKET_ON</code> to <code>1</code> as in</p>
+
+<pre class="code ruby"><code class="ruby">WEBSOCKET_ON=1 rake spec</code></pre>
 </li></ul>
 
 <h2 id="label-Logging">Logging</h2>
@@ -140,7 +158,7 @@ href="http://yardoc.org">yardoc.org</a></p>
 </div></div>
 
     <div id="footer">
-  Generated on Tue Mar 29 18:42:45 2016 by
+  Generated on Fri May 13 14:32:39 2016 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.6 (ruby-2.2.4).
 </div>

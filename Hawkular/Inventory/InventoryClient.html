@@ -96,7 +96,7 @@
   
   
     <dt class="r2 last">Defined in:</dt>
-    <dd class="r2 last">lib/inventory/inventory_api.rb</dd>
+    <dd class="r2 last">lib/hawkular/inventory/inventory_api.rb</dd>
   
 </dl>
 <div class="clear"></div>
@@ -194,7 +194,7 @@ token(optional).</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#create_metric_for_resource-instance_method" title="#create_metric_for_resource (instance method)">- (Metric) <strong>create_metric_for_resource</strong>(feed_id, metric_id, type_path, resource_id, metric_name = nil) </a>
+      <a href="#create_metric_for_resource-instance_method" title="#create_metric_for_resource (instance method)">- (Metric) <strong>create_metric_for_resource</strong>(metric_type_path, resource_path, metric_id, metric_name = nil) </a>
     
 
     
@@ -242,7 +242,7 @@ token(optional).</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#create_resource-instance_method" title="#create_resource (instance method)">- (Object) <strong>create_resource</strong>(feed_id, type_path, resource_id, resource_name = nil, properties = {}) </a>
+      <a href="#create_resource-instance_method" title="#create_resource (instance method)">- (Object) <strong>create_resource</strong>(resource_type_path, resource_id, resource_name = nil, properties = {}) </a>
     
 
     
@@ -257,7 +257,7 @@ token(optional).</p>
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Create a resource of a given type under a given feed.</p>
+<p>Create a resource of a given type.</p>
 </div></span>
   
 </li>
@@ -290,7 +290,31 @@ token(optional).</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#delete_feed-instance_method" title="#delete_feed (instance method)">- (Object) <strong>delete_feed</strong>(feed) </a>
+      <a href="#create_resource_under_resource-instance_method" title="#create_resource_under_resource (instance method)">- (Object) <strong>create_resource_under_resource</strong>(res_type_path, parent_res_path, resource_id, resource_name = nil, properties = {}) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Create a resource of a given type under a given resource.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#delete_feed-instance_method" title="#delete_feed (instance method)">- (Object) <strong>delete_feed</strong>(feed_id) </a>
     
 
     
@@ -340,7 +364,7 @@ created, updated, deleted, copied, registered.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#get_config_data_for_resource-instance_method" title="#get_config_data_for_resource (instance method)">- (Hash&lt;String,Object] Hash with additional data) <strong>get_config_data_for_resource</strong>(resource_id, feed) </a>
+      <a href="#get_config_data_for_resource-instance_method" title="#get_config_data_for_resource (instance method)">- (Hash&lt;String,Object] Hash with additional data) <strong>get_config_data_for_resource</strong>(resource_path) </a>
     
 
     
@@ -388,7 +412,7 @@ created, updated, deleted, copied, registered.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#get_resource-instance_method" title="#get_resource (instance method)">- (Object) <strong>get_resource</strong>(feed_id, res_id, fetch_resource_config = true) </a>
+      <a href="#get_resource-instance_method" title="#get_resource (instance method)">- (Object) <strong>get_resource</strong>(resource_path, fetch_resource_config = true) </a>
     
 
     
@@ -403,7 +427,7 @@ created, updated, deleted, copied, registered.</p>
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Return the resource object for the passed id.</p>
+<p>Return the resource object for the passed path.</p>
 </div></span>
   
 </li>
@@ -486,7 +510,7 @@ created, updated, deleted, copied, registered.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#list_child_resources-instance_method" title="#list_child_resources (instance method)">- (Array&lt;Resource&gt;) <strong>list_child_resources</strong>(parent_resource, recursive = false) </a>
+      <a href="#list_child_resources-instance_method" title="#list_child_resources (instance method)">- (Array&lt;Resource&gt;) <strong>list_child_resources</strong>(parent_res_path, recursive = false) </a>
     
 
     
@@ -534,7 +558,7 @@ created, updated, deleted, copied, registered.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#list_metrics_for_metric_type-instance_method" title="#list_metrics_for_metric_type (instance method)">- (Array&lt;Metric&gt;) <strong>list_metrics_for_metric_type</strong>(feed, type) </a>
+      <a href="#list_metrics_for_metric_type-instance_method" title="#list_metrics_for_metric_type (instance method)">- (Array&lt;Metric&gt;) <strong>list_metrics_for_metric_type</strong>(metric_type_path) </a>
     
 
     
@@ -549,7 +573,7 @@ created, updated, deleted, copied, registered.</p>
 
   
     <span class="summary_desc"><div class='inline'>
-<p>List the metrics for the passed feed and metric type.</p>
+<p>List the metrics for the passed metric type.</p>
 </div></span>
   
 </li>
@@ -558,7 +582,7 @@ created, updated, deleted, copied, registered.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#list_metrics_for_resource-instance_method" title="#list_metrics_for_resource (instance method)">- (Array&lt;Metric&gt;) <strong>list_metrics_for_resource</strong>(resource, filter = {}) </a>
+      <a href="#list_metrics_for_resource-instance_method" title="#list_metrics_for_resource (instance method)">- (Array&lt;Metric&gt;) <strong>list_metrics_for_resource</strong>(resource_path, filter = {}) </a>
     
 
     
@@ -582,7 +606,7 @@ created, updated, deleted, copied, registered.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#list_metrics_for_resource_type-instance_method" title="#list_metrics_for_resource_type (instance method)">- (Array&lt;Metric&gt;) <strong>list_metrics_for_resource_type</strong>(feed, type) </a>
+      <a href="#list_metrics_for_resource_type-instance_method" title="#list_metrics_for_resource_type (instance method)">- (Array&lt;Metric&gt;) <strong>list_metrics_for_resource_type</strong>(resource_type_path) </a>
     
 
     
@@ -597,8 +621,7 @@ created, updated, deleted, copied, registered.</p>
 
   
     <span class="summary_desc"><div class='inline'>
-<p>List the metrics for the passed feed and all the resources of given
-resource type.</p>
+<p>List the metrics for all the resources of a given resource type.</p>
 </div></span>
   
 </li>
@@ -607,7 +630,55 @@ resource type.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#list_relationships-instance_method" title="#list_relationships (instance method)">- (Array&lt;Relationship&gt;) <strong>list_relationships</strong>(resource, named = nil) </a>
+      <a href="#list_operation_definitions-instance_method" title="#list_operation_definitions (instance method)">- (Array&lt;String&gt;) <strong>list_operation_definitions</strong>(resource_type_path) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>List operation definitions (types) for a given resource type.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#list_operation_definitions_for_resource-instance_method" title="#list_operation_definitions_for_resource (instance method)">- (Array&lt;String&gt;) <strong>list_operation_definitions_for_resource</strong>(resource_path) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>List operation definitions (types) for a given resource.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#list_relationships-instance_method" title="#list_relationships (instance method)">- (Array&lt;Relationship&gt;) <strong>list_relationships</strong>(entity_path, named = nil) </a>
     
 
     
@@ -655,7 +726,7 @@ resource type.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#list_resource_types-instance_method" title="#list_resource_types (instance method)">- (Array&lt;ResourceType&gt;) <strong>list_resource_types</strong>(feed = nil) </a>
+      <a href="#list_resource_types-instance_method" title="#list_resource_types (instance method)">- (Array&lt;ResourceType&gt;) <strong>list_resource_types</strong>(feed_id = nil) </a>
     
 
     
@@ -679,7 +750,7 @@ resource type.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#list_resources_for_feed-instance_method" title="#list_resources_for_feed (instance method)">- (Array&lt;Resource&gt;) <strong>list_resources_for_feed</strong>(feed, fetch_properties = false) </a>
+      <a href="#list_resources_for_feed-instance_method" title="#list_resources_for_feed (instance method)">- (Array&lt;Resource&gt;) <strong>list_resources_for_feed</strong>(feed_id, fetch_properties = false, filter = {}) </a>
     
 
     
@@ -703,7 +774,7 @@ resource type.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#list_resources_for_type-instance_method" title="#list_resources_for_type (instance method)">- (Array&lt;Resource&gt;) <strong>list_resources_for_type</strong>(feed, type, fetch_properties = false) </a>
+      <a href="#list_resources_for_type-instance_method" title="#list_resources_for_type (instance method)">- (Array&lt;Resource&gt;) <strong>list_resources_for_type</strong>(resource_type_path, fetch_properties = false) </a>
     
 
     
@@ -718,7 +789,7 @@ resource type.</p>
 
   
     <span class="summary_desc"><div class='inline'>
-<p>List the resources for the passed feed and resource type.</p>
+<p>List the resources for the passed resource type.</p>
 </div></span>
   
 </li>
@@ -761,7 +832,18 @@ resource type.</p>
   
   
   <h3 class="inherited">Methods inherited from <span class='object_link'><a href="../BaseClient.html" title="Hawkular::BaseClient (class)">BaseClient</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="../BaseClient.html#base_64_credentials-instance_method" title="Hawkular::BaseClient#base_64_credentials (method)">#base_64_credentials</a></span>, <span class='object_link'><a href="../BaseClient.html#generate_query_params-instance_method" title="Hawkular::BaseClient#generate_query_params (method)">#generate_query_params</a></span>, <span class='object_link'><a href="../BaseClient.html#hawk_escape-instance_method" title="Hawkular::BaseClient#hawk_escape (method)">#hawk_escape</a></span>, <span class='object_link'><a href="../BaseClient.html#http_delete-instance_method" title="Hawkular::BaseClient#http_delete (method)">#http_delete</a></span>, <span class='object_link'><a href="../BaseClient.html#http_get-instance_method" title="Hawkular::BaseClient#http_get (method)">#http_get</a></span>, <span class='object_link'><a href="../BaseClient.html#http_post-instance_method" title="Hawkular::BaseClient#http_post (method)">#http_post</a></span>, <span class='object_link'><a href="../BaseClient.html#http_put-instance_method" title="Hawkular::BaseClient#http_put (method)">#http_put</a></span>, <span class='object_link'><a href="../BaseClient.html#now-instance_method" title="Hawkular::BaseClient#now (method)">#now</a></span></p>
+  <p class="inherited"><span class='object_link'><a href="../BaseClient.html#base_64_credentials-instance_method" title="Hawkular::BaseClient#base_64_credentials (method)">#base_64_credentials</a></span>, <span class='object_link'><a href="../BaseClient.html#generate_query_params-instance_method" title="Hawkular::BaseClient#generate_query_params (method)">#generate_query_params</a></span>, <span class='object_link'><a href="../BaseClient.html#http_delete-instance_method" title="Hawkular::BaseClient#http_delete (method)">#http_delete</a></span>, <span class='object_link'><a href="../BaseClient.html#http_get-instance_method" title="Hawkular::BaseClient#http_get (method)">#http_get</a></span>, <span class='object_link'><a href="../BaseClient.html#http_post-instance_method" title="Hawkular::BaseClient#http_post (method)">#http_post</a></span>, <span class='object_link'><a href="../BaseClient.html#http_put-instance_method" title="Hawkular::BaseClient#http_put (method)">#http_put</a></span>, <span class='object_link'><a href="../BaseClient.html#now-instance_method" title="Hawkular::BaseClient#now (method)">#now</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="../../HawkularUtilsMixin.html" title="HawkularUtilsMixin (module)">HawkularUtilsMixin</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../../HawkularUtilsMixin.html#hawk_escape-instance_method" title="HawkularUtilsMixin#hawk_escape (method)">#hawk_escape</a></span>, <span class='object_link'><a href="../../HawkularUtilsMixin.html#hawk_escape_id-instance_method" title="HawkularUtilsMixin#hawk_escape_id (method)">#hawk_escape_id</a></span></p>
 <div id="constructor_details" class="method_details_list">
   <h2>Constructor Details</h2>
   
@@ -838,7 +920,7 @@ href="http://localhost:8080/hawkular/inventory">localhost:8080/hawkular/inventor
 20</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inventory/inventory_api.rb', line 17</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/inventory/inventory_api.rb', line 17</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_entrypoint'>entrypoint</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_credentials'>credentials</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='ivar'>@entrypoint</span> <span class='op'>=</span> <span class='id identifier rubyid_entrypoint'>entrypoint</span>
@@ -912,7 +994,7 @@ href="http://localhost:8080/hawkular/inventory">localhost:8080/hawkular/inventor
 30</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inventory/inventory_api.rb', line 26</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/inventory/inventory_api.rb', line 26</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_create'>create</span><span class='lparen'>(</span><span class='id identifier rubyid_hash'>hash</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_hash'>hash</span><span class='lbracket'>[</span><span class='symbol'>:entrypoint</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>http://localhost:8080/hawkular/inventory</span><span class='tstring_end'>&#39;</span></span>
@@ -1007,13 +1089,6 @@ href="http://localhost:8080/hawkular/inventory">localhost:8080/hawkular/inventor
       <pre class="lines">
 
 
-278
-279
-280
-281
-282
-283
-284
 285
 286
 287
@@ -1023,10 +1098,17 @@ href="http://localhost:8080/hawkular/inventory">localhost:8080/hawkular/inventor
 291
 292
 293
-294</pre>
+294
+295
+296
+297
+298
+299
+300
+301</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inventory/inventory_api.rb', line 278</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/inventory/inventory_api.rb', line 285</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create_feed'>create_feed</span><span class='lparen'>(</span><span class='id identifier rubyid_feed_id'>feed_id</span><span class='comma'>,</span> <span class='id identifier rubyid_feed_name'>feed_name</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_feed'>feed</span> <span class='op'>=</span> <span class='id identifier rubyid_create_blueprint'>create_blueprint</span>
@@ -1038,7 +1120,7 @@ href="http://localhost:8080/hawkular/inventory">localhost:8080/hawkular/inventor
   <span class='kw'>rescue</span> <span class='const'>HawkularException</span>  <span class='op'>=&gt;</span> <span class='id identifier rubyid_error'>error</span>
     <span class='comment'># 409 We already exist -&gt; that is ok
 </span>    <span class='kw'>if</span> <span class='id identifier rubyid_error'>error</span><span class='period'>.</span><span class='id identifier rubyid_status_code'>status_code</span> <span class='op'>==</span> <span class='int'>409</span>
-      <span class='id identifier rubyid_the_feed'>the_feed</span> <span class='op'>=</span> <span class='id identifier rubyid_hawk_escape'>hawk_escape</span> <span class='id identifier rubyid_feed_id'>feed_id</span>
+      <span class='id identifier rubyid_the_feed'>the_feed</span> <span class='op'>=</span> <span class='id identifier rubyid_hawk_escape_id'>hawk_escape_id</span> <span class='id identifier rubyid_feed_id'>feed_id</span>
       <span class='id identifier rubyid_http_get'>http_get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/feeds/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_the_feed'>the_feed</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
     <span class='kw'>else</span>
       <span class='id identifier rubyid_raise'>raise</span>
@@ -1053,7 +1135,7 @@ href="http://localhost:8080/hawkular/inventory">localhost:8080/hawkular/inventor
       <div class="method_details ">
   <h3 class="signature " id="create_metric_for_resource-instance_method">
   
-    - (<tt><span class='object_link'><a href="Metric.html" title="Hawkular::Inventory::Metric (class)">Metric</a></span></tt>) <strong>create_metric_for_resource</strong>(feed_id, metric_id, type_path, resource_id, metric_name = nil) 
+    - (<tt><span class='object_link'><a href="Metric.html" title="Hawkular::Inventory::Metric (class)">Metric</a></span></tt>) <strong>create_metric_for_resource</strong>(metric_type_path, resource_path, metric_id, metric_name = nil) 
   
 
   
@@ -1073,7 +1155,7 @@ href="http://localhost:8080/hawkular/inventory">localhost:8080/hawkular/inventor
   
     <li>
       
-        <span class='name'>feed_id</span>
+        <span class='name'>metric_type_path</span>
       
       
         <span class='type'>(<tt>String</tt>)</span>
@@ -1082,7 +1164,23 @@ href="http://localhost:8080/hawkular/inventory">localhost:8080/hawkular/inventor
       
         &mdash;
         <div class='inline'>
-<p>Id of the feed</p>
+<p>Canonical path of the metric type of the new metric.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>resource_path</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Canonical path of the resource to which we want to associate the metric.</p>
 </div>
       
     </li>
@@ -1099,38 +1197,6 @@ href="http://localhost:8080/hawkular/inventory">localhost:8080/hawkular/inventor
         &mdash;
         <div class='inline'>
 <p>Id of the metric</p>
-</div>
-      
-    </li>
-  
-    <li>
-      
-        <span class='name'>type_path</span>
-      
-      
-        <span class='type'>(<tt>String</tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'>
-<p>Full path of the MetricType</p>
-</div>
-      
-    </li>
-  
-    <li>
-      
-        <span class='name'>resource_id</span>
-      
-      
-        <span class='type'>(<tt>String</tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'>
-<p>Id of the resource to associate the metric with</p>
 </div>
       
     </li>
@@ -1180,58 +1246,62 @@ href="http://localhost:8080/hawkular/inventory">localhost:8080/hawkular/inventor
       <pre class="lines">
 
 
-404
-405
-406
-407
-408
-409
-410
-411
-412
-413
-414
-415
-416
-417
-418
-419
-420
-421
-422
-423
-424
-425
-426
-427
-428
-429
-430</pre>
+447
+448
+449
+450
+451
+452
+453
+454
+455
+456
+457
+458
+459
+460
+461
+462
+463
+464
+465
+466
+467
+468
+469
+470
+471
+472
+473
+474
+475</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inventory/inventory_api.rb', line 404</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/inventory/inventory_api.rb', line 447</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_create_metric_for_resource'>create_metric_for_resource</span><span class='lparen'>(</span><span class='id identifier rubyid_feed_id'>feed_id</span><span class='comma'>,</span> <span class='id identifier rubyid_metric_id'>metric_id</span><span class='comma'>,</span> <span class='id identifier rubyid_type_path'>type_path</span><span class='comma'>,</span> <span class='id identifier rubyid_resource_id'>resource_id</span><span class='comma'>,</span> <span class='id identifier rubyid_metric_name'>metric_name</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_the_feed'>the_feed</span> <span class='op'>=</span> <span class='id identifier rubyid_hawk_escape'>hawk_escape</span> <span class='id identifier rubyid_feed_id'>feed_id</span>
-  <span class='id identifier rubyid_the_resource'>the_resource</span> <span class='op'>=</span> <span class='id identifier rubyid_hawk_escape'>hawk_escape</span> <span class='id identifier rubyid_resource_id'>resource_id</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_create_metric_for_resource'>create_metric_for_resource</span><span class='lparen'>(</span><span class='id identifier rubyid_metric_type_path'>metric_type_path</span><span class='comma'>,</span> <span class='id identifier rubyid_resource_path'>resource_path</span><span class='comma'>,</span> <span class='id identifier rubyid_metric_id'>metric_id</span><span class='comma'>,</span> <span class='id identifier rubyid_metric_name'>metric_name</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_type_path'>type_path</span> <span class='op'>=</span> <span class='id identifier rubyid_metric_type_path'>metric_type_path</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>CanonicalPath</span><span class='rparen'>)</span> <span class='op'>?</span> <span class='id identifier rubyid_metric_type_path'>metric_type_path</span> <span class='op'>:</span> <span class='const'>CanonicalPath</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='id identifier rubyid_metric_type_path'>metric_type_path</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_feed_id'>feed_id</span> <span class='op'>=</span> <span class='id identifier rubyid_type_path'>type_path</span><span class='period'>.</span><span class='id identifier rubyid_feed_id'>feed_id</span>
+  <span class='id identifier rubyid_res_path'>res_path</span> <span class='op'>=</span> <span class='id identifier rubyid_resource_path'>resource_path</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>CanonicalPath</span><span class='rparen'>)</span> <span class='op'>?</span> <span class='id identifier rubyid_resource_path'>resource_path</span> <span class='op'>:</span> <span class='const'>CanonicalPath</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='id identifier rubyid_resource_path'>resource_path</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_res_path_str'>res_path_str</span> <span class='op'>=</span> <span class='id identifier rubyid_res_path'>res_path</span><span class='period'>.</span><span class='id identifier rubyid_resource_ids'>resource_ids</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
 
   <span class='id identifier rubyid_m'>m</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
   <span class='id identifier rubyid_m'>m</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>id</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_metric_id'>metric_id</span>
-  <span class='id identifier rubyid_m'>m</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>name</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='lparen'>(</span><span class='id identifier rubyid_metric_name'>metric_name</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span><span class='rparen'>)</span> <span class='op'>?</span> <span class='id identifier rubyid_metric_id'>metric_id</span> <span class='op'>:</span> <span class='id identifier rubyid_metric_name'>metric_name</span>
-  <span class='id identifier rubyid_m'>m</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>metricTypePath</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_type_path'>type_path</span>
+  <span class='id identifier rubyid_m'>m</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>name</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_metric_name'>metric_name</span> <span class='op'>||</span> <span class='id identifier rubyid_metric_id'>metric_id</span>
+  <span class='id identifier rubyid_m'>m</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>metricTypePath</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_type_path'>type_path</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
 
   <span class='kw'>begin</span>
-    <span class='id identifier rubyid_http_post'>http_post</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/feeds/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_the_feed'>the_feed</span><span class='embexpr_end'>}</span><span class='tstring_content'>/metrics</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_m'>m</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_http_post'>http_post</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/feeds/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_feed_id'>feed_id</span><span class='embexpr_end'>}</span><span class='tstring_content'>/metrics</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_m'>m</span><span class='rparen'>)</span>
   <span class='kw'>rescue</span> <span class='const'>HawkularException</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_error'>error</span>
     <span class='comment'># 409 We already exist -&gt; that is ok
 </span>    <span class='id identifier rubyid_raise'>raise</span> <span class='kw'>unless</span> <span class='id identifier rubyid_error'>error</span><span class='period'>.</span><span class='id identifier rubyid_status_code'>status_code</span> <span class='op'>==</span> <span class='int'>409</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_ret'>ret</span> <span class='op'>=</span> <span class='id identifier rubyid_http_get'>http_get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/feeds/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_the_feed'>the_feed</span><span class='embexpr_end'>}</span><span class='tstring_content'>/metrics/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_metric_id'>metric_id</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_ret'>ret</span> <span class='op'>=</span> <span class='id identifier rubyid_http_get'>http_get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/feeds/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_feed_id'>feed_id</span><span class='embexpr_end'>}</span><span class='tstring_content'>/metrics/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_metric_id'>metric_id</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
   <span class='id identifier rubyid_the_metric'>the_metric</span> <span class='op'>=</span> <span class='const'>Metric</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_ret'>ret</span><span class='rparen'>)</span>
 
   <span class='kw'>begin</span>
-    <span class='id identifier rubyid_http_post'>http_post</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/feeds/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_the_feed'>the_feed</span><span class='embexpr_end'>}</span><span class='tstring_content'>/resources/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_the_resource'>the_resource</span><span class='embexpr_end'>}</span><span class='tstring_content'>/metrics</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='id identifier rubyid_the_metric'>the_metric</span><span class='period'>.</span><span class='id identifier rubyid_path'>path</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_http_post'>http_post</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/feeds/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_feed_id'>feed_id</span><span class='embexpr_end'>}</span><span class='tstring_content'>/resources/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_res_path_str'>res_path_str</span><span class='embexpr_end'>}</span><span class='tstring_content'>/metrics</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='id identifier rubyid_the_metric'>the_metric</span><span class='period'>.</span><span class='id identifier rubyid_path'>path</span><span class='rbracket'>]</span><span class='rparen'>)</span>
   <span class='kw'>rescue</span> <span class='const'>HawkularException</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_error'>error</span>
     <span class='comment'># 409 We already exist -&gt; that is ok
 </span>    <span class='id identifier rubyid_raise'>raise</span> <span class='kw'>unless</span> <span class='id identifier rubyid_error'>error</span><span class='period'>.</span><span class='id identifier rubyid_status_code'>status_code</span> <span class='op'>==</span> <span class='int'>409</span>
@@ -1372,31 +1442,31 @@ href="http://localhost:8080/hawkular/inventory">localhost:8080/hawkular/inventor
       <pre class="lines">
 
 
-377
-378
-379
-380
-381
-382
-383
-384
-385
-386
-387
-388
-389
-390
-391
-392
-393
-394
-395</pre>
+402
+403
+404
+405
+406
+407
+408
+409
+410
+411
+412
+413
+414
+415
+416
+417
+418
+419
+420</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inventory/inventory_api.rb', line 377</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/inventory/inventory_api.rb', line 402</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create_metric_type'>create_metric_type</span><span class='lparen'>(</span><span class='id identifier rubyid_feed_id'>feed_id</span><span class='comma'>,</span> <span class='id identifier rubyid_metric_type_id'>metric_type_id</span><span class='comma'>,</span> <span class='id identifier rubyid_type'>type</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>GAUGE</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_unit'>unit</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>NONE</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_collection_interval'>collection_interval</span> <span class='op'>=</span> <span class='int'>60</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_the_feed'>the_feed</span> <span class='op'>=</span> <span class='id identifier rubyid_hawk_escape'>hawk_escape</span> <span class='id identifier rubyid_feed_id'>feed_id</span>
+  <span class='id identifier rubyid_the_feed'>the_feed</span> <span class='op'>=</span> <span class='id identifier rubyid_hawk_escape_id'>hawk_escape_id</span> <span class='id identifier rubyid_feed_id'>feed_id</span>
 
   <span class='id identifier rubyid_metric_kind'>metric_kind</span> <span class='op'>=</span> <span class='id identifier rubyid_type'>type</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>?</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>GAUGE</span><span class='tstring_end'>&#39;</span></span> <span class='op'>:</span> <span class='id identifier rubyid_type'>type</span><span class='period'>.</span><span class='id identifier rubyid_upcase'>upcase</span>
   <span class='id identifier rubyid_fail'>fail</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Unknown type </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_metric_kind'>metric_kind</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>unless</span> <span class='qwords_beg'>%w(</span><span class='tstring_content'>GAUGE</span><span class='words_sep'> </span><span class='tstring_content'>COUNTER</span><span class='words_sep'> </span><span class='tstring_content'>AVAILABILITY&#39;</span><span class='words_sep'>)</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='id identifier rubyid_metric_kind'>metric_kind</span><span class='rparen'>)</span>
@@ -1422,7 +1492,7 @@ href="http://localhost:8080/hawkular/inventory">localhost:8080/hawkular/inventor
       <div class="method_details ">
   <h3 class="signature " id="create_resource-instance_method">
   
-    - (<tt>Object</tt>) <strong>create_resource</strong>(feed_id, type_path, resource_id, resource_name = nil, properties = {}) 
+    - (<tt>Object</tt>) <strong>create_resource</strong>(resource_type_path, resource_id, resource_name = nil, properties = {}) 
   
 
   
@@ -1431,9 +1501,8 @@ href="http://localhost:8080/hawkular/inventory">localhost:8080/hawkular/inventor
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Create a resource of a given type under a given feed. To retrieve that
-resource you need to call <span class='object_link'><a href="#get_resource-instance_method" title="Hawkular::Inventory::InventoryClient#get_resource (method)">#get_resource</a></span> TODO allow to create this as
-child of another resource</p>
+<p>Create a resource of a given type. To retrieve that resource you need to
+call <span class='object_link'><a href="#get_resource-instance_method" title="Hawkular::Inventory::InventoryClient#get_resource (method)">#get_resource</a></span></p>
 
 
   </div>
@@ -1444,7 +1513,7 @@ child of another resource</p>
   
     <li>
       
-        <span class='name'>feed_id</span>
+        <span class='name'>resource_type_path</span>
       
       
         <span class='type'>(<tt>String</tt>)</span>
@@ -1453,23 +1522,7 @@ child of another resource</p>
       
         &mdash;
         <div class='inline'>
-<p>Id of the feed to add the resource to</p>
-</div>
-      
-    </li>
-  
-    <li>
-      
-        <span class='name'>type_path</span>
-      
-      
-        <span class='type'>(<tt>String</tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'>
-<p>Path of the resource type of this resource</p>
+<p>Canonical path of the new resource&#39;s type.</p>
 </div>
       
     </li>
@@ -1485,7 +1538,7 @@ child of another resource</p>
       
         &mdash;
         <div class='inline'>
-<p>Id of the resource</p>
+<p>Id of the new resource</p>
 </div>
       
     </li>
@@ -1503,7 +1556,7 @@ child of another resource</p>
       
         &mdash;
         <div class='inline'>
-<p>Name of the resource</p>
+<p>Name of the new resource</p>
 </div>
       
     </li>
@@ -1535,45 +1588,15 @@ child of another resource</p>
       <pre class="lines">
 
 
-335
-336
-337
-338
-339
 340
 341
-342
-343
-344
-345
-346
-347
-348
-349
-350
-351
-352</pre>
+342</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inventory/inventory_api.rb', line 335</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/inventory/inventory_api.rb', line 340</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_create_resource'>create_resource</span><span class='lparen'>(</span><span class='id identifier rubyid_feed_id'>feed_id</span><span class='comma'>,</span> <span class='id identifier rubyid_type_path'>type_path</span><span class='comma'>,</span> <span class='id identifier rubyid_resource_id'>resource_id</span><span class='comma'>,</span> <span class='id identifier rubyid_resource_name'>resource_name</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_properties'>properties</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_the_feed'>the_feed</span> <span class='op'>=</span> <span class='id identifier rubyid_hawk_escape'>hawk_escape</span> <span class='id identifier rubyid_feed_id'>feed_id</span>
-
-  <span class='id identifier rubyid_res'>res</span> <span class='op'>=</span> <span class='id identifier rubyid_create_blueprint'>create_blueprint</span>
-  <span class='id identifier rubyid_res'>res</span><span class='lbracket'>[</span><span class='symbol'>:properties</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_properties'>properties</span>
-  <span class='id identifier rubyid_res'>res</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_resource_id'>resource_id</span>
-  <span class='id identifier rubyid_res'>res</span><span class='lbracket'>[</span><span class='symbol'>:name</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_resource_name'>resource_name</span>
-  <span class='id identifier rubyid_res'>res</span><span class='lbracket'>[</span><span class='symbol'>:resourceTypePath</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_type_path'>type_path</span>
-
-  <span class='kw'>begin</span>
-    <span class='id identifier rubyid_http_post'>http_post</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/feeds/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_the_feed'>the_feed</span><span class='embexpr_end'>}</span><span class='tstring_content'>/resources</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_res'>res</span><span class='rparen'>)</span>
-  <span class='kw'>rescue</span> <span class='const'>HawkularException</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_error'>error</span>
-    <span class='comment'># 409 We already exist -&gt; that is ok
-</span>    <span class='id identifier rubyid_raise'>raise</span> <span class='kw'>unless</span> <span class='id identifier rubyid_error'>error</span><span class='period'>.</span><span class='id identifier rubyid_status_code'>status_code</span> <span class='op'>==</span> <span class='int'>409</span>
-  <span class='kw'>end</span>
-
-  <span class='id identifier rubyid_get_resource'>get_resource</span> <span class='id identifier rubyid_feed_id'>feed_id</span><span class='comma'>,</span> <span class='id identifier rubyid_resource_id'>resource_id</span><span class='comma'>,</span> <span class='kw'>false</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_create_resource'>create_resource</span><span class='lparen'>(</span><span class='id identifier rubyid_resource_type_path'>resource_type_path</span><span class='comma'>,</span> <span class='id identifier rubyid_resource_id'>resource_id</span><span class='comma'>,</span> <span class='id identifier rubyid_resource_name'>resource_name</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_properties'>properties</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_create_resource_under_resource'>create_resource_under_resource</span><span class='lparen'>(</span><span class='id identifier rubyid_resource_type_path'>resource_type_path</span><span class='comma'>,</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_resource_id'>resource_id</span><span class='comma'>,</span> <span class='id identifier rubyid_resource_name'>resource_name</span><span class='comma'>,</span> <span class='id identifier rubyid_properties'>properties</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1676,13 +1699,6 @@ child of another resource</p>
       <pre class="lines">
 
 
-308
-309
-310
-311
-312
-313
-314
 315
 316
 317
@@ -1693,13 +1709,20 @@ child of another resource</p>
 322
 323
 324
-325</pre>
+325
+326
+327
+328
+329
+330
+331
+332</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inventory/inventory_api.rb', line 308</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/inventory/inventory_api.rb', line 315</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create_resource_type'>create_resource_type</span><span class='lparen'>(</span><span class='id identifier rubyid_feed_id'>feed_id</span><span class='comma'>,</span> <span class='id identifier rubyid_type_id'>type_id</span><span class='comma'>,</span> <span class='id identifier rubyid_type_name'>type_name</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_the_feed'>the_feed</span> <span class='op'>=</span> <span class='id identifier rubyid_hawk_escape'>hawk_escape</span> <span class='id identifier rubyid_feed_id'>feed_id</span>
+  <span class='id identifier rubyid_the_feed'>the_feed</span> <span class='op'>=</span> <span class='id identifier rubyid_hawk_escape_id'>hawk_escape_id</span> <span class='id identifier rubyid_feed_id'>feed_id</span>
 
   <span class='id identifier rubyid_type'>type</span> <span class='op'>=</span> <span class='id identifier rubyid_create_blueprint'>create_blueprint</span>
   <span class='id identifier rubyid_type'>type</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_type_id'>type_id</span>
@@ -1711,7 +1734,7 @@ child of another resource</p>
     <span class='comment'># 409 We already exist -&gt; that is ok
 </span>    <span class='id identifier rubyid_raise'>raise</span> <span class='kw'>unless</span> <span class='id identifier rubyid_error'>error</span><span class='period'>.</span><span class='id identifier rubyid_status_code'>status_code</span> <span class='op'>==</span> <span class='int'>409</span>
   <span class='kw'>ensure</span>
-    <span class='id identifier rubyid_the_type'>the_type</span> <span class='op'>=</span> <span class='id identifier rubyid_hawk_escape'>hawk_escape</span> <span class='id identifier rubyid_type_id'>type_id</span>
+    <span class='id identifier rubyid_the_type'>the_type</span> <span class='op'>=</span> <span class='id identifier rubyid_hawk_escape_id'>hawk_escape_id</span> <span class='id identifier rubyid_type_id'>type_id</span>
     <span class='id identifier rubyid_res'>res</span> <span class='op'>=</span> <span class='id identifier rubyid_http_get'>http_get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/feeds/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_the_feed'>the_feed</span><span class='embexpr_end'>}</span><span class='tstring_content'>/resourceTypes/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_the_type'>the_type</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
   <span class='kw'>end</span>
   <span class='const'>ResourceType</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_res'>res</span><span class='rparen'>)</span>
@@ -1722,9 +1745,184 @@ child of another resource</p>
 </div>
     
       <div class="method_details ">
+  <h3 class="signature " id="create_resource_under_resource-instance_method">
+  
+    - (<tt>Object</tt>) <strong>create_resource_under_resource</strong>(res_type_path, parent_res_path, resource_id, resource_name = nil, properties = {}) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Create a resource of a given type under a given resource. To retrieve that
+resource you need to call <span class='object_link'><a href="#get_resource-instance_method" title="Hawkular::Inventory::InventoryClient#get_resource (method)">#get_resource</a></span></p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>res_type_path</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Canonical path of the new resource&#39;s type.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>parent_res_path</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Canonical path of the resource under which we create this resource. If nil,
+the top-lvl resource will be created.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>resource_id</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Id of the resource</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>resource_name</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Name of the resource</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>properties</span>
+      
+      
+        <span class='type'>(<tt>Hash&lt;String,Object&gt;</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Additional properties. Those are not the config-properties</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/inventory/inventory_api.rb', line 352</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_create_resource_under_resource'>create_resource_under_resource</span><span class='lparen'>(</span><span class='id identifier rubyid_res_type_path'>res_type_path</span><span class='comma'>,</span> <span class='id identifier rubyid_parent_res_path'>parent_res_path</span><span class='comma'>,</span> <span class='id identifier rubyid_resource_id'>resource_id</span><span class='comma'>,</span> <span class='id identifier rubyid_resource_name'>resource_name</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span>
+                                   <span class='id identifier rubyid_properties'>properties</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_type_path'>type_path</span> <span class='op'>=</span> <span class='id identifier rubyid_res_type_path'>res_type_path</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>CanonicalPath</span><span class='rparen'>)</span> <span class='op'>?</span> <span class='id identifier rubyid_res_type_path'>res_type_path</span> <span class='op'>:</span> <span class='const'>CanonicalPath</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='id identifier rubyid_res_type_path'>res_type_path</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_feed_id'>feed_id</span> <span class='op'>=</span> <span class='id identifier rubyid_type_path'>type_path</span><span class='period'>.</span><span class='id identifier rubyid_feed_id'>feed_id</span>
+
+  <span class='id identifier rubyid_res'>res</span> <span class='op'>=</span> <span class='id identifier rubyid_create_blueprint'>create_blueprint</span>
+  <span class='id identifier rubyid_res'>res</span><span class='lbracket'>[</span><span class='symbol'>:properties</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_properties'>properties</span>
+  <span class='id identifier rubyid_res'>res</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_resource_id'>resource_id</span>
+  <span class='id identifier rubyid_res'>res</span><span class='lbracket'>[</span><span class='symbol'>:name</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_resource_name'>resource_name</span>
+  <span class='id identifier rubyid_res'>res</span><span class='lbracket'>[</span><span class='symbol'>:resourceTypePath</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_type_path'>type_path</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
+
+  <span class='kw'>begin</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_parent_res_path'>parent_res_path</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+      <span class='id identifier rubyid_res'>res</span> <span class='op'>=</span> <span class='id identifier rubyid_http_post'>http_post</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/feeds/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_feed_id'>feed_id</span><span class='embexpr_end'>}</span><span class='tstring_content'>/resources</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_res'>res</span><span class='rparen'>)</span>
+    <span class='kw'>else</span>
+      <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='id identifier rubyid_parent_res_path'>parent_res_path</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>CanonicalPath</span><span class='rparen'>)</span> <span class='op'>?</span> <span class='id identifier rubyid_parent_res_path'>parent_res_path</span> <span class='op'>:</span> <span class='const'>CanonicalPath</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='id identifier rubyid_parent_res_path'>parent_res_path</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_resource_path'>resource_path</span> <span class='op'>=</span> <span class='id identifier rubyid_path'>path</span><span class='period'>.</span><span class='id identifier rubyid_resource_ids'>resource_ids</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_res'>res</span> <span class='op'>=</span> <span class='id identifier rubyid_http_post'>http_post</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/feeds/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_feed_id'>feed_id</span><span class='embexpr_end'>}</span><span class='tstring_content'>/resources/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_resource_path'>resource_path</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_res'>res</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+  <span class='kw'>rescue</span> <span class='const'>HawkularException</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_error'>error</span>
+    <span class='comment'># 409 We already exist -&gt; that is ok
+</span>    <span class='id identifier rubyid_raise'>raise</span> <span class='kw'>unless</span> <span class='id identifier rubyid_error'>error</span><span class='period'>.</span><span class='id identifier rubyid_status_code'>status_code</span> <span class='op'>==</span> <span class='int'>409</span>
+  <span class='kw'>end</span>
+  <span class='const'>Resource</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_res'>res</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
   <h3 class="signature " id="delete_feed-instance_method">
   
-    - (<tt>Object</tt>) <strong>delete_feed</strong>(feed) 
+    - (<tt>Object</tt>) <strong>delete_feed</strong>(feed_id) 
   
 
   
@@ -1744,7 +1942,7 @@ child of another resource</p>
   
     <li>
       
-        <span class='name'>feed</span>
+        <span class='name'>feed_id</span>
       
       
         <span class='type'></span>
@@ -1767,16 +1965,16 @@ child of another resource</p>
       <pre class="lines">
 
 
-298
-299
-300
-301</pre>
+305
+306
+307
+308</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inventory/inventory_api.rb', line 298</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/inventory/inventory_api.rb', line 305</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_delete_feed'>delete_feed</span><span class='lparen'>(</span><span class='id identifier rubyid_feed'>feed</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_the_feed'>the_feed</span> <span class='op'>=</span> <span class='id identifier rubyid_hawk_escape'>hawk_escape</span> <span class='id identifier rubyid_feed'>feed</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_delete_feed'>delete_feed</span><span class='lparen'>(</span><span class='id identifier rubyid_feed_id'>feed_id</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_the_feed'>the_feed</span> <span class='op'>=</span> <span class='id identifier rubyid_hawk_escape_id'>hawk_escape_id</span> <span class='id identifier rubyid_feed_id'>feed_id</span>
   <span class='id identifier rubyid_http_delete'>http_delete</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/feeds/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_the_feed'>the_feed</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -1852,31 +2050,31 @@ created, updated, deleted, copied, registered</p>
       <pre class="lines">
 
 
-437
-438
-439
-440
-441
-442
-443
-444
-445
-446
-447
-448
-449
-450
-451
-452
-453
-454
-455
-456
-457
-458</pre>
+482
+483
+484
+485
+486
+487
+488
+489
+490
+491
+492
+493
+494
+495
+496
+497
+498
+499
+500
+501
+502
+503</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inventory/inventory_api.rb', line 437</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/inventory/inventory_api.rb', line 482</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_events'>events</span><span class='lparen'>(</span><span class='id identifier rubyid_type'>type</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>resource</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_action'>action</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>created</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
   <span class='id identifier rubyid_tenant_id'>tenant_id</span> <span class='op'>=</span> <span class='id identifier rubyid_get_tenant'>get_tenant</span>
@@ -1908,7 +2106,7 @@ created, updated, deleted, copied, registered</p>
       <div class="method_details ">
   <h3 class="signature " id="get_config_data_for_resource-instance_method">
   
-    - (<tt>Hash&lt;String,Object] Hash with additional data</tt>) <strong>get_config_data_for_resource</strong>(resource_id, feed) 
+    - (<tt>Hash&lt;String,Object] Hash with additional data</tt>) <strong>get_config_data_for_resource</strong>(resource_path) 
   
 
   
@@ -1928,7 +2126,7 @@ created, updated, deleted, copied, registered</p>
   
     <li>
       
-        <span class='name'>resource_id</span>
+        <span class='name'>resource_path</span>
       
       
         <span class='type'>(<tt>String</tt>)</span>
@@ -1937,23 +2135,7 @@ created, updated, deleted, copied, registered</p>
       
         &mdash;
         <div class='inline'>
-<p>Id of the resource to read properties from</p>
-</div>
-      
-    </li>
-  
-    <li>
-      
-        <span class='name'>feed</span>
-      
-      
-        <span class='type'>(<tt>String</tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'>
-<p>Feed of the resource</p>
+<p>Canonical path of the resource to read properties from.</p>
 </div>
       
     </li>
@@ -1985,6 +2167,7 @@ created, updated, deleted, copied, registered</p>
       <pre class="lines">
 
 
+118
 119
 120
 121
@@ -1995,13 +2178,14 @@ created, updated, deleted, copied, registered</p>
 126</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inventory/inventory_api.rb', line 119</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/inventory/inventory_api.rb', line 118</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_get_config_data_for_resource'>get_config_data_for_resource</span><span class='lparen'>(</span><span class='id identifier rubyid_resource_id'>resource_id</span><span class='comma'>,</span> <span class='id identifier rubyid_feed'>feed</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_the_id'>the_id</span> <span class='op'>=</span> <span class='id identifier rubyid_hawk_escape'>hawk_escape</span> <span class='id identifier rubyid_resource_id'>resource_id</span>
-  <span class='id identifier rubyid_the_feed'>the_feed</span> <span class='op'>=</span> <span class='id identifier rubyid_hawk_escape'>hawk_escape</span> <span class='id identifier rubyid_feed'>feed</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_get_config_data_for_resource'>get_config_data_for_resource</span><span class='lparen'>(</span><span class='id identifier rubyid_resource_path'>resource_path</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='id identifier rubyid_resource_path'>resource_path</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>CanonicalPath</span><span class='rparen'>)</span> <span class='op'>?</span> <span class='id identifier rubyid_resource_path'>resource_path</span> <span class='op'>:</span> <span class='const'>CanonicalPath</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='id identifier rubyid_resource_path'>resource_path</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_resource_path'>resource_path</span> <span class='op'>=</span> <span class='id identifier rubyid_path'>path</span><span class='period'>.</span><span class='id identifier rubyid_resource_ids'>resource_ids</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_feed_id'>feed_id</span> <span class='op'>=</span> <span class='id identifier rubyid_path'>path</span><span class='period'>.</span><span class='id identifier rubyid_feed_id'>feed_id</span>
   <span class='id identifier rubyid_query'>query</span> <span class='op'>=</span> <span class='id identifier rubyid_generate_query_params'>generate_query_params</span> <span class='label'>dataType:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>configuration</span><span class='tstring_end'>&#39;</span></span>
-  <span class='id identifier rubyid_http_get'>http_get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>feeds/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_the_feed'>the_feed</span><span class='embexpr_end'>}</span><span class='tstring_content'>/resources/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_the_id'>the_id</span><span class='embexpr_end'>}</span><span class='tstring_content'>/data</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_query'>query</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_http_get'>http_get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>feeds/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_feed_id'>feed_id</span><span class='embexpr_end'>}</span><span class='tstring_content'>/resources/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_resource_path'>resource_path</span><span class='embexpr_end'>}</span><span class='tstring_content'>/data</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_query'>query</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
 <span class='kw'>rescue</span>
   <span class='lbrace'>{</span><span class='rbrace'>}</span>
 <span class='kw'>end</span></pre>
@@ -2036,7 +2220,7 @@ created, updated, deleted, copied, registered</p>
         <span class='name'>path</span>
       
       
-        <span class='type'>(<tt><span class='object_link'><a href="CanonicalPath.html" title="Hawkular::Inventory::CanonicalPath (class)">CanonicalPath</a></span></tt>)</span>
+        <span class='type'>(<tt>String</tt>)</span>
       
       
       
@@ -2074,15 +2258,17 @@ created, updated, deleted, copied, registered</p>
       <pre class="lines">
 
 
-169
-170
-171</pre>
+178
+179
+180
+181</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inventory/inventory_api.rb', line 169</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/inventory/inventory_api.rb', line 178</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_entity'>get_entity</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_http_get'>http_get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>path</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_path'>path</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_c_path'>c_path</span> <span class='op'>=</span> <span class='id identifier rubyid_path'>path</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>CanonicalPath</span><span class='rparen'>)</span> <span class='op'>?</span> <span class='id identifier rubyid_path'>path</span> <span class='op'>:</span> <span class='const'>CanonicalPath</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_http_get'>http_get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>path</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_c_path'>c_path</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -2092,7 +2278,7 @@ created, updated, deleted, copied, registered</p>
       <div class="method_details ">
   <h3 class="signature " id="get_resource-instance_method">
   
-    - (<tt>Object</tt>) <strong>get_resource</strong>(feed_id, res_id, fetch_resource_config = true) 
+    - (<tt>Object</tt>) <strong>get_resource</strong>(resource_path, fetch_resource_config = true) 
   
 
   
@@ -2101,7 +2287,7 @@ created, updated, deleted, copied, registered</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Return the resource object for the passed id</p>
+<p>Return the resource object for the passed path</p>
 
 
   </div>
@@ -2112,7 +2298,7 @@ created, updated, deleted, copied, registered</p>
   
     <li>
       
-        <span class='name'>feed_id</span>
+        <span class='name'>resource_path</span>
       
       
         <span class='type'>(<tt>String</tt>)</span>
@@ -2121,23 +2307,7 @@ created, updated, deleted, copied, registered</p>
       
         &mdash;
         <div class='inline'>
-<p>Id of the feed this resource belongs to</p>
-</div>
-      
-    </li>
-  
-    <li>
-      
-        <span class='name'>res_id</span>
-      
-      
-        <span class='type'>(<tt>String</tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'>
-<p>Id of the resource to fetch</p>
+<p>Canonical path of the resource to fetch.</p>
 </div>
       
     </li>
@@ -2169,28 +2339,32 @@ created, updated, deleted, copied, registered</p>
       <pre class="lines">
 
 
-358
-359
-360
-361
-362
-363
-364
-365
-366
-367
-368</pre>
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inventory/inventory_api.rb', line 358</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/inventory/inventory_api.rb', line 381</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_get_resource'>get_resource</span><span class='lparen'>(</span><span class='id identifier rubyid_feed_id'>feed_id</span><span class='comma'>,</span> <span class='id identifier rubyid_res_id'>res_id</span><span class='comma'>,</span> <span class='id identifier rubyid_fetch_resource_config'>fetch_resource_config</span> <span class='op'>=</span> <span class='kw'>true</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_the_feed'>the_feed</span> <span class='op'>=</span> <span class='id identifier rubyid_hawk_escape'>hawk_escape</span> <span class='id identifier rubyid_feed_id'>feed_id</span>
-  <span class='id identifier rubyid_the_resource'>the_resource</span> <span class='op'>=</span> <span class='id identifier rubyid_hawk_escape'>hawk_escape</span> <span class='id identifier rubyid_res_id'>res_id</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_get_resource'>get_resource</span><span class='lparen'>(</span><span class='id identifier rubyid_resource_path'>resource_path</span><span class='comma'>,</span> <span class='id identifier rubyid_fetch_resource_config'>fetch_resource_config</span> <span class='op'>=</span> <span class='kw'>true</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='id identifier rubyid_resource_path'>resource_path</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>CanonicalPath</span><span class='rparen'>)</span> <span class='op'>?</span> <span class='id identifier rubyid_resource_path'>resource_path</span> <span class='op'>:</span> <span class='const'>CanonicalPath</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='id identifier rubyid_resource_path'>resource_path</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_feed_id'>feed_id</span> <span class='op'>=</span> <span class='id identifier rubyid_path'>path</span><span class='period'>.</span><span class='id identifier rubyid_feed_id'>feed_id</span>
+  <span class='id identifier rubyid_res_path'>res_path</span> <span class='op'>=</span> <span class='id identifier rubyid_path'>path</span><span class='period'>.</span><span class='id identifier rubyid_resource_ids'>resource_ids</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
 
-  <span class='id identifier rubyid_res'>res</span> <span class='op'>=</span> <span class='id identifier rubyid_http_get'>http_get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/feeds/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_the_feed'>the_feed</span><span class='embexpr_end'>}</span><span class='tstring_content'>/resources/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_the_resource'>the_resource</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_res'>res</span> <span class='op'>=</span> <span class='id identifier rubyid_http_get'>http_get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/feeds/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_feed_id'>feed_id</span><span class='embexpr_end'>}</span><span class='tstring_content'>/resources/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_res_path'>res_path</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_fetch_resource_config'>fetch_resource_config</span>
-    <span class='id identifier rubyid_p'>p</span> <span class='op'>=</span> <span class='id identifier rubyid_get_config_data_for_resource'>get_config_data_for_resource</span><span class='lparen'>(</span><span class='id identifier rubyid_res_id'>res_id</span><span class='comma'>,</span> <span class='id identifier rubyid_feed_id'>feed_id</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_p'>p</span> <span class='op'>=</span> <span class='id identifier rubyid_get_config_data_for_resource'>get_config_data_for_resource</span><span class='lparen'>(</span><span class='id identifier rubyid_resource_path'>resource_path</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_res'>res</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>properties</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
     <span class='id identifier rubyid_res'>res</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>properties</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span> <span class='id identifier rubyid_p'>p</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>value</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span> <span class='kw'>unless</span> <span class='id identifier rubyid_p'>p</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>value</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
   <span class='kw'>end</span>
   <span class='const'>Resource</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_res'>res</span><span class='rparen'>)</span>
@@ -2277,7 +2451,7 @@ passed, the ones from the constructor are used</p>
 43</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inventory/inventory_api.rb', line 36</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/inventory/inventory_api.rb', line 36</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_tenant'>get_tenant</span><span class='lparen'>(</span><span class='id identifier rubyid_credentials'>credentials</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_creds'>creds</span> <span class='op'>=</span> <span class='id identifier rubyid_credentials'>credentials</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span> <span class='op'>?</span> <span class='ivar'>@credentials</span> <span class='op'>:</span> <span class='id identifier rubyid_credentials'>credentials</span>
@@ -2324,7 +2498,7 @@ passed, the ones from the constructor are used</p>
 49</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inventory/inventory_api.rb', line 46</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/inventory/inventory_api.rb', line 46</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_impersonate!'>impersonate!</span><span class='lparen'>(</span><span class='id identifier rubyid_credentials'>credentials</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='ivar'>@tenant</span> <span class='op'>=</span> <span class='id identifier rubyid_get_tenant'>get_tenant</span><span class='lparen'>(</span><span class='id identifier rubyid_credentials'>credentials</span><span class='rparen'>)</span>
@@ -2338,7 +2512,7 @@ passed, the ones from the constructor are used</p>
       <div class="method_details ">
   <h3 class="signature " id="list_child_resources-instance_method">
   
-    - (<tt>Array&lt;<span class='object_link'><a href="Resource.html" title="Hawkular::Inventory::Resource (class)">Resource</a></span>&gt;</tt>) <strong>list_child_resources</strong>(parent_resource, recursive = false) 
+    - (<tt>Array&lt;<span class='object_link'><a href="Resource.html" title="Hawkular::Inventory::Resource (class)">Resource</a></span>&gt;</tt>) <strong>list_child_resources</strong>(parent_res_path, recursive = false) 
   
 
   
@@ -2359,16 +2533,16 @@ server, those would be Datasources, Deployments and so on.</p>
   
     <li>
       
-        <span class='name'>parent_resource</span>
+        <span class='name'>parent_res_path</span>
       
       
-        <span class='type'>(<tt><span class='object_link'><a href="Resource.html" title="Hawkular::Inventory::Resource (class)">Resource</a></span></tt>)</span>
+        <span class='type'>(<tt>String</tt>)</span>
       
       
       
         &mdash;
         <div class='inline'>
-<p>Resource to obtain children from</p>
+<p>Canonical path of the resource to obtain children from.</p>
 </div>
       
     </li>
@@ -2429,14 +2603,14 @@ empty</p>
 141</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inventory/inventory_api.rb', line 134</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/inventory/inventory_api.rb', line 134</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_list_child_resources'>list_child_resources</span><span class='lparen'>(</span><span class='id identifier rubyid_parent_resource'>parent_resource</span><span class='comma'>,</span> <span class='id identifier rubyid_recursive'>recursive</span> <span class='op'>=</span> <span class='kw'>false</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_the_feed'>the_feed</span> <span class='op'>=</span> <span class='id identifier rubyid_hawk_escape'>hawk_escape</span> <span class='id identifier rubyid_parent_resource'>parent_resource</span><span class='period'>.</span><span class='id identifier rubyid_feed'>feed</span>
-  <span class='id identifier rubyid_the_id'>the_id</span> <span class='op'>=</span> <span class='id identifier rubyid_hawk_escape'>hawk_escape</span> <span class='id identifier rubyid_parent_resource'>parent_resource</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span>
-
+<span class='kw'>def</span> <span class='id identifier rubyid_list_child_resources'>list_child_resources</span><span class='lparen'>(</span><span class='id identifier rubyid_parent_res_path'>parent_res_path</span><span class='comma'>,</span> <span class='id identifier rubyid_recursive'>recursive</span> <span class='op'>=</span> <span class='kw'>false</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='id identifier rubyid_parent_res_path'>parent_res_path</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>CanonicalPath</span><span class='rparen'>)</span> <span class='op'>?</span> <span class='id identifier rubyid_parent_res_path'>parent_res_path</span> <span class='op'>:</span> <span class='const'>CanonicalPath</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='id identifier rubyid_parent_res_path'>parent_res_path</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_parent_resource_path'>parent_resource_path</span> <span class='op'>=</span> <span class='id identifier rubyid_path'>path</span><span class='period'>.</span><span class='id identifier rubyid_resource_ids'>resource_ids</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_feed_id'>feed_id</span> <span class='op'>=</span> <span class='id identifier rubyid_path'>path</span><span class='period'>.</span><span class='id identifier rubyid_feed_id'>feed_id</span>
   <span class='id identifier rubyid_which_children'>which_children</span> <span class='op'>=</span> <span class='lparen'>(</span><span class='id identifier rubyid_recursive'>recursive</span> <span class='op'>?</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/recursiveChildren</span><span class='tstring_end'>&#39;</span></span> <span class='op'>:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/children</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_ret'>ret</span> <span class='op'>=</span> <span class='id identifier rubyid_http_get'>http_get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/feeds/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_the_feed'>the_feed</span><span class='embexpr_end'>}</span><span class='tstring_content'>/resources/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_the_id'>the_id</span><span class='embexpr_end'>}</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_which_children'>which_children</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_ret'>ret</span> <span class='op'>=</span> <span class='id identifier rubyid_http_get'>http_get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/feeds/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_feed_id'>feed_id</span><span class='embexpr_end'>}</span><span class='tstring_content'>/resources/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_parent_resource_path'>parent_resource_path</span><span class='embexpr_end'>}</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_which_children'>which_children</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
   <span class='id identifier rubyid_ret'>ret</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_r'>r</span><span class='op'>|</span> <span class='const'>Resource</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_r'>r</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -2494,7 +2668,7 @@ empty</p>
 56</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inventory/inventory_api.rb', line 53</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/inventory/inventory_api.rb', line 53</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_list_feeds'>list_feeds</span><span class='lparen'>(</span><span class='id identifier rubyid__environment'>_environment</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>test</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
   <span class='id identifier rubyid_ret'>ret</span> <span class='op'>=</span> <span class='id identifier rubyid_http_get'>http_get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>feeds</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
@@ -2508,7 +2682,7 @@ empty</p>
       <div class="method_details ">
   <h3 class="signature " id="list_metrics_for_metric_type-instance_method">
   
-    - (<tt>Array&lt;<span class='object_link'><a href="Metric.html" title="Hawkular::Inventory::Metric (class)">Metric</a></span>&gt;</tt>) <strong>list_metrics_for_metric_type</strong>(feed, type) 
+    - (<tt>Array&lt;<span class='object_link'><a href="Metric.html" title="Hawkular::Inventory::Metric (class)">Metric</a></span>&gt;</tt>) <strong>list_metrics_for_metric_type</strong>(metric_type_path) 
   
 
   
@@ -2517,8 +2691,8 @@ empty</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>List the metrics for the passed feed and metric type. If feed is not
-passed, all the metrics across all the feeds of a given type will be
+<p>List the metrics for the passed metric type. If feed is not passed in the
+path, all the metrics across all the feeds of a given type will be
 retrieved This method may perform multiple REST calls.</p>
 
 
@@ -2530,7 +2704,7 @@ retrieved This method may perform multiple REST calls.</p>
   
     <li>
       
-        <span class='name'>feed</span>
+        <span class='name'>metric_type_path</span>
       
       
         <span class='type'>(<tt>String</tt>)</span>
@@ -2539,24 +2713,9 @@ retrieved This method may perform multiple REST calls.</p>
       
         &mdash;
         <div class='inline'>
-<p>The id of the feed the type lives under. Can be nil for all feeds</p>
-</div>
-      
-    </li>
-  
-    <li>
-      
-        <span class='name'>type</span>
-      
-      
-        <span class='type'>(<tt>String</tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'>
-<p>Name of the metric type to look for. Can be obtained from <span class='object_link'><a href="MetricType.html" title="Hawkular::Inventory::MetricType (class)">MetricType</a></span>.id.
-Must not be nil</p>
+<p>Canonical path of the resource type to look for. Can be obtained from
+<span class='object_link'><a href="MetricType.html" title="Hawkular::Inventory::MetricType (class)">MetricType</a></span>.path. Must not be nil. The tenant_id in the canonical path
+doesn&#39;t have to be there.</p>
 </div>
       
     </li>
@@ -2588,15 +2747,6 @@ Must not be nil</p>
       <pre class="lines">
 
 
-200
-201
-202
-203
-204
-205
-206
-207
-208
 209
 210
 211
@@ -2606,25 +2756,32 @@ Must not be nil</p>
 215
 216
 217
-218</pre>
+218
+219
+220
+221
+222
+223
+224
+225
+226</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inventory/inventory_api.rb', line 200</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/inventory/inventory_api.rb', line 209</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_list_metrics_for_metric_type'>list_metrics_for_metric_type</span><span class='lparen'>(</span><span class='id identifier rubyid_feed'>feed</span><span class='comma'>,</span> <span class='id identifier rubyid_type'>type</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_fail'>fail</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Type must not be nil</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>unless</span> <span class='id identifier rubyid_type'>type</span>
-  <span class='id identifier rubyid_the_type'>the_type</span> <span class='op'>=</span> <span class='id identifier rubyid_hawk_escape'>hawk_escape</span> <span class='id identifier rubyid_type'>type</span>
-  <span class='kw'>if</span> <span class='id identifier rubyid_feed'>feed</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
-    <span class='id identifier rubyid_type_hash'>type_hash</span> <span class='op'>=</span> <span class='id identifier rubyid_http_get'>http_get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>metricTypes/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_the_type'>the_type</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_list_metrics_for_metric_type'>list_metrics_for_metric_type</span><span class='lparen'>(</span><span class='id identifier rubyid_metric_type_path'>metric_type_path</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='id identifier rubyid_metric_type_path'>metric_type_path</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>CanonicalPath</span><span class='rparen'>)</span> <span class='op'>?</span> <span class='id identifier rubyid_metric_type_path'>metric_type_path</span> <span class='op'>:</span> <span class='const'>CanonicalPath</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='id identifier rubyid_metric_type_path'>metric_type_path</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_metric_type_id'>metric_type_id</span> <span class='op'>=</span> <span class='id identifier rubyid_path'>path</span><span class='period'>.</span><span class='id identifier rubyid_metric_type_id'>metric_type_id</span>
+  <span class='id identifier rubyid_feed_id'>feed_id</span> <span class='op'>=</span> <span class='id identifier rubyid_path'>path</span><span class='period'>.</span><span class='id identifier rubyid_feed_id'>feed_id</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_feed_id'>feed_id</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+    <span class='id identifier rubyid_type_hash'>type_hash</span> <span class='op'>=</span> <span class='id identifier rubyid_http_get'>http_get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>metricTypes/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_metric_type_id'>metric_type_id</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
   <span class='kw'>else</span>
-    <span class='id identifier rubyid_the_feed'>the_feed</span> <span class='op'>=</span> <span class='id identifier rubyid_hawk_escape'>hawk_escape</span> <span class='id identifier rubyid_feed'>feed</span>
-    <span class='id identifier rubyid_type_hash'>type_hash</span> <span class='op'>=</span> <span class='id identifier rubyid_http_get'>http_get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/feeds/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_the_feed'>the_feed</span><span class='embexpr_end'>}</span><span class='tstring_content'>/metricTypes/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_the_type'>the_type</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_type_hash'>type_hash</span> <span class='op'>=</span> <span class='id identifier rubyid_http_get'>http_get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/feeds/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_feed_id'>feed_id</span><span class='embexpr_end'>}</span><span class='tstring_content'>/metricTypes/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_metric_type_id'>metric_type_id</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 
-  <span class='id identifier rubyid_rels'>rels</span> <span class='op'>=</span> <span class='id identifier rubyid_list_relationships'>list_relationships</span><span class='lparen'>(</span><span class='const'>ResourceType</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_type_hash'>type_hash</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>defines</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_rels'>rels</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_rel'>rel</span><span class='op'>|</span>
-    <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='const'>CanonicalPath</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='id identifier rubyid_rel'>rel</span><span class='period'>.</span><span class='id identifier rubyid_target_id'>target_id</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_metric_hash'>metric_hash</span> <span class='op'>=</span> <span class='id identifier rubyid_get_entity'>get_entity</span> <span class='id identifier rubyid_path'>path</span>
+  <span class='id identifier rubyid_relations'>relations</span> <span class='op'>=</span> <span class='id identifier rubyid_list_relationships'>list_relationships</span><span class='lparen'>(</span><span class='id identifier rubyid_type_hash'>type_hash</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>path</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>defines</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_relations'>relations</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_rel'>rel</span><span class='op'>|</span>
+    <span class='id identifier rubyid_metric_hash'>metric_hash</span> <span class='op'>=</span> <span class='id identifier rubyid_get_entity'>get_entity</span> <span class='id identifier rubyid_rel'>rel</span><span class='period'>.</span><span class='id identifier rubyid_target_id'>target_id</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
     <span class='const'>Metric</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_metric_hash'>metric_hash</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 <span class='kw'>rescue</span>
@@ -2638,7 +2795,7 @@ Must not be nil</p>
       <div class="method_details ">
   <h3 class="signature " id="list_metrics_for_resource-instance_method">
   
-    - (<tt>Array&lt;<span class='object_link'><a href="Metric.html" title="Hawkular::Inventory::Metric (class)">Metric</a></span>&gt;</tt>) <strong>list_metrics_for_resource</strong>(resource, filter = {}) 
+    - (<tt>Array&lt;<span class='object_link'><a href="Metric.html" title="Hawkular::Inventory::Metric (class)">Metric</a></span>&gt;</tt>) <strong>list_metrics_for_resource</strong>(resource_path, filter = {}) 
   
 
   
@@ -2674,12 +2831,17 @@ down the</p>
   
     <li>
       
-        <span class='name'>resource</span>
+        <span class='name'>resource_path</span>
       
       
-        <span class='type'>(<tt><span class='object_link'><a href="Resource.html" title="Hawkular::Inventory::Resource (class)">Resource</a></span></tt>)</span>
+        <span class='type'>(<tt>String</tt>)</span>
       
       
+      
+        &mdash;
+        <div class='inline'>
+<p>Canonical path of the resource.</p>
+</div>
       
     </li>
   
@@ -2730,33 +2892,29 @@ missing it will not be used for filtering</p>
       <pre class="lines">
 
 
-261
-262
-263
-264
-265
-266
-267
-268
-269
 270
 271
-272</pre>
+272
+273
+274
+275
+276
+277
+278
+279</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inventory/inventory_api.rb', line 261</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/inventory/inventory_api.rb', line 270</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_list_metrics_for_resource'>list_metrics_for_resource</span><span class='lparen'>(</span><span class='id identifier rubyid_resource'>resource</span><span class='comma'>,</span> <span class='id identifier rubyid_filter'>filter</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_the_feed'>the_feed</span> <span class='op'>=</span> <span class='id identifier rubyid_hawk_escape'>hawk_escape</span> <span class='id identifier rubyid_resource'>resource</span><span class='period'>.</span><span class='id identifier rubyid_feed'>feed</span>
-  <span class='id identifier rubyid_the_id'>the_id</span> <span class='op'>=</span> <span class='id identifier rubyid_hawk_escape'>hawk_escape</span> <span class='id identifier rubyid_resource'>resource</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_list_metrics_for_resource'>list_metrics_for_resource</span><span class='lparen'>(</span><span class='id identifier rubyid_resource_path'>resource_path</span><span class='comma'>,</span> <span class='id identifier rubyid_filter'>filter</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='id identifier rubyid_resource_path'>resource_path</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>CanonicalPath</span><span class='rparen'>)</span> <span class='op'>?</span> <span class='id identifier rubyid_resource_path'>resource_path</span> <span class='op'>:</span> <span class='const'>CanonicalPath</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='id identifier rubyid_resource_path'>resource_path</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_feed_id'>feed_id</span> <span class='op'>=</span> <span class='id identifier rubyid_path'>path</span><span class='period'>.</span><span class='id identifier rubyid_feed_id'>feed_id</span>
+  <span class='id identifier rubyid_resource_path_escaped'>resource_path_escaped</span> <span class='op'>=</span> <span class='id identifier rubyid_path'>path</span><span class='period'>.</span><span class='id identifier rubyid_resource_ids'>resource_ids</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
 
-  <span class='id identifier rubyid_ret'>ret</span> <span class='op'>=</span> <span class='id identifier rubyid_http_get'>http_get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/feeds/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_the_feed'>the_feed</span><span class='embexpr_end'>}</span><span class='tstring_content'>/resources/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_the_id'>the_id</span><span class='embexpr_end'>}</span><span class='tstring_content'>/metrics</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_with_nils'>with_nils</span> <span class='op'>=</span> <span class='id identifier rubyid_ret'>ret</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_m'>m</span><span class='op'>|</span>
-    <span class='id identifier rubyid_metric_new'>metric_new</span> <span class='op'>=</span> <span class='const'>Metric</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_m'>m</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_found'>found</span> <span class='op'>=</span> <span class='id identifier rubyid_should_include?'>should_include?</span><span class='lparen'>(</span><span class='id identifier rubyid_metric_new'>metric_new</span><span class='comma'>,</span> <span class='id identifier rubyid_filter'>filter</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_metric_new'>metric_new</span> <span class='kw'>if</span> <span class='id identifier rubyid_found'>found</span>
-  <span class='kw'>end</span>
-  <span class='id identifier rubyid_with_nils'>with_nils</span><span class='period'>.</span><span class='id identifier rubyid_compact'>compact</span>
+  <span class='id identifier rubyid_query'>query</span> <span class='op'>=</span> <span class='id identifier rubyid_generate_query_params'>generate_query_params</span> <span class='label'>sort:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>id</span><span class='tstring_end'>&#39;</span></span>
+  <span class='id identifier rubyid_ret'>ret</span> <span class='op'>=</span> <span class='id identifier rubyid_http_get'>http_get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/feeds/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_feed_id'>feed_id</span><span class='embexpr_end'>}</span><span class='tstring_content'>/resources/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_resource_path_escaped'>resource_path_escaped</span><span class='embexpr_end'>}</span><span class='tstring_content'>/metrics</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_query'>query</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_to_filter'>to_filter</span> <span class='op'>=</span> <span class='id identifier rubyid_ret'>ret</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_m'>m</span><span class='op'>|</span> <span class='const'>Metric</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_m'>m</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+  <span class='id identifier rubyid_filter_entities'>filter_entities</span><span class='lparen'>(</span><span class='id identifier rubyid_to_filter'>to_filter</span><span class='comma'>,</span> <span class='id identifier rubyid_filter'>filter</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -2766,7 +2924,7 @@ missing it will not be used for filtering</p>
       <div class="method_details ">
   <h3 class="signature " id="list_metrics_for_resource_type-instance_method">
   
-    - (<tt>Array&lt;<span class='object_link'><a href="Metric.html" title="Hawkular::Inventory::Metric (class)">Metric</a></span>&gt;</tt>) <strong>list_metrics_for_resource_type</strong>(feed, type) 
+    - (<tt>Array&lt;<span class='object_link'><a href="Metric.html" title="Hawkular::Inventory::Metric (class)">Metric</a></span>&gt;</tt>) <strong>list_metrics_for_resource_type</strong>(resource_type_path) 
   
 
   
@@ -2775,10 +2933,10 @@ missing it will not be used for filtering</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>List the metrics for the passed feed and all the resources of given
-resource type. If feed is not passed, all the metrics across all the feeds
-of a resource type will be retrieved This method may perform multiple REST
-calls.</p>
+<p>List the metrics for all the resources of a given resource type. If feed is
+not passed in the resource type canonical path, all the metrics across all
+the feeds of a resource type will be retrieved. This method may perform
+multiple REST calls.</p>
 
 
   </div>
@@ -2789,7 +2947,7 @@ calls.</p>
   
     <li>
       
-        <span class='name'>feed</span>
+        <span class='name'>resource_type_path</span>
       
       
         <span class='type'>(<tt>String</tt>)</span>
@@ -2798,24 +2956,9 @@ calls.</p>
       
         &mdash;
         <div class='inline'>
-<p>The id of the feed the type lives under. Can be nil for all feeds</p>
-</div>
-      
-    </li>
-  
-    <li>
-      
-        <span class='name'>type</span>
-      
-      
-        <span class='type'>(<tt>String</tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'>
-<p>Name of the resource type to look for. Can be obtained from
-<span class='object_link'><a href="ResourceType.html" title="Hawkular::Inventory::ResourceType (class)">ResourceType</a></span>.id. Must not be nil</p>
+<p>Canonical path of the resource type to look for. Can be obtained from
+<span class='object_link'><a href="ResourceType.html" title="Hawkular::Inventory::ResourceType (class)">ResourceType</a></span>.path. Must not be nil. The tenant_id in the canonical path
+doesn&#39;t have to be there.</p>
 </div>
       
     </li>
@@ -2847,13 +2990,6 @@ calls.</p>
       <pre class="lines">
 
 
-227
-228
-229
-230
-231
-232
-233
 234
 235
 236
@@ -2865,26 +3001,37 @@ calls.</p>
 242
 243
 244
-245</pre>
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inventory/inventory_api.rb', line 227</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/inventory/inventory_api.rb', line 234</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_list_metrics_for_resource_type'>list_metrics_for_resource_type</span><span class='lparen'>(</span><span class='id identifier rubyid_feed'>feed</span><span class='comma'>,</span> <span class='id identifier rubyid_type'>type</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_fail'>fail</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Type must not be nil</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>unless</span> <span class='id identifier rubyid_type'>type</span>
-  <span class='id identifier rubyid_the_type'>the_type</span> <span class='op'>=</span> <span class='id identifier rubyid_hawk_escape'>hawk_escape</span> <span class='id identifier rubyid_type'>type</span>
-  <span class='kw'>if</span> <span class='id identifier rubyid_feed'>feed</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
-    <span class='id identifier rubyid_ret'>ret</span> <span class='op'>=</span> <span class='id identifier rubyid_http_get'>http_get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>resourceTypes/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_the_type'>the_type</span><span class='embexpr_end'>}</span><span class='tstring_content'>/resources</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_list_metrics_for_resource_type'>list_metrics_for_resource_type</span><span class='lparen'>(</span><span class='id identifier rubyid_resource_type_path'>resource_type_path</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='id identifier rubyid_resource_type_path'>resource_type_path</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>CanonicalPath</span><span class='rparen'>)</span> <span class='op'>?</span> <span class='id identifier rubyid_resource_type_path'>resource_type_path</span> <span class='op'>:</span> <span class='const'>CanonicalPath</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='id identifier rubyid_resource_type_path'>resource_type_path</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_resource_type_id'>resource_type_id</span> <span class='op'>=</span> <span class='id identifier rubyid_path'>path</span><span class='period'>.</span><span class='id identifier rubyid_resource_type_id'>resource_type_id</span>
+  <span class='id identifier rubyid_feed_id'>feed_id</span> <span class='op'>=</span> <span class='id identifier rubyid_path'>path</span><span class='period'>.</span><span class='id identifier rubyid_feed_id'>feed_id</span>
+
+  <span class='kw'>if</span> <span class='id identifier rubyid_feed_id'>feed_id</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+    <span class='id identifier rubyid_ret'>ret</span> <span class='op'>=</span> <span class='id identifier rubyid_http_get'>http_get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>resourceTypes/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_resource_type_id'>resource_type_id</span><span class='embexpr_end'>}</span><span class='tstring_content'>/resources</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
   <span class='kw'>else</span>
-    <span class='id identifier rubyid_the_feed'>the_feed</span> <span class='op'>=</span> <span class='id identifier rubyid_hawk_escape'>hawk_escape</span> <span class='id identifier rubyid_feed'>feed</span>
-    <span class='id identifier rubyid_ret'>ret</span> <span class='op'>=</span> <span class='id identifier rubyid_http_get'>http_get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>feeds/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_the_feed'>the_feed</span><span class='embexpr_end'>}</span><span class='tstring_content'>/resourceTypes/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_the_type'>the_type</span><span class='embexpr_end'>}</span><span class='tstring_content'>/resources</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_ret'>ret</span> <span class='op'>=</span> <span class='id identifier rubyid_http_get'>http_get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>feeds/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_feed_id'>feed_id</span><span class='embexpr_end'>}</span><span class='tstring_content'>/resourceTypes/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_resource_type_id'>resource_type_id</span><span class='embexpr_end'>}</span><span class='tstring_content'>/resources</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
   <span class='kw'>end</span>
   <span class='id identifier rubyid_ret'>ret</span><span class='period'>.</span><span class='id identifier rubyid_flat_map'>flat_map</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_r'>r</span><span class='op'>|</span>
     <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='const'>CanonicalPath</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='id identifier rubyid_r'>r</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>path</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_query'>query</span> <span class='op'>=</span> <span class='id identifier rubyid_generate_query_params'>generate_query_params</span> <span class='label'>sort:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>id</span><span class='tstring_end'>&#39;</span></span>
     <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_path'>path</span><span class='period'>.</span><span class='id identifier rubyid_feed_id'>feed_id</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
-      <span class='id identifier rubyid_nested_ret'>nested_ret</span> <span class='op'>=</span> <span class='id identifier rubyid_http_get'>http_get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>feeds/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_path'>path</span><span class='period'>.</span><span class='id identifier rubyid_feed_id'>feed_id</span><span class='embexpr_end'>}</span><span class='tstring_content'>/resources/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_path'>path</span><span class='period'>.</span><span class='id identifier rubyid_resource_ids'>resource_ids</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'>/metrics</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_nested_ret'>nested_ret</span> <span class='op'>=</span> <span class='id identifier rubyid_http_get'>http_get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>feeds/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_path'>path</span><span class='period'>.</span><span class='id identifier rubyid_feed_id'>feed_id</span><span class='embexpr_end'>}</span><span class='tstring_content'>/resources/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_path'>path</span><span class='period'>.</span><span class='id identifier rubyid_resource_ids'>resource_ids</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'>/metrics</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_query'>query</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
     <span class='kw'>else</span>
-      <span class='id identifier rubyid_nested_ret'>nested_ret</span> <span class='op'>=</span> <span class='id identifier rubyid_http_get'>http_get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_path'>path</span><span class='period'>.</span><span class='id identifier rubyid_environment_id'>environment_id</span><span class='embexpr_end'>}</span><span class='tstring_content'>/resources/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_path'>path</span><span class='period'>.</span><span class='id identifier rubyid_resource_ids'>resource_ids</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'>/metrics</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_nested_ret'>nested_ret</span> <span class='op'>=</span> <span class='id identifier rubyid_http_get'>http_get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_path'>path</span><span class='period'>.</span><span class='id identifier rubyid_environment_id'>environment_id</span><span class='embexpr_end'>}</span><span class='tstring_content'>/resources/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_path'>path</span><span class='period'>.</span><span class='id identifier rubyid_resource_ids'>resource_ids</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'>/metrics</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_query'>query</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
     <span class='kw'>end</span>
     <span class='id identifier rubyid_nested_ret'>nested_ret</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_m'>m</span><span class='op'>|</span> <span class='const'>Metric</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_m'>m</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
   <span class='kw'>end</span>
@@ -2895,9 +3042,177 @@ calls.</p>
 </div>
     
       <div class="method_details ">
+  <h3 class="signature " id="list_operation_definitions-instance_method">
+  
+    - (<tt>Array&lt;String&gt;</tt>) <strong>list_operation_definitions</strong>(resource_type_path) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>List operation definitions (types) for a given resource type</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>resource_type_path</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>canonical path of the resource type entity</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array&lt;String&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>List of operation type ids</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+425
+426
+427
+428
+429
+430
+431</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/inventory/inventory_api.rb', line 425</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_list_operation_definitions'>list_operation_definitions</span><span class='lparen'>(</span><span class='id identifier rubyid_resource_type_path'>resource_type_path</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_parsed_path'>parsed_path</span> <span class='op'>=</span> <span class='const'>CanonicalPath</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='id identifier rubyid_resource_type_path'>resource_type_path</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_feed_id'>feed_id</span> <span class='op'>=</span> <span class='id identifier rubyid_parsed_path'>parsed_path</span><span class='period'>.</span><span class='id identifier rubyid_feed_id'>feed_id</span>
+  <span class='id identifier rubyid_resource_type_id'>resource_type_id</span> <span class='op'>=</span> <span class='id identifier rubyid_parsed_path'>parsed_path</span><span class='period'>.</span><span class='id identifier rubyid_resource_type_id'>resource_type_id</span>
+  <span class='id identifier rubyid_ret'>ret</span> <span class='op'>=</span> <span class='id identifier rubyid_http_get'>http_get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/feeds/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_feed_id'>feed_id</span><span class='embexpr_end'>}</span><span class='tstring_content'>/resourceTypes/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_resource_type_id'>resource_type_id</span><span class='embexpr_end'>}</span><span class='tstring_content'>/operationTypes</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_ret'>ret</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_ot'>ot</span><span class='op'>|</span> <span class='id identifier rubyid_ot'>ot</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>id</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span> <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="list_operation_definitions_for_resource-instance_method">
+  
+    - (<tt>Array&lt;String&gt;</tt>) <strong>list_operation_definitions_for_resource</strong>(resource_path) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>List operation definitions (types) for a given resource</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>resource_path</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>canonical path of the resource entity</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array&lt;String&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>List of operation type ids</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+436
+437
+438
+439</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/inventory/inventory_api.rb', line 436</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_list_operation_definitions_for_resource'>list_operation_definitions_for_resource</span><span class='lparen'>(</span><span class='id identifier rubyid_resource_path'>resource_path</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_resource'>resource</span> <span class='op'>=</span> <span class='id identifier rubyid_get_resource'>get_resource</span><span class='lparen'>(</span><span class='id identifier rubyid_resource_path'>resource_path</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='comma'>,</span> <span class='kw'>false</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_list_operation_definitions'>list_operation_definitions</span><span class='lparen'>(</span><span class='id identifier rubyid_resource'>resource</span><span class='period'>.</span><span class='id identifier rubyid_type_path'>type_path</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
   <h3 class="signature " id="list_relationships-instance_method">
   
-    - (<tt>Array&lt;<span class='object_link'><a href="Relationship.html" title="Hawkular::Inventory::Relationship (class)">Relationship</a></span>&gt;</tt>) <strong>list_relationships</strong>(resource, named = nil) 
+    - (<tt>Array&lt;<span class='object_link'><a href="Relationship.html" title="Hawkular::Inventory::Relationship (class)">Relationship</a></span>&gt;</tt>) <strong>list_relationships</strong>(entity_path, named = nil) 
   
 
   
@@ -2917,16 +3232,16 @@ calls.</p>
   
     <li>
       
-        <span class='name'>resource</span>
+        <span class='name'>entity_path</span>
       
       
-        <span class='type'>(<tt><span class='object_link'><a href="Resource.html" title="Hawkular::Inventory::Resource (class)">Resource</a></span></tt>)</span>
+        <span class='type'>(<tt>String</tt>)</span>
       
       
       
         &mdash;
         <div class='inline'>
-<p>One end of the relationship</p>
+<p>Canonical path of the entity that forms the one end of the relationship</p>
 </div>
       
     </li>
@@ -2980,14 +3295,24 @@ calls.</p>
 148
 149
 150
-151</pre>
+151
+152
+153
+154
+155
+156</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inventory/inventory_api.rb', line 147</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/inventory/inventory_api.rb', line 147</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_list_relationships'>list_relationships</span><span class='lparen'>(</span><span class='id identifier rubyid_resource'>resource</span><span class='comma'>,</span> <span class='id identifier rubyid_named'>named</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_query'>query</span> <span class='op'>=</span> <span class='id identifier rubyid_named'>named</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>?</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span> <span class='op'>:</span> <span class='lparen'>(</span><span class='id identifier rubyid_generate_query_params'>generate_query_params</span> <span class='label'>named:</span> <span class='id identifier rubyid_named'>named</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_ret'>ret</span> <span class='op'>=</span> <span class='id identifier rubyid_http_get'>http_get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/path</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_resource'>resource</span><span class='period'>.</span><span class='id identifier rubyid_path'>path</span><span class='embexpr_end'>}</span><span class='tstring_content'>/relationships</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_query'>query</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_list_relationships'>list_relationships</span><span class='lparen'>(</span><span class='id identifier rubyid_entity_path'>entity_path</span><span class='comma'>,</span> <span class='id identifier rubyid_named'>named</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='id identifier rubyid_entity_path'>entity_path</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>CanonicalPath</span><span class='rparen'>)</span> <span class='op'>?</span> <span class='id identifier rubyid_entity_path'>entity_path</span> <span class='op'>:</span> <span class='const'>CanonicalPath</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='id identifier rubyid_entity_path'>entity_path</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_query_params'>query_params</span> <span class='op'>=</span> <span class='lbrace'>{</span>
+    <span class='label'>sort:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>__targetCp</span><span class='tstring_end'>&#39;</span></span>
+  <span class='rbrace'>}</span>
+  <span class='id identifier rubyid_query_params'>query_params</span><span class='lbracket'>[</span><span class='symbol'>:named</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_named'>named</span> <span class='kw'>unless</span> <span class='id identifier rubyid_named'>named</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+  <span class='id identifier rubyid_query'>query</span> <span class='op'>=</span> <span class='id identifier rubyid_generate_query_params'>generate_query_params</span> <span class='id identifier rubyid_query_params'>query_params</span>
+  <span class='id identifier rubyid_ret'>ret</span> <span class='op'>=</span> <span class='id identifier rubyid_http_get'>http_get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/path</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_path'>path</span><span class='embexpr_end'>}</span><span class='tstring_content'>/relationships</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_query'>query</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
   <span class='id identifier rubyid_ret'>ret</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_r'>r</span><span class='op'>|</span> <span class='const'>Relationship</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_r'>r</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -3077,21 +3402,29 @@ calls.</p>
       <pre class="lines">
 
 
-157
-158
-159
-160
-161
 162
 163
-164</pre>
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inventory/inventory_api.rb', line 157</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/inventory/inventory_api.rb', line 162</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_list_relationships_for_feed'>list_relationships_for_feed</span><span class='lparen'>(</span><span class='id identifier rubyid_feed_id'>feed_id</span><span class='comma'>,</span> <span class='id identifier rubyid_named'>named</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_the_feed'>the_feed</span> <span class='op'>=</span> <span class='id identifier rubyid_hawk_escape'>hawk_escape</span> <span class='id identifier rubyid_feed_id'>feed_id</span>
-  <span class='id identifier rubyid_query'>query</span> <span class='op'>=</span> <span class='id identifier rubyid_named'>named</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>?</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span> <span class='op'>:</span> <span class='lparen'>(</span><span class='id identifier rubyid_generate_query_params'>generate_query_params</span> <span class='label'>named:</span> <span class='id identifier rubyid_named'>named</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_the_feed'>the_feed</span> <span class='op'>=</span> <span class='id identifier rubyid_hawk_escape_id'>hawk_escape_id</span> <span class='id identifier rubyid_feed_id'>feed_id</span>
+  <span class='id identifier rubyid_query_params'>query_params</span> <span class='op'>=</span> <span class='lbrace'>{</span>
+    <span class='label'>sort:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>__targetCp</span><span class='tstring_end'>&#39;</span></span>
+  <span class='rbrace'>}</span>
+  <span class='id identifier rubyid_query_params'>query_params</span><span class='lbracket'>[</span><span class='symbol'>:named</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_named'>named</span> <span class='kw'>unless</span> <span class='id identifier rubyid_named'>named</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+  <span class='id identifier rubyid_query'>query</span> <span class='op'>=</span> <span class='id identifier rubyid_generate_query_params'>generate_query_params</span> <span class='id identifier rubyid_query_params'>query_params</span>
   <span class='id identifier rubyid_ret'>ret</span> <span class='op'>=</span> <span class='id identifier rubyid_http_get'>http_get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/feeds/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_the_feed'>the_feed</span><span class='embexpr_end'>}</span><span class='tstring_content'>/relationships</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_query'>query</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
   <span class='id identifier rubyid_ret'>ret</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_r'>r</span><span class='op'>|</span> <span class='const'>Relationship</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_r'>r</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
 <span class='kw'>rescue</span>
@@ -3105,7 +3438,7 @@ calls.</p>
       <div class="method_details ">
   <h3 class="signature " id="list_resource_types-instance_method">
   
-    - (<tt>Array&lt;<span class='object_link'><a href="ResourceType.html" title="Hawkular::Inventory::ResourceType (class)">ResourceType</a></span>&gt;</tt>) <strong>list_resource_types</strong>(feed = nil) 
+    - (<tt>Array&lt;<span class='object_link'><a href="ResourceType.html" title="Hawkular::Inventory::ResourceType (class)">ResourceType</a></span>&gt;</tt>) <strong>list_resource_types</strong>(feed_id = nil) 
   
 
   
@@ -3114,7 +3447,7 @@ calls.</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>List resource types. If no need is given all types are listed</p>
+<p>List resource types. If no feed_id is given all types are listed</p>
 
 
   </div>
@@ -3125,7 +3458,7 @@ calls.</p>
   
     <li>
       
-        <span class='name'>feed</span>
+        <span class='name'>feed_id</span>
       
       
         <span class='type'>(<tt>String</tt>)</span>
@@ -3179,13 +3512,13 @@ calls.</p>
 69</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inventory/inventory_api.rb', line 61</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/inventory/inventory_api.rb', line 61</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_list_resource_types'>list_resource_types</span><span class='lparen'>(</span><span class='id identifier rubyid_feed'>feed</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
-  <span class='kw'>if</span> <span class='id identifier rubyid_feed'>feed</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_list_resource_types'>list_resource_types</span><span class='lparen'>(</span><span class='id identifier rubyid_feed_id'>feed_id</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_feed_id'>feed_id</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
     <span class='id identifier rubyid_ret'>ret</span> <span class='op'>=</span> <span class='id identifier rubyid_http_get'>http_get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/resourceTypes</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
   <span class='kw'>else</span>
-    <span class='id identifier rubyid_the_feed'>the_feed</span> <span class='op'>=</span> <span class='id identifier rubyid_hawk_escape'>hawk_escape</span> <span class='id identifier rubyid_feed'>feed</span>
+    <span class='id identifier rubyid_the_feed'>the_feed</span> <span class='op'>=</span> <span class='id identifier rubyid_hawk_escape_id'>hawk_escape_id</span> <span class='id identifier rubyid_feed_id'>feed_id</span>
     <span class='id identifier rubyid_ret'>ret</span> <span class='op'>=</span> <span class='id identifier rubyid_http_get'>http_get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/feeds/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_the_feed'>the_feed</span><span class='embexpr_end'>}</span><span class='tstring_content'>/resourceTypes</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
   <span class='kw'>end</span>
   <span class='id identifier rubyid_ret'>ret</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_rt'>rt</span><span class='op'>|</span> <span class='const'>ResourceType</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_rt'>rt</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
@@ -3198,7 +3531,7 @@ calls.</p>
       <div class="method_details ">
   <h3 class="signature " id="list_resources_for_feed-instance_method">
   
-    - (<tt>Array&lt;<span class='object_link'><a href="Resource.html" title="Hawkular::Inventory::Resource (class)">Resource</a></span>&gt;</tt>) <strong>list_resources_for_feed</strong>(feed, fetch_properties = false) 
+    - (<tt>Array&lt;<span class='object_link'><a href="Resource.html" title="Hawkular::Inventory::Resource (class)">Resource</a></span>&gt;</tt>) <strong>list_resources_for_feed</strong>(feed_id, fetch_properties = false, filter = {}) 
   
 
   
@@ -3218,7 +3551,7 @@ calls.</p>
   
     <li>
       
-        <span class='name'>feed</span>
+        <span class='name'>feed_id</span>
       
       
         <span class='type'>(<tt>String</tt>)</span>
@@ -3288,22 +3621,24 @@ calls.</p>
 83
 84
 85
-86</pre>
+86
+87</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inventory/inventory_api.rb', line 75</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/inventory/inventory_api.rb', line 75</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_list_resources_for_feed'>list_resources_for_feed</span><span class='lparen'>(</span><span class='id identifier rubyid_feed'>feed</span><span class='comma'>,</span> <span class='id identifier rubyid_fetch_properties'>fetch_properties</span> <span class='op'>=</span> <span class='kw'>false</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_fail'>fail</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Feed must be given</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>unless</span> <span class='id identifier rubyid_feed'>feed</span>
-  <span class='id identifier rubyid_the_feed'>the_feed</span> <span class='op'>=</span> <span class='id identifier rubyid_hawk_escape'>hawk_escape</span> <span class='id identifier rubyid_feed'>feed</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_list_resources_for_feed'>list_resources_for_feed</span><span class='lparen'>(</span><span class='id identifier rubyid_feed_id'>feed_id</span><span class='comma'>,</span> <span class='id identifier rubyid_fetch_properties'>fetch_properties</span> <span class='op'>=</span> <span class='kw'>false</span><span class='comma'>,</span> <span class='id identifier rubyid_filter'>filter</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_fail'>fail</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Feed id must be given</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>unless</span> <span class='id identifier rubyid_feed_id'>feed_id</span>
+  <span class='id identifier rubyid_the_feed'>the_feed</span> <span class='op'>=</span> <span class='id identifier rubyid_hawk_escape_id'>hawk_escape_id</span> <span class='id identifier rubyid_feed'>feed</span>
   <span class='id identifier rubyid_ret'>ret</span> <span class='op'>=</span> <span class='id identifier rubyid_http_get'>http_get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/feeds/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_the_feed'>the_feed</span><span class='embexpr_end'>}</span><span class='tstring_content'>/resources</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_ret'>ret</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_r'>r</span><span class='op'>|</span>
+  <span class='id identifier rubyid_to_filter'>to_filter</span> <span class='op'>=</span> <span class='id identifier rubyid_ret'>ret</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_r'>r</span><span class='op'>|</span>
     <span class='kw'>if</span> <span class='id identifier rubyid_fetch_properties'>fetch_properties</span>
-      <span class='id identifier rubyid_p'>p</span> <span class='op'>=</span> <span class='id identifier rubyid_get_config_data_for_resource'>get_config_data_for_resource</span><span class='lparen'>(</span><span class='id identifier rubyid_r'>r</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>id</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_feed'>feed</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_p'>p</span> <span class='op'>=</span> <span class='id identifier rubyid_get_config_data_for_resource'>get_config_data_for_resource</span><span class='lparen'>(</span><span class='id identifier rubyid_r'>r</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>path</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='rparen'>)</span>
       <span class='id identifier rubyid_r'>r</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>properties</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_p'>p</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>value</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
     <span class='kw'>end</span>
     <span class='const'>Resource</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_r'>r</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
+  <span class='id identifier rubyid_filter_entities'>filter_entities</span><span class='lparen'>(</span><span class='id identifier rubyid_to_filter'>to_filter</span><span class='comma'>,</span> <span class='id identifier rubyid_filter'>filter</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -3313,7 +3648,7 @@ calls.</p>
       <div class="method_details ">
   <h3 class="signature " id="list_resources_for_type-instance_method">
   
-    - (<tt>Array&lt;<span class='object_link'><a href="Resource.html" title="Hawkular::Inventory::Resource (class)">Resource</a></span>&gt;</tt>) <strong>list_resources_for_type</strong>(feed, type, fetch_properties = false) 
+    - (<tt>Array&lt;<span class='object_link'><a href="Resource.html" title="Hawkular::Inventory::Resource (class)">Resource</a></span>&gt;</tt>) <strong>list_resources_for_type</strong>(resource_type_path, fetch_properties = false) 
   
 
   
@@ -3322,10 +3657,10 @@ calls.</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>List the resources for the passed feed and resource type. The
-representation for resources under a feed are sparse and additional data
-must be retrived separately. It is possible though to also obtain runtime
-properties by setting #fetch_properties to true.</p>
+<p>List the resources for the passed resource type. The representation for
+resources under a feed are sparse and additional data must be retrieved
+separately. It is possible though to also obtain runtime properties by
+setting #fetch_properties to true.</p>
 
 
   </div>
@@ -3336,7 +3671,7 @@ properties by setting #fetch_properties to true.</p>
   
     <li>
       
-        <span class='name'>feed</span>
+        <span class='name'>resource_type_path</span>
       
       
         <span class='type'>(<tt>String</tt>)</span>
@@ -3345,24 +3680,9 @@ properties by setting #fetch_properties to true.</p>
       
         &mdash;
         <div class='inline'>
-<p>The id of the feed the type lives under. Can be nil for all feeds</p>
-</div>
-      
-    </li>
-  
-    <li>
-      
-        <span class='name'>type</span>
-      
-      
-        <span class='type'>(<tt>String</tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'>
-<p>Name of the type to look for. Can be obtained from <span class='object_link'><a href="ResourceType.html" title="Hawkular::Inventory::ResourceType (class)">ResourceType</a></span>.id. Must
-not be nil</p>
+<p>Canonical path of the resource type. Can be obtained from
+<span class='object_link'><a href="ResourceType.html" title="Hawkular::Inventory::ResourceType (class)">ResourceType</a></span>.path. Must not be nil. The tenant_id in the canonical path
+doesn&#39;t have to be there.</p>
 </div>
       
     </li>
@@ -3432,21 +3752,21 @@ not be nil</p>
 113</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inventory/inventory_api.rb', line 96</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/inventory/inventory_api.rb', line 96</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_list_resources_for_type'>list_resources_for_type</span><span class='lparen'>(</span><span class='id identifier rubyid_feed'>feed</span><span class='comma'>,</span> <span class='id identifier rubyid_type'>type</span><span class='comma'>,</span> <span class='id identifier rubyid_fetch_properties'>fetch_properties</span> <span class='op'>=</span> <span class='kw'>false</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_fail'>fail</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Type must not be nil</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>unless</span> <span class='id identifier rubyid_type'>type</span>
-  <span class='id identifier rubyid_the_type'>the_type</span> <span class='op'>=</span> <span class='id identifier rubyid_hawk_escape'>hawk_escape</span> <span class='id identifier rubyid_type'>type</span>
-  <span class='kw'>if</span> <span class='id identifier rubyid_feed'>feed</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
-    <span class='id identifier rubyid_ret'>ret</span> <span class='op'>=</span> <span class='id identifier rubyid_http_get'>http_get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>resourceTypes/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_the_type'>the_type</span><span class='embexpr_end'>}</span><span class='tstring_content'>/resources</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_list_resources_for_type'>list_resources_for_type</span><span class='lparen'>(</span><span class='id identifier rubyid_resource_type_path'>resource_type_path</span><span class='comma'>,</span> <span class='id identifier rubyid_fetch_properties'>fetch_properties</span> <span class='op'>=</span> <span class='kw'>false</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_path'>path</span> <span class='op'>=</span> <span class='id identifier rubyid_resource_type_path'>resource_type_path</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>CanonicalPath</span><span class='rparen'>)</span> <span class='op'>?</span> <span class='id identifier rubyid_resource_type_path'>resource_type_path</span> <span class='op'>:</span> <span class='const'>CanonicalPath</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='id identifier rubyid_resource_type_path'>resource_type_path</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_resource_type_id'>resource_type_id</span> <span class='op'>=</span> <span class='id identifier rubyid_path'>path</span><span class='period'>.</span><span class='id identifier rubyid_resource_type_id'>resource_type_id</span>
+  <span class='id identifier rubyid_feed_id'>feed_id</span> <span class='op'>=</span> <span class='id identifier rubyid_path'>path</span><span class='period'>.</span><span class='id identifier rubyid_feed_id'>feed_id</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_feed_id'>feed_id</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+    <span class='id identifier rubyid_ret'>ret</span> <span class='op'>=</span> <span class='id identifier rubyid_http_get'>http_get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>resourceTypes/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_resource_type_id'>resource_type_id</span><span class='embexpr_end'>}</span><span class='tstring_content'>/resources</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
   <span class='kw'>else</span>
 
-    <span class='id identifier rubyid_the_feed'>the_feed</span> <span class='op'>=</span> <span class='id identifier rubyid_hawk_escape'>hawk_escape</span> <span class='id identifier rubyid_feed'>feed</span>
-    <span class='id identifier rubyid_ret'>ret</span> <span class='op'>=</span> <span class='id identifier rubyid_http_get'>http_get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/feeds/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_the_feed'>the_feed</span><span class='embexpr_end'>}</span><span class='tstring_content'>/resourceTypes/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_the_type'>the_type</span><span class='embexpr_end'>}</span><span class='tstring_content'>/resources</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_ret'>ret</span> <span class='op'>=</span> <span class='id identifier rubyid_http_get'>http_get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/feeds/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_feed_id'>feed_id</span><span class='embexpr_end'>}</span><span class='tstring_content'>/resourceTypes/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_resource_type_id'>resource_type_id</span><span class='embexpr_end'>}</span><span class='tstring_content'>/resources</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
   <span class='kw'>end</span>
   <span class='id identifier rubyid_ret'>ret</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_r'>r</span><span class='op'>|</span>
-    <span class='kw'>if</span> <span class='id identifier rubyid_fetch_properties'>fetch_properties</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_feed'>feed</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
-      <span class='id identifier rubyid_p'>p</span> <span class='op'>=</span> <span class='id identifier rubyid_get_config_data_for_resource'>get_config_data_for_resource</span><span class='lparen'>(</span><span class='id identifier rubyid_r'>r</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>id</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_feed'>feed</span><span class='rparen'>)</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_fetch_properties'>fetch_properties</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_feed_id'>feed_id</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+      <span class='id identifier rubyid_p'>p</span> <span class='op'>=</span> <span class='id identifier rubyid_get_config_data_for_resource'>get_config_data_for_resource</span><span class='lparen'>(</span><span class='id identifier rubyid_r'>r</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>path</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='rparen'>)</span>
       <span class='id identifier rubyid_r'>r</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>properties</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_p'>p</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>value</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
     <span class='kw'>end</span>
     <span class='const'>Resource</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_r'>r</span><span class='rparen'>)</span>
@@ -3484,12 +3804,12 @@ connection</p>
       <pre class="lines">
 
 
-462
-463
-464</pre>
+507
+508
+509</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/inventory/inventory_api.rb', line 462</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/inventory/inventory_api.rb', line 507</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_no_more_events!'>no_more_events!</span>
   <span class='ivar'>@ws</span><span class='period'>.</span><span class='id identifier rubyid_close'>close</span>
@@ -3504,7 +3824,7 @@ connection</p>
 </div>
 
     <div id="footer">
-  Generated on Tue Mar 29 18:42:46 2016 by
+  Generated on Fri May 13 14:32:40 2016 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.6 (ruby-2.2.4).
 </div>

@@ -96,7 +96,7 @@
   
   
     <dt class="r2 last">Defined in:</dt>
-    <dd class="r2 last">lib/tokens/tokens_api.rb</dd>
+    <dd class="r2 last">lib/hawkular/tokens/tokens_api.rb</dd>
   
 </dl>
 <div class="clear"></div>
@@ -217,7 +217,18 @@
   
   
   <h3 class="inherited">Methods inherited from <span class='object_link'><a href="../BaseClient.html" title="Hawkular::BaseClient (class)">BaseClient</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="../BaseClient.html#base_64_credentials-instance_method" title="Hawkular::BaseClient#base_64_credentials (method)">#base_64_credentials</a></span>, <span class='object_link'><a href="../BaseClient.html#generate_query_params-instance_method" title="Hawkular::BaseClient#generate_query_params (method)">#generate_query_params</a></span>, <span class='object_link'><a href="../BaseClient.html#hawk_escape-instance_method" title="Hawkular::BaseClient#hawk_escape (method)">#hawk_escape</a></span>, <span class='object_link'><a href="../BaseClient.html#http_delete-instance_method" title="Hawkular::BaseClient#http_delete (method)">#http_delete</a></span>, <span class='object_link'><a href="../BaseClient.html#http_get-instance_method" title="Hawkular::BaseClient#http_get (method)">#http_get</a></span>, <span class='object_link'><a href="../BaseClient.html#http_post-instance_method" title="Hawkular::BaseClient#http_post (method)">#http_post</a></span>, <span class='object_link'><a href="../BaseClient.html#http_put-instance_method" title="Hawkular::BaseClient#http_put (method)">#http_put</a></span>, <span class='object_link'><a href="../BaseClient.html#now-instance_method" title="Hawkular::BaseClient#now (method)">#now</a></span></p>
+  <p class="inherited"><span class='object_link'><a href="../BaseClient.html#base_64_credentials-instance_method" title="Hawkular::BaseClient#base_64_credentials (method)">#base_64_credentials</a></span>, <span class='object_link'><a href="../BaseClient.html#generate_query_params-instance_method" title="Hawkular::BaseClient#generate_query_params (method)">#generate_query_params</a></span>, <span class='object_link'><a href="../BaseClient.html#http_delete-instance_method" title="Hawkular::BaseClient#http_delete (method)">#http_delete</a></span>, <span class='object_link'><a href="../BaseClient.html#http_get-instance_method" title="Hawkular::BaseClient#http_get (method)">#http_get</a></span>, <span class='object_link'><a href="../BaseClient.html#http_post-instance_method" title="Hawkular::BaseClient#http_post (method)">#http_post</a></span>, <span class='object_link'><a href="../BaseClient.html#http_put-instance_method" title="Hawkular::BaseClient#http_put (method)">#http_put</a></span>, <span class='object_link'><a href="../BaseClient.html#now-instance_method" title="Hawkular::BaseClient#now (method)">#now</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="../../HawkularUtilsMixin.html" title="HawkularUtilsMixin (module)">HawkularUtilsMixin</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../../HawkularUtilsMixin.html#hawk_escape-instance_method" title="HawkularUtilsMixin#hawk_escape (method)">#hawk_escape</a></span>, <span class='object_link'><a href="../../HawkularUtilsMixin.html#hawk_escape_id-instance_method" title="HawkularUtilsMixin#hawk_escape_id (method)">#hawk_escape_id</a></span></p>
 <div id="constructor_details" class="method_details_list">
   <h2>Constructor Details</h2>
   
@@ -293,7 +304,7 @@ href="http://localhost:8080">localhost:8080</a></p>
 12</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/tokens/tokens_api.rb', line 10</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/tokens/tokens_api.rb', line 10</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_entrypoint'>entrypoint</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>http://localhost:8080</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_credentials'>credentials</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='kw'>super</span><span class='lparen'>(</span><span class='id identifier rubyid_entrypoint'>entrypoint</span><span class='comma'>,</span> <span class='id identifier rubyid_credentials'>credentials</span><span class='rparen'>)</span>
@@ -335,7 +346,7 @@ href="http://localhost:8080">localhost:8080</a></p>
 31</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/tokens/tokens_api.rb', line 24</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/tokens/tokens_api.rb', line 24</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create_token'>create_token</span><span class='lparen'>(</span><span class='id identifier rubyid_credentials'>credentials</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span> <span class='id identifier rubyid_persona'>persona</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_name'>name</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Token created via Hawkular Ruby Client</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_expires_at'>expires_at</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_creds'>creds</span> <span class='op'>=</span> <span class='id identifier rubyid_credentials'>credentials</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span> <span class='op'>?</span> <span class='ivar'>@credentials</span> <span class='op'>:</span> <span class='id identifier rubyid_credentials'>credentials</span>
@@ -424,7 +435,7 @@ passed, the ones from the constructor are used</p>
 22</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/tokens/tokens_api.rb', line 18</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/tokens/tokens_api.rb', line 18</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_tokens'>get_tokens</span><span class='lparen'>(</span><span class='id identifier rubyid_credentials'>credentials</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_creds'>creds</span> <span class='op'>=</span> <span class='id identifier rubyid_credentials'>credentials</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span> <span class='op'>?</span> <span class='ivar'>@credentials</span> <span class='op'>:</span> <span class='id identifier rubyid_credentials'>credentials</span>
@@ -441,7 +452,7 @@ passed, the ones from the constructor are used</p>
 </div>
 
     <div id="footer">
-  Generated on Tue Mar 29 18:42:45 2016 by
+  Generated on Fri May 13 14:32:39 2016 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.6 (ruby-2.2.4).
 </div>

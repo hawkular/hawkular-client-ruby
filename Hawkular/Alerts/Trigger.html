@@ -94,7 +94,7 @@
   
   
     <dt class="r2 last">Defined in:</dt>
-    <dd class="r2 last">lib/alerts/alerts_api.rb</dd>
+    <dd class="r2 last">lib/hawkular/alerts/alerts_api.rb</dd>
   
 </dl>
 <div class="clear"></div>
@@ -120,7 +120,7 @@
     
   
     
-      <strong class="classes">Classes:</strong> <span class='object_link'><a href="Trigger/Action.html" title="Hawkular::Alerts::Trigger::Action (class)">Action</a></span>, <span class='object_link'><a href="Trigger/Condition.html" title="Hawkular::Alerts::Trigger::Condition (class)">Condition</a></span>, <span class='object_link'><a href="Trigger/Dampening.html" title="Hawkular::Alerts::Trigger::Dampening (class)">Dampening</a></span>
+      <strong class="classes">Classes:</strong> <span class='object_link'><a href="Trigger/Action.html" title="Hawkular::Alerts::Trigger::Action (class)">Action</a></span>, <span class='object_link'><a href="Trigger/Condition.html" title="Hawkular::Alerts::Trigger::Condition (class)">Condition</a></span>, <span class='object_link'><a href="Trigger/Dampening.html" title="Hawkular::Alerts::Trigger::Dampening (class)">Dampening</a></span>, <span class='object_link'><a href="Trigger/GroupConditionsInfo.html" title="Hawkular::Alerts::Trigger::GroupConditionsInfo (class)">GroupConditionsInfo</a></span>, <span class='object_link'><a href="Trigger/GroupMemberInfo.html" title="Hawkular::Alerts::Trigger::GroupMemberInfo (class)">GroupMemberInfo</a></span>
     
   
 </p>
@@ -354,6 +354,33 @@
       <li class="public ">
   <span class="summary_signature">
     
+      <a href="#data_id_map-instance_method" title="#data_id_map (instance method)">- (Object) <strong>data_id_map</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute data_id_map.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#description-instance_method" title="#description (instance method)">- (Object) <strong>description</strong> </a>
     
 
@@ -400,6 +427,33 @@
   
     <span class="summary_desc"><div class='inline'>
 <p>Returns the value of attribute enabled.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#event_category-instance_method" title="#event_category (instance method)">- (Object) <strong>event_category</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute event_category.</p>
 </div></span>
   
 </li>
@@ -481,6 +535,33 @@
   
     <span class="summary_desc"><div class='inline'>
 <p>Returns the value of attribute id.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#member_of-instance_method" title="#member_of (instance method)">- (Object) <strong>member_of</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute member_of.</p>
 </div></span>
   
 </li>
@@ -714,33 +795,36 @@
       <pre class="lines">
 
 
-227
-228
-229
-230
-231
-232
-233
-234
-235
-236
-237
-238
-239
-240
-241
-242
-243
-244
-245
-246
-247
-248
-249
-250</pre>
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/alerts/alerts_api.rb', line 227</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 326</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_trigger_hash'>trigger_hash</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='kw'>if</span> <span class='id identifier rubyid_trigger_hash'>trigger_hash</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
@@ -756,6 +840,9 @@
   <span class='ivar'>@auto_resolve</span> <span class='op'>=</span> <span class='id identifier rubyid_trigger_hash'>trigger_hash</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>autoResolve</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
   <span class='ivar'>@auto_resolve_alerts</span> <span class='op'>=</span> <span class='id identifier rubyid_trigger_hash'>trigger_hash</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>autoResolveAlerts</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
   <span class='ivar'>@event_type</span> <span class='op'>=</span> <span class='id identifier rubyid_trigger_hash'>trigger_hash</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>eventType</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
+  <span class='ivar'>@event_category</span> <span class='op'>=</span> <span class='id identifier rubyid_trigger_hash'>trigger_hash</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>eventCategory</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
+  <span class='ivar'>@member_of</span> <span class='op'>=</span> <span class='id identifier rubyid_trigger_hash'>trigger_hash</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>memberOf</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
+  <span class='ivar'>@data_id_map</span> <span class='op'>=</span> <span class='id identifier rubyid_trigger_hash'>trigger_hash</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>dataIdMap</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
   <span class='ivar'>@tenant</span> <span class='op'>=</span> <span class='id identifier rubyid_trigger_hash'>trigger_hash</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>tenantId</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
   <span class='ivar'>@description</span> <span class='op'>=</span> <span class='id identifier rubyid_trigger_hash'>trigger_hash</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>description</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
   <span class='ivar'>@auto_enable</span> <span class='op'>=</span> <span class='id identifier rubyid_trigger_hash'>trigger_hash</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>autoEnable</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
@@ -804,12 +891,12 @@
       <pre class="lines">
 
 
-221
-222
-223</pre>
+320
+321
+322</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/alerts/alerts_api.rb', line 221</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 320</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_actions'>actions</span>
   <span class='ivar'>@actions</span>
@@ -847,12 +934,12 @@
       <pre class="lines">
 
 
-221
-222
-223</pre>
+320
+321
+322</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/alerts/alerts_api.rb', line 221</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 320</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_auto_disable'>auto_disable</span>
   <span class='ivar'>@auto_disable</span>
@@ -890,12 +977,12 @@
       <pre class="lines">
 
 
-221
-222
-223</pre>
+320
+321
+322</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/alerts/alerts_api.rb', line 221</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 320</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_auto_enable'>auto_enable</span>
   <span class='ivar'>@auto_enable</span>
@@ -933,12 +1020,12 @@
       <pre class="lines">
 
 
-222
-223
-224</pre>
+321
+322
+323</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/alerts/alerts_api.rb', line 222</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 321</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_auto_resolve'>auto_resolve</span>
   <span class='ivar'>@auto_resolve</span>
@@ -976,12 +1063,12 @@
       <pre class="lines">
 
 
-222
-223
-224</pre>
+321
+322
+323</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/alerts/alerts_api.rb', line 222</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 321</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_auto_resolve_alerts'>auto_resolve_alerts</span>
   <span class='ivar'>@auto_resolve_alerts</span>
@@ -1019,12 +1106,12 @@
       <pre class="lines">
 
 
-224
-225
-226</pre>
+323
+324
+325</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/alerts/alerts_api.rb', line 224</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 323</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_conditions'>conditions</span>
   <span class='ivar'>@conditions</span>
@@ -1062,12 +1149,12 @@
       <pre class="lines">
 
 
-221
-222
-223</pre>
+320
+321
+322</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/alerts/alerts_api.rb', line 221</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 320</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_context'>context</span>
   <span class='ivar'>@context</span>
@@ -1105,15 +1192,58 @@
       <pre class="lines">
 
 
-224
-225
-226</pre>
+323
+324
+325</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/alerts/alerts_api.rb', line 224</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 323</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_dampenings'>dampenings</span>
   <span class='ivar'>@dampenings</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="data_id_map=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="data_id_map-instance_method">
+  
+    - (<tt>Object</tt>) <strong>data_id_map</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute data_id_map</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+322
+323
+324</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 322</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_data_id_map'>data_id_map</span>
+  <span class='ivar'>@data_id_map</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1148,12 +1278,12 @@
       <pre class="lines">
 
 
-223
-224
-225</pre>
+322
+323
+324</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/alerts/alerts_api.rb', line 223</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 322</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_description'>description</span>
   <span class='ivar'>@description</span>
@@ -1191,15 +1321,58 @@
       <pre class="lines">
 
 
-225
-226
-227</pre>
+324
+325
+326</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/alerts/alerts_api.rb', line 225</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 324</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_enabled'>enabled</span>
   <span class='ivar'>@enabled</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="event_category=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="event_category-instance_method">
+  
+    - (<tt>Object</tt>) <strong>event_category</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute event_category</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+322
+323
+324</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 322</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_event_category'>event_category</span>
+  <span class='ivar'>@event_category</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1234,12 +1407,12 @@
       <pre class="lines">
 
 
-223
-224
-225</pre>
+322
+323
+324</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/alerts/alerts_api.rb', line 223</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 322</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_event_type'>event_type</span>
   <span class='ivar'>@event_type</span>
@@ -1277,12 +1450,12 @@
       <pre class="lines">
 
 
-223
-224
-225</pre>
+322
+323
+324</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/alerts/alerts_api.rb', line 223</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 322</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_group'>group</span>
   <span class='ivar'>@group</span>
@@ -1320,15 +1493,58 @@
       <pre class="lines">
 
 
-221
-222
-223</pre>
+320
+321
+322</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/alerts/alerts_api.rb', line 221</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 320</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_id'>id</span>
   <span class='ivar'>@id</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="member_of=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="member_of-instance_method">
+  
+    - (<tt>Object</tt>) <strong>member_of</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute member_of</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+322
+323
+324</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 322</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_member_of'>member_of</span>
+  <span class='ivar'>@member_of</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1363,12 +1579,12 @@
       <pre class="lines">
 
 
-221
-222
-223</pre>
+320
+321
+322</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/alerts/alerts_api.rb', line 221</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 320</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_name'>name</span>
   <span class='ivar'>@name</span>
@@ -1406,12 +1622,12 @@
       <pre class="lines">
 
 
-223
-224
-225</pre>
+322
+323
+324</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/alerts/alerts_api.rb', line 223</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 322</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_severity'>severity</span>
   <span class='ivar'>@severity</span>
@@ -1449,12 +1665,12 @@
       <pre class="lines">
 
 
-222
-223
-224</pre>
+321
+322
+323</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/alerts/alerts_api.rb', line 222</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 321</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_tags'>tags</span>
   <span class='ivar'>@tags</span>
@@ -1492,12 +1708,12 @@
       <pre class="lines">
 
 
-223
-224
-225</pre>
+322
+323
+324</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/alerts/alerts_api.rb', line 223</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 322</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_tenant'>tenant</span>
   <span class='ivar'>@tenant</span>
@@ -1535,12 +1751,12 @@
       <pre class="lines">
 
 
-222
-223
-224</pre>
+321
+322
+323</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/alerts/alerts_api.rb', line 222</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 321</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_type'>type</span>
   <span class='ivar'>@type</span>
@@ -1572,30 +1788,30 @@
       <pre class="lines">
 
 
-252
-253
-254
-255
-256
-257
-258
-259
-260
-261
-262
-263
-264
-265
-266
-267
-268
-269
-270
-271
-272</pre>
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/alerts/alerts_api.rb', line 252</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 354</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_h'>to_h</span>
   <span class='id identifier rubyid_trigger_hash'>trigger_hash</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
@@ -1603,8 +1819,8 @@
     <span class='id identifier rubyid_ret'>ret</span> <span class='op'>=</span> <span class='id identifier rubyid_x'>x</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>_</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_collect'>collect</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='symbol'>:capitalize</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span>
     <span class='id identifier rubyid_ret'>ret</span><span class='lbracket'>[</span><span class='int'>0</span><span class='comma'>,</span> <span class='int'>1</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_downcase'>downcase</span> <span class='op'>+</span> <span class='id identifier rubyid_ret'>ret</span><span class='lbracket'>[</span><span class='int'>1</span><span class='op'>..</span><span class='op'>-</span><span class='int'>1</span><span class='rbracket'>]</span>
   <span class='kw'>end</span>
-  <span class='id identifier rubyid_fields'>fields</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='symbol'>:id</span><span class='comma'>,</span> <span class='symbol'>:name</span><span class='comma'>,</span> <span class='symbol'>:enabled</span><span class='comma'>,</span> <span class='symbol'>:severity</span><span class='comma'>,</span> <span class='symbol'>:auto_resolve</span><span class='comma'>,</span> <span class='symbol'>:auto_resolve_alerts</span><span class='comma'>,</span> <span class='symbol'>:event_type</span><span class='comma'>,</span>
-            <span class='symbol'>:description</span><span class='comma'>,</span> <span class='symbol'>:auto_enable</span><span class='comma'>,</span> <span class='symbol'>:auto_disable</span><span class='comma'>,</span> <span class='symbol'>:context</span><span class='comma'>,</span> <span class='symbol'>:type</span><span class='comma'>,</span> <span class='symbol'>:tags</span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_fields'>fields</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='symbol'>:id</span><span class='comma'>,</span> <span class='symbol'>:name</span><span class='comma'>,</span> <span class='symbol'>:enabled</span><span class='comma'>,</span> <span class='symbol'>:severity</span><span class='comma'>,</span> <span class='symbol'>:auto_resolve</span><span class='comma'>,</span> <span class='symbol'>:auto_resolve_alerts</span><span class='comma'>,</span> <span class='symbol'>:event_type</span><span class='comma'>,</span> <span class='symbol'>:event_category</span><span class='comma'>,</span>
+            <span class='symbol'>:description</span><span class='comma'>,</span> <span class='symbol'>:auto_enable</span><span class='comma'>,</span> <span class='symbol'>:auto_disable</span><span class='comma'>,</span> <span class='symbol'>:context</span><span class='comma'>,</span> <span class='symbol'>:type</span><span class='comma'>,</span> <span class='symbol'>:tags</span><span class='comma'>,</span> <span class='symbol'>:member_of</span><span class='comma'>,</span> <span class='symbol'>:data_id_map</span><span class='rbracket'>]</span>
 
   <span class='id identifier rubyid_fields'>fields</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_field'>field</span><span class='op'>|</span>
     <span class='id identifier rubyid_camelized_field'>camelized_field</span> <span class='op'>=</span> <span class='id identifier rubyid_to_camel'>to_camel</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_field'>field</span><span class='rparen'>)</span>
@@ -1628,7 +1844,7 @@
 </div>
 
     <div id="footer">
-  Generated on Tue Mar 29 18:42:45 2016 by
+  Generated on Fri May 13 14:32:39 2016 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.6 (ruby-2.2.4).
 </div>

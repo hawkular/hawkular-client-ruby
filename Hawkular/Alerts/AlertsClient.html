@@ -96,7 +96,7 @@
   
   
     <dt class="r2 last">Defined in:</dt>
-    <dd class="r2 last">lib/alerts/alerts_api.rb</dd>
+    <dd class="r2 last">lib/hawkular/alerts/alerts_api.rb</dd>
   
 </dl>
 <div class="clear"></div>
@@ -208,6 +208,102 @@ server.</p>
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#create_event-instance_method" title="#create_event (instance method)">- (Object) <strong>create_event</strong>(id, category, text, extras) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Inject an event into Hawkular-alerts.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#create_group_dampening-instance_method" title="#create_group_dampening (instance method)">- (Dampening) <strong>create_group_dampening</strong>(dampening) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Creates a dampening for a group trigger.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#create_group_trigger-instance_method" title="#create_group_trigger (instance method)">- (Trigger) <strong>create_group_trigger</strong>(trigger) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Creates the group trigger definition.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#create_member_trigger-instance_method" title="#create_member_trigger (instance method)">- (Trigger) <strong>create_member_trigger</strong>(group_member_info) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Creates a member trigger.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#create_trigger-instance_method" title="#create_trigger (instance method)">- (Trigger) <strong>create_trigger</strong>(trigger, conditions = [], dampenings = [], _actions = []) </a>
     
 
@@ -248,6 +344,54 @@ server.</p>
   
     <span class="summary_desc"><div class='inline'>
 <p>Deletes the action of given action plugin.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#delete_group_dampening-instance_method" title="#delete_group_dampening (instance method)">- (Object) <strong>delete_group_dampening</strong>(trigger_id, dampening_id) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Deletes the dampening of a group trigger.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#delete_group_trigger-instance_method" title="#delete_group_trigger (instance method)">- (Object) <strong>delete_group_trigger</strong>(trigger_id) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Deletes the group trigger definition.</p>
 </div></span>
   
 </li>
@@ -474,6 +618,30 @@ server.</p>
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#list_members-instance_method" title="#list_members (instance method)">- (Array&lt;Trigger&gt;) <strong>list_members</strong>(trigger_id, orphans = false) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Lists members of a group trigger.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#list_triggers-instance_method" title="#list_triggers (instance method)">- (Array&lt;Trigger&gt;) <strong>list_triggers</strong>(ids = [], tags = []) </a>
     
 
@@ -490,6 +658,30 @@ server.</p>
   
     <span class="summary_desc"><div class='inline'>
 <p>Lists defined triggers in the system tags are of the format # key|value.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#orphan_member-instance_method" title="#orphan_member (instance method)">- (Trigger) <strong>orphan_member</strong>(trigger_id) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Detaches a member trigger from its group trigger.</p>
 </div></span>
   
 </li>
@@ -519,6 +711,78 @@ server.</p>
 </li>
 
       
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#set_group_conditions-instance_method" title="#set_group_conditions (instance method)">- (Array&lt;Condition&gt;) <strong>set_group_conditions</strong>(trigger_id, trigger_mode, group_conditions_info) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Creates the group conditions definitions.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#update_group_dampening-instance_method" title="#update_group_dampening (instance method)">- (Dampening) <strong>update_group_dampening</strong>(dampening) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Updates a dampening for a group trigger.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#update_group_trigger-instance_method" title="#update_group_trigger (instance method)">- (Trigger) <strong>update_group_trigger</strong>(trigger) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Updates a given group trigger definition.</p>
+</div></span>
+  
+</li>
+
+      
     </ul>
   
 
@@ -532,7 +796,18 @@ server.</p>
   
   
   <h3 class="inherited">Methods inherited from <span class='object_link'><a href="../BaseClient.html" title="Hawkular::BaseClient (class)">BaseClient</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="../BaseClient.html#base_64_credentials-instance_method" title="Hawkular::BaseClient#base_64_credentials (method)">#base_64_credentials</a></span>, <span class='object_link'><a href="../BaseClient.html#generate_query_params-instance_method" title="Hawkular::BaseClient#generate_query_params (method)">#generate_query_params</a></span>, <span class='object_link'><a href="../BaseClient.html#hawk_escape-instance_method" title="Hawkular::BaseClient#hawk_escape (method)">#hawk_escape</a></span>, <span class='object_link'><a href="../BaseClient.html#http_delete-instance_method" title="Hawkular::BaseClient#http_delete (method)">#http_delete</a></span>, <span class='object_link'><a href="../BaseClient.html#http_get-instance_method" title="Hawkular::BaseClient#http_get (method)">#http_get</a></span>, <span class='object_link'><a href="../BaseClient.html#http_post-instance_method" title="Hawkular::BaseClient#http_post (method)">#http_post</a></span>, <span class='object_link'><a href="../BaseClient.html#http_put-instance_method" title="Hawkular::BaseClient#http_put (method)">#http_put</a></span>, <span class='object_link'><a href="../BaseClient.html#now-instance_method" title="Hawkular::BaseClient#now (method)">#now</a></span></p>
+  <p class="inherited"><span class='object_link'><a href="../BaseClient.html#base_64_credentials-instance_method" title="Hawkular::BaseClient#base_64_credentials (method)">#base_64_credentials</a></span>, <span class='object_link'><a href="../BaseClient.html#generate_query_params-instance_method" title="Hawkular::BaseClient#generate_query_params (method)">#generate_query_params</a></span>, <span class='object_link'><a href="../BaseClient.html#http_delete-instance_method" title="Hawkular::BaseClient#http_delete (method)">#http_delete</a></span>, <span class='object_link'><a href="../BaseClient.html#http_get-instance_method" title="Hawkular::BaseClient#http_get (method)">#http_get</a></span>, <span class='object_link'><a href="../BaseClient.html#http_post-instance_method" title="Hawkular::BaseClient#http_post (method)">#http_post</a></span>, <span class='object_link'><a href="../BaseClient.html#http_put-instance_method" title="Hawkular::BaseClient#http_put (method)">#http_put</a></span>, <span class='object_link'><a href="../BaseClient.html#now-instance_method" title="Hawkular::BaseClient#now (method)">#now</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="../../HawkularUtilsMixin.html" title="HawkularUtilsMixin (module)">HawkularUtilsMixin</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../../HawkularUtilsMixin.html#hawk_escape-instance_method" title="HawkularUtilsMixin#hawk_escape (method)">#hawk_escape</a></span>, <span class='object_link'><a href="../../HawkularUtilsMixin.html#hawk_escape_id-instance_method" title="HawkularUtilsMixin#hawk_escape_id (method)">#hawk_escape_id</a></span></p>
 <div id="constructor_details" class="method_details_list">
   <h2>Constructor Details</h2>
   
@@ -569,7 +844,7 @@ server.</p>
 20</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/alerts/alerts_api.rb', line 16</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 16</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_entrypoint'>entrypoint</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>http://localhost:8080/hawkular/alerts</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_credentials'>credentials</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='ivar'>@entrypoint</span> <span class='op'>=</span> <span class='id identifier rubyid_entrypoint'>entrypoint</span>
@@ -670,17 +945,17 @@ server.</p>
       <pre class="lines">
 
 
-190
-191
-192
-193
-194
-195
-196
-197</pre>
+273
+274
+275
+276
+277
+278
+279
+280</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/alerts/alerts_api.rb', line 190</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 273</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_acknowledge_alert'>acknowledge_alert</span><span class='lparen'>(</span><span class='id identifier rubyid_alert_id'>alert_id</span><span class='comma'>,</span> <span class='id identifier rubyid_by'>by</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_comment'>comment</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_sub_url'>sub_url</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/ack/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_alert_id'>alert_id</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
@@ -767,7 +1042,7 @@ structure</p>
 64</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/alerts/alerts_api.rb', line 62</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 62</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_bulk_import_triggers'>bulk_import_triggers</span><span class='lparen'>(</span><span class='id identifier rubyid_hash'>hash</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_http_post'>http_post</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>import/all</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_hash'>hash</span>
@@ -875,18 +1150,18 @@ structure</p>
       <pre class="lines">
 
 
-110
-111
-112
-113
-114
-115
-116
-117
-118</pre>
+193
+194
+195
+196
+197
+198
+199
+200
+201</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/alerts/alerts_api.rb', line 110</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 193</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create_action'>create_action</span><span class='lparen'>(</span><span class='id identifier rubyid_plugin'>plugin</span><span class='comma'>,</span> <span class='id identifier rubyid_action_id'>action_id</span><span class='comma'>,</span> <span class='id identifier rubyid_properties'>properties</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_the_plugin'>the_plugin</span> <span class='op'>=</span> <span class='id identifier rubyid_hawk_escape'>hawk_escape</span> <span class='id identifier rubyid_plugin'>plugin</span>
@@ -896,6 +1171,372 @@ structure</p>
   <span class='id identifier rubyid_payload'>payload</span> <span class='op'>=</span> <span class='lbrace'>{</span> <span class='label'>actionId:</span> <span class='id identifier rubyid_action_id'>action_id</span><span class='comma'>,</span> <span class='label'>actionPlugin:</span> <span class='id identifier rubyid_plugin'>plugin</span><span class='comma'>,</span> <span class='label'>properties:</span> <span class='id identifier rubyid_properties'>properties</span> <span class='rbrace'>}</span>
   <span class='id identifier rubyid_ret'>ret</span> <span class='op'>=</span> <span class='id identifier rubyid_http_post'>http_post</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/actions</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_payload'>payload</span><span class='rparen'>)</span>
   <span class='const'>Trigger</span><span class='op'>::</span><span class='const'>Action</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_ret'>ret</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="create_event-instance_method">
+  
+    - (<tt>Object</tt>) <strong>create_event</strong>(id, category, text, extras) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Inject an event into Hawkular-alerts</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Id of the event must be unique</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>category</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Event category for further distinction</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>text</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Some text to the user</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>extras</span>
+      
+      
+        <span class='type'>(<tt>Hash&lt;String,Object&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>additional parameters</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 302</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_create_event'>create_event</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='comma'>,</span> <span class='id identifier rubyid_category'>category</span><span class='comma'>,</span> <span class='id identifier rubyid_text'>text</span><span class='comma'>,</span> <span class='id identifier rubyid_extras'>extras</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_event'>event</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+  <span class='id identifier rubyid_event'>event</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>id</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_id'>id</span>
+  <span class='id identifier rubyid_event'>event</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>ctime</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span> <span class='op'>*</span> <span class='int'>1000</span>
+  <span class='id identifier rubyid_event'>event</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>category</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_category'>category</span>
+  <span class='id identifier rubyid_event'>event</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>text</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_text'>text</span>
+  <span class='id identifier rubyid_event'>event</span><span class='period'>.</span><span class='id identifier rubyid_merge!'>merge!</span><span class='lparen'>(</span><span class='id identifier rubyid_extras'>extras</span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid__key'>_key</span><span class='comma'>,</span> <span class='id identifier rubyid_v1'>v1</span><span class='comma'>,</span> <span class='id identifier rubyid__v2'>_v2</span><span class='op'>|</span> <span class='id identifier rubyid_v1'>v1</span> <span class='rbrace'>}</span>
+
+  <span class='id identifier rubyid_http_post'>http_post</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/events</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_event'>event</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="create_group_dampening-instance_method">
+  
+    - (<tt>Dampening</tt>) <strong>create_group_dampening</strong>(dampening) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Creates a dampening for a group trigger</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>dampening</span>
+      
+      
+        <span class='type'>(<tt>Dampening</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the dampening to create</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Dampening</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the newly created dampening</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+141
+142
+143
+144</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 141</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_create_group_dampening'>create_group_dampening</span><span class='lparen'>(</span><span class='id identifier rubyid_dampening'>dampening</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_ret'>ret</span> <span class='op'>=</span> <span class='id identifier rubyid_http_post'>http_post</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>triggers/groups/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_dampening'>dampening</span><span class='period'>.</span><span class='id identifier rubyid_trigger_id'>trigger_id</span><span class='embexpr_end'>}</span><span class='tstring_content'>/dampenings</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_dampening'>dampening</span><span class='period'>.</span><span class='id identifier rubyid_to_h'>to_h</span>
+  <span class='const'>Trigger</span><span class='op'>::</span><span class='const'>Dampening</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_ret'>ret</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="create_group_trigger-instance_method">
+  
+    - (<tt><span class='object_link'><a href="Trigger.html" title="Hawkular::Alerts::Trigger (class)">Trigger</a></span></tt>) <strong>create_group_trigger</strong>(trigger) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Creates the group trigger definition.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>trigger</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Trigger.html" title="Hawkular::Alerts::Trigger (class)">Trigger</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The group trigger to be created</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Trigger.html" title="Hawkular::Alerts::Trigger (class)">Trigger</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The newly created group trigger</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+87
+88
+89
+90</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 87</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_create_group_trigger'>create_group_trigger</span><span class='lparen'>(</span><span class='id identifier rubyid_trigger'>trigger</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_ret'>ret</span> <span class='op'>=</span> <span class='id identifier rubyid_http_post'>http_post</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>triggers/groups</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_trigger'>trigger</span><span class='period'>.</span><span class='id identifier rubyid_to_h'>to_h</span>
+  <span class='const'>Trigger</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_ret'>ret</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="create_member_trigger-instance_method">
+  
+    - (<tt><span class='object_link'><a href="Trigger.html" title="Hawkular::Alerts::Trigger (class)">Trigger</a></span></tt>) <strong>create_member_trigger</strong>(group_member_info) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Creates a member trigger</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>group_member_info</span>
+      
+      
+        <span class='type'>(<tt>GroupMemberInfo</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the group member to be added</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Trigger.html" title="Hawkular::Alerts::Trigger (class)">Trigger</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the newly created member trigger</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+116
+117
+118
+119</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 116</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_create_member_trigger'>create_member_trigger</span><span class='lparen'>(</span><span class='id identifier rubyid_group_member_info'>group_member_info</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_ret'>ret</span> <span class='op'>=</span> <span class='id identifier rubyid_http_post'>http_post</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>triggers/groups/members</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_group_member_info'>group_member_info</span><span class='period'>.</span><span class='id identifier rubyid_to_h'>to_h</span>
+  <span class='const'>Trigger</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_ret'>ret</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1016,7 +1657,7 @@ structure</p>
 82</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/alerts/alerts_api.rb', line 71</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 71</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create_trigger'>create_trigger</span><span class='lparen'>(</span><span class='id identifier rubyid_trigger'>trigger</span><span class='comma'>,</span> <span class='id identifier rubyid_conditions'>conditions</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_dampenings'>dampenings</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid__actions'>_actions</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_full_trigger'>full_trigger</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
@@ -1097,19 +1738,157 @@ structure</p>
       <pre class="lines">
 
 
-134
-135
-136
-137
-138</pre>
+217
+218
+219
+220
+221</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/alerts/alerts_api.rb', line 134</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 217</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_delete_action'>delete_action</span><span class='lparen'>(</span><span class='id identifier rubyid_plugin'>plugin</span><span class='comma'>,</span> <span class='id identifier rubyid_action_id'>action_id</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_the_plugin'>the_plugin</span> <span class='op'>=</span> <span class='id identifier rubyid_hawk_escape'>hawk_escape</span> <span class='id identifier rubyid_plugin'>plugin</span>
   <span class='id identifier rubyid_the_action_id'>the_action_id</span> <span class='op'>=</span> <span class='id identifier rubyid_hawk_escape'>hawk_escape</span> <span class='id identifier rubyid_action_id'>action_id</span>
   <span class='id identifier rubyid_http_delete'>http_delete</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/actions/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_the_plugin'>the_plugin</span><span class='embexpr_end'>}</span><span class='tstring_content'>/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_the_action_id'>the_action_id</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="delete_group_dampening-instance_method">
+  
+    - (<tt>Object</tt>) <strong>delete_group_dampening</strong>(trigger_id, dampening_id) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Deletes the dampening of a group trigger</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>trigger_id</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ID of the group trigger</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>dampening_id</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ID</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+157
+158
+159</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 157</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_delete_group_dampening'>delete_group_dampening</span><span class='lparen'>(</span><span class='id identifier rubyid_trigger_id'>trigger_id</span><span class='comma'>,</span> <span class='id identifier rubyid_dampening_id'>dampening_id</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_http_delete'>http_delete</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/triggers/groups/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_trigger_id'>trigger_id</span><span class='embexpr_end'>}</span><span class='tstring_content'>/dampenings/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_dampening_id'>dampening_id</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="delete_group_trigger-instance_method">
+  
+    - (<tt>Object</tt>) <strong>delete_group_trigger</strong>(trigger_id) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Deletes the group trigger definition.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>trigger_id</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ID of the group trigger to delete</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+169
+170
+171</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 169</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_delete_group_trigger'>delete_group_trigger</span><span class='lparen'>(</span><span class='id identifier rubyid_trigger_id'>trigger_id</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_http_delete'>http_delete</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/triggers/groups/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_trigger_id'>trigger_id</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1148,7 +1927,7 @@ structure</p>
       
         &mdash;
         <div class='inline'>
-<p>Id of the trigger to delete</p>
+<p>ID of the trigger to delete</p>
 </div>
       
     </li>
@@ -1162,12 +1941,12 @@ structure</p>
       <pre class="lines">
 
 
-86
-87
-88</pre>
+163
+164
+165</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/alerts/alerts_api.rb', line 86</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 163</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_delete_trigger'>delete_trigger</span><span class='lparen'>(</span><span class='id identifier rubyid_trigger_id'>trigger_id</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_http_delete'>http_delete</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/triggers/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_trigger_id'>trigger_id</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
@@ -1257,15 +2036,15 @@ structure</p>
       <pre class="lines">
 
 
-124
-125
-126
-127
-128
-129</pre>
+207
+208
+209
+210
+211
+212</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/alerts/alerts_api.rb', line 124</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 207</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_action'>get_action</span><span class='lparen'>(</span><span class='id identifier rubyid_plugin'>plugin</span><span class='comma'>,</span> <span class='id identifier rubyid_action_id'>action_id</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_the_plugin'>the_plugin</span> <span class='op'>=</span> <span class='id identifier rubyid_hawk_escape'>hawk_escape</span> <span class='id identifier rubyid_plugin'>plugin</span>
@@ -1326,21 +2105,21 @@ structure</p>
       <pre class="lines">
 
 
-92
-93
-94
-95
-96
-97
-98
-99
-100
-101
-102
-103</pre>
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/alerts/alerts_api.rb', line 92</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 175</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_action_definition'>get_action_definition</span><span class='lparen'>(</span><span class='id identifier rubyid_action_plugin'>action_plugin</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_action_plugin'>action_plugin</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
@@ -1423,18 +2202,18 @@ structure</p>
       <pre class="lines">
 
 
-143
-144
-145
-146
-147
-148
-149
-150
-151</pre>
+226
+227
+228
+229
+230
+231
+232
+233
+234</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/alerts/alerts_api.rb', line 143</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 226</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_alerts_for_trigger'>get_alerts_for_trigger</span><span class='lparen'>(</span><span class='id identifier rubyid_trigger_id'>trigger_id</span><span class='rparen'>)</span> <span class='comment'># TODO: add additional filters
 </span>  <span class='kw'>return</span> <span class='lbracket'>[</span><span class='rbracket'>]</span> <span class='kw'>unless</span> <span class='id identifier rubyid_trigger_id'>trigger_id</span>
@@ -1514,14 +2293,14 @@ structure</p>
       <pre class="lines">
 
 
-167
-168
-169
-170
-171</pre>
+250
+251
+252
+253
+254</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/alerts/alerts_api.rb', line 167</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 250</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_single_alert'>get_single_alert</span><span class='lparen'>(</span><span class='id identifier rubyid_alert_id'>alert_id</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_ret'>ret</span> <span class='op'>=</span> <span class='id identifier rubyid_http_get'>http_get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/alert/</span><span class='tstring_end'>&#39;</span></span> <span class='op'>+</span> <span class='id identifier rubyid_alert_id'>alert_id</span><span class='rparen'>)</span>
@@ -1631,7 +2410,7 @@ structure</p>
 56</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/alerts/alerts_api.rb', line 43</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 43</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_single_trigger'>get_single_trigger</span><span class='lparen'>(</span><span class='id identifier rubyid_trigger_id'>trigger_id</span><span class='comma'>,</span> <span class='id identifier rubyid_full'>full</span> <span class='op'>=</span> <span class='kw'>false</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_the_trigger'>the_trigger</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/triggers/</span><span class='tstring_end'>&#39;</span></span> <span class='op'>+</span> <span class='id identifier rubyid_trigger_id'>trigger_id</span>
@@ -1718,16 +2497,16 @@ structure</p>
       <pre class="lines">
 
 
-156
-157
-158
-159
-160
-161
-162</pre>
+239
+240
+241
+242
+243
+244
+245</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/alerts/alerts_api.rb', line 156</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 239</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_list_alerts'>list_alerts</span><span class='lparen'>(</span><span class='id identifier rubyid_criteria'>criteria</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_query'>query</span> <span class='op'>=</span> <span class='id identifier rubyid_generate_query_params'>generate_query_params</span><span class='lparen'>(</span><span class='id identifier rubyid_criteria'>criteria</span><span class='rparen'>)</span>
@@ -1814,17 +2593,116 @@ thin        boolean, return lighter events (omits triggering data for trigger-ge
       <pre class="lines">
 
 
-209
-210
-211
-212</pre>
+292
+293
+294
+295</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/alerts/alerts_api.rb', line 209</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 292</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_list_events'>list_events</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_criteria'>criteria</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_query'>query</span> <span class='op'>=</span> <span class='id identifier rubyid_generate_query_params'>generate_query_params</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_criteria'>criteria</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_http_get'>http_get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/events</span><span class='tstring_end'>&#39;</span></span> <span class='op'>+</span> <span class='id identifier rubyid_query'>query</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_e'>e</span><span class='op'>|</span> <span class='const'>Event</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_e'>e</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="list_members-instance_method">
+  
+    - (<tt>Array&lt;<span class='object_link'><a href="Trigger.html" title="Hawkular::Alerts::Trigger (class)">Trigger</a></span>&gt;</tt>) <strong>list_members</strong>(trigger_id, orphans = false) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Lists members of a group trigger</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>trigger_id</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ID of the group trigger to list members</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>orphans</span>
+      
+      
+        <span class='type'>(<tt>boolean</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>false</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>flag to include orphans</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="Trigger.html" title="Hawkular::Alerts::Trigger (class)">Trigger</a></span>&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Members found</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+133
+134
+135
+136</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 133</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_list_members'>list_members</span><span class='lparen'>(</span><span class='id identifier rubyid_trigger_id'>trigger_id</span><span class='comma'>,</span> <span class='id identifier rubyid_orphans'>orphans</span> <span class='op'>=</span> <span class='kw'>false</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_ret'>ret</span> <span class='op'>=</span> <span class='id identifier rubyid_http_get'>http_get</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>triggers/groups/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_trigger_id'>trigger_id</span><span class='embexpr_end'>}</span><span class='tstring_content'>/members?includeOrphans=</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_orphans'>orphans</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_ret'>ret</span><span class='period'>.</span><span class='id identifier rubyid_collect'>collect</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_t'>t</span><span class='op'>|</span> <span class='const'>Trigger</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_t'>t</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1929,7 +2807,7 @@ last one is accepted</p>
 37</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/alerts/alerts_api.rb', line 28</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 28</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_list_triggers'>list_triggers</span><span class='lparen'>(</span><span class='id identifier rubyid_ids'>ids</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_tags'>tags</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_query'>query</span> <span class='op'>=</span> <span class='id identifier rubyid_generate_query_params'>generate_query_params</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>triggerIds</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_ids'>ids</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>tags</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_tags'>tags</span>
@@ -1940,6 +2818,87 @@ last one is accepted</p>
   <span class='id identifier rubyid_val'>val</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
   <span class='id identifier rubyid_ret'>ret</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_t'>t</span><span class='op'>|</span> <span class='id identifier rubyid_val'>val</span><span class='period'>.</span><span class='id identifier rubyid_push'>push</span><span class='lparen'>(</span><span class='const'>Trigger</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_t'>t</span><span class='rparen'>)</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
   <span class='id identifier rubyid_val'>val</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="orphan_member-instance_method">
+  
+    - (<tt><span class='object_link'><a href="Trigger.html" title="Hawkular::Alerts::Trigger (class)">Trigger</a></span></tt>) <strong>orphan_member</strong>(trigger_id) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Detaches a member trigger from its group trigger</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>trigger_id</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ID of the member trigger to detach</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Trigger.html" title="Hawkular::Alerts::Trigger (class)">Trigger</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the orphan trigger</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+124
+125
+126
+127</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 124</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_orphan_member'>orphan_member</span><span class='lparen'>(</span><span class='id identifier rubyid_trigger_id'>trigger_id</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_http_post'>http_post</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>triggers/groups/members/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_trigger_id'>trigger_id</span><span class='embexpr_end'>}</span><span class='tstring_content'>/orphan</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+  <span class='id identifier rubyid_get_single_trigger'>get_single_trigger</span> <span class='id identifier rubyid_trigger_id'>trigger_id</span><span class='comma'>,</span> <span class='kw'>false</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -2028,17 +2987,17 @@ last one is accepted</p>
       <pre class="lines">
 
 
-177
-178
-179
-180
-181
-182
-183
-184</pre>
+260
+261
+262
+263
+264
+265
+266
+267</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/alerts/alerts_api.rb', line 177</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 260</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_resolve_alert'>resolve_alert</span><span class='lparen'>(</span><span class='id identifier rubyid_alert_id'>alert_id</span><span class='comma'>,</span> <span class='id identifier rubyid_by'>by</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_comment'>comment</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_sub_url'>sub_url</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/resolve/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_alert_id'>alert_id</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
@@ -2053,12 +3012,292 @@ last one is accepted</p>
 </table>
 </div>
     
+      <div class="method_details ">
+  <h3 class="signature " id="set_group_conditions-instance_method">
+  
+    - (<tt>Array&lt;Condition&gt;</tt>) <strong>set_group_conditions</strong>(trigger_id, trigger_mode, group_conditions_info) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Creates the group conditions definitions.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>trigger_id</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ID of the group trigger to set conditions</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>trigger_mode</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Mode of the trigger where conditions are attached (:FIRING, :AUTORESOLVE)</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>group_conditions_info</span>
+      
+      
+        <span class='type'>(<tt>GroupConditionsInfo</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the conditions to set into the group trigger with the mapping with the
+data_id members map</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array&lt;Condition&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>conditions Array of associated conditions</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+106
+107
+108
+109
+110
+111</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 106</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_set_group_conditions'>set_group_conditions</span><span class='lparen'>(</span><span class='id identifier rubyid_trigger_id'>trigger_id</span><span class='comma'>,</span> <span class='id identifier rubyid_trigger_mode'>trigger_mode</span><span class='comma'>,</span> <span class='id identifier rubyid_group_conditions_info'>group_conditions_info</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_ret'>ret</span> <span class='op'>=</span> <span class='id identifier rubyid_http_put'>http_put</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>triggers/groups/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_trigger_id'>trigger_id</span><span class='embexpr_end'>}</span><span class='tstring_content'>/conditions/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_trigger_mode'>trigger_mode</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_group_conditions_info'>group_conditions_info</span><span class='period'>.</span><span class='id identifier rubyid_to_h'>to_h</span>
+  <span class='id identifier rubyid_conditions'>conditions</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_ret'>ret</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_c'>c</span><span class='op'>|</span> <span class='id identifier rubyid_conditions'>conditions</span><span class='period'>.</span><span class='id identifier rubyid_push'>push</span><span class='lparen'>(</span><span class='const'>Trigger</span><span class='op'>::</span><span class='const'>Condition</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_c'>c</span><span class='rparen'>)</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+  <span class='id identifier rubyid_conditions'>conditions</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="update_group_dampening-instance_method">
+  
+    - (<tt>Dampening</tt>) <strong>update_group_dampening</strong>(dampening) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Updates a dampening for a group trigger</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>dampening</span>
+      
+      
+        <span class='type'>(<tt>Dampening</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the dampening to update</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Dampening</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the updated dampening</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+149
+150
+151
+152</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 149</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_update_group_dampening'>update_group_dampening</span><span class='lparen'>(</span><span class='id identifier rubyid_dampening'>dampening</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_ret'>ret</span> <span class='op'>=</span> <span class='id identifier rubyid_http_put'>http_put</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>triggers/groups/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_dampening'>dampening</span><span class='period'>.</span><span class='id identifier rubyid_trigger_id'>trigger_id</span><span class='embexpr_end'>}</span><span class='tstring_content'>/dampenings/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_dampening'>dampening</span><span class='period'>.</span><span class='id identifier rubyid_dampening_id'>dampening_id</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_dampening'>dampening</span><span class='period'>.</span><span class='id identifier rubyid_to_h'>to_h</span>
+  <span class='const'>Trigger</span><span class='op'>::</span><span class='const'>Dampening</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_ret'>ret</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="update_group_trigger-instance_method">
+  
+    - (<tt><span class='object_link'><a href="Trigger.html" title="Hawkular::Alerts::Trigger (class)">Trigger</a></span></tt>) <strong>update_group_trigger</strong>(trigger) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Updates a given group trigger definition</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>trigger</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Trigger.html" title="Hawkular::Alerts::Trigger (class)">Trigger</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the group trigger to be updated</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Trigger.html" title="Hawkular::Alerts::Trigger (class)">Trigger</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The updated group trigger</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+95
+96
+97
+98</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 95</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_update_group_trigger'>update_group_trigger</span><span class='lparen'>(</span><span class='id identifier rubyid_trigger'>trigger</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_http_put'>http_put</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>triggers/groups/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_trigger'>trigger</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span><span class='embexpr_end'>}</span><span class='tstring_content'>/</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_trigger'>trigger</span><span class='period'>.</span><span class='id identifier rubyid_to_h'>to_h</span>
+  <span class='id identifier rubyid_get_single_trigger'>get_single_trigger</span> <span class='id identifier rubyid_trigger'>trigger</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span><span class='comma'>,</span> <span class='kw'>false</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
   </div>
 
 </div>
 
     <div id="footer">
-  Generated on Tue Mar 29 18:42:45 2016 by
+  Generated on Fri May 13 14:32:39 2016 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.6 (ruby-2.2.4).
 </div>

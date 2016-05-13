@@ -90,11 +90,15 @@
     
   
     
+      <dt class="r2">Includes:</dt>
+      <dd class="r2"><span class='object_link'><a href="../HawkularUtilsMixin.html" title="HawkularUtilsMixin (module)">HawkularUtilsMixin</a></span></dd>
+      
+    
   
   
   
-    <dt class="r2 last">Defined in:</dt>
-    <dd class="r2 last">lib/hawkular.rb</dd>
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">lib/hawkular/base_client.rb</dd>
   
 </dl>
 <div class="clear"></div>
@@ -220,30 +224,6 @@ representation that can be used to generate a Http-Authentication header.</p>
 <p>Generate a query string from the passed hash, starting with &#39;?&#39;
 Values may be an array, in which case the array values are joined together
 by `,`.</p>
-</div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#hawk_escape-instance_method" title="#hawk_escape (instance method)">- (String) <strong>hawk_escape</strong>(url_part) </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'>
-<p>Escapes the passed url part.</p>
 </div></span>
   
 </li>
@@ -390,6 +370,17 @@ by `,`.</p>
     </ul>
   
 
+
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="../HawkularUtilsMixin.html" title="HawkularUtilsMixin (module)">HawkularUtilsMixin</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../HawkularUtilsMixin.html#hawk_escape-instance_method" title="HawkularUtilsMixin#hawk_escape (method)">#hawk_escape</a></span>, <span class='object_link'><a href="../HawkularUtilsMixin.html#hawk_escape_id-instance_method" title="HawkularUtilsMixin#hawk_escape_id (method)">#hawk_escape_id</a></span></p>
 <div id="constructor_details" class="method_details_list">
   <h2>Constructor Details</h2>
   
@@ -438,10 +429,11 @@ by `,`.</p>
 33
 34
 35
-36</pre>
+36
+37</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkular.rb', line 17</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/base_client.rb', line 17</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_entrypoint'>entrypoint</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span>
                <span class='id identifier rubyid_credentials'>credentials</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span>
@@ -458,6 +450,7 @@ by `,`.</p>
     <span class='label'>verify_ssl:</span> <span class='const'>OpenSSL</span><span class='op'>::</span><span class='const'>SSL</span><span class='op'>::</span><span class='const'>VERIFY_PEER</span><span class='comma'>,</span>
     <span class='label'>ssl_client_cert:</span> <span class='kw'>nil</span><span class='comma'>,</span>
     <span class='label'>ssl_client_key:</span> <span class='kw'>nil</span><span class='comma'>,</span>
+    <span class='label'>http_proxy_uri:</span> <span class='kw'>nil</span><span class='comma'>,</span>
     <span class='label'>headers:</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
   <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
 
@@ -524,7 +517,7 @@ by `,`.</p>
 17</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkular.rb', line 15</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/base_client.rb', line 15</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_tenants'>tenants</span>
   <span class='ivar'>@tenants</span>
@@ -603,15 +596,15 @@ representation that can be used to generate a Http-Authentication header</p>
       <pre class="lines">
 
 
-131
-132
-133
-134
-135
-136</pre>
+108
+109
+110
+111
+112
+113</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkular.rb', line 131</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/base_client.rb', line 108</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_base_64_credentials'>base_64_credentials</span><span class='lparen'>(</span><span class='id identifier rubyid_credentials'>credentials</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_creds'>creds</span> <span class='op'>=</span> <span class='id identifier rubyid_credentials'>credentials</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span> <span class='op'>?</span> <span class='ivar'>@credentials</span> <span class='op'>:</span> <span class='id identifier rubyid_credentials'>credentials</span>
@@ -693,19 +686,19 @@ params</p>
       <pre class="lines">
 
 
-142
-143
-144
-145
-146
-147
-148
-149
-150
-151</pre>
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkular.rb', line 142</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/base_client.rb', line 119</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_generate_query_params'>generate_query_params</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_params'>params</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='period'>.</span><span class='id identifier rubyid_select'>select</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid__k'>_k</span><span class='comma'>,</span> <span class='id identifier rubyid_v'>v</span><span class='op'>|</span> <span class='op'>!</span><span class='lparen'>(</span><span class='id identifier rubyid_v'>v</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>||</span> <span class='lparen'>(</span><span class='lparen'>(</span><span class='id identifier rubyid_v'>v</span><span class='period'>.</span><span class='id identifier rubyid_instance_of?'>instance_of?</span> <span class='const'>Array</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_v'>v</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span><span class='rparen'>)</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
@@ -716,117 +709,6 @@ params</p>
     <span class='id identifier rubyid_part'>part</span> <span class='op'>=</span> <span class='lparen'>(</span><span class='id identifier rubyid_v'>v</span><span class='period'>.</span><span class='id identifier rubyid_instance_of?'>instance_of?</span> <span class='const'>Array</span><span class='rparen'>)</span> <span class='op'>?</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_k'>k</span><span class='embexpr_end'>}</span><span class='tstring_content'>=</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_v'>v</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>,</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span> <span class='op'>:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_k'>k</span><span class='embexpr_end'>}</span><span class='tstring_content'>=</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_v'>v</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
     <span class='id identifier rubyid_ret'>ret</span> <span class='op'>+</span> <span class='id identifier rubyid_hawk_escape'>hawk_escape</span><span class='lparen'>(</span><span class='id identifier rubyid_part'>part</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="hawk_escape-instance_method">
-  
-    - (<tt>String</tt>) <strong>hawk_escape</strong>(url_part) 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    
-<p>Escapes the passed url part. This is necessary, as many ids inside Hawkular
-can contain characters that are invalid for an url/uri. The passed value is
-duplicated</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  <p class="tag_title">Parameters:</p>
-<ul class="param">
-  
-    <li>
-      
-        <span class='name'>url_part</span>
-      
-      
-        <span class='type'>(<tt>String</tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'>
-<p>Part of an url to be escaped</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>String</tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'>
-<p>escaped url_part as new string</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-52
-53
-54
-55
-56
-57
-58
-59
-60
-61
-62
-63
-64
-65
-66
-67
-68
-69</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkular.rb', line 52</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_hawk_escape'>hawk_escape</span><span class='lparen'>(</span><span class='id identifier rubyid_url_part'>url_part</span><span class='rparen'>)</span>
-  <span class='kw'>return</span> <span class='id identifier rubyid_url_part'>url_part</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span> <span class='kw'>if</span> <span class='id identifier rubyid_url_part'>url_part</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Numeric</span><span class='rparen'>)</span>
-
-  <span class='kw'>if</span> <span class='id identifier rubyid_url_part'>url_part</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span> <span class='const'>Symbol</span>
-    <span class='id identifier rubyid_sub_url'>sub_url</span> <span class='op'>=</span> <span class='id identifier rubyid_url_part'>url_part</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
-  <span class='kw'>else</span>
-    <span class='id identifier rubyid_sub_url'>sub_url</span> <span class='op'>=</span> <span class='id identifier rubyid_url_part'>url_part</span><span class='period'>.</span><span class='id identifier rubyid_dup'>dup</span>
-  <span class='kw'>end</span>
-  <span class='id identifier rubyid_sub_url'>sub_url</span><span class='period'>.</span><span class='id identifier rubyid_gsub!'>gsub!</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>%</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>%25</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_sub_url'>sub_url</span><span class='period'>.</span><span class='id identifier rubyid_gsub!'>gsub!</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'> </span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>%20</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_sub_url'>sub_url</span><span class='period'>.</span><span class='id identifier rubyid_gsub!'>gsub!</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>[</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>%5b</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_sub_url'>sub_url</span><span class='period'>.</span><span class='id identifier rubyid_gsub!'>gsub!</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>]</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>%5d</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_sub_url'>sub_url</span><span class='period'>.</span><span class='id identifier rubyid_gsub!'>gsub!</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>|</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>%7c</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_sub_url'>sub_url</span><span class='period'>.</span><span class='id identifier rubyid_gsub!'>gsub!</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>(</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>%28</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_sub_url'>sub_url</span><span class='period'>.</span><span class='id identifier rubyid_gsub!'>gsub!</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>)</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>%29</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_sub_url'>sub_url</span><span class='period'>.</span><span class='id identifier rubyid_gsub!'>gsub!</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>%2f</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_sub_url'>sub_url</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -848,16 +730,16 @@ duplicated</p>
       <pre class="lines">
 
 
-89
-90
-91
-92
-93
-94
-95</pre>
+65
+66
+67
+68
+69
+70
+71</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkular.rb', line 89</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/base_client.rb', line 65</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_http_delete'>http_delete</span><span class='lparen'>(</span><span class='id identifier rubyid_suburl'>suburl</span><span class='comma'>,</span> <span class='id identifier rubyid_headers'>headers</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_res'>res</span> <span class='op'>=</span> <span class='id identifier rubyid_rest_client'>rest_client</span><span class='lparen'>(</span><span class='id identifier rubyid_suburl'>suburl</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='id identifier rubyid_http_headers'>http_headers</span><span class='lparen'>(</span><span class='id identifier rubyid_headers'>headers</span><span class='rparen'>)</span><span class='rparen'>)</span>
@@ -886,16 +768,16 @@ duplicated</p>
       <pre class="lines">
 
 
-38
 39
 40
 41
 42
 43
-44</pre>
+44
+45</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkular.rb', line 38</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/base_client.rb', line 39</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_http_get'>http_get</span><span class='lparen'>(</span><span class='id identifier rubyid_suburl'>suburl</span><span class='comma'>,</span> <span class='id identifier rubyid_headers'>headers</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_res'>res</span> <span class='op'>=</span> <span class='id identifier rubyid_rest_client'>rest_client</span><span class='lparen'>(</span><span class='id identifier rubyid_suburl'>suburl</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='id identifier rubyid_http_headers'>http_headers</span><span class='lparen'>(</span><span class='id identifier rubyid_headers'>headers</span><span class='rparen'>)</span><span class='rparen'>)</span>
@@ -924,17 +806,17 @@ duplicated</p>
       <pre class="lines">
 
 
-71
-72
-73
-74
-75
-76
-77
-78</pre>
+47
+48
+49
+50
+51
+52
+53
+54</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkular.rb', line 71</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/base_client.rb', line 47</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_http_post'>http_post</span><span class='lparen'>(</span><span class='id identifier rubyid_suburl'>suburl</span><span class='comma'>,</span> <span class='id identifier rubyid_hash'>hash</span><span class='comma'>,</span> <span class='id identifier rubyid_headers'>headers</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_body'>body</span> <span class='op'>=</span> <span class='const'>JSON</span><span class='period'>.</span><span class='id identifier rubyid_generate'>generate</span><span class='lparen'>(</span><span class='id identifier rubyid_hash'>hash</span><span class='rparen'>)</span>
@@ -964,17 +846,17 @@ duplicated</p>
       <pre class="lines">
 
 
-80
-81
-82
-83
-84
-85
-86
-87</pre>
+56
+57
+58
+59
+60
+61
+62
+63</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkular.rb', line 80</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/base_client.rb', line 56</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_http_put'>http_put</span><span class='lparen'>(</span><span class='id identifier rubyid_suburl'>suburl</span><span class='comma'>,</span> <span class='id identifier rubyid_hash'>hash</span><span class='comma'>,</span> <span class='id identifier rubyid_headers'>headers</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_body'>body</span> <span class='op'>=</span> <span class='const'>JSON</span><span class='period'>.</span><span class='id identifier rubyid_generate'>generate</span><span class='lparen'>(</span><span class='id identifier rubyid_hash'>hash</span><span class='rparen'>)</span>
@@ -1033,12 +915,12 @@ duplicated</p>
       <pre class="lines">
 
 
-123
-124
-125</pre>
+100
+101
+102</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkular.rb', line 123</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/base_client.rb', line 100</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_now'>now</span>
   <span class='const'>Integer</span><span class='lparen'>(</span><span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span><span class='period'>.</span><span class='id identifier rubyid_to_f'>to_f</span> <span class='op'>*</span> <span class='int'>1000</span><span class='rparen'>)</span>
@@ -1053,7 +935,7 @@ duplicated</p>
 </div>
 
     <div id="footer">
-  Generated on Tue Mar 29 18:42:45 2016 by
+  Generated on Fri May 13 14:32:39 2016 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.6 (ruby-2.2.4).
 </div>

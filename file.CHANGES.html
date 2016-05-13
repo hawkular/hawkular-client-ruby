@@ -1,0 +1,159 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>
+  File: CHANGES
+  
+    &mdash; Documentation by YARD 0.8.7.6
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '';
+  framesUrl = "frames.html#!file.CHANGES.html";
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index</a> &raquo; 
+    <span class="title">File: CHANGES</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><div id='filecontents'>
+<h2 id="label-Changes">Changes</h2>
+
+<p>This document describes the relevant changes between releases of the
+<em>hawkular-client</em> project.</p>
+
+<h3 id="label-V+1.0.0">V 1.0.0</h3>
+<ul><li>
+<p>This major release contains changes that <strong>may break the backward
+compatibility</strong>, more info here: <a
+href="api_breaking_changes.rdoc">api_breaking_changes.rdoc</a></p>
+</li><li>
+<p>To use the client use the <code>require
+&#39;hawkular/hawkular_client&#39;</code> instead of <code>require
+&#39;hawkular_all&#39;</code></p>
+</li><li>
+<p>Inventory client has been rewritten to use the cannonical paths</p>
+</li><li>
+<p>New supoort for group triggers in alert sub-client</p>
+</li><li>
+<p>New method for creating event in the hawkular alert component</p>
+</li><li>
+<p>New method for listing the available operation types on a resource type in
+inventory</p>
+</li><li>
+<p>Hawkular-Tenant HTTP header is automatically added to each HTTP request</p>
+</li><li>
+<p>New support for proxy option in the internal rest_client</p>
+</li><li>
+<p>Improved VCR tests - some changing parameters in the data can be
+parametrized and the cassettes are stored as templates. Now, it&#39;s also
+possible to record those templates with <code>VCR_UPDATE=1</code></p>
+</li><li>
+<p>Tests are run also on ruby 2.3.0</p>
+</li><li>
+<p>Couple of new tests</p>
+</li></ul>
+
+<h3 id="label-V+0.2.2">V 0.2.2</h3>
+<ul><li>
+<p>Bug fix to correctly read resource info for resources that are not directly
+below a feed. Issue #<a
+href="https://github.com/hawkular/hawkular-client-ruby/issues/54">54</a></p>
+</li></ul>
+
+<h3 id="label-V+0.2.1">V 0.2.1</h3>
+<ul><li>
+<p>Add support to create items in inventory</p>
+</li><li>
+<p>Add support to percentiles, limit and order parameters in Metrics API</p>
+</li><li>
+<p>Add support to run operations on WildFly agent via websockets</p>
+</li><li>
+<p>Add support to create items in alerts</p>
+</li><li>
+<p>Add support for auth tokens (can be created by the client on the server)</p>
+</li><li>
+<p>Add support to consume inventory events via websockets</p>
+</li><li>
+<p>Add support to (offline) test websockets by recorded communication (VCR)</p>
+</li></ul>
+
+<h3 id="label-V+0.2.0">V 0.2.0</h3>
+<ul><li>
+<p>Add support for Hawkular-Inventory and Hawkular-Alerts</p>
+</li><li>
+<p>Reshuffling of inner classes</p>
+</li><li>
+<p>The sub-url that is passed to <code>http_*</code> methods is escaped via
+<tt>Addressable::URI.escape()</tt></p>
+</li></ul>
+
+<h3 id="label-V+0.1.2">V 0.1.2</h3>
+<ul><li>
+<p>Fix exception handling - this was missing <code>require
+&#39;English&#39;</code></p>
+</li></ul>
+
+<h3 id="label-V+0.1.1">V 0.1.1</h3>
+<ul><li>
+<p>Add VCR tests</p>
+</li><li>
+<p><code>Metrics::Client.new</code> now requires a hash for credentials</p>
+</li><li>
+<p>Code cleanup and enforcement via RuboCop</p>
+</li></ul>
+</div></div>
+
+    <div id="footer">
+  Generated on Fri May 13 14:32:39 2016 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.7.6 (ruby-2.2.4).
+</div>
+
+  </body>
+</html>

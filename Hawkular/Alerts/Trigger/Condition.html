@@ -94,7 +94,7 @@
   
   
     <dt class="r2 last">Defined in:</dt>
-    <dd class="r2 last">lib/alerts/alerts_api.rb</dd>
+    <dd class="r2 last">lib/hawkular/alerts/alerts_api.rb</dd>
   
 </dl>
 <div class="clear"></div>
@@ -197,6 +197,60 @@
   
     <span class="summary_desc"><div class='inline'>
 <p>Returns the value of attribute condition_set_size.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#data2_id-instance_method" title="#data2_id (instance method)">- (Object) <strong>data2_id</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute data2_id.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#data2_multiplier-instance_method" title="#data2_multiplier (instance method)">- (Object) <strong>data2_multiplier</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute data2_multiplier.</p>
 </div></span>
   
 </li>
@@ -459,19 +513,21 @@
       <pre class="lines">
 
 
-280
-281
-282
-283
-284
-285
-286
-287
-288
-289</pre>
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/alerts/alerts_api.rb', line 280</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 382</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_cond_hash'>cond_hash</span><span class='rparen'>)</span>
   <span class='ivar'>@condition_id</span> <span class='op'>=</span> <span class='id identifier rubyid_cond_hash'>cond_hash</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>conditionId</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
@@ -481,6 +537,8 @@
   <span class='ivar'>@type</span> <span class='op'>=</span> <span class='id identifier rubyid_cond_hash'>cond_hash</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>type</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
   <span class='ivar'>@trigger_mode</span> <span class='op'>=</span> <span class='id identifier rubyid_cond_hash'>cond_hash</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>triggerMode</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
   <span class='ivar'>@data_id</span> <span class='op'>=</span> <span class='id identifier rubyid_cond_hash'>cond_hash</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>dataId</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
+  <span class='ivar'>@data2_id</span> <span class='op'>=</span> <span class='id identifier rubyid_cond_hash'>cond_hash</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>data2Id</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
+  <span class='ivar'>@data2_multiplier</span> <span class='op'>=</span> <span class='id identifier rubyid_cond_hash'>cond_hash</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>data2Multiplier</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
   <span class='ivar'>@trigger_id</span> <span class='op'>=</span> <span class='id identifier rubyid_cond_hash'>cond_hash</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>triggerId</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -521,12 +579,12 @@
       <pre class="lines">
 
 
-276
-277
-278</pre>
+378
+379
+380</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/alerts/alerts_api.rb', line 276</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 378</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_condition_id'>condition_id</span>
   <span class='ivar'>@condition_id</span>
@@ -564,12 +622,12 @@
       <pre class="lines">
 
 
-278
-279
-280</pre>
+380
+381
+382</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/alerts/alerts_api.rb', line 278</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 380</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_condition_set_index'>condition_set_index</span>
   <span class='ivar'>@condition_set_index</span>
@@ -607,15 +665,101 @@
       <pre class="lines">
 
 
-278
-279
-280</pre>
+380
+381
+382</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/alerts/alerts_api.rb', line 278</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 380</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_condition_set_size'>condition_set_size</span>
   <span class='ivar'>@condition_set_size</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="data2_id=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="data2_id-instance_method">
+  
+    - (<tt>Object</tt>) <strong>data2_id</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute data2_id</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+379
+380
+381</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 379</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_data2_id'>data2_id</span>
+  <span class='ivar'>@data2_id</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="data2_multiplier=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="data2_multiplier-instance_method">
+  
+    - (<tt>Object</tt>) <strong>data2_multiplier</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute data2_multiplier</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+379
+380
+381</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 379</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_data2_multiplier'>data2_multiplier</span>
+  <span class='ivar'>@data2_multiplier</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -650,12 +794,12 @@
       <pre class="lines">
 
 
-277
-278
-279</pre>
+379
+380
+381</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/alerts/alerts_api.rb', line 277</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 379</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_data_id'>data_id</span>
   <span class='ivar'>@data_id</span>
@@ -693,12 +837,12 @@
       <pre class="lines">
 
 
-276
-277
-278</pre>
+378
+379
+380</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/alerts/alerts_api.rb', line 276</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 378</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_operator'>operator</span>
   <span class='ivar'>@operator</span>
@@ -736,12 +880,12 @@
       <pre class="lines">
 
 
-276
-277
-278</pre>
+378
+379
+380</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/alerts/alerts_api.rb', line 276</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 378</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_threshold'>threshold</span>
   <span class='ivar'>@threshold</span>
@@ -779,12 +923,12 @@
       <pre class="lines">
 
 
-278
-279
-280</pre>
+380
+381
+382</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/alerts/alerts_api.rb', line 278</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 380</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_trigger_id'>trigger_id</span>
   <span class='ivar'>@trigger_id</span>
@@ -822,12 +966,12 @@
       <pre class="lines">
 
 
-277
-278
-279</pre>
+379
+380
+381</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/alerts/alerts_api.rb', line 277</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 379</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_trigger_mode'>trigger_mode</span>
   <span class='ivar'>@trigger_mode</span>
@@ -865,12 +1009,12 @@
       <pre class="lines">
 
 
-276
-277
-278</pre>
+378
+379
+380</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/alerts/alerts_api.rb', line 276</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 378</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_type'>type</span>
   <span class='ivar'>@type</span>
@@ -902,21 +1046,23 @@
       <pre class="lines">
 
 
-291
-292
-293
-294
-295
-296
-297
-298
-299
-300
-301
-302</pre>
+395
+396
+397
+398
+399
+400
+401
+402
+403
+404
+405
+406
+407
+408</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/alerts/alerts_api.rb', line 291</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 395</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_h'>to_h</span>
   <span class='id identifier rubyid_cond_hash'>cond_hash</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
@@ -927,6 +1073,8 @@
   <span class='id identifier rubyid_cond_hash'>cond_hash</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>type</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='ivar'>@type</span>
   <span class='id identifier rubyid_cond_hash'>cond_hash</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>triggerMode</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='ivar'>@trigger_mode</span>
   <span class='id identifier rubyid_cond_hash'>cond_hash</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>dataId</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='ivar'>@data_id</span>
+  <span class='id identifier rubyid_cond_hash'>cond_hash</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>data2Id</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='ivar'>@data2_id</span>
+  <span class='id identifier rubyid_cond_hash'>cond_hash</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>data2Multiplier</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='ivar'>@data2_multiplier</span>
   <span class='id identifier rubyid_cond_hash'>cond_hash</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>triggerId</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='ivar'>@trigger_id</span>
   <span class='id identifier rubyid_cond_hash'>cond_hash</span>
 <span class='kw'>end</span></pre>
@@ -940,7 +1088,7 @@
 </div>
 
     <div id="footer">
-  Generated on Tue Mar 29 18:42:45 2016 by
+  Generated on Fri May 13 14:32:39 2016 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.6 (ruby-2.2.4).
 </div>
