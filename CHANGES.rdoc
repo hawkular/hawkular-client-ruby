@@ -7,6 +7,8 @@ _hawkular-client_ project.
 
 * Bug fix to correctly read resource info for resources that are not directly below a feed.
   Issue #54[https://github.com/hawkular/hawkular-client-ruby/issues/54]
+* Support for proxy
+* Alert client now supports group triggers and Compare conditions
 
 === V 0.2.1
 
