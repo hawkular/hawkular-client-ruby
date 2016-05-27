@@ -20,22 +20,22 @@ puts '     c for connect'
 
 
 IRB.conf[:PROMPT][:HAWKULAR_PROMPT] = {
-  AUTO_INDENT: false,          # enables auto-indent mode
-  PROMPT_I: " %m ► ",         # simple prompt
+  AUTO_INDENT: false,        # enables auto-indent mode
+  PROMPT_I: " %m ► ",        # simple prompt
   PROMPT_S: "",              # prompt for continuated strings
-  PROMPT_C: " %m..",           # prompt for continuated statement
-  RETURN: "  = %s\n"          # format to return value
+  PROMPT_C: " %m..",         # prompt for continuated statement
+  RETURN: "  = %s\n"         # format to return value
 }
 IRB.conf[:PROMPT_MODE] = :HAWKULAR_PROMPT
 IRB.conf[:SAVE_HISTORY] = 5000
 
-def connect
+def connect(entrypoint: 'http://localhost:8080',
+            credentials: {username: 'jdoe', password: 'password'},
+            options: {})
   puts 'connecting...'
-  client = ::Hawkular::Client.new(entrypoint: 'http://localhost:8080', 
-                                  credentials: { username: 'jdoe',
-                                                 password: 'password'
-                                               }
-                                 )
+  client = ::Hawkular::Client.new(entrypoint: entrypoint,
+                                  credentials: credentials,
+                                  options: options)
   cd client
   'Now type: ls, inventory.list_feeds, metrics.counters.get_data 42, cd inventory, etc.'
 end
@@ -49,8 +49,15 @@ alias :d :docs
 
 def hhelp
   alignment = 30
-  puts 'c, connect'.ljust(alignment) + ' ... Connects the client - this is a good way to start'
-  puts 'd [method], docs [method]'.ljust(alignment) + ' ... Prints the documentation for [method]. Method needs to be passed as string or symbol. Example:  inventory ► d :get_resource'
+  spaces = alignment + 5
+  puts 'c, connect'.ljust(alignment) + ' ... Connects the client - this is a good way to start.'
+  puts ' ' * spaces + 'It connects to the localhost:8080 and uses jdoe:password.'
+  puts ' ' * spaces + 'This can be overridden by using, for example:'
+  puts ' ' * (spaces + 5) + "connect(entrypoint: 'https://example.com',"
+  puts ' ' * (spaces + 5) + "        credentials: {username: 'jsmith', password: 'secret'},"
+  puts ' ' * (spaces + 5) + "        options: {verify_ssl: OpenSSL::SSL::VERIFY_NONE})\n\n"
+  puts 'd [method], docs [method]'.ljust(alignment) + ' ... Prints the documentation for [method].'\
+       'Method needs to be passed as string or symbol. Example:  inventory ► docs :get_resource'
   puts 'ls'.ljust(alignment) + ' ... Prints the available methods in the current context'
   puts 'cd [sub-client]'.ljust(alignment) + ' ... Changes the context - jump into sub-client. Example: cd metrics'
   puts 'back'.ljust(alignment) + ' ... Changes the context back - jump to the parent'
