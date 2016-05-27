@@ -12,11 +12,12 @@ module Hawkular::Alerts
   # @param entrypoint [String] base url of Hawkular-Alerts - e.g
   #   http://localhost:8080/hawkular/alerts
   # @param credentials [Hash{String=>String}] Hash of username, password, token(optional)
+  # @param options [Hash{String=>String}] Additional rest client options
   class AlertsClient < Hawkular::BaseClient
-    def initialize(entrypoint = 'http://localhost:8080/hawkular/alerts', credentials = {})
+    def initialize(entrypoint = 'http://localhost:8080/hawkular/alerts', credentials = {}, options = {})
       @entrypoint = entrypoint
 
-      super(entrypoint, credentials)
+      super(entrypoint, credentials, options)
     end
 
     # Lists defined triggers in the system
