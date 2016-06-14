@@ -74,7 +74,7 @@ module Hawkular::Inventory
     # @return [Array<Resource>] List of resources, which can be empty.
     def list_resources_for_feed(feed_id, fetch_properties = false, filter = {})
       fail 'Feed id must be given' unless feed_id
-      the_feed = hawk_escape_id feed
+      the_feed = hawk_escape_id feed_id
       ret = http_get("/feeds/#{the_feed}/resources")
       to_filter = ret.map do |r|
         if fetch_properties

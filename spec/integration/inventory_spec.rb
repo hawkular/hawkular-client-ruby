@@ -93,6 +93,12 @@ module Hawkular::Inventory::RSpec
       expect(feeds.size).to be(1)
     end
 
+    it 'Should list resources for feed' do
+      resources = @client.list_resources_for_feed feed_id
+
+      expect(resources.size).to be(2)
+    end
+
     it 'Should list all the resource types' do
       types = @client.list_resource_types
       expect(types.size).to be(19)
