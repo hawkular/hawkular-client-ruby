@@ -99,6 +99,21 @@ module Hawkular::Inventory::RSpec
       expect(resources.size).to be(2)
     end
 
+    it 'Should list feeds when using SSL without certificate' do
+      # change this to the real credentials when updating the VCR
+      @state[:super_secret_username] = 'username'
+      @state[:super_secret_password] = 'password'
+      creds = { username: @state[:super_secret_username],
+                password: @state[:super_secret_password] }
+      tori_url = 'https://hawkular.torii.gva.redhat.com/hawkular/inventory'
+      client = Hawkular::Inventory::InventoryClient.create(entrypoint: tori_url,
+                                                           credentials: creds,
+                                                           options: { verify_ssl: OpenSSL::SSL::VERIFY_NONE })
+      feeds = client.list_feeds
+
+      expect(feeds.size).to be(1)
+    end
+
     it 'Should list all the resource types' do
       types = @client.list_resource_types
       expect(types.size).to be(19)

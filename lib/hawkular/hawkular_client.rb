@@ -16,15 +16,20 @@ module Hawkular
       @state = hash
 
       @inventory = Inventory::InventoryClient.create(entrypoint: "#{hash[:entrypoint]}/hawkular/inventory",
-                                                     credentials: hash[:credentials])
+                                                     credentials: hash[:credentials],
+                                                     options: hash[:options])
 
       @metrics = Metrics::Client.new("#{hash[:entrypoint]}/hawkular/metrics",
                                      hash[:credentials],
                                      hash[:options])
 
-      @alerts = Alerts::AlertsClient.new("#{hash[:entrypoint]}/hawkular/alerts", hash[:credentials])
+      @alerts = Alerts::AlertsClient.new("#{hash[:entrypoint]}/hawkular/alerts",
+                                         hash[:credentials],
+                                         hash[:options])
 
-      @tokens = Token::TokenClient.new(hash[:entrypoint], hash[:credentials])
+      @tokens = Token::TokenClient.new(hash[:entrypoint],
+                                       hash[:credentials],
+                                       hash[:options])
     end
 
     def method_missing(name, *args, &block)
@@ -54,7 +59,8 @@ module Hawkular
     # this is in a dedicated method, because constructor opens the websocket connection to make the handshake
     def init_operations_client
       Operations::OperationsClient.new(entrypoint: @state[:entrypoint].gsub(/^https?/, 'ws'),
-                                       credentials: @state[:credentials])
+                                       credentials: @state[:credentials],
+                                       options: @state[:options])
     end
   end
 end

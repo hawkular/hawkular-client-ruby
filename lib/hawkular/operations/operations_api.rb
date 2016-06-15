@@ -47,6 +47,7 @@ module Hawkular::Operations
     #
     # @option args [String]  :host base url of Hawkular - e.g http://localhost:8080
     # @option args [Hash{String=>String}]  :credentials Hash of (username password) or token
+    # @option args [Hash{String=>String}] :options Additional rest client options
     # @option args [Fixnum]  :wait_time Time in seconds describing how long the constructor should block - handshake
     #
     # @example
@@ -54,8 +55,9 @@ module Hawkular::Operations
     def initialize(args)
       args[:host] ||= 'localhost:8080'
       args[:credentials] ||= {}
+      args[:options] ||= {}
       args[:wait_time] ||= 0.5
-      super(args[:host], args[:credentials])
+      super(args[:host], args[:credentials], args[:options])
       # note: if we start using the secured WS, change the protocol to wss://
       url = "ws://#{entrypoint}/hawkular/command-gateway/ui/ws"
       @ws = Simple.connect url do |client|

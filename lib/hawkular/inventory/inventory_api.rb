@@ -14,9 +14,10 @@ module Hawkular::Inventory
     # @param entrypoint [String] base url of Hawkular-inventory - e.g
     #   http://localhost:8080/hawkular/inventory
     # @param credentials [Hash{String=>String}] Hash of username, password, token(optional)
-    def initialize(entrypoint = nil, credentials = {})
+    # @param options [Hash{String=>String}] Additional rest client options
+    def initialize(entrypoint = nil, credentials = {}, options = {})
       @entrypoint = entrypoint
-      super(entrypoint, credentials)
+      super(entrypoint, credentials, options)
     end
 
     # Creates a new Inventory Client
@@ -26,7 +27,8 @@ module Hawkular::Inventory
     def self.create(hash)
       hash[:entrypoint] ||= 'http://localhost:8080/hawkular/inventory'
       hash[:credentials] ||= {}
-      InventoryClient.new(hash[:entrypoint], hash[:credentials])
+      hash[:options] ||= {}
+      InventoryClient.new(hash[:entrypoint], hash[:credentials], hash[:options])
     end
 
     # Retrieve the tenant id for the passed credentials.
