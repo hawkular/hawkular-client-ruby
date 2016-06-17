@@ -146,14 +146,9 @@ module Hawkular
     end
 
     def tenant_header
-      if @options[:tenant].nil?
-        { 'Hawkular-Tenant' => 'hawkular' }
-      elsif @options[:tenant].empty?
-        {}
-      else
-        { :'Hawkular-Tenant' => @options[:tenant],
-          'tenantId'         => @options[:tenant] }
-      end
+      headers = {}
+      headers[:'Hawkular-Tenant'] = @options[:tenant] unless @options[:tenant].nil?
+      headers
     end
 
     def handle_fault(f)
