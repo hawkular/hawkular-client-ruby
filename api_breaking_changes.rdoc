@@ -1,5 +1,10 @@
 == Breaking changes in the major releases
 
+=== 2.0.0
+
+By default no Hawkular-Tenant HTTP header is being set. If you need it (for instance for hawkular-services), provide the tenant option when creating a client.
+e.g. <code>::Hawkular::Client.new(..., options: { tenant: 'hawkular' })</code>
+
 === 1.0.0
 
 To use the client use the <code>require 'hawkular/hawkular_client'</code> instead of <code>require 'hawkular_all'</code>
