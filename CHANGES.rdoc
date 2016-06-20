@@ -3,6 +3,13 @@
 This document describes the relevant changes between releases of the
 _hawkular-client_ project.
 
+=== V 2.0.0
+* This version is compatible with hawkular-services[https://github.com/hawkular/hawkular-services]
+* By default no Tenant-Header is send in the requests, which is compatible with the old versions of Hawkular. However,
+  if the option 'tenant' is passed when creating the client, it will be sent as the header. This is the only potentialy breaking change, because
+  in 1.0.0, if the tenant was not specified the 'hawkular' Tenant-Header was used.
+* Method for listing resources for a feed in the inventory sub-client has been fixed.
+
 === V 1.0.0
 * This major release contains changes that <b>may break the backward compatibility</b>, more info here: link:api_breaking_changes.rdoc
 * To use the client use the <code>require 'hawkular/hawkular_client'</code> instead of <code>require 'hawkular_all'</code>
