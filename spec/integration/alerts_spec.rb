@@ -424,13 +424,16 @@ module Hawkular::Alerts::RSpec
     end
   end
 
-  # TODO: enable when alerts supports it
-  # describe 'Alerts' do
-  #   it 'Should return the version' do
-  #     data = @client.get_version_and_status
-  #     expect(data).not_to be_nil
-  #   end
-  # end
+  describe 'Alerts', vcr: { decode_compressed_response: true } do
+    before(:each) do
+      @client = Hawkular::Alerts::AlertsClient.new(ALERTS_BASE, creds)
+    end
+
+    it 'Should return the version' do
+      data = @client.fetch_version_and_status
+      expect(data).not_to be_nil
+    end
+  end
 
   describe 'Alert/Events', :vcr do
     VCR.configure do |c|
