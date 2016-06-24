@@ -53,14 +53,30 @@ module Hawkular::Operations
     # @example
     #   Hawkular::Operations::OperationsClient.new(credentials: {username: 'jdoe', password: 'password'})
     def initialize(args)
+      ep = args[:entrypoint]
+
+      unless ep.nil?
+        uri = URI.parse ep
+        args[:host] ||= "#{uri.host}:#{uri.port}"
+      end
+
       args[:host] ||= 'localhost:8080'
       args[:credentials] ||= {}
       args[:options] ||= {}
       args[:wait_time] ||= 0.5
       super(args[:host], args[:credentials], args[:options])
       # note: if we start using the secured WS, change the protocol to wss://
-      url = "ws://#{entrypoint}/hawkular/command-gateway/ui/ws"
-      @ws = Simple.connect url do |client|
+      url = "ws://#{args[:host]}/hawkular/command-gateway/ui/ws"
+      ws_options = {}
+      creds = args[:credentials]
+      incoming_opts = args[:options]
+      ws_options[:headers] = { 'Authorization' => 'Basic ' +
+          ["#{creds[:username]}:#{creds[:password]}"].pack('m').delete("\r\n"),
+                               'Hawkular-Tenant' => incoming_opts[:tenant],
+                               'Accept' => 'application/json'
+      }
+
+      @ws = Simple.connect url, ws_options do |client|
         client.on(:message, once: true) do |msg|
           parsed_message = msg.data.to_msg_hash
           puts parsed_message if ENV['HAWKULARCLIENT_LOG_RESPONSE']

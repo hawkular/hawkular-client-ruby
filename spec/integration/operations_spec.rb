@@ -14,22 +14,47 @@ module Hawkular::Operations::RSpec
     end
 
     it 'should be established' do
-      WebSocketVCR.configure do |c|
-        c.hook_uris = [HOST]
-      end
+      # WebSocketVCR.configure do |c|
+      #   c.hook_uris = [HOST]
+      # end
 
-      WebSocketVCR.record(example, self) do
+      # WebSocketVCR.record(example, self) do
         client = OperationsClient.new(host: HOST,
                                       wait_time: WebSocketVCR.live? ? 1.5 : 0,
                                       credentials: {
                                         username: 'jdoe',
                                         password: 'password'
+                                      },
+                                      options: {
+                                          tenant: 'hawkular'
                                       })
         ws = client.ws
         expect(ws).not_to be nil
         expect(ws.open?).to be true
-      end
-    end
+#      end
+     end
+
+    it 'should be established2' do
+      # WebSocketVCR.configure do |c|
+      #   c.hook_uris = [HOST]
+      # end
+
+      # WebSocketVCR.record(example, self) do
+      ep = URI::HTTP.build(:host => 'acme.org', :port => 42).to_s
+        client = OperationsClient.new(entrypoint: ep,
+                                      wait_time: WebSocketVCR.live? ? 1.5 : 0,
+                                      credentials: {
+                                        username: 'jdoe',
+                                        password: 'password'
+                                      },
+                                      options: {
+                                          tenant: 'hawkular'
+                                      })
+        ws = client.ws
+        expect(ws).not_to be nil
+        expect(ws.open?).to be true
+#      end
+     end
   end
 
   describe 'Operation/Operation', :websocket, vcr: { decode_compressed_response: true } do
