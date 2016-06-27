@@ -20,6 +20,13 @@ module Hawkular::Alerts
       super(entrypoint, credentials, options)
     end
 
+    # Return version and status information for the used version of Hawkular-Alerting
+    # @return [Hash{String=>String}]
+    #         ('Implementation-Version', 'Built-From-Git-SHA1', 'status')
+    def fetch_version_and_status
+      http_get('/status')
+    end
+
     # Lists defined triggers in the system
     # @param [Array] ids List of trigger ids. If provided, limits to the given triggers
     # @param [Array] tags List of tags. If provided, limits to the given tags. Individual
