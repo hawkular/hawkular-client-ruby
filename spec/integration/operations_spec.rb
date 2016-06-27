@@ -131,7 +131,8 @@ module Hawkular::Operations::RSpec
 
     before(:each) do |ex|
       unless ex.metadata[:skip_open]
-        @client = OperationsClient.new(credentials: @creds,
+        @client = OperationsClient.new(entrypoint: 'http://localhost:8080',
+                                       credentials: @creds,
                                        wait_time: WebSocketVCR.live? ? 1.5 : 0)
         @ws = @client.ws
       end
@@ -315,7 +316,7 @@ module Hawkular::Operations::RSpec
       @client.close_connection! unless @client.nil?
 
       # open the connection
-      operations_client = OperationsClient.new(credentials: @creds)
+      operations_client = OperationsClient.new(entrypoint: 'http://localhost:8080', credentials: @creds)
 
       redeploy = {
         operationName: 'Redeploy',

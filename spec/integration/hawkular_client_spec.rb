@@ -188,7 +188,7 @@ module Hawkular::Client::RSpec
           }
 
           actual_data = {}
-          client = Hawkular::Operations::OperationsClient.new(credentials: @creds)
+          client = Hawkular::Operations::OperationsClient.new(entrypoint: 'http://localhost:8080', credentials: @creds)
           client.invoke_generic_operation(redeploy) do |on|
             on.success do |data|
               actual_data[:data] = data
