@@ -60,7 +60,7 @@ module Hawkular::Operations
         args[:host] ||= "#{uri.host}:#{uri.port}"
       end
 
-      args[:host] ||= 'localhost:8080'
+      fail 'no parameter ":host" or ":entrypoint" given' if args[:host].nil?
       args[:credentials] ||= {}
       args[:options] ||= {}
       args[:wait_time] ||= 0.5
@@ -69,10 +69,9 @@ module Hawkular::Operations
       url = "ws://#{args[:host]}/hawkular/command-gateway/ui/ws"
       ws_options = {}
       creds = args[:credentials]
-      incoming_opts = args[:options]
       ws_options[:headers] = { 'Authorization' => 'Basic ' +
           ["#{creds[:username]}:#{creds[:password]}"].pack('m').delete("\r\n"),
-                               'Hawkular-Tenant' => incoming_opts[:tenant],
+                               'Hawkular-Tenant' => args[:options][:tenant],
                                'Accept' => 'application/json'
       }
 

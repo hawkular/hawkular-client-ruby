@@ -14,16 +14,16 @@ module Hawkular::Operations::RSpec
     end
 
     it 'should be established' do
-      # WebSocketVCR.configure do |c|
-      #   c.hook_uris = [HOST]
-      # end
+      WebSocketVCR.configure do |c|
+        c.hook_uris = [HOST]
+      end
 
-      # WebSocketVCR.record(example, self) do
+      WebSocketVCR.record(example, self) do
         client = OperationsClient.new(host: HOST,
-                                      wait_time: WebSocketVCR.live? ? 1.5 : 0,
+                                      wait_time: WebSocketVCR.live? ? 1.5 : 2,
                                       credentials: {
-                                        username: 'jdoe',
-                                        password: 'password'
+                                          username: 'jdoe',
+                                          password: 'password'
                                       },
                                       options: {
                                           tenant: 'hawkular'
@@ -31,30 +31,84 @@ module Hawkular::Operations::RSpec
         ws = client.ws
         expect(ws).not_to be nil
         expect(ws.open?).to be true
-#      end
-     end
+      end
+    end
 
-    it 'should be established2' do
-      # WebSocketVCR.configure do |c|
-      #   c.hook_uris = [HOST]
-      # end
+    it 'should be established via entrypoint' do
+      WebSocketVCR.configure do |c|
+        c.hook_uris = ['127.0.0.1:8080']
+      end
 
-      # WebSocketVCR.record(example, self) do
-      ep = URI::HTTP.build(:host => 'acme.org', :port => 42).to_s
-        client = OperationsClient.new(entrypoint: ep,
-                                      wait_time: WebSocketVCR.live? ? 1.5 : 0,
+      WebSocketVCR.record(example, self) do
+        ep = URI::HTTP.build(:host => '127.0.0.1', :port => 8080).to_s
+
+        client = OperationsClient.new( entrypoint: ep,
+                                       wait_time: WebSocketVCR.live? ? 1.5 : 0,
+                                       credentials: {
+                                           username: 'jdoe',
+                                           password: 'password'
+                                       },
+                                       options: {
+                                           tenant: 'hawkular'
+                                       })
+        ws = client.ws
+        expect(ws).not_to be nil
+        expect(ws.open?).to be true
+
+      end
+    end
+
+    it 'should run into error callback' do
+      WebSocketVCR.configure do |c|
+        c.hook_uris = [HOST]
+      end
+
+      WebSocketVCR.record(example, self) do
+        client = OperationsClient.new(host: HOST,
+                                      wait_time: WebSocketVCR.live? ? 1.5 : 2,
                                       credentials: {
-                                        username: 'jdoe',
-                                        password: 'password'
+                                          username: 'jdoe',
+                                          password: 'password'
                                       },
                                       options: {
                                           tenant: 'hawkular'
                                       })
-        ws = client.ws
-        expect(ws).not_to be nil
-        expect(ws.open?).to be true
-#      end
-     end
+
+        noop = { :operationName => 'noop', :resourcePath => '/bla'}
+
+        client.invoke_generic_operation(noop) do |on|
+          on.success do |data|
+            fail 'This should have failed'
+          end
+          on.failure do |error|
+            puts 'error callback was correctly called, reason: ' + error.to_s
+          end
+        end
+      end
+    end
+
+    it 'should bail with no host' do
+      WebSocketVCR.configure do |c|
+        c.hook_uris = [HOST]
+      end
+
+      WebSocketVCR.record(example, self) do
+        begin
+        client = OperationsClient.new(
+            wait_time: WebSocketVCR.live? ? 1.5 : 2,
+            credentials: {
+                username: 'jdoe',
+                password: 'password'
+            },
+            options: {
+                tenant: 'hawkular'
+            })
+        rescue
+        else
+          fail 'Should have failed as no host was given'
+        end
+      end
+    end
   end
 
   describe 'Operation/Operation', :websocket, vcr: { decode_compressed_response: true } do
