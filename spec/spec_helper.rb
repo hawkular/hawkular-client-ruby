@@ -165,7 +165,7 @@ RSpec.configure do |config|
   if ENV['VCR_OFF'] == '1'
     VCR.eject_cassette
     VCR.turn_off!(ignore_cassettes: true)
-    WebSocketVCR.turn_off! # TODO this does not work the impl is empty
+    WebSocketVCR.turn_off! # TODO: this does not work as the impl is empty
     WebMock.allow_net_connect!
     puts 'VCR is turned off!'
   end

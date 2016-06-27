@@ -69,8 +69,8 @@ module Hawkular::Operations
       url = "ws://#{args[:host]}/hawkular/command-gateway/ui/ws"
       ws_options = {}
       creds = args[:credentials]
-      ws_options[:headers] = { 'Authorization' => 'Basic ' +
-          ["#{creds[:username]}:#{creds[:password]}"].pack('m').delete("\r\n"),
+      base64_creds = ["#{creds[:username]}:#{creds[:password]}"].pack('m').delete("\r\n")
+      ws_options[:headers] = { 'Authorization' => 'Basic ' + base64_creds,
                                'Hawkular-Tenant' => args[:options][:tenant],
                                'Accept' => 'application/json'
       }

@@ -22,11 +22,11 @@ module Hawkular::Operations::RSpec
         client = OperationsClient.new(host: HOST,
                                       wait_time: WebSocketVCR.live? ? 1.5 : 2,
                                       credentials: {
-                                          username: 'jdoe',
-                                          password: 'password'
+                                        username: 'jdoe',
+                                        password: 'password'
                                       },
                                       options: {
-                                          tenant: 'hawkular'
+                                        tenant: 'hawkular'
                                       })
         ws = client.ws
         expect(ws).not_to be nil
@@ -40,21 +40,20 @@ module Hawkular::Operations::RSpec
       end
 
       WebSocketVCR.record(example, self) do
-        ep = URI::HTTP.build(:host => '127.0.0.1', :port => 8080).to_s
+        ep = URI::HTTP.build(host: '127.0.0.1', port: 8080).to_s
 
-        client = OperationsClient.new( entrypoint: ep,
-                                       wait_time: WebSocketVCR.live? ? 1.5 : 0,
-                                       credentials: {
-                                           username: 'jdoe',
-                                           password: 'password'
-                                       },
-                                       options: {
-                                           tenant: 'hawkular'
-                                       })
+        client = OperationsClient.new(entrypoint: ep,
+                                      wait_time: WebSocketVCR.live? ? 1.5 : 0,
+                                      credentials: {
+                                        username: 'jdoe',
+                                        password: 'password'
+                                      },
+                                      options: {
+                                        tenant: 'hawkular'
+                                      })
         ws = client.ws
         expect(ws).not_to be nil
         expect(ws.open?).to be true
-
       end
     end
 
@@ -67,17 +66,17 @@ module Hawkular::Operations::RSpec
         client = OperationsClient.new(host: HOST,
                                       wait_time: WebSocketVCR.live? ? 1.5 : 2,
                                       credentials: {
-                                          username: 'jdoe',
-                                          password: 'password'
+                                        username: 'jdoe',
+                                        password: 'password'
                                       },
                                       options: {
-                                          tenant: 'hawkular'
+                                        tenant: 'hawkular'
                                       })
 
-        noop = { :operationName => 'noop', :resourcePath => '/bla'}
+        noop = { operationName: 'noop', resourcePath: '/bla' }
 
         client.invoke_generic_operation(noop) do |on|
-          on.success do |data|
+          on.success do |_data|
             fail 'This should have failed'
           end
           on.failure do |error|
@@ -93,21 +92,23 @@ module Hawkular::Operations::RSpec
       end
 
       WebSocketVCR.record(example, self) do
+        # rubocop:disable Lint/HandleExceptions
         begin
-        client = OperationsClient.new(
+          OperationsClient.new(
             wait_time: WebSocketVCR.live? ? 1.5 : 2,
             credentials: {
-                username: 'jdoe',
-                password: 'password'
+              username: 'jdoe',
+              password: 'password'
             },
             options: {
-                tenant: 'hawkular'
+              tenant: 'hawkular'
             })
         rescue
         else
           fail 'Should have failed as no host was given'
         end
       end
+      # rubocop:enable Lint/HandleExceptions
     end
   end
 
