@@ -92,7 +92,6 @@ module Hawkular::Operations::RSpec
       end
 
       WebSocketVCR.record(example, self) do
-        # rubocop:disable Lint/HandleExceptions
         begin
           OperationsClient.new(
             wait_time: WebSocketVCR.live? ? 1.5 : 2,
@@ -104,11 +103,11 @@ module Hawkular::Operations::RSpec
               tenant: 'hawkular'
             })
         rescue
+          puts 'We got an exception and this is good'
         else
           fail 'Should have failed as no host was given'
         end
       end
-      # rubocop:enable Lint/HandleExceptions
     end
   end
 

@@ -44,8 +44,10 @@ module Hawkular::Operations
     # Initialize new OperationsClient
     #
     # @param [Hash] args Arguments for client.
+    # There are two ways of passing in the target host/port: via :host and via :entrypoint. If
+    # both are given, then :entrypoint will be used.
     #
-    # @option args [String] :entrypoint Base URL of the hawkular server e.g. http://localhost:8080. Has precedence over :host
+    # @option args [String] :entrypoint Base URL of the hawkular server e.g. http://localhost:8080.
     # @option args [String] :host base host:port pair of Hawkular - e.g localhost:8080
     # @option args [Hash{String=>String}]  :credentials Hash of (username password) or token
     # @option args [Hash{String=>String}] :options Additional rest client options
