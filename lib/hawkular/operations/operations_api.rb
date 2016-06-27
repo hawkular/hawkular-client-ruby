@@ -43,9 +43,10 @@ module Hawkular::Operations
 
     # Initialize new OperationsClient
     #
-    # @param [Hash] args Arguments for client
+    # @param [Hash] args Arguments for client.
     #
-    # @option args [String]  :host base url of Hawkular - e.g http://localhost:8080
+    # @option args [String] :entrypoint Base URL of the hawkular server e.g. http://localhost:8080. Has precedence over :host
+    # @option args [String] :host base host:port pair of Hawkular - e.g localhost:8080
     # @option args [Hash{String=>String}]  :credentials Hash of (username password) or token
     # @option args [Hash{String=>String}] :options Additional rest client options
     # @option args [Fixnum]  :wait_time Time in seconds describing how long the constructor should block - handshake
