@@ -3,7 +3,7 @@
 This document describes the relevant changes between releases of the
 _hawkular-client_ project.
 
-=== V 2.0.1
+=== V 2.1.0
 * Fix an issue where the operations endpoint constructor expected a host to be passed, which was not.
 * Add authentication to the websocket setup in Operations sub-client.
 * Add a status endpoint call for the Alerts sub-client
