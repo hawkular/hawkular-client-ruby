@@ -43,9 +43,12 @@ module Hawkular::Operations
 
     # Initialize new OperationsClient
     #
-    # @param [Hash] args Arguments for client
+    # @param [Hash] args Arguments for client.
+    # There are two ways of passing in the target host/port: via :host and via :entrypoint. If
+    # both are given, then :entrypoint will be used.
     #
-    # @option args [String]  :host base url of Hawkular - e.g http://localhost:8080
+    # @option args [String] :entrypoint Base URL of the hawkular server e.g. http://localhost:8080.
+    # @option args [String] :host base host:port pair of Hawkular - e.g localhost:8080
     # @option args [Hash{String=>String}]  :credentials Hash of (username password) or token
     # @option args [Hash{String=>String}] :options Additional rest client options
     # @option args [Fixnum]  :wait_time Time in seconds describing how long the constructor should block - handshake
@@ -53,14 +56,29 @@ module Hawkular::Operations
     # @example
     #   Hawkular::Operations::OperationsClient.new(credentials: {username: 'jdoe', password: 'password'})
     def initialize(args)
-      args[:host] ||= 'localhost:8080'
+      ep = args[:entrypoint]
+
+      unless ep.nil?
+        uri = URI.parse ep
+        args[:host] ||= "#{uri.host}:#{uri.port}"
+      end
+
+      fail 'no parameter ":host" or ":entrypoint" given' if args[:host].nil?
       args[:credentials] ||= {}
       args[:options] ||= {}
       args[:wait_time] ||= 0.5
       super(args[:host], args[:credentials], args[:options])
       # note: if we start using the secured WS, change the protocol to wss://
-      url = "ws://#{entrypoint}/hawkular/command-gateway/ui/ws"
-      @ws = Simple.connect url do |client|
+      url = "ws://#{args[:host]}/hawkular/command-gateway/ui/ws"
+      ws_options = {}
+      creds = args[:credentials]
+      base64_creds = ["#{creds[:username]}:#{creds[:password]}"].pack('m').delete("\r\n")
+      ws_options[:headers] = { 'Authorization' => 'Basic ' + base64_creds,
+                               'Hawkular-Tenant' => args[:options][:tenant],
+                               'Accept' => 'application/json'
+      }
+
+      @ws = Simple.connect url, ws_options do |client|
         client.on(:message, once: true) do |msg|
           parsed_message = msg.data.to_msg_hash
           puts parsed_message if ENV['HAWKULARCLIENT_LOG_RESPONSE']

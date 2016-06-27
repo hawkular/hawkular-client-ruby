@@ -20,14 +20,93 @@ module Hawkular::Operations::RSpec
 
       WebSocketVCR.record(example, self) do
         client = OperationsClient.new(host: HOST,
-                                      wait_time: WebSocketVCR.live? ? 1.5 : 0,
+                                      wait_time: WebSocketVCR.live? ? 1.5 : 2,
                                       credentials: {
                                         username: 'jdoe',
                                         password: 'password'
+                                      },
+                                      options: {
+                                        tenant: 'hawkular'
                                       })
         ws = client.ws
         expect(ws).not_to be nil
         expect(ws.open?).to be true
+      end
+    end
+
+    it 'should be established via entrypoint' do
+      WebSocketVCR.configure do |c|
+        c.hook_uris = ['127.0.0.1:8080']
+      end
+
+      WebSocketVCR.record(example, self) do
+        ep = URI::HTTP.build(host: '127.0.0.1', port: 8080).to_s
+
+        client = OperationsClient.new(entrypoint: ep,
+                                      wait_time: WebSocketVCR.live? ? 1.5 : 0,
+                                      credentials: {
+                                        username: 'jdoe',
+                                        password: 'password'
+                                      },
+                                      options: {
+                                        tenant: 'hawkular'
+                                      })
+        ws = client.ws
+        expect(ws).not_to be nil
+        expect(ws.open?).to be true
+      end
+    end
+
+    it 'should run into error callback' do
+      WebSocketVCR.configure do |c|
+        c.hook_uris = [HOST]
+      end
+
+      WebSocketVCR.record(example, self) do
+        client = OperationsClient.new(host: HOST,
+                                      wait_time: WebSocketVCR.live? ? 1.5 : 2,
+                                      credentials: {
+                                        username: 'jdoe',
+                                        password: 'password'
+                                      },
+                                      options: {
+                                        tenant: 'hawkular'
+                                      })
+
+        noop = { operationName: 'noop', resourcePath: '/bla' }
+
+        client.invoke_generic_operation(noop) do |on|
+          on.success do |_data|
+            fail 'This should have failed'
+          end
+          on.failure do |error|
+            puts 'error callback was correctly called, reason: ' + error.to_s
+          end
+        end
+      end
+    end
+
+    it 'should bail with no host' do
+      WebSocketVCR.configure do |c|
+        c.hook_uris = [HOST]
+      end
+
+      WebSocketVCR.record(example, self) do
+        begin
+          OperationsClient.new(
+            wait_time: WebSocketVCR.live? ? 1.5 : 2,
+            credentials: {
+              username: 'jdoe',
+              password: 'password'
+            },
+            options: {
+              tenant: 'hawkular'
+            })
+        rescue
+          puts 'We got an exception and this is good'
+        else
+          fail 'Should have failed as no host was given'
+        end
       end
     end
   end
@@ -51,7 +130,8 @@ module Hawkular::Operations::RSpec
 
     before(:each) do |ex|
       unless ex.metadata[:skip_open]
-        @client = OperationsClient.new(credentials: @creds,
+        @client = OperationsClient.new(entrypoint: 'http://localhost:8080',
+                                       credentials: @creds,
                                        wait_time: WebSocketVCR.live? ? 1.5 : 0)
         @ws = @client.ws
       end
@@ -235,7 +315,7 @@ module Hawkular::Operations::RSpec
       @client.close_connection! unless @client.nil?
 
       # open the connection
-      operations_client = OperationsClient.new(credentials: @creds)
+      operations_client = OperationsClient.new(entrypoint: 'http://localhost:8080', credentials: @creds)
 
       redeploy = {
         operationName: 'Redeploy',
