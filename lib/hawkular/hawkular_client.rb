@@ -10,9 +10,9 @@ module Hawkular
     attr_reader :inventory, :metrics, :alerts, :operations, :tokens, :state
 
     def initialize(hash)
-      hash[:entrypoint] ||= 'http://localhost:8080'
       hash[:credentials] ||= {}
       hash[:options] ||= {}
+      fail 'no parameter ":entrypoint" given' if hash[:entrypoint].nil?
       @state = hash
 
       @inventory = Inventory::InventoryClient.create(entrypoint: "#{hash[:entrypoint]}/hawkular/inventory",

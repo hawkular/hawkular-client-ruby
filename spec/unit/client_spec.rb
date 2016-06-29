@@ -1,27 +1,21 @@
 require '#{File.dirname(__FILE__)}/../spec_helper'
-
+HOST = 'localhost:8080'
 describe Hawkular::Metrics::Client do
   context 'client initialization' do
     it 'should accept no option' do
       credentials = { username: 'mockuser', password: 'mockpass' }
-      Hawkular::Metrics::Client.new(
-        'http://localhost:8080/hawkular/metrics', credentials)
-    end
-
-    it 'should support no parameters' do
-      Hawkular::Metrics::Client.new
+      Hawkular::Metrics::Client.new(HOST, credentials)
     end
 
     it 'should accept Hawkular-Tenant option' do
       credentials = { username: 'mockuser', password: 'mockpass' }
-      @client = Hawkular::Metrics::Client.new(
-        'http://localhost:8080/hawkular/metrics', credentials, tenant: 'foo')
+      @client = Hawkular::Metrics::Client.new(HOST, credentials, tenant: 'foo')
       headers = @client.send(:http_headers)
       expect(headers[:'Hawkular-Tenant']).to eql('foo')
     end
 
     it 'should define subcomponents' do
-      client = Hawkular::Metrics::Client.new
+      client = Hawkular::Metrics::Client.new HOST
       expect(client.tenants).not_to be nil
       expect(client.counters).not_to be nil
       expect(client.gauges).not_to be nil
@@ -31,8 +25,7 @@ describe Hawkular::Metrics::Client do
   context 'http comms' do
     before(:each) do
       credentials = { username: 'mockuser', password: 'mockpass' }
-      @client = Hawkular::Metrics::Client.new(
-        'http://localhost:8080/hawkular/metrics', credentials)
+      @client = Hawkular::Metrics::Client.new(HOST, credentials)
     end
 
     it 'should add Accept: headers' do

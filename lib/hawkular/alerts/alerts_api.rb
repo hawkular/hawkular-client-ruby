@@ -14,7 +14,8 @@ module Hawkular::Alerts
   # @param credentials [Hash{String=>String}] Hash of username, password, token(optional)
   # @param options [Hash{String=>String}] Additional rest client options
   class AlertsClient < Hawkular::BaseClient
-    def initialize(entrypoint = 'http://localhost:8080/hawkular/alerts', credentials = {}, options = {})
+    def initialize(entrypoint, credentials = {}, options = {})
+      entrypoint = normalize_entrypoint_url entrypoint, 'hawkular/alerts'
       @entrypoint = entrypoint
 
       super(entrypoint, credentials, options)

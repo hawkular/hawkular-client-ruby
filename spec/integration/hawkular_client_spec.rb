@@ -4,13 +4,15 @@ require 'securerandom'
 
 # examples that tests the main client which delegates all the calls to Hawkular component clients
 module Hawkular::Client::RSpec
+  HOST = 'http://localhost:8080'
+
   describe 'HawkularClient' do
     before(:all) do
       @creds = {
         username: 'jdoe',
         password: 'password'
       }
-      @hawkular_client = Hawkular::Client.new(credentials: @creds)
+      @hawkular_client = Hawkular::Client.new(entrypoint: HOST, credentials: @creds)
       @state = {
         hostname: 'localhost.localdomain',
         feed: nil
@@ -28,7 +30,7 @@ module Hawkular::Client::RSpec
 
     context 'and Inventory client', vcr: { decode_compressed_response: true } do
       before(:all) do
-        @client = Hawkular::Inventory::InventoryClient.create(credentials: @creds)
+        @client = Hawkular::Inventory::InventoryClient.create(entrypoint: HOST, credentials: @creds)
       end
 
       it 'Should list the same feeds' do
@@ -93,7 +95,7 @@ module Hawkular::Client::RSpec
       include Hawkular::Metrics::RSpec
 
       before(:all) do
-        @client = Hawkular::Metrics::Client.new('http://localhost:8080/hawkular/metrics', @creds)
+        @client = Hawkular::Metrics::Client.new(HOST, @creds)
       end
 
       it 'Should both work the same way when pushing metric data to non-existing counter' do
@@ -188,7 +190,7 @@ module Hawkular::Client::RSpec
           }
 
           actual_data = {}
-          client = Hawkular::Operations::OperationsClient.new(entrypoint: 'http://localhost:8080', credentials: @creds)
+          client = Hawkular::Operations::OperationsClient.new(entrypoint: HOST, credentials: @creds)
           client.invoke_generic_operation(redeploy) do |on|
             on.success do |data|
               actual_data[:data] = data

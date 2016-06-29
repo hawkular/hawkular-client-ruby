@@ -8,7 +8,7 @@ module Hawkular::Token
     # @param entrypoint [String] base url of Hawkular - e.g http://localhost:8080
     # @param credentials [Hash{String=>String}] Hash of username, password
     # @param options [Hash{String=>String}] Additional rest client options
-    def initialize(entrypoint = 'http://localhost:8080', credentials = {}, options = {})
+    def initialize(entrypoint, credentials = {}, options = {})
       super(entrypoint, credentials, options)
     end
 

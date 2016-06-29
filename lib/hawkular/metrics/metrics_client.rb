@@ -38,10 +38,10 @@ module Hawkular::Metrics
     #     {username:"username",password:"password"},
     #                          {"tenant" => "your tenant ID"})
     #
-    def initialize(entrypoint = 'http://localhost:8080/hawkular/metrics',
+    def initialize(entrypoint,
                    credentials = {},
                    options = {})
-
+      entrypoint = normalize_entrypoint_url entrypoint, 'hawkular/metrics'
       super(entrypoint, credentials, options)
       @tenants = Client::Tenants.new self
       @counters = Client::Counters.new self

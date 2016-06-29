@@ -84,4 +84,59 @@ describe 'Base Spec' do
 
     expect(rc.options[:proxy]).to eq(proxy_uri)
   end
+
+  it 'Should normalize different types of url and suffix combinations with or without slash' do
+    c = Hawkular::BaseClient.new('not-needed-for-this-test')
+
+    ret = c.normalize_entrypoint_url 'http://localhost:8080', '/hawkular/alerts/'
+    expect(ret).to eq('http://localhost:8080/hawkular/alerts')
+
+    ret = c.normalize_entrypoint_url 'http://localhost:8080', '/hawkular/alerts'
+    expect(ret).to eq('http://localhost:8080/hawkular/alerts')
+
+    ret = c.normalize_entrypoint_url 'http://localhost:8080', 'hawkular/alerts/'
+    expect(ret).to eq('http://localhost:8080/hawkular/alerts')
+
+    ret = c.normalize_entrypoint_url 'http://localhost:8080', 'hawkular/alerts'
+    expect(ret).to eq('http://localhost:8080/hawkular/alerts')
+
+    ret = c.normalize_entrypoint_url 'http://localhost:8080/', '/hawkular/alerts/'
+    expect(ret).to eq('http://localhost:8080/hawkular/alerts')
+
+    ret = c.normalize_entrypoint_url 'http://localhost:8080/', '/hawkular/alerts'
+    expect(ret).to eq('http://localhost:8080/hawkular/alerts')
+
+    ret = c.normalize_entrypoint_url 'http://localhost:8080/', 'hawkular/alerts/'
+    expect(ret).to eq('http://localhost:8080/hawkular/alerts')
+
+    ret = c.normalize_entrypoint_url 'http://localhost:8080/', 'hawkular/alerts'
+    expect(ret).to eq('http://localhost:8080/hawkular/alerts')
+
+    ret = c.normalize_entrypoint_url 'http://localhost:8080/hawkular/alerts', '/hawkular/alerts/'
+    expect(ret).to eq('http://localhost:8080/hawkular/alerts')
+
+    ret = c.normalize_entrypoint_url 'http://localhost:8080/hawkular/alerts', '/hawkular/alerts'
+    expect(ret).to eq('http://localhost:8080/hawkular/alerts')
+
+    ret = c.normalize_entrypoint_url 'http://localhost:8080/hawkular/alerts', 'hawkular/alerts/'
+    expect(ret).to eq('http://localhost:8080/hawkular/alerts')
+
+    ret = c.normalize_entrypoint_url 'http://localhost:8080/hawkular/alerts', 'hawkular/alerts'
+    expect(ret).to eq('http://localhost:8080/hawkular/alerts')
+
+    ret = c.normalize_entrypoint_url 'http://localhost:8080/hawkular/alerts/', '/hawkular/alerts/'
+    expect(ret).to eq('http://localhost:8080/hawkular/alerts')
+
+    ret = c.normalize_entrypoint_url 'http://localhost:8080/hawkular/alerts/', '/hawkular/alerts'
+    expect(ret).to eq('http://localhost:8080/hawkular/alerts')
+
+    ret = c.normalize_entrypoint_url 'http://localhost:8080/hawkular/alerts/', 'hawkular/alerts/'
+    expect(ret).to eq('http://localhost:8080/hawkular/alerts')
+
+    ret = c.normalize_entrypoint_url 'http://localhost:8080/hawkular/alerts/', 'hawkular/alerts'
+    expect(ret).to eq('http://localhost:8080/hawkular/alerts')
+
+    ret = c.normalize_entrypoint_url 'http://127.0.0.1/hawkular/alerts/', 'hawkular/alerts'
+    expect(ret).to eq('http://127.0.0.1/hawkular/alerts')
+  end
 end
