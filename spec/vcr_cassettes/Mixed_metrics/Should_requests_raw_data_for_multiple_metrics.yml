@@ -1,0 +1,330 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://jdoe:password@localhost:8080/hawkular/metrics/counters/raw/query
+    body:
+      encoding: UTF-8
+      string: '{"ids":["<%= ids[0] %>","<%= ids[1] %>","<%= ids[2] %>"],"start":null,"end":null,"limit":null,"order":null}'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Hawkular-Tenant:
+      - vcr-test
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '176'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Wed, 29 Jun 2016 16:41:22 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '2'
+    body:
+      encoding: UTF-8
+      string: "[]"
+    http_version: 
+  recorded_at: Wed, 29 Jun 2016 16:41:22 GMT
+- request:
+    method: post
+    uri: http://jdoe:password@localhost:8080/hawkular/metrics/gauges/raw/query
+    body:
+      encoding: UTF-8
+      string: '{"ids":["<%= ids[0] %>","<%= ids[1] %>","<%= ids[2] %>"],"start":null,"end":null,"limit":null,"order":null}'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Hawkular-Tenant:
+      - vcr-test
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '176'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Wed, 29 Jun 2016 16:41:22 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '2'
+    body:
+      encoding: UTF-8
+      string: "[]"
+    http_version: 
+  recorded_at: Wed, 29 Jun 2016 16:41:22 GMT
+- request:
+    method: post
+    uri: http://jdoe:password@localhost:8080/hawkular/metrics/availability/raw/query
+    body:
+      encoding: UTF-8
+      string: '{"ids":["<%= ids[0] %>","<%= ids[1] %>","<%= ids[2] %>"],"start":null,"end":null,"limit":null,"order":null}'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Hawkular-Tenant:
+      - vcr-test
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '176'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Wed, 29 Jun 2016 16:41:22 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '2'
+    body:
+      encoding: UTF-8
+      string: "[]"
+    http_version: 
+  recorded_at: Wed, 29 Jun 2016 16:41:22 GMT
+- request:
+    method: post
+    uri: http://jdoe:password@localhost:8080/hawkular/metrics/metrics/data
+    body:
+      encoding: UTF-8
+      string: '{"gauges":[{"id":"<%= ids[0] %>","data":[{"value":1.1,"timestamp":1467218482085}]},{"id":"<%= ids[1] %>","data":[{"value":2.2,"timestamp":1467218482085}]},{"id":"<%= ids[2] %>","data":[{"value":3.3,"timestamp":1467218482085}]}],"counters":[{"id":"<%= ids[0] %>","data":[{"value":1,"timestamp":1467218482085}]},{"id":"<%= ids[1] %>","data":[{"value":2,"timestamp":1467218482085}]},{"id":"<%= ids[2] %>","data":[{"value":3,"timestamp":1467218482085}]}],"availabilities":[{"id":"<%= ids[0] %>","data":[{"value":"up","timestamp":1467218482085}]},{"id":"<%= ids[1] %>","data":[{"value":"down","timestamp":1467218482085}]},{"id":"<%= ids[2] %>","data":[{"value":"up","timestamp":1467218482085}]}]}'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Hawkular-Tenant:
+      - vcr-test
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '898'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Content-Length:
+      - '0'
+      Date:
+      - Wed, 29 Jun 2016 16:41:22 GMT
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 29 Jun 2016 16:41:22 GMT
+- request:
+    method: post
+    uri: http://jdoe:password@localhost:8080/hawkular/metrics/counters/raw/query
+    body:
+      encoding: UTF-8
+      string: '{"ids":["<%= ids[0] %>","<%= ids[1] %>","<%= ids[2] %>"],"start":null,"end":null,"limit":null,"order":null}'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Hawkular-Tenant:
+      - vcr-test
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '176'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Wed, 29 Jun 2016 16:41:22 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '280'
+    body:
+      encoding: UTF-8
+      string: '[{"id":"<%= ids[0] %>","data":[{"timestamp":1467218482085,"value":1}]},{"id":"<%= ids[1] %>","data":[{"timestamp":1467218482085,"value":2}]},{"id":"<%= ids[2] %>","data":[{"timestamp":1467218482085,"value":3}]}]'
+    http_version: 
+  recorded_at: Wed, 29 Jun 2016 16:41:22 GMT
+- request:
+    method: post
+    uri: http://jdoe:password@localhost:8080/hawkular/metrics/gauges/raw/query
+    body:
+      encoding: UTF-8
+      string: '{"ids":["<%= ids[0] %>","<%= ids[1] %>","<%= ids[2] %>"],"start":null,"end":null,"limit":null,"order":null}'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Hawkular-Tenant:
+      - vcr-test
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '176'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Wed, 29 Jun 2016 16:41:22 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '286'
+    body:
+      encoding: UTF-8
+      string: '[{"id":"<%= ids[0] %>","data":[{"timestamp":1467218482085,"value":1.1}]},{"id":"<%= ids[1] %>","data":[{"timestamp":1467218482085,"value":2.2}]},{"id":"<%= ids[2] %>","data":[{"timestamp":1467218482085,"value":3.3}]}]'
+    http_version: 
+  recorded_at: Wed, 29 Jun 2016 16:41:22 GMT
+- request:
+    method: post
+    uri: http://jdoe:password@localhost:8080/hawkular/metrics/availability/raw/query
+    body:
+      encoding: UTF-8
+      string: '{"ids":["<%= ids[0] %>","<%= ids[1] %>","<%= ids[2] %>"],"start":null,"end":null,"limit":null,"order":null}'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Hawkular-Tenant:
+      - vcr-test
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '176'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Wed, 29 Jun 2016 16:41:22 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '291'
+    body:
+      encoding: UTF-8
+      string: '[{"id":"<%= ids[0] %>","data":[{"timestamp":1467218482085,"value":"up"}]},{"id":"<%= ids[1] %>","data":[{"timestamp":1467218482085,"value":"down"}]},{"id":"<%= ids[2] %>","data":[{"timestamp":1467218482085,"value":"up"}]}]'
+    http_version: 
+  recorded_at: Wed, 29 Jun 2016 16:41:22 GMT
+recorded_with: VCR 3.0.3
