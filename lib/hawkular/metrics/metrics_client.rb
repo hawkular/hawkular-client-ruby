@@ -48,5 +48,9 @@ module Hawkular::Metrics
       @gauges = Client::Gauges.new self
       @avail = Client::Availability.new self
     end
+
+    def to_s
+      'metrics'
+    end
   end
 end

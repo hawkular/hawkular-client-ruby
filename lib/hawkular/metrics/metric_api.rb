@@ -120,6 +120,7 @@ module Hawkular::Metrics
       # @param order [String] optional Data point sort order, based on timestamp (ASC, DESC)
       # @return [Array[Hash]] datapoints
       # @see #push_data #push_data for datapoint detail
+
       def get_data(id, starts: nil, ends: nil, bucketDuration: nil, buckets: nil, percentiles: nil, limit: nil,
                    order: nil)
         params = { start: starts, end: ends, bucketDuration: bucketDuration, buckets: buckets,
@@ -173,6 +174,10 @@ module Hawkular::Metrics
         params = { start: starts, end: ends, threshold: threshold, op: operation }
         @client.http_get("/#{@resource}/#{id}/periods?" + encode_params(params))
       end
+
+      def to_s
+        'gauges'
+      end
     end
 
     # Class that interacts with "counter" metric types
@@ -196,6 +201,10 @@ module Hawkular::Metrics
         # API returns no content (empty Hash) instead of empty array
         resp.is_a?(Array) ? resp : []
       end
+
+      def to_s
+        'counters'
+      end
     end
 
     # Class that interacts with "availability" metric types
@@ -203,6 +212,10 @@ module Hawkular::Metrics
       # @param client [Client]
       def initialize(client)
         super(client, 'availability', 'availability')
+      end
+
+      def to_s
+        'availability'
       end
     end
   end

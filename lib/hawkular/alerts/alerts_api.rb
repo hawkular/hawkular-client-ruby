@@ -317,6 +317,10 @@ module Hawkular::Alerts
 
       http_post('/events', event)
     end
+
+    def to_s
+      'alerts'
+    end
   end
 
   # Representation of one Trigger

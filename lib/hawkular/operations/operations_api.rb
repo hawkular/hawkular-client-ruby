@@ -194,6 +194,10 @@ module Hawkular::Operations
       invoke_specific_operation({ resourcePath: resource_path }, 'ExportJdr', &callback)
     end
 
+    def to_s
+      'operations'
+    end
+
     private
 
     def invoke_operation_helper(operation_payload, operation_name = nil, binary_content = nil, &callback)
