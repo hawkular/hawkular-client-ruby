@@ -1,0 +1,200 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://localhost:8080/hawkular/metrics/counters
+    body:
+      encoding: UTF-8
+      string: '{"id":"<%= id %>"}'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Hawkular-Tenant:
+      - vcr-test-tenant-123
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '45'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/9
+      Location:
+      - http://localhost:8080/hawkular/metrics/counters/<%= id %>
+      Content-Length:
+      - '0'
+      Date:
+      - Thu, 30 Jun 2016 16:31:37 GMT
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Thu, 30 Jun 2016 16:31:37 GMT
+- request:
+    method: post
+    uri: http://localhost:8080/hawkular/metrics/counters/<%= id %>/data
+    body:
+      encoding: UTF-8
+      string: '[{"value":110,"timestamp":<%= minus110 %>},{"value":100,"timestamp":<%= minus100 %>},{"value":90,"timestamp":<%= minus90 %>},{"value":80,"timestamp":<%= minus80 %>},{"value":70,"timestamp":<%= minus70 %>},{"value":60,"timestamp":<%= minus60 %>},{"value":50,"timestamp":<%= minus50 %>},{"value":40,"timestamp":<%= minus40 %>},{"value":30,"timestamp":<%= minus30 %>},{"value":20,"timestamp":<%= minus20 %>},{"value":10,"timestamp":<%= minus10 %>}]'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Hawkular-Tenant:
+      - vcr-test-tenant-123
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '432'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/9
+      Content-Length:
+      - '0'
+      Date:
+      - Thu, 30 Jun 2016 16:31:37 GMT
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Thu, 30 Jun 2016 16:31:37 GMT
+- request:
+    method: get
+    uri: http://localhost:8080/hawkular/metrics/counters/<%= id %>/data/?buckets=5&end=<%= minus5 %>&start=<%= minus105 %>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Hawkular-Tenant:
+      - vcr-test-tenant-123
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/9
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '697'
+      Date:
+      - Thu, 30 Jun 2016 16:31:37 GMT
+    body:
+      encoding: UTF-8
+      string: '[{"start":<%= minus105 %>,"end":1467304297394,"min":90.0,"avg":95.0,"median":90.0,"max":100.0,"percentile95th":90.0,"samples":2,"empty":false},{"start":1467304297394,"end":1467304297414,"min":70.0,"avg":75.0,"median":70.0,"max":80.0,"percentile95th":70.0,"samples":2,"empty":false},{"start":1467304297414,"end":1467304297434,"min":50.0,"avg":55.0,"median":50.0,"max":60.0,"percentile95th":50.0,"samples":2,"empty":false},{"start":1467304297434,"end":1467304297454,"min":30.0,"avg":35.0,"median":30.0,"max":40.0,"percentile95th":30.0,"samples":2,"empty":false},{"start":1467304297454,"end":<%= minus5 %>,"min":10.0,"avg":15.0,"median":10.0,"max":20.0,"percentile95th":10.0,"samples":2,"empty":false}]'
+    http_version: 
+  recorded_at: Thu, 30 Jun 2016 16:31:37 GMT
+- request:
+    method: get
+    uri: http://localhost:8080/hawkular/metrics/counters/<%= id %>/data/?buckets=2&end=<%= minus5 %>&start=<%= minus105 %>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Hawkular-Tenant:
+      - vcr-test-tenant-123
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/9
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '280'
+      Date:
+      - Thu, 30 Jun 2016 16:31:37 GMT
+    body:
+      encoding: UTF-8
+      string: '[{"start":<%= minus105 %>,"end":1467304297424,"min":60.0,"avg":80.0,"median":80.0,"max":100.0,"percentile95th":90.0,"samples":5,"empty":false},{"start":1467304297424,"end":<%= minus5 %>,"min":10.0,"avg":30.0,"median":30.0,"max":50.0,"percentile95th":40.0,"samples":5,"empty":false}]'
+    http_version: 
+  recorded_at: Thu, 30 Jun 2016 16:31:37 GMT
+- request:
+    method: get
+    uri: http://localhost:8080/hawkular/metrics/counters/<%= id %>/data/?bucketDuration=50ms&end=<%= minus5 %>&start=<%= minus105 %>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Hawkular-Tenant:
+      - vcr-test-tenant-123
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/9
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '280'
+      Date:
+      - Thu, 30 Jun 2016 16:31:37 GMT
+    body:
+      encoding: UTF-8
+      string: '[{"start":<%= minus105 %>,"end":1467304297424,"min":60.0,"avg":80.0,"median":80.0,"max":100.0,"percentile95th":90.0,"samples":5,"empty":false},{"start":1467304297424,"end":<%= minus5 %>,"min":10.0,"avg":30.0,"median":30.0,"max":50.0,"percentile95th":40.0,"samples":5,"empty":false}]'
+    http_version: 
+  recorded_at: Thu, 30 Jun 2016 16:31:37 GMT
+recorded_with: VCR 3.0.1

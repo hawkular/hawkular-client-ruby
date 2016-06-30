@@ -3,5 +3,7 @@
 
 url: "http://localhost:8080/hawkular/metrics"
 # authentication is not yet supported in hawkular-metrics 0.5.0
-# user: "jdoe"
-# password: "password"
+user: "jdoe"
+password: "password"
+url_v8: "http://localhost:8080/hawkular/metrics"
+token_v8: 

@@ -14,7 +14,7 @@ module Hawkular::Client::RSpec
       }
       ::RSpec::Mocks.with_temporary_scope do
         mock_inventory_client
-        @hawkular_client = Hawkular::Client.new(entrypoint: HOST, credentials: @creds)
+        @hawkular_client = Hawkular::Client.new(entrypoint: HOST, credentials: @creds, options: { tenant: 'hawkular' })
       end
       @state = {
         hostname: 'localhost.localdomain',
@@ -35,7 +35,9 @@ module Hawkular::Client::RSpec
       before(:all) do
         ::RSpec::Mocks.with_temporary_scope do
           mock_inventory_client
-          @client = Hawkular::Inventory::InventoryClient.create(entrypoint: HOST, credentials: @creds)
+          @client = Hawkular::Inventory::InventoryClient.create(entrypoint: HOST,
+                                                                credentials: @creds,
+                                                                options: { tenant: 'hawkular' })
         end
       end
 

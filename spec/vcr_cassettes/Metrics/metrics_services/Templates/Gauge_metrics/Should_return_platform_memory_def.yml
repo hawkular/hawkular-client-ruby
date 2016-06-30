@@ -1,0 +1,49 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://jdoe:password@localhost:8080/hawkular/metrics/gauges/MI~R~%5Bb37ba088-6bfa-4877-83af-b3747696bfb1%2Fplatform~%2FOPERATING_SYSTEM=b37ba088-6bfa-4877-83af-b3747696bfb1_OperatingSystem%2FMEMORY=Memory%5D~MT~Total%20Memory
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Hawkular-Tenant:
+      - hawkular
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Thu, 30 Jun 2016 16:24:20 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '275'
+    body:
+      encoding: UTF-8
+      string: '{"id":"MI~R~[b37ba088-6bfa-4877-83af-b3747696bfb1/platform~/OPERATING_SYSTEM=b37ba088-6bfa-4877-83af-b3747696bfb1_OperatingSystem/MEMORY=Memory]~MT~Total
+        Memory","dataRetention":7,"type":"gauge","tenantId":"hawkular","minTimestamp":1467303642003,"maxTimestamp":1467303822000}'
+    http_version: 
+  recorded_at: Thu, 30 Jun 2016 16:24:20 GMT
+recorded_with: VCR 3.0.1
