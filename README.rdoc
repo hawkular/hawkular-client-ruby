@@ -10,8 +10,100 @@ Documentation[http://www.hawkular.org/hawkular-client-ruby/]
 
 == Changelog
 
-See {CHANGELOG}[link:file.CHANGES.html] for a list of changes and 
+See {CHANGELOG}[link:file.CHANGES.html] for a list of changes and
 {API-Breaking-Changes}[link:file.api_breaking_changes.html] for a list of api-breaking changes.
+
+== Overview
+
+Ruby Hawkular Client provides a Ruby API to communicate with the following Hawkular subprojects:
+* {Hawkular Alerts}[https://github.com/hawkular/hawkular-alerts]
+* {Hawkular Inventory}[https://github.com/hawkular/hawkular-inventory]
+* {Hawkular Metrics}[https://github.com/hawkular/hawkular-metrics]
+* Invoking operations on {Hawkular Wildfly Agent}[https://github.com/hawkular/hawkular-agent].
+
+
+== Usage
+
+You must initialize the Hawkular Client with your username, password and tenant.
+
+  require 'hawkular/hawkular_client'
+  client = Hawkular::Client.new(
+    entrypoint: 'http://localhost:8080',
+    credentials: { username: 'jdoe', password: 'password' },
+    options: { tenant: 'hawkular' }
+  )
+
+Each subproject API is packed on its own class, which you can access trought the client object.
+
+  client.alerts # Alerts API
+  client.inventory # Inventory API
+  client.metrics # Metrics API
+  client.operations # Operations API
+
+Metrics API is also subdivded on: Mixed, Availability, Counters, Gauges and Tenants.
+
+  client.metrics # Mixed API
+  client.metrics.avail # Availability
+  client.metrics.counters # Counters
+  client.metrics.gauges # Gauges
+  client.metrics.tenants # Tenants
+
+The Mixed API is capable of handling multiple types of metrics, like the
+push_data[Hawkular/Metrics/Client.html#push_data-instance_method] method, which pushes data
+for multiple metrics of all supported data.
+
+You can also access subproject API individually, if you would like to use only the metrics API you could do
+
+  require 'hawkular/metrics/metrics_client'
+  metrics_client = Hawkular::Metrics::Client.new(
+    entrypoint: 'http://localhost:8080/hawkular/metrics',
+    credentials: { username: 'jdoe', password: 'password' },
+    options: { tenant: 'hawkular' }
+  )
+
+=== Examples
+
+Suppose you will monitor the avaiability of two networks to later on determine which one is the best.
+Every certain time, you would get the avaiability of each network and push them to Hawkular Metrics.
+
+  # ... Initialize client ...
+  is_network01_available = true
+  is_network02_available = false
+  client.metrics.push_data(availabilities: [
+    { id: 'network-01', data: [{ value: is_network01_available ?  'up' : 'down' }] },
+    { id: 'network-02', data: [{ value: is_network02_available ?  'up' : 'down' }] }
+  ])
+
+At some other point you might want to access that data to analyze it
+
+  # ... Initialize client ...
+  # Fetches the 5 last availabilities reported in the last 8 hours.
+  network01_avail = client.metrics.avail.get_data('network-01', limit: 5, order: 'DESC')
+  network02_avail = client.metrics.avail.get_data('network-02', limit: 5, order: 'DESC')
+  # ... Do something with the availabilities ...
+
+Each network01_avail will be an array like:
+
+  [
+    { "timestamp" => 1467312571473, "value" => "up" },
+    { "timestamp" => 1467312492650, "value" => "up" },
+    # ...
+  ]
+
+You can get more info on the others params by checking the metrics API get_data[Hawkular/Metrics/Client/Metrics#get_data-instance_method]
+
+=== More info
+
+Check each resource API for a detailed description of what methods are available.
+* Alerts[Hawkular/Alerts/AlertsClient.html]
+* Inventory[Hawkular/Inventory/InventoryClient.html]
+* Metrics:
+  * Mixed[Hawkular/Metrics/Client.html]
+  * Availability[Hawkular/Metrics/Client/Availability.html]
+  * Counters[Hawkular/Metrics/Client/Counters.html]
+  * Gauges[Hawkular/Metrics/Client/Gauges.html]
+  * Tenants[Hawkular/Metrics/Client/Tenants.html]
+* Operations[Hawkular/Operations/OperationsClient.html]
 
 == Contributing to hawkular-client-ruby
 
