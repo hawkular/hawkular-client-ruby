@@ -124,9 +124,7 @@ module Hawkular::Metrics
                    order: nil)
         params = { start: starts, end: ends, bucketDuration: bucketDuration, buckets: buckets,
                    percentiles: percentiles, limit: limit, order: order }
-        resp = @client.http_get("/#{@resource}/#{ERB::Util.url_encode(id)}/data/?" +
-                 encode_params(params))
-        resp.is_a?(Array) ? resp : [] # API returns no content (empty Hash) instead of empty array
+        get_data_helper(id, params)
       end
 
       # Retrieve metric datapoints by tags
@@ -149,6 +147,14 @@ module Hawkular::Metrics
 
       def encode_params(params)
         URI.encode_www_form(params.select { |_k, v| !v.nil? })
+      end
+
+      private
+
+      def get_data_helper(id, params)
+        resp = @client.http_get("/#{@resource}/#{ERB::Util.url_encode(id)}/data/?" +
+          encode_params(params))
+        resp.is_a?(Array) ? resp : [] # API returns no content (empty Hash) instead of empty array
       end
     end
 
@@ -203,6 +209,24 @@ module Hawkular::Metrics
       # @param client [Client]
       def initialize(client)
         super(client, 'availability', 'availability')
+      end
+
+      # Retrieve metric datapoints
+      # @param id [String] metric definition id
+      # @param starts [Integer] optional timestamp (default now - 8h)
+      # @param ends [Integer] optional timestamp (default now)
+      # @param buckets [Integer] optional desired number of buckets over the specified timerange
+      # @param bucketDuration [String] optional interval (default no aggregation)
+      # @param distinct [String] optional set to true to return only distinct, contiguous values
+      # @param limit [Integer] optional limit the number of data points returned
+      # @param order [String] optional Data point sort order, based on timestamp (ASC, DESC)
+      # @return [Array[Hash]] datapoints
+      # @see #push_data #push_data for datapoint detail
+      def get_data(id, starts: nil, ends: nil, bucketDuration: nil, buckets: nil, distinct: nil, limit: nil,
+        order: nil)
+        params = { start: starts, end: ends, bucketDuration: bucketDuration, buckets: buckets,
+                   distinct: distinct, limit: limit, order: order }
+        get_data_helper(id, params)
       end
     end
   end

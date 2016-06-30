@@ -282,6 +282,33 @@ describe 'Availability metrics' do
       update_metric_by_tags @client.avail, id
     end
   end
+
+  it 'Should raise ArgumentError, availability does not accept percentiles param' do
+    expect { @client.avail.get_data(SecureRandom.uuid, percentiles: 50) }.to raise_error(ArgumentError)
+  end
+
+  it 'Should group contiguous values' do
+    id = SecureRandom.uuid
+    now = @client.now
+    setup_client(username: 'jdoe', password: 'password', tenant: 'vcr-test')
+    VCR.use_cassette('Availability_metrics/Should group contiguous values',
+                     erb: { id: id, now: now }, record: :none
+                    ) do
+      @client.avail.push_data(id, [
+        { timestamp: now - 50, value: 'up' },
+        { timestamp: now - 40, value: 'up' },
+        { timestamp: now - 30, value: 'down' },
+        { timestamp: now - 20, value: 'down' },
+        { timestamp: now - 10, value: 'down' },
+        { timestamp: now, value: 'up' }
+      ])
+      expect(@client.avail.get_data(id, distinct: true, order: 'ASC')).to eq([
+        { 'timestamp' => now - 50, 'value' => 'up' },
+        { 'timestamp' => now - 30, 'value' => 'down' },
+        { 'timestamp' => now, 'value' => 'up' }
+      ])
+    end
+  end
 end
 
 describe 'Gauge metrics' do
