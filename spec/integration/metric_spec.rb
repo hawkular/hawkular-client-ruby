@@ -6,12 +6,14 @@ require 'securerandom'
 
 # time constants
 t4h = 4 * 60 * 60 * 1000
+v16_version_string = '0.16.0.Final'
 
 # test contexts
 v8_context = :metrics_0_8_0
 services_context = :metrics_services
+v16_context = :metrics_0_16_0
 
-[v8_context, services_context].each do |metrics_context|
+[v8_context, services_context, v16_context].each do |metrics_context|
   if ENV['SKIP_V8_METRICS'] == '1' && metrics_context == v8_context
     puts 'skipping v8 metrics'
     next
@@ -54,12 +56,12 @@ services_context = :metrics_services
       end
     end
 
-    describe 'Tenants', run_for: [v8_context, services_context] do
+    describe 'Tenants', run_for: [v8_context, services_context, v16_context] do
       before(:all) do
         if metrics_context == v8_context
           setup_v8_client
         else
-          setup_client
+          metrics_context == v16_context ? setup_client(mocked_version: v16_version_string) : setup_client
         end
       end
 
@@ -71,7 +73,7 @@ services_context = :metrics_services
       end
     end
 
-    describe 'No Tenant', run_for: [services_context] do
+    describe 'No Tenant', run_for: [services_context, v16_context] do
       it 'Should fail' do
         setup_client_without_tenant
         begin
@@ -84,16 +86,20 @@ services_context = :metrics_services
       end
     end
 
-    describe 'Mixed metrics', run_for: [v8_context, services_context] do
+    describe 'Mixed metrics', run_for: [v8_context, services_context, v16_context] do
       before(:all) do
         if metrics_context == v8_context
           setup_v8_client tenant: 'vcr-test-tenant-123'
         else
-          setup_client_new_tenant
+          if metrics_context == v16_context
+            setup_client_new_tenant(mocked_version: v16_version_string)
+          else
+            setup_client_new_tenant
+          end
         end
       end
 
-      it 'Should requests raw data for multiple metrics', :skip_auto_vcr, run_for: [services_context] do
+      it 'Should requests raw data for multiple metrics', :skip_auto_vcr, run_for: [services_context, v16_context] do
         id1 = SecureRandom.uuid
         id2 = SecureRandom.uuid
         id3 = SecureRandom.uuid
@@ -101,7 +107,13 @@ services_context = :metrics_services
         ids = [id1, id2, id3]
         bindings = { id1: id1, id2: id2, id3: id3 }
         example = proc do
-          @client = setup_client(username: 'jdoe', password: 'password', tenant: 'vcr-test')
+          if (metrics_context == v16_context)
+            @client = setup_client(username: 'jdoe', password: 'password', tenant: 'vcr-test',
+                                   mocked_version: v16_version_string)
+          else
+            @client = setup_client(username: 'jdoe', password: 'password', tenant: 'vcr-test')
+          end
+
           expect(@client.counters.raw_data(ids).size).to be 0
           expect(@client.gauges.raw_data(ids).size).to be 0
           expect(@client.avail.raw_data(ids).size).to be 0
@@ -190,7 +202,11 @@ services_context = :metrics_services
         if metrics_context == v8_context
           setup_v8_client tenant: @tenant
         else
-          setup_client_new_tenant
+          if metrics_context == v16_context
+            setup_client_new_tenant(mocked_version: v16_version_string)
+          else
+            setup_client_new_tenant
+          end
         end
       end
 
@@ -237,7 +253,7 @@ services_context = :metrics_services
       end
 
       # limit and order were introduced in 0.11.0 => skipping for 0.8.0
-      it 'Should get metrics with limit and order', run_for: [services_context], skip_auto_vcr: true do
+      it 'Should get metrics with limit and order', run_for: [services_context, v16_context], skip_auto_vcr: true do
         now = @client.now
         minus10 = now - 10
         minus20 = now - 20
@@ -340,7 +356,11 @@ services_context = :metrics_services
         if metrics_context == v8_context
           setup_v8_client tenant: @tenant
         else
-          setup_client_new_tenant
+          if metrics_context == v16_context
+            setup_client_new_tenant(mocked_version: v16_version_string)
+          else
+            setup_client_new_tenant
+          end
         end
       end
 
@@ -364,7 +384,7 @@ services_context = :metrics_services
         expect { @client.avail.get_data(@random_id, percentiles: 50) }.to raise_error(ArgumentError)
       end
 
-      it 'Should group contiguous values', :skip_auto_vcr, run_for: [services_context] do
+      it 'Should group contiguous values', :skip_auto_vcr, run_for: [services_context, v16_context] do
         now = @client.now
         minus10 = now - 10
         minus20 = now - 20
@@ -374,7 +394,12 @@ services_context = :metrics_services
         bindings = { id: @random_id, minus10: minus10, minus20: minus20, minus30: minus30, minus40: minus40,
                      minus50: minus50, now: now }
         example = proc do
-          setup_client(username: 'jdoe', password: 'password', tenant: 'vcr-test')
+          if (metrics_context == v16_context)
+            @client = setup_client(username: 'jdoe', password: 'password', tenant: 'vcr-test',
+                                   mocked_version: v16_version_string)
+          else
+            @client = setup_client(username: 'jdoe', password: 'password', tenant: 'vcr-test')
+          end
           @client.avail.push_data(@random_id, [
             { timestamp: minus50, value: 'up' },
             { timestamp: minus40, value: 'up' },
@@ -401,7 +426,11 @@ services_context = :metrics_services
         if metrics_context == v8_context
           setup_v8_client tenant: @tenant
         else
-          setup_client_new_tenant
+          if metrics_context == v16_context
+            setup_client_new_tenant(mocked_version: v16_version_string)
+          else
+            setup_client_new_tenant
+          end
         end
       end
 

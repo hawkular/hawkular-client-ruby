@@ -1,0 +1,95 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://jdoe:password@localhost:8080/hawkular/metrics/tenants
+    body:
+      encoding: UTF-8
+      string: '{"id":"c2be906a-45e8-4e2a-8aa7-25a72445ca76"}'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - hawkular
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '45'
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Location:
+      - http://localhost:8080/hawkular/metrics/tenants
+      Date:
+      - Mon, 25 Jul 2016 13:33:10 GMT
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Mon, 25 Jul 2016 13:33:10 GMT
+- request:
+    method: get
+    uri: http://jdoe:password@localhost:8080/hawkular/metrics/tenants
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - hawkular
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Mon, 25 Jul 2016 13:33:10 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '388'
+    body:
+      encoding: UTF-8
+      string: '[{"id":"ec12e227-d503-45d5-bc9b-520ab35f9c65"},{"id":"dd36b5d0-4196-4c6d-9fb2-4bdd02cc6d9d"},{"id":"feda9a5b-bccd-41d5-be61-05e27a076892"},{"id":"c2be906a-45e8-4e2a-8aa7-25a72445ca76"},{"id":"7d1589ae-b50b-4c42-a8fb-b9eabe28955b"},{"id":"8863a572-bb18-4ade-b6d3-d13a87d14fba"},{"id":"dfb22c83-e35b-4e45-b96d-198384028483"},{"id":"vcr-test"},{"id":"hawkular"},{"id":"vcr-test-tenant-123"}]'
+    http_version: 
+  recorded_at: Mon, 25 Jul 2016 13:33:10 GMT
+recorded_with: VCR 3.0.3
