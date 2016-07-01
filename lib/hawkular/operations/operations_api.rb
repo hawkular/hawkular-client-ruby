@@ -134,7 +134,7 @@ module Hawkular::Operations
     #
     # @param callback [Block] callback that is run after the operation is done
     def add_deployment(hash, &callback)
-      hash[:enabled] ||= true
+      hash[:enabled] = hash.key?(:enabled) ? hash[:enabled] : true
       required = [:resource_path, :destination_file_name, :binary_content]
       check_pre_conditions hash, required, &callback
 
