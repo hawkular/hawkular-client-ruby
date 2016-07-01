@@ -16,6 +16,7 @@ module Hawkular::Inventory
     # @param credentials [Hash{String=>String}] Hash of username, password, token(optional)
     # @param options [Hash{String=>String}] Additional rest client options
     def initialize(entrypoint = nil, credentials = {}, options = {})
+      entrypoint = normalize_entrypoint_url entrypoint, 'hawkular/inventory'
       @entrypoint = entrypoint
       super(entrypoint, credentials, options)
     end
@@ -25,7 +26,7 @@ module Hawkular::Inventory
     #   entrypoint: http://localhost:8080/hawkular/inventory
     # and another sub-hash containing the hash with username[String], password[String], token(optional)
     def self.create(hash)
-      hash[:entrypoint] ||= 'http://localhost:8080/hawkular/inventory'
+      fail 'no parameter ":entrypoint" given' if hash[:entrypoint].nil?
       hash[:credentials] ||= {}
       hash[:options] ||= {}
       InventoryClient.new(hash[:entrypoint], hash[:credentials], hash[:options])

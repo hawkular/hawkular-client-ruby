@@ -127,6 +127,28 @@ module Hawkular
       end
     end
 
+    # Generate a new url with the passed sufix path if the path is not already added
+    # also, this function always remove the slash at the end of the URL, so if your entrypoint is
+    # http://localhost/hawkular/inventory/ this function will return http://localhost/hawkular/inventory
+    # to the URL
+    # @param entrypoint [String] base path
+    # @param suffix_path [String] sufix path to be added if it doesn't exist
+    # @return [String] URL with path attached to it at the end
+    def normalize_entrypoint_url(entrypoint, suffix_path)
+      strip_path = suffix_path.gsub(%r{/$}, '')
+      strip_path.nil? || suffix_path = strip_path
+      strip_path = suffix_path.gsub(%r{^/}, '')
+      strip_path.nil? || suffix_path = strip_path
+      strip_entrypoint = entrypoint.gsub(%r{/$}, '')
+      strip_path.nil? && strip_entrypoint = entrypoint
+      relative_path_rgx = Regexp.new("\/#{Regexp.quote(suffix_path)}(\/)*$")
+      if relative_path_rgx.match(entrypoint)
+        strip_entrypoint
+      else
+        "#{strip_entrypoint}/#{suffix_path}"
+      end
+    end
+
     # Specialized exception to be thrown
     # when the interaction with Hawkular fails
     class HawkularException < StandardError

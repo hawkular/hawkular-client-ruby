@@ -3,12 +3,13 @@ require "#{File.dirname(__FILE__)}/../spec_helper"
 require 'securerandom'
 
 module Hawkular::Inventory::RSpec
+  ENTRYPOINT = 'http://localhost:8080/hawkular/inventory'
   include Hawkular::Inventory
   describe 'Inventory/Tenants', vcr: { decode_compressed_response: true } do
     it 'Should Get Tenant For Explicit Credentials' do
       # get the client for given endpoint for given credentials
       creds = { username: 'jdoe', password: 'password' }
-      client = Hawkular::Inventory::InventoryClient.create(entrypoint: 'http://localhost:8080/hawkular/inventory',
+      client = Hawkular::Inventory::InventoryClient.create(entrypoint: ENTRYPOINT,
                                                            credentials: creds)
 
       tenant = client.get_tenant(creds)
@@ -18,7 +19,7 @@ module Hawkular::Inventory::RSpec
 
     it 'Should Get Tenant For Implicit Credentials' do
       creds = { username: 'jdoe', password: 'password' }
-      client = Hawkular::Inventory::InventoryClient.create(credentials: creds)
+      client = Hawkular::Inventory::InventoryClient.create(entrypoint: ENTRYPOINT, credentials: creds)
 
       tenant = client.get_tenant
 
@@ -34,7 +35,7 @@ module Hawkular::Inventory::RSpec
         username: 'jdoe',
         password: 'password'
       }
-      @client = Hawkular::Inventory::InventoryClient.create(credentials: @creds)
+      @client = Hawkular::Inventory::InventoryClient.create(entrypoint: ENTRYPOINT, credentials: @creds)
       options = { decode_compressed_response: true }
       options[:record] = :all if ENV['VCR_UPDATE'] == '1'
       VCR.use_cassette('Inventory/Helpers/get_feeds', options) do
