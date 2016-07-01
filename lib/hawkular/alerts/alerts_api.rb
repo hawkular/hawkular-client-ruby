@@ -330,7 +330,7 @@ module Hawkular::Alerts
     attr_accessor :auto_resolve, :auto_resolve_alerts, :tags, :type
     attr_accessor :tenant, :description, :group, :severity, :event_type, :event_category, :member_of, :data_id_map
     attr_reader :conditions, :dampenings
-    attr_accessor :enabled, :actions
+    attr_accessor :enabled, :actions, :firing_match, :auto_resolve_match
 
     def initialize(trigger_hash)
       return if trigger_hash.nil?
@@ -356,6 +356,8 @@ module Hawkular::Alerts
       @context = trigger_hash['context']
       @type = trigger_hash['type']
       @tags = trigger_hash['tags']
+      @firing_match = trigger_hash['firingMatch']
+      @auto_resolve_match = trigger_hash['autoResolveMatch']
       # acts = trigger_hash['actions']
       # acts.each { |a| @actions.push(Action.new(a)) } unless acts.nil?
     end
@@ -367,7 +369,8 @@ module Hawkular::Alerts
         ret[0, 1].downcase + ret[1..-1]
       end
       fields = [:id, :name, :enabled, :severity, :auto_resolve, :auto_resolve_alerts, :event_type, :event_category,
-                :description, :auto_enable, :auto_disable, :context, :type, :tags, :member_of, :data_id_map]
+                :description, :auto_enable, :auto_disable, :context, :type, :tags, :member_of, :data_id_map,
+                :firing_match, :auto_resolve_match]
 
       fields.each do |field|
         camelized_field = to_camel.call(field)

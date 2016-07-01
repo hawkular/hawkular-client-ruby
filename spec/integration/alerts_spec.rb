@@ -4,10 +4,11 @@ require "#{File.dirname(__FILE__)}/../spec_helper"
 module Hawkular::Alerts::RSpec
   ALERTS_BASE = 'http://localhost:8080/hawkular/alerts'
   creds = { username: 'jdoe', password: 'password' }
+  options = { tenant: 'hawkular' }
 
   describe 'Alert/Triggers', vcr: { decode_compressed_response: true } do
     before(:each) do
-      @client = Hawkular::Alerts::AlertsClient.new(ALERTS_BASE, creds)
+      @client = Hawkular::Alerts::AlertsClient.new(ALERTS_BASE, creds, options)
     end
 
     it 'Should List Triggers' do
@@ -108,6 +109,45 @@ module Hawkular::Alerts::RSpec
         end
         begin
           @client.delete_action(a.action_id, a.action_plugin)
+        rescue
+          # I am not interested
+        end
+        # rubocop:enable Lint/HandleExceptions
+      end
+    end
+
+    it 'Should create a firing ALL_ANY trigger' do
+      # Create the trigger
+      t = Hawkular::Alerts::Trigger.new({})
+      t.enabled = true
+      t.id = 'my-cool-trigger'
+      t.name = 'Just a trigger'
+      t.severity = :HIGH
+      t.description = 'Just a test trigger'
+
+      begin
+        ft = @client.create_trigger t, [], nil
+        expect(ft).not_to be_nil
+
+        trigger = @client.get_single_trigger t.id, true
+        expect(trigger.firing_match).to eq('ALL')
+        expect(trigger.auto_resolve_match).to eq('ALL')
+
+        @client.delete_trigger(t.id)
+
+        t.firing_match = :ANY
+        t.auto_resolve_match = :ANY
+
+        ft = @client.create_trigger t, [], nil
+        expect(ft).not_to be_nil
+
+        trigger = @client.get_single_trigger t.id, true
+        expect(trigger.firing_match).to eq('ANY')
+        expect(trigger.auto_resolve_match).to eq('ANY')
+      ensure
+        # rubocop:disable Lint/HandleExceptions
+        begin
+          @client.delete_trigger(t.id)
         rescue
           # I am not interested
         end
