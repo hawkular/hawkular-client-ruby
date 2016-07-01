@@ -19,6 +19,22 @@ module Hawkular::Inventory
       entrypoint = normalize_entrypoint_url entrypoint, 'hawkular/inventory'
       @entrypoint = entrypoint
       super(entrypoint, credentials, options)
+      version = fetch_version_and_status['Implementation-Version']
+      major, minor = version.scan(/\d+/).map(&:to_i)
+      @entrypoint << '/deprecated' unless major == 0 && minor < 17
+    end
+
+    def fetch_version_and_status
+      if @entrypoint.end_with? '/deprecated'
+        begin
+          backup_entrypoint = @entrypoint
+          @entrypoint = @entrypoint[0...-'/deprecated'.size]
+          return http_get('/status')
+        ensure
+          @entrypoint = backup_entrypoint
+        end
+      end
+      http_get('/status')
     end
 
     # Creates a new Inventory Client
