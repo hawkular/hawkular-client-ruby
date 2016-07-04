@@ -70,6 +70,61 @@ describe 'Mixed metrics' do
   end
   #  end
 
+  it 'Should requests raw data for multiple metrics' do
+    @client = setup_client(username: 'jdoe', password: 'password', tenant: 'vcr-test')
+    ids = [SecureRandom.uuid, SecureRandom.uuid, SecureRandom.uuid]
+    VCR.use_cassette('Mixed_metrics/Should requests raw data for multiple metrics',
+                     erb: { ids: ids }, record: :none
+                    ) do
+      expect(@client.counters.raw_data(ids).size).to be 0
+      expect(@client.gauges.raw_data(ids).size).to be 0
+      expect(@client.avail.raw_data(ids).size).to be 0
+
+      @client.push_data(
+        counters: [
+          { id: ids[0], data: [{ value: 1 }] },
+          { id: ids[1], data: [{ value: 2 }] },
+          { id: ids[2], data: [{ value: 3 }] }
+        ],
+        availabilities: [
+          { id: ids[0], data: [{ value: 'up' }] },
+          { id: ids[1], data: [{ value: 'down' }] },
+          { id: ids[2], data: [{ value: 'up' }] }
+        ],
+        gauges: [
+          { id: ids[0], data: [{ value: 1.1 }] },
+          { id: ids[1], data: [{ value: 2.2 }] },
+          { id: ids[2], data: [{ value: 3.3 }] }
+        ]
+      )
+
+      counter_metrics = @client.counters.raw_data(ids)
+      gauges_metrics = @client.gauges.raw_data(ids)
+      availability_metrics = @client.avail.raw_data(ids)
+
+      expect(counter_metrics.size).to be 3
+      expect(counter_metrics).to include(
+        { 'id' => ids[0], 'data' => [{ 'timestamp' => a_kind_of(Integer), 'value' => 1 }] },
+        { 'id' => ids[1], 'data' => [{ 'timestamp' => a_kind_of(Integer), 'value' => 2 }] },
+        { 'id' => ids[2], 'data' => [{ 'timestamp' => a_kind_of(Integer), 'value' => 3 }] }
+      )
+
+      expect(gauges_metrics.size).to be 3
+      expect(gauges_metrics).to include(
+        { 'id' => ids[0], 'data' => [{ 'timestamp' => a_kind_of(Integer), 'value' => 1.1 }] },
+        { 'id' => ids[1], 'data' => [{ 'timestamp' => a_kind_of(Integer), 'value' => 2.2 }] },
+        { 'id' => ids[2], 'data' => [{ 'timestamp' => a_kind_of(Integer), 'value' => 3.3 }] }
+      )
+
+      expect(availability_metrics.size).to be 3
+      expect(availability_metrics).to include(
+        { 'id' => ids[0], 'data' => [{ 'timestamp' => a_kind_of(Integer), 'value' => 'up' }] },
+        { 'id' => ids[1], 'data' => [{ 'timestamp' => a_kind_of(Integer), 'value' => 'down' }] },
+        { 'id' => ids[2], 'data' => [{ 'timestamp' => a_kind_of(Integer), 'value' => 'up' }] }
+      )
+    end
+  end
+
   it 'Should send mixed metric request' do
     id = SecureRandom.uuid
     VCR.use_cassette('Mixed_metrics/Should send mixed metric request',

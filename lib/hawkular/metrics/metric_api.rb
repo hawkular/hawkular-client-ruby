@@ -127,6 +127,18 @@ module Hawkular::Metrics
         get_data_helper(id, params)
       end
 
+      # Retrieve raw data for multiple metrics.
+      # @param ids [Array[String]] metric definition ids
+      # @param starts [Integer] optional timestamp (default now - 8h)
+      # @param ends [Integer] optional timestamp (default now)
+      # @param limit [Integer] optional limit the number of data points returned
+      # @param order [String] optional Data point sort order, based on timestamp (ASC, DESC)
+      # @return [Array[Hash]] named datapoints
+      def raw_data(ids, starts: nil, ends: nil, limit: nil, order: nil)
+        params = { ids: ids, start: starts, end: ends, limit: limit, order: order }
+        @client.http_post("/#{@resource}/raw/query", params)
+      end
+
       # Retrieve metric datapoints by tags
       # @param tags [Hash]
       # @param starts [Integer] optional timestamp (default now - 8h)
