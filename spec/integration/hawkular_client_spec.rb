@@ -12,7 +12,10 @@ module Hawkular::Client::RSpec
         username: 'jdoe',
         password: 'password'
       }
-      @hawkular_client = Hawkular::Client.new(entrypoint: HOST, credentials: @creds)
+      ::RSpec::Mocks.with_temporary_scope do
+        mock_inventory_client
+        @hawkular_client = Hawkular::Client.new(entrypoint: HOST, credentials: @creds)
+      end
       @state = {
         hostname: 'localhost.localdomain',
         feed: nil
@@ -30,7 +33,10 @@ module Hawkular::Client::RSpec
 
     context 'and Inventory client', vcr: { decode_compressed_response: true } do
       before(:all) do
-        @client = Hawkular::Inventory::InventoryClient.create(entrypoint: HOST, credentials: @creds)
+        ::RSpec::Mocks.with_temporary_scope do
+          mock_inventory_client
+          @client = Hawkular::Inventory::InventoryClient.create(entrypoint: HOST, credentials: @creds)
+        end
       end
 
       it 'Should list the same feeds' do

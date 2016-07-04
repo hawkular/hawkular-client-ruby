@@ -119,7 +119,12 @@ module Hawkular::Operations::RSpec
     before(:all) do
       VCR.use_cassette('Operation/Helpers/get_tenant', decode_compressed_response: true) do
         @creds = { username: 'jdoe', password: 'password' }
-        inventory_client = InventoryClient.create(entrypoint: HOST, credentials: @creds)
+        ::RSpec::Mocks.with_temporary_scope do
+          mock_inventory_client
+          @inventory_client = InventoryClient.create(entrypoint: HOST, credentials: @creds)
+        end
+        inventory_client = @inventory_client
+        remove_instance_variable(:@inventory_client)
         @tenant_id = inventory_client.get_tenant
         VCR.use_cassette('Operation/Helpers/get_feed', decode_compressed_response: true) do
           @feed_id = inventory_client.list_feeds[0]

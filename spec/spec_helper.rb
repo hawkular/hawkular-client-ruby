@@ -11,6 +11,22 @@ require 'uri'
 require 'yaml'
 require 'json'
 
+module Hawkular::Inventory::RSpec
+  def setup_inventory_client(entrypoint, options = {})
+    credentials = {
+      username: options[:username].nil? ? config['user'] : options[:username],
+      password: options[:password].nil? ? config['password'] : options[:password]
+    }
+    @client = Hawkular::Inventory::InventoryClient.new(entrypoint, credentials, options)
+  end
+
+  def mock_inventory_client(for_version = '0.16.1.Final')
+    allow_any_instance_of(Hawkular::Inventory::InventoryClient).to receive(:fetch_version_and_status).and_return(
+      'Implementation-Version' => for_version
+    )
+  end
+end
+
 module Hawkular::Metrics::RSpec
   def setup_client(options = {})
     credentials = {
@@ -151,6 +167,7 @@ end
 
 RSpec.configure do |config|
   config.include Helpers
+  config.include Hawkular::Inventory::RSpec
   config.include Hawkular::Metrics::RSpec
   config.include Hawkular::Operations::RSpec
   config.include HawkularUtilsMixin
