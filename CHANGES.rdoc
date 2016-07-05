@@ -8,7 +8,7 @@ _hawkular-client_ project.
 This release is needed to work with hawkular-services v0.0.5+
 
 * Support the changed api endpoint (/deprecated) for Hawkular-inventory 0.17+ along the old version
-* Add two fields on Alert-triggers
+* Add two missing fields (firing_match and auto_resolve) on Alert-triggers
 * Add distinct parameter when getting availability data points
 * Remove all defaulting/fallback to localhost:8080 in the APIs
 * Allow to fetch multiple raw data items from Hawkular-metrics in one call. Requires Metrics v0.17+
