@@ -24,7 +24,7 @@ Ruby Hawkular Client provides a Ruby API to communicate with the following Hawku
 
 == Usage
 
-You must initialize the Hawkular Client with your username, password and tenant.
+You must initialize the Hawkular Client with the server url, your username, password and tenant.
 
   require 'hawkular/hawkular_client'
   client = Hawkular::Client.new(
@@ -33,14 +33,14 @@ You must initialize the Hawkular Client with your username, password and tenant.
     options: { tenant: 'hawkular' }
   )
 
-Each subproject API is packed on its own class, which you can access trought the client object.
+Each subproject API is packed in its own class, which you can access through the client object.
 
   client.alerts # Alerts API
   client.inventory # Inventory API
   client.metrics # Metrics API
   client.operations # Operations API
 
-Metrics API is also subdivded on: Mixed, Availability, Counters, Gauges and Tenants.
+Metrics API is also subdivided to: Mixed, Availability, Counters, Gauges and Tenants.
 
   client.metrics # Mixed API
   client.metrics.avail # Availability
@@ -52,7 +52,7 @@ The Mixed API is capable of handling multiple types of metrics, like the
 push_data[Hawkular/Metrics/Client.html#push_data-instance_method] method, which pushes data
 for multiple metrics of all supported data.
 
-You can also access subproject API individually, if you would like to use only the metrics API you could do
+You can also access each subproject's API individually, if you would like to use only the metrics API you could do
 
   require 'hawkular/metrics/metrics_client'
   metrics_client = Hawkular::Metrics::Client.new(
@@ -63,8 +63,8 @@ You can also access subproject API individually, if you would like to use only t
 
 === Examples
 
-Suppose you will monitor the avaiability of two networks to later on determine which one is the best.
-Every certain time, you would get the avaiability of each network and push them to Hawkular Metrics.
+Suppose you will monitor the availability of two networks to later determine which one is the best.
+Every certain time, you would get the availability of each network and push them to Hawkular Metrics.
 
   # ... Initialize client ...
   is_network01_available = true
@@ -90,7 +90,7 @@ Each network01_avail will be an array like:
     # ...
   ]
 
-You can get more info on the others params by checking the metrics API get_data[Hawkular/Metrics/Client/Metrics#get_data-instance_method]
+You can get more info on the other parameters by checking the metrics API get_data[Hawkular/Metrics/Client/Metrics#get_data-instance_method]
 
 === More info
 
@@ -112,7 +112,7 @@ Check each resource API for a detailed description of what methods are available
 * Fork the project
 * Start a feature/bugfix branch
 * Commit and push until you are happy with your contribution
-* Make sure to add tests for it. This is important so I don't break it in a future version unintentionally.
+* Make sure to add tests for it. This is important so it won't break in a future version unintentionally.
 * Run your code through RuboCop (which is default when running +rake+) and fix complaints.
 * When you open a pull request, watch out for failures on Travis.
 * Please try not to mess with the Rakefile, version, or history. If you want to have your own version, or is
