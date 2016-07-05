@@ -9,6 +9,7 @@ module Hawkular::Inventory::RSpec
     it 'Should Get Tenant For Explicit Credentials' do
       # get the client for given endpoint for given credentials
       creds = { username: 'jdoe', password: 'password' }
+      mock_inventory_client
       client = Hawkular::Inventory::InventoryClient.create(entrypoint: ENTRYPOINT,
                                                            credentials: creds)
 
@@ -19,6 +20,7 @@ module Hawkular::Inventory::RSpec
 
     it 'Should Get Tenant For Implicit Credentials' do
       creds = { username: 'jdoe', password: 'password' }
+      mock_inventory_client
       client = Hawkular::Inventory::InventoryClient.create(entrypoint: ENTRYPOINT, credentials: creds)
 
       tenant = client.get_tenant
@@ -35,7 +37,10 @@ module Hawkular::Inventory::RSpec
         username: 'jdoe',
         password: 'password'
       }
-      @client = Hawkular::Inventory::InventoryClient.create(entrypoint: ENTRYPOINT, credentials: @creds)
+      ::RSpec::Mocks.with_temporary_scope do
+        mock_inventory_client
+        @client = Hawkular::Inventory::InventoryClient.create(entrypoint: ENTRYPOINT, credentials: @creds)
+      end
       options = { decode_compressed_response: true }
       options[:record] = :all if ENV['VCR_UPDATE'] == '1'
       VCR.use_cassette('Inventory/Helpers/get_feeds', options) do
@@ -107,6 +112,7 @@ module Hawkular::Inventory::RSpec
       creds = { username: @state[:super_secret_username],
                 password: @state[:super_secret_password] }
       tori_url = 'https://hawkular.torii.gva.redhat.com/hawkular/inventory'
+      mock_inventory_client
       client = Hawkular::Inventory::InventoryClient.create(entrypoint: tori_url,
                                                            credentials: creds,
                                                            options: { verify_ssl: OpenSSL::SSL::VERIFY_NONE })
