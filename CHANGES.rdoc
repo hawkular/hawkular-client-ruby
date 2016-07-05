@@ -3,6 +3,19 @@
 This document describes the relevant changes between releases of the
 _hawkular-client_ project.
 
+=== V 2.2.0
+
+This release is needed to work with hawkular-services v0.0.5+
+
+* Support the changed api endpoint (/deprecated) for Hawkular-inventory 0.17+ along the old version
+* Add two fields on Alert-triggers
+* Add distinct parameter when getting availability data points
+* Remove all defaulting/fallback to localhost:8080 in the APIs
+* Allow to fetch multiple raw data items from Hawkular-metrics in one call. Requires Metrics v0.17+
+* Corectly use the enabled flag for deployment operations
+
+Full list of items can be found at https://github.com/hawkular/hawkular-client-ruby/issues?q=milestone%3A2.2.0+is%3Aclosed
+
 === V 2.1.0
 * Fix an issue where the operations endpoint constructor expected a host to be passed, which was not.
 * Add authentication to the websocket setup in Operations sub-client.
