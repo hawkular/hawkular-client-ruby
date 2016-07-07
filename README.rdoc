@@ -128,10 +128,12 @@ Integration tests are recorded and played against cassettes recorded with VCR
     rake spec
 * To run the tests against a live server, set +VCR_OFF+ to +1+ as in
     VCR_OFF=1 rake spec
-* To update the VCR tapes that supports it, set +VCR_UPDATE+ to +1+ as in
+* To update the VCR tapes that supports it (metrics and inventory), set +VCR_UPDATE+ to +1+ as in
     VCR_UPDATE=1 rake spec
-* To run the tests for operations against a live server using the WebSockets, set +WEBSOCKET_ON+ to +1+ as in
-    WEBSOCKET_ON=1 rake spec
+* Currently, we support two posible metrics contexts: <code>hawkular-metrics 0.8.0.Final</code> and <code>hawkular-services</code> that contain metrics. If you want to run/re-record the tests only for services, you can skip the other context by <code>SKIP_V8_METRICS=1</code>, or similarly <code>SKIP_SERVICES_METRICS=1</code>. So for instance updating the VCR templates only for hawkular-services would require command:
+    VCR_UPDATE=1 SKIP_V8_METRICS=1 rspec ./spec/integration/metric_spec.rb
+
+For more details consult the {spec readme}[link:spec/README.rdoc].
 
 == Logging
 

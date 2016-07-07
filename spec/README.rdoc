@@ -1,0 +1,62 @@
+= Test suite
+Read me if you want more information about the test suite and VCR cassettes.
+
+== Running all the tests
+
+   bundle exec rake test
+or shorter
+   rspec 
+
+== Running individual tests
+
+Run all the tests for metrics
+   rspec ./spec/integration/metric_spec.rb
+   
+Run one particular test:
+that starts on line 74
+   rspec ./spec/integration/metric_spec.rb:74
+   
+that contains a description 'push metric data to existing counter'
+   rspec -e 'push metric data to existing counter' ./spec/integration/metric_spec.rb:74
+
+== VCRs
+By default, all the interaction over HTTP is done via the VCR testing suite. So no real calls to the server side are made, but the communication is read from +.yml+ files, called cassettes. This allows the whole testsuite to run very quickly, whitout the need for the server to be up. Obviously, the drawback is that the data may be stale. To re-record the VCR cassettes, one can run the +rspec+ with environment property <code>VCR_UPDATE=1</code>.
+
+For inventory and metrics specs, there is a support for templating the VCR cassettes. This means that some data that vary in different hawkular-services server starts may be parametrized, because there is no point in checking if the +feed_id+ is really the desired uuid or the timestamp is really the xyz. Good thing about it is that when re-recording the cassette and the api is the same, it'll remain the same up to the minor stuff like +recorded_at:+ fields. An example of the VCR template can be seen {here}[link:https://git.io/vKm99]. This is all done under the hood by using the around interceptors ({here}[link:https://git.io/vKmHE] and {here}[link:https://git.io/vKmH7]) and the helper methods in +spec_helper.rb+.
+
+Parametrization of the cassette is basically replacing the raw data in it by its reference, so for instance following pseudo-code:
+
+   parametrize('Hello, asdfasdf', {id: 'asdfasdf'})
+
+would provide
+   Hello, <%= id%>
+in the resulting cassette.
+
+For inventory, the data that is parametrized in the VCR cassettes needs to be in the +@state+ hash, while for the metrics it's only the +@random_id+ field that's an random (for each test case) uuid. This will be probably unified in the future and will be the same across all the components.
+
+ If you need to override the default behavior and use your own data during the parametrization, this can be done the following way (https://git.io/vKmQF): 
+ 
+   it 'Should push metric data to existing gauge', :skip_auto_vcr do
+     now = @client.now
+     ends = now - t4h
+     starts = now - (2 * t4h)
+     ...
+     bindings = { id: @random_id, ends: ends, starts: starts, ... }
+     example = proc do
+       # do all the asserts
+     end
+     record("Metrics/#{metrics_context}", bindings, cassette_name, example: example)
+   end
+
+In the example above, whenever the values of +starts+, +ends+ or +@random_id+ appear in the cassette, it'll be replaced by its reference => parametrized. This process is done only if the <code>VCR_UPDATE=1</code> is passed to the +rspec+. Otherwise, the templates will be just used (not created). This allows the fact that one template can be used for whole set of different calls if we abstract from the (volatile) data that doesn't matter, like generated ids or timestamps.
+
+=== Metrics VCRs
+Currently, the metrics sub-client is special, because we keep the VCR cassettes for +hawkular-metrics+ in version <code>0.8.0.Final</code> as well as for metrics that are part of the hawkular-services. Thus, there is a support for so called "metric contexts" in the {spec file}[https://git.io/vKmBa]. By default, all the test-suite is run for all the metric contexts. Some tests can have a tag on them that they make sense only for certain context. This is done by using the <code>run_for: [services_context] </code> tag (see {example}[https://git.io/vKm5M]). If it's omitted, the test case is meant to run in all the contexts.
+
+When re-recording the templates, it's handy to update only one metrics context. To do that, you can use the env variables:
+   SKIP_V8_METRICS=1
+or
+   SKIP_SERVICES_METRICS=1
+To skip the suite for v8 metrics or the services one, respectively.
+
+Good thing about this approach is that we can store the historical data in its own directories and not override over and over the some methods and end up with an inconsistent state, where some methods are captured in state +t+ and some in state <code>t+1</code>. Here is how it looks like: https://git.io/vKmdb In the future, we will be fixing also the version of the hawkular-services.
