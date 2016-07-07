@@ -22,6 +22,18 @@ module Hawkular::Client::RSpec
       }
     end
 
+    it 'Should err on bad credentials' do
+      VCR.use_cassette('HawkularClient/Should err on bad credentials') do
+        @creds = {
+          username: '-XX-X-jdoe-X',
+          password: 'password'
+        }
+        expect do
+          Hawkular::Client.new(entrypoint: HOST, credentials: @creds)
+        end.to raise_error(Hawkular::BaseClient::HawkularException, 'Unauthorized')
+      end
+    end
+
     it 'Should fail when calling method with unknown prefix' do
       expect { @hawkular_client.ynventori_list_feeds }.to raise_error(RuntimeError)
       expect { @hawkular_client.list_feeds }.to raise_error(RuntimeError)

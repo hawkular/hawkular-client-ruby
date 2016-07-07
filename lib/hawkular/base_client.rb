@@ -174,6 +174,8 @@ module Hawkular
     end
 
     def handle_fault(f)
+      http_code = (f.respond_to?(:http_code) ? f.http_code : 0)
+      fail HawkularException.new('Unauthorized', http_code) if f.instance_of? RestClient::Unauthorized
       if f.respond_to?(:http_body) && !f.http_body.nil?
         begin
           json_body = JSON.parse(f.http_body)
@@ -181,7 +183,7 @@ module Hawkular
         rescue JSON::ParserError
           fault_message = f.http_body
         end
-        fail HawkularException.new(fault_message, (f.respond_to?(:http_code) ? f.http_code : 0))
+        fail HawkularException.new(fault_message, http_code)
       else
         fail f
       end
