@@ -3,6 +3,10 @@
 This document describes the relevant changes between releases of the
 _hawkular-client_ project.
 
+=== V 2.2.1
+
+* Fix a regression where URI:HTTP objects were no longer accepted as input for entrypoints.
+
 === V 2.2.0
 
 This release is needed to work with hawkular-services v0.0.5+
