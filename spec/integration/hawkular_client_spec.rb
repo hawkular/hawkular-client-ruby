@@ -31,6 +31,32 @@ module Hawkular::Client::RSpec
       expect { @hawkular_client.inventory_lyst_feeds }.to raise_error(NoMethodError)
     end
 
+    context 'and URIs as input', vcr: { decode_compressed_response: true } do
+      it 'Should work with URI' do
+        uri = URI.parse HOST
+        opts = { tenant: 'hawkular' }
+
+        the_client = Hawkular::Client.new(entrypoint: uri, credentials: @creds, options: opts)
+        expect { the_client.inventory.list_feeds }.to_not raise_error
+      end
+
+      it 'Should work with URI on metrics client' do
+        uri = URI.parse HOST
+        opts = { tenant: 'hawkular' }
+
+        the_client = Hawkular::Metrics::Client.new(uri, @creds, opts)
+        expect { the_client.http_get '/status' }.to_not raise_error
+      end
+
+      it 'Should work with https URI on metrics client' do
+        uri = URI.parse 'https://localhost:8080'
+        opts = { tenant: 'hawkular' }
+
+        the_client = Hawkular::Metrics::Client.new(uri, @creds, opts)
+        expect !the_client.nil?
+      end
+    end
+
     context 'and Inventory client', vcr: { decode_compressed_response: true } do
       before(:all) do
         ::RSpec::Mocks.with_temporary_scope do
