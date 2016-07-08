@@ -140,10 +140,11 @@ module Hawkular
       strip_path.nil? || suffix_path = strip_path
       strip_path = suffix_path.gsub(%r{^/}, '')
       strip_path.nil? || suffix_path = strip_path
-      strip_entrypoint = entrypoint.to_s.gsub(%r{/$}, '')
-      strip_path.nil? && strip_entrypoint = entrypoint.to_s
+      entrypoint = entrypoint.to_s
+      strip_entrypoint = entrypoint.gsub(%r{/$}, '')
+      strip_path.nil? && strip_entrypoint = entrypoint
       relative_path_rgx = Regexp.new("\/#{Regexp.quote(suffix_path)}(\/)*$")
-      if relative_path_rgx.match(entrypoint.to_s)
+      if relative_path_rgx.match(entrypoint)
         strip_entrypoint
       else
         "#{strip_entrypoint}/#{suffix_path}"
