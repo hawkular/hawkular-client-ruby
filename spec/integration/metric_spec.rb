@@ -495,3 +495,93 @@ describe 'Gauge metrics' do
     end
   end
 end
+
+describe 'Metric ID with special characters' do
+  before(:all) do
+    setup_client(username: 'jdoe', password: 'password', tenant: 'vcr-test')
+  end
+
+  id_gauge = 'MI~R~[8b*}{\'\\14#?/5-7%92e[-c9_.r1//;/74eddf/L=c~~]~MT~    *  / Met@ics~Aggre&? ated s  Active" Ses;ns'
+  id_avail = 'AA~R~[8b*}{\'\\14#?/5-7%92[d-c9_.r1///7;:4eddf/L=c~~]~MT~ A  *  %-Met@ics~Aggre&?ated " Sess{ons'
+  id_counter = 'AA~R~[8b*}{\'\\14#?/5-7%92[d-c9_.r1///7;:4eddf/L=c~~]~MT~  %-Met@ics~Aggre&?ated " Sess{ons'
+
+  it 'Should create gauge definition' do
+    VCR.use_cassette('Metric ID with special characters/Should create gauge definition') do
+      create_metric_using_md @client.gauges, id_gauge
+    end
+  end
+
+  it 'Should create Availability definition' do
+    VCR.use_cassette('Metric ID with special characters/Should create Availability definition') do
+      create_metric_using_md @client.avail, id_avail
+    end
+  end
+
+  it 'Should create Counter definition' do
+    VCR.use_cassette('Metric ID with special characters/Should create Counter definition') do
+      create_metric_using_md @client.counters, id_counter
+    end
+  end
+
+  it 'Should push metric data to existing gauge' do
+    VCR.use_cassette('Metric ID with special characters/Should push metric data to existing gauge') do
+      @client.gauges.push_data(id_gauge, [
+        { value: 0.1,  tags: { tagName: 'myMin' } },
+        { value: 99.9, tags: { tagName: 'myMax' } }
+      ])
+    end
+  end
+
+  it 'Should update tags for gauge definition' do
+    VCR.use_cassette('Metric ID with special characters/Should update tags for gauge definition') do
+      deff = @client.gauges.get(id_gauge)
+      deff.tags = {
+        name1: 'value1',
+        name2: 'value2',
+        name3: 'value3'
+      }
+      @client.gauges.update_tags(deff)
+      deff_updated = @client.gauges.get(id_gauge)
+      expected_result = {
+        'name1' => 'value1',
+        'name2' => 'value2',
+        'name3' => 'value3',
+        'tag'   => 'value'
+      }
+      expect(deff_updated.tags).to eq(expected_result)
+    end
+  end
+
+  it 'Should update tags for Availability definition' do
+    VCR.use_cassette('Metric ID with special characters/Should update tags for Availability definition') do
+      deff_avail = @client.avail.get(id_avail)
+      deff_avail.tags = {
+        name1: 'value1',
+        name2: 'value2',
+        name3: 'value3'
+      }
+      @client.avail.update_tags(deff_avail)
+      deff_avail_updated = @client.avail.get(id_avail)
+      expected_result = {
+        'name1' => 'value1',
+        'name2' => 'value2',
+        'name3' => 'value3',
+        'tag'   => 'value'
+      }
+      expect(deff_avail_updated.tags).to eq(expected_result)
+    end
+  end
+
+  it 'Get metric definition by id' do
+    VCR.use_cassette('Metric ID with special characters/Get metric definition by id') do
+      @client.gauges.get(id_gauge)
+    end
+  end
+
+  it 'Retrieve metric rate points' do
+    VCR.use_cassette('Metric ID with special characters/Retrieve metric rate points') do
+      @client.gauges.get(id_gauge)
+      @client.counters.get_rate id_counter
+    end
+  end
+end

@@ -79,14 +79,15 @@ module Hawkular::Metrics
       # @param id [String]
       # @return [MetricDefinition]
       def get(id)
-        the_id = @client.hawk_escape id
+        the_id = ERB::Util.url_encode id
         Hawkular::Metrics::MetricDefinition.new(@client.http_get("/#{@resource}/#{the_id}"))
       end
 
       # update tags for given metric definition
       # @param metric_definition [MetricDefinition]
       def update_tags(metric_definition)
-        @client.http_put("/#{@resource}/#{metric_definition.id}/tags", metric_definition.hash[:tags])
+        metric_definition_id = ERB::Util.url_encode metric_definition.id
+        @client.http_put("/#{@resource}/#{metric_definition_id}/tags", metric_definition.hash[:tags])
       end
 
       # Push metric data
@@ -106,7 +107,7 @@ module Hawkular::Metrics
         data = [data] unless data.is_a?(Array)
 
         @client.default_timestamp data
-        @client.http_post("/#{@resource}/#{id}/data", data)
+        @client.http_post("/#{@resource}/#{ERB::Util.url_encode(id)}/data", data)
       end
 
       # Retrieve metric datapoints
@@ -189,7 +190,7 @@ module Hawkular::Metrics
       #   client.gauges.get_periods("gauge1", starts: before4h, threshold: 10, operation: "lte")
       def get_periods(id, starts: nil, ends: nil, threshold: nil, operation: nil)
         params = { start: starts, end: ends, threshold: threshold, op: operation }
-        @client.http_get("/#{@resource}/#{id}/periods?" + encode_params(params))
+        @client.http_get("/#{@resource}/#{ERB::Util.url_encode(id)}/periods?" + encode_params(params))
       end
     end
 
