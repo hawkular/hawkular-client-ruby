@@ -29,6 +29,20 @@ module Hawkular::Inventory::RSpec
     end
   end
 
+  describe 'Inventory Connection' do
+    it 'Should err on bad credentials' do
+      VCR.use_cassette('Inventory/Connection/Should err on bad credentials') do
+        @creds = {
+          username: '-XX-X-jdoe-X',
+          password: 'password'
+        }
+        expect do
+          Hawkular::Inventory::InventoryClient.create(entrypoint: ENTRYPOINT, credentials: @creds)
+        end.to raise_error(Hawkular::BaseClient::HawkularException, 'Unauthorized')
+      end
+    end
+  end
+
   describe 'Inventory' do
     URL_RESOURCE = 'http://bsd.de'
 
