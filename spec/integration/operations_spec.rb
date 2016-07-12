@@ -121,7 +121,8 @@ module Hawkular::Operations::RSpec
         @creds = { username: 'jdoe', password: 'password' }
         ::RSpec::Mocks.with_temporary_scope do
           mock_inventory_client
-          @inventory_client = InventoryClient.create(entrypoint: HOST, credentials: @creds)
+          options = { tenant: 'hawkular' }
+          @inventory_client = InventoryClient.create(entrypoint: HOST, credentials: @creds, options: options)
         end
         inventory_client = @inventory_client
         remove_instance_variable(:@inventory_client)

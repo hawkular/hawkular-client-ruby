@@ -1,0 +1,237 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://localhost:8080/hawkular/metrics/metrics/data
+    body:
+      encoding: UTF-8
+      string: '{"gauges":[],"counters":[{"id":"<%= id %>","data":[{"value":1,"timestamp":1467304297056}]}],"availabilities":[]}'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Hawkular-Tenant:
+      - vcr-test-tenant-123
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '139'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/9
+      Content-Length:
+      - '0'
+      Date:
+      - Thu, 30 Jun 2016 16:31:37 GMT
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Thu, 30 Jun 2016 16:31:37 GMT
+- request:
+    method: get
+    uri: http://localhost:8080/hawkular/metrics/counters/<%= id %>/data/
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Hawkular-Tenant:
+      - vcr-test-tenant-123
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/9
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '39'
+      Date:
+      - Thu, 30 Jun 2016 16:31:37 GMT
+    body:
+      encoding: UTF-8
+      string: '[{"timestamp":1467304297056,"value":1}]'
+    http_version: 
+  recorded_at: Thu, 30 Jun 2016 16:31:37 GMT
+- request:
+    method: post
+    uri: http://localhost:8080/hawkular/metrics/metrics/data
+    body:
+      encoding: UTF-8
+      string: '{"gauges":[],"counters":[],"availabilities":[{"id":"<%= id %>","data":[{"value":"down","timestamp":1467304297104}]}]}'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Hawkular-Tenant:
+      - vcr-test-tenant-123
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '144'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/9
+      Content-Length:
+      - '0'
+      Date:
+      - Thu, 30 Jun 2016 16:31:37 GMT
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Thu, 30 Jun 2016 16:31:37 GMT
+- request:
+    method: get
+    uri: http://localhost:8080/hawkular/metrics/availability/<%= id %>/data/
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Hawkular-Tenant:
+      - vcr-test-tenant-123
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/9
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '44'
+      Date:
+      - Thu, 30 Jun 2016 16:31:37 GMT
+    body:
+      encoding: UTF-8
+      string: '[{"timestamp":1467304297104,"value":"down"}]'
+    http_version: 
+  recorded_at: Thu, 30 Jun 2016 16:31:37 GMT
+- request:
+    method: post
+    uri: http://localhost:8080/hawkular/metrics/metrics/data
+    body:
+      encoding: UTF-8
+      string: '{"gauges":[{"id":"<%= id %>","data":[{"value":1.1,"timestamp":1467304297146}]}],"counters":[],"availabilities":[]}'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Hawkular-Tenant:
+      - vcr-test-tenant-123
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '141'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/9
+      Content-Length:
+      - '0'
+      Date:
+      - Thu, 30 Jun 2016 16:31:37 GMT
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Thu, 30 Jun 2016 16:31:37 GMT
+- request:
+    method: get
+    uri: http://localhost:8080/hawkular/metrics/gauges/<%= id %>/data/
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Hawkular-Tenant:
+      - vcr-test-tenant-123
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/9
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '41'
+      Date:
+      - Thu, 30 Jun 2016 16:31:37 GMT
+    body:
+      encoding: UTF-8
+      string: '[{"timestamp":1467304297146,"value":1.1}]'
+    http_version: 
+  recorded_at: Thu, 30 Jun 2016 16:31:37 GMT
+recorded_with: VCR 3.0.1

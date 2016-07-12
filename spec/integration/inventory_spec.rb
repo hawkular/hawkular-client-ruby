@@ -10,9 +10,10 @@ module Hawkular::Inventory::RSpec
       # get the client for given endpoint for given credentials
       creds = { username: 'jdoe', password: 'password' }
       mock_inventory_client
+      options = { tenant: 'hawkular' }
       client = Hawkular::Inventory::InventoryClient.create(entrypoint: ENTRYPOINT,
-                                                           credentials: creds)
-
+                                                           credentials: creds,
+                                                           options: options)
       tenant = client.get_tenant(creds)
 
       expect(tenant).to eq('28026b36-8fe4-4332-84c8-524e173a68bf')
@@ -21,8 +22,10 @@ module Hawkular::Inventory::RSpec
     it 'Should Get Tenant For Implicit Credentials' do
       creds = { username: 'jdoe', password: 'password' }
       mock_inventory_client
-      client = Hawkular::Inventory::InventoryClient.create(entrypoint: ENTRYPOINT, credentials: creds)
-
+      options = { tenant: 'hawkular' }
+      client = Hawkular::Inventory::InventoryClient.create(entrypoint: ENTRYPOINT,
+                                                           credentials: creds,
+                                                           options: options)
       tenant = client.get_tenant
 
       expect(tenant).to eq('28026b36-8fe4-4332-84c8-524e173a68bf')
@@ -51,9 +54,13 @@ module Hawkular::Inventory::RSpec
         username: 'jdoe',
         password: 'password'
       }
+
       ::RSpec::Mocks.with_temporary_scope do
         mock_inventory_client
-        @client = Hawkular::Inventory::InventoryClient.create(entrypoint: ENTRYPOINT, credentials: @creds)
+        client_options = { tenant: 'hawkular' }
+        @client = Hawkular::Inventory::InventoryClient.create(entrypoint: ENTRYPOINT,
+                                                              credentials: @creds,
+                                                              options: client_options)
       end
       options = { decode_compressed_response: true }
       options[:record] = :all if ENV['VCR_UPDATE'] == '1'
@@ -129,7 +136,9 @@ module Hawkular::Inventory::RSpec
       mock_inventory_client
       client = Hawkular::Inventory::InventoryClient.create(entrypoint: tori_url,
                                                            credentials: creds,
-                                                           options: { verify_ssl: OpenSSL::SSL::VERIFY_NONE })
+                                                           options: { tenant: 'hawkular',
+                                                                      verify_ssl: OpenSSL::SSL::VERIFY_NONE
+                                                           })
       feeds = client.list_feeds
 
       expect(feeds.size).to be(1)

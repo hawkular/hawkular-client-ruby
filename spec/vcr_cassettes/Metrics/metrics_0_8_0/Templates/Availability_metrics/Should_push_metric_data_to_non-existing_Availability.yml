@@ -1,0 +1,120 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://localhost:8080/hawkular/metrics/availability/<%= id %>/data
+    body:
+      encoding: UTF-8
+      string: '[{"value":"UP","timestamp":1467304297710}]'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Hawkular-Tenant:
+      - vcr-test-tenant-123
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '42'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/9
+      Content-Length:
+      - '0'
+      Date:
+      - Thu, 30 Jun 2016 16:31:37 GMT
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Thu, 30 Jun 2016 16:31:37 GMT
+- request:
+    method: get
+    uri: http://localhost:8080/hawkular/metrics/availability/<%= id %>/data/
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Hawkular-Tenant:
+      - vcr-test-tenant-123
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/9
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '42'
+      Date:
+      - Thu, 30 Jun 2016 16:31:37 GMT
+    body:
+      encoding: UTF-8
+      string: '[{"timestamp":1467304297710,"value":"up"}]'
+    http_version: 
+  recorded_at: Thu, 30 Jun 2016 16:31:37 GMT
+- request:
+    method: get
+    uri: http://localhost:8080/hawkular/metrics/availability/<%= id %>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Hawkular-Tenant:
+      - vcr-test-tenant-123
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/9
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '100'
+      Date:
+      - Thu, 30 Jun 2016 16:31:37 GMT
+    body:
+      encoding: UTF-8
+      string: '{"id":"<%= id %>","type":"availability","tenantId":"vcr-test-tenant-123"}'
+    http_version: 
+  recorded_at: Thu, 30 Jun 2016 16:31:37 GMT
+recorded_with: VCR 3.0.1

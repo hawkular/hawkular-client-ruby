@@ -28,20 +28,41 @@ module Hawkular::Inventory::RSpec
 end
 
 module Hawkular::Metrics::RSpec
-  def setup_client(options = {})
-    credentials = {
-      username: options[:username].nil? ? config['user'] : options[:username],
-      password: options[:password].nil? ? config['password'] : options[:password]
-    }
+  def setup_client_without_tenant(options = {})
+    options[:tenant] = nil
     @client = Hawkular::Metrics::Client.new(config['url'],
-                                            credentials, options)
+                                            credentials(options), options)
+  end
+
+  def setup_client(options = {})
+    options[:tenant] ||= 'hawkular'
+    @client = Hawkular::Metrics::Client.new(config['url'],
+                                            credentials(options), options)
+  end
+
+  def setup_v8_client(options = {})
+    options[:tenant] ||= 'hawkular'
+    options[:verify_ssl] ||= OpenSSL::SSL::VERIFY_NONE
+    @client = Hawkular::Metrics::Client.new(config['url_v8'],
+                                            credentials_v8(options), options)
   end
 
   def setup_client_new_tenant(_options = {})
-    setup_client
     @tenant = 'vcr-test-tenant-123'
-    # @client.tenants.create(@tenant)
     setup_client(tenant: @tenant)
+  end
+
+  def credentials_v8(options = {})
+    {
+      token: options[:token].nil? ? config['token_v8'] : options[:token]
+    }
+  end
+
+  def credentials(options = {})
+    {
+      username: options[:username].nil? ? config['user'] : options[:username],
+      password: options[:password].nil? ? config['password'] : options[:password]
+    }
   end
 
   def config
@@ -134,7 +155,7 @@ module Helpers
 
     text = File.read(input_file_path)
     bindings.select { |_, v| v.size >= 3 }.each do |k, v|
-      text.gsub! v, "<%= #{k} %>"
+      text.gsub! v.to_s, "<%= #{k} %>"
     end
 
     File.open(output_file_path, 'w') { |file| file.write text }
@@ -143,11 +164,17 @@ module Helpers
 
   def record(prefix, bindings, explicit_cassette_name, example: nil)
     run = lambda do
-      example.run unless example.nil?
+      unless example.nil?
+        if example.respond_to?(:run)
+          example.run
+        elsif example.respond_to?(:call)
+          example.call
+        end
+      end
       yield if block_given?
     end
 
-    if (!example.nil? && example.metadata[:update_template]) || ENV['VCR_UPDATE'] == '1'
+    if ENV['VCR_UPDATE'] == '1'
       VCR.use_cassette(prefix + '/tmp/' + explicit_cassette_name,
                        decode_compressed_response: true,
                        record: :all) do
