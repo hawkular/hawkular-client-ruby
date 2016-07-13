@@ -10,6 +10,8 @@ require 'json'
 module Hawkular::Inventory
   # Client class to interact with Hawkular Inventory
   class InventoryClient < Hawkular::BaseClient
+    attr_reader :version
+
     # Create a new Inventory Client
     # @param entrypoint [String] base url of Hawkular-inventory - e.g
     #   http://localhost:8080/hawkular/inventory
@@ -20,8 +22,9 @@ module Hawkular::Inventory
       @entrypoint = entrypoint
       super(entrypoint, credentials, options)
       version = fetch_version_and_status['Implementation-Version']
-      major, minor = version.scan(/\d+/).map(&:to_i)
-      @api = major == 0 && minor < 17 ? OldApi.new : NewApi.new
+      @version = version.scan(/\d+/).map(&:to_i)
+      major, minor, = @version
+      @api = major == 0 && minor < 17 ? OldApi.new(self) : NewApi.new(self)
     end
 
     # Creates a new Inventory Client
@@ -281,8 +284,18 @@ module Hawkular::Inventory
     # Allowed values: created, updated, deleted, copied, registered
     def events(type = 'resource', action = 'created')
       tenant_id = get_tenant
+
+      base64_creds = ["#{@credentials[:username]}:#{@credentials[:password]}"].pack('m').delete("\r\n")
+      ws_options = {
+        headers: {
+          Authorization: 'Basic ' + base64_creds,
+          'Hawkular-Tenant': tenant_id,
+          Accept: 'application/json'
+        }
+      }
+
       url = "#{entrypoint.gsub(/https?/, 'ws')}/ws/events?tenantId=#{tenant_id}&type=#{type}&action=#{action}"
-      @ws = WebSocket::Client::Simple.connect url do |client|
+      @ws = WebSocket::Client::Simple.connect url, ws_options do |client|
         client.on :message do |msg|
           parsed_message = JSON.parse(msg.data)
           entity = case type
@@ -308,41 +321,6 @@ module Hawkular::Inventory
       @ws.close
     end
 
-    private
-
-    # Creates a hash with the fields required by the Blueprint api in Hawkular-Inventory
-    def create_blueprint
-      res = {}
-      res[:properties] = {}
-      res[:id] = nil
-      res[:name] = nil
-      res[:outgoing] = {}
-      res[:incoming] = {}
-      res
-    end
-
-    def build_metric_type_hash(collection_interval, metric_kind, metric_type_id, unit)
-      mt = {}
-      mt['id'] = metric_type_id
-      mt['type'] = metric_kind
-      mt['unit'] = unit.nil? ? 'NONE' : unit.upcase
-      mt['collectionInterval'] = collection_interval.nil? ? 60 : collection_interval
-      mt
-    end
-
-    def filter_entities(entities, filter)
-      entities.select do |entity|
-        found = true
-        if filter.empty?
-          found = true
-        else
-          found = false unless filter[:type] == (entity.type) || filter[:type].nil?
-          found = false unless filter[:match].nil? || entity.id.include?(filter[:match])
-        end
-        found
-      end
-    end
-
     # Return version and status information for the used version of Hawkular-Inventory
     # @return [Hash{String=>String}]
     #         ('Implementation-Version', 'Built-From-Git-SHA1', 'Status')
@@ -350,18 +328,61 @@ module Hawkular::Inventory
       http_get('/status')
     end
 
-    class OldApi
-      def list_feeds()
-        ret = http_get('/feeds')
+    class ApiBase < Hawkular::BaseClient
+      include HawkularUtilsMixin
+
+      # Creates a hash with the fields required by the Blueprint api in Hawkular-Inventory
+      def create_blueprint
+        res = {}
+        res[:properties] = {}
+        res[:id] = nil
+        res[:name] = nil
+        res[:outgoing] = {}
+        res[:incoming] = {}
+        res
+      end
+
+      def build_metric_type_hash(collection_interval, metric_kind, metric_type_id, unit)
+        mt = {}
+        mt['id'] = metric_type_id
+        mt['type'] = metric_kind
+        mt['unit'] = unit.nil? ? 'NONE' : unit.upcase
+        mt['collectionInterval'] = collection_interval.nil? ? 60 : collection_interval
+        mt
+      end
+
+      def filter_entities(entities, filter)
+        entities.select do |entity|
+          found = true
+          if filter.empty?
+            found = true
+          else
+            found = false unless filter[:type] == (entity.type) || filter[:type].nil?
+            found = false unless filter[:match].nil? || entity.id.include?(filter[:match])
+          end
+          found
+        end
+      end
+    end
+
+    # @deprecated Please use the inventory in version higher than 0.17.0.Final instead.
+    class OldApi < ApiBase
+      def initialize(http_client)
+        warn '[DEPRECATION] OldApi is deprecated. Please use the inventory in version >= 0.17.0.Final instead.'
+        @client = http_client
+      end
+
+      def list_feeds
+        ret = @client.http_get('/feeds')
         ret.map { |f| f['id'] }
       end
 
       def list_resource_types(feed_id = nil)
         if feed_id.nil?
-          ret = http_get('/resourceTypes')
+          ret = @client.http_get('/resourceTypes')
         else
           the_feed = hawk_escape_id feed_id
-          ret = http_get("/feeds/#{the_feed}/resourceTypes")
+          ret = @client.http_get("/feeds/#{the_feed}/resourceTypes")
         end
         ret.map { |rt| ResourceType.new(rt) }
       end
@@ -369,7 +390,7 @@ module Hawkular::Inventory
       def list_resources_for_feed(feed_id, fetch_properties = false, filter = {})
         fail 'Feed id must be given' unless feed_id
         the_feed = hawk_escape_id feed_id
-        ret = http_get("/feeds/#{the_feed}/resources")
+        ret = @client.http_get("/feeds/#{the_feed}/resources")
         to_filter = ret.map do |r|
           if fetch_properties
             p = get_config_data_for_resource(r['path'])
@@ -385,10 +406,10 @@ module Hawkular::Inventory
         resource_type_id = path.resource_type_id
         feed_id = path.feed_id
         if feed_id.nil?
-          ret = http_get("/resourceTypes/#{resource_type_id}/resources")
+          ret = @client.http_get("/resourceTypes/#{resource_type_id}/resources")
         else
 
-          ret = http_get("/feeds/#{feed_id}/resourceTypes/#{resource_type_id}/resources")
+          ret = @client.http_get("/feeds/#{feed_id}/resourceTypes/#{resource_type_id}/resources")
         end
         ret.map do |r|
           if fetch_properties && !feed_id.nil?
@@ -404,7 +425,7 @@ module Hawkular::Inventory
         resource_path = path.resource_ids.join('/')
         feed_id = path.feed_id
         query = generate_query_params dataType: 'configuration'
-        http_get("feeds/#{feed_id}/resources/#{resource_path}/data#{query}")
+        @client.http_get("feeds/#{feed_id}/resources/#{resource_path}/data#{query}")
       rescue
         {}
       end
@@ -414,29 +435,29 @@ module Hawkular::Inventory
         parent_resource_path = path.resource_ids.join('/')
         feed_id = path.feed_id
         which_children = (recursive ? '/recursiveChildren' : '/children')
-        ret = http_get("/feeds/#{feed_id}/resources/#{parent_resource_path}#{which_children}")
+        ret = @client.http_get("/feeds/#{feed_id}/resources/#{parent_resource_path}#{which_children}")
         ret.map { |r| Resource.new(r) }
       end
 
       def list_relationships(entity_path, named = nil)
         path = entity_path.is_a?(CanonicalPath) ? entity_path : CanonicalPath.parse(entity_path)
         query_params = {
-            sort: '__targetCp'
+          sort: '__targetCp'
         }
         query_params[:named] = named unless named.nil?
         query = generate_query_params query_params
-        ret = http_get("/path#{path}/relationships#{query}")
+        ret = @client.http_get("/path#{path}/relationships#{query}")
         ret.map { |r| Relationship.new(r) }
       end
 
       def list_relationships_for_feed(feed_id, named = nil)
         the_feed = hawk_escape_id feed_id
         query_params = {
-            sort: '__targetCp'
+          sort: '__targetCp'
         }
         query_params[:named] = named unless named.nil?
         query = generate_query_params query_params
-        ret = http_get("/feeds/#{the_feed}/relationships#{query}")
+        ret = @client.http_get("/feeds/#{the_feed}/relationships#{query}")
         ret.map { |r| Relationship.new(r) }
       rescue
         []
@@ -444,7 +465,7 @@ module Hawkular::Inventory
 
       def get_entity(path)
         c_path = path.is_a?(CanonicalPath) ? path : CanonicalPath.parse(path)
-        http_get("path#{c_path}")
+        @client.http_get("path#{c_path}")
       end
 
       def list_metrics_for_metric_type(metric_type_path)
@@ -452,9 +473,9 @@ module Hawkular::Inventory
         metric_type_id = path.metric_type_id
         feed_id = path.feed_id
         if feed_id.nil?
-          type_hash = http_get("metricTypes/#{metric_type_id}")
+          type_hash = @client.http_get("metricTypes/#{metric_type_id}")
         else
-          type_hash = http_get("/feeds/#{feed_id}/metricTypes/#{metric_type_id}")
+          type_hash = @client.http_get("/feeds/#{feed_id}/metricTypes/#{metric_type_id}")
         end
 
         relations = list_relationships(type_hash['path'], 'defines')
@@ -472,19 +493,19 @@ module Hawkular::Inventory
         feed_id = path.feed_id
 
         if feed_id.nil?
-          ret = http_get("resourceTypes/#{resource_type_id}/resources")
+          ret = @client.http_get("resourceTypes/#{resource_type_id}/resources")
         else
-          ret = http_get("feeds/#{feed_id}/resourceTypes/#{resource_type_id}/resources")
+          ret = @client.http_get("feeds/#{feed_id}/resourceTypes/#{resource_type_id}/resources")
         end
         ret.flat_map do |r|
           path = CanonicalPath.parse(r['path'])
           query = generate_query_params sort: 'id'
           if !path.feed_id.nil?
-            nested_ret = http_get("feeds/#{path.feed_id}/resources/#{path.resource_ids.join('/')}/metrics#{query}")
+            nested = @client.http_get("feeds/#{path.feed_id}/resources/#{path.resource_ids.join('/')}/metrics#{query}")
           else
-            nested_ret = http_get("#{path.environment_id}/resources/#{path.resource_ids.join('/')}/metrics#{query}")
+            nested = @client.http_get("#{path.environment_id}/resources/#{path.resource_ids.join('/')}/metrics#{query}")
           end
-          nested_ret.map { |m| Metric.new(m) }
+          nested.map { |m| Metric.new(m) }
         end
       end
 
@@ -494,7 +515,7 @@ module Hawkular::Inventory
         resource_path_escaped = path.resource_ids.join('/')
 
         query = generate_query_params sort: 'id'
-        ret = http_get("/feeds/#{feed_id}/resources/#{resource_path_escaped}/metrics#{query}")
+        ret = @client.http_get("/feeds/#{feed_id}/resources/#{resource_path_escaped}/metrics#{query}")
         to_filter = ret.map { |m| Metric.new(m) }
         filter_entities(to_filter, filter)
       end
@@ -505,12 +526,12 @@ module Hawkular::Inventory
         feed[:name] = feed_name
 
         begin
-          return http_post('/feeds/', feed)
+          return @client.http_post('/feeds/', feed)
         rescue HawkularException  => error
           # 409 We already exist -> that is ok
           if error.status_code == 409
             the_feed = hawk_escape_id feed_id
-            http_get("/feeds/#{the_feed}")
+            @client.http_get("/feeds/#{the_feed}")
           else
             raise
           end
@@ -519,7 +540,7 @@ module Hawkular::Inventory
 
       def delete_feed(feed_id)
         the_feed = hawk_escape_id feed_id
-        http_delete("/feeds/#{the_feed}")
+        @client.http_delete("/feeds/#{the_feed}")
       end
 
       def create_resource_type(feed_id, type_id, type_name)
@@ -530,13 +551,13 @@ module Hawkular::Inventory
         type[:name] = type_name
 
         begin
-          http_post("/feeds/#{the_feed}/resourceTypes", type)
+          @client.http_post("/feeds/#{the_feed}/resourceTypes", type)
         rescue HawkularException => error
           # 409 We already exist -> that is ok
           raise unless error.status_code == 409
         ensure
           the_type = hawk_escape_id type_id
-          res = http_get("/feeds/#{the_feed}/resourceTypes/#{the_type}")
+          res = @client.http_get("/feeds/#{the_feed}/resourceTypes/#{the_type}")
         end
         ResourceType.new(res)
       end
@@ -554,11 +575,11 @@ module Hawkular::Inventory
 
         begin
           if parent_res_path.nil?
-            res = http_post("/feeds/#{feed_id}/resources", res)
+            res = @client.http_post("/feeds/#{feed_id}/resources", res)
           else
             path = parent_res_path.is_a?(CanonicalPath) ? parent_res_path : CanonicalPath.parse(parent_res_path)
             resource_path = path.resource_ids.join('/')
-            res = http_post("/feeds/#{feed_id}/resources/#{resource_path}", res)
+            res = @client.http_post("/feeds/#{feed_id}/resources/#{resource_path}", res)
           end
         rescue HawkularException => error
           # 409 We already exist -> that is ok
@@ -572,7 +593,7 @@ module Hawkular::Inventory
         feed_id = path.feed_id
         res_path = path.resource_ids.join('/')
 
-        res = http_get("/feeds/#{feed_id}/resources/#{res_path}")
+        res = @client.http_get("/feeds/#{feed_id}/resources/#{res_path}")
         if fetch_resource_config
           p = get_config_data_for_resource(resource_path)
           res['properties'] ||= {}
@@ -590,13 +611,13 @@ module Hawkular::Inventory
         mt = build_metric_type_hash(collection_interval, metric_kind, metric_type_id, unit)
 
         begin
-          http_post("/feeds/#{the_feed}/metricTypes", mt)
+          @client.http_post("/feeds/#{the_feed}/metricTypes", mt)
         rescue HawkularException => error
           # 409 We already exist -> that is ok
           raise unless error.status_code == 409
         end
 
-        new_mt = http_get("/feeds/#{the_feed}/metricTypes/#{metric_type_id}")
+        new_mt = @client.http_get("/feeds/#{the_feed}/metricTypes/#{metric_type_id}")
 
         MetricType.new(new_mt)
       end
@@ -605,7 +626,7 @@ module Hawkular::Inventory
         parsed_path = CanonicalPath.parse(resource_type_path.to_s)
         feed_id = parsed_path.feed_id
         resource_type_id = parsed_path.resource_type_id
-        ret = http_get("/feeds/#{feed_id}/resourceTypes/#{resource_type_id}/operationTypes")
+        ret = @client.http_get("/feeds/#{feed_id}/resourceTypes/#{resource_type_id}/operationTypes")
         ret.map { |ot| ot['id'] }
       end
 
@@ -626,17 +647,17 @@ module Hawkular::Inventory
         m['metricTypePath'] = type_path.to_s
 
         begin
-          http_post("/feeds/#{feed_id}/metrics", m)
+          @client.http_post("/feeds/#{feed_id}/metrics", m)
         rescue HawkularException => error
           # 409 We already exist -> that is ok
           raise unless error.status_code == 409
         end
 
-        ret = http_get("/feeds/#{feed_id}/metrics/#{metric_id}")
+        ret = @client.http_get("/feeds/#{feed_id}/metrics/#{metric_id}")
         the_metric = Metric.new(ret)
 
         begin
-          http_post("/feeds/#{feed_id}/resources/#{res_path_str}/metrics", [the_metric.path])
+          @client.http_post("/feeds/#{feed_id}/resources/#{res_path_str}/metrics", [the_metric.path])
         rescue HawkularException => error
           # 409 We already exist -> that is ok
           raise unless error.status_code == 409
@@ -645,18 +666,22 @@ module Hawkular::Inventory
       end
     end
 
-    class NewApi
-      def list_feeds()
-        ret = http_get('/traversal/type=f')
+    class NewApi < ApiBase
+      def initialize(http_client)
+        @client = http_client
+      end
+
+      def list_feeds
+        ret = @client.http_get('/traversal/type=f')
         ret.map { |f| f['id'] }
       end
 
       def list_resource_types(feed_id = nil)
         if feed_id.nil?
-          ret = http_get('/traversal/type=rt')
+          ret = @client.http_get('/traversal/type=rt')
         else
           the_feed = hawk_escape_id feed_id
-          ret = http_get("/traversal/f;#{the_feed}/type=rt")
+          ret = @client.http_get("/traversal/f;#{the_feed}/type=rt")
         end
         ret.map { |rt| ResourceType.new(rt) }
       end
@@ -664,7 +689,7 @@ module Hawkular::Inventory
       def list_resources_for_feed(feed_id, fetch_properties = false, filter = {})
         fail 'Feed id must be given' unless feed_id
         the_feed = hawk_escape_id feed_id
-        ret = http_get("/traversal/f;#{the_feed}/type=r")
+        ret = @client.http_get("/traversal/f;#{the_feed}/type=r")
         to_filter = ret.map do |r|
           if fetch_properties
             p = get_config_data_for_resource(r['path'])
@@ -680,9 +705,9 @@ module Hawkular::Inventory
         resource_type_id = path.resource_type_id
         feed_id = path.feed_id
         if feed_id.nil?
-          ret = http_get("/traversal/rt;#{resource_type_id}/rl;defines/type=r")
+          ret = @client.http_get("/traversal/rt;#{resource_type_id}/rl;defines/type=r")
         else
-          ret = http_get("/traversal/f;#{feed_id}/rt;#{resource_type_id}/rl;defines/type=r")
+          ret = @client.http_get("/traversal/f;#{feed_id}/rt;#{resource_type_id}/rl;defines/type=r")
         end
         ret.map do |r|
           if fetch_properties && !feed_id.nil?
@@ -697,7 +722,7 @@ module Hawkular::Inventory
         path = resource_path.is_a?(CanonicalPath) ? resource_path : CanonicalPath.parse(resource_path)
         resource_path = 'r;' + path.resource_ids.join('/r;')
         feed_id = path.feed_id
-        http_get("/entity/f;#{feed_id}/#{resource_path}/d;configuration")
+        @client.http_get("/entity/f;#{feed_id}/#{resource_path}/d;configuration")
       rescue
         {}
       end
@@ -708,9 +733,9 @@ module Hawkular::Inventory
         feed_id = path.feed_id
 
         if recursive
-          ret = http_get("/traversal/f;#{feed_id}/#{parent_resource_path}/recursive;over=isParentOf;type=r")
+          ret = @client.http_get("/traversal/f;#{feed_id}/#{parent_resource_path}/recursive;over=isParentOf;type=r")
         else
-          ret = http_get("/traversal/f;#{feed_id}/#{parent_resource_path}/type=r")
+          ret = @client.http_get("/traversal/f;#{feed_id}/#{parent_resource_path}/type=r")
         end
         ret.map { |r| Resource.new(r) }
       end
@@ -718,14 +743,14 @@ module Hawkular::Inventory
       def list_relationships(entity_path, named = nil)
         path = entity_path.is_a?(CanonicalPath) ? entity_path : CanonicalPath.parse(entity_path)
         query_params = {
-            sort: '__targetCp'
+          sort: '__targetCp'
         }
 
         query = generate_query_params query_params
         if named.nil?
-          ret = http_get("/traversal/#{path}/relationships#{query}")
+          ret = @client.http_get("/traversal#{path}/relationships#{query}")
         else
-          ret = http_get("/traversal/#{path}/relationships;name=#{named}#{query}")
+          ret = @client.http_get("/traversal#{path}/relationships;name=#{named}#{query}")
         end
 
         ret.map { |r| Relationship.new(r) }
@@ -734,14 +759,14 @@ module Hawkular::Inventory
       def list_relationships_for_feed(feed_id, named = nil)
         the_feed = hawk_escape_id feed_id
         query_params = {
-            sort: '__targetCp'
+          sort: '__targetCp'
         }
 
         query = generate_query_params query_params
         if named.nil?
-          ret = http_get("/traversal/f;#{the_feed}/relationships#{query}")
+          ret = @client.http_get("/traversal/f;#{the_feed}/relationships#{query}")
         else
-          ret = http_get("/traversal;/f;#{the_feed}/relationships;named=#{named}#{query}")
+          ret = @client.http_get("/traversal;/f;#{the_feed}/relationships;named=#{named}#{query}")
         end
 
         ret.map { |r| Relationship.new(r) }
@@ -751,7 +776,7 @@ module Hawkular::Inventory
 
       def get_entity(path)
         c_path = path.is_a?(CanonicalPath) ? path : CanonicalPath.parse(path)
-        http_get("/entity/#{c_path}")
+        @client.http_get("/entity/#{c_path}")
       end
 
       def list_metrics_for_metric_type(metric_type_path)
@@ -759,9 +784,9 @@ module Hawkular::Inventory
         metric_type_id = path.metric_type_id
         feed_id = path.feed_id
         if feed_id.nil?
-          ret = http_get("/traversal/mt;#{metric_type_id}/rl;defines/type=m")
+          ret = @client.http_get("/traversal/mt;#{metric_type_id}/rl;defines/type=m")
         else
-          ret = http_get("/traversal/f;#{feed_id}/mt;#{metric_type_id}/rl;defines/type=m")
+          ret = @client.http_get("/traversal/f;#{feed_id}/mt;#{metric_type_id}/rl;defines/type=m")
         end
 
         ret.map { |m| Metric.new(m) }
@@ -776,10 +801,10 @@ module Hawkular::Inventory
 
         query = generate_query_params sort: 'id'
         if feed_id.nil?
-          ret = http_get("/traversal/rt;#{resource_type_id}/rl;defines/type=r/rl;incorporates/type=m#{query}")
+          ret = @client.http_get("/traversal/rt;#{resource_type_id}/rl;defines/type=r/rl;incorporates/type=m#{query}")
         else
-          ret = http_get(
-              "/traversal/f;#{feed_id}/rt;#{resource_type_id}/rl;defines/type=r/rl;incorporates/type=m#{query}")
+          ret = @client.http_get(
+            "/traversal/f;#{feed_id}/rt;#{resource_type_id}/rl;defines/type=r/rl;incorporates/type=m#{query}")
         end
         ret.map { |m| Metric.new(m) }
       end
@@ -790,7 +815,7 @@ module Hawkular::Inventory
         resource_path_escaped = 'r;' + path.resource_ids.join('/r;')
 
         query = generate_query_params sort: 'id'
-        ret = http_get("/traversal/f;#{feed_id}/#{resource_path_escaped}/rl;incorporates/type=m#{query}")
+        ret = @client.http_get("/traversal/f;#{feed_id}/#{resource_path_escaped}/rl;incorporates/type=m#{query}")
         to_filter = ret.map { |m| Metric.new(m) }
         filter_entities(to_filter, filter)
       end
@@ -801,12 +826,12 @@ module Hawkular::Inventory
         feed[:name] = feed_name
 
         begin
-          return http_post('/feed', feed)
+          return @client.http_post('/entity/feed', feed)
         rescue HawkularException  => error
           # 409 We already exist -> that is ok
           if error.status_code == 409
             the_feed = hawk_escape_id feed_id
-            http_get("/entity/f;#{the_feed}")
+            @client.http_get("/entity/f;#{the_feed}")
           else
             raise
           end
@@ -815,7 +840,7 @@ module Hawkular::Inventory
 
       def delete_feed(feed_id)
         the_feed = hawk_escape_id feed_id
-        http_delete("/entity/f;#{the_feed}")
+        @client.http_delete("/entity/f;#{the_feed}")
       end
 
       def create_resource_type(feed_id, type_id, type_name)
@@ -826,13 +851,13 @@ module Hawkular::Inventory
         type[:name] = type_name
 
         begin
-          http_post("/entity/f;#{the_feed}/resourceType", type)
+          @client.http_post("/entity/f;#{the_feed}/resourceType", type)
         rescue HawkularException => error
           # 409 We already exist -> that is ok
           raise unless error.status_code == 409
         ensure
           the_type = hawk_escape_id type_id
-          res = http_get("/entity/f;#{the_feed}/rt;#{the_type}")
+          res = @client.http_get("/entity/f;#{the_feed}/rt;#{the_type}")
         end
         ResourceType.new(res)
       end
@@ -850,11 +875,11 @@ module Hawkular::Inventory
 
         begin
           if parent_res_path.nil?
-            res = http_post("/entity/f;#{feed_id}/resource", res)
+            res = @client.http_post("/entity/f;#{feed_id}/resource", res)
           else
             path = parent_res_path.is_a?(CanonicalPath) ? parent_res_path : CanonicalPath.parse(parent_res_path)
             resource_path = 'r;' + path.resource_ids.join('/r;')
-            res = http_post("/entity/f;#{feed_id}/#{resource_path}/resource", res)
+            res = @client.http_post("/entity/f;#{feed_id}/#{resource_path}/resource", res)
           end
         rescue HawkularException => error
           # 409 We already exist -> that is ok
@@ -868,7 +893,7 @@ module Hawkular::Inventory
         feed_id = path.feed_id
         res_path = 'r;' + path.resource_ids.join('/r;')
 
-        res = http_get("/entity/f;#{feed_id}/#{res_path}")
+        res = @client.http_get("/entity/f;#{feed_id}/#{res_path}")
         if fetch_resource_config
           p = get_config_data_for_resource(resource_path)
           res['properties'] ||= {}
@@ -886,13 +911,13 @@ module Hawkular::Inventory
         mt = build_metric_type_hash(collection_interval, metric_kind, metric_type_id, unit)
 
         begin
-          http_post("/entity/f;#{the_feed}/metricType", mt)
+          @client.http_post("/entity/f;#{the_feed}/metricType", mt)
         rescue HawkularException => error
           # 409 We already exist -> that is ok
           raise unless error.status_code == 409
         end
 
-        new_mt = http_get("/entity/f;#{the_feed}/mt;#{metric_type_id}")
+        new_mt = @client.http_get("/entity/f;#{the_feed}/mt;#{metric_type_id}")
 
         MetricType.new(new_mt)
       end
@@ -901,7 +926,7 @@ module Hawkular::Inventory
         parsed_path = CanonicalPath.parse(resource_type_path.to_s)
         feed_id = parsed_path.feed_id
         resource_type_id = parsed_path.resource_type_id
-        ret = http_get("/traversal/f;#{feed_id}/rt;#{resource_type_id}/type=ot")
+        ret = @client.http_get("/traversal/f;#{feed_id}/rt;#{resource_type_id}/type=ot")
         ret.map { |ot| ot['id'] }
       end
 
@@ -922,20 +947,20 @@ module Hawkular::Inventory
         m['metricTypePath'] = type_path.to_s
 
         begin
-          http_post("/entity/f;#{feed_id}/metric", m)
+          @client.http_post("/entity/f;#{feed_id}/metric", m)
         rescue HawkularException => error
           # 409 We already exist -> that is ok
           raise unless error.status_code == 409
         end
 
-        ret = http_get("/entity/f;#{feed_id}/m;#{metric_id}")
+        ret = @client.http_get("/entity/f;#{feed_id}/m;#{metric_id}")
         the_metric = Metric.new(ret)
 
         begin
           rl = {}
           rl['otherEnd'] = the_metric.path.to_s
           rl['name'] = 'incorporates'
-          http_post("/entity/f;#{feed_id}/#{res_path_str}/relationship", [rl])
+          @client.http_post("/entity/f;#{feed_id}/#{res_path_str}/relationship", [rl])
         rescue HawkularException => error
           # 409 We already exist -> that is ok
           raise unless error.status_code == 409
@@ -1009,8 +1034,12 @@ module Hawkular::Inventory
 
     def initialize(res_hash)
       super(res_hash)
-      @type = res_hash['type']
-      @type_path = res_hash['type']['path']
+      if res_hash.key? :resourceTypePath
+        @type_path = res_hash[:resourceTypePath]
+      else
+        @type = res_hash['type']
+        @type_path = res_hash['type']['path']
+      end
     end
   end
 

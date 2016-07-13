@@ -1,0 +1,50 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://jdoe:password@localhost:8080/hawkular/api/urls
+    body:
+      encoding: UTF-8
+      string: '{"url":"http://bsd.de"}'
+    headers:
+      Accept:
+      - "*/*; q=0.5, application/xml"
+      Accept-Encoding:
+      - gzip, deflate
+      Hawkular-Tenant:
+      - hawkular
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '23'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Wed, 13 Jul 2016 22:49:12 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/hawkular.1.0.0+json
+      Content-Length:
+      - '44'
+    body:
+      encoding: ASCII-8BIT
+      string: Url URL[url='http://bsd.de'] already exists.
+    http_version: 
+  recorded_at: Wed, 13 Jul 2016 22:49:12 GMT
+recorded_with: VCR 3.0.1
