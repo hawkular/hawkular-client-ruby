@@ -41,6 +41,9 @@ module Hawkular::Client::RSpec
 
     it 'Should fail when calling unknown method with known client prefix' do
       expect { @hawkular_client.inventory_lyst_feeds }.to raise_error(NoMethodError)
+      expect { @hawkular_client.metrics_lyst_feeds }.to raise_error(NoMethodError)
+      expect { @hawkular_client.alerts_lyst_feeds }.to raise_error(NoMethodError)
+      expect { @hawkular_client.tokens_lyst_feeds }.to raise_error(NoMethodError)
     end
 
     context 'and URIs as input', vcr: { decode_compressed_response: true } do

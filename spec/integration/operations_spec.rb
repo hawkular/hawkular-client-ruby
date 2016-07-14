@@ -112,10 +112,6 @@ module Hawkular::Operations::RSpec
   end
 
   describe 'Operation/Operation', :websocket, vcr: { decode_compressed_response: true } do
-    let(:example) do |e|
-      e
-    end
-
     before(:all) do
       VCR.use_cassette('Operation/Helpers/get_tenant', decode_compressed_response: true) do
         @creds = { username: 'jdoe', password: 'password' }

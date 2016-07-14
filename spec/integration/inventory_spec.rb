@@ -262,6 +262,7 @@ module Hawkular::Inventory::RSpec
       rels = @client.list_relationships(wild_fly.path)
 
       expect(rels.size).to be > 40
+      expect(rels[0].to_h['source']).not_to be_empty
     end
 
     it 'Should list heap metrics for WildFlys' do
