@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://jdoe:password@localhost:8080/hawkular/metrics/status
+    uri: http://jdoe:<%= super_secret_password %>@localhost:8080/hawkular/inventory/status
     body:
       encoding: US-ASCII
       string: ''
@@ -10,13 +10,13 @@ http_interactions:
       Accept:
       - application/json
       Accept-Encoding:
-      - gzip, deflate
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
       Hawkular-Tenant:
       - hawkular
       Content-Type:
       - application/json
-      User-Agent:
-      - Ruby
   response:
     status:
       code: 200
@@ -31,12 +31,18 @@ http_interactions:
       Content-Type:
       - application/json
       Content-Length:
-      - '133'
+      - '234'
       Date:
-      - Wed, 13 Jul 2016 23:58:37 GMT
+      - Thu, 14 Jul 2016 16:23:50 GMT
     body:
       encoding: UTF-8
-      string: '{"MetricsService":"STARTED","Implementation-Version":"0.17.0.Final","Built-From-Git-SHA1":"c439d3797397425d340eac7c549e330d51fc2cac"}'
+      string: |-
+        {
+          "Implementation-Version" : "0.17.2.Final",
+          "Built-From-Git-SHA1" : "3c8ac6648aa0ec33643ae1b98faadc475d2c6f02",
+          "Inventory-Implementation" : "org.hawkular.inventory.impl.tinkerpop.TinkerpopInventory",
+          "Initialized" : "true"
+        }
     http_version: 
-  recorded_at: Wed, 13 Jul 2016 23:58:37 GMT
+  recorded_at: Thu, 14 Jul 2016 16:23:50 GMT
 recorded_with: VCR 3.0.1

@@ -1,0 +1,41 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://<%= super_secret_username %>:<%= super_secret_password %>@hawkular.torii.gva.redhat.com/hawkular/inventory/traversal/type=f
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - hawkular
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 502
+      message: Bad Gateway
+    headers:
+      Server:
+      - nginx/1.6.3
+      Date:
+      - Thu, 14 Jul 2016 16:23:42 GMT
+      Content-Type:
+      - text/html
+      Content-Length:
+      - '172'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: "<html>\r\n<head><title>502 Bad Gateway</title></head>\r\n<body bgcolor=\"white\">\r\n<center><h1>502
+        Bad Gateway</h1></center>\r\n<hr><center>nginx/1.6.3</center>\r\n</body>\r\n</html>\r\n"
+    http_version: 
+  recorded_at: Thu, 14 Jul 2016 16:23:42 GMT
+recorded_with: VCR 3.0.1

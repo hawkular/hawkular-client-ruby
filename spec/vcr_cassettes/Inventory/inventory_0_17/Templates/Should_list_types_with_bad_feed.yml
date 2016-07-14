@@ -1,0 +1,53 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://jdoe:<%= super_secret_password %>@localhost:8080/hawkular/inventory/traversal/f;does%20not%20exist/type=rt
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - hawkular
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Thu, 14 Jul 2016 16:23:42 GMT
+      X-Total-Count:
+      - "-1"
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '3'
+      Link:
+      - <http://localhost:8080/hawkular/inventory/traversal/f;does%20not%20exist/type=rt>;
+        rel="current"
+    body:
+      encoding: UTF-8
+      string: "[ ]"
+    http_version: 
+  recorded_at: Thu, 14 Jul 2016 16:23:42 GMT
+recorded_with: VCR 3.0.1

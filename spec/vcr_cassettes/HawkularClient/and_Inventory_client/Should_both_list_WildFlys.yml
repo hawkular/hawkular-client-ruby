@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/a43ec2b3-94bf-4120-a91b-3a2f63914061/resourceTypes/WildFly%20Server/resources
+    uri: http://jdoe:password@localhost:8080/hawkular/inventory/traversal/f;60f168e0-5220-4208-aa28-0d82a3df4c0c/rt;WildFly%20Server/rl;defines/type=r
     body:
       encoding: US-ASCII
       string: ''
@@ -11,6 +11,8 @@ http_interactions:
       - application/json
       Accept-Encoding:
       - gzip, deflate
+      Hawkular-Tenant:
+      - hawkular
       Content-Type:
       - application/json
       User-Agent:
@@ -31,7 +33,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 29 Mar 2016 15:26:12 GMT
+      - Wed, 13 Jul 2016 23:58:02 GMT
       X-Total-Count:
       - '1'
       Connection:
@@ -39,28 +41,33 @@ http_interactions:
       Content-Type:
       - application/json
       Content-Length:
-      - '357'
+      - '517'
       Link:
-      - <http://localhost:8080/hawkular/inventory/feeds/a43ec2b3-94bf-4120-a91b-3a2f63914061/resourceTypes/WildFly%20Server/resources>;
+      - <http://localhost:8080/hawkular/inventory/traversal/f;60f168e0-5220-4208-aa28-0d82a3df4c0c/rt;WildFly%20Server/rl;defines/type=r>;
         rel="current"
     body:
       encoding: ASCII-8BIT
       string: |-
         [ {
-          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;a43ec2b3-94bf-4120-a91b-3a2f63914061/r;Local~~",
+          "path" : "/t;hawkular/f;60f168e0-5220-4208-aa28-0d82a3df4c0c/r;Local~~",
+          "properties" : {
+            "__identityHash" : "97a7f945b0a6dedbff2e7252b56aae142fcb83d"
+          },
+          "name" : "WildFly Server [Local]",
+          "identityHash" : "97a7f945b0a6dedbff2e7252b56aae142fcb83d",
           "type" : {
-            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;a43ec2b3-94bf-4120-a91b-3a2f63914061/rt;WildFly%20Server",
+            "path" : "/t;hawkular/f;60f168e0-5220-4208-aa28-0d82a3df4c0c/rt;WildFly%20Server",
             "name" : "WildFly Server",
+            "identityHash" : "617542c89b86e3ce52b819c1deae7ca37cf7851",
             "id" : "WildFly Server"
           },
-          "name" : "dhcp-10-40-1-43/Local",
           "id" : "Local~~"
         } ]
     http_version: 
-  recorded_at: Tue, 29 Mar 2016 15:26:12 GMT
+  recorded_at: Wed, 13 Jul 2016 23:58:02 GMT
 - request:
     method: get
-    uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/a43ec2b3-94bf-4120-a91b-3a2f63914061/resourceTypes/WildFly%20Server/resources
+    uri: http://jdoe:password@localhost:8080/hawkular/inventory/traversal/f;60f168e0-5220-4208-aa28-0d82a3df4c0c/rt;WildFly%20Server/rl;defines/type=r
     body:
       encoding: US-ASCII
       string: ''
@@ -69,6 +76,8 @@ http_interactions:
       - application/json
       Accept-Encoding:
       - gzip, deflate
+      Hawkular-Tenant:
+      - hawkular
       Content-Type:
       - application/json
       User-Agent:
@@ -89,7 +98,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 29 Mar 2016 15:26:12 GMT
+      - Wed, 13 Jul 2016 23:58:02 GMT
       X-Total-Count:
       - '1'
       Connection:
@@ -97,23 +106,28 @@ http_interactions:
       Content-Type:
       - application/json
       Content-Length:
-      - '357'
+      - '517'
       Link:
-      - <http://localhost:8080/hawkular/inventory/feeds/a43ec2b3-94bf-4120-a91b-3a2f63914061/resourceTypes/WildFly%20Server/resources>;
+      - <http://localhost:8080/hawkular/inventory/traversal/f;60f168e0-5220-4208-aa28-0d82a3df4c0c/rt;WildFly%20Server/rl;defines/type=r>;
         rel="current"
     body:
       encoding: ASCII-8BIT
       string: |-
         [ {
-          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;a43ec2b3-94bf-4120-a91b-3a2f63914061/r;Local~~",
+          "path" : "/t;hawkular/f;60f168e0-5220-4208-aa28-0d82a3df4c0c/r;Local~~",
+          "properties" : {
+            "__identityHash" : "97a7f945b0a6dedbff2e7252b56aae142fcb83d"
+          },
+          "name" : "WildFly Server [Local]",
+          "identityHash" : "97a7f945b0a6dedbff2e7252b56aae142fcb83d",
           "type" : {
-            "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;a43ec2b3-94bf-4120-a91b-3a2f63914061/rt;WildFly%20Server",
+            "path" : "/t;hawkular/f;60f168e0-5220-4208-aa28-0d82a3df4c0c/rt;WildFly%20Server",
             "name" : "WildFly Server",
+            "identityHash" : "617542c89b86e3ce52b819c1deae7ca37cf7851",
             "id" : "WildFly Server"
           },
-          "name" : "dhcp-10-40-1-43/Local",
           "id" : "Local~~"
         } ]
     http_version: 
-  recorded_at: Tue, 29 Mar 2016 15:26:12 GMT
+  recorded_at: Wed, 13 Jul 2016 23:58:02 GMT
 recorded_with: VCR 3.0.1

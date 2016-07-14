@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/does%20not%20exist/resourceTypes
+    uri: http://jdoe:password@localhost:8080/hawkular/inventory/traversal/f;does%20not%20exist/type=rt
     body:
       encoding: US-ASCII
       string: ''
@@ -11,6 +11,8 @@ http_interactions:
       - application/json
       Accept-Encoding:
       - gzip, deflate
+      Hawkular-Tenant:
+      - hawkular
       Content-Type:
       - application/json
       User-Agent:
@@ -31,7 +33,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 29 Mar 2016 15:26:12 GMT
+      - Wed, 13 Jul 2016 23:58:02 GMT
       X-Total-Count:
       - "-1"
       Connection:
@@ -41,16 +43,16 @@ http_interactions:
       Content-Length:
       - '3'
       Link:
-      - <http://localhost:8080/hawkular/inventory/feeds/does%20not%20exist/resourceTypes>;
+      - <http://localhost:8080/hawkular/inventory/traversal/f;does%20not%20exist/type=rt>;
         rel="current"
     body:
       encoding: ASCII-8BIT
       string: "[ ]"
     http_version: 
-  recorded_at: Tue, 29 Mar 2016 15:26:12 GMT
+  recorded_at: Wed, 13 Jul 2016 23:58:02 GMT
 - request:
     method: get
-    uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/does%20not%20exist/resourceTypes
+    uri: http://jdoe:password@localhost:8080/hawkular/inventory/traversal/f;does%20not%20exist/type=rt
     body:
       encoding: US-ASCII
       string: ''
@@ -59,6 +61,8 @@ http_interactions:
       - application/json
       Accept-Encoding:
       - gzip, deflate
+      Hawkular-Tenant:
+      - hawkular
       Content-Type:
       - application/json
       User-Agent:
@@ -79,7 +83,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 29 Mar 2016 15:26:12 GMT
+      - Wed, 13 Jul 2016 23:58:02 GMT
       X-Total-Count:
       - "-1"
       Connection:
@@ -89,11 +93,11 @@ http_interactions:
       Content-Length:
       - '3'
       Link:
-      - <http://localhost:8080/hawkular/inventory/feeds/does%20not%20exist/resourceTypes>;
+      - <http://localhost:8080/hawkular/inventory/traversal/f;does%20not%20exist/type=rt>;
         rel="current"
     body:
       encoding: ASCII-8BIT
       string: "[ ]"
     http_version: 
-  recorded_at: Tue, 29 Mar 2016 15:26:12 GMT
+  recorded_at: Wed, 13 Jul 2016 23:58:02 GMT
 recorded_with: VCR 3.0.1
