@@ -1,6 +1,7 @@
 require 'bundler/gem_tasks'
 require 'rspec/core/rake_task'
 require 'rubocop/rake_task'
+require 'coveralls/rake/task'
 
 desc 'Runs all the specs'
 RSpec::Core::RakeTask.new(:spec) do |task|
@@ -16,5 +17,6 @@ RSpec::Core::RakeTask.new(:'old-inventory') do |task|
 end
 
 RuboCop::RakeTask.new
+Coveralls::RakeTask.new
 
-task default: [:rubocop, :spec, :'old-inventory']
+task default: [:rubocop, :'old-inventory', :spec, 'coveralls:push']

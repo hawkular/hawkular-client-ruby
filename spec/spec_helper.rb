@@ -1,6 +1,5 @@
 # This needs to go before all requires to be able to record full coverage
 require 'coveralls'
-Coveralls.wear!
 # Now the application requires.
 require 'hawkular/hawkular_client'
 require 'hawkular/hawkular_client_utils'
