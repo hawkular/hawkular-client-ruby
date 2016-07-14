@@ -213,4 +213,16 @@ RSpec.configure do |config|
     WebMock.allow_net_connect!
     puts 'VCR is turned off!'
   end
+
+  module RestClient
+    class Request
+      def default_headers
+        {
+          accept: '*/*',
+          accept_encoding: 'identity',
+          user_agent: 'hawkular-client-ruby'
+        }
+      end
+    end
+  end
 end

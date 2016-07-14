@@ -12,7 +12,7 @@ desc 'Runs the specs for the inventory 0.16.x (old REST API)'
 RSpec::Core::RakeTask.new(:'old-inventory') do |task|
   task.pattern = './spec/integration/inventory_spec.rb'
   task.rspec_opts = ['--color']
-  task.ruby_opts = ['INVENTORY_VERSION=0.16.2.Final']
+  ENV['INVENTORY_VERSION'] = '0.16.2.Final'
 end
 
 RuboCop::RakeTask.new

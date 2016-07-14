@@ -8,7 +8,7 @@ module Hawkular::Inventory::RSpec
   VERSION = ENV['INVENTORY_VERSION'] || DEFAULT_VERSION
 
   include Hawkular::Inventory
-  xdescribe 'Inventory/Tenants', vcr: { decode_compressed_response: true, record: :new_episodes } do
+  describe 'Inventory/Tenants', vcr: { decode_compressed_response: true, record: :new_episodes } do
     it 'Should Get Tenant For Explicit Credentials' do
       # get the client for given endpoint for given credentials
       creds = { username: 'jdoe', password: 'password' }
@@ -17,11 +17,15 @@ module Hawkular::Inventory::RSpec
       client = Hawkular::Inventory::InventoryClient.create(entrypoint: ENTRYPOINT,
                                                            credentials: creds,
                                                            options: options)
-      tenant = client.get_tenant(creds)
-
-      if client.version[0] == 0 && client.version[1] < 17
-        expect(tenant).to eq('28026b36-8fe4-4332-84c8-524e173a68bf')
+      x, y, = client.version
+      if x == 0 && y < 17
+        VCR.eject_cassette
+        VCR.use_cassette("Inventory/inventory_#{x}_#{y}/Tenants/Should_Get_Tenant_For_Explicit_Credentials") do
+          tenant = client.get_tenant(creds)
+          expect(tenant).to eq('28026b36-8fe4-4332-84c8-524e173a68bf')
+        end
       else
+        tenant = client.get_tenant(creds)
         expect(tenant).to eq('hawkular')
       end
     end
@@ -33,11 +37,15 @@ module Hawkular::Inventory::RSpec
       client = Hawkular::Inventory::InventoryClient.create(entrypoint: ENTRYPOINT,
                                                            credentials: creds,
                                                            options: options)
-      tenant = client.get_tenant
-
-      if client.version[0] == 0 && @client.version[1] < 17
-        expect(tenant).to eq('28026b36-8fe4-4332-84c8-524e173a68bf')
+      x, y, = client.version
+      if x == 0 && y < 17
+        VCR.eject_cassette
+        VCR.use_cassette("Inventory/inventory_#{x}_#{y}/Tenants/Should_Get_Tenant_For_Implicit_Credentials") do
+          tenant = client.get_tenant(creds)
+          expect(tenant).to eq('28026b36-8fe4-4332-84c8-524e173a68bf')
+        end
       else
+        tenant = client.get_tenant(creds)
         expect(tenant).to eq('hawkular')
       end
     end
