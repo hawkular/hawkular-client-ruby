@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://jdoe:password@localhost:8080/hawkular/inventory/tenant
+    uri: http://jdoe:<%= super_secret_password %>@localhost:8080/hawkular/inventory/entity/f;feed_may_exist/r;*bla%20does%20not%20exist*
     body:
       encoding: US-ASCII
       string: ''
@@ -19,11 +19,9 @@ http_interactions:
       - Ruby
   response:
     status:
-      code: 200
-      message: OK
+      code: 404
+      message: Not Found
     headers:
-      Content-Encoding:
-      - gzip
       Expires:
       - '0'
       Cache-Control:
@@ -35,18 +33,25 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Thu, 14 Jul 2016 00:21:00 GMT
+      - Wed, 13 Jul 2016 21:46:28 GMT
       Connection:
       - keep-alive
       Content-Type:
       - application/json
       Content-Length:
-      - '56'
+      - '316'
     body:
       encoding: ASCII-8BIT
-      string: !binary |-
-        H4sIAAAAAAAAAKvmUlBQKkgsyVBSsFJQ0i+xzkgszy7NSSxS0gHJZKaAxeGC
-        XLUAi/fNJjEAAAA=
+      string: |-
+        {
+          "errorMsg" : "No Resource found on any of the following paths: [[CanonicalPaths[/t;hawkular/f;feed_may_exist/r;%2Abla%20does%20not%20exist%2A]]]",
+          "details" : {
+            "entityType" : "Resource",
+            "path" : [ [ {
+              "paths" : [ "/t;hawkular/f;feed_may_exist/r;%2Abla%20does%20not%20exist%2A" ]
+            } ] ]
+          }
+        }
     http_version: 
-  recorded_at: Thu, 14 Jul 2016 00:21:00 GMT
+  recorded_at: Wed, 13 Jul 2016 21:46:28 GMT
 recorded_with: VCR 3.0.1

@@ -13,7 +13,7 @@ module Hawkular::Client::RSpec
         password: 'password'
       }
       ::RSpec::Mocks.with_temporary_scope do
-        mock_inventory_client
+        mock_inventory_client '0.17.2.Final'
         @hawkular_client = Hawkular::Client.new(entrypoint: HOST, credentials: @creds, options: { tenant: 'hawkular' })
       end
       @state = {
@@ -72,7 +72,7 @@ module Hawkular::Client::RSpec
     context 'and Inventory client', vcr: { decode_compressed_response: true } do
       before(:all) do
         ::RSpec::Mocks.with_temporary_scope do
-          mock_inventory_client
+          mock_inventory_client '0.17.2.Final'
           @client = Hawkular::Inventory::InventoryClient.create(entrypoint: HOST,
                                                                 credentials: @creds,
                                                                 options: { tenant: 'hawkular' })

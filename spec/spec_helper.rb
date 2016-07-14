@@ -1,6 +1,5 @@
 # This needs to go before all requires to be able to record full coverage
 require 'coveralls'
-Coveralls.wear!
 # Now the application requires.
 require 'hawkular/hawkular_client'
 require 'hawkular/hawkular_client_utils'
@@ -212,5 +211,17 @@ RSpec.configure do |config|
     WebSocketVCR.turn_off! # TODO: this does not work as the impl is empty
     WebMock.allow_net_connect!
     puts 'VCR is turned off!'
+  end
+
+  module RestClient
+    class Request
+      def default_headers
+        {
+          accept: '*/*',
+          accept_encoding: 'identity',
+          user_agent: 'hawkular-client-ruby'
+        }
+      end
+    end
   end
 end

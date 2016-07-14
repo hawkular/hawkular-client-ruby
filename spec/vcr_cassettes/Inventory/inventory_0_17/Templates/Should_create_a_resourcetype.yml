@@ -1,0 +1,163 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://jdoe:<%= super_secret_password %>@localhost:8080/hawkular/inventory/entity/feed
+    body:
+      encoding: UTF-8
+      string: '{"properties":{},"id":"feed_may_exist","name":null,"outgoing":{},"incoming":{}}'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Hawkular-Tenant:
+      - hawkular
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '79'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Location:
+      - http://localhost:8080/hawkular/inventory/entity/f;feed_may_exist
+      Date:
+      - Wed, 13 Jul 2016 21:46:26 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '135'
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "path" : "/t;hawkular/f;feed_may_exist",
+          "identityHash" : "18a4f8a18a8012f826e2dbe4cb768d14c391a59b",
+          "id" : "feed_may_exist"
+        }
+    http_version: 
+  recorded_at: Wed, 13 Jul 2016 21:46:26 GMT
+- request:
+    method: post
+    uri: http://jdoe:<%= super_secret_password %>@localhost:8080/hawkular/inventory/entity/f;feed_may_exist/resourceType
+    body:
+      encoding: UTF-8
+      string: '{"properties":{},"id":"rt-123","name":"ResourceType","outgoing":{},"incoming":{}}'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Hawkular-Tenant:
+      - hawkular
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '81'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Location:
+      - http://localhost:8080/hawkular/inventory/entity/f;feed_may_exist/rt;rt-123
+      Date:
+      - Wed, 13 Jul 2016 21:46:26 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '162'
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "path" : "/t;hawkular/f;feed_may_exist/rt;rt-123",
+          "name" : "ResourceType",
+          "identityHash" : "30a52c53a93cb102e499367ecc55ed8a03b0b1",
+          "id" : "rt-123"
+        }
+    http_version: 
+  recorded_at: Wed, 13 Jul 2016 21:46:26 GMT
+- request:
+    method: get
+    uri: http://jdoe:<%= super_secret_password %>@localhost:8080/hawkular/inventory/entity/f;feed_may_exist/rt;rt-123
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Hawkular-Tenant:
+      - hawkular
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Wed, 13 Jul 2016 21:46:26 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '162'
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "path" : "/t;hawkular/f;feed_may_exist/rt;rt-123",
+          "name" : "ResourceType",
+          "identityHash" : "30a52c53a93cb102e499367ecc55ed8a03b0b1",
+          "id" : "rt-123"
+        }
+    http_version: 
+  recorded_at: Wed, 13 Jul 2016 21:46:26 GMT
+recorded_with: VCR 3.0.1

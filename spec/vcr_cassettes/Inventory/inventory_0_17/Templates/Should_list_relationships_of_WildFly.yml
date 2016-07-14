@@ -1,0 +1,377 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://jdoe:<%= super_secret_password %>@localhost:8080/hawkular/inventory/traversal/f;<%= feed_uuid %>/rt;WildFly%20Server/rl;defines/type=r
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Hawkular-Tenant:
+      - hawkular
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Wed, 13 Jul 2016 21:46:25 GMT
+      X-Total-Count:
+      - '1'
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '511'
+      Link:
+      - <http://localhost:8080/hawkular/inventory/traversal/f;<%= feed_uuid %>/rt;WildFly%20Server/rl;defines/type=r>;
+        rel="current"
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        [ {
+          "path" : "/t;hawkular/f;<%= feed_uuid %>/r;Local~~",
+          "properties" : {
+            "__identityHash" : "706a325c01e60343eb4f6e2aef257a333fd7"
+          },
+          "name" : "WildFly Server [Local]",
+          "identityHash" : "706a325c01e60343eb4f6e2aef257a333fd7",
+          "type" : {
+            "path" : "/t;hawkular/f;<%= feed_uuid %>/rt;WildFly%20Server",
+            "name" : "WildFly Server",
+            "identityHash" : "617542c89b86e3ce52b819c1deae7ca37cf7851",
+            "id" : "WildFly Server"
+          },
+          "id" : "Local~~"
+        } ]
+    http_version: 
+  recorded_at: Wed, 13 Jul 2016 21:46:25 GMT
+- request:
+    method: get
+    uri: http://jdoe:<%= super_secret_password %>@localhost:8080/hawkular/inventory/traversal/t;hawkular/f;<%= feed_uuid %>/r;Local~~/relationships?sort=__targetCp
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Hawkular-Tenant:
+      - hawkular
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Wed, 13 Jul 2016 21:46:25 GMT
+      X-Total-Count:
+      - '43'
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '13773'
+      Link:
+      - <http://localhost:8080/hawkular/inventory/traversal/t;hawkular/f;<%= feed_uuid %>/r;Local~~/relationships?sort=__targetCp>;
+        rel="current"
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        [ {
+          "id" : "355s-qv4-1d05-xs0",
+          "name" : "incorporates",
+          "source" : "/t;hawkular/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;hawkular/f;<%= feed_uuid %>/m;AI~R~%5B<%= feed_uuid %>%2FLocal~~%5D~AT~Server%20Availability~Server%20Availability",
+          "path" : "/rl;355s-qv4-1d05-xs0"
+        }, {
+          "id" : "34zk-qv4-1d05-we8",
+          "name" : "incorporates",
+          "source" : "/t;hawkular/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;hawkular/f;<%= feed_uuid %>/m;MI~R~%5B<%= feed_uuid %>%2FLocal~~%5D~MT~WildFly%20Aggregated%20Web%20Metrics~Aggregated%20Active%20Web%20Sessions",
+          "path" : "/rl;34zk-qv4-1d05-we8"
+        }, {
+          "id" : "34w0-qv4-1d05-vls",
+          "name" : "incorporates",
+          "source" : "/t;hawkular/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;hawkular/f;<%= feed_uuid %>/m;MI~R~%5B<%= feed_uuid %>%2FLocal~~%5D~MT~WildFly%20Aggregated%20Web%20Metrics~Aggregated%20Expired%20Web%20Sessions",
+          "path" : "/rl;34w0-qv4-1d05-vls"
+        }, {
+          "id" : "34xs-qv4-1d05-w00",
+          "name" : "incorporates",
+          "source" : "/t;hawkular/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;hawkular/f;<%= feed_uuid %>/m;MI~R~%5B<%= feed_uuid %>%2FLocal~~%5D~MT~WildFly%20Aggregated%20Web%20Metrics~Aggregated%20Max%20Active%20Web%20Sessions",
+          "path" : "/rl;34xs-qv4-1d05-w00"
+        }, {
+          "id" : "3528-qv4-1d05-wzk",
+          "name" : "incorporates",
+          "source" : "/t;hawkular/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;hawkular/f;<%= feed_uuid %>/m;MI~R~%5B<%= feed_uuid %>%2FLocal~~%5D~MT~WildFly%20Aggregated%20Web%20Metrics~Aggregated%20Rejected%20Web%20Sessions",
+          "path" : "/rl;3528-qv4-1d05-wzk"
+        }, {
+          "id" : "34v4-qv4-1d05-veo",
+          "name" : "incorporates",
+          "source" : "/t;hawkular/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;hawkular/f;<%= feed_uuid %>/m;MI~R~%5B<%= feed_uuid %>%2FLocal~~%5D~MT~WildFly%20Aggregated%20Web%20Metrics~Aggregated%20Servlet%20Request%20Count",
+          "path" : "/rl;34v4-qv4-1d05-veo"
+        }, {
+          "id" : "354w-qv4-1d05-xkw",
+          "name" : "incorporates",
+          "source" : "/t;hawkular/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;hawkular/f;<%= feed_uuid %>/m;MI~R~%5B<%= feed_uuid %>%2FLocal~~%5D~MT~WildFly%20Aggregated%20Web%20Metrics~Aggregated%20Servlet%20Request%20Time",
+          "path" : "/rl;354w-qv4-1d05-xkw"
+        }, {
+          "id" : "350g-qv4-1d05-wlc",
+          "name" : "incorporates",
+          "source" : "/t;hawkular/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;hawkular/f;<%= feed_uuid %>/m;MI~R~%5B<%= feed_uuid %>%2FLocal~~%5D~MT~WildFly%20Memory%20Metrics~Accumulated%20GC%20Duration",
+          "path" : "/rl;350g-qv4-1d05-wlc"
+        }, {
+          "id" : "351c-qv4-1d05-wsg",
+          "name" : "incorporates",
+          "source" : "/t;hawkular/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;hawkular/f;<%= feed_uuid %>/m;MI~R~%5B<%= feed_uuid %>%2FLocal~~%5D~MT~WildFly%20Memory%20Metrics~Heap%20Committed",
+          "path" : "/rl;351c-qv4-1d05-wsg"
+        }, {
+          "id" : "34ww-qv4-1d05-vsw",
+          "name" : "incorporates",
+          "source" : "/t;hawkular/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;hawkular/f;<%= feed_uuid %>/m;MI~R~%5B<%= feed_uuid %>%2FLocal~~%5D~MT~WildFly%20Memory%20Metrics~Heap%20Max",
+          "path" : "/rl;34ww-qv4-1d05-vsw"
+        }, {
+          "id" : "34yo-qv4-1d05-w74",
+          "name" : "incorporates",
+          "source" : "/t;hawkular/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;hawkular/f;<%= feed_uuid %>/m;MI~R~%5B<%= feed_uuid %>%2FLocal~~%5D~MT~WildFly%20Memory%20Metrics~Heap%20Used",
+          "path" : "/rl;34yo-qv4-1d05-w74"
+        }, {
+          "id" : "3534-qv4-1d05-x6o",
+          "name" : "incorporates",
+          "source" : "/t;hawkular/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;hawkular/f;<%= feed_uuid %>/m;MI~R~%5B<%= feed_uuid %>%2FLocal~~%5D~MT~WildFly%20Memory%20Metrics~NonHeap%20Committed",
+          "path" : "/rl;3534-qv4-1d05-x6o"
+        }, {
+          "id" : "34u8-qv4-1d05-v7k",
+          "name" : "incorporates",
+          "source" : "/t;hawkular/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;hawkular/f;<%= feed_uuid %>/m;MI~R~%5B<%= feed_uuid %>%2FLocal~~%5D~MT~WildFly%20Memory%20Metrics~NonHeap%20Used",
+          "path" : "/rl;34u8-qv4-1d05-v7k"
+        }, {
+          "id" : "3540-qv4-1d05-xds",
+          "name" : "incorporates",
+          "source" : "/t;hawkular/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;hawkular/f;<%= feed_uuid %>/m;MI~R~%5B<%= feed_uuid %>%2FLocal~~%5D~MT~WildFly%20Threading%20Metrics~Thread%20Count",
+          "path" : "/rl;3540-qv4-1d05-xds"
+        }, {
+          "id" : "33c0-qv4-153p-2zuo",
+          "name" : "contains",
+          "source" : "/t;hawkular/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;hawkular/f;<%= feed_uuid %>/r;Local~~/d;configuration",
+          "path" : "/rl;33c0-qv4-153p-2zuo"
+        }, {
+          "id" : "365c-qv4-1pn9-32m8",
+          "name" : "isParentOf",
+          "source" : "/t;hawkular/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;hawkular/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-alerts-actions-email.war",
+          "path" : "/rl;365c-qv4-1pn9-32m8"
+        }, {
+          "id" : "363k-qv4-153p-32m8",
+          "name" : "contains",
+          "source" : "/t;hawkular/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;hawkular/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-alerts-actions-email.war",
+          "path" : "/rl;363k-qv4-153p-32m8"
+        }, {
+          "id" : "36qo-qv4-1pn9-337k",
+          "name" : "isParentOf",
+          "source" : "/t;hawkular/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;hawkular/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-alerts-rest.war",
+          "path" : "/rl;36qo-qv4-1pn9-337k"
+        }, {
+          "id" : "36ow-qv4-153p-337k",
+          "name" : "contains",
+          "source" : "/t;hawkular/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;hawkular/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-alerts-rest.war",
+          "path" : "/rl;36ow-qv4-153p-337k"
+        }, {
+          "id" : "35r4-qv4-1pn9-3280",
+          "name" : "isParentOf",
+          "source" : "/t;hawkular/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;hawkular/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-command-gateway-war.war",
+          "path" : "/rl;35r4-qv4-1pn9-3280"
+        }, {
+          "id" : "35pc-qv4-153p-3280",
+          "name" : "contains",
+          "source" : "/t;hawkular/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;hawkular/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-command-gateway-war.war",
+          "path" : "/rl;35pc-qv4-153p-3280"
+        }, {
+          "id" : "36jk-qv4-1pn9-330g",
+          "name" : "isParentOf",
+          "source" : "/t;hawkular/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;hawkular/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-inventory-dist.war",
+          "path" : "/rl;36jk-qv4-1pn9-330g"
+        }, {
+          "id" : "36hs-qv4-153p-330g",
+          "name" : "contains",
+          "source" : "/t;hawkular/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;hawkular/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-inventory-dist.war",
+          "path" : "/rl;36hs-qv4-153p-330g"
+        }, {
+          "id" : "35y8-qv4-1pn9-32f4",
+          "name" : "isParentOf",
+          "source" : "/t;hawkular/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;hawkular/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-metrics-component.war",
+          "path" : "/rl;35y8-qv4-1pn9-32f4"
+        }, {
+          "id" : "35wg-qv4-153p-32f4",
+          "name" : "contains",
+          "source" : "/t;hawkular/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;hawkular/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-metrics-component.war",
+          "path" : "/rl;35wg-qv4-153p-32f4"
+        }, {
+          "id" : "36xs-qv4-1pn9-33eo",
+          "name" : "isParentOf",
+          "source" : "/t;hawkular/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;hawkular/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-rest-api.war",
+          "path" : "/rl;36xs-qv4-1pn9-33eo"
+        }, {
+          "id" : "36w0-qv4-153p-33eo",
+          "name" : "contains",
+          "source" : "/t;hawkular/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;hawkular/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-rest-api.war",
+          "path" : "/rl;36w0-qv4-153p-33eo"
+        }, {
+          "id" : "36cg-qv4-1pn9-32tc",
+          "name" : "isParentOf",
+          "source" : "/t;hawkular/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;hawkular/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-wildfly-agent-download.war",
+          "path" : "/rl;36cg-qv4-1pn9-32tc"
+        }, {
+          "id" : "36ao-qv4-153p-32tc",
+          "name" : "contains",
+          "source" : "/t;hawkular/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;hawkular/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-wildfly-agent-download.war",
+          "path" : "/rl;36ao-qv4-153p-32tc"
+        }, {
+          "id" : "37q8-qv4-1pn9-3474",
+          "name" : "isParentOf",
+          "source" : "/t;hawkular/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;hawkular/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fsocket-binding-group%3Dstandard-sockets",
+          "path" : "/rl;37q8-qv4-1pn9-3474"
+        }, {
+          "id" : "37og-qv4-153p-3474",
+          "name" : "contains",
+          "source" : "/t;hawkular/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;hawkular/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fsocket-binding-group%3Dstandard-sockets",
+          "path" : "/rl;37og-qv4-153p-3474"
+        }, {
+          "id" : "35cw-qv4-1pn9-31ts",
+          "name" : "isParentOf",
+          "source" : "/t;hawkular/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;hawkular/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fsubsystem%3Ddatasources%2Fdata-source%3DExampleDS",
+          "path" : "/rl;35cw-qv4-1pn9-31ts"
+        }, {
+          "id" : "35b4-qv4-153p-31ts",
+          "name" : "contains",
+          "source" : "/t;hawkular/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;hawkular/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fsubsystem%3Ddatasources%2Fdata-source%3DExampleDS",
+          "path" : "/rl;35b4-qv4-153p-31ts"
+        }, {
+          "id" : "35k0-qv4-1pn9-320w",
+          "name" : "isParentOf",
+          "source" : "/t;hawkular/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;hawkular/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fsubsystem%3Ddatasources%2Fjdbc-driver%3Dh2",
+          "path" : "/rl;35k0-qv4-1pn9-320w"
+        }, {
+          "id" : "35i8-qv4-153p-320w",
+          "name" : "contains",
+          "source" : "/t;hawkular/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;hawkular/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fsubsystem%3Ddatasources%2Fjdbc-driver%3Dh2",
+          "path" : "/rl;35i8-qv4-153p-320w"
+        }, {
+          "id" : "37j4-qv4-1pn9-3400",
+          "name" : "isParentOf",
+          "source" : "/t;hawkular/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;hawkular/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fsubsystem%3Dhawkular-wildfly-agent",
+          "path" : "/rl;37j4-qv4-1pn9-3400"
+        }, {
+          "id" : "37hc-qv4-153p-3400",
+          "name" : "contains",
+          "source" : "/t;hawkular/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;hawkular/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fsubsystem%3Dhawkular-wildfly-agent",
+          "path" : "/rl;37hc-qv4-153p-3400"
+        }, {
+          "id" : "37xc-qv4-1pn9-34e8",
+          "name" : "isParentOf",
+          "source" : "/t;hawkular/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;hawkular/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fsubsystem%3Dinfinispan",
+          "path" : "/rl;37xc-qv4-1pn9-34e8"
+        }, {
+          "id" : "37vk-qv4-153p-34e8",
+          "name" : "contains",
+          "source" : "/t;hawkular/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;hawkular/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fsubsystem%3Dinfinispan",
+          "path" : "/rl;37vk-qv4-153p-34e8"
+        }, {
+          "id" : "37c0-qv4-1pn9-33sw",
+          "name" : "isParentOf",
+          "source" : "/t;hawkular/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;hawkular/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fsubsystem%3Dmessaging-activemq%2Fserver%3Ddefault",
+          "path" : "/rl;37c0-qv4-1pn9-33sw"
+        }, {
+          "id" : "37a8-qv4-153p-33sw",
+          "name" : "contains",
+          "source" : "/t;hawkular/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;hawkular/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fsubsystem%3Dmessaging-activemq%2Fserver%3Ddefault",
+          "path" : "/rl;37a8-qv4-153p-33sw"
+        }, {
+          "id" : "374w-qv4-1pn9-33ls",
+          "name" : "isParentOf",
+          "source" : "/t;hawkular/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;hawkular/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fsubsystem%3Dtransactions",
+          "path" : "/rl;374w-qv4-1pn9-33ls"
+        }, {
+          "id" : "3734-qv4-153p-33ls",
+          "name" : "contains",
+          "source" : "/t;hawkular/f;<%= feed_uuid %>/r;Local~~",
+          "target" : "/t;hawkular/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fsubsystem%3Dtransactions",
+          "path" : "/rl;3734-qv4-153p-33ls"
+        } ]
+    http_version: 
+  recorded_at: Wed, 13 Jul 2016 21:46:25 GMT
+recorded_with: VCR 3.0.1

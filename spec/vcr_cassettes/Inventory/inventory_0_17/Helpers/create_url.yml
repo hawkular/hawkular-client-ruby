@@ -1,20 +1,22 @@
 ---
 http_interactions:
 - request:
-    method: get
-    uri: http://jdoe:password@localhost:8080/hawkular/inventory/tenant
+    method: post
+    uri: http://jdoe:password@localhost:8080/hawkular/api/urls
     body:
-      encoding: US-ASCII
-      string: ''
+      encoding: UTF-8
+      string: '{"url":"http://bsd.de"}'
     headers:
       Accept:
-      - application/json
+      - "*/*; q=0.5, application/xml"
       Accept-Encoding:
       - gzip, deflate
       Hawkular-Tenant:
       - hawkular
       Content-Type:
       - application/json
+      Content-Length:
+      - '23'
       User-Agent:
       - Ruby
   response:
@@ -22,8 +24,6 @@ http_interactions:
       code: 200
       message: OK
     headers:
-      Content-Encoding:
-      - gzip
       Expires:
       - '0'
       Cache-Control:
@@ -35,18 +35,16 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Thu, 14 Jul 2016 00:21:00 GMT
+      - Wed, 13 Jul 2016 22:49:12 GMT
       Connection:
       - keep-alive
       Content-Type:
-      - application/json
+      - application/hawkular.1.0.0+json
       Content-Length:
-      - '56'
+      - '44'
     body:
       encoding: ASCII-8BIT
-      string: !binary |-
-        H4sIAAAAAAAAAKvmUlBQKkgsyVBSsFJQ0i+xzkgszy7NSSxS0gHJZKaAxeGC
-        XLUAi/fNJjEAAAA=
+      string: Url URL[url='http://bsd.de'] already exists.
     http_version: 
-  recorded_at: Thu, 14 Jul 2016 00:21:00 GMT
+  recorded_at: Wed, 13 Jul 2016 22:49:12 GMT
 recorded_with: VCR 3.0.1

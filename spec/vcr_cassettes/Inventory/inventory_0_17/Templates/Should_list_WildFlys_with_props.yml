@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://jdoe:password@localhost:8080/hawkular/inventory/traversal/f;60f168e0-5220-4208-aa28-0d82a3df4c0c/rt;WildFly%20Server/rl;defines/type=r
+    uri: http://jdoe:<%= super_secret_password %>@localhost:8080/hawkular/inventory/traversal/f;<%= feed_uuid %>/rt;WildFly%20Server/rl;defines/type=r
     body:
       encoding: US-ASCII
       string: ''
@@ -33,7 +33,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 13 Jul 2016 23:58:02 GMT
+      - Wed, 13 Jul 2016 21:46:24 GMT
       X-Total-Count:
       - '1'
       Connection:
@@ -41,22 +41,22 @@ http_interactions:
       Content-Type:
       - application/json
       Content-Length:
-      - '517'
+      - '511'
       Link:
-      - <http://localhost:8080/hawkular/inventory/traversal/f;60f168e0-5220-4208-aa28-0d82a3df4c0c/rt;WildFly%20Server/rl;defines/type=r>;
+      - <http://localhost:8080/hawkular/inventory/traversal/f;<%= feed_uuid %>/rt;WildFly%20Server/rl;defines/type=r>;
         rel="current"
     body:
       encoding: ASCII-8BIT
       string: |-
         [ {
-          "path" : "/t;hawkular/f;60f168e0-5220-4208-aa28-0d82a3df4c0c/r;Local~~",
+          "path" : "/t;hawkular/f;<%= feed_uuid %>/r;Local~~",
           "properties" : {
-            "__identityHash" : "97a7f945b0a6dedbff2e7252b56aae142fcb83d"
+            "__identityHash" : "706a325c01e60343eb4f6e2aef257a333fd7"
           },
           "name" : "WildFly Server [Local]",
-          "identityHash" : "97a7f945b0a6dedbff2e7252b56aae142fcb83d",
+          "identityHash" : "706a325c01e60343eb4f6e2aef257a333fd7",
           "type" : {
-            "path" : "/t;hawkular/f;60f168e0-5220-4208-aa28-0d82a3df4c0c/rt;WildFly%20Server",
+            "path" : "/t;hawkular/f;<%= feed_uuid %>/rt;WildFly%20Server",
             "name" : "WildFly Server",
             "identityHash" : "617542c89b86e3ce52b819c1deae7ca37cf7851",
             "id" : "WildFly Server"
@@ -64,10 +64,10 @@ http_interactions:
           "id" : "Local~~"
         } ]
     http_version: 
-  recorded_at: Wed, 13 Jul 2016 23:58:02 GMT
+  recorded_at: Wed, 13 Jul 2016 21:46:24 GMT
 - request:
     method: get
-    uri: http://jdoe:password@localhost:8080/hawkular/inventory/traversal/f;60f168e0-5220-4208-aa28-0d82a3df4c0c/rt;WildFly%20Server/rl;defines/type=r
+    uri: http://jdoe:<%= super_secret_password %>@localhost:8080/hawkular/inventory/entity/f;<%= feed_uuid %>/r;Local~~/d;configuration
     body:
       encoding: US-ASCII
       string: ''
@@ -98,36 +98,34 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 13 Jul 2016 23:58:02 GMT
-      X-Total-Count:
-      - '1'
+      - Wed, 13 Jul 2016 21:46:24 GMT
       Connection:
       - keep-alive
       Content-Type:
       - application/json
       Content-Length:
-      - '517'
-      Link:
-      - <http://localhost:8080/hawkular/inventory/traversal/f;60f168e0-5220-4208-aa28-0d82a3df4c0c/rt;WildFly%20Server/rl;defines/type=r>;
-        rel="current"
+      - '571'
     body:
       encoding: ASCII-8BIT
       string: |-
-        [ {
-          "path" : "/t;hawkular/f;60f168e0-5220-4208-aa28-0d82a3df4c0c/r;Local~~",
+        {
+          "path" : "/t;hawkular/f;<%= feed_uuid %>/r;Local~~/d;configuration",
           "properties" : {
-            "__identityHash" : "97a7f945b0a6dedbff2e7252b56aae142fcb83d"
+            "__identityHash" : "82d7496d2787d8af42f9cd45868c31b8cadc9d"
           },
-          "name" : "WildFly Server [Local]",
-          "identityHash" : "97a7f945b0a6dedbff2e7252b56aae142fcb83d",
-          "type" : {
-            "path" : "/t;hawkular/f;60f168e0-5220-4208-aa28-0d82a3df4c0c/rt;WildFly%20Server",
-            "name" : "WildFly Server",
-            "identityHash" : "617542c89b86e3ce52b819c1deae7ca37cf7851",
-            "id" : "WildFly Server"
-          },
-          "id" : "Local~~"
-        } ]
+          "name" : "configuration",
+          "identityHash" : "82d7496d2787d8af42f9cd45868c31b8cadc9d",
+          "value" : {
+            "Suspend State" : "RUNNING",
+            "Bound Address" : "127.0.0.1",
+            "Running Mode" : "NORMAL",
+            "Node Name" : "localhost",
+            "Server State" : "running",
+            "Hostname" : "localhost.localdomain",
+            "UUID" : "<%= feed_uuid %>",
+            "Name" : "localhost"
+          }
+        }
     http_version: 
-  recorded_at: Wed, 13 Jul 2016 23:58:02 GMT
+  recorded_at: Wed, 13 Jul 2016 21:46:24 GMT
 recorded_with: VCR 3.0.1
