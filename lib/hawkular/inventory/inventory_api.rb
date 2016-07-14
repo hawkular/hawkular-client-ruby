@@ -289,10 +289,10 @@ module Hawkular::Inventory
       ws_options = {
         headers: {
           Authorization: 'Basic ' + base64_creds,
-          'Hawkular-Tenant': tenant_id,
           Accept: 'application/json'
         }
       }
+      ws_options[:headers][:'Hawkular-Tenant'] = tenant_id
 
       url = "#{entrypoint.gsub(/https?/, 'ws')}/ws/events?tenantId=#{tenant_id}&type=#{type}&action=#{action}"
       @ws = WebSocket::Client::Simple.connect url, ws_options do |client|

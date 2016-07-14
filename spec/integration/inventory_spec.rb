@@ -105,10 +105,12 @@ module Hawkular::Inventory::RSpec
 
       # create 1 URL resource and its metrics
       VCR.use_cassette("Inventory/inventory_#{x}_#{y}/Helpers/create_url", options) do
+        headers = {}
+        headers[:'Hawkular-Tenant'] = 'hawkular'
         rest_client = RestClient::Resource.new('http://localhost:8080/hawkular/api/urls',
                                                user: @creds[:username],
                                                password: @creds[:password],
-                                               headers: { 'Hawkular-Tenant': 'hawkular' }
+                                               headers: headers
                                               )
         url_json = {
           url: URL_RESOURCE
