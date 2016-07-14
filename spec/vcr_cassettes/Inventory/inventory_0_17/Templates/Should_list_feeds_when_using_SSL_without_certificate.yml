@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://<%= super_secret_username %>:<%= super_secret_password %>@hawkular.torii.gva.redhat.com/hawkular/inventory/traversal/type=f
+    uri: https://username:password@hawkular.torii.gva.redhat.com/hawkular/inventory/traversal/type=f
     body:
       encoding: US-ASCII
       string: ''
@@ -19,23 +19,42 @@ http_interactions:
       - application/json
   response:
     status:
-      code: 502
-      message: Bad Gateway
+      code: 200
+      message: OK
     headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
       Server:
-      - nginx/1.6.3
+      - WildFly/10
+      Pragma:
+      - no-cache
       Date:
-      - Thu, 14 Jul 2016 16:23:42 GMT
-      Content-Type:
-      - text/html
-      Content-Length:
-      - '172'
+      - Thu, 14 Jul 2016 16:23:36 GMT
+      X-Total-Count:
+      - '1'
       Connection:
       - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '267'
+      Link:
+      - <http://localhost:8080/hawkular/inventory/traversal/type=f>; rel="current"
     body:
       encoding: UTF-8
-      string: "<html>\r\n<head><title>502 Bad Gateway</title></head>\r\n<body bgcolor=\"white\">\r\n<center><h1>502
-        Bad Gateway</h1></center>\r\n<hr><center>nginx/1.6.3</center>\r\n</body>\r\n</html>\r\n"
-    http_version: 
-  recorded_at: Thu, 14 Jul 2016 16:23:42 GMT
+      string: |-
+        [ {
+          "path" : "/t;hawkular/f;1e8450c5-ef31-4760-ac82-0295dd337ed7",
+          "properties" : {
+            "__identityHash" : "1529b824c466776d4f26aba71db7cb4788d0d"
+          },
+          "identityHash" : "1529b824c466776d4f26aba71db7cb4788d0d",
+          "id" : "1e8450c5-ef31-4760-ac82-0295dd337ed7"
+        } ]
+    http_version:
+  recorded_at: Thu, 14 Jul 2016 16:23:36 GMT
 recorded_with: VCR 3.0.1

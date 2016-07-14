@@ -6,7 +6,7 @@ module Hawkular::Inventory
     attr_reader :path
     # @return [String] Name of the entity
     attr_reader :name
-    # @return [String] Name of the entity
+    # @return [String] Id of the entity
     attr_reader :id
     # @return [String] Feed this entity belongs to (or nil in case of a feedless entity)
     attr_reader :feed
@@ -37,7 +37,7 @@ module Hawkular::Inventory
     end
 
     def ==(other)
-      self.eql?(other) || other.class == self.class && other.id == @id
+      self.equal?(other) || other.class == self.class && other.id == @id
     end
 
     # Returns a hash representation of the resource type
@@ -188,7 +188,7 @@ module Hawkular::Inventory
     # rubocop:enable Metrics/CyclomaticComplexity
 
     def ==(other)
-      self.eql?(other) || other.class == self.class && other.state == state
+      self.equal?(other) || other.class == self.class && other.state == state
     end
 
     def to_s
