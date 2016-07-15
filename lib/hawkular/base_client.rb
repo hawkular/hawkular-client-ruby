@@ -163,6 +163,9 @@ module Hawkular
       attr_reader :message, :status_code
     end
 
+    class HawkularConnectionException < HawkularException
+    end
+
     private
 
     def token_header
@@ -173,6 +176,16 @@ module Hawkular
       headers = {}
       headers[:'Hawkular-Tenant'] = @options[:tenant] unless @options[:tenant].nil?
       headers
+    end
+
+    # @!visibility private
+    def connect_error(fault)
+      if fault.is_a?(SocketError)
+        HawkularConnectionException.new(fault.to_s)
+      elsif [Errno::ECONNREFUSED, Errno::ECONNRESET, Errno::EHOSTUNREACH,
+             Errno::ENETDOWN, Errno::ENETUNREACH, Errno::ETIMEDOUT].include?(fault.class)
+        HawkularConnectionException.new(fault.to_s, fault.class::Errno)
+      end
     end
 
     def handle_fault(f)
@@ -186,6 +199,8 @@ module Hawkular
           fault_message = f.http_body
         end
         fail HawkularException.new(fault_message, http_code)
+      elsif (connect_error_exception = connect_error(f))
+        fail connect_error_exception
       else
         fail f
       end
