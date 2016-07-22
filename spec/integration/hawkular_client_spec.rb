@@ -13,7 +13,7 @@ module Hawkular::Client::RSpec
         password: 'password'
       }
       ::RSpec::Mocks.with_temporary_scope do
-        mock_inventory_client
+        mock_inventory_client '0.17.2.Final'
         @hawkular_client = Hawkular::Client.new(entrypoint: HOST, credentials: @creds, options: { tenant: 'hawkular' })
       end
       @state = {
@@ -41,6 +41,9 @@ module Hawkular::Client::RSpec
 
     it 'Should fail when calling unknown method with known client prefix' do
       expect { @hawkular_client.inventory_lyst_feeds }.to raise_error(NoMethodError)
+      expect { @hawkular_client.metrics_lyst_feeds }.to raise_error(NoMethodError)
+      expect { @hawkular_client.alerts_lyst_feeds }.to raise_error(NoMethodError)
+      expect { @hawkular_client.tokens_lyst_feeds }.to raise_error(NoMethodError)
     end
 
     context 'and URIs as input', vcr: { decode_compressed_response: true } do
@@ -72,7 +75,7 @@ module Hawkular::Client::RSpec
     context 'and Inventory client', vcr: { decode_compressed_response: true } do
       before(:all) do
         ::RSpec::Mocks.with_temporary_scope do
-          mock_inventory_client
+          mock_inventory_client '0.17.2.Final'
           @client = Hawkular::Inventory::InventoryClient.create(entrypoint: HOST,
                                                                 credentials: @creds,
                                                                 options: { tenant: 'hawkular' })

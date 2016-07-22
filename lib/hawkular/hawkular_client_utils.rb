@@ -35,6 +35,7 @@ module HawkularUtilsMixin
   def hawk_escape_id(url_part)
     sub_url = hawk_escape url_part
     sub_url.gsub!('=', '%3d')
+    sub_url.gsub!(';', '%3b')
     sub_url
   end
 end

@@ -7,11 +7,11 @@
     },
     {
       "operation": "write",
-      "data": "ExecuteOperationRequest={\"operationName\":\"Redeploy\",\"resourcePath\":\"/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;33f22c4a-445a-4f90-a25e-caeff9579a10/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-alerts-actions-email.war\",\"authentication\":{\"username\":\"jdoe\",\"password\":\"password\"}}"
+      "data": "ExecuteOperationRequest={\"operationName\":\"Redeploy\",\"resourcePath\":\"/t;hawkular/f;33f22c4a-445a-4f90-a25e-caeff9579a10/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-alerts-actions-email.war\",\"authentication\":{\"username\":\"jdoe\",\"password\":\"password\"}}"
     },
     {
       "operation": "write",
-      "data": "ExecuteOperationRequest={\"operationName\":\"Redeploy\",\"resourcePath\":\"/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;33f22c4a-445a-4f90-a25e-caeff9579a10/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-console.war\",\"authentication\":{\"username\":\"jdoe\",\"password\":\"password\"}}"
+      "data": "ExecuteOperationRequest={\"operationName\":\"Redeploy\",\"resourcePath\":\"/t;hawkular/f;33f22c4a-445a-4f90-a25e-caeff9579a10/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-console.war\",\"authentication\":{\"username\":\"jdoe\",\"password\":\"password\"}}"
     },
     {
       "operation": "read",
@@ -26,12 +26,12 @@
     {
       "operation": "read",
       "type": "text",
-      "data": "ExecuteOperationResponse={\"operationName\":\"Redeploy\",\"resourcePath\":\"/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;33f22c4a-445a-4f90-a25e-caeff9579a10/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-alerts-actions-email.war\",\"destinationSessionId\":\"CB5bP3YS_n9_k7ARVPvAR5BoQ1igWPQ6fC19j6ye\",\"status\":\"OK\",\"message\":\"Performed [Redeploy] on a [DMR Node] given by Inventory path [/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;33f22c4a-445a-4f90-a25e-caeff9579a10/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-alerts-actions-email.war]\"}"
+      "data": "ExecuteOperationResponse={\"operationName\":\"Redeploy\",\"resourcePath\":\"/t;hawkular/f;33f22c4a-445a-4f90-a25e-caeff9579a10/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-alerts-actions-email.war\",\"destinationSessionId\":\"CB5bP3YS_n9_k7ARVPvAR5BoQ1igWPQ6fC19j6ye\",\"status\":\"OK\",\"message\":\"Performed [Redeploy] on a [DMR Node] given by Inventory path [/t;hawkular/f;33f22c4a-445a-4f90-a25e-caeff9579a10/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-alerts-actions-email.war]\"}"
     },
     {
       "operation": "read",
       "type": "text",
-      "data": "ExecuteOperationResponse={\"operationName\":\"Redeploy\",\"resourcePath\":\"/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;33f22c4a-445a-4f90-a25e-caeff9579a10/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-console.war\",\"destinationSessionId\":\"CB5bP3YS_n9_k7ARVPvAR5BoQ1igWPQ6fC19j6ye\",\"status\":\"OK\",\"message\":\"Performed [Redeploy] on a [DMR Node] given by Inventory path [/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;33f22c4a-445a-4f90-a25e-caeff9579a10/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-console.war]\"}"
+      "data": "ExecuteOperationResponse={\"operationName\":\"Redeploy\",\"resourcePath\":\"/t;hawkular/f;33f22c4a-445a-4f90-a25e-caeff9579a10/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-console.war\",\"destinationSessionId\":\"CB5bP3YS_n9_k7ARVPvAR5BoQ1igWPQ6fC19j6ye\",\"status\":\"OK\",\"message\":\"Performed [Redeploy] on a [DMR Node] given by Inventory path [/t;hawkular/f;33f22c4a-445a-4f90-a25e-caeff9579a10/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-console.war]\"}"
     },
     {
       "operation": "close"

@@ -1,0 +1,402 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://jdoe:<%= super_secret_password %>@localhost:8080/hawkular/inventory/entity/feed
+    body:
+      encoding: UTF-8
+      string: '{"properties":{},"id":"feed_may_exist","name":null,"outgoing":{},"incoming":{}}'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - hawkular
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '79'
+  response:
+    status:
+      code: 409
+      message: Conflict
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Thu, 14 Jul 2016 16:23:46 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '663'
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errorMsg" : "Feed with id 'Feed[path='/t;hawkular/f;feed_may_exist']' has been already registered. Entity with id 'feed_may_exist' already exists at some of the positions: [[Types[Tenant], Ids[hawkular], Related[, rel='contains', role=SOURCE], Types[Feed], Ids[feed_may_exist]]]",
+          "details" : {
+            "entityId" : "feed_may_exist",
+            "paths" : [ [ {
+              "types" : [ "org.hawkular.inventory.api.model.Tenant" ]
+            }, {
+              "ids" : [ "hawkular" ]
+            }, {
+              "relationshipName" : "contains",
+              "entityRole" : "SOURCE"
+            }, {
+              "types" : [ "org.hawkular.inventory.api.model.Feed" ]
+            }, {
+              "ids" : [ "feed_may_exist" ]
+            } ] ]
+          }
+        }
+    http_version: 
+  recorded_at: Thu, 14 Jul 2016 16:23:46 GMT
+- request:
+    method: get
+    uri: http://jdoe:<%= super_secret_password %>@localhost:8080/hawkular/inventory/entity/f;feed_may_exist
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - hawkular
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Thu, 14 Jul 2016 16:23:46 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '223'
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "path" : "/t;hawkular/f;feed_may_exist",
+          "properties" : {
+            "__identityHash" : "55affa87de54513afac93594fab92745c814eea"
+          },
+          "identityHash" : "55affa87de54513afac93594fab92745c814eea",
+          "id" : "feed_may_exist"
+        }
+    http_version: 
+  recorded_at: Thu, 14 Jul 2016 16:23:46 GMT
+- request:
+    method: post
+    uri: http://jdoe:<%= super_secret_password %>@localhost:8080/hawkular/inventory/entity/f;feed_may_exist/resourceType
+    body:
+      encoding: UTF-8
+      string: '{"properties":{},"id":"rt-123","name":"ResourceType","outgoing":{},"incoming":{}}'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - hawkular
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '81'
+  response:
+    status:
+      code: 409
+      message: Conflict
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Thu, 14 Jul 2016 16:23:46 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '107'
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errorMsg" : "Entity with id 'null' already exists at some of the positions: null",
+          "details" : { }
+        }
+    http_version: 
+  recorded_at: Thu, 14 Jul 2016 16:23:46 GMT
+- request:
+    method: get
+    uri: http://jdoe:<%= super_secret_password %>@localhost:8080/hawkular/inventory/entity/f;feed_may_exist/rt;rt-123
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - hawkular
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Thu, 14 Jul 2016 16:23:46 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '162'
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "path" : "/t;hawkular/f;feed_may_exist/rt;rt-123",
+          "name" : "ResourceType",
+          "identityHash" : "30a52c53a93cb102e499367ecc55ed8a03b0b1",
+          "id" : "rt-123"
+        }
+    http_version: 
+  recorded_at: Thu, 14 Jul 2016 16:23:46 GMT
+- request:
+    method: post
+    uri: http://jdoe:<%= super_secret_password %>@localhost:8080/hawkular/inventory/entity/f;feed_may_exist/resource
+    body:
+      encoding: UTF-8
+      string: '{"properties":{"version":1.0},"id":"r125","name":"My Resource","outgoing":{},"incoming":{},"resourceTypePath":"/t;hawkular/f;feed_may_exist/rt;rt-123"}'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - hawkular
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '151'
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Location:
+      - http://localhost:8080/hawkular/inventory/entity/f;feed_may_exist/r;r125
+      Date:
+      - Thu, 14 Jul 2016 16:23:46 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '386'
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "path" : "/t;hawkular/f;feed_may_exist/r;r125",
+          "properties" : {
+            "version" : 1.0
+          },
+          "name" : "My Resource",
+          "identityHash" : "4f6d7ec5cdd2f75ca2cb9e4d0499c7bc0f5c5a2",
+          "type" : {
+            "path" : "/t;hawkular/f;feed_may_exist/rt;rt-123",
+            "name" : "ResourceType",
+            "identityHash" : "30a52c53a93cb102e499367ecc55ed8a03b0b1",
+            "id" : "rt-123"
+          },
+          "id" : "r125"
+        }
+    http_version: 
+  recorded_at: Thu, 14 Jul 2016 16:23:46 GMT
+- request:
+    method: get
+    uri: http://jdoe:<%= super_secret_password %>@localhost:8080/hawkular/inventory/entity/f;feed_may_exist/r;r125
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - hawkular
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Thu, 14 Jul 2016 16:23:47 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '452'
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "path" : "/t;hawkular/f;feed_may_exist/r;r125",
+          "properties" : {
+            "__identityHash" : "4f6d7ec5cdd2f75ca2cb9e4d0499c7bc0f5c5a2",
+            "version" : 1.0
+          },
+          "name" : "My Resource",
+          "identityHash" : "4f6d7ec5cdd2f75ca2cb9e4d0499c7bc0f5c5a2",
+          "type" : {
+            "path" : "/t;hawkular/f;feed_may_exist/rt;rt-123",
+            "name" : "ResourceType",
+            "identityHash" : "30a52c53a93cb102e499367ecc55ed8a03b0b1",
+            "id" : "rt-123"
+          },
+          "id" : "r125"
+        }
+    http_version: 
+  recorded_at: Thu, 14 Jul 2016 16:23:47 GMT
+- request:
+    method: get
+    uri: http://jdoe:<%= super_secret_password %>@localhost:8080/hawkular/inventory/entity/f;feed_may_exist/r;r125/d;configuration
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - hawkular
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Thu, 14 Jul 2016 16:23:47 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '300'
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errorMsg" : "No DataEntity found on any of the following paths: [[CanonicalPaths[/t;hawkular/f;feed_may_exist/r;r125/d;configuration]]]",
+          "details" : {
+            "entityType" : "DataEntity",
+            "path" : [ [ {
+              "paths" : [ "/t;hawkular/f;feed_may_exist/r;r125/d;configuration" ]
+            } ] ]
+          }
+        }
+    http_version: 
+  recorded_at: Thu, 14 Jul 2016 16:23:47 GMT
+recorded_with: VCR 3.0.1

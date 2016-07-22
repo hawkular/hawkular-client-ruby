@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/
+    uri: http://jdoe:password@localhost:8080/hawkular/inventory/entity/feed
     body:
       encoding: UTF-8
       string: '{"properties":{},"id":"feed_1123sdn","name":null,"outgoing":{},"incoming":{}}'
@@ -11,6 +11,8 @@ http_interactions:
       - application/json
       Accept-Encoding:
       - gzip, deflate
+      Hawkular-Tenant:
+      - hawkular
       Content-Type:
       - application/json
       Content-Length:
@@ -33,27 +35,28 @@ http_interactions:
       Pragma:
       - no-cache
       Location:
-      - http://localhost:8080/hawkular/inventory/feeds/feed_1123sdn
+      - http://localhost:8080/hawkular/inventory/entity/f;feed_1123sdn
       Date:
-      - Tue, 29 Mar 2016 15:26:12 GMT
+      - Wed, 13 Jul 2016 23:58:02 GMT
       Connection:
       - keep-alive
       Content-Type:
       - application/json
       Content-Length:
-      - '96'
+      - '131'
     body:
       encoding: ASCII-8BIT
       string: |-
         {
-          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;feed_1123sdn",
+          "path" : "/t;hawkular/f;feed_1123sdn",
+          "identityHash" : "e153d6e14c5bd12f51dcdc16a0493afbd0298dcb",
           "id" : "feed_1123sdn"
         }
     http_version: 
-  recorded_at: Tue, 29 Mar 2016 15:26:12 GMT
+  recorded_at: Wed, 13 Jul 2016 23:58:02 GMT
 - request:
     method: post
-    uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/
+    uri: http://jdoe:password@localhost:8080/hawkular/inventory/entity/feed
     body:
       encoding: UTF-8
       string: '{"properties":{},"id":"feed_1124sdn","name":null,"outgoing":{},"incoming":{}}'
@@ -62,6 +65,8 @@ http_interactions:
       - application/json
       Accept-Encoding:
       - gzip, deflate
+      Hawkular-Tenant:
+      - hawkular
       Content-Type:
       - application/json
       Content-Length:
@@ -84,27 +89,28 @@ http_interactions:
       Pragma:
       - no-cache
       Location:
-      - http://localhost:8080/hawkular/inventory/feeds/feed_1124sdn
+      - http://localhost:8080/hawkular/inventory/entity/f;feed_1124sdn
       Date:
-      - Tue, 29 Mar 2016 15:26:12 GMT
+      - Wed, 13 Jul 2016 23:58:02 GMT
       Connection:
       - keep-alive
       Content-Type:
       - application/json
       Content-Length:
-      - '96'
+      - '130'
     body:
       encoding: ASCII-8BIT
       string: |-
         {
-          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;feed_1124sdn",
+          "path" : "/t;hawkular/f;feed_1124sdn",
+          "identityHash" : "1f35659889bbd9f3cfef7654b2e2e44aa17e6ba",
           "id" : "feed_1124sdn"
         }
     http_version: 
-  recorded_at: Tue, 29 Mar 2016 15:26:12 GMT
+  recorded_at: Wed, 13 Jul 2016 23:58:02 GMT
 - request:
     method: get
-    uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds
+    uri: http://jdoe:password@localhost:8080/hawkular/inventory/traversal/type=f
     body:
       encoding: US-ASCII
       string: ''
@@ -113,6 +119,8 @@ http_interactions:
       - application/json
       Accept-Encoding:
       - gzip, deflate
+      Hawkular-Tenant:
+      - hawkular
       Content-Type:
       - application/json
       User-Agent:
@@ -133,7 +141,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 29 Mar 2016 15:26:12 GMT
+      - Wed, 13 Jul 2016 23:58:02 GMT
       X-Total-Count:
       - '3'
       Connection:
@@ -141,27 +149,39 @@ http_interactions:
       Content-Type:
       - application/json
       Content-Length:
-      - '344'
+      - '713'
       Link:
-      - <http://localhost:8080/hawkular/inventory/feeds>; rel="current"
+      - <http://localhost:8080/hawkular/inventory/traversal/type=f>; rel="current"
     body:
       encoding: ASCII-8BIT
       string: |-
         [ {
-          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;a43ec2b3-94bf-4120-a91b-3a2f63914061",
-          "id" : "a43ec2b3-94bf-4120-a91b-3a2f63914061"
+          "path" : "/t;hawkular/f;60f168e0-5220-4208-aa28-0d82a3df4c0c",
+          "properties" : {
+            "__identityHash" : "994724c2730de93555ab298d8e4e3f99579a6b"
+          },
+          "identityHash" : "994724c2730de93555ab298d8e4e3f99579a6b",
+          "id" : "60f168e0-5220-4208-aa28-0d82a3df4c0c"
         }, {
-          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;feed_1123sdn",
+          "path" : "/t;hawkular/f;feed_1123sdn",
+          "properties" : {
+            "__identityHash" : "e153d6e14c5bd12f51dcdc16a0493afbd0298dcb"
+          },
+          "identityHash" : "e153d6e14c5bd12f51dcdc16a0493afbd0298dcb",
           "id" : "feed_1123sdn"
         }, {
-          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;feed_1124sdn",
+          "path" : "/t;hawkular/f;feed_1124sdn",
+          "properties" : {
+            "__identityHash" : "1f35659889bbd9f3cfef7654b2e2e44aa17e6ba"
+          },
+          "identityHash" : "1f35659889bbd9f3cfef7654b2e2e44aa17e6ba",
           "id" : "feed_1124sdn"
         } ]
     http_version: 
-  recorded_at: Tue, 29 Mar 2016 15:26:12 GMT
+  recorded_at: Wed, 13 Jul 2016 23:58:02 GMT
 - request:
     method: delete
-    uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/feed_1124sdn
+    uri: http://jdoe:password@localhost:8080/hawkular/inventory/entity/f;feed_1124sdn
     body:
       encoding: US-ASCII
       string: ''
@@ -170,6 +190,8 @@ http_interactions:
       - application/json
       Accept-Encoding:
       - gzip, deflate
+      Hawkular-Tenant:
+      - hawkular
       Content-Type:
       - application/json
       User-Agent:
@@ -190,15 +212,15 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 29 Mar 2016 15:26:12 GMT
+      - Wed, 13 Jul 2016 23:58:02 GMT
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Tue, 29 Mar 2016 15:26:12 GMT
+  recorded_at: Wed, 13 Jul 2016 23:58:02 GMT
 - request:
     method: delete
-    uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds/feed_1123sdn
+    uri: http://jdoe:password@localhost:8080/hawkular/inventory/entity/f;feed_1123sdn
     body:
       encoding: US-ASCII
       string: ''
@@ -207,6 +229,8 @@ http_interactions:
       - application/json
       Accept-Encoding:
       - gzip, deflate
+      Hawkular-Tenant:
+      - hawkular
       Content-Type:
       - application/json
       User-Agent:
@@ -227,15 +251,15 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 29 Mar 2016 15:26:13 GMT
+      - Wed, 13 Jul 2016 23:58:02 GMT
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Tue, 29 Mar 2016 15:26:13 GMT
+  recorded_at: Wed, 13 Jul 2016 23:58:02 GMT
 - request:
     method: get
-    uri: http://jdoe:password@localhost:8080/hawkular/inventory/feeds
+    uri: http://jdoe:password@localhost:8080/hawkular/inventory/traversal/type=f
     body:
       encoding: US-ASCII
       string: ''
@@ -244,6 +268,8 @@ http_interactions:
       - application/json
       Accept-Encoding:
       - gzip, deflate
+      Hawkular-Tenant:
+      - hawkular
       Content-Type:
       - application/json
       User-Agent:
@@ -264,7 +290,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 29 Mar 2016 15:26:13 GMT
+      - Wed, 13 Jul 2016 23:58:02 GMT
       X-Total-Count:
       - '1'
       Connection:
@@ -272,16 +298,20 @@ http_interactions:
       Content-Type:
       - application/json
       Content-Length:
-      - '148'
+      - '269'
       Link:
-      - <http://localhost:8080/hawkular/inventory/feeds>; rel="current"
+      - <http://localhost:8080/hawkular/inventory/traversal/type=f>; rel="current"
     body:
       encoding: ASCII-8BIT
       string: |-
         [ {
-          "path" : "/t;28026b36-8fe4-4332-84c8-524e173a68bf/f;a43ec2b3-94bf-4120-a91b-3a2f63914061",
-          "id" : "a43ec2b3-94bf-4120-a91b-3a2f63914061"
+          "path" : "/t;hawkular/f;60f168e0-5220-4208-aa28-0d82a3df4c0c",
+          "properties" : {
+            "__identityHash" : "994724c2730de93555ab298d8e4e3f99579a6b"
+          },
+          "identityHash" : "994724c2730de93555ab298d8e4e3f99579a6b",
+          "id" : "60f168e0-5220-4208-aa28-0d82a3df4c0c"
         } ]
     http_version: 
-  recorded_at: Tue, 29 Mar 2016 15:26:13 GMT
+  recorded_at: Wed, 13 Jul 2016 23:58:02 GMT
 recorded_with: VCR 3.0.1
