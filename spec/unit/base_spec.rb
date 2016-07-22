@@ -1,4 +1,5 @@
-require '#{File.dirname(__FILE__)}/../spec_helper'
+require "#{File.dirname(__FILE__)}/../vcr/vcr_setup"
+require "#{File.dirname(__FILE__)}/../spec_helper"
 
 describe 'Base Spec' do
   it 'should know encode' do
@@ -154,5 +155,33 @@ describe 'Base Spec' do
     uri = URI.parse 'http://localhost:8080/hawkular/alerts/'
     ret = c.normalize_entrypoint_url uri, '/hawkular/alerts/'
     expect(ret).to eq('http://localhost:8080/hawkular/alerts')
+  end
+
+  it 'Should throw a HawkularConnectionException when host not listening to port' do
+    begin
+      WebMock.disable!
+      VCR.turned_off do
+        c = Hawkular::BaseClient.new('127.0.0.1:0')
+        expect do
+          c.http_get('not-needed-for-this-test')
+        end.to raise_error(Hawkular::BaseClient::HawkularConnectionException)
+      end
+    ensure
+      WebMock.enable!
+    end
+  end
+
+  it 'Should throw a HawkularConnectionException when unknown host' do
+    begin
+      WebMock.disable!
+      VCR.turned_off do
+        c = Hawkular::BaseClient.new('some-unknown-and-random-host-that-wont-exist')
+        expect do
+          c.http_get('not-needed-for-this-test')
+        end.to raise_error(Hawkular::BaseClient::HawkularConnectionException)
+      end
+    ensure
+      WebMock.enable!
+    end
   end
 end
