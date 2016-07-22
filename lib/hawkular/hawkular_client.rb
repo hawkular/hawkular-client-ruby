@@ -58,7 +58,7 @@ module Hawkular
 
     # this is in a dedicated method, because constructor opens the websocket connection to make the handshake
     def init_operations_client
-      Operations::OperationsClient.new(entrypoint: @state[:entrypoint].gsub(/^https?/, 'ws'),
+      Operations::OperationsClient.new(entrypoint: @state[:entrypoint].to_s.sub(/^https?/, 'ws'),
                                        credentials: @state[:credentials],
                                        options: @state[:options])
     end

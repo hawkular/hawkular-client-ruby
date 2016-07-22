@@ -270,6 +270,15 @@ module Hawkular::Client::RSpec
         end
       end
 
+      it 'Should work initializing with URI' do
+        uri = URI.parse HOST
+        opts = { tenant: 'hawkular' }
+        WebSocketVCR.record(example, self) do
+          the_client = Hawkular::Client.new(entrypoint: uri, credentials: @creds, options: opts)
+          expect { the_client.operations }.to_not raise_error
+        end
+      end
+
       xit 'Should both reuse the websocket connection', :websocket do
         WebSocketVCR.record(example, self) do
         end
