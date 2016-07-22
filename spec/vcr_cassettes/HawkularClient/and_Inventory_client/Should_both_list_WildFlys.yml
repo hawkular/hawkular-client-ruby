@@ -10,13 +10,13 @@ http_interactions:
       Accept:
       - application/json
       Accept-Encoding:
-      - gzip, deflate
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
       Hawkular-Tenant:
       - hawkular
       Content-Type:
       - application/json
-      User-Agent:
-      - Ruby
   response:
     status:
       code: 200
@@ -33,38 +33,23 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 13 Jul 2016 23:58:02 GMT
+      - Fri, 22 Jul 2016 17:44:34 GMT
       X-Total-Count:
-      - '1'
+      - "-1"
       Connection:
       - keep-alive
       Content-Type:
       - application/json
       Content-Length:
-      - '517'
+      - '3'
       Link:
       - <http://localhost:8080/hawkular/inventory/traversal/f;60f168e0-5220-4208-aa28-0d82a3df4c0c/rt;WildFly%20Server/rl;defines/type=r>;
         rel="current"
     body:
-      encoding: ASCII-8BIT
-      string: |-
-        [ {
-          "path" : "/t;hawkular/f;60f168e0-5220-4208-aa28-0d82a3df4c0c/r;Local~~",
-          "properties" : {
-            "__identityHash" : "97a7f945b0a6dedbff2e7252b56aae142fcb83d"
-          },
-          "name" : "WildFly Server [Local]",
-          "identityHash" : "97a7f945b0a6dedbff2e7252b56aae142fcb83d",
-          "type" : {
-            "path" : "/t;hawkular/f;60f168e0-5220-4208-aa28-0d82a3df4c0c/rt;WildFly%20Server",
-            "name" : "WildFly Server",
-            "identityHash" : "617542c89b86e3ce52b819c1deae7ca37cf7851",
-            "id" : "WildFly Server"
-          },
-          "id" : "Local~~"
-        } ]
+      encoding: UTF-8
+      string: "[ ]"
     http_version: 
-  recorded_at: Wed, 13 Jul 2016 23:58:02 GMT
+  recorded_at: Fri, 22 Jul 2016 17:44:34 GMT
 - request:
     method: get
     uri: http://jdoe:password@localhost:8080/hawkular/inventory/traversal/f;60f168e0-5220-4208-aa28-0d82a3df4c0c/rt;WildFly%20Server/rl;defines/type=r
@@ -75,13 +60,13 @@ http_interactions:
       Accept:
       - application/json
       Accept-Encoding:
-      - gzip, deflate
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
       Hawkular-Tenant:
       - hawkular
       Content-Type:
       - application/json
-      User-Agent:
-      - Ruby
   response:
     status:
       code: 200
@@ -98,36 +83,21 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 13 Jul 2016 23:58:02 GMT
+      - Fri, 22 Jul 2016 17:44:35 GMT
       X-Total-Count:
-      - '1'
+      - "-1"
       Connection:
       - keep-alive
       Content-Type:
       - application/json
       Content-Length:
-      - '517'
+      - '3'
       Link:
       - <http://localhost:8080/hawkular/inventory/traversal/f;60f168e0-5220-4208-aa28-0d82a3df4c0c/rt;WildFly%20Server/rl;defines/type=r>;
         rel="current"
     body:
-      encoding: ASCII-8BIT
-      string: |-
-        [ {
-          "path" : "/t;hawkular/f;60f168e0-5220-4208-aa28-0d82a3df4c0c/r;Local~~",
-          "properties" : {
-            "__identityHash" : "97a7f945b0a6dedbff2e7252b56aae142fcb83d"
-          },
-          "name" : "WildFly Server [Local]",
-          "identityHash" : "97a7f945b0a6dedbff2e7252b56aae142fcb83d",
-          "type" : {
-            "path" : "/t;hawkular/f;60f168e0-5220-4208-aa28-0d82a3df4c0c/rt;WildFly%20Server",
-            "name" : "WildFly Server",
-            "identityHash" : "617542c89b86e3ce52b819c1deae7ca37cf7851",
-            "id" : "WildFly Server"
-          },
-          "id" : "Local~~"
-        } ]
+      encoding: UTF-8
+      string: "[ ]"
     http_version: 
-  recorded_at: Wed, 13 Jul 2016 23:58:02 GMT
-recorded_with: VCR 3.0.1
+  recorded_at: Fri, 22 Jul 2016 17:44:35 GMT
+recorded_with: VCR 3.0.3

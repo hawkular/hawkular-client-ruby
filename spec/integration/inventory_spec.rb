@@ -319,6 +319,11 @@ module Hawkular::Inventory::RSpec
       expect(operation_definitions).to include('Reload')
       expect(operation_definitions).to include('Shutdown')
       expect(operation_definitions).to include('Deploy')
+      shutdown_def = operation_definitions.fetch 'Shutdown'
+      expect(shutdown_def.params).to include('timeout')
+      expect(shutdown_def.params).to include('restart')
+      restart_param = shutdown_def.params.fetch 'restart'
+      expect(restart_param['type']).to eq('bool')
     end
 
     it 'Should list operation definitions of given resource' do

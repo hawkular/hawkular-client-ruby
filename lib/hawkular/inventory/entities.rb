@@ -110,6 +110,20 @@ module Hawkular::Inventory
     end
   end
 
+  class OperationDefinition < BaseEntity
+    attr_reader :params
+
+    def initialize(op_hash)
+      super(op_hash)
+      @params = {}
+      param_list = op_hash['properties']['params']
+      return if param_list.nil?
+      param_list.each do |p|
+        @params.store p['name'], p
+      end
+    end
+  end
+
   # Definition of a Relationship between two entities in Inventory
   class Relationship
     attr_accessor :source_id

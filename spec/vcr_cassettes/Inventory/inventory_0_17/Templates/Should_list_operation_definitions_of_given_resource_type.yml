@@ -33,7 +33,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Thu, 14 Jul 2016 16:23:43 GMT
+      - Fri, 22 Jul 2016 17:54:43 GMT
       X-Total-Count:
       - '7'
       Connection:
@@ -41,7 +41,7 @@ http_interactions:
       Content-Type:
       - application/json
       Content-Length:
-      - '2042'
+      - '2390'
       Link:
       - <http://localhost:8080/hawkular/inventory/traversal/f;<%= feed_uuid %>/rt;WildFly%20Server/type=ot>;
         rel="current"
@@ -75,6 +75,17 @@ http_interactions:
         }, {
           "path" : "/t;hawkular/f;<%= feed_uuid %>/rt;WildFly%20Server/ot;Shutdown",
           "properties" : {
+            "params" : [ {
+              "name" : "timeout",
+              "type" : "number",
+              "description" : "Timeout in seconds to allow active connections to drain",
+              "defaultValue" : "0"
+            }, {
+              "name" : "restart",
+              "type" : "bool",
+              "description" : "Should the server be restarted after shutdown?",
+              "defaultValue" : "false"
+            } ],
             "__identityHash" : "126f14e6849f5c843f1939e64db92a7f5f126e41"
           },
           "name" : "Shutdown",
@@ -106,5 +117,5 @@ http_interactions:
           "id" : "Undeploy"
         } ]
     http_version: 
-  recorded_at: Thu, 14 Jul 2016 16:23:43 GMT
-recorded_with: VCR 3.0.1
+  recorded_at: Fri, 22 Jul 2016 17:54:43 GMT
+recorded_with: VCR 3.0.3

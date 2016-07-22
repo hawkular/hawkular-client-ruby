@@ -413,7 +413,12 @@ module Hawkular::Inventory
       feed_id = parsed_path.feed_id
       resource_type_id = parsed_path.resource_type_id
       ret = http_get("/traversal/f;#{feed_id}/rt;#{resource_type_id}/type=ot")
-      ret.map { |ot| ot['id'] }
+      res = {}
+      ret.each do |ot|
+        od = OperationDefinition.new ot
+        res.store od.name, od
+      end
+      res
     end
 
     # List operation definitions (types) for a given resource
