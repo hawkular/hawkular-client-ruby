@@ -4,6 +4,8 @@ require 'json'
 
 # Adding a method `perform` for each block so that we can write nice callbacks for this client
 class Proc
+  class PerformMethodMissing
+  end
   def perform(callable, result)
     call(Class.new do
       method_name = callable.to_sym
@@ -13,7 +15,7 @@ class Proc
       # rubocop:disable Lint/NestedMethodDefinition
       # https://github.com/bbatsov/rubocop/issues/2704
       def method_missing(_method_name, *_args, &_block)
-        false
+        PerformMethodMissing
       end
       # rubocop:enable Lint/NestedMethodDefinition
     end.new)
@@ -215,7 +217,11 @@ module Hawkular::Operations
       fail 'callback must have the perform method defined. include Hawkular::Operations' unless
           callback.nil? || callback.respond_to?('perform')
       params.each do |property|
-        fail "Hash property #{property} must be specified" if hash[property].nil?
+        next unless hash[property].nil?
+        err_callback = 'You need to specify error callback'
+        err_message = "Hash property #{property} must be specified"
+        fail(ArgumentError, err_callback) if callback.nil?
+        fail(ArgumentError, err_callback) if callback.perform(:failure, err_message).equal? Proc::PerformMethodMissing
       end
     end
 

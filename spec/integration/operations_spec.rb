@@ -86,6 +86,82 @@ module Hawkular::Operations::RSpec
       end
     end
 
+    it 'should run into error callback because bad hash parameters' do
+      WebSocketVCR.configure do |c|
+        c.hook_uris = [HOST]
+      end
+
+      WebSocketVCR.record(example, self) do
+        client = OperationsClient.new(host: HOST,
+                                      wait_time: WebSocketVCR.live? ? 1.5 : 2,
+                                      credentials: {
+                                        username: 'jdoe',
+                                        password: 'password'
+                                      },
+                                      options: {
+                                        tenant: 'hawkular'
+                                      })
+
+        noop = { operationName: 'noop' }
+
+        client.invoke_generic_operation(noop) do |on|
+          on.success do |_data|
+            fail 'This should have failed'
+          end
+          on.failure do |_error|
+          end
+        end
+      end
+    end
+
+    it 'should bail with hash property error because no callback at all' do
+      WebSocketVCR.configure do |c|
+        c.hook_uris = [HOST]
+      end
+
+      WebSocketVCR.record(example, self) do
+        client = OperationsClient.new(host: HOST,
+                                      wait_time: WebSocketVCR.live? ? 1.5 : 2,
+                                      credentials: {
+                                        username: 'jdoe',
+                                        password: 'password'
+                                      },
+                                      options: {
+                                        tenant: 'hawkular'
+                                      })
+
+        noop = { operationName: 'noop' }
+        expect { client.invoke_generic_operation(noop) }.to raise_error(ArgumentError,
+                                                                        'You need to specify error callback')
+      end
+    end
+
+    it 'should bail with hash property error because no error-callback ' do
+      WebSocketVCR.configure do |c|
+        c.hook_uris = [HOST]
+      end
+
+      WebSocketVCR.record(example, self) do
+        client = OperationsClient.new(host: HOST,
+                                      wait_time: WebSocketVCR.live? ? 1.5 : 2,
+                                      credentials: {
+                                        username: 'jdoe',
+                                        password: 'password'
+                                      },
+                                      options: {
+                                        tenant: 'hawkular'
+                                      })
+
+        noop = { operationName: 'noop' }
+        expect do
+          client.invoke_generic_operation(noop) do |on|
+            on.success do |_data|
+              fail 'This should have failed'
+            end
+          end
+        end.to raise_error(ArgumentError, 'You need to specify error callback')
+      end
+    end
     it 'should bail with no host' do
       WebSocketVCR.configure do |c|
         c.hook_uris = [HOST]
