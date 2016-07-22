@@ -73,13 +73,21 @@ module Hawkular::Inventory
     end
   end
 
-  class MetricType < BaseEntity
+  # Fields that are common for MetricType and Metric
+  module MetricFields
     # @return [String] GAUGE, COUNTER, etc.
     attr_reader :type
     # @return [String] metric unit such as NONE, BYTES, etc.
     attr_reader :unit
-    # @return [Long] collection interval in seconds
+    # @return [Long] collection interval in seconds, it has different semantics for MetricType and for Metric
+    #                for MetricType it's a default that will be applied to all the metric of that type,
+    #                in the Metric this can be overridden
     attr_reader :collection_interval
+  end
+
+  # Definition of a Metric Type inside the inventory.
+  class MetricType < BaseEntity
+    include MetricFields
 
     def initialize(type_hash)
       super(type_hash)
@@ -91,12 +99,7 @@ module Hawkular::Inventory
 
   # Definition of a Metric inside the inventory.
   class Metric < BaseEntity
-    # @return [String] GAUGE, COUNTER, etc.
-    attr_reader :type
-    # @return [String] metric unit such as NONE, BYTES, etc.
-    attr_reader :unit
-    # @return [Long] collection interval in seconds
-    attr_reader :collection_interval
+    include MetricFields
 
     def initialize(metric_hash)
       super(metric_hash)
