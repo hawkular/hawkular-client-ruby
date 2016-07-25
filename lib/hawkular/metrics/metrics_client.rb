@@ -28,6 +28,19 @@ module Hawkular::Metrics
     # @return [Availability] access counters API
     attr_reader :avail
 
+    # @return [boolean] if it's using the legacy API or not
+    attr_reader :legacy_api
+
+    def check_version
+      version_status_hash = fetch_version_and_status
+      fail_version_msg = 'Unable to determine implementation version for metrics'
+      fail fail_version_msg if version_status_hash['Implementation-Version'].nil?
+      version = version_status_hash['Implementation-Version']
+      major, minor = version.scan(/\d+/).map(&:to_i)
+      fail fail_version_msg if major.nil? || minor.nil?
+      @legacy_api = (major == 0 && minor < 16)
+    end
+
     # Construct a new Hawkular Metrics client class.
     # optional parameters
     # @param entrypoint [String] Base url of the Hawkular (metrics) server
@@ -43,6 +56,7 @@ module Hawkular::Metrics
                    options = {})
       entrypoint = normalize_entrypoint_url entrypoint, 'hawkular/metrics'
       super(entrypoint, credentials, options)
+      check_version
       @tenants = Client::Tenants.new self
       @counters = Client::Counters.new self
       @gauges = Client::Gauges.new self

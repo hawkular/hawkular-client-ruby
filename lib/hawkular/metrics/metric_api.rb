@@ -34,9 +34,10 @@ module Hawkular::Metrics
       gauges.each { |g| default_timestamp g[:data] }
       counters.each { |g| default_timestamp g[:data] }
       availabilities.each { |g| default_timestamp g[:data] }
-
       data = { gauges: gauges, counters: counters, availabilities: availabilities }
-      http_post('/metrics/data', data)
+      path = '/metrics/'
+      @legacy_api ? path << 'data' : path << 'raw'
+      http_post(path, data)
     end
 
     # Base class for accessing metric definition and data of all
@@ -50,6 +51,7 @@ module Hawkular::Metrics
         @client = client
         @type = metric_type
         @resource = resource
+        @legacy_api = client.legacy_api
       end
 
       # Create new  metric definition
@@ -105,9 +107,10 @@ module Hawkular::Metrics
       #                                        {:value => 99.9, :tags => {:tagName => "myMax"}}])
       def push_data(id, data)
         data = [data] unless data.is_a?(Array)
-
+        uri = "/#{@resource}/#{ERB::Util.url_encode(id)}/"
+        @legacy_api ? uri << 'data' : uri << 'raw'
         @client.default_timestamp data
-        @client.http_post("/#{@resource}/#{ERB::Util.url_encode(id)}/data", data)
+        @client.http_post(uri, data)
       end
 
       # Retrieve metric datapoints
@@ -150,7 +153,9 @@ module Hawkular::Metrics
       def get_data_by_tags(tags, starts: nil, ends: nil, bucketDuration: nil)
         params = { tags: tags_param(tags), start: starts,
                    end: ends, bucketDuration: bucketDuration }
-        resp = @client.http_get("/#{@resource}/data/?" + encode_params(params))
+        path = "/#{@resource}/"
+        @legacy_api ? path << 'data/?' : path << 'stats/?'
+        resp = @client.http_get(path + encode_params(params))
         resp.is_a?(Array) ? resp : [] # API returns no content (empty Hash) instead of empty array
       end
 
@@ -165,8 +170,14 @@ module Hawkular::Metrics
       private
 
       def get_data_helper(id, params)
-        resp = @client.http_get("/#{@resource}/#{ERB::Util.url_encode(id)}/data/?" +
-          encode_params(params))
+        path = "/#{@resource}/#{ERB::Util.url_encode(id)}/"
+        if @legacy_api
+          path << 'data/?'
+        else
+          (params[:bucketDuration].nil? && params[:buckets].nil?) ? path << 'raw/?' : path << 'stats/?'
+        end
+        path << encode_params(params)
+        resp = @client.http_get(path)
         resp.is_a?(Array) ? resp : [] # API returns no content (empty Hash) instead of empty array
       end
     end
@@ -210,6 +221,7 @@ module Hawkular::Metrics
       # @return [Array[Hash]] rate points
       def get_rate(id, starts: nil, ends: nil, bucket_duration: nil)
         path = "/#{@resource}/#{ERB::Util.url_encode(id)}/rate"
+        path << '/stats' unless bucket_duration.nil? && @legacy_api
         params = { start: starts, end: ends, bucketDuration: bucket_duration }
         resp = @client.http_get(path + '?' + encode_params(params))
         # API returns no content (empty Hash) instead of empty array

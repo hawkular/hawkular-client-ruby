@@ -598,8 +598,12 @@ module Hawkular::Alerts::RSpec
         expect(trigger.dampenings.size).to be(0)
 
         # Trigger is set up - send a metric value to trigger it.
-        metric_client = Hawkular::Metrics::Client.new('http://localhost:8080/hawkular/metrics',
-                                                      creds, options)
+        metric_client = nil
+        ::RSpec::Mocks.with_temporary_scope do
+          mock_metrics_version
+          metric_client = Hawkular::Metrics::Client.new('http://localhost:8080/hawkular/metrics',
+                                                        creds, options)
+        end
 
         data_point = { timestamp: Time.now.to_i * 1000, value: 42 }
         data = [{ id: 'my-metric-id1', data: [data_point] }]

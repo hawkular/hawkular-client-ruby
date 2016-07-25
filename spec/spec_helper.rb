@@ -31,26 +31,40 @@ end
 module Hawkular::Metrics::RSpec
   def setup_client_without_tenant(options = {})
     options[:tenant] = nil
-    @client = Hawkular::Metrics::Client.new(config['url'],
-                                            credentials(options), options)
+    mocked_version = options[:mocked_version]
+    ::RSpec::Mocks.with_temporary_scope do
+      mocked_version.nil? ? mock_metrics_version : mock_metrics_version(mocked_version)
+      @client = Hawkular::Metrics::Client.new(config['url'],
+                                              credentials(options), options)
+      return @client
+    end
   end
 
   def setup_client(options = {})
     options[:tenant] ||= 'hawkular'
-    @client = Hawkular::Metrics::Client.new(config['url'],
-                                            credentials(options), options)
+    mocked_version = options[:mocked_version]
+    ::RSpec::Mocks.with_temporary_scope do
+      mocked_version.nil? ? mock_metrics_version : mock_metrics_version(mocked_version)
+      @client = Hawkular::Metrics::Client.new(config['url'],
+                                              credentials(options), options)
+    end
+    @client
   end
 
   def setup_v8_client(options = {})
     options[:tenant] ||= 'hawkular'
     options[:verify_ssl] ||= OpenSSL::SSL::VERIFY_NONE
-    @client = Hawkular::Metrics::Client.new(config['url_v8'],
-                                            credentials_v8(options), options)
+    ::RSpec::Mocks.with_temporary_scope do
+      mock_metrics_version '0.8.0'
+      @client = Hawkular::Metrics::Client.new(config['url_v8'],
+                                              credentials_v8(options), options)
+    end
+    @client
   end
 
-  def setup_client_new_tenant(_options = {})
+  def setup_client_new_tenant(options = {})
     @tenant = 'vcr-test-tenant-123'
-    setup_client(tenant: @tenant)
+    setup_client(tenant: @tenant, mocked_version: options[:mocked_version])
   end
 
   def credentials_v8(options = {})
@@ -69,6 +83,12 @@ module Hawkular::Metrics::RSpec
   def config
     @config ||= YAML.load(
       File.read(File.expand_path('endpoint.yml', File.dirname(__FILE__)))
+    )
+  end
+
+  def mock_metrics_version(version = '0.9.0.Final')
+    allow_any_instance_of(Hawkular::Metrics::Client).to receive(:fetch_version_and_status).and_return(
+      'Implementation-Version' => version
     )
   end
 

@@ -14,6 +14,7 @@ module Hawkular::Client::RSpec
       }
       ::RSpec::Mocks.with_temporary_scope do
         mock_inventory_client '0.17.2.Final'
+        mock_metrics_version
         @hawkular_client = Hawkular::Client.new(entrypoint: HOST, credentials: @creds, options: { tenant: 'hawkular' })
       end
       @state = {
@@ -50,25 +51,31 @@ module Hawkular::Client::RSpec
       it 'Should work with URI' do
         uri = URI.parse HOST
         opts = { tenant: 'hawkular' }
-
-        the_client = Hawkular::Client.new(entrypoint: uri, credentials: @creds, options: opts)
-        expect { the_client.inventory.list_feeds }.to_not raise_error
+        ::RSpec::Mocks.with_temporary_scope do
+          mock_metrics_version
+          the_client = Hawkular::Client.new(entrypoint: uri, credentials: @creds, options: opts)
+          expect { the_client.inventory.list_feeds }.to_not raise_error
+        end
       end
 
       it 'Should work with URI on metrics client' do
         uri = URI.parse HOST
         opts = { tenant: 'hawkular' }
-
-        the_client = Hawkular::Metrics::Client.new(uri, @creds, opts)
-        expect { the_client.http_get '/status' }.to_not raise_error
+        ::RSpec::Mocks.with_temporary_scope do
+          mock_metrics_version
+          the_client = Hawkular::Metrics::Client.new(uri, @creds, opts)
+          expect { the_client.http_get '/status' }.to_not raise_error
+        end
       end
 
       it 'Should work with https URI on metrics client' do
         uri = URI.parse 'https://localhost:8080'
         opts = { tenant: 'hawkular' }
-
-        the_client = Hawkular::Metrics::Client.new(uri, @creds, opts)
-        expect !the_client.nil?
+        ::RSpec::Mocks.with_temporary_scope do
+          mock_metrics_version
+          the_client = Hawkular::Metrics::Client.new(uri, @creds, opts)
+          expect !the_client.nil?
+        end
       end
     end
 
@@ -144,7 +151,10 @@ module Hawkular::Client::RSpec
       include Hawkular::Metrics::RSpec
 
       before(:all) do
-        @client = Hawkular::Metrics::Client.new(HOST, @creds)
+        ::RSpec::Mocks.with_temporary_scope do
+          mock_metrics_version
+          @client = Hawkular::Metrics::Client.new(HOST, @creds)
+        end
       end
 
       it 'Should both work the same way when pushing metric data to non-existing counter' do
@@ -274,8 +284,11 @@ module Hawkular::Client::RSpec
         uri = URI.parse HOST
         opts = { tenant: 'hawkular' }
         WebSocketVCR.record(example, self) do
-          the_client = Hawkular::Client.new(entrypoint: uri, credentials: @creds, options: opts)
-          expect { the_client.operations }.to_not raise_error
+          ::RSpec::Mocks.with_temporary_scope do
+            mock_metrics_version
+            the_client = Hawkular::Client.new(entrypoint: uri, credentials: @creds, options: opts)
+            expect { the_client.operations }.to_not raise_error
+          end
         end
       end
 
