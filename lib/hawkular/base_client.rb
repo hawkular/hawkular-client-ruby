@@ -183,7 +183,8 @@ module Hawkular
       if fault.is_a?(SocketError)
         HawkularConnectionException.new(fault.to_s)
       elsif [Errno::ECONNREFUSED, Errno::ECONNRESET, Errno::EHOSTUNREACH,
-             Errno::ENETDOWN, Errno::ENETUNREACH, Errno::ETIMEDOUT].include?(fault.class)
+             Errno::EADDRNOTAVAIL, Errno::ENETDOWN, Errno::ENETUNREACH,
+             Errno::ETIMEDOUT].include?(fault.class)
         HawkularConnectionException.new(fault.to_s, fault.class::Errno)
       end
     end
