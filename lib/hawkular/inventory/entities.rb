@@ -101,10 +101,13 @@ module Hawkular::Inventory
   class Metric < BaseEntity
     include MetricFields
 
+    attr_reader :type_id
+
     def initialize(metric_hash)
       super(metric_hash)
       @type = metric_hash['type']['type']
       @type_path = metric_hash['type']['path']
+      @type_id = metric_hash['type']['id']
       @unit = metric_hash['type']['unit']
       @collection_interval = metric_hash['type']['collectionInterval']
     end
