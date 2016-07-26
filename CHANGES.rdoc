@@ -3,6 +3,18 @@
 This document describes the relevant changes between releases of the
 _hawkular-client_ project.
 
+=== V 2.3.0
+
+* Wrap connection errors in `HawkularConnectionException` (a subclass of `HawkularException`)
+* Make sure the error callback is called on all kinds of errors (if it exists)
+* Use the new Rest-API of Hawkular-Inventory.
+* For authentication errors don't return raw html, but some sensible value
+* Make it explicit that rest-client v2.0 is used to follow ManageIQ
+* Provide parameters for operation definitions (depend on what the agent reports to inventory)
+* Use the new Hawkular-metrics endpoints if the hawkular-metrics version we talk to is >= 0.16
+
+Full list of items can be found at https://github.com/hawkular/hawkular-client-ruby/issues?q=milestone%3A2.3.0+is%3Aclosed
+
 === V 2.2.1
 
 * Fix a regression where URI:HTTP objects were no longer accepted as input for entrypoints.
