@@ -148,7 +148,3 @@ Client documentation can be generated using http://yardoc.org
 
     yardoc
 
-== Developer-local gems
-
-It is now possible to have a local gemfile `Gemfile.dev.rb` that is pulled in from the
-main `Gemfile` to use e.g. debuggers or rubocop-git.
