@@ -10,7 +10,6 @@
 /tmp/
 spec/vcr.log
 Gemfile.lock
-Gemfile.dev.rb
 
 ## Specific to RubyMotion:
 .dat*
