@@ -292,6 +292,15 @@ module Hawkular::Inventory::RSpec
       expect(metrics.size).to be(14)
     end
 
+    it 'Should have the same requested metric type id' do
+      metric_type_id = 'Server Availability~Server Availability'
+      type_path = CanonicalPath.new(feed_id: feed_id, metric_type_id: hawk_escape_id(metric_type_id))
+      metrics = @client.list_metrics_for_metric_type(type_path)
+
+      expect(metrics.size).to be > 0
+      expect(metrics).to all(have_attributes(type_id: metric_type_id))
+    end
+
     it 'Should return config data of given resource' do
       resource_path = CanonicalPath.new(feed_id: feed_id, resource_ids: [hawk_escape_id('Local~~')])
       config = @client.get_config_data_for_resource(resource_path)
