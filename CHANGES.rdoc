@@ -3,6 +3,13 @@
 This document describes the relevant changes between releases of the
 _hawkular-client_ project.
 
+=== V 2.4.0
+
+* Expose `metric.type.id` in metric definitions from Inventory, as the agent changed what it sends
+* Fix the 'Undeploy' operation
+
+Full list of items can be found at https://github.com/hawkular/hawkular-client-ruby/milestone/9?closed=1
+
 === V 2.3.0
 
 * Wrap connection errors in `HawkularConnectionException` (a subclass of `HawkularException`)
