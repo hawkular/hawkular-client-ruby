@@ -37,6 +37,15 @@ describe 'CanonicalPath' do
         .to be == CanonicalPath.new(tenant_id: 't1', environment_id: 'e1', resource_ids: %w(r1 r2 r3))
     end
 
+    it 'with resource hierarchy should be upable' do
+      expect(CanonicalPath.parse('/t;t1/f;f1/r;r1/r;r2/r;r3/r;r4/r;r5').up)
+        .to be == CanonicalPath.new(tenant_id: 't1', feed_id: 'f1', resource_ids: %w(r1 r2 r3 r4))
+      expect(CanonicalPath.parse('/t;t1/e;e1/r;r1').up)
+        .to be == CanonicalPath.new(tenant_id: 't1', environment_id: 'e1', resource_ids: [])
+      expect(CanonicalPath.parse('/t;t1/e;e1').up)
+        .to be == CanonicalPath.new(tenant_id: 't1', environment_id: 'e1', resource_ids: [])
+    end
+
     it 'should be identity when calling parse and then to_s' do
       path_str = '/t;t1/e;e1/r;r1/r;r2'
       path1 = CanonicalPath.parse(path_str)

@@ -178,37 +178,37 @@ module Hawkular::Inventory
       @metric_id = hash[:metric_id]
     end
 
-    # rubocop:disable Metrics/CyclomaticComplexity
     def self.parse(path)
       fail 'CanonicalPath must not be nil or empty' if path.to_s.strip.length == 0
-      tmp = path.split('/')
-      hash = {}
-      tmp.each do |pair|
-        (key, val) = pair.split(';')
-        case key
-        when 't'
-          hash[:tenant_id] = val
-        when 'f'
-          hash[:feed_id] = val
-        when 'e'
-          hash[:environment_id] = val
-        when 'm'
-          hash[:metric_id] = val
-        when 'r'
-          hash[:resource_ids] = [] if hash[:resource_ids].nil?
-          hash[:resource_ids].push(val)
-        when 'mt'
-          hash[:metric_type_id] = val
-        when 'rt'
-          hash[:resource_type_id] = val
-        end
+      CanonicalPath.new(path_to_h path)
+    end
+
+    # Move up to the parent path of the resource. resource_ids set to empty array when there is no parent.
+    # @return CanonicalPath corresponding to the direct ancestor of the resource represented by this path object.
+    def up
+      hash = to_h
+      if hash[:resource_ids].nil?
+        hash[:resource_ids] = []
+      else
+        hash[:resource_ids].pop
       end
       CanonicalPath.new(hash)
     end
-    # rubocop:enable Metrics/CyclomaticComplexity
 
     def ==(other)
       self.equal?(other) || other.class == self.class && other.state == state
+    end
+
+    def to_h
+      {
+        tenant_id: @tenant_id,
+        feed_id: @feed_id,
+        environment_id: environment_id,
+        resource_type_id: resource_type_id,
+        metric_type_id: metric_type_id,
+        resource_ids: resource_ids,
+        metric_id: @metric_id
+      }
     end
 
     def to_s
@@ -232,6 +232,32 @@ module Hawkular::Inventory
 
     def resources_chunk
       @resource_ids.map { |r| "/r;#{r}" }.join unless @resource_ids.nil?
+    end
+
+    def self.path_to_h(path)
+      tmp = path.split('/')
+      hash = {}
+      tmp.each do |pair|
+        (key, val) = pair.split(';')
+        case key
+        when 't'
+          hash[:tenant_id] = val
+        when 'f'
+          hash[:feed_id] = val
+        when 'e'
+          hash[:environment_id] = val
+        when 'm'
+          hash[:metric_id] = val
+        when 'r'
+          hash[:resource_ids] = [] if hash[:resource_ids].nil?
+          hash[:resource_ids].push(val)
+        when 'mt'
+          hash[:metric_type_id] = val
+        when 'rt'
+          hash[:resource_type_id] = val
+        end
+      end
+      hash
     end
   end
 end

@@ -2,6 +2,8 @@ require 'hawkular/base_client'
 require 'websocket-client-simple'
 require 'json'
 
+require 'hawkular/inventory/entities'
+
 # Adding a method `perform` for each block so that we can write nice callbacks for this client
 class Proc
   class PerformMethodMissing
@@ -142,6 +144,28 @@ module Hawkular::Operations
 
       operation_payload = prepare_payload_hash([:binary_content], hash)
       invoke_operation_helper(operation_payload, 'DeployApplication', hash[:binary_content], &callback)
+    end
+
+    # Removes an existing deployment from WildFly
+    #
+    # @param [Hash] hash Arguments for deployment removal
+    # @option hash [String]  :resource_path canonical path of the WildFly server from which to remove the deployment
+    # @option hash [String]  :deployment_name name of deployment to remove
+    #
+    # @param callback [Block] callback that is run after the operation is done
+    def remove_deployment(hash, &callback)
+      required = [:resource_path, :deployment_name]
+      check_pre_conditions hash, required, &callback
+
+      cp = ::Hawkular::Inventory::CanonicalPath.parse hash[:resource_path]
+      server_path = cp.up.to_s
+
+      payload_hash = {
+        resource_path: server_path,
+        destination_file_name: hash[:deployment_name]
+      }
+      operation_payload = prepare_payload_hash([], payload_hash)
+      invoke_operation_helper(operation_payload, 'UndeployApplication', &callback)
     end
 
     # Adds a new datasource

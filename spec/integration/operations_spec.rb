@@ -327,11 +327,11 @@ module Hawkular::Operations::RSpec
                                resource_ids: [wf_server_resource_id, alerts_war_resource_id])
 
       undeploy = {
-        operationName: 'Undeploy',
-        resourcePath: path.to_s
+        resource_path: path.to_s,
+        deployment_name: 'hawkular-alerts-actions-email.war'
       }
       actual_data = {}
-      @client.invoke_generic_operation(undeploy) do |on|
+      @client.remove_deployment(undeploy) do |on|
         on.success do |data|
           actual_data[:data] = data
         end
