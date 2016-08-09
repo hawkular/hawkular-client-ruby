@@ -1,0 +1,846 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://<%= super_secret_username %>:<%= super_secret_password %>@localhost:8080/hawkular/inventory/entity/feed
+    body:
+      encoding: UTF-8
+      string: '{"properties":{},"id":"feed_may_exist","name":null,"outgoing":{},"incoming":{}}'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - hawkular
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '79'
+      Host:
+      - localhost:8080
+  response:
+    status:
+      code: 409
+      message: Conflict
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Wed, 10 Aug 2016 22:35:38 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '663'
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errorMsg" : "Feed with id 'Feed[path='/t;hawkular/f;feed_may_exist']' has been already registered. Entity with id 'feed_may_exist' already exists at some of the positions: [[Types[Tenant], Ids[hawkular], Related[, rel='contains', role=SOURCE], Types[Feed], Ids[feed_may_exist]]]",
+          "details" : {
+            "entityId" : "feed_may_exist",
+            "paths" : [ [ {
+              "types" : [ "org.hawkular.inventory.api.model.Tenant" ]
+            }, {
+              "ids" : [ "hawkular" ]
+            }, {
+              "relationshipName" : "contains",
+              "entityRole" : "SOURCE"
+            }, {
+              "types" : [ "org.hawkular.inventory.api.model.Feed" ]
+            }, {
+              "ids" : [ "feed_may_exist" ]
+            } ] ]
+          }
+        }
+    http_version: 
+  recorded_at: Wed, 10 Aug 2016 22:35:38 GMT
+- request:
+    method: get
+    uri: http://<%= super_secret_username %>:<%= super_secret_password %>@localhost:8080/hawkular/inventory/entity/f;feed_may_exist
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - hawkular
+      Content-Type:
+      - application/json
+      Host:
+      - localhost:8080
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Wed, 10 Aug 2016 22:35:38 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '219'
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "path" : "/t;hawkular/f;feed_may_exist",
+          "properties" : {
+            "__identityHash" : "74c06ecbd9cadebfda6338c1333995f6cc55b"
+          },
+          "identityHash" : "74c06ecbd9cadebfda6338c1333995f6cc55b",
+          "id" : "feed_may_exist"
+        }
+    http_version: 
+  recorded_at: Wed, 10 Aug 2016 22:35:38 GMT
+- request:
+    method: post
+    uri: http://<%= super_secret_username %>:<%= super_secret_password %>@localhost:8080/hawkular/inventory/entity/f;feed_may_exist/resourceType
+    body:
+      encoding: UTF-8
+      string: '{"properties":{},"id":"rt-123","name":"ResourceType","outgoing":{},"incoming":{}}'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - hawkular
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '81'
+      Host:
+      - localhost:8080
+  response:
+    status:
+      code: 409
+      message: Conflict
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Wed, 10 Aug 2016 22:35:38 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '107'
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "errorMsg" : "Entity with id 'null' already exists at some of the positions: null",
+          "details" : { }
+        }
+    http_version: 
+  recorded_at: Wed, 10 Aug 2016 22:35:38 GMT
+- request:
+    method: get
+    uri: http://<%= super_secret_username %>:<%= super_secret_password %>@localhost:8080/hawkular/inventory/entity/f;feed_may_exist/rt;rt-123
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - hawkular
+      Content-Type:
+      - application/json
+      Host:
+      - localhost:8080
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Wed, 10 Aug 2016 22:35:38 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '162'
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "path" : "/t;hawkular/f;feed_may_exist/rt;rt-123",
+          "name" : "ResourceType",
+          "identityHash" : "30a52c53a93cb102e499367ecc55ed8a03b0b1",
+          "id" : "rt-123"
+        }
+    http_version: 
+  recorded_at: Wed, 10 Aug 2016 22:35:38 GMT
+- request:
+    method: post
+    uri: http://<%= super_secret_username %>:<%= super_secret_password %>@localhost:8080/hawkular/inventory/entity/f;feed_may_exist/resource
+    body:
+      encoding: UTF-8
+      string: '{"properties":{"version":1.0},"id":"r124","name":"My Resource","outgoing":{},"incoming":{},"resourceTypePath":"/t;hawkular/f;feed_may_exist/rt;rt-123"}'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - hawkular
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '151'
+      Host:
+      - localhost:8080
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Location:
+      - http://localhost:8080/hawkular/inventory/entity/f;feed_may_exist/r;r124
+      Date:
+      - Wed, 10 Aug 2016 22:35:38 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '384'
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "path" : "/t;hawkular/f;feed_may_exist/r;r124",
+          "properties" : {
+            "version" : 1.0
+          },
+          "name" : "My Resource",
+          "identityHash" : "4458723fedfbb69a19a166e65edba47dbc45e",
+          "type" : {
+            "path" : "/t;hawkular/f;feed_may_exist/rt;rt-123",
+            "name" : "ResourceType",
+            "identityHash" : "30a52c53a93cb102e499367ecc55ed8a03b0b1",
+            "id" : "rt-123"
+          },
+          "id" : "r124"
+        }
+    http_version: 
+  recorded_at: Wed, 10 Aug 2016 22:35:38 GMT
+- request:
+    method: get
+    uri: http://<%= super_secret_username %>:<%= super_secret_password %>@localhost:8080/hawkular/inventory/entity/f;feed_may_exist/r;r124
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - hawkular
+      Content-Type:
+      - application/json
+      Host:
+      - localhost:8080
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Wed, 10 Aug 2016 22:35:38 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '448'
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "path" : "/t;hawkular/f;feed_may_exist/r;r124",
+          "properties" : {
+            "__identityHash" : "4458723fedfbb69a19a166e65edba47dbc45e",
+            "version" : 1.0
+          },
+          "name" : "My Resource",
+          "identityHash" : "4458723fedfbb69a19a166e65edba47dbc45e",
+          "type" : {
+            "path" : "/t;hawkular/f;feed_may_exist/rt;rt-123",
+            "name" : "ResourceType",
+            "identityHash" : "30a52c53a93cb102e499367ecc55ed8a03b0b1",
+            "id" : "rt-123"
+          },
+          "id" : "r124"
+        }
+    http_version: 
+  recorded_at: Wed, 10 Aug 2016 22:35:38 GMT
+- request:
+    method: post
+    uri: http://<%= super_secret_username %>:<%= super_secret_password %>@localhost:8080/hawkular/inventory/entity/f;feed_may_exist/metricType
+    body:
+      encoding: UTF-8
+      string: '{"id":"mt-124","type":"GAUGE","unit":"NONE","collectionInterval":60}'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - hawkular
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '68'
+      Host:
+      - localhost:8080
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Location:
+      - http://localhost:8080/hawkular/inventory/entity/f;feed_may_exist/mt;mt-124
+      Date:
+      - Wed, 10 Aug 2016 22:35:38 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '203'
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "path" : "/t;hawkular/f;feed_may_exist/mt;mt-124",
+          "identityHash" : "dabc11fbfd76774e47c38f91ea832d404cc0df",
+          "unit" : "NONE",
+          "type" : "GAUGE",
+          "collectionInterval" : 60,
+          "id" : "mt-124"
+        }
+    http_version: 
+  recorded_at: Wed, 10 Aug 2016 22:35:38 GMT
+- request:
+    method: get
+    uri: http://<%= super_secret_username %>:<%= super_secret_password %>@localhost:8080/hawkular/inventory/entity/f;feed_may_exist/mt;mt-124
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - hawkular
+      Content-Type:
+      - application/json
+      Host:
+      - localhost:8080
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Wed, 10 Aug 2016 22:35:38 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '203'
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "path" : "/t;hawkular/f;feed_may_exist/mt;mt-124",
+          "identityHash" : "dabc11fbfd76774e47c38f91ea832d404cc0df",
+          "unit" : "NONE",
+          "type" : "GAUGE",
+          "collectionInterval" : 60,
+          "id" : "mt-124"
+        }
+    http_version: 
+  recorded_at: Wed, 10 Aug 2016 22:35:38 GMT
+- request:
+    method: post
+    uri: http://<%= super_secret_username %>:<%= super_secret_password %>@localhost:8080/hawkular/inventory/entity/f;feed_may_exist/metric
+    body:
+      encoding: UTF-8
+      string: '{"id":"m-124","name":"m-124","metricTypePath":"/t;hawkular/f;feed_may_exist/mt;mt-124"}'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - hawkular
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '87'
+      Host:
+      - localhost:8080
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Location:
+      - http://localhost:8080/hawkular/inventory/entity/f;feed_may_exist/m;m-124
+      Date:
+      - Wed, 10 Aug 2016 22:35:38 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '380'
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "path" : "/t;hawkular/f;feed_may_exist/m;m-124",
+          "name" : "m-124",
+          "identityHash" : "816e3f69c829acf281b31ac82e7ba3213bf2",
+          "type" : {
+            "path" : "/t;hawkular/f;feed_may_exist/mt;mt-124",
+            "identityHash" : "dabc11fbfd76774e47c38f91ea832d404cc0df",
+            "unit" : "NONE",
+            "type" : "GAUGE",
+            "collectionInterval" : 60,
+            "id" : "mt-124"
+          },
+          "id" : "m-124"
+        }
+    http_version: 
+  recorded_at: Wed, 10 Aug 2016 22:35:38 GMT
+- request:
+    method: get
+    uri: http://<%= super_secret_username %>:<%= super_secret_password %>@localhost:8080/hawkular/inventory/entity/f;feed_may_exist/m;m-124
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - hawkular
+      Content-Type:
+      - application/json
+      Host:
+      - localhost:8080
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Wed, 10 Aug 2016 22:35:38 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '466'
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "path" : "/t;hawkular/f;feed_may_exist/m;m-124",
+          "properties" : {
+            "__identityHash" : "816e3f69c829acf281b31ac82e7ba3213bf2"
+          },
+          "name" : "m-124",
+          "identityHash" : "816e3f69c829acf281b31ac82e7ba3213bf2",
+          "type" : {
+            "path" : "/t;hawkular/f;feed_may_exist/mt;mt-124",
+            "identityHash" : "dabc11fbfd76774e47c38f91ea832d404cc0df",
+            "unit" : "NONE",
+            "type" : "GAUGE",
+            "collectionInterval" : 60,
+            "id" : "mt-124"
+          },
+          "id" : "m-124"
+        }
+    http_version: 
+  recorded_at: Wed, 10 Aug 2016 22:35:38 GMT
+- request:
+    method: post
+    uri: http://<%= super_secret_username %>:<%= super_secret_password %>@localhost:8080/hawkular/inventory/entity/f;feed_may_exist/r;r124/relationship
+    body:
+      encoding: UTF-8
+      string: '[{"otherEnd":"/t;hawkular/f;feed_may_exist/m;m-124","name":"incorporates"}]'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - hawkular
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '75'
+      Host:
+      - localhost:8080
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Location:
+      - http://localhost:8080/hawkular/inventory/entity/rl;4o8n4-382rk-8tn9-383y8
+      Date:
+      - Wed, 10 Aug 2016 22:35:38 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '173'
+    body:
+      encoding: UTF-8
+      string: |-
+        [ {
+          "id" : "4o8n4-382rk-8tn9-383y8",
+          "name" : "incorporates",
+          "source" : "/t;hawkular/f;feed_may_exist/r;r124",
+          "target" : "/t;hawkular/f;feed_may_exist/m;m-124"
+        } ]
+    http_version: 
+  recorded_at: Wed, 10 Aug 2016 22:35:38 GMT
+- request:
+    method: post
+    uri: http://<%= super_secret_username %>:<%= super_secret_password %>@localhost:8080/hawkular/inventory/entity/f;feed_may_exist/metric
+    body:
+      encoding: UTF-8
+      string: '{"id":"m-124-1","name":"Metric1","metricTypePath":"/t;hawkular/f;feed_may_exist/mt;mt-124"}'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - hawkular
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '91'
+      Host:
+      - localhost:8080
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Location:
+      - http://localhost:8080/hawkular/inventory/entity/f;feed_may_exist/m;m-124-1
+      Date:
+      - Wed, 10 Aug 2016 22:35:38 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '389'
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "path" : "/t;hawkular/f;feed_may_exist/m;m-124-1",
+          "name" : "Metric1",
+          "identityHash" : "979c135fb98bdc57a1e95a159ec2a24b9caa562",
+          "type" : {
+            "path" : "/t;hawkular/f;feed_may_exist/mt;mt-124",
+            "identityHash" : "dabc11fbfd76774e47c38f91ea832d404cc0df",
+            "unit" : "NONE",
+            "type" : "GAUGE",
+            "collectionInterval" : 60,
+            "id" : "mt-124"
+          },
+          "id" : "m-124-1"
+        }
+    http_version: 
+  recorded_at: Wed, 10 Aug 2016 22:35:38 GMT
+- request:
+    method: get
+    uri: http://<%= super_secret_username %>:<%= super_secret_password %>@localhost:8080/hawkular/inventory/entity/f;feed_may_exist/m;m-124-1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - hawkular
+      Content-Type:
+      - application/json
+      Host:
+      - localhost:8080
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Wed, 10 Aug 2016 22:35:38 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '478'
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "path" : "/t;hawkular/f;feed_may_exist/m;m-124-1",
+          "properties" : {
+            "__identityHash" : "979c135fb98bdc57a1e95a159ec2a24b9caa562"
+          },
+          "name" : "Metric1",
+          "identityHash" : "979c135fb98bdc57a1e95a159ec2a24b9caa562",
+          "type" : {
+            "path" : "/t;hawkular/f;feed_may_exist/mt;mt-124",
+            "identityHash" : "dabc11fbfd76774e47c38f91ea832d404cc0df",
+            "unit" : "NONE",
+            "type" : "GAUGE",
+            "collectionInterval" : 60,
+            "id" : "mt-124"
+          },
+          "id" : "m-124-1"
+        }
+    http_version: 
+  recorded_at: Wed, 10 Aug 2016 22:35:38 GMT
+- request:
+    method: post
+    uri: http://<%= super_secret_username %>:<%= super_secret_password %>@localhost:8080/hawkular/inventory/entity/f;feed_may_exist/r;r124/relationship
+    body:
+      encoding: UTF-8
+      string: '[{"otherEnd":"/t;hawkular/f;feed_may_exist/m;m-124-1","name":"incorporates"}]'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - hawkular
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '77'
+      Host:
+      - localhost:8080
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Location:
+      - http://localhost:8080/hawkular/inventory/entity/rl;4o94w-382rk-8tn9-384jk
+      Date:
+      - Wed, 10 Aug 2016 22:35:38 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '175'
+    body:
+      encoding: UTF-8
+      string: |-
+        [ {
+          "id" : "4o94w-382rk-8tn9-384jk",
+          "name" : "incorporates",
+          "source" : "/t;hawkular/f;feed_may_exist/r;r124",
+          "target" : "/t;hawkular/f;feed_may_exist/m;m-124-1"
+        } ]
+    http_version: 
+  recorded_at: Wed, 10 Aug 2016 22:35:38 GMT
+recorded_with: VCR 3.0.3

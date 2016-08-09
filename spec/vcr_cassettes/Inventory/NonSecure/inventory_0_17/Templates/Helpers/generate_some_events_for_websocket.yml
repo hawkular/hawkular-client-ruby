@@ -1,0 +1,411 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/inventory/entity/feed
+    body:
+      encoding: UTF-8
+      string: '{"properties":{},"id":"<%= uuid_prefix %>-feed","name":null,"outgoing":{},"incoming":{}}'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - hawkular
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '106'
+      Host:
+      - localhost:8080
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Location:
+      - http://localhost:8080/hawkular/inventory/entity/f;<%= uuid_prefix %>-feed
+      Date:
+      - Wed, 10 Aug 2016 22:35:40 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '189'
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "path" : "/t;hawkular/f;<%= uuid_prefix %>-feed",
+          "identityHash" : "b23fc38f96172cf290deca88f193d41b57502490",
+          "id" : "<%= uuid_prefix %>-feed"
+        }
+    http_version: 
+  recorded_at: Wed, 10 Aug 2016 22:35:40 GMT
+- request:
+    method: post
+    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/inventory/entity/f;<%= uuid_prefix %>-feed/resourceType
+    body:
+      encoding: UTF-8
+      string: '{"properties":{},"id":"<%= uuid_prefix %>-rt-123","name":"ResourceType","outgoing":{},"incoming":{}}'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - hawkular
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '118'
+      Host:
+      - localhost:8080
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Location:
+      - http://localhost:8080/hawkular/inventory/entity/f;<%= uuid_prefix %>-feed/rt;<%= uuid_prefix %>-rt-123
+      Date:
+      - Wed, 10 Aug 2016 22:35:40 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '263'
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "path" : "/t;hawkular/f;<%= uuid_prefix %>-feed/rt;<%= uuid_prefix %>-rt-123",
+          "name" : "ResourceType",
+          "identityHash" : "d2ad2056fbf7673bfc3462aad80803e4b7749d",
+          "id" : "<%= uuid_prefix %>-rt-123"
+        }
+    http_version: 
+  recorded_at: Wed, 10 Aug 2016 22:35:40 GMT
+- request:
+    method: get
+    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/inventory/entity/f;<%= uuid_prefix %>-feed/rt;<%= uuid_prefix %>-rt-123
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - hawkular
+      Content-Type:
+      - application/json
+      Host:
+      - localhost:8080
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Wed, 10 Aug 2016 22:35:40 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '263'
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "path" : "/t;hawkular/f;<%= uuid_prefix %>-feed/rt;<%= uuid_prefix %>-rt-123",
+          "name" : "ResourceType",
+          "identityHash" : "d2ad2056fbf7673bfc3462aad80803e4b7749d",
+          "id" : "<%= uuid_prefix %>-rt-123"
+        }
+    http_version: 
+  recorded_at: Wed, 10 Aug 2016 22:35:40 GMT
+- request:
+    method: post
+    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/inventory/entity/f;<%= uuid_prefix %>-feed/resource
+    body:
+      encoding: UTF-8
+      string: '{"properties":{"version":1.0},"id":"<%= uuid_prefix %>-r126","name":"My
+        Resource 1","outgoing":{},"incoming":{},"resourceTypePath":"/t;hawkular/f;<%= uuid_prefix %>-feed/rt;<%= uuid_prefix %>-rt-123"}'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - hawkular
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '254'
+      Host:
+      - localhost:8080
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Location:
+      - http://localhost:8080/hawkular/inventory/entity/f;<%= uuid_prefix %>-feed/r;<%= uuid_prefix %>-r126
+      Date:
+      - Wed, 10 Aug 2016 22:35:40 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '588'
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "path" : "/t;hawkular/f;<%= uuid_prefix %>-feed/r;<%= uuid_prefix %>-r126",
+          "properties" : {
+            "version" : 1.0
+          },
+          "name" : "My Resource 1",
+          "identityHash" : "d27f513cfc856e3ba491eb7a392424456e03e",
+          "type" : {
+            "path" : "/t;hawkular/f;<%= uuid_prefix %>-feed/rt;<%= uuid_prefix %>-rt-123",
+            "name" : "ResourceType",
+            "identityHash" : "d2ad2056fbf7673bfc3462aad80803e4b7749d",
+            "id" : "<%= uuid_prefix %>-rt-123"
+          },
+          "id" : "<%= uuid_prefix %>-r126"
+        }
+    http_version: 
+  recorded_at: Wed, 10 Aug 2016 22:35:40 GMT
+- request:
+    method: post
+    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/inventory/entity/f;<%= uuid_prefix %>-feed/resource
+    body:
+      encoding: UTF-8
+      string: '{"properties":{"version":1.1},"id":"<%= uuid_prefix %>-r127","name":"My
+        Resource 2","outgoing":{},"incoming":{},"resourceTypePath":"/t;hawkular/f;<%= uuid_prefix %>-feed/rt;<%= uuid_prefix %>-rt-123"}'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - hawkular
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '254'
+      Host:
+      - localhost:8080
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Location:
+      - http://localhost:8080/hawkular/inventory/entity/f;<%= uuid_prefix %>-feed/r;<%= uuid_prefix %>-r127
+      Date:
+      - Wed, 10 Aug 2016 22:35:40 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '590'
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "path" : "/t;hawkular/f;<%= uuid_prefix %>-feed/r;<%= uuid_prefix %>-r127",
+          "properties" : {
+            "version" : 1.1
+          },
+          "name" : "My Resource 2",
+          "identityHash" : "9a5a95c450a2656e1e139ee1f3d1bd7485265a7",
+          "type" : {
+            "path" : "/t;hawkular/f;<%= uuid_prefix %>-feed/rt;<%= uuid_prefix %>-rt-123",
+            "name" : "ResourceType",
+            "identityHash" : "d2ad2056fbf7673bfc3462aad80803e4b7749d",
+            "id" : "<%= uuid_prefix %>-rt-123"
+          },
+          "id" : "<%= uuid_prefix %>-r127"
+        }
+    http_version: 
+  recorded_at: Wed, 10 Aug 2016 22:35:40 GMT
+- request:
+    method: post
+    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/inventory/entity/f;<%= uuid_prefix %>-feed/resource
+    body:
+      encoding: UTF-8
+      string: '{"properties":{"version":1.2},"id":"<%= uuid_prefix %>-r128","name":"My
+        Resource 3","outgoing":{},"incoming":{},"resourceTypePath":"/t;hawkular/f;<%= uuid_prefix %>-feed/rt;<%= uuid_prefix %>-rt-123"}'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - hawkular
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '254'
+      Host:
+      - localhost:8080
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Location:
+      - http://localhost:8080/hawkular/inventory/entity/f;<%= uuid_prefix %>-feed/r;<%= uuid_prefix %>-r128
+      Date:
+      - Wed, 10 Aug 2016 22:35:40 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '588'
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "path" : "/t;hawkular/f;<%= uuid_prefix %>-feed/r;<%= uuid_prefix %>-r128",
+          "properties" : {
+            "version" : 1.2
+          },
+          "name" : "My Resource 3",
+          "identityHash" : "2f1b3d0dfd4d976f99c2a185e34d80fb22e8e",
+          "type" : {
+            "path" : "/t;hawkular/f;<%= uuid_prefix %>-feed/rt;<%= uuid_prefix %>-rt-123",
+            "name" : "ResourceType",
+            "identityHash" : "d2ad2056fbf7673bfc3462aad80803e4b7749d",
+            "id" : "<%= uuid_prefix %>-rt-123"
+          },
+          "id" : "<%= uuid_prefix %>-r128"
+        }
+    http_version: 
+  recorded_at: Wed, 10 Aug 2016 22:35:40 GMT
+- request:
+    method: delete
+    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/inventory/entity/f;<%= uuid_prefix %>-feed
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - hawkular
+      Content-Type:
+      - application/json
+      Host:
+      - localhost:8080
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Wed, 10 Aug 2016 22:35:41 GMT
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 10 Aug 2016 22:35:41 GMT
+recorded_with: VCR 3.0.3

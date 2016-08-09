@@ -195,19 +195,25 @@ module Helpers
       yield if block_given?
     end
 
-    if ENV['VCR_UPDATE'] == '1'
+    record_cassette(prefix, bindings, explicit_cassette_name, run)
+  end
+
+  private
+
+  def record_cassette(prefix, bindings, explicit_cassette_name, run_lambda)
+    if ENV['VCR_UPDATE'] == '1' && bindings
       VCR.use_cassette(prefix + '/tmp/' + explicit_cassette_name,
                        decode_compressed_response: true,
                        record: :all) do
-        run.call
+        run_lambda.call
       end
       make_template prefix, explicit_cassette_name, bindings
     else
       VCR.use_cassette(prefix + '/Templates/' + explicit_cassette_name,
                        decode_compressed_response: true,
                        erb: bindings,
-                       record: :none) do
-        run.call
+                       record: ENV['VCR_UPDATE'] == '1' ? :all : :none) do
+        run_lambda.call
       end
     end
   end

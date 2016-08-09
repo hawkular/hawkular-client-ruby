@@ -1,0 +1,132 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://<%= super_secret_username %>:<%= super_secret_password %>@localhost:8080/hawkular/inventory/entity/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fsubsystem=datasources%2Fdata-source=ExampleDS
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - hawkular
+      Content-Type:
+      - application/json
+      Host:
+      - localhost:8080
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Tue, 30 Aug 2016 15:25:02 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '759'
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "path" : "/t;hawkular/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fsubsystem%3Ddatasources%2Fdata-source%3DExampleDS",
+          "name" : "Datasource [ExampleDS]",
+          "identityHash" : "b1ad1d93643dccfbd37acdeb9d5f9c7de3294eb",
+          "contentHash" : "b58b567684c11abcad41d4c9987f5ab7dcc91e9b",
+          "syncHash" : "a43968939bf36bfeeeb7cb5845b8cd749e462df",
+          "type" : {
+            "path" : "/t;hawkular/f;<%= feed_uuid %>/rt;Datasource",
+            "name" : "Datasource",
+            "identityHash" : "b3291af08b396960f425871b493b6d9ee97e339f",
+            "contentHash" : "546c2a207bd841a0c2d94a6ae8a87371c36ffa9f",
+            "syncHash" : "f65ba261ef70efe3812e95a9ecb68d4fb6f3157",
+            "id" : "Datasource"
+          },
+          "id" : "Local~/subsystem=datasources/data-source=ExampleDS"
+        }
+    http_version: 
+  recorded_at: Tue, 30 Aug 2016 15:25:02 GMT
+- request:
+    method: get
+    uri: http://<%= super_secret_username %>:<%= super_secret_password %>@localhost:8080/hawkular/inventory/entity/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fsubsystem=datasources%2Fdata-source=ExampleDS/d;configuration
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - hawkular
+      Content-Type:
+      - application/json
+      Host:
+      - localhost:8080
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Tue, 30 Aug 2016 15:25:02 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '740'
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+          "path" : "/t;hawkular/f;<%= feed_uuid %>/r;Local~~/r;Local~%2Fsubsystem%3Ddatasources%2Fdata-source%3DExampleDS/d;configuration",
+          "name" : "configuration",
+          "identityHash" : "823ca07d76929e39fc468d25111455355aa81a8",
+          "contentHash" : "20125a70ce2d55719321b336bf632eb518bcb4a",
+          "syncHash" : "765d944a948b9f54ffe4b98d869f8b6ee16b2121",
+          "value" : {
+            "Connection Properties" : null,
+            "Datasource Class" : null,
+            "Security Domain" : null,
+            "Username" : "sa",
+            "Driver Name" : "h2",
+            "JNDI Name" : "java:jboss/datasources/ExampleDS",
+            "Connection URL" : "jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE",
+            "Enabled" : "true",
+            "Driver Class" : null,
+            "Password" : "sa"
+          }
+        }
+    http_version: 
+  recorded_at: Tue, 30 Aug 2016 15:25:02 GMT
+recorded_with: VCR 3.0.3

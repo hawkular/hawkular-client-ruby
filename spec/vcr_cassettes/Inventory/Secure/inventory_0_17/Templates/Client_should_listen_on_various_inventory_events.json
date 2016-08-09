@@ -1,0 +1,47 @@
+[
+  [
+    {
+      "operation": "read",
+      "type": "text",
+      "data": "{\n  \"path\" : \"/t;hawkular/f;<%= uuid_prefix %>-feed/r;<%= uuid_prefix %>-r126\",\n  \"properties\" : {\n    \"version\" : 1.0\n  },\n  \"name\" : \"My Resource 1\",\n  \"identityHash\" : \"3ae2eca73915c0f178f9cd5ff9f910453ae2d7a\",\n  \"type\" : {\n    \"path\" : \"/t;hawkular/f;<%= uuid_prefix %>-feed/rt;<%= uuid_prefix %>-rt-123\",\n    \"name\" : \"ResourceType\",\n    \"identityHash\" : \"5316c720e3ab6f14a74c20611d15bf71ecf2bad\",\n    \"id\" : \"<%= uuid_prefix %>-rt-123\"\n  },\n  \"id\" : \"<%= uuid_prefix %>-r126\"\n}"
+    },
+    {
+      "operation": "read",
+      "type": "text",
+      "data": "{\n  \"path\" : \"/t;hawkular/f;<%= uuid_prefix %>-feed/r;<%= uuid_prefix %>-r127\",\n  \"properties\" : {\n    \"version\" : 1.1\n  },\n  \"name\" : \"My Resource 2\",\n  \"identityHash\" : \"a927a976342b2638a1d2971953990cc3490c31d\",\n  \"type\" : {\n    \"path\" : \"/t;hawkular/f;<%= uuid_prefix %>-feed/rt;<%= uuid_prefix %>-rt-123\",\n    \"name\" : \"ResourceType\",\n    \"identityHash\" : \"5316c720e3ab6f14a74c20611d15bf71ecf2bad\",\n    \"id\" : \"<%= uuid_prefix %>-rt-123\"\n  },\n  \"id\" : \"<%= uuid_prefix %>-r127\"\n}"
+    },
+    {
+      "operation": "close"
+    }
+  ],
+  [
+    {
+      "operation": "read",
+      "type": "text",
+      "data": "{\n  \"path\" : \"/t;hawkular/f;<%= uuid_prefix %>-feed\",\n  \"properties\" : {\n    \"__identityHash\" : \"83ccde70beed775a8176da33905dc83c59931c87\"\n  },\n  \"identityHash\" : \"83ccde70beed775a8176da33905dc83c59931c87\",\n  \"id\" : \"<%= uuid_prefix %>-feed\"\n}"
+    },
+    {
+      "operation": "close"
+    }
+  ],
+  [
+    {
+      "operation": "read",
+      "type": "text",
+      "data": "{\n  \"path\" : \"/t;hawkular/f;<%= uuid_prefix %>-feed/rt;<%= uuid_prefix %>-rt-123\",\n  \"name\" : \"ResourceType\",\n  \"identityHash\" : \"5316c720e3ab6f14a74c20611d15bf71ecf2bad\",\n  \"id\" : \"<%= uuid_prefix %>-rt-123\"\n}"
+    },
+    {
+      "operation": "close"
+    }
+  ],
+  [
+    {
+      "operation": "read",
+      "type": "text",
+      "data": "{\n  \"path\" : \"/t;hawkular/f;<%= uuid_prefix %>-feed\",\n  \"identityHash\" : \"29d98d196dab981166ca9268315fa0db2bd5a71\",\n  \"id\" : \"<%= uuid_prefix %>-feed\"\n}"
+    },
+    {
+      "operation": "close"
+    }
+  ]
+]
