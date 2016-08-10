@@ -30,41 +30,39 @@ end
 
 module Hawkular::Metrics::RSpec
   def setup_client_without_tenant(options = {})
+    options = options.dup
     options[:tenant] = nil
     mocked_version = options[:mocked_version]
     ::RSpec::Mocks.with_temporary_scope do
       mocked_version.nil? ? mock_metrics_version : mock_metrics_version(mocked_version)
-      @client = Hawkular::Metrics::Client.new(config['url'],
+      @client = Hawkular::Metrics::Client.new(entrypoint(options[:type], 'metrics'),
                                               credentials(options), options)
       return @client
     end
   end
 
   def setup_client(options = {})
+    options = options.dup
     options[:tenant] ||= 'hawkular'
     mocked_version = options[:mocked_version]
     ::RSpec::Mocks.with_temporary_scope do
       mocked_version.nil? ? mock_metrics_version : mock_metrics_version(mocked_version)
-      @client = Hawkular::Metrics::Client.new(config['url'],
+      @client = Hawkular::Metrics::Client.new(entrypoint(options[:type], 'metrics'),
                                               credentials(options), options)
     end
     @client
   end
 
   def setup_v8_client(options = {})
+    options = options.dup
     options[:tenant] ||= 'hawkular'
     options[:verify_ssl] ||= OpenSSL::SSL::VERIFY_NONE
     ::RSpec::Mocks.with_temporary_scope do
       mock_metrics_version '0.8.0'
-      @client = Hawkular::Metrics::Client.new(config['url_v8'],
+      @client = Hawkular::Metrics::Client.new(entrypoint('v8', 'metrics'),
                                               credentials_v8(options), options)
     end
     @client
-  end
-
-  def setup_client_new_tenant(options = {})
-    @tenant = 'vcr-test-tenant-123'
-    setup_client(tenant: @tenant, mocked_version: options[:mocked_version])
   end
 
   def credentials_v8(options = {})
@@ -88,7 +86,7 @@ module Hawkular::Metrics::RSpec
 
   # more or less generic method common for all metric types (counters, gauges, availabilities)
   def create_metric_using_hash(endpoint, id, tenant_id)
-    endpoint.create(id: id, dataRetention: 123, tags: { some: 'value' }, tenantId: tenant_id)
+    endpoint.create(id: id, dataRetention: 123, tags: { some: 'value' })
     metric = endpoint.get(id)
 
     expect(metric).to be_a(Hawkular::Metrics::MetricDefinition)
@@ -209,8 +207,11 @@ module Helpers
       end
       yield if block_given?
     end
-
     record_cassette(prefix, bindings, explicit_cassette_name, run)
+  end
+
+  def record_cleanup(prefix)
+    FileUtils.rm_rf "#{VCR.configuration.cassette_library_dir}/#{prefix}/tmp"
   end
 
   def record_websocket(prefix, bindings, explicit_cassette_name, example = nil)

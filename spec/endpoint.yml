@@ -24,7 +24,3 @@ metrics: "hawkular/metrics"
 inventory: "hawkular/inventory"
 alerts: "hawkular/alerts"
 urls: "hawkular/api/urls"
-
-# will remove when rebasing with metric code
-url: "http://localhost:8080/hawkular/metrics"
-url_v8: "http://localhost:8080/hawkular/metrics"
