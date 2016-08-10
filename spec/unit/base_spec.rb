@@ -157,6 +157,53 @@ describe 'Base Spec' do
     expect(ret).to eq('http://localhost:8080/hawkular/alerts')
   end
 
+  it 'Should change http to ws and https to wss on different types of urls' do
+    c = Hawkular::BaseClient.new('not-needed-for-this-test')
+    ret = c.url_with_websocket_scheme 'http://localhost:8080'
+    expect(ret).to eq('ws://localhost:8080')
+
+    ret = c.url_with_websocket_scheme 'https://localhost:8443'
+    expect(ret).to eq('wss://localhost:8443')
+
+    ret = c.url_with_websocket_scheme 'http://localhost'
+    expect(ret).to eq('ws://localhost')
+
+    ret = c.url_with_websocket_scheme 'https://localhost'
+    expect(ret).to eq('wss://localhost')
+
+    ret = c.url_with_websocket_scheme 'http://localhost:8080/hawkular/inventory/'
+    expect(ret).to eq('ws://localhost:8080/hawkular/inventory/')
+
+    ret = c.url_with_websocket_scheme 'https://localhost:8443/hawkular/inventory/'
+    expect(ret).to eq('wss://localhost:8443/hawkular/inventory/')
+
+    ret = c.url_with_websocket_scheme 'http://localhost/hawkular/inventory/'
+    expect(ret).to eq('ws://localhost/hawkular/inventory/')
+
+    ret = c.url_with_websocket_scheme 'https://localhost/hawkular/inventory/'
+    expect(ret).to eq('wss://localhost/hawkular/inventory/')
+
+    ret = c.url_with_websocket_scheme 'http://localhost:8080/http'
+    expect(ret).to eq('ws://localhost:8080/http')
+
+    ret = c.url_with_websocket_scheme 'https://localhost:8443/http/https'
+    expect(ret).to eq('wss://localhost:8443/http/https')
+
+    ret = c.url_with_websocket_scheme 'ftp://http:8080'
+    expect(ret).to eq('ftp://http:8080')
+
+    ret = c.url_with_websocket_scheme 'ftp://https'
+    expect(ret).to eq('ftp://https')
+
+    uri = URI.parse 'http://localhost:8080/hawkular/inventory'
+    ret = c.url_with_websocket_scheme uri
+    expect(ret).to eq('ws://localhost:8080/hawkular/inventory')
+
+    uri = URI.parse 'https://localhost:8443/hawkular/inventory'
+    ret = c.url_with_websocket_scheme uri
+    expect(ret).to eq('wss://localhost:8443/hawkular/inventory')
+  end
+
   it 'Should throw a HawkularConnectionException when host not listening to port' do
     begin
       WebMock.disable!
