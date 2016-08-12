@@ -1,0 +1,23 @@
+[
+  [
+    {
+      "operation": "read",
+      "type": "text",
+      "data": "WelcomeResponse={\"sessionId\":\"xMyFo1U-qMe46YwbMT8ndrV--KSZzRzUzSR637mo\"}"
+    },
+    {
+      "operation": "write",
+      "data": "RestartApplicationRequest={\"resourcePath\":\"/t;<%= tenant_id %>/f;<%= feed_id %>/r;Local~~\",\"destinationFileName\":\"<%= tenant_id %>-alerts-actions-email.war\",\"authentication\":{\"username\":\"jdoe\",\"password\":\"password\"}}"
+    },
+    {
+      "operation": "read",
+      "type": "text",
+      "data": "GenericSuccessResponse={\"message\":\"The request has been forwarded to feed [<%= feed_id %>] (MessageId=ID:38687e83-6639-11e6-a149-05583a5efefa)\"}"
+    },
+    {
+      "operation": "read",
+      "type": "text",
+      "data": "RestartApplicationResponse={\"destinationFileName\":\"<%= tenant_id %>-alerts-actions-email.war\",\"resourcePath\":\"/t;<%= tenant_id %>/f;<%= feed_id %>/r;Local~~\",\"destinationSessionId\":\"xMyFo1U-qMe46YwbMT8ndrV--KSZzRzUzSR637mo\",\"status\":\"OK\",\"message\":\"Performed [Restart Deployment] on a [Application] given by Inventory path [/t;<%= tenant_id %>/f;<%= feed_id %>/r;Local~~]\"}"
+    }
+  ]
+]

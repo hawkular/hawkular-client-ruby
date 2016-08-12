@@ -53,6 +53,8 @@ module Hawkular::Operations
     #
     # @option args [String] :entrypoint Base URL of the hawkular server e.g. http://localhost:8080.
     # @option args [String] :host base host:port pair of Hawkular - e.g localhost:8080
+    # @option args [Boolean] :use_secure_connection if no entrypoint is provided, determines if use a secure connection
+    #                        defaults to false
     # @option args [Hash{String=>String}]  :credentials Hash of (username password) or token
     # @option args [Hash{String=>String}] :options Additional rest client options
     # @option args [Fixnum]  :wait_time Time in seconds describing how long the constructor should block - handshake
@@ -60,11 +62,13 @@ module Hawkular::Operations
     # @example
     #   Hawkular::Operations::OperationsClient.new(credentials: {username: 'jdoe', password: 'password'})
     def initialize(args)
+      args[:use_secure_connection] ||= false
       ep = args[:entrypoint]
 
       unless ep.nil?
-        uri = URI.parse ep
-        args[:host] ||= "#{uri.host}:#{uri.port}"
+        uri = URI.parse ep.to_s
+        args[:host] = "#{uri.host}:#{uri.port}"
+        args[:use_secure_connection] = %w(https wss).include?(uri.scheme) ? true : false
       end
 
       fail 'no parameter ":host" or ":entrypoint" given' if args[:host].nil?
@@ -72,8 +76,7 @@ module Hawkular::Operations
       args[:options] ||= {}
       args[:wait_time] ||= 0.5
       super(args[:host], args[:credentials], args[:options])
-      # note: if we start using the secured WS, change the protocol to wss://
-      url = "ws://#{args[:host]}/hawkular/command-gateway/ui/ws"
+      url = "ws#{args[:use_secure_connection] ? 's' : ''}://#{args[:host]}/hawkular/command-gateway/ui/ws"
       ws_options = {}
       creds = args[:credentials]
       base64_creds = ["#{creds[:username]}:#{creds[:password]}"].pack('m').delete("\r\n")

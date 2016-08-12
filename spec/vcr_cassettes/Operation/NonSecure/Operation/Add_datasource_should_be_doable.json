@@ -1,0 +1,23 @@
+[
+  [
+    {
+      "operation": "read",
+      "type": "text",
+      "data": "WelcomeResponse={\"sessionId\":\"nZC5KY7qaZZZ5jol3PC1LedPYi4l1hc7ErSPysA-\"}"
+    },
+    {
+      "operation": "write",
+      "data": "AddDatasourceRequest={\"resourcePath\":\"/t;<%= tenant_id %>/f;<%= feed_id %>/r;Local~~\",\"xaDatasource\":false,\"datasourceName\":\"CreatedByRubyDS<%= random_uuid %>\",\"jndiName\":\"java:jboss/datasources/CreatedByRubyDS<%= random_uuid %>\",\"driverName\":\"h2\",\"driverClass\":\"org.h2.Driver\",\"connectionUrl\":\"dbc:h2:mem:ruby;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE\",\"datasourceProperties\":{\"someKey\":\"someValue\"},\"userName\":\"sa\",\"password\":\"sa\",\"securityDomain\":\"other\",\"authentication\":{\"username\":\"jdoe\",\"password\":\"password\"}}"
+    },
+    {
+      "operation": "read",
+      "type": "text",
+      "data": "GenericSuccessResponse={\"message\":\"The request has been forwarded to feed [<%= feed_id %>] (MessageId=ID:27311024-6637-11e6-a149-05583a5efefa)\"}"
+    },
+    {
+      "operation": "read",
+      "type": "text",
+      "data": "AddDatasourceResponse={\"xaDatasource\":false,\"datasourceName\":\"CreatedByRubyDS<%= random_uuid %>\",\"resourcePath\":\"/t;<%= tenant_id %>/f;<%= feed_id %>/r;Local~~\",\"destinationSessionId\":\"nZC5KY7qaZZZ5jol3PC1LedPYi4l1hc7ErSPysA-\",\"status\":\"OK\",\"message\":\"Added Datasource: CreatedByRubyDS<%= random_uuid %>\"}"
+    }
+  ]
+]
