@@ -128,17 +128,20 @@ module Hawkular::Operations
       invoke_operation_helper(operation_payload, operation_name, &callback)
     end
 
-    # Deploys a war file into WildFly
+    # Deploys an archive file into WildFly
     #
     # @param [Hash] hash Arguments for deployment
     # @option hash [String]  :resource_path canonical path of the WildFly server into which we deploy
     # @option hash [String]  :destination_file_name resulting file name
     # @option hash [String]  :binary_content binary content representing the war file
-    # @option hash [String]  :enabled whether the deployment should be enabled or not
+    # @option hash [String]  :enabled whether the deployment should be enabled immediately, or not (default = true)
+    # @option hash [String]  :force_deploy whether to replace existing content or not (default = false)
+    # @option hash [String]  :server_groups comma-separated list of server groups for the operation (default = ignored)
     #
     # @param callback [Block] callback that is run after the operation is done
     def add_deployment(hash, &callback)
       hash[:enabled] = hash.key?(:enabled) ? hash[:enabled] : true
+      hash[:force_deploy] = hash.key?(:force_deploy) ? hash[:force_deploy] : false
       required = [:resource_path, :destination_file_name, :binary_content]
       check_pre_conditions hash, required, &callback
 
@@ -146,26 +149,90 @@ module Hawkular::Operations
       invoke_operation_helper(operation_payload, 'DeployApplication', hash[:binary_content], &callback)
     end
 
-    # Removes an existing deployment from WildFly
+    # Undeploy a WildFly deployment
     #
     # @param [Hash] hash Arguments for deployment removal
-    # @option hash [String]  :resource_path canonical path of the WildFly server from which to remove the deployment
-    # @option hash [String]  :deployment_name name of deployment to remove
+    # @option hash [String]  :resource_path canonical path of the WildFly server from which to undeploy the deployment
+    # @option hash [String]  :deployment_name name of deployment to undeploy
+    # @option hash [String]  :remove_content whether to remove the deployment content or not (default = true)
+    # @option hash [String]  :server_groups comma-separated list of server groups for the operation (default = ignored)
     #
     # @param callback [Block] callback that is run after the operation is done
-    def remove_deployment(hash, &callback)
+    def undeploy(hash, &callback)
+      hash[:remove_content] = hash.key?(:remove_content) ? hash[:remove_content] : true
       required = [:resource_path, :deployment_name]
       check_pre_conditions hash, required, &callback
 
       cp = ::Hawkular::Inventory::CanonicalPath.parse hash[:resource_path]
       server_path = cp.up.to_s
+      hash[:resource_path] = server_path
+      hash[:destination_file_name] = hash[:deployment_name]
 
-      payload_hash = {
-        resource_path: server_path,
-        destination_file_name: hash[:deployment_name]
-      }
-      operation_payload = prepare_payload_hash([], payload_hash)
+      operation_payload = prepare_payload_hash([:deployment_name], hash)
       invoke_operation_helper(operation_payload, 'UndeployApplication', &callback)
+    end
+
+    # Enable a WildFly deployment
+    #
+    # @param [Hash] hash Arguments for enable deployment
+    # @option hash [String]  :resource_path canonical path of the WildFly server from which to enable the deployment
+    # @option hash [String]  :deployment_name name of deployment to enable
+    # @option hash [String]  :server_groups comma-separated list of server groups for the operation (default = ignored)
+    #
+    # @param callback [Block] callback that is run after the operation is done
+    def enable_deployment(hash, &callback)
+      required = [:resource_path, :deployment_name]
+      check_pre_conditions hash, required, &callback
+
+      cp = ::Hawkular::Inventory::CanonicalPath.parse hash[:resource_path]
+      server_path = cp.up.to_s
+      hash[:resource_path] = server_path
+      hash[:destination_file_name] = hash[:deployment_name]
+
+      operation_payload = prepare_payload_hash([:deployment_name], hash)
+      invoke_operation_helper(operation_payload, 'EnableApplication', &callback)
+    end
+
+    # Disable a WildFly deployment
+    #
+    # @param [Hash] hash Arguments for disable deployment
+    # @option hash [String]  :resource_path canonical path of the WildFly server from which to disable the deployment
+    # @option hash [String]  :deployment_name name of deployment to disable
+    # @option hash [String]  :server_groups comma-separated list of server groups for the operation (default = ignored)
+    #
+    # @param callback [Block] callback that is run after the operation is done
+    def disable_deployment(hash, &callback)
+      required = [:resource_path, :deployment_name]
+      check_pre_conditions hash, required, &callback
+
+      cp = ::Hawkular::Inventory::CanonicalPath.parse hash[:resource_path]
+      server_path = cp.up.to_s
+      hash[:resource_path] = server_path
+      hash[:destination_file_name] = hash[:deployment_name]
+
+      operation_payload = prepare_payload_hash([:deployment_name], hash)
+      invoke_operation_helper(operation_payload, 'DisableApplication', &callback)
+    end
+
+    # Restart a WildFly deployment
+    #
+    # @param [Hash] hash Arguments for restart deployment
+    # @option hash [String]  :resource_path canonical path of the WildFly server from which to restart the deployment
+    # @option hash [String]  :deployment_name name of deployment to restart
+    # @option hash [String]  :server_groups comma-separated list of server groups for the operation (default = ignored)
+    #
+    # @param callback [Block] callback that is run after the operation is done
+    def restart_deployment(hash, &callback)
+      required = [:resource_path, :deployment_name]
+      check_pre_conditions hash, required, &callback
+
+      cp = ::Hawkular::Inventory::CanonicalPath.parse hash[:resource_path]
+      server_path = cp.up.to_s
+      hash[:resource_path] = server_path
+      hash[:destination_file_name] = hash[:deployment_name]
+
+      operation_payload = prepare_payload_hash([:deployment_name], hash)
+      invoke_operation_helper(operation_payload, 'RestartApplication', &callback)
     end
 
     # Adds a new datasource

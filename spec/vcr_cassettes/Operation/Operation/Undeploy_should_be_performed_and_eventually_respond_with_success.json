@@ -7,7 +7,7 @@
     },
     {
       "operation": "write",
-      "data": "UndeployApplicationRequest={\"resourcePath\":\"/t;hawkular/f;33f22c4a-445a-4f90-a25e-caeff9579a10/r;Local~~\",\"destinationFileName\":\"\hawkular-alerts-actions-email.war\",\"authentication\":{\"username\":\"jdoe\",\"password\":\"password\"}}"
+      "data": "UndeployApplicationRequest={\"resourcePath\":\"/t;hawkular/f;33f22c4a-445a-4f90-a25e-caeff9579a10/r;Local~~\",\"removeContent\":true,\"destinationFileName\":\"\hawkular-alerts-actions-email.war\",\"authentication\":{\"username\":\"jdoe\",\"password\":\"password\"}}"
     },
     {
       "operation": "read",

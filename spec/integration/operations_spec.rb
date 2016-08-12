@@ -265,7 +265,7 @@ module Hawkular::Operations::RSpec
       expect(actual_data['driverName']).to eq(driver_name)
     end
 
-    it 'Redeploy should be performed and eventually respond with success' do
+    it 'Restart should be performed and eventually respond with success' do
       wf_server_resource_id = 'Local~~'
       alerts_war_resource_id = 'Local~%2Fdeployment%3Dhawkular-alerts-actions-email.war'
       path = CanonicalPath.new(tenant_id: @tenant_id,
@@ -273,7 +273,7 @@ module Hawkular::Operations::RSpec
                                resource_ids: [wf_server_resource_id, alerts_war_resource_id])
 
       redeploy = {
-        operationName: 'Redeploy',
+        operationName: 'Restart',
         resourcePath: path.to_s
       }
 
@@ -292,10 +292,10 @@ module Hawkular::Operations::RSpec
       actual_data = wait_for actual_data
       expect(actual_data['status']).to eq('OK')
       expect(actual_data['resourcePath']).to eq(path.to_s)
-      expect(actual_data['message']).to start_with('Performed [Redeploy] on')
+      expect(actual_data['message']).to start_with('Performed [Restart] on')
     end
 
-    it 'Redeploy should not be performed if resource path is wrong' do
+    it 'Restart should not be performed if resource path is wrong' do
       wf_server_resource_id = 'Local~~'
       wrong_war_resource_id = 'Local~%2Fdeployment%3Dnon-existent.war'
       path = CanonicalPath.new(tenant_id: @tenant_id,
@@ -303,7 +303,7 @@ module Hawkular::Operations::RSpec
                                resource_ids: [wf_server_resource_id, wrong_war_resource_id])
 
       redeploy = {
-        operationName: 'Redeploy',
+        operationName: 'Restart',
         resourcePath: path.to_s
       }
       actual_data = {}
@@ -316,7 +316,7 @@ module Hawkular::Operations::RSpec
         end
       end
       actual_data = wait_for actual_data
-      expect(actual_data[:error]).to start_with('Could not perform [Redeploy] on')
+      expect(actual_data[:error]).to start_with('Could not perform [Restart] on')
     end
 
     it 'Undeploy should be performed and eventually respond with success' do
@@ -331,7 +331,7 @@ module Hawkular::Operations::RSpec
         deployment_name: 'hawkular-alerts-actions-email.war'
       }
       actual_data = {}
-      @client.remove_deployment(undeploy) do |on|
+      @client.undeploy(undeploy) do |on|
         on.success do |data|
           actual_data[:data] = data
         end
@@ -396,7 +396,7 @@ module Hawkular::Operations::RSpec
       operations_client = OperationsClient.new(entrypoint: 'http://localhost:8080', credentials: @creds)
 
       redeploy = {
-        operationName: 'Redeploy',
+        operationName: 'Restart',
         resourcePath: '/t;t1/f;whatever/r;something'
       }
 
@@ -407,7 +407,7 @@ module Hawkular::Operations::RSpec
       end.to raise_error(RuntimeError, /Handshake with server has not been done./)
     end
 
-    it 'Redeploy can be run multiple times in parallel' do
+    it 'Restart can be run multiple times in parallel' do
       wf_server_resource_id = 'Local~~'
       alerts_war_resource_id = 'Local~%2Fdeployment%3Dhawkular-alerts-actions-email.war'
       console_war_resource_id = 'Local~%2Fdeployment%3Dhawkular-console.war'
@@ -419,12 +419,12 @@ module Hawkular::Operations::RSpec
                                 resource_ids: [wf_server_resource_id, console_war_resource_id])
 
       redeploy1 = {
-        operationName: 'Redeploy',
+        operationName: 'Restart',
         resourcePath: path1.to_s
       }
 
       redeploy2 = {
-        operationName: 'Redeploy',
+        operationName: 'Restart',
         resourcePath: path2.to_s
       }
 
@@ -446,7 +446,7 @@ module Hawkular::Operations::RSpec
       actual_data = wait_for actual_data
       expect(actual_data['status']).to eq('OK')
       expect(actual_data['resourcePath']).to eq(path2.to_s)
-      expect(actual_data['message']).to start_with('Performed [Redeploy] on')
+      expect(actual_data['message']).to start_with('Performed [Restart] on')
     end
 
     it 'Add deployment should be doable' do
