@@ -119,6 +119,7 @@ module Hawkular::Inventory
     def initialize(op_hash)
       super(op_hash)
       @params = {}
+      return if op_hash['properties'].nil?
       param_list = op_hash['properties']['params']
       return if param_list.nil?
       param_list.each do |p|

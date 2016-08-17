@@ -66,9 +66,6 @@ http_interactions:
           "id" : "Reload"
         }, {
           "path" : "/t;hawkular/f;<%= feed_uuid %>/rt;WildFly%20Server/ot;Resume",
-          "properties" : {
-            "__identityHash" : "b5103168d783b0bb67bf88f30c1fad462b635e"
-          },
           "name" : "Resume",
           "identityHash" : "b5103168d783b0bb67bf88f30c1fad462b635e",
           "id" : "Resume"
