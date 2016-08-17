@@ -177,7 +177,6 @@ module Hawkular::Operations
       undeploy(hash, &callback)
     end
 
-
     # Enable a WildFly deployment
     #
     # @param [Hash] hash Arguments for enable deployment
