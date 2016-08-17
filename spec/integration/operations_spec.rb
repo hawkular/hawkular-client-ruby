@@ -272,13 +272,13 @@ module Hawkular::Operations::RSpec
                                feed_id: @feed_id,
                                resource_ids: [wf_server_resource_id, alerts_war_resource_id])
 
-      redeploy = {
-        operationName: 'Restart',
-        resourcePath: path.to_s
+      restart = {
+        resource_path: path.to_s,
+        deployment_name: 'hawkular-alerts-actions-email.war'
       }
 
       actual_data = {}
-      @client.invoke_generic_operation(redeploy) do |on|
+      @client.restart_deployment(restart) do |on|
         on.success do |data|
           actual_data[:data] = data
         end
@@ -291,23 +291,23 @@ module Hawkular::Operations::RSpec
       # expectations don't work from callbacks so waiting for the results via blocking helper `wait_for`
       actual_data = wait_for actual_data
       expect(actual_data['status']).to eq('OK')
-      expect(actual_data['resourcePath']).to eq(path.to_s)
-      expect(actual_data['message']).to start_with('Performed [Restart] on')
+      expect(actual_data['resourcePath']).to eq(path.up.to_s)
+      expect(actual_data['message']).to start_with('Performed [Restart Deployment] on')
     end
 
     it 'Restart should not be performed if resource path is wrong' do
-      wf_server_resource_id = 'Local~~'
-      wrong_war_resource_id = 'Local~%2Fdeployment%3Dnon-existent.war'
+      wf_server_resource_id = 'Unknown~~'
+      wrong_war_resource_id = 'Unknown~%2Fdeployment%3Dnon-existent.war'
       path = CanonicalPath.new(tenant_id: @tenant_id,
                                feed_id: @feed_id,
                                resource_ids: [wf_server_resource_id, wrong_war_resource_id])
 
-      redeploy = {
-        operationName: 'Restart',
-        resourcePath: path.to_s
+      restart = {
+        resource_path: path.to_s,
+        deployment_name: 'non-existent.war'
       }
       actual_data = {}
-      @client.invoke_generic_operation(redeploy) do |on|
+      @client.restart_deployment(restart) do |on|
         on.success do |_|
           actual_data[:data] = { error: 'the operation should have failed' }
         end
@@ -316,22 +316,22 @@ module Hawkular::Operations::RSpec
         end
       end
       actual_data = wait_for actual_data
-      expect(actual_data[:error]).to start_with('Could not perform [Restart] on')
+      expect(actual_data[:error]).to start_with('Cannot restart application: unknown resource')
     end
 
-    it 'Undeploy should be performed and eventually respond with success' do
+    it 'Disable should be performed and eventually respond with success' do
       wf_server_resource_id = 'Local~~'
       alerts_war_resource_id = 'Local~%2Fdeployment%3Dhawkular-alerts-actions-email.war'
       path = CanonicalPath.new(tenant_id: @tenant_id,
                                feed_id: @feed_id,
                                resource_ids: [wf_server_resource_id, alerts_war_resource_id])
 
-      undeploy = {
+      disable = {
         resource_path: path.to_s,
         deployment_name: 'hawkular-alerts-actions-email.war'
       }
       actual_data = {}
-      @client.undeploy(undeploy) do |on|
+      @client.disable_deployment(disable) do |on|
         on.success do |data|
           actual_data[:data] = data
         end
@@ -395,15 +395,15 @@ module Hawkular::Operations::RSpec
       # open the connection
       operations_client = OperationsClient.new(entrypoint: 'http://localhost:8080', credentials: @creds)
 
-      redeploy = {
-        operationName: 'Restart',
-        resourcePath: '/t;t1/f;whatever/r;something'
+      restart = {
+        resource_path: '/t;t1/f;whatever/r;something',
+        deployment_name: 'something.war'
       }
 
       # close the connection
       operations_client.close_connection!
       expect do
-        operations_client.invoke_generic_operation(redeploy)
+        operations_client.restart_deployment(restart)
       end.to raise_error(RuntimeError, /Handshake with server has not been done./)
     end
 
@@ -418,22 +418,22 @@ module Hawkular::Operations::RSpec
                                 feed_id: @feed_id,
                                 resource_ids: [wf_server_resource_id, console_war_resource_id])
 
-      redeploy1 = {
-        operationName: 'Restart',
-        resourcePath: path1.to_s
+      restart1 = {
+        resource_path: path1.to_s,
+        deployment_name: 'hawkular-alerts-actions-email.war'
       }
 
-      redeploy2 = {
-        operationName: 'Restart',
-        resourcePath: path2.to_s
+      restart2 = {
+        resource_path: path2.to_s,
+        deployment_name: 'hawkular-console.war'
       }
 
       # run the first operation w/o registering the callback
-      @client.invoke_generic_operation(redeploy1)
+      @client.restart_deployment(restart1)
 
       actual_data = {}
       # run the 2nd operation with 2 callback blocks (the happy path and the less happy path)
-      @client.invoke_generic_operation(redeploy2) do |on|
+      @client.restart_deployment(restart2) do |on|
         on.success do |data|
           actual_data[:data] = data
         end
@@ -445,8 +445,8 @@ module Hawkular::Operations::RSpec
 
       actual_data = wait_for actual_data
       expect(actual_data['status']).to eq('OK')
-      expect(actual_data['resourcePath']).to eq(path2.to_s)
-      expect(actual_data['message']).to start_with('Performed [Restart] on')
+      expect(actual_data['resourcePath']).to eq(path2.up.to_s)
+      expect(actual_data['message']).to start_with('Performed [Restart Deployment] on')
     end
 
     it 'Add deployment should be doable' do
@@ -476,18 +476,18 @@ module Hawkular::Operations::RSpec
       expect(actual_data['resourcePath']).to eq(wf_path)
     end
 
-    it 'Remove deployment should be performed and eventually respond with success' do
+    it 'Undeploy deployment should be performed and eventually respond with success' do
       wf_server_resource_id = 'Local~~'
       sample_app_resource_id = 'Local~%2Fdeployment=sample.war'
       path = CanonicalPath.new(tenant_id: @tenant_id,
                                feed_id: @feed_id,
                                resource_ids: [wf_server_resource_id, sample_app_resource_id])
-      remove_deployment = {
-        operationName: 'Remove',
-        resourcePath: path.to_s
+      undeploy = {
+        resource_path: path.to_s,
+        deployment_name: 'sample.war'
       }
       actual_data = {}
-      @client.invoke_generic_operation(remove_deployment) do |on|
+      @client.undeploy(undeploy) do |on|
         on.success do |data|
           actual_data[:data] = data
         end
@@ -498,7 +498,7 @@ module Hawkular::Operations::RSpec
       end
       actual_data = wait_for actual_data
       expect(actual_data['status']).to eq('OK')
-      expect(actual_data['message']).to start_with('Performed [Remove] on')
+      expect(actual_data['message']).to start_with('Performed [Undeploy] on')
     end
 
     it 'Remove datasource should be performed and eventually respond with success' do
