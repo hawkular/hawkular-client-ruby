@@ -151,6 +151,14 @@ module Hawkular
       end
     end
 
+    # Generate a new url using the websocket scheme. It changes the current scheme to
+    # 'ws' for 'http' and 'wss' for 'https' urls.
+    # @param url [String|URI] url
+    # @return [String] URL with the scheme changed to 'ws' or 'wss' depending on the current scheme.
+    def url_with_websocket_scheme(url)
+      url.to_s.sub(/^http(s?)/, 'ws\1')
+    end
+
     # Specialized exception to be thrown
     # when the interaction with Hawkular fails
     class HawkularException < StandardError
