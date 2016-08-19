@@ -1,9 +1,29 @@
 # This is example configuration for integration tests and it should
 # work out-of-box with hawkular in dev environment
 
-url: "http://localhost:8080/hawkular/metrics"
-# authentication is not yet supported in hawkular-metrics 0.5.0
+nonsecure:
+  host: "localhost"
+  port: "8080"
+  is_secure: False
+
+secure:
+  host: "127.0.0.1"
+  port: "8443"
+  is_secure: True
+
+v8:
+  host: "localhost"
+  port: "8080"
+  is_secure: False
+
 user: "jdoe"
 password: "password"
+token_v8:
+
+metrics: "hawkular/metrics"
+inventory: "hawkular/inventory"
+alerts: "hawkular/alerts"
+
+# will remove when rebasing with metric code
+url: "http://localhost:8080/hawkular/metrics"
 url_v8: "http://localhost:8080/hawkular/metrics"
-token_v8: 

@@ -9,9 +9,6 @@ SKIP_SECURE_CONTEXT = ENV['SKIP_SECURE_CONTEXT'] || '1'
 
 # examples for operations, it uses the websocket communication
 module Hawkular::Operations::RSpec
-  NON_SECURE_HOST = 'localhost:8080'
-  SECURE_HOST = '127.0.0.1:8443'
-
   NON_SECURE_CONTEXT = :NonSecure
   SECURE_CONTEXT = :Secure
   [NON_SECURE_CONTEXT, SECURE_CONTEXT].each do |security_context|
@@ -21,12 +18,13 @@ module Hawkular::Operations::RSpec
       next
     end
 
-    host = case security_context
-           when NON_SECURE_CONTEXT then NON_SECURE_HOST
-           when SECURE_CONTEXT then SECURE_HOST
-           end
-
     context "#{security_context}" do
+      alias_method :helper_host, :host
+
+      let(:host) do
+        helper_host(security_context)
+      end
+
       let(:options) do
         {
           host: host,
@@ -54,7 +52,7 @@ module Hawkular::Operations::RSpec
 
       before(:all) do
         WebSocketVCR.configure do |c|
-          c.hook_uris = [host]
+          c.hook_uris = [helper_host(security_context)]
         end
       end
 
@@ -241,7 +239,7 @@ module Hawkular::Operations::RSpec
             end
           end
           actual_data = wait_for actual_data
-          expect(actual_data[:error]).to start_with('Could not perform [Restart Deployment] on a [Application] given by inventory path')
+          expect(actual_data[:error]).to start_with('Could not perform [Restart Deployment] on a [Application] given')
         end
 
         it 'Disable should be performed and eventually respond with success' do

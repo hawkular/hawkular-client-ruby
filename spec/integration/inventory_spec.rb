@@ -3,8 +3,6 @@ require "#{File.dirname(__FILE__)}/../spec_helper"
 require 'securerandom'
 
 module Hawkular::Inventory::RSpec
-  NON_SECURE_ENTRYPOINT = 'http://localhost:8080/hawkular/inventory'
-  SECURE_ENTRYPOINT = 'https://127.0.0.1:8443/hawkular/inventory'
   DEFAULT_VERSION = '0.17.2.Final'
   VERSION = ENV['INVENTORY_VERSION'] || DEFAULT_VERSION
 
@@ -16,15 +14,17 @@ module Hawkular::Inventory::RSpec
   SECURE_CONTEXT = :Secure
 
   [NON_SECURE_CONTEXT, SECURE_CONTEXT].each do |security_context|
-    entrypoint = case security_context
-                 when NON_SECURE_CONTEXT then NON_SECURE_ENTRYPOINT
-                 when SECURE_CONTEXT then SECURE_ENTRYPOINT
-                 end
-
     next if security_context == SECURE_CONTEXT && SKIP_SECURE_CONTEXT == '1'
 
     context "#{security_context}" do
       include Hawkular::Inventory
+
+      alias_method :helper_entrypoint, :entrypoint
+
+      let(:entrypoint) do
+        helper_entrypoint(security_context, 'inventory')
+      end
+
       describe 'Inventory Tenants' do
         let(:cassette_name) do |example|
           description = example.description
@@ -93,13 +93,13 @@ module Hawkular::Inventory::RSpec
           if ENV['VCR_UPDATE'] == '1'
             VCR.turn_off!(ignore_cassettes: true)
             WebMock.allow_net_connect!
-            @client = setup_inventory_client entrypoint, client_options
+            @client = setup_inventory_client helper_entrypoint(security_context, 'inventory'), client_options
             WebMock.disable_net_connect!
             VCR.turn_on!
           else
             ::RSpec::Mocks.with_temporary_scope do
               mock_inventory_client(VERSION) unless ENV['VCR_UPDATE'] == '1'
-              @client = setup_inventory_client entrypoint, client_options
+              @client = setup_inventory_client helper_entrypoint(security_context, 'inventory'), client_options
             end
           end
 

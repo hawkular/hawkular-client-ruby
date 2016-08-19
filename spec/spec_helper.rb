@@ -80,12 +80,6 @@ module Hawkular::Metrics::RSpec
     }
   end
 
-  def config
-    @config ||= YAML.load(
-      File.read(File.expand_path('endpoint.yml', File.dirname(__FILE__)))
-    )
-  end
-
   def mock_metrics_version(version = '0.9.0.Final')
     allow_any_instance_of(Hawkular::Metrics::Client).to receive(:fetch_version_and_status).and_return(
       'Implementation-Version' => version
@@ -168,6 +162,23 @@ end
 
 # globally used helper functions
 module Helpers
+  def config
+    @config ||= YAML.load(
+      File.read(File.expand_path('endpoint.yml', File.dirname(__FILE__)))
+    )
+  end
+
+  def entrypoint(type, component = nil)
+    base = config[type.to_s.downcase]
+    entrypoint = "#{base['is_secure'] ? 'https' : 'http'}://#{base['host']}:#{base['port']}/"
+    entrypoint << config[component] unless component.nil?
+  end
+
+  def host(type)
+    base = config[type.to_s.downcase]
+    "#{base['host']}:#{base['port']}"
+  end
+
   def make_template(base_directory, cassette_name, bindings)
     cassette = cassette_name.gsub(/\s+/, '_')
     input_file_path = "#{VCR.configuration.cassette_library_dir}/#{base_directory}/tmp/#{cassette}.yml"
