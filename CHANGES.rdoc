@@ -3,6 +3,15 @@
 This document describes the relevant changes between releases of the
 _hawkular-client_ project.
 
+
+=== V 2.5.0
+
+* Fix failure of list operations when no properties are passed - don't parse params
+* Adds url_with_websocket method for helping to generate a ws(s) url
+* Use server-level operation commands for deployments
+
+Full list of items can be found at https://github.com/hawkular/hawkular-client-ruby/milestone/10?closed=1
+
 === V 2.4.0
 
 * Expose `metric.type.id` in metric definitions from Inventory, as the agent changed what it sends
