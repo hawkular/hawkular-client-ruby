@@ -194,6 +194,37 @@ v16_context = :metrics_0_16_0
         expect(@client.gauges.get_data(@random_id).size).to be 1
         expect(@client.avail.get_data(@random_id).size).to be 1
       end
+
+      it 'Should fetch stats for mixed metric', run_for: [services_context] do
+        expect(@client.counters.get_data(@random_id).size).to be 0
+        expect(@client.gauges.get_data(@random_id).size).to be 0
+        expect(@client.avail.get_data(@random_id).size).to be 0
+
+        @client.push_data(
+          counters: [{ id: @random_id, data: [{ value: 1 }] }],
+          availabilities: [{ id: @random_id, data: [{ value: 'down' }] }],
+          gauges: [{ id: @random_id, data: [{ value: 1.1 }] }]
+        )
+
+        timestamps = []
+        timestamps.push(@client.counters.get_data(@random_id).first['timestamp'])
+        timestamps.push(@client.gauges.get_data(@random_id).first['timestamp'])
+        timestamps.push(@client.avail.get_data(@random_id).first['timestamp'])
+
+        stats = @client.query_stats(
+          gauge_ids: [@random_id],
+          counter_ids: [@random_id],
+          avail_ids: [@random_id],
+          starts: timestamps.min,
+          ends: timestamps.max + 1,
+          bucket_duration: "#{timestamps.max - timestamps.min + 1}ms"
+        )
+
+        expect(stats.size).to be 3
+        expect(stats['gauge'][@random_id].first['avg']).to be 1.1
+        expect(stats['counter'][@random_id].first['avg']).to be 1.0
+        expect(stats['availability'][@random_id].first['downtimeCount']).to be 1
+      end
     end
 
     describe 'Counter metrics' do
