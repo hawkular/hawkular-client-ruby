@@ -505,23 +505,15 @@ module Hawkular::Inventory::RSpec
           e
         end
 
-        it 'Client should listen on various inventory events', :websocket do
+        it 'Client should listen on various inventory events' do
           WebSocketVCR.configure do |c|
-            c.hook_uris = ['localhost:8080', '127.0.0.1:8443']
+            c.hook_uris = [host(security_context)]
           end
           uuid_prefix = SecureRandom.uuid
-          vcr_options = {
-            decode_compressed_response: true,
-            erb: {
-              uuid_prefix: uuid_prefix
-            },
-            reverse_substitution: true
-          }
-          vcr_options[:record] = :all if ENV['VCR_UPDATE'] == '1'
           x, y, = @client.version
-          cassette_name = "Inventory/#{security_context}/inventory_#{x}_#{y}/Templates/"\
-          'Client_should_listen_on_various_inventory_events'
-          WebSocketVCR.use_cassette(cassette_name, vcr_options) do
+          record_websocket("Inventory/#{security_context}/inventory_#{x}_#{y}",
+                           { uuid_prefix: uuid_prefix },
+                           'Client_should_listen_on_various_inventory_events') do
             id_1 = uuid_prefix + '-r126'
             id_2 = uuid_prefix + '-r127'
             id_3 = uuid_prefix + '-r128'

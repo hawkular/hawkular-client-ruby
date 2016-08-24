@@ -213,7 +213,7 @@ module Helpers
     record_cassette(prefix, bindings, explicit_cassette_name, run)
   end
 
-  def record_websocket(prefix, bindings, explicit_cassette_name, example)
+  def record_websocket(prefix, bindings, explicit_cassette_name, example = nil)
     prefix.gsub!(/\s/, '_')
     explicit_cassette_name.gsub!(/\s/, '_')
     run = lambda do
