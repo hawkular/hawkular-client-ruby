@@ -40,6 +40,31 @@ module Hawkular::Metrics
       http_post(path, data)
     end
 
+    # Fetch stats for multiple metrics of all supported types
+    # @param gauge_ids [Array[String]] list of gauge ids
+    # @param counter_ids [Array[String]] list of counter ids
+    # @param avail_ids [Array[String]] list of availability ids
+    # @param starts [Integer] optional timestamp (default now - 8h)
+    # @param ends [Integer] optional timestamp (default now)
+    # @param bucket_duration [String] optional interval (default 3600s)
+    # @return [Hash] stats grouped per type
+    # @example
+    #   client = Hawkular::Metrics::client::new
+    #   client.query_stats(
+    #     gauge_ids: ['G1', 'G2'],
+    #     counter_ids: ['C2', 'C3'],
+    #     avail_ids: ['A2', 'A3'],
+    #     starts: 200,
+    #     ends: 500,
+    #     bucket_duration: '150ms'
+    #   )
+    def query_stats(gauge_ids: [], counter_ids: [], avail_ids: [], starts: nil, ends: nil, bucket_duration: '3600s')
+      path = '/metrics/stats/query'
+      metrics = { gauge: gauge_ids, counter: counter_ids, availability: avail_ids }
+      data = { metrics: metrics, start: starts, end: ends, bucketDuration: bucket_duration }
+      http_post(path, data)
+    end
+
     # Base class for accessing metric definition and data of all
     # types (counters, gauges, availabilities).
     class Metrics
