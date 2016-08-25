@@ -412,9 +412,12 @@ module Hawkular::Inventory
       parsed_path = CanonicalPath.parse(resource_type_path.to_s)
       feed_id = parsed_path.feed_id
       resource_type_id = parsed_path.resource_type_id
-      ret = http_get("/traversal/f;#{feed_id}/rt;#{resource_type_id}/type=ot")
+      ots = http_get("/traversal/f;#{feed_id}/rt;#{resource_type_id}/type=ot")
       res = {}
-      ret.each do |ot|
+      ots.each do |ot|
+        ot_name = ERB::Util.url_encode ot['name']
+        pts = http_get("/traversal/f;#{feed_id}/rt;#{resource_type_id}/ot;#{ot_name}/d;parameterTypes")
+        ot['parameters'] = pts[0]['value'] unless pts.empty?
         od = OperationDefinition.new ot
         res.store od.name, od
       end
