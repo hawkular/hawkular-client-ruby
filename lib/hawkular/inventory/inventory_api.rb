@@ -373,7 +373,7 @@ module Hawkular::Inventory
       if fetch_resource_config
         p = get_config_data_for_resource(resource_path)
         res['properties'] ||= {}
-        res['properties'].merge p['value'] unless p['value'].nil?
+        res['properties'].merge! p['value'] unless p['value'].nil?
       end
       Resource.new(res)
     end

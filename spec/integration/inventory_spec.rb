@@ -320,6 +320,17 @@ module Hawkular::Inventory::RSpec
       expect(config['value']['Driver Name']).to eq('h2')
     end
 
+    it 'Should get resource with its configurations' do
+      wildfly_res_id = hawk_escape_id 'Local~~'
+      datasource_res_id = hawk_escape_id 'Local~/subsystem=datasources/data-source=ExampleDS'
+      resource_path = CanonicalPath.new(feed_id: feed_id, resource_ids: [wildfly_res_id, datasource_res_id])
+
+      resource = @client.get_resource resource_path, true
+
+      expect(resource.properties['Username']).to eq('sa')
+      expect(resource.properties['Driver Name']).to eq('h2')
+    end
+
     it 'Should list operation definitions of given resource type' do
       operation_definitions = @client.list_operation_definitions(wildfly_type.to_s)
 
