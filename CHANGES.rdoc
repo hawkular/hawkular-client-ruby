@@ -3,6 +3,15 @@
 This document describes the relevant changes between releases of the
 _hawkular-client_ project.
 
+=== V 2.6.0
+
+* Fix fetching operation params in the recommended way
+* Add support for fetching stats for multiple metrics
+* Fix fetching configuration properties of a resource
+
+Full list of items can be found at https://github.com/hawkular/hawkular-client-ruby/milestone/11?closed=1
+
+
 
 === V 2.5.0
 
