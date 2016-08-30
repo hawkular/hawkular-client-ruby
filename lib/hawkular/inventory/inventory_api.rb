@@ -488,7 +488,8 @@ module Hawkular::Inventory
       }
       ws_options[:headers][:'Hawkular-Tenant'] = tenant_id
 
-      url = "#{entrypoint.gsub(/https?/, 'ws')}/ws/events?tenantId=#{tenant_id}&type=#{type}&action=#{action}"
+      url = normalize_entrypoint_url(@entrypoint, "ws/events?tenantId=#{tenant_id}&type=#{type}&action=#{action}")
+      url = url_with_websocket_scheme(url)
       @ws = WebSocket::Client::Simple.connect url, ws_options do |client|
         client.on :message do |msg|
           parsed_message = JSON.parse(msg.data)

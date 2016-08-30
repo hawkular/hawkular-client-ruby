@@ -1,0 +1,13 @@
+[
+  [
+    {
+      "operation": "read",
+      "type": "text",
+      "data": "WelcomeResponse={\"sessionId\":\"0yEbUeuIeZC0qGKciOsFC7njP04wbtm-gC5cMaJT\"}"
+    },
+    {
+      "operation": "write",
+      "data": "ExecuteOperationRequest={\"operationName\":\"noop\",\"authentication\":{\"username\":\"jdoe\",\"password\":\"password\"}}"
+    }
+  ]
+]

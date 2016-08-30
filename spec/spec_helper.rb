@@ -80,12 +80,6 @@ module Hawkular::Metrics::RSpec
     }
   end
 
-  def config
-    @config ||= YAML.load(
-      File.read(File.expand_path('endpoint.yml', File.dirname(__FILE__)))
-    )
-  end
-
   def mock_metrics_version(version = '0.9.0.Final')
     allow_any_instance_of(Hawkular::Metrics::Client).to receive(:fetch_version_and_status).and_return(
       'Implementation-Version' => version
@@ -160,10 +154,31 @@ module Hawkular::Operations::RSpec
       object[:data]
     end
   end
+
+  def host_with_scheme(host, use_secure_connection)
+    "#{use_secure_connection ? 'https' : 'http'}://#{host}"
+  end
 end
 
 # globally used helper functions
 module Helpers
+  def config
+    @config ||= YAML.load(
+      File.read(File.expand_path('endpoint.yml', File.dirname(__FILE__)))
+    )
+  end
+
+  def entrypoint(type, component = nil)
+    base = config[type.to_s.downcase]
+    entrypoint = "#{base['is_secure'] ? 'https' : 'http'}://#{base['host']}:#{base['port']}/"
+    entrypoint << config[component] unless component.nil?
+  end
+
+  def host(type)
+    base = config[type.to_s.downcase]
+    "#{base['host']}:#{base['port']}"
+  end
+
   def make_template(base_directory, cassette_name, bindings)
     cassette = cassette_name.gsub(/\s+/, '_')
     input_file_path = "#{VCR.configuration.cassette_library_dir}/#{base_directory}/tmp/#{cassette}.yml"
@@ -195,20 +210,58 @@ module Helpers
       yield if block_given?
     end
 
-    if ENV['VCR_UPDATE'] == '1'
+    record_cassette(prefix, bindings, explicit_cassette_name, run)
+  end
+
+  def record_websocket(prefix, bindings, explicit_cassette_name, example = nil)
+    prefix.gsub!(/\s/, '_')
+    explicit_cassette_name.gsub!(/\s/, '_')
+    run = lambda do
+      unless example.nil?
+        if example.respond_to?(:run)
+          example.run
+        elsif example.respond_to?(:call)
+          example.call
+        end
+      end
+      yield if block_given?
+    end
+
+    record_websocket_cassette(prefix, bindings, explicit_cassette_name, run)
+  end
+
+  private
+
+  def record_cassette(prefix, bindings, explicit_cassette_name, run_lambda)
+    if ENV['VCR_UPDATE'] == '1' && bindings
       VCR.use_cassette(prefix + '/tmp/' + explicit_cassette_name,
                        decode_compressed_response: true,
                        record: :all) do
-        run.call
+        run_lambda.call
       end
       make_template prefix, explicit_cassette_name, bindings
     else
       VCR.use_cassette(prefix + '/Templates/' + explicit_cassette_name,
                        decode_compressed_response: true,
                        erb: bindings,
-                       record: :none) do
-        run.call
+                       record: ENV['VCR_UPDATE'] == '1' ? :all : :none) do
+        run_lambda.call
       end
+    end
+  end
+
+  def record_websocket_cassette(prefix, bindings, explicit_cassette_name, run_lambda)
+    options = {
+      record: :none,
+      decode_compressed_response: true
+    }
+    options[:erb] = bindings if bindings
+    if ENV['VCR_UPDATE'] == '1'
+      options[:record] = :all
+      options[:reverse_substitution] = true if bindings
+    end
+    WebSocketVCR.use_cassette(prefix + '/' + explicit_cassette_name, options) do
+      run_lambda.call
     end
   end
 end

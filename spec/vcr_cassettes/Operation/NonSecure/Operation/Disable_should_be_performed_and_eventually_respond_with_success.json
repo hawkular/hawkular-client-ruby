@@ -1,0 +1,23 @@
+[
+  [
+    {
+      "operation": "read",
+      "type": "text",
+      "data": "WelcomeResponse={\"sessionId\":\"jXweY_aXtTBt3i_9HfzShEFKgp0PGDCQzpAiWAKb\"}"
+    },
+    {
+      "operation": "write",
+      "data": "DisableApplicationRequest={\"resourcePath\":\"/t;<%= tenant_id %>/f;<%= feed_id %>/r;Local~~\",\"destinationFileName\":\"<%= tenant_id %>-alerts-actions-email.war\",\"authentication\":{\"username\":\"jdoe\",\"password\":\"password\"}}"
+    },
+    {
+      "operation": "read",
+      "type": "text",
+      "data": "GenericSuccessResponse={\"message\":\"The request has been forwarded to feed [<%= feed_id %>] (MessageId=ID:25bd5c9e-6637-11e6-a149-05583a5efefa)\"}"
+    },
+    {
+      "operation": "read",
+      "type": "text",
+      "data": "DisableApplicationResponse={\"destinationFileName\":\"<%= tenant_id %>-alerts-actions-email.war\",\"resourcePath\":\"/t;<%= tenant_id %>/f;<%= feed_id %>/r;Local~~\",\"destinationSessionId\":\"jXweY_aXtTBt3i_9HfzShEFKgp0PGDCQzpAiWAKb\",\"status\":\"OK\",\"message\":\"Performed [Disable Deployment] on a [Application] given by Inventory path [/t;<%= tenant_id %>/f;<%= feed_id %>/r;Local~~]\"}"
+    }
+  ]
+]

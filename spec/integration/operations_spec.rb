@@ -5,573 +5,494 @@ require 'securerandom'
 include Hawkular::Inventory
 include Hawkular::Operations
 
+SKIP_SECURE_CONTEXT = ENV['SKIP_SECURE_CONTEXT'] || '1'
+
 # examples for operations, it uses the websocket communication
 module Hawkular::Operations::RSpec
-  HOST = 'localhost:8080'
-  describe 'Operation/Websocket connection', vcr: { decode_compressed_response: true } do
-    let(:example) do |e|
-      e
+  NON_SECURE_CONTEXT = :NonSecure
+  SECURE_CONTEXT = :Secure
+  [NON_SECURE_CONTEXT, SECURE_CONTEXT].each do |security_context|
+    next if security_context == SECURE_CONTEXT && SKIP_SECURE_CONTEXT == '1'
+    if security_context == NON_SECURE_CONTEXT && ENV['SKIP_NON_SECURE_CONTEXT'] == '1'
+      puts 'skipping non secure context'
+      next
     end
 
-    it 'should be established' do
-      WebSocketVCR.configure do |c|
-        c.hook_uris = [HOST]
+    context "#{security_context}" do
+      alias_method :helper_host, :host
+
+      let(:host) do
+        helper_host(security_context)
       end
 
-      WebSocketVCR.record(example, self) do
-        client = OperationsClient.new(host: HOST,
-                                      wait_time: WebSocketVCR.live? ? 1.5 : 2,
-                                      credentials: {
-                                        username: 'jdoe',
-                                        password: 'password'
-                                      },
-                                      options: {
-                                        tenant: 'hawkular'
-                                      })
-        ws = client.ws
-        expect(ws).not_to be nil
-        expect(ws.open?).to be true
-      end
-    end
-
-    it 'should be established via entrypoint' do
-      WebSocketVCR.configure do |c|
-        c.hook_uris = ['127.0.0.1:8080']
+      let(:options) do
+        {
+          host: host,
+          wait_time: WebSocketVCR.live? ? 1.5 : 2,
+          use_secure_connection: security_context == SECURE_CONTEXT,
+          credentials: credentials,
+          options: {
+            tenant: 'hawkular'
+          }
+        }
       end
 
-      WebSocketVCR.record(example, self) do
-        ep = URI::HTTP.build(host: '127.0.0.1', port: 8080).to_s
-
-        client = OperationsClient.new(entrypoint: ep,
-                                      wait_time: WebSocketVCR.live? ? 1.5 : 0,
-                                      credentials: {
-                                        username: 'jdoe',
-                                        password: 'password'
-                                      },
-                                      options: {
-                                        tenant: 'hawkular'
-                                      })
-        ws = client.ws
-        expect(ws).not_to be nil
-        expect(ws.open?).to be true
-      end
-    end
-
-    it 'should run into error callback' do
-      WebSocketVCR.configure do |c|
-        c.hook_uris = [HOST]
+      let(:example) do |e|
+        e
       end
 
-      WebSocketVCR.record(example, self) do
-        client = OperationsClient.new(host: HOST,
-                                      wait_time: WebSocketVCR.live? ? 1.5 : 2,
-                                      credentials: {
-                                        username: 'jdoe',
-                                        password: 'password'
-                                      },
-                                      options: {
-                                        tenant: 'hawkular'
-                                      })
+      let(:cassette_name) do |example|
+        description = example.description
+        description
+      end
 
-        noop = { operationName: 'noop', resourcePath: '/bla' }
+      let(:client) do
+        OperationsClient.new(options)
+      end
 
-        client.invoke_generic_operation(noop) do |on|
-          on.success do |_data|
-            fail 'This should have failed'
-          end
-          on.failure do |error|
-            puts 'error callback was correctly called, reason: ' + error.to_s
-          end
+      before(:all) do
+        WebSocketVCR.configure do |c|
+          c.hook_uris = [helper_host(security_context)]
         end
       end
-    end
 
-    it 'should run into error callback because bad hash parameters' do
-      WebSocketVCR.configure do |c|
-        c.hook_uris = [HOST]
-      end
-
-      WebSocketVCR.record(example, self) do
-        client = OperationsClient.new(host: HOST,
-                                      wait_time: WebSocketVCR.live? ? 1.5 : 2,
-                                      credentials: {
-                                        username: 'jdoe',
-                                        password: 'password'
-                                      },
-                                      options: {
-                                        tenant: 'hawkular'
-                                      })
-
-        noop = { operationName: 'noop' }
-
-        client.invoke_generic_operation(noop) do |on|
-          on.success do |_data|
-            fail 'This should have failed'
-          end
-          on.failure do |_error|
-          end
+      describe 'Operation/Websocket connection' do
+        around(:each) do |example|
+          record_websocket("Operation/#{security_context}/Websocket_connection",
+                           nil,
+                           cassette_name,
+                           example)
         end
-      end
-    end
 
-    it 'should bail with hash property error because no callback at all' do
-      WebSocketVCR.configure do |c|
-        c.hook_uris = [HOST]
-      end
+        it 'should be established' do
+          ws = client.ws
+          expect(ws).not_to be nil
+          expect(ws.open?).to be true
+        end
 
-      WebSocketVCR.record(example, self) do
-        client = OperationsClient.new(host: HOST,
-                                      wait_time: WebSocketVCR.live? ? 1.5 : 2,
-                                      credentials: {
-                                        username: 'jdoe',
-                                        password: 'password'
-                                      },
-                                      options: {
-                                        tenant: 'hawkular'
-                                      })
+        it 'should be established via entrypoint' do
+          ep = host_with_scheme(host, security_context == SECURE_CONTEXT)
 
-        noop = { operationName: 'noop' }
-        expect { client.invoke_generic_operation(noop) }.to raise_error(ArgumentError,
-                                                                        'You need to specify error callback')
-      end
-    end
+          client = OperationsClient.new(options.merge entrypoint: ep, host: nil)
+          ws = client.ws
+          expect(ws).not_to be nil
+          expect(ws.open?).to be true
+        end
 
-    it 'should bail with hash property error because no error-callback ' do
-      WebSocketVCR.configure do |c|
-        c.hook_uris = [HOST]
-      end
-
-      WebSocketVCR.record(example, self) do
-        client = OperationsClient.new(host: HOST,
-                                      wait_time: WebSocketVCR.live? ? 1.5 : 2,
-                                      credentials: {
-                                        username: 'jdoe',
-                                        password: 'password'
-                                      },
-                                      options: {
-                                        tenant: 'hawkular'
-                                      })
-
-        noop = { operationName: 'noop' }
-        expect do
+        it 'should run into error callback' do
+          noop = { operationName: 'noop', resourcePath: '/bla' }
+          operation_outcome = {}
           client.invoke_generic_operation(noop) do |on|
             on.success do |_data|
-              fail 'This should have failed'
+              operation_outcome[:data] = 'should run into error'
+            end
+            on.failure do |_error|
+              operation_outcome[:data] = 'fail'
             end
           end
-        end.to raise_error(ArgumentError, 'You need to specify error callback')
-      end
-    end
-    it 'should bail with no host' do
-      WebSocketVCR.configure do |c|
-        c.hook_uris = [HOST]
+          expect(wait_for(operation_outcome)).to eq 'fail'
+        end
+
+        it 'should run into error callback because bad hash parameters' do
+          noop = { operationName: 'noop' }
+          operation_outcome = {}
+          client.invoke_generic_operation(noop) do |on|
+            on.success do |_data|
+              operation_outcome[:data] = 'should run into error'
+            end
+            on.failure do |error|
+              operation_outcome[:data] = error
+            end
+          end
+          expect(wait_for(operation_outcome)).to eq 'Hash property resourcePath must be specified'
+        end
+
+        it 'should bail with hash property error because no callback at all' do
+          noop = { operationName: 'noop' }
+          expect { client.invoke_generic_operation(noop) }.to raise_error(ArgumentError,
+                                                                          'You need to specify error callback')
+        end
+
+        it 'should bail with hash property error because no error-callback ' do
+          noop = { operationName: 'noop' }
+          expect do
+            client.invoke_generic_operation(noop) do |on|
+              on.success do |_data|
+                fail 'This should have failed'
+              end
+            end
+          end.to raise_error(ArgumentError, 'You need to specify error callback')
+        end
+
+        it 'should bail with no host' do
+          expect do
+            OperationsClient.new(options.merge host: nil)
+          end.to raise_error(StandardError, 'no parameter ":host" or ":entrypoint" given')
+        end
       end
 
-      WebSocketVCR.record(example, self) do
-        begin
-          OperationsClient.new(
-            wait_time: WebSocketVCR.live? ? 1.5 : 2,
-            credentials: {
-              username: 'jdoe',
-              password: 'password'
+      describe 'Operation/Operation' do
+        before(:all) do
+          @random_uuid = SecureRandom.uuid
+          @not_so_random_uuid = 'not_so_random_uuid'
+        end
+
+        around(:each) do |example|
+          record("Operation/#{security_context}/Helpers", nil, 'get_tenant') do
+            ::RSpec::Mocks.with_temporary_scope do
+              mock_inventory_client
+              @inventory_client = InventoryClient.create(
+                options.merge entrypoint: host_with_scheme(host, security_context == SECURE_CONTEXT))
+            end
+            inventory_client = @inventory_client
+            remove_instance_variable(:@inventory_client)
+            @tenant_id = inventory_client.get_tenant
+            record("Operation/#{security_context}/Helpers", { tenant_id: @tenant_id }, 'get_feed') do
+              @feed_id = inventory_client.list_feeds[0]
+            end
+          end
+          @bindings = { random_uuid: @random_uuid, tenant_id: @tenant_id, feed_id: @feed_id }
+          record_websocket("Operation/#{security_context}/Operation",
+                           @bindings,
+                           cassette_name,
+                           example)
+        end
+
+        it 'Add JDBC driver should add the driver' do
+          wf_server_resource_id = 'Local~~'
+          driver_name = 'CreatedByRubyDriver' + @not_so_random_uuid
+          driver_bits = IO.binread("#{File.dirname(__FILE__)}/../resources/driver.jar")
+          wf_path = CanonicalPath.new(tenant_id: @tenant_id,
+                                      feed_id: @feed_id,
+                                      resource_ids: [wf_server_resource_id]).to_s
+
+          actual_data = {}
+
+          client.add_jdbc_driver(resource_path: wf_path,
+                                 driver_jar_name: 'driver.jar',
+                                 driver_name: driver_name,
+                                 module_name: 'foo.bar' + @not_so_random_uuid, # jboss module
+                                 driver_class: 'com.mysql.jdbc.Driver',
+                                 binary_content: driver_bits) do |on|
+            on.success do |data|
+              actual_data[:data] = data
+            end
+            on.failure do |error|
+              actual_data[:data] = {}
+              puts 'error callback was called, reason: ' + error.to_s
+            end
+          end
+          actual_data = wait_for actual_data
+          expect(actual_data['status']).to eq('OK')
+          expect(actual_data['message']).to start_with('Added JDBC Driver')
+          expect(actual_data['driverName']).to eq(driver_name)
+        end
+
+        it 'Restart should be performed and eventually respond with success' do
+          wf_server_resource_id = 'Local~~'
+          alerts_war_resource_id = 'Local~%2Fdeployment%3Dhawkular-alerts-actions-email.war'
+          path = CanonicalPath.new(tenant_id: @tenant_id,
+                                   feed_id: @feed_id,
+                                   resource_ids: [wf_server_resource_id, alerts_war_resource_id])
+
+          restart = {
+            resource_path: path.to_s,
+            deployment_name: 'hawkular-alerts-actions-email.war'
+          }
+
+          actual_data = {}
+          client.restart_deployment(restart) do |on|
+            on.success do |data|
+              actual_data[:data] = data
+            end
+            on.failure do |error|
+              actual_data[:data] = {}
+              puts 'error callback was called, reason: ' + error.to_s
+            end
+          end
+
+          # expectations don't work from callbacks so waiting for the results via blocking helper `wait_for`
+          actual_data = wait_for actual_data
+          expect(actual_data['status']).to eq('OK')
+          expect(actual_data['resourcePath']).to eq(path.up.to_s)
+          expect(actual_data['message']).to start_with('Performed [Restart Deployment] on')
+        end
+
+        it 'Restart should not be performed if resource path is wrong' do
+          wf_server_resource_id = 'Unknown~~'
+          wrong_war_resource_id = 'Unknown~%2Fdeployment%3Dnon-existent.war'
+          path = CanonicalPath.new(tenant_id: @tenant_id,
+                                   feed_id: @feed_id,
+                                   resource_ids: [wf_server_resource_id, wrong_war_resource_id])
+
+          restart = {
+            resource_path: path.to_s,
+            deployment_name: 'non-existent.war'
+          }
+          actual_data = {}
+          client.restart_deployment(restart) do |on|
+            on.success do |_|
+              actual_data[:data] = { error: 'the operation should have failed' }
+            end
+            on.failure do |error|
+              actual_data[:data] = { error: error }
+            end
+          end
+          actual_data = wait_for actual_data
+          expect(actual_data[:error]).to start_with('Could not perform [Restart Deployment] on a [Application] given')
+        end
+
+        it 'Disable should be performed and eventually respond with success' do
+          wf_server_resource_id = 'Local~~'
+          alerts_war_resource_id = 'Local~%2Fdeployment%3Dhawkular-alerts-actions-email.war'
+          path = CanonicalPath.new(tenant_id: @tenant_id,
+                                   feed_id: @feed_id,
+                                   resource_ids: [wf_server_resource_id, alerts_war_resource_id])
+
+          disable = {
+            resource_path: path.to_s,
+            deployment_name: 'hawkular-alerts-actions-email.war'
+          }
+          actual_data = {}
+          client.disable_deployment(disable) do |on|
+            on.success do |data|
+              actual_data[:data] = data
+            end
+            on.failure do |error|
+              actual_data[:data] = {}
+              puts 'error callback was called, reason: ' + error.to_s
+            end
+          end
+          actual_data = wait_for actual_data
+          expect(actual_data['status']).to eq('OK')
+          expect(actual_data['message']).to start_with('Performed [Disable Deployment] on')
+        end
+
+        it 'Add datasource should be doable' do
+          wf_server_resource_id = 'Local~~'
+          wf_path = CanonicalPath.new(tenant_id: @tenant_id,
+                                      feed_id: @feed_id,
+                                      resource_ids: [wf_server_resource_id]).to_s
+          payload = {
+            # compulsory fields
+            resourcePath: wf_path,
+            xaDatasource: false,
+            datasourceName: 'CreatedByRubyDS' + @random_uuid,
+            jndiName: 'java:jboss/datasources/CreatedByRubyDS' + @random_uuid,
+            driverName: 'h2',
+            # this is probably a bug (driver class should be already defined in driver)
+            driverClass: 'org.h2.Driver',
+            connectionUrl: 'dbc:h2:mem:ruby;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE',
+
+            # optional
+            datasourceProperties: {
+              someKey: 'someValue'
             },
-            options: {
-              tenant: 'hawkular'
-            })
-        rescue
-          puts 'We got an exception and this is good'
-        else
-          fail 'Should have failed as no host was given'
+            userName: 'sa',
+            password: 'sa',
+            securityDomain: 'other'
+            # xaDataSourceClass: 'clazz' for xa DS
+          }
+
+          actual_data = {}
+          client.add_datasource(payload) do |on|
+            on.success do |data|
+              actual_data[:data] = data
+            end
+            on.failure do |error|
+              actual_data[:data] = { 'status' => 'ERROR' }
+              puts 'error callback was called, reason: ' + error.to_s
+            end
+          end
+          actual_data = wait_for actual_data
+          expect(actual_data['status']).to eq('OK')
+          expect(actual_data['message']).to start_with('Added Datasource')
+          expect(actual_data['xaDatasource']).to be_falsey
+          expect(actual_data['datasourceName']).to eq(payload[:datasourceName])
+          expect(actual_data['resourcePath']).to eq(payload[:resourcePath])
+        end
+
+        it 'should not be possible to perform on closed client' do
+          restart = {
+            resource_path: '/t;t1/f;whatever/r;something',
+            deployment_name: 'something.war'
+          }
+
+          # close the connection
+          client.close_connection!
+          expect do
+            client.restart_deployment(restart)
+          end.to raise_error(RuntimeError, /Handshake with server has not been done./)
+        end
+
+        it 'Restart can be run multiple times in parallel' do
+          wf_server_resource_id = 'Local~~'
+          alerts_war_resource_id = 'Local~%2Fdeployment%3Dhawkular-alerts-actions-email.war'
+          console_war_resource_id = 'Local~%2Fdeployment%3Dhawkular-wildfly-agent-download.war'
+          path1 = CanonicalPath.new(tenant_id: @tenant_id,
+                                    feed_id: @feed_id,
+                                    resource_ids: [wf_server_resource_id, alerts_war_resource_id])
+          path2 = CanonicalPath.new(tenant_id: @tenant_id,
+                                    feed_id: @feed_id,
+                                    resource_ids: [wf_server_resource_id, console_war_resource_id])
+
+          restart1 = {
+            resource_path: path1.to_s,
+            deployment_name: 'hawkular-alerts-actions-email.war'
+          }
+
+          restart2 = {
+            resource_path: path2.to_s,
+            deployment_name: 'hawkular-wildfly-agent-download.war'
+          }
+
+          # run the first operation w/o registering the callback
+          client.restart_deployment(restart1)
+
+          actual_data = {}
+          # run the 2nd operation with 2 callback blocks (the happy path and the less happy path)
+          client.restart_deployment(restart2) do |on|
+            on.success do |data|
+              actual_data[:data] = data
+            end
+            on.failure do |error|
+              actual_data[:data] = {}
+              puts 'error callback was called, reason: ' + error.to_s
+            end
+          end
+
+          actual_data = wait_for actual_data
+          expect(actual_data['status']).to eq('OK')
+          expect(actual_data['resourcePath']).to eq(path2.up.to_s)
+          expect(actual_data['message']).to start_with('Performed [Restart Deployment] on')
+        end
+
+        it 'Add deployment should be doable' do
+          wf_server_resource_id = 'Local~~'
+          app_name = 'sample.war'
+          war_file = IO.binread("#{File.dirname(__FILE__)}/../resources/#{app_name}")
+          wf_path = CanonicalPath.new(tenant_id: @tenant_id,
+                                      feed_id: @feed_id,
+                                      resource_ids: [wf_server_resource_id]).to_s
+
+          actual_data = {}
+          client.add_deployment(resource_path: wf_path,
+                                destination_file_name: app_name,
+                                binary_content: war_file) do |on|
+            on.success do |data|
+              actual_data[:data] = data
+            end
+            on.failure do |error|
+              actual_data[:data] = {}
+              puts 'error callback was called, reason: ' + error.to_s
+            end
+          end
+          actual_data = wait_for actual_data
+          expect(actual_data['status']).to eq('OK')
+          expect(actual_data['message']).to start_with('Performed [Deploy] on')
+          expect(actual_data['destinationFileName']).to eq(app_name)
+          expect(actual_data['resourcePath']).to eq(wf_path)
+        end
+
+        it 'Undeploy deployment should be performed and eventually respond with success' do
+          wf_server_resource_id = 'Local~~'
+          sample_app_resource_id = 'Local~%2Fdeployment=sample.war'
+          path = CanonicalPath.new(tenant_id: @tenant_id,
+                                   feed_id: @feed_id,
+                                   resource_ids: [wf_server_resource_id, sample_app_resource_id])
+          undeploy = {
+            resource_path: path.to_s,
+            deployment_name: 'sample.war'
+          }
+          actual_data = {}
+          client.undeploy(undeploy) do |on|
+            on.success do |data|
+              actual_data[:data] = data
+            end
+            on.failure do |error|
+              actual_data[:data] = { 'status' => 'ERROR' }
+              puts 'error callback was called, reason: ' + error.to_s
+            end
+          end
+          actual_data = wait_for actual_data
+          expect(actual_data['status']).to eq('OK')
+          expect(actual_data['message']).to start_with('Performed [Undeploy] on')
+        end
+
+        it 'Remove datasource should be performed and eventually respond with success' do
+          wf_server_resource_id = 'Local~~'
+          datasource_resource_id = 'Local~%2Fsubsystem%3Ddatasources%2Fdata-source%3DCreatedByRubyDS' + @random_uuid
+          path = CanonicalPath.new(tenant_id: @tenant_id,
+                                   feed_id: @feed_id,
+                                   resource_ids: [wf_server_resource_id, datasource_resource_id])
+
+          operation = {
+            resourcePath: path.to_s
+          }
+
+          actual_data = {}
+          client.invoke_specific_operation(operation, 'RemoveDatasource') do |on|
+            on.success do |data|
+              actual_data[:data] = data
+            end
+            on.failure do |error|
+              actual_data[:data] = {}
+              puts 'error callback was called, reason: ' + error.to_s
+            end
+          end
+          actual_data = wait_for actual_data
+          expect(actual_data['status']).to eq('OK')
+          expect(actual_data['message']).to start_with('Performed [Remove] on')
+          expect(actual_data['serverRefreshIndicator']).to eq('RELOAD-REQUIRED')
+        end
+
+        it 'Remove JDBC driver should be performed and eventually respond with success' do
+          wf_server_resource_id = 'Local~~'
+          driver_resource_id = 'Local~%2Fsubsystem%3Ddatasources%2Fjdbc-driver%3DCreatedByRubyDriver'
+          driver_resource_id << @not_so_random_uuid
+          path = CanonicalPath.new(tenant_id: @tenant_id,
+                                   feed_id: @feed_id,
+                                   resource_ids: [wf_server_resource_id, driver_resource_id]).to_s
+
+          actual_data = {}
+          client.invoke_specific_operation({ resourcePath: path }, 'RemoveJdbcDriver') do |on|
+            on.success do |data|
+              actual_data[:data] = data
+            end
+            on.failure do |error|
+              actual_data[:data] = {}
+              puts 'error callback was called, reason: ' + error.to_s
+            end
+          end
+          actual_data = wait_for actual_data
+          expect(actual_data['status']).to eq('OK')
+          expect(actual_data['resourcePath']).to eq(path)
+          expect(actual_data['message']).to start_with('Performed [Remove] on a [JDBC Driver]')
+        end
+
+        xit 'Export JDR should retrieve the zip file with the report' do
+          wf_server_resource_id = 'Local~~'
+          path = CanonicalPath.new(tenant_id: @tenant_id,
+                                   feed_id: @feed_id,
+                                   resource_ids: [wf_server_resource_id]).to_s
+
+          actual_data = {}
+          client.export_jdr(path) do |on|
+            on.success do |data|
+              actual_data[:data] = data
+            end
+            on.failure do |error|
+              actual_data[:data] = {}
+              puts 'error callback was called, reason: ' + error.to_s
+            end
+          end
+          actual_data = wait_for actual_data
+          expect(actual_data['status']).to eq('OK')
+          expect(actual_data['resourcePath']).to eq(path)
+          expect(actual_data['message']).to start_with('Performed [Export JDR] on')
+          expect(actual_data['fileName']).to start_with('jdr_')
         end
       end
-    end
-  end
-
-  describe 'Operation/Operation', :websocket, vcr: { decode_compressed_response: true } do
-    before(:all) do
-      VCR.use_cassette('Operation/Helpers/get_tenant', decode_compressed_response: true) do
-        @creds = { username: 'jdoe', password: 'password' }
-        ::RSpec::Mocks.with_temporary_scope do
-          mock_inventory_client
-          options = { tenant: 'hawkular' }
-          @inventory_client = InventoryClient.create(entrypoint: HOST, credentials: @creds, options: options)
-        end
-        inventory_client = @inventory_client
-        remove_instance_variable(:@inventory_client)
-        @tenant_id = inventory_client.get_tenant
-        VCR.use_cassette('Operation/Helpers/get_feed', decode_compressed_response: true) do
-          @feed_id = inventory_client.list_feeds[0]
-        end
-        @random_uuid = 'random'
-      end
-    end
-
-    before(:each) do |ex|
-      unless ex.metadata[:skip_open]
-        @client = OperationsClient.new(entrypoint: 'http://localhost:8080',
-                                       credentials: @creds,
-                                       wait_time: WebSocketVCR.live? ? 1.5 : 0)
-        @ws = @client.ws
-      end
-    end
-
-    around(:each) do |ex|
-      if ex.metadata[:websocket]
-        WebSocketVCR.configure do |c|
-          c.hook_uris = [HOST]
-        end
-        WebSocketVCR.record(ex, self) do
-          ex.run
-        end
-      else
-        ex.run
-      end
-    end
-
-    after(:each) do |ex|
-      unless ex.metadata[:skip_close]
-        @client.close_connection!
-        @client = nil
-        @ws = nil
-      end
-    end
-
-    it 'Add JDBC driver should add the driver' do
-      wf_server_resource_id = 'Local~~'
-      driver_name = 'CreatedByRubyDriver' + @random_uuid
-      driver_bits = IO.binread("#{File.dirname(__FILE__)}/../resources/driver.jar")
-      wf_path = CanonicalPath.new(tenant_id: @tenant_id,
-                                  feed_id: @feed_id,
-                                  resource_ids: [wf_server_resource_id]).to_s
-
-      actual_data = {}
-      @client.add_jdbc_driver(resource_path: wf_path,
-                              driver_jar_name: 'driver.jar',
-                              driver_name: driver_name,
-                              module_name: 'foo.bar.' + @random_uuid, # jboss module
-                              driver_class: 'com.mysql.jdbc.Driver',
-                              binary_content: driver_bits) do |on|
-        on.success do |data|
-          actual_data[:data] = data
-        end
-        on.failure do |error|
-          actual_data[:data] = {}
-          puts 'error callback was called, reason: ' + error.to_s
-        end
-      end
-      actual_data = wait_for actual_data
-      expect(actual_data['status']).to eq('OK')
-      expect(actual_data['message']).to start_with('Added JDBC Driver')
-      expect(actual_data['driverName']).to eq(driver_name)
-    end
-
-    it 'Restart should be performed and eventually respond with success' do
-      wf_server_resource_id = 'Local~~'
-      alerts_war_resource_id = 'Local~%2Fdeployment%3Dhawkular-alerts-actions-email.war'
-      path = CanonicalPath.new(tenant_id: @tenant_id,
-                               feed_id: @feed_id,
-                               resource_ids: [wf_server_resource_id, alerts_war_resource_id])
-
-      restart = {
-        resource_path: path.to_s,
-        deployment_name: 'hawkular-alerts-actions-email.war'
-      }
-
-      actual_data = {}
-      @client.restart_deployment(restart) do |on|
-        on.success do |data|
-          actual_data[:data] = data
-        end
-        on.failure do |error|
-          actual_data[:data] = {}
-          puts 'error callback was called, reason: ' + error.to_s
-        end
-      end
-
-      # expectations don't work from callbacks so waiting for the results via blocking helper `wait_for`
-      actual_data = wait_for actual_data
-      expect(actual_data['status']).to eq('OK')
-      expect(actual_data['resourcePath']).to eq(path.up.to_s)
-      expect(actual_data['message']).to start_with('Performed [Restart Deployment] on')
-    end
-
-    it 'Restart should not be performed if resource path is wrong' do
-      wf_server_resource_id = 'Unknown~~'
-      wrong_war_resource_id = 'Unknown~%2Fdeployment%3Dnon-existent.war'
-      path = CanonicalPath.new(tenant_id: @tenant_id,
-                               feed_id: @feed_id,
-                               resource_ids: [wf_server_resource_id, wrong_war_resource_id])
-
-      restart = {
-        resource_path: path.to_s,
-        deployment_name: 'non-existent.war'
-      }
-      actual_data = {}
-      @client.restart_deployment(restart) do |on|
-        on.success do |_|
-          actual_data[:data] = { error: 'the operation should have failed' }
-        end
-        on.failure do |error|
-          actual_data[:data] = { error: error }
-        end
-      end
-      actual_data = wait_for actual_data
-      expect(actual_data[:error]).to start_with('Cannot restart application: unknown resource')
-    end
-
-    it 'Disable should be performed and eventually respond with success' do
-      wf_server_resource_id = 'Local~~'
-      alerts_war_resource_id = 'Local~%2Fdeployment%3Dhawkular-alerts-actions-email.war'
-      path = CanonicalPath.new(tenant_id: @tenant_id,
-                               feed_id: @feed_id,
-                               resource_ids: [wf_server_resource_id, alerts_war_resource_id])
-
-      disable = {
-        resource_path: path.to_s,
-        deployment_name: 'hawkular-alerts-actions-email.war'
-      }
-      actual_data = {}
-      @client.disable_deployment(disable) do |on|
-        on.success do |data|
-          actual_data[:data] = data
-        end
-        on.failure do |error|
-          actual_data[:data] = {}
-          puts 'error callback was called, reason: ' + error.to_s
-        end
-      end
-      actual_data = wait_for actual_data
-      expect(actual_data['status']).to eq('OK')
-      expect(actual_data['message']).to start_with('Performed [Undeploy] on')
-    end
-
-    it 'Add datasource should be doable' do
-      wf_server_resource_id = 'Local~~'
-      wf_path = CanonicalPath.new(tenant_id: @tenant_id,
-                                  feed_id: @feed_id,
-                                  resource_ids: [wf_server_resource_id]).to_s
-      payload = {
-        # compulsory fields
-        resourcePath: wf_path,
-        xaDatasource: false,
-        datasourceName: 'CreatedByRubyDS' + @random_uuid,
-        jndiName: 'java:jboss/datasources/CreatedByRubyDS' + @random_uuid,
-        driverName: 'h2',
-        # this is probably a bug (driver class should be already defined in driver)
-        driverClass: 'org.h2.Driver',
-        connectionUrl: 'dbc:h2:mem:ruby;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE',
-
-        # optional
-        datasourceProperties: {
-          someKey: 'someValue'
-        },
-        userName: 'sa',
-        password: 'sa',
-        securityDomain: 'other'
-        # xaDataSourceClass: 'clazz' for xa DS
-      }
-
-      actual_data = {}
-      @client.add_datasource(payload) do |on|
-        on.success do |data|
-          actual_data[:data] = data
-        end
-        on.failure do |error|
-          actual_data[:data] = { 'status' => 'ERROR' }
-          puts 'error callback was called, reason: ' + error.to_s
-        end
-      end
-      actual_data = wait_for actual_data
-      expect(actual_data['status']).to eq('OK')
-      expect(actual_data['message']).to start_with('Added Datasource')
-      expect(actual_data['xaDatasource']).to be_falsey
-      expect(actual_data['datasourceName']).to eq(payload[:datasourceName])
-      expect(actual_data['resourcePath']).to eq(payload[:resourcePath])
-    end
-
-    it 'should not be possible to perform on closed client', skip_open: true, skip_close: true do
-      @client.close_connection! unless @client.nil?
-
-      # open the connection
-      operations_client = OperationsClient.new(entrypoint: 'http://localhost:8080', credentials: @creds)
-
-      restart = {
-        resource_path: '/t;t1/f;whatever/r;something',
-        deployment_name: 'something.war'
-      }
-
-      # close the connection
-      operations_client.close_connection!
-      expect do
-        operations_client.restart_deployment(restart)
-      end.to raise_error(RuntimeError, /Handshake with server has not been done./)
-    end
-
-    it 'Restart can be run multiple times in parallel' do
-      wf_server_resource_id = 'Local~~'
-      alerts_war_resource_id = 'Local~%2Fdeployment%3Dhawkular-alerts-actions-email.war'
-      console_war_resource_id = 'Local~%2Fdeployment%3Dhawkular-console.war'
-      path1 = CanonicalPath.new(tenant_id: @tenant_id,
-                                feed_id: @feed_id,
-                                resource_ids: [wf_server_resource_id, alerts_war_resource_id])
-      path2 = CanonicalPath.new(tenant_id: @tenant_id,
-                                feed_id: @feed_id,
-                                resource_ids: [wf_server_resource_id, console_war_resource_id])
-
-      restart1 = {
-        resource_path: path1.to_s,
-        deployment_name: 'hawkular-alerts-actions-email.war'
-      }
-
-      restart2 = {
-        resource_path: path2.to_s,
-        deployment_name: 'hawkular-console.war'
-      }
-
-      # run the first operation w/o registering the callback
-      @client.restart_deployment(restart1)
-
-      actual_data = {}
-      # run the 2nd operation with 2 callback blocks (the happy path and the less happy path)
-      @client.restart_deployment(restart2) do |on|
-        on.success do |data|
-          actual_data[:data] = data
-        end
-        on.failure do |error|
-          actual_data[:data] = {}
-          puts 'error callback was called, reason: ' + error.to_s
-        end
-      end
-
-      actual_data = wait_for actual_data
-      expect(actual_data['status']).to eq('OK')
-      expect(actual_data['resourcePath']).to eq(path2.up.to_s)
-      expect(actual_data['message']).to start_with('Performed [Restart Deployment] on')
-    end
-
-    it 'Add deployment should be doable' do
-      wf_server_resource_id = 'Local~~'
-      app_name = 'sample.war'
-      war_file = IO.binread("#{File.dirname(__FILE__)}/../resources/#{app_name}")
-      wf_path = CanonicalPath.new(tenant_id: @tenant_id,
-                                  feed_id: @feed_id,
-                                  resource_ids: [wf_server_resource_id]).to_s
-
-      actual_data = {}
-      @client.add_deployment(resource_path: wf_path,
-                             destination_file_name: app_name,
-                             binary_content: war_file) do |on|
-        on.success do |data|
-          actual_data[:data] = data
-        end
-        on.failure do |error|
-          actual_data[:data] = {}
-          puts 'error callback was called, reason: ' + error.to_s
-        end
-      end
-      actual_data = wait_for actual_data
-      expect(actual_data['status']).to eq('OK')
-      expect(actual_data['message']).to start_with('Performed [Deploy] on')
-      expect(actual_data['destinationFileName']).to eq(app_name)
-      expect(actual_data['resourcePath']).to eq(wf_path)
-    end
-
-    it 'Undeploy deployment should be performed and eventually respond with success' do
-      wf_server_resource_id = 'Local~~'
-      sample_app_resource_id = 'Local~%2Fdeployment=sample.war'
-      path = CanonicalPath.new(tenant_id: @tenant_id,
-                               feed_id: @feed_id,
-                               resource_ids: [wf_server_resource_id, sample_app_resource_id])
-      undeploy = {
-        resource_path: path.to_s,
-        deployment_name: 'sample.war'
-      }
-      actual_data = {}
-      @client.undeploy(undeploy) do |on|
-        on.success do |data|
-          actual_data[:data] = data
-        end
-        on.failure do |error|
-          actual_data[:data] = { 'status' => 'ERROR' }
-          puts 'error callback was called, reason: ' + error.to_s
-        end
-      end
-      actual_data = wait_for actual_data
-      expect(actual_data['status']).to eq('OK')
-      expect(actual_data['message']).to start_with('Performed [Undeploy] on')
-    end
-
-    it 'Remove datasource should be performed and eventually respond with success' do
-      wf_server_resource_id = 'Local~~'
-      datasource_resource_id = 'Local~%2Fsubsystem%3Ddatasources%2Fdata-source%3DCreatedByRubyDS' + @random_uuid
-      path = CanonicalPath.new(tenant_id: @tenant_id,
-                               feed_id: @feed_id,
-                               resource_ids: [wf_server_resource_id, datasource_resource_id])
-
-      operation = {
-        resourcePath: path.to_s
-      }
-
-      actual_data = {}
-      @client.invoke_specific_operation(operation, 'RemoveDatasource') do |on|
-        on.success do |data|
-          actual_data[:data] = data
-        end
-        on.failure do |error|
-          actual_data[:data] = {}
-          puts 'error callback was called, reason: ' + error.to_s
-        end
-      end
-      actual_data = wait_for actual_data
-      expect(actual_data['status']).to eq('OK')
-      expect(actual_data['message']).to start_with('Performed [Remove] on')
-      expect(actual_data['serverRefreshIndicator']).to eq('RELOAD-REQUIRED')
-    end
-
-    it 'Remove JDBC driver should be performed and eventually respond with success' do
-      wf_server_resource_id = 'Local~~'
-      driver_resource_id = 'Local~%2Fsubsystem%3Ddatasources%2Fjdbc-driver%3DCreatedByRubyDriver' + @random_uuid
-      path = CanonicalPath.new(tenant_id: @tenant_id,
-                               feed_id: @feed_id,
-                               resource_ids: [wf_server_resource_id, driver_resource_id]).to_s
-
-      actual_data = {}
-      @client.invoke_specific_operation({ resourcePath: path }, 'RemoveJdbcDriver') do |on|
-        on.success do |data|
-          actual_data[:data] = data
-        end
-        on.failure do |error|
-          actual_data[:data] = {}
-          puts 'error callback was called, reason: ' + error.to_s
-        end
-      end
-      actual_data = wait_for actual_data
-      expect(actual_data['status']).to eq('OK')
-      expect(actual_data['resourcePath']).to eq(path)
-      expect(actual_data['message']).to start_with('Performed [Remove] on a [JDBC Driver]')
-    end
-
-    xit 'Export JDR should retrieve the zip file with the report' do
-      wf_server_resource_id = 'Local~~'
-      path = CanonicalPath.new(tenant_id: @tenant_id,
-                               feed_id: @feed_id,
-                               resource_ids: [wf_server_resource_id]).to_s
-
-      actual_data = {}
-      @client.export_jdr(path) do |on|
-        on.success do |data|
-          actual_data[:data] = data
-        end
-        on.failure do |error|
-          actual_data[:data] = {}
-          puts 'error callback was called, reason: ' + error.to_s
-        end
-      end
-      actual_data = wait_for actual_data
-      expect(actual_data['status']).to eq('OK')
-      expect(actual_data['resourcePath']).to eq(path)
-      expect(actual_data['message']).to start_with('Performed [Export JDR] on')
-      expect(actual_data['fileName']).to start_with('jdr_')
     end
   end
 end

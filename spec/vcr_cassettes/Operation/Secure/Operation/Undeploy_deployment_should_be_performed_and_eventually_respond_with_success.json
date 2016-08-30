@@ -1,0 +1,23 @@
+[
+  [
+    {
+      "operation": "read",
+      "type": "text",
+      "data": "WelcomeResponse={\"sessionId\":\"kUEQbZ2n75IbgXcMZFmo5Me26ul6o4fJEjbGytlx\"}"
+    },
+    {
+      "operation": "write",
+      "data": "UndeployApplicationRequest={\"resourcePath\":\"/t;<%= tenant_id %>/f;<%= feed_id %>/r;Local~~\",\"removeContent\":true,\"destinationFileName\":\"sample.war\",\"authentication\":{\"username\":\"jdoe\",\"password\":\"password\"}}"
+    },
+    {
+      "operation": "read",
+      "type": "text",
+      "data": "GenericSuccessResponse={\"message\":\"The request has been forwarded to feed [<%= feed_id %>] (MessageId=ID:45a970b9-6639-11e6-a149-05583a5efefa)\"}"
+    },
+    {
+      "operation": "read",
+      "type": "text",
+      "data": "UndeployApplicationResponse={\"destinationFileName\":\"sample.war\",\"resourcePath\":\"/t;<%= tenant_id %>/f;<%= feed_id %>/r;Local~~\",\"destinationSessionId\":\"kUEQbZ2n75IbgXcMZFmo5Me26ul6o4fJEjbGytlx\",\"status\":\"OK\",\"message\":\"Performed [Undeploy] on a [Application] given by Inventory path [/t;<%= tenant_id %>/f;<%= feed_id %>/r;Local~~]\"}"
+    }
+  ]
+]
