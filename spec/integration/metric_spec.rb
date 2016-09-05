@@ -246,6 +246,31 @@ security_contexts.each do |security_context|
           expect(stats['counter'][@random_id].first['avg']).to be 1.0
           expect(stats['availability'][@random_id].first['downtimeCount']).to be 1
         end
+
+        it 'Should fetch rate stats for mixed metric', run_for: [services_context] do
+          expect(@client.counters.get_data(@random_id).size).to be 0
+
+          @client.push_data(counters: [{ id: @random_id, data: [{ value: 100.0 }] }])
+          @client.push_data(counters: [{ id: @random_id, data: [{ value: 110.0 }] }])
+          @client.push_data(counters: [{ id: @random_id, data: [{ value: 130.0 }] }])
+          @client.push_data(counters: [{ id: @random_id, data: [{ value: 200.0 }] }])
+
+          data = @client.counters.get_data(@random_id)
+          expect(data.size).to be 4
+          timestamps = data.map { |d| d['timestamp'] }
+
+          stats = @client.query_stats(
+            counter_ids: [@random_id],
+            starts: timestamps.min,
+            ends: timestamps.max + 1,
+            rates: true,
+            bucket_duration: "#{timestamps.max - timestamps.min + 1}ms"
+          )
+
+          expect(stats.size).to be 2
+          expect(stats['counter'][@random_id].size).to be 1
+          expect(stats['counter_rate'][@random_id].size).to be 1
+        end
       end
 
       describe 'Counter metrics' do

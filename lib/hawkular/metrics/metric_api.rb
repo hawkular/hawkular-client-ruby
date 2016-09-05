@@ -44,6 +44,7 @@ module Hawkular::Metrics
     # @param gauge_ids [Array[String]] list of gauge ids
     # @param counter_ids [Array[String]] list of counter ids
     # @param avail_ids [Array[String]] list of availability ids
+    # @param rates [Boolean] flag to include rates for gauges and counters metrics
     # @param starts [Integer] optional timestamp (default now - 8h)
     # @param ends [Integer] optional timestamp (default now)
     # @param bucket_duration [String] optional interval (default 3600s)
@@ -58,10 +59,12 @@ module Hawkular::Metrics
     #     ends: 500,
     #     bucket_duration: '150ms'
     #   )
-    def query_stats(gauge_ids: [], counter_ids: [], avail_ids: [], starts: nil, ends: nil, bucket_duration: '3600s')
+    def query_stats(gauge_ids: [], counter_ids: [], avail_ids: [], rates: false, starts: nil, ends: nil,
+                    bucket_duration: '3600s')
       path = '/metrics/stats/query'
       metrics = { gauge: gauge_ids, counter: counter_ids, availability: avail_ids }
       data = { metrics: metrics, start: starts, end: ends, bucketDuration: bucket_duration }
+      data['types'] = %w(gauge gauge_rate counter counter_rate availability) if rates
       http_post(path, data)
     end
 
