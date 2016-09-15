@@ -102,6 +102,8 @@ module Hawkular::Inventory
     include MetricFields
 
     attr_reader :type_id
+    # @return [String] metric id used in Hawkular Metrics
+    attr_reader :hawkular_metric_id
 
     def initialize(metric_hash)
       super(metric_hash)
@@ -110,6 +112,7 @@ module Hawkular::Inventory
       @type_id = metric_hash['type']['id']
       @unit = metric_hash['type']['unit']
       @collection_interval = metric_hash['type']['collectionInterval']
+      @hawkular_metric_id = @properties.key?('metric-id') ? @properties['metric-id'] : @id
     end
   end
 
