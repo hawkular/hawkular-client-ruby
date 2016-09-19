@@ -64,6 +64,13 @@
     <div id="content"><div id='filecontents'>
 <h2 id="label-Breaking+changes+in+the+major+releases">Breaking changes in the major releases</h2>
 
+<h3 id="label-2.0.0">2.0.0</h3>
+
+<p>By default no Hawkular-Tenant HTTP header is being set. If you need it (for
+instance for hawkular-services), provide the tenant option when creating a
+client. e.g. <code>::Hawkular::Client.new(..., options: { tenant:
+&#39;hawkular&#39; })</code></p>
+
 <h3 id="label-1.0.0">1.0.0</h3>
 
 <p>To use the client use the <code>require
@@ -134,9 +141,9 @@ metric_id, metric_name = nil)</code></p>
 </div></div>
 
     <div id="footer">
-  Generated on Fri May 13 14:32:39 2016 by
+  Generated on Mon Sep 19 13:22:35 2016 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.8.7.6 (ruby-2.2.4).
+  0.8.7.6 (ruby-2.3.1).
 </div>
 
   </body>

@@ -1,3 +1,6 @@
 .idea
 .yardoc
 .bundle
+Gemfile.lock
+coverage
+spec/vcr.log

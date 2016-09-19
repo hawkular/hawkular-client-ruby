@@ -390,27 +390,37 @@ to recycle it).</p>
 25
 26
 27
-28</pre>
+28
+29
+30
+31
+32
+33</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/hawkular/hawkular_client.rb', line 12</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_hash'>hash</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_hash'>hash</span><span class='lbracket'>[</span><span class='symbol'>:entrypoint</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>http://localhost:8080</span><span class='tstring_end'>&#39;</span></span>
   <span class='id identifier rubyid_hash'>hash</span><span class='lbracket'>[</span><span class='symbol'>:credentials</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
   <span class='id identifier rubyid_hash'>hash</span><span class='lbracket'>[</span><span class='symbol'>:options</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+  <span class='id identifier rubyid_fail'>fail</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>no parameter &quot;:entrypoint&quot; given</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>if</span> <span class='id identifier rubyid_hash'>hash</span><span class='lbracket'>[</span><span class='symbol'>:entrypoint</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
   <span class='ivar'>@state</span> <span class='op'>=</span> <span class='id identifier rubyid_hash'>hash</span>
 
   <span class='ivar'>@inventory</span> <span class='op'>=</span> <span class='const'>Inventory</span><span class='op'>::</span><span class='const'>InventoryClient</span><span class='period'>.</span><span class='id identifier rubyid_create'>create</span><span class='lparen'>(</span><span class='label'>entrypoint:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_hash'>hash</span><span class='lbracket'>[</span><span class='symbol'>:entrypoint</span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_content'>/hawkular/inventory</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
-                                                 <span class='label'>credentials:</span> <span class='id identifier rubyid_hash'>hash</span><span class='lbracket'>[</span><span class='symbol'>:credentials</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+                                                 <span class='label'>credentials:</span> <span class='id identifier rubyid_hash'>hash</span><span class='lbracket'>[</span><span class='symbol'>:credentials</span><span class='rbracket'>]</span><span class='comma'>,</span>
+                                                 <span class='label'>options:</span> <span class='id identifier rubyid_hash'>hash</span><span class='lbracket'>[</span><span class='symbol'>:options</span><span class='rbracket'>]</span><span class='rparen'>)</span>
 
   <span class='ivar'>@metrics</span> <span class='op'>=</span> <span class='const'>Metrics</span><span class='op'>::</span><span class='const'>Client</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_hash'>hash</span><span class='lbracket'>[</span><span class='symbol'>:entrypoint</span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_content'>/hawkular/metrics</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
                                  <span class='id identifier rubyid_hash'>hash</span><span class='lbracket'>[</span><span class='symbol'>:credentials</span><span class='rbracket'>]</span><span class='comma'>,</span>
                                  <span class='id identifier rubyid_hash'>hash</span><span class='lbracket'>[</span><span class='symbol'>:options</span><span class='rbracket'>]</span><span class='rparen'>)</span>
 
-  <span class='ivar'>@alerts</span> <span class='op'>=</span> <span class='const'>Alerts</span><span class='op'>::</span><span class='const'>AlertsClient</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_hash'>hash</span><span class='lbracket'>[</span><span class='symbol'>:entrypoint</span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_content'>/hawkular/alerts</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_hash'>hash</span><span class='lbracket'>[</span><span class='symbol'>:credentials</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='ivar'>@alerts</span> <span class='op'>=</span> <span class='const'>Alerts</span><span class='op'>::</span><span class='const'>AlertsClient</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_hash'>hash</span><span class='lbracket'>[</span><span class='symbol'>:entrypoint</span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_content'>/hawkular/alerts</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+                                     <span class='id identifier rubyid_hash'>hash</span><span class='lbracket'>[</span><span class='symbol'>:credentials</span><span class='rbracket'>]</span><span class='comma'>,</span>
+                                     <span class='id identifier rubyid_hash'>hash</span><span class='lbracket'>[</span><span class='symbol'>:options</span><span class='rbracket'>]</span><span class='rparen'>)</span>
 
-  <span class='ivar'>@tokens</span> <span class='op'>=</span> <span class='const'>Token</span><span class='op'>::</span><span class='const'>TokenClient</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_hash'>hash</span><span class='lbracket'>[</span><span class='symbol'>:entrypoint</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_hash'>hash</span><span class='lbracket'>[</span><span class='symbol'>:credentials</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='ivar'>@tokens</span> <span class='op'>=</span> <span class='const'>Token</span><span class='op'>::</span><span class='const'>TokenClient</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_hash'>hash</span><span class='lbracket'>[</span><span class='symbol'>:entrypoint</span><span class='rbracket'>]</span><span class='comma'>,</span>
+                                   <span class='id identifier rubyid_hash'>hash</span><span class='lbracket'>[</span><span class='symbol'>:credentials</span><span class='rbracket'>]</span><span class='comma'>,</span>
+                                   <span class='id identifier rubyid_hash'>hash</span><span class='lbracket'>[</span><span class='symbol'>:options</span><span class='rbracket'>]</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -440,11 +450,6 @@ to recycle it).</p>
       <pre class="lines">
 
 
-30
-31
-32
-33
-34
 35
 36
 37
@@ -453,10 +458,15 @@ to recycle it).</p>
 40
 41
 42
-43</pre>
+43
+44
+45
+46
+47
+48</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkular/hawkular_client.rb', line 30</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/hawkular_client.rb', line 35</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_method_missing'>method_missing</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_delegate_client'>delegate_client</span> <span class='op'>=</span> <span class='kw'>case</span> <span class='id identifier rubyid_name'>name</span>
@@ -662,12 +672,12 @@ to recycle it)</p>
       <pre class="lines">
 
 
-47
-48
-49</pre>
+52
+53
+54</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkular/hawkular_client.rb', line 47</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/hawkular_client.rb', line 52</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_operations'>operations</span>
   <span class='ivar'>@operations</span>
@@ -769,9 +779,9 @@ to recycle it)</p>
 </div>
 
     <div id="footer">
-  Generated on Fri May 13 14:32:39 2016 by
+  Generated on Mon Sep 19 13:22:35 2016 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.8.7.6 (ruby-2.2.4).
+  0.8.7.6 (ruby-2.3.1).
 </div>
 
   </body>

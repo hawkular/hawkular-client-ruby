@@ -94,7 +94,7 @@
   
   
     <dt class="r2 last">Defined in:</dt>
-    <dd class="r2 last">lib/hawkular/inventory/inventory_api.rb</dd>
+    <dd class="r2 last">lib/hawkular/inventory/entities.rb</dd>
   
 </dl>
 <div class="clear"></div>
@@ -112,7 +112,7 @@
 
 </div><div id="subclasses">
   <h2>Direct Known Subclasses</h2>
-  <p class="children"><span class='object_link'><a href="Metric.html" title="Hawkular::Inventory::Metric (class)">Metric</a></span>, <span class='object_link'><a href="MetricType.html" title="Hawkular::Inventory::MetricType (class)">MetricType</a></span>, <span class='object_link'><a href="Resource.html" title="Hawkular::Inventory::Resource (class)">Resource</a></span>, <span class='object_link'><a href="ResourceType.html" title="Hawkular::Inventory::ResourceType (class)">ResourceType</a></span></p>
+  <p class="children"><span class='object_link'><a href="Metric.html" title="Hawkular::Inventory::Metric (class)">Metric</a></span>, <span class='object_link'><a href="MetricType.html" title="Hawkular::Inventory::MetricType (class)">MetricType</a></span>, <span class='object_link'><a href="OperationDefinition.html" title="Hawkular::Inventory::OperationDefinition (class)">OperationDefinition</a></span>, <span class='object_link'><a href="Resource.html" title="Hawkular::Inventory::Resource (class)">Resource</a></span>, <span class='object_link'><a href="ResourceType.html" title="Hawkular::Inventory::ResourceType (class)">ResourceType</a></span></p>
 </div>
 
 
@@ -202,7 +202,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Name of the entity.</p>
+<p>Id of the entity.</p>
 </div></span>
   
 </li>
@@ -412,29 +412,29 @@
       <pre class="lines">
 
 
-562
-563
-564
-565
-566
-567
-568
-569
-570
-571
-572
-573
-574
-575
-576
-577
-578
-579
-580
-581</pre>
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkular/inventory/inventory_api.rb', line 562</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/inventory/entities.rb', line 18</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_hash'>hash</span><span class='rparen'>)</span>
   <span class='ivar'>@id</span> <span class='op'>=</span> <span class='id identifier rubyid_hash'>hash</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>id</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
@@ -512,12 +512,12 @@
       <pre class="lines">
 
 
-558
-559
-560</pre>
+14
+15
+16</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkular/inventory/inventory_api.rb', line 558</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/inventory/entities.rb', line 14</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_env'>env</span>
   <span class='ivar'>@env</span>
@@ -573,12 +573,12 @@
       <pre class="lines">
 
 
-556
-557
-558</pre>
+12
+13
+14</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkular/inventory/inventory_api.rb', line 556</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/inventory/entities.rb', line 12</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_feed'>feed</span>
   <span class='ivar'>@feed</span>
@@ -602,7 +602,7 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Returns Name of the entity</p>
+<p>Returns Id of the entity</p>
 
 
   </div>
@@ -621,7 +621,7 @@
       
         &mdash;
         <div class='inline'>
-<p>Name of the entity</p>
+<p>Id of the entity</p>
 </div>
       
     </li>
@@ -634,12 +634,12 @@
       <pre class="lines">
 
 
-554
-555
-556</pre>
+10
+11
+12</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkular/inventory/inventory_api.rb', line 554</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/inventory/entities.rb', line 10</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_id'>id</span>
   <span class='ivar'>@id</span>
@@ -695,12 +695,12 @@
       <pre class="lines">
 
 
-552
-553
-554</pre>
+8
+9
+10</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkular/inventory/inventory_api.rb', line 552</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/inventory/entities.rb', line 8</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_name'>name</span>
   <span class='ivar'>@name</span>
@@ -756,12 +756,12 @@
       <pre class="lines">
 
 
-550
-551
-552</pre>
+6
+7
+8</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkular/inventory/inventory_api.rb', line 550</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/inventory/entities.rb', line 6</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_path'>path</span>
   <span class='ivar'>@path</span>
@@ -817,12 +817,12 @@
       <pre class="lines">
 
 
-560
-561
-562</pre>
+16
+17
+18</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkular/inventory/inventory_api.rb', line 560</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/inventory/entities.rb', line 16</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_properties'>properties</span>
   <span class='ivar'>@properties</span>
@@ -854,15 +854,15 @@
       <pre class="lines">
 
 
-583
-584
-585</pre>
+39
+40
+41</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkular/inventory/inventory_api.rb', line 583</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/inventory/entities.rb', line 39</span>
 
 <span class='kw'>def</span> <span class='op'>==</span><span class='lparen'>(</span><span class='id identifier rubyid_other'>other</span><span class='rparen'>)</span>
-  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_eql?'>eql?</span><span class='lparen'>(</span><span class='id identifier rubyid_other'>other</span><span class='rparen'>)</span> <span class='op'>||</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span> <span class='op'>==</span> <span class='ivar'>@id</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_equal?'>equal?</span><span class='lparen'>(</span><span class='id identifier rubyid_other'>other</span><span class='rparen'>)</span> <span class='op'>||</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span> <span class='op'>==</span> <span class='ivar'>@id</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -913,12 +913,12 @@
       <pre class="lines">
 
 
-589
-590
-591</pre>
+45
+46
+47</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkular/inventory/inventory_api.rb', line 589</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/inventory/entities.rb', line 45</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_h'>to_h</span>
   <span class='ivar'>@_hash</span><span class='period'>.</span><span class='id identifier rubyid_dup'>dup</span>
@@ -933,9 +933,9 @@
 </div>
 
     <div id="footer">
-  Generated on Fri May 13 14:32:40 2016 by
+  Generated on Mon Sep 19 13:22:36 2016 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.8.7.6 (ruby-2.2.4).
+  0.8.7.6 (ruby-2.3.1).
 </div>
 
   </body>

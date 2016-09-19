@@ -92,112 +92,40 @@
     
   
     
+      <dt class="r2">Includes:</dt>
+      <dd class="r2"><span class='object_link'><a href="MetricFields.html" title="Hawkular::Inventory::MetricFields (module)">MetricFields</a></span></dd>
+      
+    
   
   
   
-    <dt class="r2 last">Defined in:</dt>
-    <dd class="r2 last">lib/hawkular/inventory/inventory_api.rb</dd>
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">lib/hawkular/inventory/entities.rb</dd>
   
 </dl>
 <div class="clear"></div>
 
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>Definition of a Metric Type inside the inventory.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
 
 
 
 
-  <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
-  <ul class="summary">
-    
-      <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#collection_interval-instance_method" title="#collection_interval (instance method)">- (Long) <strong>collection_interval</strong> </a>
-    
 
-    
-  </span>
+  <h2>Instance Attribute Summary</h2>
   
-  
-  
-    
-      <span class="note title readonly">readonly</span>
-    
-    
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'>
-<p>Collection interval in seconds.</p>
-</div></span>
-  
-</li>
-
-    
-      <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#type-instance_method" title="#type (instance method)">- (String) <strong>type</strong> </a>
-    
-
-    
-  </span>
-  
-  
-  
-    
-      <span class="note title readonly">readonly</span>
-    
-    
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'>
-<p>GAUGE, COUNTER, etc.</p>
-</div></span>
-  
-</li>
-
-    
-      <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#unit-instance_method" title="#unit (instance method)">- (String) <strong>unit</strong> </a>
-    
-
-    
-  </span>
-  
-  
-  
-    
-      <span class="note title readonly">readonly</span>
-    
-    
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'>
-<p>Metric unit such as NONE, BYTES, etc.</p>
-</div></span>
-  
-</li>
-
-    
-  </ul>
-
-
+  <h3 class="inherited">Attributes included from <span class='object_link'><a href="MetricFields.html" title="Hawkular::Inventory::MetricFields (module)">MetricFields</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="MetricFields.html#collection_interval-instance_method" title="Hawkular::Inventory::MetricFields#collection_interval (method)">#collection_interval</a></span>, <span class='object_link'><a href="MetricFields.html#type-instance_method" title="Hawkular::Inventory::MetricFields#type (method)">#type</a></span>, <span class='object_link'><a href="MetricFields.html#unit-instance_method" title="Hawkular::Inventory::MetricFields#unit (method)">#unit</a></span></p>
 
   
   
@@ -251,6 +179,12 @@
   
   
   
+  
+  
+  
+  
+  
+  
   <h3 class="inherited">Methods inherited from <span class='object_link'><a href="BaseEntity.html" title="Hawkular::Inventory::BaseEntity (class)">BaseEntity</a></span></h3>
   <p class="inherited"><span class='object_link'><a href="BaseEntity.html#%3D%3D-instance_method" title="Hawkular::Inventory::BaseEntity#== (method)">#==</a></span>, <span class='object_link'><a href="BaseEntity.html#to_h-instance_method" title="Hawkular::Inventory::BaseEntity#to_h (method)">#to_h</a></span></p>
 <div id="constructor_details" class="method_details_list">
@@ -282,15 +216,15 @@
       <pre class="lines">
 
 
-624
-625
-626
-627
-628
-629</pre>
+92
+93
+94
+95
+96
+97</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkular/inventory/inventory_api.rb', line 624</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/inventory/entities.rb', line 92</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_type_hash'>type_hash</span><span class='rparen'>)</span>
   <span class='kw'>super</span><span class='lparen'>(</span><span class='id identifier rubyid_type_hash'>type_hash</span><span class='rparen'>)</span>
@@ -305,201 +239,13 @@
   
 </div>
 
-  <div id="instance_attr_details" class="attr_details">
-    <h2>Instance Attribute Details</h2>
-    
-      
-      <span id=""></span>
-      <div class="method_details first">
-  <h3 class="signature first" id="collection_interval-instance_method">
-  
-    - (<tt>Long</tt>) <strong>collection_interval</strong>  <span class="extras">(readonly)</span>
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    
-<p>Returns collection interval in seconds</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>Long</tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'>
-<p>collection interval in seconds</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-622
-623
-624</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkular/inventory/inventory_api.rb', line 622</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_collection_interval'>collection_interval</span>
-  <span class='ivar'>@collection_interval</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      
-      <span id=""></span>
-      <div class="method_details ">
-  <h3 class="signature " id="type-instance_method">
-  
-    - (<tt>String</tt>) <strong>type</strong>  <span class="extras">(readonly)</span>
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    
-<p>Returns GAUGE, COUNTER, etc.</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>String</tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'>
-<p>GAUGE, COUNTER, etc.</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-618
-619
-620</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkular/inventory/inventory_api.rb', line 618</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_type'>type</span>
-  <span class='ivar'>@type</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      
-      <span id=""></span>
-      <div class="method_details ">
-  <h3 class="signature " id="unit-instance_method">
-  
-    - (<tt>String</tt>) <strong>unit</strong>  <span class="extras">(readonly)</span>
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    
-<p>Returns metric unit such as NONE, BYTES, etc.</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>String</tt>)</span>
-      
-      
-      
-        &mdash;
-        <div class='inline'>
-<p>metric unit such as NONE, BYTES, etc.</p>
-</div>
-      
-    </li>
-  
-</ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-620
-621
-622</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkular/inventory/inventory_api.rb', line 620</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_unit'>unit</span>
-  <span class='ivar'>@unit</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-  </div>
-
 
 </div>
 
     <div id="footer">
-  Generated on Fri May 13 14:32:40 2016 by
+  Generated on Mon Sep 19 13:22:36 2016 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.8.7.6 (ruby-2.2.4).
+  0.8.7.6 (ruby-2.3.1).
 </div>
 
   </body>

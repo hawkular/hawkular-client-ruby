@@ -269,6 +269,33 @@
       <li class="public ">
   <span class="summary_signature">
     
+      <a href="#auto_resolve_match-instance_method" title="#auto_resolve_match (instance method)">- (Object) <strong>auto_resolve_match</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute auto_resolve_match.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#conditions-instance_method" title="#conditions (instance method)">- (Object) <strong>conditions</strong> </a>
     
 
@@ -481,6 +508,33 @@
   
     <span class="summary_desc"><div class='inline'>
 <p>Returns the value of attribute event_type.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#firing_match-instance_method" title="#firing_match (instance method)">- (Object) <strong>firing_match</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute firing_match.</p>
 </div></span>
   
 </li>
@@ -795,15 +849,6 @@
       <pre class="lines">
 
 
-326
-327
-328
-329
-330
-331
-332
-333
-334
 335
 336
 337
@@ -821,10 +866,21 @@
 349
 350
 351
-352</pre>
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 326</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 335</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_trigger_hash'>trigger_hash</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='kw'>if</span> <span class='id identifier rubyid_trigger_hash'>trigger_hash</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
@@ -850,6 +906,8 @@
   <span class='ivar'>@context</span> <span class='op'>=</span> <span class='id identifier rubyid_trigger_hash'>trigger_hash</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>context</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
   <span class='ivar'>@type</span> <span class='op'>=</span> <span class='id identifier rubyid_trigger_hash'>trigger_hash</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>type</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
   <span class='ivar'>@tags</span> <span class='op'>=</span> <span class='id identifier rubyid_trigger_hash'>trigger_hash</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>tags</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
+  <span class='ivar'>@firing_match</span> <span class='op'>=</span> <span class='id identifier rubyid_trigger_hash'>trigger_hash</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>firingMatch</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
+  <span class='ivar'>@auto_resolve_match</span> <span class='op'>=</span> <span class='id identifier rubyid_trigger_hash'>trigger_hash</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>autoResolveMatch</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
   <span class='comment'># acts = trigger_hash[&#39;actions&#39;]
 </span>  <span class='comment'># acts.each { |a| @actions.push(Action.new(a)) } unless acts.nil?
 </span><span class='kw'>end</span></pre>
@@ -891,12 +949,12 @@
       <pre class="lines">
 
 
-320
-321
-322</pre>
+329
+330
+331</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 320</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 329</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_actions'>actions</span>
   <span class='ivar'>@actions</span>
@@ -934,12 +992,12 @@
       <pre class="lines">
 
 
-320
-321
-322</pre>
+329
+330
+331</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 320</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 329</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_auto_disable'>auto_disable</span>
   <span class='ivar'>@auto_disable</span>
@@ -977,12 +1035,12 @@
       <pre class="lines">
 
 
-320
-321
-322</pre>
+329
+330
+331</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 320</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 329</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_auto_enable'>auto_enable</span>
   <span class='ivar'>@auto_enable</span>
@@ -1020,12 +1078,12 @@
       <pre class="lines">
 
 
-321
-322
-323</pre>
+330
+331
+332</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 321</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 330</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_auto_resolve'>auto_resolve</span>
   <span class='ivar'>@auto_resolve</span>
@@ -1063,15 +1121,58 @@
       <pre class="lines">
 
 
-321
-322
-323</pre>
+330
+331
+332</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 321</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 330</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_auto_resolve_alerts'>auto_resolve_alerts</span>
   <span class='ivar'>@auto_resolve_alerts</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="auto_resolve_match=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="auto_resolve_match-instance_method">
+  
+    - (<tt>Object</tt>) <strong>auto_resolve_match</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute auto_resolve_match</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+333
+334
+335</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 333</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_auto_resolve_match'>auto_resolve_match</span>
+  <span class='ivar'>@auto_resolve_match</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1106,12 +1207,12 @@
       <pre class="lines">
 
 
-323
-324
-325</pre>
+332
+333
+334</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 323</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 332</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_conditions'>conditions</span>
   <span class='ivar'>@conditions</span>
@@ -1149,12 +1250,12 @@
       <pre class="lines">
 
 
-320
-321
-322</pre>
+329
+330
+331</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 320</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 329</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_context'>context</span>
   <span class='ivar'>@context</span>
@@ -1192,12 +1293,12 @@
       <pre class="lines">
 
 
-323
-324
-325</pre>
+332
+333
+334</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 323</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 332</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_dampenings'>dampenings</span>
   <span class='ivar'>@dampenings</span>
@@ -1235,12 +1336,12 @@
       <pre class="lines">
 
 
-322
-323
-324</pre>
+331
+332
+333</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 322</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 331</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_data_id_map'>data_id_map</span>
   <span class='ivar'>@data_id_map</span>
@@ -1278,12 +1379,12 @@
       <pre class="lines">
 
 
-322
-323
-324</pre>
+331
+332
+333</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 322</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 331</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_description'>description</span>
   <span class='ivar'>@description</span>
@@ -1321,12 +1422,12 @@
       <pre class="lines">
 
 
-324
-325
-326</pre>
+333
+334
+335</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 324</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 333</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_enabled'>enabled</span>
   <span class='ivar'>@enabled</span>
@@ -1364,12 +1465,12 @@
       <pre class="lines">
 
 
-322
-323
-324</pre>
+331
+332
+333</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 322</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 331</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_event_category'>event_category</span>
   <span class='ivar'>@event_category</span>
@@ -1407,15 +1508,58 @@
       <pre class="lines">
 
 
-322
-323
-324</pre>
+331
+332
+333</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 322</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 331</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_event_type'>event_type</span>
   <span class='ivar'>@event_type</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="firing_match=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="firing_match-instance_method">
+  
+    - (<tt>Object</tt>) <strong>firing_match</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute firing_match</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+333
+334
+335</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 333</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_firing_match'>firing_match</span>
+  <span class='ivar'>@firing_match</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1450,12 +1594,12 @@
       <pre class="lines">
 
 
-322
-323
-324</pre>
+331
+332
+333</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 322</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 331</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_group'>group</span>
   <span class='ivar'>@group</span>
@@ -1493,12 +1637,12 @@
       <pre class="lines">
 
 
-320
-321
-322</pre>
+329
+330
+331</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 320</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 329</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_id'>id</span>
   <span class='ivar'>@id</span>
@@ -1536,12 +1680,12 @@
       <pre class="lines">
 
 
-322
-323
-324</pre>
+331
+332
+333</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 322</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 331</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_member_of'>member_of</span>
   <span class='ivar'>@member_of</span>
@@ -1579,12 +1723,12 @@
       <pre class="lines">
 
 
-320
-321
-322</pre>
+329
+330
+331</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 320</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 329</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_name'>name</span>
   <span class='ivar'>@name</span>
@@ -1622,12 +1766,12 @@
       <pre class="lines">
 
 
-322
-323
-324</pre>
+331
+332
+333</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 322</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 331</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_severity'>severity</span>
   <span class='ivar'>@severity</span>
@@ -1665,12 +1809,12 @@
       <pre class="lines">
 
 
-321
-322
-323</pre>
+330
+331
+332</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 321</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 330</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_tags'>tags</span>
   <span class='ivar'>@tags</span>
@@ -1708,12 +1852,12 @@
       <pre class="lines">
 
 
-322
-323
-324</pre>
+331
+332
+333</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 322</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 331</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_tenant'>tenant</span>
   <span class='ivar'>@tenant</span>
@@ -1751,12 +1895,12 @@
       <pre class="lines">
 
 
-321
-322
-323</pre>
+330
+331
+332</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 321</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 330</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_type'>type</span>
   <span class='ivar'>@type</span>
@@ -1788,17 +1932,6 @@
       <pre class="lines">
 
 
-354
-355
-356
-357
-358
-359
-360
-361
-362
-363
-364
 365
 366
 367
@@ -1808,10 +1941,22 @@
 371
 372
 373
-374</pre>
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 354</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/alerts/alerts_api.rb', line 365</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_h'>to_h</span>
   <span class='id identifier rubyid_trigger_hash'>trigger_hash</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
@@ -1820,7 +1965,8 @@
     <span class='id identifier rubyid_ret'>ret</span><span class='lbracket'>[</span><span class='int'>0</span><span class='comma'>,</span> <span class='int'>1</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_downcase'>downcase</span> <span class='op'>+</span> <span class='id identifier rubyid_ret'>ret</span><span class='lbracket'>[</span><span class='int'>1</span><span class='op'>..</span><span class='op'>-</span><span class='int'>1</span><span class='rbracket'>]</span>
   <span class='kw'>end</span>
   <span class='id identifier rubyid_fields'>fields</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='symbol'>:id</span><span class='comma'>,</span> <span class='symbol'>:name</span><span class='comma'>,</span> <span class='symbol'>:enabled</span><span class='comma'>,</span> <span class='symbol'>:severity</span><span class='comma'>,</span> <span class='symbol'>:auto_resolve</span><span class='comma'>,</span> <span class='symbol'>:auto_resolve_alerts</span><span class='comma'>,</span> <span class='symbol'>:event_type</span><span class='comma'>,</span> <span class='symbol'>:event_category</span><span class='comma'>,</span>
-            <span class='symbol'>:description</span><span class='comma'>,</span> <span class='symbol'>:auto_enable</span><span class='comma'>,</span> <span class='symbol'>:auto_disable</span><span class='comma'>,</span> <span class='symbol'>:context</span><span class='comma'>,</span> <span class='symbol'>:type</span><span class='comma'>,</span> <span class='symbol'>:tags</span><span class='comma'>,</span> <span class='symbol'>:member_of</span><span class='comma'>,</span> <span class='symbol'>:data_id_map</span><span class='rbracket'>]</span>
+            <span class='symbol'>:description</span><span class='comma'>,</span> <span class='symbol'>:auto_enable</span><span class='comma'>,</span> <span class='symbol'>:auto_disable</span><span class='comma'>,</span> <span class='symbol'>:context</span><span class='comma'>,</span> <span class='symbol'>:type</span><span class='comma'>,</span> <span class='symbol'>:tags</span><span class='comma'>,</span> <span class='symbol'>:member_of</span><span class='comma'>,</span> <span class='symbol'>:data_id_map</span><span class='comma'>,</span>
+            <span class='symbol'>:firing_match</span><span class='comma'>,</span> <span class='symbol'>:auto_resolve_match</span><span class='rbracket'>]</span>
 
   <span class='id identifier rubyid_fields'>fields</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_field'>field</span><span class='op'>|</span>
     <span class='id identifier rubyid_camelized_field'>camelized_field</span> <span class='op'>=</span> <span class='id identifier rubyid_to_camel'>to_camel</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='id identifier rubyid_field'>field</span><span class='rparen'>)</span>
@@ -1844,9 +1990,9 @@
 </div>
 
     <div id="footer">
-  Generated on Fri May 13 14:32:39 2016 by
+  Generated on Mon Sep 19 13:22:35 2016 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.8.7.6 (ruby-2.2.4).
+  0.8.7.6 (ruby-2.3.1).
 </div>
 
   </body>

@@ -125,7 +125,7 @@ You should not directly use it, but through the more specialized clients.</p>
     
   
     
-      <strong class="classes">Classes:</strong> <span class='object_link'><a href="BaseClient/HawkularException.html" title="Hawkular::BaseClient::HawkularException (class)">HawkularException</a></span>
+      <strong class="classes">Classes:</strong> <span class='object_link'><a href="BaseClient/HawkularConnectionException.html" title="Hawkular::BaseClient::HawkularConnectionException (class)">HawkularConnectionException</a></span>, <span class='object_link'><a href="BaseClient/HawkularException.html" title="Hawkular::BaseClient::HawkularException (class)">HawkularException</a></span>
     
   
 </p>
@@ -346,6 +346,36 @@ by `,`.</p>
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#normalize_entrypoint_url-instance_method" title="#normalize_entrypoint_url (instance method)">- (String) <strong>normalize_entrypoint_url</strong>(entrypoint, suffix_path) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Generate a new url with the passed sufix path if the path is not already
+added also, this function always remove the slash at the end of the URL, so
+if your entrypoint is <a
+href="http://localhost/hawkular/inventory">localhost/hawkular/inventory</a>/
+this function will return <a
+href="http://localhost/hawkular/inventory">localhost/hawkular/inventory</a>
+to the URL.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#now-instance_method" title="#now (instance method)">- (Integer) <strong>now</strong> </a>
     
 
@@ -362,6 +392,30 @@ by `,`.</p>
   
     <span class="summary_desc"><div class='inline'>
 <p>timestamp of current time.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#url_with_websocket_scheme-instance_method" title="#url_with_websocket_scheme (instance method)">- (String) <strong>url_with_websocket_scheme</strong>(url) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Generate a new url using the websocket scheme.</p>
 </div></span>
   
 </li>
@@ -872,6 +926,133 @@ params</p>
 </div>
     
       <div class="method_details ">
+  <h3 class="signature " id="normalize_entrypoint_url-instance_method">
+  
+    - (<tt>String</tt>) <strong>normalize_entrypoint_url</strong>(entrypoint, suffix_path) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Generate a new url with the passed sufix path if the path is not already
+added also, this function always remove the slash at the end of the URL, so
+if your entrypoint is <a
+href="http://localhost/hawkular/inventory">localhost/hawkular/inventory</a>/
+this function will return <a
+href="http://localhost/hawkular/inventory">localhost/hawkular/inventory</a>
+to the URL</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>entrypoint</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>base path (URIs are also accepted)</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>suffix_path</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>sufix path to be added if it doesn&#39;t exist</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>URL with path attached to it at the end</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/base_client.rb', line 137</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_normalize_entrypoint_url'>normalize_entrypoint_url</span><span class='lparen'>(</span><span class='id identifier rubyid_entrypoint'>entrypoint</span><span class='comma'>,</span> <span class='id identifier rubyid_suffix_path'>suffix_path</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_fail'>fail</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>suffix_path must not be empty</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>if</span> <span class='id identifier rubyid_suffix_path'>suffix_path</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
+  <span class='id identifier rubyid_strip_path'>strip_path</span> <span class='op'>=</span> <span class='id identifier rubyid_suffix_path'>suffix_path</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>%r{</span><span class='tstring_content'>/$</span><span class='regexp_end'>}</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_strip_path'>strip_path</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>||</span> <span class='id identifier rubyid_suffix_path'>suffix_path</span> <span class='op'>=</span> <span class='id identifier rubyid_strip_path'>strip_path</span>
+  <span class='id identifier rubyid_strip_path'>strip_path</span> <span class='op'>=</span> <span class='id identifier rubyid_suffix_path'>suffix_path</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>%r{</span><span class='tstring_content'>^/</span><span class='regexp_end'>}</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_strip_path'>strip_path</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>||</span> <span class='id identifier rubyid_suffix_path'>suffix_path</span> <span class='op'>=</span> <span class='id identifier rubyid_strip_path'>strip_path</span>
+  <span class='id identifier rubyid_entrypoint'>entrypoint</span> <span class='op'>=</span> <span class='id identifier rubyid_entrypoint'>entrypoint</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
+  <span class='id identifier rubyid_strip_entrypoint'>strip_entrypoint</span> <span class='op'>=</span> <span class='id identifier rubyid_entrypoint'>entrypoint</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>%r{</span><span class='tstring_content'>/$</span><span class='regexp_end'>}</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_strip_path'>strip_path</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_strip_entrypoint'>strip_entrypoint</span> <span class='op'>=</span> <span class='id identifier rubyid_entrypoint'>entrypoint</span>
+  <span class='id identifier rubyid_relative_path_rgx'>relative_path_rgx</span> <span class='op'>=</span> <span class='const'>Regexp</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\/</span><span class='embexpr_beg'>#{</span><span class='const'>Regexp</span><span class='period'>.</span><span class='id identifier rubyid_quote'>quote</span><span class='lparen'>(</span><span class='id identifier rubyid_suffix_path'>suffix_path</span><span class='rparen'>)</span><span class='embexpr_end'>}</span><span class='tstring_content'>(\/)*$</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_relative_path_rgx'>relative_path_rgx</span><span class='period'>.</span><span class='id identifier rubyid_match'>match</span><span class='lparen'>(</span><span class='id identifier rubyid_entrypoint'>entrypoint</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_strip_entrypoint'>strip_entrypoint</span>
+  <span class='kw'>else</span>
+    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_strip_entrypoint'>strip_entrypoint</span><span class='embexpr_end'>}</span><span class='tstring_content'>/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_suffix_path'>suffix_path</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
   <h3 class="signature " id="now-instance_method">
   
     - (<tt>Integer</tt>) <strong>now</strong> 
@@ -930,14 +1111,96 @@ params</p>
 </table>
 </div>
     
+      <div class="method_details ">
+  <h3 class="signature " id="url_with_websocket_scheme-instance_method">
+  
+    - (<tt>String</tt>) <strong>url_with_websocket_scheme</strong>(url) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Generate a new url using the websocket scheme. It changes the current
+scheme to &#39;ws&#39; for &#39;http&#39; and &#39;wss&#39; for
+&#39;https&#39; urls.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>url</span>
+      
+      
+        <span class='type'>(<tt>String|URI</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>url</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>URL with the scheme changed to &#39;ws&#39; or &#39;wss&#39; depending on
+the current scheme.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+158
+159
+160</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/base_client.rb', line 158</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_url_with_websocket_scheme'>url_with_websocket_scheme</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='period'>.</span><span class='id identifier rubyid_sub'>sub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^http(s?)</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>ws\1</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
   </div>
 
 </div>
 
     <div id="footer">
-  Generated on Fri May 13 14:32:39 2016 by
+  Generated on Mon Sep 19 13:22:35 2016 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.8.7.6 (ruby-2.2.4).
+  0.8.7.6 (ruby-2.3.1).
 </div>
 
   </body>

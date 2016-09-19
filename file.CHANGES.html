@@ -67,6 +67,127 @@
 <p>This document describes the relevant changes between releases of the
 <em>hawkular-client</em> project.</p>
 
+<h3 id="label-V+2.7.0">V 2.7.0</h3>
+<ul><li>
+<p>Support for SSL connections</p>
+</li><li>
+<p>Fix fetching stats to support rates</p>
+</li></ul>
+
+<h3 id="label-V+2.6.0">V 2.6.0</h3>
+<ul><li>
+<p>Fix fetching operation params in the recommended way</p>
+</li><li>
+<p>Add support for fetching stats for multiple metrics</p>
+</li><li>
+<p>Fix fetching configuration properties of a resource</p>
+</li></ul>
+
+<p>Full list of items can be found at <a
+href="https://github.com/hawkular/hawkular-client-ruby/milestone/11?closed=1">github.com/hawkular/hawkular-client-ruby/milestone/11?closed=1</a></p>
+
+<h3 id="label-V+2.5.0">V 2.5.0</h3>
+<ul><li>
+<p>Fix failure of list operations when no properties are passed - don&#39;t
+parse params</p>
+</li><li>
+<p>Adds url_with_websocket method for helping to generate a ws(s) url</p>
+</li><li>
+<p>Use server-level operation commands for deployments</p>
+</li></ul>
+
+<p>Full list of items can be found at <a
+href="https://github.com/hawkular/hawkular-client-ruby/milestone/10?closed=1">github.com/hawkular/hawkular-client-ruby/milestone/10?closed=1</a></p>
+
+<h3 id="label-V+2.4.0">V 2.4.0</h3>
+<ul><li>
+<p>Expose `metric.type.id` in metric definitions from Inventory, as the agent
+changed what it sends</p>
+</li><li>
+<p>Fix the &#39;Undeploy&#39; operation</p>
+</li></ul>
+
+<p>Full list of items can be found at <a
+href="https://github.com/hawkular/hawkular-client-ruby/milestone/9?closed=1">github.com/hawkular/hawkular-client-ruby/milestone/9?closed=1</a></p>
+
+<h3 id="label-V+2.3.0">V 2.3.0</h3>
+<ul><li>
+<p>Wrap connection errors in `HawkularConnectionException` (a subclass of
+`HawkularException`)</p>
+</li><li>
+<p>Make sure the error callback is called on all kinds of errors (if it
+exists)</p>
+</li><li>
+<p>Use the new Rest-API of Hawkular-Inventory.</p>
+</li><li>
+<p>For authentication errors don&#39;t return raw html, but some sensible
+value</p>
+</li><li>
+<p>Make it explicit that rest-client v2.0 is used to follow ManageIQ</p>
+</li><li>
+<p>Provide parameters for operation definitions (depend on what the agent
+reports to inventory)</p>
+</li><li>
+<p>Use the new Hawkular-metrics endpoints if the hawkular-metrics version we
+talk to is &gt;= 0.16</p>
+</li></ul>
+
+<p>Full list of items can be found at <a
+href="https://github.com/hawkular/hawkular-client-ruby/issues?q=milestone%3A2.3.0+is%3Aclosed">github.com/hawkular/hawkular-client-ruby/issues?q=milestone%3A2.3.0+is%3Aclosed</a></p>
+
+<h3 id="label-V+2.2.1">V 2.2.1</h3>
+<ul><li>
+<p>Fix a regression where URI:HTTP objects were no longer accepted as input
+for entrypoints.</p>
+</li></ul>
+
+<h3 id="label-V+2.2.0">V 2.2.0</h3>
+
+<p>This release is needed to work with hawkular-services v0.0.5+</p>
+<ul><li>
+<p>Support the changed api endpoint (/deprecated) for Hawkular-inventory 0.17+
+along the old version</p>
+</li><li>
+<p>Add two missing fields (firing_match and auto_resolve) on Alert-triggers</p>
+</li><li>
+<p>Add distinct parameter when getting availability data points</p>
+</li><li>
+<p>Remove all defaulting/fallback to localhost:8080 in the APIs</p>
+</li><li>
+<p>Allow to fetch multiple raw data items from Hawkular-metrics in one call.
+Requires Metrics v0.17+</p>
+</li><li>
+<p>Corectly use the enabled flag for deployment operations</p>
+</li></ul>
+
+<p>Full list of items can be found at <a
+href="https://github.com/hawkular/hawkular-client-ruby/issues?q=milestone%3A2.2.0+is%3Aclosed">github.com/hawkular/hawkular-client-ruby/issues?q=milestone%3A2.2.0+is%3Aclosed</a></p>
+
+<h3 id="label-V+2.1.0">V 2.1.0</h3>
+<ul><li>
+<p>Fix an issue where the operations endpoint constructor expected a host to
+be passed, which was not.</p>
+</li><li>
+<p>Add authentication to the websocket setup in Operations sub-client.</p>
+</li><li>
+<p>Add a status endpoint call for the Alerts sub-client</p>
+</li></ul>
+
+<h3 id="label-V+2.0.0">V 2.0.0</h3>
+<ul><li>
+<p>This version is compatible with <a
+href="https://github.com/hawkular/hawkular-services">hawkular-services</a></p>
+</li><li>
+<p>By default no Tenant-Header is send in the requests, which is compatible
+with the old versions of Hawkular. However, if the option &#39;tenant&#39;
+is passed when creating the client, it will be sent as the header. This is
+the only potentialy breaking change, because in 1.0.0, if the tenant was
+not specified the &#39;hawkular&#39; Tenant-Header was used.</p>
+</li><li>
+<p>Method for listing resources for a feed in the inventory sub-client has
+been fixed.</p>
+</li></ul>
+
 <h3 id="label-V+1.0.0">V 1.0.0</h3>
 <ul><li>
 <p>This major release contains changes that <strong>may break the backward
@@ -150,9 +271,9 @@ href="https://github.com/hawkular/hawkular-client-ruby/issues/54">54</a></p>
 </div></div>
 
     <div id="footer">
-  Generated on Fri May 13 14:32:39 2016 by
+  Generated on Mon Sep 19 13:22:35 2016 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.8.7.6 (ruby-2.2.4).
+  0.8.7.6 (ruby-2.3.1).
 </div>
 
   </body>
