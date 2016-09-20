@@ -1,6 +1,20 @@
+sudo: required
+
 language: ruby
 rvm:
   - 2.0
   - 2.1
   - 2.2
   - 2.3.0
+env:
+  - RUN_ON_LIVE_SERVER=1 \
+    VCR_UPDATE=1 \
+    SKIP_SSL_WITHOUT_CERTIFICATE_TEST=1 \
+    SKIP_SECURE_CONTEXT=1 \
+    SKIP_V8_METRICS=1 \
+    SKIP_SERVICES_METRICS=1
+  - RUN_ON_LIVE_SERVER=0
+services:
+  - docker
+before_install:
+  - (test $RUN_ON_LIVE_SERVER = 1 && docker-compose up -d && ./.travis/wait_for_services.rb) || echo "Skipping live server"
