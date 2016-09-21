@@ -25,6 +25,8 @@ module Hawkular::Metrics
     attr_reader :counters
     # @return [Gauges] access gauges API
     attr_reader :gauges
+    # @return [Strings] access strings API
+    attr_reader :strings
     # @return [Availability] access counters API
     attr_reader :avail
 
@@ -61,6 +63,7 @@ module Hawkular::Metrics
       @counters = Client::Counters.new self
       @gauges = Client::Gauges.new self
       @avail = Client::Availability.new self
+      @strings = Client::Strings.new self
     end
   end
 end

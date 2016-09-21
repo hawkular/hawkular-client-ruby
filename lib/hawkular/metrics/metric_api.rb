@@ -30,11 +30,12 @@ module Hawkular::Metrics
     # @example push gauge and availability datapoints
     #    client.push_data(gauges: [{:id => "gauge1", :data => [{:value => 1}, {:value => 2}]}],
     #                           availabilities: [{:id => "avail1", :data => [{:value => "up"}]}])
-    def push_data(gauges: [], counters: [], availabilities: [])
+    def push_data(gauges: [], counters: [], availabilities: [], strings: [])
       gauges.each { |g| default_timestamp g[:data] }
       counters.each { |g| default_timestamp g[:data] }
       availabilities.each { |g| default_timestamp g[:data] }
-      data = { gauges: gauges, counters: counters, availabilities: availabilities }
+      strings.each { |g| default_timestamp g[:data] }
+      data = { gauges: gauges, counters: counters, availabilities: availabilities, strings: strings }
       path = '/metrics/'
       @legacy_api ? path << 'data' : path << 'raw'
       http_post(path, data)
@@ -254,6 +255,28 @@ module Hawkular::Metrics
         resp = @client.http_get(path + '?' + encode_params(params))
         # API returns no content (empty Hash) instead of empty array
         resp.is_a?(Array) ? resp : []
+      end
+    end
+
+    # Class that interacts with "string" metric types
+    class Strings < Metrics
+      # @param client [Client]
+      def initialize(client)
+        super(client, 'string', 'strings')
+      end
+
+      # Retrieve metric datapoints
+      # @param id [String] metric definition id
+      # @param starts [Integer] optional timestamp (default now - 8h)
+      # @param ends [Integer] optional timestamp (default now)
+      # @param distinct [String] optional set to true to return only distinct, contiguous values
+      # @param limit [Integer] optional limit the number of data points returned
+      # @param order [String] optional Data point sort order, based on timestamp (ASC, DESC)
+      # @return [Array[Hash]] datapoints
+      # @see #push_data #push_data for datapoint detail
+      def get_data(id, starts: nil, ends: nil, distinct: nil, limit: nil, order: nil)
+        params = { start: starts, end: ends, distinct: distinct, limit: limit, order: order }
+        get_data_helper(id, params)
       end
     end
 

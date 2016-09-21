@@ -638,6 +638,63 @@ security_contexts.each do |security_context|
           expect(data).not_to be_nil
         end
       end
+
+      describe 'String metrics', run_for: [v16_context] do
+        before(:all) do
+          @tenant = vcr_test_tenant
+          setup_client(setup_options.merge(tenant: @tenant))
+        end
+
+        it 'Should create string definition using MetricDefinition' do
+          create_metric_using_md @client.strings, @random_id
+        end
+
+        it 'Should create string definition using Hash' do
+          create_metric_using_hash @client.strings, @random_id, @tenant
+        end
+
+        it 'Should push metric data to non-existing string' do
+          push_data_to_non_existing_metric @client.strings, { value: 'Hello world' }, @random_id
+        end
+
+        it 'Should push metric data to existing string', :skip_auto_vcr do
+          now = @client.now
+          ends = now - t4h
+          starts = now - (2 * t4h)
+          now10 = now - 10
+          now20 = now - 20
+          now30 = now - 30
+          bindings = { id: @random_id, ends: ends, starts: starts, now10: now10, now20: now20, now30: now30 }
+          example = proc do
+            # create gauge
+            @client.strings.create(id: @random_id)
+
+            # push 3  values with timestamps
+            @client.strings.push_data(@random_id,
+                                      [
+                                        { value: 'Value1', timestamp: now30 },
+                                        { value: 'Value2', timestamp: now20 },
+                                        { value: 'Value3', timestamp: now10 }
+                                      ])
+
+            data = @client.strings.get_data(@random_id)
+            expect(data.size).to be 3
+
+            # push one value without timestamp (which means now)
+            @client.strings.push_data(@random_id, value: 'Now')
+            data = @client.strings.get_data(@random_id)
+            expect(data.size).to be 4
+
+            # retrieve values from past
+            data = @client.strings.get_data(@random_id, starts: starts, ends: ends)
+            expect(data.empty?).to be true
+          end
+          record("Metrics/#{security_context}/#{metrics_context}",
+                 vcr_bindings.merge(bindings),
+                 cassette_name,
+                 example: example)
+        end
+      end
     end
   end
 
