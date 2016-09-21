@@ -264,6 +264,20 @@ module Hawkular::Metrics
       def initialize(client)
         super(client, 'string', 'strings')
       end
+
+      # Retrieve metric datapoints
+      # @param id [String] metric definition id
+      # @param starts [Integer] optional timestamp (default now - 8h)
+      # @param ends [Integer] optional timestamp (default now)
+      # @param distinct [String] optional set to true to return only distinct, contiguous values
+      # @param limit [Integer] optional limit the number of data points returned
+      # @param order [String] optional Data point sort order, based on timestamp (ASC, DESC)
+      # @return [Array[Hash]] datapoints
+      # @see #push_data #push_data for datapoint detail
+      def get_data(id, starts: nil, ends: nil, distinct: nil, limit: nil, order: nil)
+        params = { start: starts, end: ends, distinct: distinct, limit: limit, order: order }
+        get_data_helper(id, params)
+      end
     end
 
     # Class that interacts with "availability" metric types
