@@ -6,7 +6,38 @@ module Hawkular::Alerts::RSpec
   creds = { username: 'jdoe', password: 'password' }
   options = { tenant: 'hawkular' }
 
-  describe 'Alert/Triggers', vcr: { decode_compressed_response: true } do
+  describe 'Alert/Triggers' do
+    before(:all) do
+      # Setup for testing
+      record('Alert/Triggers', credentials, 'setup') do
+        @client = Hawkular::Alerts::AlertsClient.new(ALERTS_BASE, credentials, options)
+        json = IO.read('spec/integration/alert-resources/triggers-test-data.json')
+        trigger_hash = JSON.parse(json)
+        @client.bulk_import_triggers trigger_hash
+      end
+    end
+
+    after(:all) do
+      # cleanup test values
+      record('Alert/Triggers', credentials, 'setup_cleanup') do
+        @client = Hawkular::Alerts::AlertsClient.new(ALERTS_BASE, credentials, options)
+        json = IO.read('spec/integration/alert-resources/triggers-test-data.json')
+        trigger_hash = JSON.parse(json)
+        trigger_hash['triggers'].each do |trigger|
+          @client.delete_trigger trigger['trigger']['id']
+        end
+      end
+    end
+
+    let(:cassette_name) do |example|
+      description = example.description
+      description
+    end
+
+    around(:each) do |example|
+      record('Alert/Triggers', credentials, cassette_name, example: example)
+    end
+
     before(:each) do
       @client = Hawkular::Alerts::AlertsClient.new(ALERTS_BASE, creds, options)
     end
@@ -14,38 +45,37 @@ module Hawkular::Alerts::RSpec
     it 'Should List Triggers' do
       triggers = @client.list_triggers
 
-      expect(triggers.size).to be(3)
+      expect(triggers.size).to be(6)
     end
 
     it 'Should List Triggers for Tag' do
       triggers = @client.list_triggers [],
-                                       ['resourceId|75bfdd05-d03d-481e-bf32-c724c7719d8b~Local']
+                                       ['resourceId|my-resource01']
 
-      expect(triggers.size).to be(7)
+      expect(triggers.size).to be(4)
     end
 
     it 'Should List Triggers for Tags' do
       triggers = @client.list_triggers [],
-                                       ['resourceId|75bfdd05-d03d-481e-bf32-c724c7719d8b~Local',
-                                        'app|MyShop']
+                                       %w(resourceId|my-resource01 app|MyShop)
 
-      expect(triggers.size).to be(7)
+      expect(triggers.size).to be(5)
     end
 
     it 'Should List Triggers for ID' do
-      triggers = @client.list_triggers ['75bfdd05-d03d-481e-bf32-c724c7719d8b~Local_jvm_pheap']
+      triggers = @client.list_triggers ['my-trigger-05']
 
       expect(triggers.size).to be(1)
     end
 
     it 'Should get a single metric Trigger' do
-      trigger = @client.get_single_trigger('snert~Local_jvm_nheap')
+      trigger = @client.get_single_trigger('my-trigger-01')
 
       expect(trigger).not_to be_nil
     end
 
     it 'Should get a single Trigger with conditions' do
-      trigger = @client.get_single_trigger 'snert~Local_jvm_nheap', true
+      trigger = @client.get_single_trigger 'my-trigger-01', true
 
       expect(trigger).not_to be_nil
       expect(trigger.conditions.size).to be(1)
@@ -67,7 +97,7 @@ module Hawkular::Alerts::RSpec
     end
 
     it 'Should create a basic trigger with action' do
-      @client.create_action :email, 'send-via-email', 'notify-to-admins' => 'joe@acme.org'
+      @client.create_action :email, 'send-via-email', 'to' => 'joe@acme.org'
 
       # Create the trigger
       t = Hawkular::Alerts::Trigger.new({})
@@ -108,7 +138,7 @@ module Hawkular::Alerts::RSpec
           # I am not interested
         end
         begin
-          @client.delete_action(a.action_id, a.action_plugin)
+          @client.delete_action(a.action_plugin, a.action_id)
         rescue
           # I am not interested
         end
@@ -157,7 +187,7 @@ module Hawkular::Alerts::RSpec
 
     it 'Should get the action definitions' do
       ret = @client.get_action_definition
-      expect(ret.size).to be(2)
+      expect(ret.size).to be > 0
       expect(ret.key? 'email').to be_truthy
 
       ret = @client.get_action_definition 'email'
@@ -169,7 +199,7 @@ module Hawkular::Alerts::RSpec
     end
 
     it 'Should create an action' do
-      @client.create_action 'email', 'my-id1', 'notify-to-admins' => 'joe@acme.org'
+      @client.create_action 'email', 'my-id1', 'to' => 'joe@acme.org'
       @client.delete_action 'email', 'my-id1'
     end
 
@@ -182,31 +212,22 @@ module Hawkular::Alerts::RSpec
     end
 
     it 'Should not create an action for unknown properties' do
-      begin
+      expect do
         @client.create_action :email, 'my-id3', foo: 'bar'
-      ensure
-        @client.delete_action :email, 'my-id3'
-      end
-    end
-
-    it 'Should create an action for webhooks' do
-      begin
-        @client.get_action_definition 'webhook'
-
-        webhook_props = { 'url' => 'http://localhost:8080/bla', 'method' => 'POST' }
-        @client.create_action 'webhook', 'my-id1',
-                              webhook_props
-        ret = @client.get_action 'webhook', 'my-id1'
-        expect(ret.action_plugin).to eq('webhook')
-        expect(ret.action_id).to eq('my-id1')
-
-      ensure
-        @client.delete_action 'webhook', 'my-id1'
-      end
+      end.to raise_error(Hawkular::BaseClient::HawkularException)
     end
   end
 
-  describe 'Alert/Groups', vcr: { decode_compressed_response: true } do
+  describe 'Alert/Groups' do
+    let(:cassette_name) do |example|
+      description = example.description
+      description
+    end
+
+    around(:each) do |example|
+      record('Alert/Groups', credentials, cassette_name, example: example)
+    end
+
     before(:each) do
       @client = Hawkular::Alerts::AlertsClient.new(ALERTS_BASE, creds, options)
     end
@@ -389,11 +410,63 @@ module Hawkular::Alerts::RSpec
     end
   end
 
-  describe 'Alert/Alerts', :vcr do
+  describe 'Alert/Alerts' do
+    before(:all) do
+      # Setup for testing
+      record('Alert/Alerts', credentials, 'setup') do
+        @client = Hawkular::Alerts::AlertsClient.new(ALERTS_BASE, credentials, options)
+        json = IO.read('spec/integration/alert-resources/alerts-test-data.json')
+        trigger_hash = JSON.parse(json)
+        @client.bulk_import_triggers trigger_hash
+        current_open_alert_count = @client.list_alerts('statuses' => 'OPEN')
+        @client.http_post('data', [{ id: 'data-x', timestamp: Time.new.to_i, value: 4 }])
+        wait_while do
+          current_open_alert_count == @client.list_alerts('statuses' => 'OPEN')
+        end
+      end
+    end
+
+    after(:all) do
+      # cleanup test values
+      record('Alert/Alerts', credentials, 'setup_cleanup') do
+        @client = Hawkular::Alerts::AlertsClient.new(ALERTS_BASE, credentials, options)
+        json = IO.read('spec/integration/alert-resources/alerts-test-data.json')
+        trigger_hash = JSON.parse(json)
+        trigger_hash['triggers'].each do |trigger|
+          @client.list_alerts('triggerIds' => [trigger['trigger']['id']]).each do |alert|
+            @client.http_delete(alert.id)
+          end
+          @client.delete_trigger trigger['trigger']['id']
+        end
+      end
+    end
+
+    let(:cassette_name) do |example|
+      description = example.description
+      description
+    end
+
+    around(:each) do |example|
+      record('Alert/Alerts', credentials, cassette_name, example: example)
+    end
+
+    before(:each) do
+      @client = Hawkular::Alerts::AlertsClient.new(ALERTS_BASE, creds, options)
+    end
+
     it 'Should list alerts' do
       client = Hawkular::Alerts::AlertsClient.new(ALERTS_BASE, creds, options)
 
       alerts = client.list_alerts
+
+      expect(alerts).to_not be_nil
+      expect(alerts.size).to be >= 2
+    end
+
+    it 'Should list open alerts' do
+      client = Hawkular::Alerts::AlertsClient.new(ALERTS_BASE, creds, options)
+
+      alerts = client.list_alerts('statuses' => 'OPEN')
 
       expect(alerts).to_not be_nil
       expect(alerts.size).to be(2)
@@ -402,7 +475,7 @@ module Hawkular::Alerts::RSpec
     it 'Should list alerts for trigger' do
       client = Hawkular::Alerts::AlertsClient.new(ALERTS_BASE, creds, options)
 
-      alerts = client.get_alerts_for_trigger '75bfdd05-d03d-481e-bf32-c724c7719d8b~Local_jvm_pheap'
+      alerts = client.get_alerts_for_trigger 'hello-world-trigger'
 
       expect(alerts).to_not be_nil
       expect(alerts.size).to be(1)
@@ -420,18 +493,18 @@ module Hawkular::Alerts::RSpec
     it 'Should fetch single alert' do
       client = Hawkular::Alerts::AlertsClient.new(ALERTS_BASE, creds, options)
 
-      alert = client.get_single_alert(
-        '28026b36-8fe4-4332-84c8-524e173a68bf-snert~Local_jvm_garba-1446977734134')
+      alert_id = client.list_alerts('statuses' => 'OPEN').first.id
+
+      alert = client.get_single_alert(alert_id)
 
       expect(alert).to_not be_nil
-      expect(alert.alertId)
-        .to eql('28026b36-8fe4-4332-84c8-524e173a68bf-snert~Local_jvm_garba-1446977734134')
+      expect(alert.id).to eql(alert_id)
     end
 
     it 'Should resolve an alert' do
       client = Hawkular::Alerts::AlertsClient.new(ALERTS_BASE, creds, options)
 
-      alert_id = '28026b36-8fe4-4332-84c8-524e173a68bf-snert~Local_jvm_garba-1446977734134'
+      alert_id = client.list_alerts('statuses' => 'OPEN').first.id
       alert = client.get_single_alert alert_id
 
       expect(alert.status).to eql('OPEN')
@@ -454,7 +527,7 @@ module Hawkular::Alerts::RSpec
     it 'Should acknowledge an alert' do
       client = Hawkular::Alerts::AlertsClient.new(ALERTS_BASE, creds, options)
 
-      alert_id = '28026b36-8fe4-4332-84c8-524e173a68bf-snert~Local_jvm_garba-1446977734134'
+      alert_id = client.list_alerts('statuses' => 'OPEN').first.id
       client.get_single_alert alert_id
 
       client.acknowledge_alert(alert_id, 'Heiko', 'Hello Ruby World :-)')
@@ -464,7 +537,16 @@ module Hawkular::Alerts::RSpec
     end
   end
 
-  describe 'Alerts', vcr: { decode_compressed_response: true } do
+  describe 'Alert' do
+    let(:cassette_name) do |example|
+      description = example.description
+      description
+    end
+
+    around(:each) do |example|
+      record('Alert', credentials, cassette_name, example: example)
+    end
+
     before(:each) do
       @client = Hawkular::Alerts::AlertsClient.new(ALERTS_BASE, creds)
     end
@@ -475,11 +557,38 @@ module Hawkular::Alerts::RSpec
     end
   end
 
-  describe 'Alert/Events', :vcr do
-    VCR.configure do |c|
-      c.default_cassette_options = {
-        match_requests_on: [:method, VCR.request_matchers.uri_without_params(:startTime, :endTime)]
-      }
+  describe 'Alert/Events' do
+    before(:all) do
+      # Setup for testing
+      record('Alert/Events', credentials, 'setup') do
+        @client = Hawkular::Alerts::AlertsClient.new(ALERTS_BASE, credentials, options)
+        json = IO.read('spec/integration/alert-resources/events-test-data.json')
+        hash = JSON.parse(json)
+        hash['events'].each do |event|
+          @client.create_event event['id'], event['category'], event['text'], event['extras']
+        end
+      end
+    end
+
+    after(:all) do
+      # cleanup test values
+      record('Alert/Events', credentials, 'setup_cleanup') do
+        @client = Hawkular::Alerts::AlertsClient.new(ALERTS_BASE, credentials, options)
+        json = IO.read('spec/integration/alert-resources/events-test-data.json')
+        hash = JSON.parse(json)
+        hash['events'].each do |event|
+          @client.delete_event event['id']
+        end
+      end
+    end
+
+    let(:cassette_name) do |example|
+      description = example.description
+      description
+    end
+
+    around(:each) do |example|
+      record('Alert/Events', credentials, cassette_name, example: example)
     end
 
     it 'Should list events' do
@@ -488,20 +597,16 @@ module Hawkular::Alerts::RSpec
       events = client.list_events('thin' => true)
 
       expect(events).to_not be_nil
-      expect(events.size).to be(12)
+      expect(events.size).to be >= 12
     end
 
     it 'Should list events using criteria' do
-      now = Time.new.to_i
-      start_time = (now - 7_200) * 1000
-      end_time = now * 1000
-
       client = Hawkular::Alerts::AlertsClient.new(ALERTS_BASE, creds, options)
 
-      events = client.list_events('startTime' => start_time, 'endTime' => end_time)
+      events = client.list_events('categories' => %w(my-category-01 my-category-02))
 
       expect(events).to_not be_nil
-      expect(events.size).to be(1)
+      expect(events.size).to be(4)
     end
 
     it 'Should not list events using criteria' do
@@ -516,10 +621,7 @@ module Hawkular::Alerts::RSpec
     it 'Should create an event' do
       the_id = "test-event@#{Time.new.to_i}"
       VCR.eject_cassette
-      VCR.use_cassette('Alert/Events/Should_create_an_event',
-                       erb: { id: the_id }, record: :none,
-                       decode_compressed_response: true
-                      ) do
+      record('Alert/Events', credentials.merge(id: the_id), cassette_name) do
         client = Hawkular::Alerts::AlertsClient.new(ALERTS_BASE, creds, options)
 
         the_event = client.create_event(the_id, 'MyCategory', 'Li la lu',
@@ -536,10 +638,7 @@ module Hawkular::Alerts::RSpec
     it 'Should delete an event' do
       the_id = "test-event@#{Time.new.to_i}"
       VCR.eject_cassette
-      VCR.use_cassette('Alert/Events/Should_delete_an_event',
-                       erb: { id: the_id }, record: :none,
-                       decode_compressed_response: true
-                      ) do
+      record('Alert/Events', credentials.merge(id: the_id), cassette_name) do
         client = Hawkular::Alerts::AlertsClient.new(ALERTS_BASE, creds, options)
         client.create_event(the_id, 'MyCategory', 'Li la lu',
                             context: { message: 'This is a test' },
@@ -552,7 +651,16 @@ module Hawkular::Alerts::RSpec
     end
   end
 
-  describe 'Alert/EndToEnd', vcr: { decode_compressed_response: true } do
+  describe 'Alert/EndToEnd' do
+    let(:cassette_name) do |example|
+      description = example.description
+      description
+    end
+
+    around(:each) do |example|
+      record('Alert/EndToEnd', credentials, cassette_name, example: example)
+    end
+
     before(:each) do
       @client = Hawkular::Alerts::AlertsClient.new(ALERTS_BASE, creds, options)
     end
@@ -567,17 +675,6 @@ module Hawkular::Alerts::RSpec
         @client.delete_action 'email', 'send-via-email'
         @client.create_action 'email', 'send-via-email',
                               email_props
-      end
-
-      webhook_props = { url: 'http://172.31.7.177/',
-                        method: 'POST' }
-      begin
-        @client.create_action 'webhook', 'send-via-webhook',
-                              webhook_props
-      rescue
-        @client.delete_action 'webhook', 'send-via-webhook'
-        @client.create_action 'webhook', 'send-via-webhook',
-                              webhook_props
       end
 
       # Create the trigger
@@ -600,12 +697,6 @@ module Hawkular::Alerts::RSpec
       a = Hawkular::Alerts::Trigger::Action.new({})
       a.action_plugin = 'email'
       a.action_id = 'send-via-email'
-      t.actions.push a
-
-      # Reference an action definition for webhook
-      a = Hawkular::Alerts::Trigger::Action.new({})
-      a.action_plugin = 'webhook'
-      a.action_id = 'send-via-webhook'
       t.actions.push a
 
       begin
@@ -631,8 +722,10 @@ module Hawkular::Alerts::RSpec
 
         metric_client.push_data(gauges: data)
 
-        # wait 2s for the alert engine to work if we are live
-        sleep 2 if VCR.current_cassette.recording?
+        # wait for the alert engine to work if we are live
+        wait_while do
+          @client.get_alerts_for_trigger('my-cool-email-trigger').nil?
+        end
 
         # see if alert has fired
         alerts = @client.get_alerts_for_trigger 'my-cool-email-trigger'
@@ -643,11 +736,6 @@ module Hawkular::Alerts::RSpec
         # rubocop:disable Lint/HandleExceptions
         begin
           @client.delete_trigger(t.id)
-        rescue
-          # I am not interested
-        end
-        begin
-          @client.delete_action('webhook', 'send-via-webhook')
         rescue
           # I am not interested
         end

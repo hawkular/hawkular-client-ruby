@@ -1,0 +1,55 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - hawkular
+      Content-Type:
+      - application/json
+      Host:
+      - localhost:8080
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Tue, 27 Sep 2016 18:17:14 GMT
+      X-Total-Count:
+      - '6'
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '2172'
+      Link:
+      - <http://localhost:8080/hawkular/alerts/triggers>; rel="current", <http://localhost:8080/hawkular/alerts/triggers?page=0>;
+        rel="last"
+    body:
+      encoding: UTF-8
+      string: '[{"tenantId":"hawkular","id":"my-trigger-01","name":"defaultName","type":"STANDARD","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"MEDIUM","tags":{"app":"MyShop","resourceId":"my-resource01"},"autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","enabled":false,"firingMatch":"ALL","source":"_none_"},{"tenantId":"hawkular","id":"my-trigger-02","name":"defaultName","type":"STANDARD","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"MEDIUM","tags":{"resourceId":"my-resource01"},"autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","enabled":false,"firingMatch":"ALL","source":"_none_"},{"tenantId":"hawkular","id":"my-trigger-03","name":"defaultName","type":"STANDARD","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"MEDIUM","tags":{"app":"MyShop"},"autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","enabled":false,"firingMatch":"ALL","source":"_none_"},{"tenantId":"hawkular","id":"my-trigger-04","name":"defaultName","type":"STANDARD","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"MEDIUM","tags":{"app":"MyShop","resourceId":"my-resource01"},"autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","enabled":false,"firingMatch":"ALL","source":"_none_"},{"tenantId":"hawkular","id":"my-trigger-05","name":"defaultName","type":"STANDARD","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"MEDIUM","autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","enabled":false,"firingMatch":"ALL","source":"_none_"},{"tenantId":"hawkular","id":"my-trigger-06","name":"defaultName","type":"STANDARD","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"MEDIUM","tags":{"app":"MyShop","resourceId":"my-resource01"},"autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","enabled":false,"firingMatch":"ALL","source":"_none_"}]'
+    http_version: 
+  recorded_at: Tue, 27 Sep 2016 18:17:14 GMT
+recorded_with: VCR 3.0.3

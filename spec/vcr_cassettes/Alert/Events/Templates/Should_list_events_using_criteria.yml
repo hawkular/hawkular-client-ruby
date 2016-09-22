@@ -1,0 +1,60 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/events?categories=my-category-01,my-category-02
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - hawkular
+      Content-Type:
+      - application/json
+      Host:
+      - localhost:8080
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Tue, 27 Sep 2016 18:17:17 GMT
+      X-Total-Count:
+      - '4'
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '677'
+      Link:
+      - <http://localhost:8080/hawkular/alerts/events?categories=my-category-01,my-category-02>;
+        rel="current", <http://localhost:8080/hawkular/alerts/events?categories=my-category-01,my-category-02&page=0>;
+        rel="last"
+    body:
+      encoding: UTF-8
+      string: '[{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-07","ctime":1475000237000,"dataSource":"_none_","category":"my-category-01","text":"some
+        text for this event"},{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-05","ctime":1475000237000,"dataSource":"_none_","category":"my-category-02","text":"some
+        text for this event"},{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-03","ctime":1475000237000,"dataSource":"_none_","category":"my-category-01","text":"some
+        text for this event"},{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-02","ctime":1475000237000,"dataSource":"_none_","category":"my-category-01","text":"some
+        text for this event"}]'
+    http_version: 
+  recorded_at: Tue, 27 Sep 2016 18:17:17 GMT
+recorded_with: VCR 3.0.3
