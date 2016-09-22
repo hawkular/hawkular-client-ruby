@@ -137,8 +137,8 @@ module Hawkular::Metrics::RSpec
 end
 
 module Hawkular::Operations::RSpec
-  SLEEP_SECONDS = 0.04
-  MAX_ATTEMPTS = 60
+  SLEEP_SECONDS = 0.1
+  MAX_ATTEMPTS = 120
 
   def wait_for(object)
     fast = WebSocketVCR.cassette && !WebSocketVCR.cassette.recording?
@@ -150,6 +150,24 @@ module Hawkular::Operations::RSpec
       {}
     else
       object[:data]
+    end
+  end
+
+  def wait_while
+    fast = WebSocketVCR.cassette && !WebSocketVCR.cassette.recording?
+    sleep_interval = SLEEP_SECONDS * (fast ? 1 : 10)
+    attempt = 0
+    sleep sleep_interval while yield && (attempt += 1) < MAX_ATTEMPTS
+    if attempt == MAX_ATTEMPTS
+      puts 'timeout hit'
+    else
+      return
+    end
+  end
+
+  def hash_include_all(hash, keys)
+    keys.all? do |key|
+      hash.key? key
     end
   end
 
