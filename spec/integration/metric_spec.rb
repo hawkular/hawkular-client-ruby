@@ -31,6 +31,10 @@ security_contexts.each do |security_context|
       puts 'skipping v8 metrics'
       next
     end
+    if ENV['SKIP_V16_METRICS'] == '1' && metrics_context == v16_context
+      puts 'skipping v16 metrics'
+      next
+    end
     if ENV['SKIP_SERVICES_METRICS'] == '1' && metrics_context == services_context
       puts 'skipping services metrics'
       next
@@ -497,9 +501,20 @@ security_contexts.each do |security_context|
 
       describe 'Gauge metrics' do
         hawkular_tenant_id = 'hawkular'.freeze
-        hawkular_feed_id = 'af0ea377-80f4-4567-af45-105eaa808b92'.freeze
-        hawkular_mem_id = "MI~R~[#{hawkular_feed_id}/platform~/OPERATING_SYSTEM=#{hawkular_feed_id}"\
-                          '_OperatingSystem/MEMORY=Memory]~MT~Total Memory'.freeze
+
+        let(:inventory_client) do
+          inventory_entrypoint = entrypoint(security_context, 'inventory')
+          setup_inventory_client(inventory_entrypoint, tenant: hawkular_tenant_id)
+        end
+
+        let(:hawkular_feed_id) do
+          inventory_client.list_feeds.first
+        end
+
+        let(:hawkular_mem_id) do
+          "MI~R~[#{hawkular_feed_id}/platform~/OPERATING_SYSTEM=#{hawkular_feed_id}"\
+                          '_OperatingSystem/MEMORY=Memory]~MT~Total Memory'
+        end
 
         before(:all) do
           @tenant = vcr_test_tenant
@@ -587,7 +602,7 @@ security_contexts.each do |security_context|
         end
 
         it 'Should return platform memory def', :skip_auto_vcr, run_for: [services_context] do
-          bindings = { mem_id: hawkular_mem_id, tenant: hawkular_tenant_id }
+          bindings = { tenant: hawkular_tenant_id }
           example = proc do
             if metrics_context == v8_context
               setup_v8_client tenant: hawkular_tenant_id
@@ -608,7 +623,7 @@ security_contexts.each do |security_context|
         end
 
         it 'Should return platform memory', :skip_auto_vcr, run_for: [services_context] do
-          bindings = { mem_id: hawkular_mem_id, tenant: hawkular_tenant_id }
+          bindings = { tenant: hawkular_tenant_id }
           example = proc do
             # this id depends on OS and the feed id
             if metrics_context == v8_context

@@ -630,5 +630,5 @@ module Hawkular::Inventory::RSpec
         expect(feeds.size).to be(1)
       end
     end
-  end
+  end unless ENV['SKIP_SSL_WITHOUT_CERTIFICATE_TEST'] == '1'
 end
