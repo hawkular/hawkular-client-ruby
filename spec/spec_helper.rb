@@ -138,7 +138,7 @@ end
 
 module Hawkular::Operations::RSpec
   SLEEP_SECONDS = 0.1
-  MAX_ATTEMPTS = 120
+  MAX_ATTEMPTS = 200
 
   def wait_for(object)
     fast = WebSocketVCR.cassette && !WebSocketVCR.cassette.recording?
