@@ -515,6 +515,7 @@ module Hawkular::Alerts::RSpec
 
     it 'Should create an event' do
       the_id = "test-event@#{Time.new.to_i}"
+      VCR.eject_cassette
       VCR.use_cassette('Alert/Events/Should_create_an_event',
                        erb: { id: the_id }, record: :none,
                        decode_compressed_response: true
@@ -527,6 +528,26 @@ module Hawkular::Alerts::RSpec
 
         expect(the_event['id']).to eql(the_id)
         expect(the_event['category']).to eql('MyCategory')
+
+        client.delete_event the_id
+      end
+    end
+
+    it 'Should delete an event' do
+      the_id = "test-event@#{Time.new.to_i}"
+      VCR.eject_cassette
+      VCR.use_cassette('Alert/Events/Should_delete_an_event',
+                       erb: { id: the_id }, record: :none,
+                       decode_compressed_response: true
+                      ) do
+        client = Hawkular::Alerts::AlertsClient.new(ALERTS_BASE, creds, options)
+        client.create_event(the_id, 'MyCategory', 'Li la lu',
+                            context: { message: 'This is a test' },
+                            tags: { tag_name: 'tag-value' })
+
+        client.delete_event the_id
+        the_event = client.list_events('thin' => true, 'eventIds' => [the_id]).first
+        expect(the_event).to be_nil
       end
     end
   end
