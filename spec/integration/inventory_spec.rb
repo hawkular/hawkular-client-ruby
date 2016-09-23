@@ -592,7 +592,14 @@ module Hawkular::Inventory::RSpec
             end
 
             # wait for the data
-            sleep 5 if !WebSocketVCR.cassette || WebSocketVCR.cassette.recording?
+            wait_while do
+              [
+                !hash_include_all(new_resource_events, [id_1, id_2]),
+                !registered_feed_events.key?(new_feed_id),
+                !deleted_feed_events.key?(new_feed_id),
+                !new_resource_types_events.key?(resource_type_id)
+              ].any?
+            end
             [feed_deleted_closable, resource_type_closable, feeds_closable].each(&:close)
             expect(new_resource_events[id_1]).not_to be_nil
             expect(new_resource_events[id_1].properties['version']).to eq(1.0)
