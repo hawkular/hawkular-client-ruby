@@ -318,6 +318,10 @@ module Hawkular::Alerts
 
       http_post('/events', event)
     end
+
+    def delete_event(id)
+      http_delete "/events/#{id}"
+    end
   end
 
   # Representation of one Trigger
