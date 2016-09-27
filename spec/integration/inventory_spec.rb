@@ -314,7 +314,7 @@ module Hawkular::Inventory::RSpec
         it 'Should list metrics of given metric type' do
           type_path = Hawkular::Inventory::CanonicalPath.new(
             feed_id: feed_id,
-            metric_type_id: hawk_escape_id('Total Space'))
+            metric_type_id: hawk_escape_id('Platform_File Store_Total Space'))
           metrics = @client.list_metrics_for_metric_type(type_path)
 
           expect(metrics.size).to be >= 2
