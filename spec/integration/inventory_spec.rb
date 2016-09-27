@@ -38,7 +38,7 @@ module Hawkular::Inventory::RSpec
         it 'Should Get Tenant For Explicit Credentials' do
           # get the client for given endpoint for given credentials
           creds = credentials
-          mock_inventory_client(VERSION) unless ENV['VCR_UPDATE'] == '1'
+          mock_inventory_client(VERSION) unless ENV['VCR_UPDATE'] == '1' || ENV['VCR_OFF'] == '1'
           options = { tenant: 'hawkular' }
           client = setup_inventory_client entrypoint, options
           tenant = client.get_tenant(creds)
@@ -47,7 +47,7 @@ module Hawkular::Inventory::RSpec
 
         it 'Should Get Tenant For Implicit Credentials' do
           creds = credentials
-          mock_inventory_client(VERSION) unless ENV['VCR_UPDATE'] == '1'
+          mock_inventory_client(VERSION) unless ENV['VCR_UPDATE'] == '1' || ENV['VCR_OFF'] == '1'
           options = { tenant: 'hawkular' }
           client = setup_inventory_client entrypoint, options
           tenant = client.get_tenant(creds)
@@ -108,6 +108,12 @@ module Hawkular::Inventory::RSpec
             feeds = @client.list_feeds
             @state[:feed_uuid] = feeds[0]
           end
+
+          record("Inventory/#{security_context}/inventory_#{x}_#{y}", @state.clone, 'Helpers/wait_for_wildfly') do
+            wait_while do
+              @client.list_resources_for_feed(@state[:feed_uuid]).length < 2
+            end
+          end if ENV['RUN_ON_LIVE_SERVER'] == '1'
 
           # create 1 URL resource and its metrics
           record("Inventory/#{security_context}/inventory_#{x}_#{y}", @state.clone, 'Helpers/create_url') do
