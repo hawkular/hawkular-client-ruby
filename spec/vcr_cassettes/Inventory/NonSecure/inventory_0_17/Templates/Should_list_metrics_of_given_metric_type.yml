@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://<%= super_secret_username %>:<%= super_secret_password %>@localhost:8080/hawkular/inventory/traversal/f;<%= feed_uuid %>/mt;Total%20Space/rl;defines/type=m
+    uri: http://<%= super_secret_username %>:<%= super_secret_password %>@localhost:8080/hawkular/inventory/traversal/f;<%= feed_uuid %>/mt;Platform_File%20Store_Total%20Space/rl;defines/type=m
     body:
       encoding: US-ASCII
       string: ''
@@ -35,7 +35,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 10 Aug 2016 22:35:37 GMT
+      - Tue, 27 Sep 2016 22:09:35 GMT
       X-Total-Count:
       - '2'
       Connection:
@@ -43,48 +43,52 @@ http_interactions:
       Content-Type:
       - application/json
       Content-Length:
-      - '1762'
+      - '2737'
       Link:
-      - <http://localhost:8080/hawkular/inventory/traversal/f;<%= feed_uuid %>/mt;Total%20Space/rl;defines/type=m>;
+      - <http://localhost:8080/hawkular/inventory/traversal/f;<%= feed_uuid %>/mt;Platform_File%20Store_Total%20Space/rl;defines/type=m>;
         rel="current"
     body:
       encoding: UTF-8
       string: |-
         [ {
-          "path" : "/t;hawkular/f;<%= feed_uuid %>/m;MI~R~%5B<%= feed_uuid %>%2Fplatform~%2FOPERATING_SYSTEM%3D<%= feed_uuid %>_OperatingSystem%2FFILE_STORE%3D~%5D~MT~Total%20Space",
-          "properties" : {
-            "__identityHash" : "1c6ad522edd8cb6bbc779b81dc84c2e5a26ac68"
-          },
+          "path" : "/t;hawkular/f;<%= feed_uuid %>/r;platform~%2FOPERATING_SYSTEM%3D<%= feed_uuid %>_OperatingSystem/r;platform~%2FOPERATING_SYSTEM%3D<%= feed_uuid %>_OperatingSystem%2FFILE_STORE%3D%2Fdev%2Fmapper%2Ffedora-root/m;MI~R~%5B<%= feed_uuid %>%2Fplatform~%2FOPERATING_SYSTEM%3D<%= feed_uuid %>_OperatingSystem%2FFILE_STORE%3D%2Fdev%2Fmapper%2Ffedora-root%5D~MT~Platform_File%20Store_Total%20Space",
           "name" : "Total Space",
-          "identityHash" : "1c6ad522edd8cb6bbc779b81dc84c2e5a26ac68",
+          "identityHash" : "f78189d0d4267ba87d5134a72abec6e14fe3e9",
+          "contentHash" : "3dd9504a5164fc43684998c14ee9f58f1f1680",
+          "syncHash" : "51fbca7b3430636eb4b6e87acf976ce6945ff89",
           "type" : {
-            "path" : "/t;hawkular/f;<%= feed_uuid %>/mt;Total%20Space",
+            "path" : "/t;hawkular/f;<%= feed_uuid %>/mt;Platform_File%20Store_Total%20Space",
             "name" : "Total Space",
-            "identityHash" : "4753b6bbe4fad4dfd57fae8fc2d35f91af13e53",
+            "identityHash" : "48119f116f7a3d5286f36d47f32e252c5efbc2",
+            "contentHash" : "9bfbd69306bacce80d9b125e1829f8062c921f6",
+            "syncHash" : "7d4182db7552bf38fbc535d12ff83eb9e311c3",
             "unit" : "BYTES",
-            "type" : "GAUGE",
+            "metricDataType" : "gauge",
             "collectionInterval" : 300,
-            "id" : "Total Space"
+            "type" : "GAUGE",
+            "id" : "Platform_File Store_Total Space"
           },
-          "id" : "MI~R~[<%= feed_uuid %>/platform~/OPERATING_SYSTEM=<%= feed_uuid %>_OperatingSystem/FILE_STORE=~]~MT~Total Space"
+          "id" : "MI~R~[<%= feed_uuid %>/platform~/OPERATING_SYSTEM=<%= feed_uuid %>_OperatingSystem/FILE_STORE=/dev/mapper/fedora-root]~MT~Platform_File Store_Total Space"
         }, {
-          "path" : "/t;hawkular/f;<%= feed_uuid %>/m;MI~R~%5B<%= feed_uuid %>%2Fplatform~%2FOPERATING_SYSTEM%3D<%= feed_uuid %>_OperatingSystem%2FFILE_STORE%3Dtmpfs%5D~MT~Total%20Space",
-          "properties" : {
-            "__identityHash" : "5cce8cfe50ab6842b983f03bfb98d7f652ec6ae8"
-          },
+          "path" : "/t;hawkular/f;<%= feed_uuid %>/r;platform~%2FOPERATING_SYSTEM%3D<%= feed_uuid %>_OperatingSystem/r;platform~%2FOPERATING_SYSTEM%3D<%= feed_uuid %>_OperatingSystem%2FFILE_STORE%3D~/m;MI~R~%5B<%= feed_uuid %>%2Fplatform~%2FOPERATING_SYSTEM%3D<%= feed_uuid %>_OperatingSystem%2FFILE_STORE%3D~%5D~MT~Platform_File%20Store_Total%20Space",
           "name" : "Total Space",
-          "identityHash" : "5cce8cfe50ab6842b983f03bfb98d7f652ec6ae8",
+          "identityHash" : "e45fe32db1522e0554c7115e2b719df779c45",
+          "contentHash" : "3dd9504a5164fc43684998c14ee9f58f1f1680",
+          "syncHash" : "72f2983d2fdfcf739254653dfdea18403ad449c",
           "type" : {
-            "path" : "/t;hawkular/f;<%= feed_uuid %>/mt;Total%20Space",
+            "path" : "/t;hawkular/f;<%= feed_uuid %>/mt;Platform_File%20Store_Total%20Space",
             "name" : "Total Space",
-            "identityHash" : "4753b6bbe4fad4dfd57fae8fc2d35f91af13e53",
+            "identityHash" : "48119f116f7a3d5286f36d47f32e252c5efbc2",
+            "contentHash" : "9bfbd69306bacce80d9b125e1829f8062c921f6",
+            "syncHash" : "7d4182db7552bf38fbc535d12ff83eb9e311c3",
             "unit" : "BYTES",
-            "type" : "GAUGE",
+            "metricDataType" : "gauge",
             "collectionInterval" : 300,
-            "id" : "Total Space"
+            "type" : "GAUGE",
+            "id" : "Platform_File Store_Total Space"
           },
-          "id" : "MI~R~[<%= feed_uuid %>/platform~/OPERATING_SYSTEM=<%= feed_uuid %>_OperatingSystem/FILE_STORE=tmpfs]~MT~Total Space"
+          "id" : "MI~R~[<%= feed_uuid %>/platform~/OPERATING_SYSTEM=<%= feed_uuid %>_OperatingSystem/FILE_STORE=~]~MT~Platform_File Store_Total Space"
         } ]
     http_version: 
-  recorded_at: Wed, 10 Aug 2016 22:35:37 GMT
+  recorded_at: Tue, 27 Sep 2016 22:09:35 GMT
 recorded_with: VCR 3.0.3
