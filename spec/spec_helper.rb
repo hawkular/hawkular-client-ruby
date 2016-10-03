@@ -156,6 +156,7 @@ module Hawkular::Operations::RSpec
   def wait_while
     fast = WebSocketVCR.cassette && !WebSocketVCR.cassette.recording?
     sleep_interval = SLEEP_SECONDS * (fast ? 1 : 10)
+    sleep_interval *= 5 if ENV['travis']
     attempt = 0
     sleep sleep_interval while yield && (attempt += 1) < MAX_ATTEMPTS
     if attempt == MAX_ATTEMPTS
