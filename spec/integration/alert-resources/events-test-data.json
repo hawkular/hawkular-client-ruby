@@ -1,0 +1,78 @@
+{
+  "events": [
+    {
+      "id": "my-event-01",
+      "category": "general-category",
+      "text": "some text for this event",
+      "extras": {
+        "ctime": 2000
+      }
+    },
+    {
+      "id": "my-event-02",
+      "category": "my-category-01",
+      "text": "some text for this event",
+      "extras": {}
+    },
+    {
+      "id": "my-event-03",
+      "category": "my-category-01",
+      "text": "some text for this event",
+      "extras": {}
+    },
+    {
+      "id": "my-event-04",
+      "category": "general-category",
+      "text": "some text for this event",
+      "extras": {}
+    },
+    {
+      "id": "my-event-05",
+      "category": "my-category-02",
+      "text": "some text for this event",
+      "extras": {}
+    },
+    {
+      "id": "my-event-06",
+      "category": "general-category",
+      "text": "some text for this event",
+      "extras": {}
+    },
+    {
+      "id": "my-event-07",
+      "category": "my-category-01",
+      "text": "some text for this event",
+      "extras": {}
+    },
+    {
+      "id": "my-event-08",
+      "category": "general-category",
+      "text": "some text for this event",
+      "extras": {}
+    },
+    {
+      "id": "my-event-09",
+      "category": "general-category",
+      "text": "some text for this event",
+      "extras": {}
+    },
+    {
+      "id": "my-event-10",
+      "category": "general-category",
+      "text": "some text for this event",
+      "extras": {}
+    },
+    {
+      "id": "my-event-11",
+      "category": "general-category",
+      "text": "some text for this event",
+      "extras": {}
+    },
+    {
+      "id": "my-event-12",
+      "category": "general-category",
+      "text": "some text for this event",
+      "extras": {}
+    }
+  ]
+}

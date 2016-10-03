@@ -1,0 +1,66 @@
+{
+  "triggers":[
+    {
+      "trigger": {
+        "id": "my-trigger-01",
+        "tags": {
+          "resourceId": "my-resource01",
+          "app": "MyShop"
+        }
+      },
+      "conditions":[
+        {
+          "triggerMode": "FIRING",
+          "type": "threshold",
+          "dataId": "data-x",
+          "operator": "LT",
+          "threshold": 5
+        }
+        ],
+      "dampenings":[
+        {
+          "dampeningId": "my-trigger-01-my-dampening-id"
+        }
+      ]
+    },
+    {
+      "trigger": {
+        "id": "my-trigger-02",
+        "tags": {
+          "resourceId": "my-resource01"
+        }
+      }
+    },
+    {
+      "trigger": {
+        "id": "my-trigger-03",
+        "tags": {
+          "app": "MyShop"
+        }
+      }
+    },
+    {
+      "trigger": {
+        "id": "my-trigger-04",
+        "tags": {
+          "resourceId": "my-resource01",
+          "app": "MyShop"
+        }
+      }
+    },
+    {
+      "trigger": {
+        "id": "my-trigger-05"
+      }
+    },
+    {
+      "trigger": {
+        "id": "my-trigger-06",
+        "tags": {
+          "resourceId": "my-resource01",
+          "app": "MyShop"
+        }
+      }
+    }
+  ]
+}

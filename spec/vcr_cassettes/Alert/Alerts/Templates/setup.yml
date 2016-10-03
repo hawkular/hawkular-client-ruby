@@ -1,0 +1,302 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/import/all
+    body:
+      encoding: UTF-8
+      string: '{"triggers":[{"trigger":{"id":"hello-world-trigger","name":"Hello World
+        Trigger","description":"A mandatory Hello World Trigger","severity":"HIGH","enabled":true},"conditions":[{"triggerMode":"FIRING","type":"threshold","dataId":"data-x","operator":"LT","threshold":5}]},{"trigger":{"id":"a-trigger","name":"A
+        trigger name","description":"Just a trigger","severity":"HIGH","enabled":true},"conditions":[{"triggerMode":"FIRING","type":"threshold","dataId":"data-x","operator":"LT","threshold":5}]}]}'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - hawkular
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '498'
+      Host:
+      - localhost:8080
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Tue, 27 Sep 2016 18:17:15 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '1282'
+    body:
+      encoding: UTF-8
+      string: '{"triggers":[{"trigger":{"tenantId":"hawkular","id":"hello-world-trigger","name":"Hello
+        World Trigger","description":"A mandatory Hello World Trigger","type":"STANDARD","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"HIGH","autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","enabled":true,"firingMatch":"ALL","source":"_none_"},"conditions":[{"tenantId":"hawkular","triggerId":"hello-world-trigger","triggerMode":"FIRING","type":"THRESHOLD","conditionSetSize":1,"conditionSetIndex":1,"conditionId":"hawkular-hello-world-trigger-FIRING-1-1","dataId":"data-x","operator":"LT","threshold":5.0}]},{"trigger":{"tenantId":"hawkular","id":"a-trigger","name":"A
+        trigger name","description":"Just a trigger","type":"STANDARD","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"HIGH","autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","enabled":true,"firingMatch":"ALL","source":"_none_"},"conditions":[{"tenantId":"hawkular","triggerId":"a-trigger","triggerMode":"FIRING","type":"THRESHOLD","conditionSetSize":1,"conditionSetIndex":1,"conditionId":"hawkular-a-trigger-FIRING-1-1","dataId":"data-x","operator":"LT","threshold":5.0}]}]}'
+    http_version: 
+  recorded_at: Tue, 27 Sep 2016 18:17:15 GMT
+- request:
+    method: get
+    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/?statuses=OPEN
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - hawkular
+      Content-Type:
+      - application/json
+      Host:
+      - localhost:8080
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Tue, 27 Sep 2016 18:17:15 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '2'
+    body:
+      encoding: UTF-8
+      string: "[]"
+    http_version: 
+  recorded_at: Tue, 27 Sep 2016 18:17:15 GMT
+- request:
+    method: post
+    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/data
+    body:
+      encoding: UTF-8
+      string: '[{"id":"data-x","timestamp":1475000235,"value":4}]'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - hawkular
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '50'
+      Host:
+      - localhost:8080
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Tue, 27 Sep 2016 18:17:15 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 27 Sep 2016 18:17:15 GMT
+- request:
+    method: get
+    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/?statuses=OPEN
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - hawkular
+      Content-Type:
+      - application/json
+      Host:
+      - localhost:8080
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Tue, 27 Sep 2016 18:17:15 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '2'
+    body:
+      encoding: UTF-8
+      string: "[]"
+    http_version: 
+  recorded_at: Tue, 27 Sep 2016 18:17:15 GMT
+- request:
+    method: get
+    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/?statuses=OPEN
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - hawkular
+      Content-Type:
+      - application/json
+      Host:
+      - localhost:8080
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Tue, 27 Sep 2016 18:17:16 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '2'
+    body:
+      encoding: UTF-8
+      string: "[]"
+    http_version: 
+  recorded_at: Tue, 27 Sep 2016 18:17:16 GMT
+- request:
+    method: get
+    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/?statuses=OPEN
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - hawkular
+      Content-Type:
+      - application/json
+      Host:
+      - localhost:8080
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Tue, 27 Sep 2016 18:17:17 GMT
+      X-Total-Count:
+      - '2'
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '2558'
+      Link:
+      - <http://localhost:8080/hawkular/alerts/?statuses=OPEN>; rel="current", <http://localhost:8080/hawkular/alerts/?statuses=OPEN&page=0>;
+        rel="last"
+    body:
+      encoding: UTF-8
+      string: '[{"eventType":"ALERT","tenantId":"hawkular","id":"hello-world-trigger-1475000237041-a055f208-5a57-4563-b41e-c6cff3c4d3ef","ctime":1475000237041,"dataSource":"_none_","dataId":"hello-world-trigger","category":"ALERT","text":"A
+        mandatory Hello World Trigger","trigger":{"tenantId":"hawkular","id":"hello-world-trigger","name":"Hello
+        World Trigger","description":"A mandatory Hello World Trigger","type":"STANDARD","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"HIGH","autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","enabled":true,"firingMatch":"ALL","source":"_none_"},"dampening":{"tenantId":"hawkular","triggerId":"hello-world-trigger","triggerMode":"FIRING","type":"STRICT","evalTrueSetting":1,"evalTotalSetting":1,"evalTimeSetting":0,"dampeningId":"hawkular-hello-world-trigger-FIRING"},"evalSets":[[{"evalTimestamp":1475000237040,"dataTimestamp":1475000235,"type":"THRESHOLD","condition":{"tenantId":"hawkular","triggerId":"hello-world-trigger","triggerMode":"FIRING","type":"THRESHOLD","conditionSetSize":1,"conditionSetIndex":1,"conditionId":"hawkular-hello-world-trigger-FIRING-1-1","dataId":"data-x","operator":"LT","threshold":5.0},"value":4.0}]],"severity":"HIGH","status":"OPEN","ackTime":0,"ackBy":null,"resolvedTime":0,"resolvedBy":null},{"eventType":"ALERT","tenantId":"hawkular","id":"a-trigger-1475000237042-d51ffef3-3921-437f-a2ba-b384664bcbbb","ctime":1475000237042,"dataSource":"_none_","dataId":"a-trigger","category":"ALERT","text":"Just
+        a trigger","trigger":{"tenantId":"hawkular","id":"a-trigger","name":"A trigger
+        name","description":"Just a trigger","type":"STANDARD","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"HIGH","autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","enabled":true,"firingMatch":"ALL","source":"_none_"},"dampening":{"tenantId":"hawkular","triggerId":"a-trigger","triggerMode":"FIRING","type":"STRICT","evalTrueSetting":1,"evalTotalSetting":1,"evalTimeSetting":0,"dampeningId":"hawkular-a-trigger-FIRING"},"evalSets":[[{"evalTimestamp":1475000237040,"dataTimestamp":1475000235,"type":"THRESHOLD","condition":{"tenantId":"hawkular","triggerId":"a-trigger","triggerMode":"FIRING","type":"THRESHOLD","conditionSetSize":1,"conditionSetIndex":1,"conditionId":"hawkular-a-trigger-FIRING-1-1","dataId":"data-x","operator":"LT","threshold":5.0},"value":4.0}]],"severity":"HIGH","status":"OPEN","ackTime":0,"ackBy":null,"resolvedTime":0,"resolvedBy":null}]'
+    http_version: 
+  recorded_at: Tue, 27 Sep 2016 18:17:17 GMT
+recorded_with: VCR 3.0.3
