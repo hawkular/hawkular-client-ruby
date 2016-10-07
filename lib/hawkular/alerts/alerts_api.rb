@@ -523,9 +523,29 @@ module Hawkular::Alerts
   # server and not 'rubyfied'. So 'alertId' and not 'alert_id'
   # Check http://www.hawkular.org/docs/rest/rest-alerts.html#Alert for details
   class Alert < OpenStruct
+    attr_accessor :lifecycle
+
     def initialize(alert_hash)
       super(alert_hash)
+      @lifecycle = alert_hash['lifecycle']
     end
+
+    def ack_by
+      status_by('ACKNOWLEDGED')
+    end
+
+    def resolved_by
+      status_by('RESOLVED')
+    end
+
+    def status_by(status)
+      a = @lifecycle.nil? ? [] : @lifecycle.select { |l| l['status'].eql? status }
+      a.empty? ? nil : a.last['user']
+    end
+
+    # for some API back compatibility
+    alias_method :ackBy, :ack_by
+    alias_method :resolvedBy, :resolved_by
   end
 
   # Representation of one event.
