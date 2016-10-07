@@ -35,7 +35,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 27 Sep 2016 18:17:17 GMT
+      - Fri, 07 Oct 2016 15:36:35 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -46,5 +46,5 @@ http_interactions:
       encoding: UTF-8
       string: "[]"
     http_version: 
-  recorded_at: Tue, 27 Sep 2016 18:17:17 GMT
+  recorded_at: Fri, 07 Oct 2016 15:36:35 GMT
 recorded_with: VCR 3.0.3
