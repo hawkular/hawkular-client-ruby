@@ -25,6 +25,7 @@ module Hawkular
       }.merge(credentials)
       @options = {
         tenant: nil,
+        admin_token: nil,
         ssl_ca_file: nil,
         verify_ssl: OpenSSL::SSL::VERIFY_PEER,
         ssl_client_cert: nil,
@@ -172,6 +173,12 @@ module Hawkular
     end
 
     class HawkularConnectionException < HawkularException
+    end
+
+    def admin_header
+      headers = {}
+      headers[:'Hawkular-Admin-Token'] = @options[:admin_token] unless @options[:admin_token].nil?
+      headers
     end
 
     private
