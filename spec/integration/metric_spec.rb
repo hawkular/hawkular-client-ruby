@@ -58,8 +58,12 @@ security_contexts.each do |security_context|
         end + example.description
       end
 
+      before(:all) do
+        @admin_token = ENV['ADMIN_TOKEN'] || SecureRandom.uuid
+      end
+
       let(:vcr_bindings) do
-        { id: @random_id, vcr_test_tenant: vcr_test_tenant }
+        { id: @random_id, vcr_test_tenant: vcr_test_tenant, admin_token: @admin_token }
       end
 
       around(:each) do |example|
@@ -93,7 +97,7 @@ security_contexts.each do |security_context|
           if metrics_context == v8_context
             setup_v8_client
           else
-            setup_client(setup_options)
+            setup_client(setup_options.merge admin_token: @admin_token)
           end
         end
 

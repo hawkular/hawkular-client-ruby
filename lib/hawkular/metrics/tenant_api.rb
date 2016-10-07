@@ -11,13 +11,13 @@ module Hawkular::Metrics
       # Create new tenant
       # @param id [String] tenant ID/Name
       def create(id)
-        @client.http_post("/#{@resource}", id: id)
+        @client.http_post("/#{@resource}", { id: id }, @client.admin_header)
       end
 
       # Query existing tenants
       # @return [Array[Tenant]]
       def query
-        @client.http_get("/#{@resource}").map do |t|
+        @client.http_get("/#{@resource}", @client.admin_header).map do |t|
           Hawkular::Metrics::Tenant.new(t)
         end
       end
