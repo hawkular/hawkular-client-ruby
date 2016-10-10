@@ -138,9 +138,10 @@ security_contexts.each do |security_context|
           id1 = SecureRandom.uuid
           id2 = SecureRandom.uuid
           id3 = SecureRandom.uuid
+          id4 = SecureRandom.uuid
 
           ids = [id1, id2, id3]
-          bindings = { id1: id1, id2: id2, id3: id3 }
+          bindings = { id1: id1, id2: id2, id3: id3, id4: id4 }
           example = proc do
             @client = setup_client(setup_options.merge tenant: vcr_test_tenant)
 
@@ -157,7 +158,10 @@ security_contexts.each do |security_context|
               availabilities: [
                 { id: id1, data: [{ value: 'up' }] },
                 { id: id2, data: [{ value: 'down' }] },
-                { id: id3, data: [{ value: 'up' }] }
+                { id: id3, data: [{ value: 'up' }] },
+                { id: id4, data: [{ value: 'up', timestamp: 10_000 },
+                                  { value: 'down', timestamp: 100_000 },
+                                  { value: 'admin', timestamp: 1_000_000 }] }
               ],
               gauges: [
                 { id: id1, data: [{ value: 1.1 }] },
@@ -169,7 +173,8 @@ security_contexts.each do |security_context|
             c_metrics = @client.counters.raw_data(ids)
             g_metrics = @client.gauges.raw_data(ids)
             a_metrics = @client.avail.raw_data(ids)
-
+            # also check the get_data way of fetching avail data, with params
+            a_metric  = @client.avail.get_data(id4, starts: 100, ends: 2_000_000, distinct: 'true', order: 'ASC')
             expect(c_metrics.size).to be 3
             expect(c_metrics).to include(
               { 'id' => id1, 'data' => [{ 'timestamp' => a_kind_of(Integer), 'value' => 1 }] },
@@ -189,6 +194,13 @@ security_contexts.each do |security_context|
               { 'id' => id1, 'data' => [{ 'timestamp' => a_kind_of(Integer), 'value' => 'up' }] },
               { 'id' => id2, 'data' => [{ 'timestamp' => a_kind_of(Integer), 'value' => 'down' }] },
               { 'id' => id3, 'data' => [{ 'timestamp' => a_kind_of(Integer), 'value' => 'up' }] }
+            )
+
+            expect(a_metric.size).to be 3
+            expect(a_metric).to include(
+              { 'timestamp' => 10_000, 'value' => 'up' },
+              { 'timestamp' => 100_000, 'value' => 'down' },
+              { 'timestamp' => 1_000_000, 'value' => 'admin' }
             )
           end
           record("Metrics/#{security_context}/#{metrics_context}",
