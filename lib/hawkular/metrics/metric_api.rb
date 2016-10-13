@@ -250,7 +250,7 @@ module Hawkular::Metrics
       # @return [Array[Hash]] rate points
       def get_rate(id, starts: nil, ends: nil, bucket_duration: nil)
         path = "/#{@resource}/#{ERB::Util.url_encode(id)}/rate"
-        path << '/stats' unless bucket_duration.nil? && @legacy_api
+        path << '/stats' unless bucket_duration.nil? || @legacy_api
         params = { start: starts, end: ends, bucketDuration: bucket_duration }
         resp = @client.http_get(path + '?' + encode_params(params))
         # API returns no content (empty Hash) instead of empty array

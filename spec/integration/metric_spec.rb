@@ -9,12 +9,10 @@ SKIP_SECURE_CONTEXT.freeze
 
 # time constants
 t4h = 4 * 60 * 60 * 1000
-v16_version_string = '0.16.0.Final'
 
 # test contexts
 v8_context = :metrics_0_8_0
 services_context = :metrics_services
-v16_context = :metrics_0_16_0
 
 # ssl contexts
 SECURE_CONTEXT = :Secure
@@ -26,13 +24,9 @@ vcr_test_tenant_postfix = "-vcr-tenant-#{SecureRandom.uuid}".freeze
 security_contexts.each do |security_context|
   next if security_context == SECURE_CONTEXT && SKIP_SECURE_CONTEXT == '1'
 
-  [v8_context, services_context, v16_context].each do |metrics_context|
+  [v8_context, services_context].each do |metrics_context|
     if ENV['SKIP_V8_METRICS'] == '1' && metrics_context == v8_context
       puts 'skipping v8 metrics'
-      next
-    end
-    if ENV['SKIP_V16_METRICS'] == '1' && metrics_context == v16_context
-      puts 'skipping v16 metrics'
       next
     end
     if ENV['SKIP_SERVICES_METRICS'] == '1' && metrics_context == services_context
@@ -43,7 +37,6 @@ security_contexts.each do |security_context|
     next if security_context == SECURE_CONTEXT && metrics_context == v8_context
 
     setup_options = {
-      mocked_version: metrics_context == :metrics_services ? nil : v16_version_string,
       type: security_context
     }.freeze
 
@@ -92,12 +85,17 @@ security_contexts.each do |security_context|
         end
       end
 
-      describe 'Tenants', run_for: [v8_context, services_context, v16_context] do
+      describe 'Tenants', run_for: [v8_context, services_context] do
         before(:all) do
-          if metrics_context == v8_context
-            setup_v8_client
-          else
-            setup_client(setup_options.merge admin_token: @admin_token)
+          options = setup_options.merge admin_token: @admin_token
+          record("Metrics/#{security_context}/#{metrics_context}",
+                 options,
+                 'Tenants/setup_client') do
+            if metrics_context == v8_context
+              setup_v8_client
+            else
+              setup_client(options)
+            end
           end
         end
 
@@ -109,7 +107,7 @@ security_contexts.each do |security_context|
         end
       end
 
-      describe 'No Tenant', run_for: [services_context, v16_context] do
+      describe 'No Tenant', run_for: [services_context] do
         it 'Should fail' do
           setup_client_without_tenant(setup_options)
           begin
@@ -122,16 +120,21 @@ security_contexts.each do |security_context|
         end
       end
 
-      describe 'Mixed metrics', run_for: [v8_context, services_context, v16_context] do
+      describe 'Mixed metrics', run_for: [v8_context, services_context] do
         before(:all) do
-          if metrics_context == v8_context
-            setup_v8_client tenant: vcr_test_tenant
-          else
-            setup_client(setup_options)
+          options = setup_options.merge(tenant: vcr_test_tenant)
+          record("Metrics/#{security_context}/#{metrics_context}",
+                 options,
+                 'Mixed_metrics/setup_client') do
+            if metrics_context == v8_context
+              setup_v8_client tenant: vcr_test_tenant
+            else
+              setup_client(setup_options)
+            end
           end
         end
 
-        it 'Should requests raw data for multiple metrics', :skip_auto_vcr, run_for: [services_context, v16_context] do
+        it 'Should requests raw data for multiple metrics', :skip_auto_vcr, run_for: [services_context] do
           id1 = SecureRandom.uuid
           id2 = SecureRandom.uuid
           id3 = SecureRandom.uuid
@@ -284,10 +287,15 @@ security_contexts.each do |security_context|
       describe 'Counter metrics' do
         before(:all) do
           @tenant = vcr_test_tenant
-          if metrics_context == v8_context
-            setup_v8_client tenant: @tenant
-          else
-            setup_client(setup_options.merge(tenant: @tenant))
+          options = setup_options.merge(tenant: @tenant)
+          record("Metrics/#{security_context}/#{metrics_context}",
+                 options,
+                 'Counter_metrics/setup_client') do
+            if metrics_context == v8_context
+              setup_v8_client tenant: @tenant
+            else
+              setup_client(setup_options.merge(tenant: @tenant))
+            end
           end
         end
 
@@ -337,7 +345,7 @@ security_contexts.each do |security_context|
         end
 
         # limit and order were introduced in 0.11.0 => skipping for 0.8.0
-        it 'Should get metrics with limit and order', run_for: [services_context, v16_context], skip_auto_vcr: true do
+        it 'Should get metrics with limit and order', run_for: [services_context], skip_auto_vcr: true do
           now = @client.now
           minus10 = now - 10
           minus20 = now - 20
@@ -443,10 +451,15 @@ security_contexts.each do |security_context|
       describe 'Availability metrics' do
         before(:all) do
           @tenant = vcr_test_tenant
-          if metrics_context == v8_context
-            setup_v8_client tenant: @tenant
-          else
-            setup_client(setup_options.merge(tenant: @tenant))
+          options = setup_options.merge(tenant: @tenant)
+          record("Metrics/#{security_context}/#{metrics_context}",
+                 options,
+                 'Availability_metrics/setup_client') do
+            if metrics_context == v8_context
+              setup_v8_client tenant: @tenant
+            else
+              setup_client(setup_options.merge(tenant: @tenant))
+            end
           end
         end
 
@@ -470,7 +483,7 @@ security_contexts.each do |security_context|
           expect { @client.avail.get_data(@random_id, percentiles: 50) }.to raise_error(ArgumentError)
         end
 
-        it 'Should group contiguous values', :skip_auto_vcr, run_for: [services_context, v16_context] do
+        it 'Should group contiguous values', :skip_auto_vcr, run_for: [services_context] do
           now = @client.now
           minus10 = now - 10
           minus20 = now - 20
@@ -517,15 +530,19 @@ security_contexts.each do |security_context|
 
         let(:hawkular_mem_id) do
           "MI~R~[#{hawkular_feed_id}/platform~/OPERATING_SYSTEM=#{hawkular_feed_id}"\
-                          '_OperatingSystem/MEMORY=Memory]~MT~Total Memory'
+                          '_OperatingSystem/MEMORY=Memory]~MT~Platform_Memory_Total Memory'
         end
 
         before(:all) do
           @tenant = vcr_test_tenant
-          if metrics_context == v8_context
-            setup_v8_client tenant: @tenant
-          else
-            setup_client(setup_options.merge(tenant: @tenant))
+          record("Metrics/#{security_context}/#{metrics_context}",
+                 setup_options.merge(tenant: @tenant),
+                 'Gauge_metrics/setup_client') do
+            if metrics_context == v8_context
+              setup_v8_client tenant: @tenant
+            else
+              setup_client(setup_options.merge(tenant: @tenant))
+            end
           end
         end
 
@@ -658,10 +675,15 @@ security_contexts.each do |security_context|
         end
       end
 
-      describe 'String metrics', run_for: [v16_context] do
-        before(:all) do
+      describe 'String metrics', run_for: [services_context] do
+        before(:each) do
           @tenant = vcr_test_tenant
-          setup_client(setup_options.merge(tenant: @tenant))
+          options = setup_options.merge(tenant: @tenant)
+          record("Metrics/#{security_context}/#{metrics_context}",
+                 options,
+                 'String_metrics/setup_client') do
+            setup_client(options)
+          end
         end
 
         it 'Should create string definition using MetricDefinition' do
@@ -722,7 +744,11 @@ security_contexts.each do |security_context|
   context security_context do
     describe 'Metric ID with special characters' do
       before(:all) do
-        setup_client(type: security_context, tenant: vcr_test_tenant)
+        record("Metrics/#{security_context}/ID_with_special_characters",
+               { tenant: vcr_test_tenant },
+               'setup_client') do
+          setup_client(type: security_context, tenant: vcr_test_tenant)
+        end
       end
 
       around(:each) do |example|

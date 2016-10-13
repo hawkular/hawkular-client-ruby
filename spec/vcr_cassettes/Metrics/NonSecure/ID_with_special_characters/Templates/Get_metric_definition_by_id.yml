@@ -35,7 +35,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Mon, 15 Aug 2016 15:20:38 GMT
+      - Thu, 13 Oct 2016 03:10:06 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -45,7 +45,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"id":"MI~R~[8b*}{''\\14#?/5-7%92e[-c9_.r1//;/74eddf/L=c~~]~MT~    *  /
-        Met@ics~Aggre&? ated s  Active\" Ses;ns","tags":{"name1":"value1","name2":"value2","name3":"value3","tag":"value"},"dataRetention":90,"type":"gauge","tenantId":"<%= vcr_test_tenant %>","minTimestamp":1471274438628,"maxTimestamp":1471274438628}'
+        Met@ics~Aggre&? ated s  Active\" Ses;ns","tags":{"name1":"value1","name2":"value2","name3":"value3","tag":"value"},"dataRetention":90,"type":"gauge","tenantId":"<%= vcr_test_tenant %>","minTimestamp":1476328206273,"maxTimestamp":1476328206273}'
     http_version: 
-  recorded_at: Mon, 15 Aug 2016 15:20:38 GMT
+  recorded_at: Thu, 13 Oct 2016 03:10:06 GMT
 recorded_with: VCR 3.0.3
