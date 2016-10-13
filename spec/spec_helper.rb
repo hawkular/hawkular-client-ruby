@@ -95,11 +95,11 @@ module Hawkular::Metrics::RSpec
     expect(metric.tenant_id).to eql(tenant_id)
   end
 
-  def create_metric_using_md(endpoint, id)
+  def create_metric_using_md(endpoint, id, tags = nil)
     metric = Hawkular::Metrics::MetricDefinition.new
     metric.id = id
     metric.data_retention = 90
-    metric.tags = { tag: 'value' }
+    metric.tags = tags.nil? ? { tag: 'value' } : tags
     endpoint.create(metric)
 
     created = endpoint.get(metric.id)

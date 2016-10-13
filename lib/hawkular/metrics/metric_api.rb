@@ -69,6 +69,18 @@ module Hawkular::Metrics
       http_post(path, data)
     end
 
+    # Fetch all tags for metrics definitions
+    # @return [Hash{String=>String}]
+    def tags
+      tags = []
+      http_get('/metrics/').map do |g|
+        g['tags'].map do |k, v|
+          tags << { k => v }
+        end unless g['tags'].nil?
+      end
+      tags.uniq!
+    end
+
     # Base class for accessing metric definition and data of all
     # types (counters, gauges, availabilities).
     class Metrics
