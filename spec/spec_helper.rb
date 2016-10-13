@@ -34,7 +34,7 @@ module Hawkular::Metrics::RSpec
     options[:tenant] = nil
     mocked_version = options[:mocked_version]
     ::RSpec::Mocks.with_temporary_scope do
-      mocked_version.nil? ? mock_metrics_version : mock_metrics_version(mocked_version)
+      mock_metrics_version(mocked_version) unless mocked_version.nil?
       @client = Hawkular::Metrics::Client.new(entrypoint(options[:type], 'metrics'),
                                               credentials(options), options)
       return @client
@@ -46,7 +46,7 @@ module Hawkular::Metrics::RSpec
     options[:tenant] ||= 'hawkular'
     mocked_version = options[:mocked_version]
     ::RSpec::Mocks.with_temporary_scope do
-      mocked_version.nil? ? mock_metrics_version : mock_metrics_version(mocked_version)
+      mock_metrics_version(mocked_version) unless mocked_version.nil?
       @client = Hawkular::Metrics::Client.new(entrypoint(options[:type], 'metrics'),
                                               credentials(options), options)
     end

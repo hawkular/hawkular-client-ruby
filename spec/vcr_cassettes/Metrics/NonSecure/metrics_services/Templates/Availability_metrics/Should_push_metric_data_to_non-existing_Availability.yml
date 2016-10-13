@@ -2,10 +2,10 @@
 http_interactions:
 - request:
     method: post
-    uri: http://jdoe:password@localhost:8080/hawkular/metrics/availability/<%= id %>/data
+    uri: http://jdoe:password@localhost:8080/hawkular/metrics/availability/<%= id %>/raw
     body:
       encoding: UTF-8
-      string: '[{"value":"UP","timestamp":1471274437693}]'
+      string: '[{"value":"UP","timestamp":1476329030742}]'
     headers:
       Accept:
       - application/json
@@ -41,15 +41,15 @@ http_interactions:
       Content-Length:
       - '0'
       Date:
-      - Mon, 15 Aug 2016 15:20:37 GMT
+      - Thu, 13 Oct 2016 03:23:50 GMT
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Mon, 15 Aug 2016 15:20:37 GMT
+  recorded_at: Thu, 13 Oct 2016 03:23:50 GMT
 - request:
     method: get
-    uri: http://jdoe:password@localhost:8080/hawkular/metrics/availability/<%= id %>/data/
+    uri: http://jdoe:password@localhost:8080/hawkular/metrics/availability/<%= id %>/raw/
     body:
       encoding: US-ASCII
       string: ''
@@ -82,7 +82,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Mon, 15 Aug 2016 15:20:37 GMT
+      - Thu, 13 Oct 2016 03:23:50 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -91,9 +91,9 @@ http_interactions:
       - '42'
     body:
       encoding: UTF-8
-      string: '[{"timestamp":1471274437693,"value":"up"}]'
+      string: '[{"timestamp":1476329030742,"value":"up"}]'
     http_version: 
-  recorded_at: Mon, 15 Aug 2016 15:20:37 GMT
+  recorded_at: Thu, 13 Oct 2016 03:23:50 GMT
 - request:
     method: get
     uri: http://jdoe:password@localhost:8080/hawkular/metrics/availability/<%= id %>
@@ -129,16 +129,16 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Mon, 15 Aug 2016 15:20:37 GMT
+      - Thu, 13 Oct 2016 03:23:50 GMT
       Connection:
       - keep-alive
       Content-Type:
       - application/json
       Content-Length:
-      - '230'
+      - '231'
     body:
       encoding: UTF-8
-      string: '{"id":"<%= id %>","dataRetention":7,"type":"availability","tenantId":"<%= vcr_test_tenant %>","minTimestamp":1471274437693,"maxTimestamp":1471274437693}'
+      string: '{"id":"<%= id %>","dataRetention":14,"type":"availability","tenantId":"<%= vcr_test_tenant %>","minTimestamp":1476329030742,"maxTimestamp":1476329030742}'
     http_version: 
-  recorded_at: Mon, 15 Aug 2016 15:20:37 GMT
+  recorded_at: Thu, 13 Oct 2016 03:23:50 GMT
 recorded_with: VCR 3.0.3

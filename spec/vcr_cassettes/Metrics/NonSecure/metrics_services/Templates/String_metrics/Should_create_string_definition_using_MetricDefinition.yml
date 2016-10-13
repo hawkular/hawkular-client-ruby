@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://jdoe:password@127.0.0.1:8443/hawkular/metrics/counters
+    uri: http://jdoe:password@localhost:8080/hawkular/metrics/strings
     body:
       encoding: UTF-8
       string: '{"id":"<%= id %>","dataRetention":90,"tags":{"tag":"value"}}'
@@ -20,7 +20,7 @@ http_interactions:
       Content-Length:
       - '87'
       Host:
-      - 127.0.0.1:8443
+      - localhost:8080
   response:
     status:
       code: 201
@@ -37,9 +37,9 @@ http_interactions:
       Pragma:
       - no-cache
       Location:
-      - https://127.0.0.1:8443/hawkular/metrics/counters/<%= id %>
+      - http://localhost:8080/hawkular/metrics/strings/<%= id %>
       Date:
-      - Mon, 15 Aug 2016 15:20:41 GMT
+      - Thu, 13 Oct 2016 03:10:06 GMT
       Connection:
       - keep-alive
       Content-Length:
@@ -48,10 +48,10 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Mon, 15 Aug 2016 15:20:41 GMT
+  recorded_at: Thu, 13 Oct 2016 03:10:06 GMT
 - request:
     method: get
-    uri: https://jdoe:password@127.0.0.1:8443/hawkular/metrics/counters/<%= id %>
+    uri: http://jdoe:password@localhost:8080/hawkular/metrics/strings/<%= id %>
     body:
       encoding: US-ASCII
       string: ''
@@ -67,7 +67,7 @@ http_interactions:
       Content-Type:
       - application/json
       Host:
-      - 127.0.0.1:8443
+      - localhost:8080
   response:
     status:
       code: 200
@@ -84,16 +84,16 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Mon, 15 Aug 2016 15:20:41 GMT
+      - Thu, 13 Oct 2016 03:10:06 GMT
       Connection:
       - keep-alive
       Content-Type:
       - application/json
       Content-Length:
-      - '186'
+      - '190'
     body:
       encoding: UTF-8
-      string: '{"id":"<%= id %>","tags":{"tag":"value"},"dataRetention":90,"type":"counter","tenantId":"<%= vcr_test_tenant %>"}'
+      string: '{"id":"<%= id %>","tags":{"tag":"value"},"dataRetention":90,"type":"string","tenantId":"<%= vcr_test_tenant %>"}'
     http_version: 
-  recorded_at: Mon, 15 Aug 2016 15:20:41 GMT
+  recorded_at: Thu, 13 Oct 2016 03:10:06 GMT
 recorded_with: VCR 3.0.3

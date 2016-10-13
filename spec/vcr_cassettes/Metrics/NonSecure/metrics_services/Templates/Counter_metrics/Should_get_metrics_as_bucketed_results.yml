@@ -39,7 +39,7 @@ http_interactions:
       Location:
       - http://localhost:8080/hawkular/metrics/counters/<%= id %>
       Date:
-      - Mon, 15 Aug 2016 15:20:37 GMT
+      - Thu, 13 Oct 2016 03:23:11 GMT
       Connection:
       - keep-alive
       Content-Length:
@@ -48,10 +48,10 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Mon, 15 Aug 2016 15:20:37 GMT
+  recorded_at: Thu, 13 Oct 2016 03:23:11 GMT
 - request:
     method: post
-    uri: http://jdoe:password@localhost:8080/hawkular/metrics/counters/<%= id %>/data
+    uri: http://jdoe:password@localhost:8080/hawkular/metrics/counters/<%= id %>/raw
     body:
       encoding: UTF-8
       string: '[{"value":110,"timestamp":<%= minus110 %>},{"value":100,"timestamp":<%= minus100 %>},{"value":90,"timestamp":<%= minus90 %>},{"value":80,"timestamp":<%= minus80 %>},{"value":70,"timestamp":<%= minus70 %>},{"value":60,"timestamp":<%= minus60 %>},{"value":50,"timestamp":<%= minus50 %>},{"value":40,"timestamp":<%= minus40 %>},{"value":30,"timestamp":<%= minus30 %>},{"value":20,"timestamp":<%= minus20 %>},{"value":10,"timestamp":<%= minus10 %>}]'
@@ -90,15 +90,15 @@ http_interactions:
       Content-Length:
       - '0'
       Date:
-      - Mon, 15 Aug 2016 15:20:37 GMT
+      - Thu, 13 Oct 2016 03:23:11 GMT
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Mon, 15 Aug 2016 15:20:37 GMT
+  recorded_at: Thu, 13 Oct 2016 03:23:11 GMT
 - request:
     method: get
-    uri: http://jdoe:password@localhost:8080/hawkular/metrics/counters/<%= id %>/data/?buckets=5&end=<%= minus5 %>&start=<%= minus105 %>
+    uri: http://jdoe:password@localhost:8080/hawkular/metrics/counters/<%= id %>/stats/?buckets=5&end=<%= minus5 %>&start=<%= minus105 %>
     body:
       encoding: US-ASCII
       string: ''
@@ -131,7 +131,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Mon, 15 Aug 2016 15:20:37 GMT
+      - Thu, 13 Oct 2016 03:23:11 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -140,12 +140,12 @@ http_interactions:
       - '645'
     body:
       encoding: UTF-8
-      string: '[{"start":<%= minus105 %>,"end":1471274437518,"min":90.0,"avg":95.0,"median":90.0,"max":100.0,"sum":190.0,"samples":2,"empty":false},{"start":1471274437518,"end":1471274437538,"min":70.0,"avg":75.0,"median":70.0,"max":80.0,"sum":150.0,"samples":2,"empty":false},{"start":1471274437538,"end":1471274437558,"min":50.0,"avg":55.0,"median":50.0,"max":60.0,"sum":110.0,"samples":2,"empty":false},{"start":1471274437558,"end":1471274437578,"min":30.0,"avg":35.0,"median":30.0,"max":40.0,"sum":70.0,"samples":2,"empty":false},{"start":1471274437578,"end":<%= minus5 %>,"min":10.0,"avg":15.0,"median":10.0,"max":20.0,"sum":30.0,"samples":2,"empty":false}]'
+      string: '[{"start":<%= minus105 %>,"end":1476328991210,"min":90.0,"avg":95.0,"median":90.0,"max":100.0,"sum":190.0,"samples":2,"empty":false},{"start":1476328991210,"end":1476328991230,"min":70.0,"avg":75.0,"median":70.0,"max":80.0,"sum":150.0,"samples":2,"empty":false},{"start":1476328991230,"end":1476328991250,"min":50.0,"avg":55.0,"median":50.0,"max":60.0,"sum":110.0,"samples":2,"empty":false},{"start":1476328991250,"end":1476328991270,"min":30.0,"avg":35.0,"median":30.0,"max":40.0,"sum":70.0,"samples":2,"empty":false},{"start":1476328991270,"end":<%= minus5 %>,"min":10.0,"avg":15.0,"median":10.0,"max":20.0,"sum":30.0,"samples":2,"empty":false}]'
     http_version: 
-  recorded_at: Mon, 15 Aug 2016 15:20:37 GMT
+  recorded_at: Thu, 13 Oct 2016 03:23:11 GMT
 - request:
     method: get
-    uri: http://jdoe:password@localhost:8080/hawkular/metrics/counters/<%= id %>/data/?buckets=2&end=<%= minus5 %>&start=<%= minus105 %>
+    uri: http://jdoe:password@localhost:8080/hawkular/metrics/counters/<%= id %>/stats/?buckets=2&end=<%= minus5 %>&start=<%= minus105 %>
     body:
       encoding: US-ASCII
       string: ''
@@ -178,7 +178,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Mon, 15 Aug 2016 15:20:37 GMT
+      - Thu, 13 Oct 2016 03:23:11 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -187,12 +187,12 @@ http_interactions:
       - '260'
     body:
       encoding: UTF-8
-      string: '[{"start":<%= minus105 %>,"end":1471274437548,"min":60.0,"avg":80.0,"median":80.0,"max":100.0,"sum":400.0,"samples":5,"empty":false},{"start":1471274437548,"end":<%= minus5 %>,"min":10.0,"avg":30.0,"median":30.0,"max":50.0,"sum":150.0,"samples":5,"empty":false}]'
+      string: '[{"start":<%= minus105 %>,"end":1476328991240,"min":60.0,"avg":80.0,"median":80.0,"max":100.0,"sum":400.0,"samples":5,"empty":false},{"start":1476328991240,"end":<%= minus5 %>,"min":10.0,"avg":30.0,"median":30.0,"max":50.0,"sum":150.0,"samples":5,"empty":false}]'
     http_version: 
-  recorded_at: Mon, 15 Aug 2016 15:20:37 GMT
+  recorded_at: Thu, 13 Oct 2016 03:23:11 GMT
 - request:
     method: get
-    uri: http://jdoe:password@localhost:8080/hawkular/metrics/counters/<%= id %>/data/?bucketDuration=50ms&end=<%= minus5 %>&start=<%= minus105 %>
+    uri: http://jdoe:password@localhost:8080/hawkular/metrics/counters/<%= id %>/stats/?bucketDuration=50ms&end=<%= minus5 %>&start=<%= minus105 %>
     body:
       encoding: US-ASCII
       string: ''
@@ -225,7 +225,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Mon, 15 Aug 2016 15:20:37 GMT
+      - Thu, 13 Oct 2016 03:23:11 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -234,7 +234,7 @@ http_interactions:
       - '260'
     body:
       encoding: UTF-8
-      string: '[{"start":<%= minus105 %>,"end":1471274437548,"min":60.0,"avg":80.0,"median":80.0,"max":100.0,"sum":400.0,"samples":5,"empty":false},{"start":1471274437548,"end":<%= minus5 %>,"min":10.0,"avg":30.0,"median":30.0,"max":50.0,"sum":150.0,"samples":5,"empty":false}]'
+      string: '[{"start":<%= minus105 %>,"end":1476328991240,"min":60.0,"avg":80.0,"median":80.0,"max":100.0,"sum":400.0,"samples":5,"empty":false},{"start":1476328991240,"end":<%= minus5 %>,"min":10.0,"avg":30.0,"median":30.0,"max":50.0,"sum":150.0,"samples":5,"empty":false}]'
     http_version: 
-  recorded_at: Mon, 15 Aug 2016 15:20:37 GMT
+  recorded_at: Thu, 13 Oct 2016 03:23:11 GMT
 recorded_with: VCR 3.0.3

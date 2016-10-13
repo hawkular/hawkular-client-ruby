@@ -2,10 +2,10 @@
 http_interactions:
 - request:
     method: post
-    uri: http://jdoe:password@localhost:8080/hawkular/metrics/availability/<%= id %>/raw
+    uri: http://jdoe:password@localhost:8080/hawkular/metrics/strings
     body:
       encoding: UTF-8
-      string: '[{"timestamp":<%= minus50 %>,"value":"up"},{"timestamp":<%= minus40 %>,"value":"up"},{"timestamp":<%= minus30 %>,"value":"down"},{"timestamp":<%= minus20 %>,"value":"down"},{"timestamp":<%= minus10 %>,"value":"down"},{"timestamp":<%= now %>,"value":"up"}]'
+      string: '{"id":"<%= id %>","dataRetention":123,"tags":{"some":"value"}}'
     headers:
       Accept:
       - application/json
@@ -18,18 +18,16 @@ http_interactions:
       Content-Type:
       - application/json
       Content-Length:
-      - '253'
+      - '89'
       Host:
       - localhost:8080
   response:
     status:
-      code: 200
-      message: OK
+      code: 201
+      message: Created
     headers:
       Expires:
       - '0'
-      Connection:
-      - keep-alive
       Cache-Control:
       - no-cache, no-store, must-revalidate
       X-Powered-By:
@@ -38,18 +36,22 @@ http_interactions:
       - WildFly/10
       Pragma:
       - no-cache
+      Location:
+      - http://localhost:8080/hawkular/metrics/strings/<%= id %>
+      Date:
+      - Thu, 13 Oct 2016 03:10:06 GMT
+      Connection:
+      - keep-alive
       Content-Length:
       - '0'
-      Date:
-      - Mon, 15 Aug 2016 15:20:38 GMT
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Mon, 15 Aug 2016 15:20:38 GMT
+  recorded_at: Thu, 13 Oct 2016 03:10:06 GMT
 - request:
     method: get
-    uri: http://jdoe:password@localhost:8080/hawkular/metrics/availability/<%= id %>/raw/?distinct=true&order=ASC
+    uri: http://jdoe:password@localhost:8080/hawkular/metrics/strings/<%= id %>
     body:
       encoding: US-ASCII
       string: ''
@@ -82,16 +84,16 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Mon, 15 Aug 2016 15:20:38 GMT
+      - Thu, 13 Oct 2016 03:10:06 GMT
       Connection:
       - keep-alive
       Content-Type:
       - application/json
       Content-Length:
-      - '126'
+      - '192'
     body:
       encoding: UTF-8
-      string: '[{"timestamp":<%= minus50 %>,"value":"up"},{"timestamp":<%= minus30 %>,"value":"down"},{"timestamp":<%= now %>,"value":"up"}]'
+      string: '{"id":"<%= id %>","tags":{"some":"value"},"dataRetention":123,"type":"string","tenantId":"<%= vcr_test_tenant %>"}'
     http_version: 
-  recorded_at: Mon, 15 Aug 2016 15:20:38 GMT
+  recorded_at: Thu, 13 Oct 2016 03:10:06 GMT
 recorded_with: VCR 3.0.3
