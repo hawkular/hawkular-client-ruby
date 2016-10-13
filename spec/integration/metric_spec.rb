@@ -736,6 +736,53 @@ security_contexts.each do |security_context|
                  example: example)
         end
       end
+
+      describe 'All Tags for metrics', run_for: [services_context] do
+        before(:each) do
+          @tenant = 'all_tags_tenant'
+          options = setup_options.merge(tenant: @tenant)
+          record("Metrics/#{security_context}/#{metrics_context}",
+                 options,
+                 'Tags_Metrics/setup_client') do
+            setup_client(options)
+          end
+        end
+
+        it 'Should fetch all metric tags for metrics definitions' do
+          tags_m1 = {
+            tag1: 'value1',
+            tag2: 'value2',
+            tag3: 'value3'
+          }
+
+          tags_m2 = {
+            tag1: 'value1',
+            tag4: 'value4',
+            tag5: 'value5'
+          }
+
+          tags_m3 = {
+            tag1: 'value1',
+            tag4: 'value4',
+            tag5: 'value5.1'
+          }
+
+          create_metric_using_md @client.gauges, 'metric_1', tags_m1
+          create_metric_using_md @client.avail, 'metric_2', tags_m2
+          create_metric_using_md @client.counters, 'metric_2', tags_m3
+          create_metric_using_md @client.counters, 'metric_3', {}
+
+          expected_result = [
+            { 'tag1' => 'value1' },
+            { 'tag2' => 'value2' },
+            { 'tag3' => 'value3' },
+            { 'tag4' => 'value4' },
+            { 'tag5' => 'value5' },
+            { 'tag5' => 'value5.1' }
+          ]
+          expect(@client.tags.to_set).to eql(expected_result.to_set)
+        end
+      end
     end
   end
 
