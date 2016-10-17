@@ -1,0 +1,23 @@
+[
+  [
+    {
+      "operation": "read",
+      "type": "text",
+      "data": "WelcomeResponse={\"sessionId\":\"TC_c3Qy43SYmidP3Ww_NpRf2ktIMJRVSatWmYNY0\"}"
+    },
+    {
+      "operation": "write",
+      "data": "AddDatasourceRequest={\"resourcePath\":\"/t;<%= tenant_id %>/f;<%= feed_id %>/r;Local~~\",\"xaDatasource\":true,\"datasourceName\":\"CreatedByRubyDSXA<%= random_uuid %>\",\"jndiName\":\"java:jboss/datasources/CreatedByRubyDSXA<%= random_uuid %>\",\"driverName\":\"h2\",\"xaDataSourceClass\":\"org.h2.jdbcx.JdbcDataSource\",\"driverClass\":\"org.h2.Driver\",\"connectionUrl\":\"dbc:h2:mem:ruby;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE\",\"datasourceProperties\":{\"someKey\":\"someValue\"},\"userName\":\"sa\",\"password\":\"sa\",\"securityDomain\":\"other\",\"authentication\":{\"username\":\"jdoe\",\"password\":\"password\"}}"
+    },
+    {
+      "operation": "read",
+      "type": "text",
+      "data": "GenericSuccessResponse={\"message\":\"The request has been forwarded to feed [<%= feed_id %>] (MessageId=ID:c0048ae3-9279-11e6-955a-b524510fbe59)\"}"
+    },
+    {
+      "operation": "read",
+      "type": "text",
+      "data": "AddDatasourceResponse={\"xaDatasource\":true,\"datasourceName\":\"CreatedByRubyDSXA<%= random_uuid %>\",\"resourcePath\":\"/t;<%= tenant_id %>/f;<%= feed_id %>/r;Local~~\",\"destinationSessionId\":\"TC_c3Qy43SYmidP3Ww_NpRf2ktIMJRVSatWmYNY0\",\"status\":\"OK\",\"message\":\"Added Datasource: CreatedByRubyDSXA<%= random_uuid %>\"}"
+    }
+  ]
+]

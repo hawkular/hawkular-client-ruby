@@ -268,7 +268,7 @@ module Hawkular::Operations::RSpec
           expect(actual_data['message']).to start_with('Performed [Disable Deployment] on')
         end
 
-        it 'Add datasource should be doable' do
+        it 'Add non-XA datasource should be doable' do
           wf_server_resource_id = 'Local~~'
           wf_path = CanonicalPath.new(tenant_id: @tenant_id,
                                       feed_id: @feed_id,
@@ -308,6 +308,50 @@ module Hawkular::Operations::RSpec
           expect(actual_data['status']).to eq('OK')
           expect(actual_data['message']).to start_with('Added Datasource')
           expect(actual_data['xaDatasource']).to be_falsey
+          expect(actual_data['datasourceName']).to eq(payload[:datasourceName])
+          expect(actual_data['resourcePath']).to eq(payload[:resourcePath])
+        end
+
+        it 'Add XA datasource should be doable' do
+          wf_server_resource_id = 'Local~~'
+          wf_path = CanonicalPath.new(tenant_id: @tenant_id,
+                                      feed_id: @feed_id,
+                                      resource_ids: [wf_server_resource_id]).to_s
+          payload = {
+            # compulsory fields
+            resourcePath: wf_path,
+            xaDatasource: true,
+            datasourceName: 'CreatedByRubyDSXA' + @random_uuid,
+            jndiName: 'java:jboss/datasources/CreatedByRubyDSXA' + @random_uuid,
+            driverName: 'h2',
+            xaDataSourceClass: 'org.h2.jdbcx.JdbcDataSource',
+            # this is probably a bug (driver class should be already defined in driver)
+            driverClass: 'org.h2.Driver',
+            connectionUrl: 'dbc:h2:mem:ruby;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE',
+
+            # optional
+            datasourceProperties: {
+              someKey: 'someValue'
+            },
+            userName: 'sa',
+            password: 'sa',
+            securityDomain: 'other'
+          }
+
+          actual_data = {}
+          client.add_datasource(payload) do |on|
+            on.success do |data|
+              actual_data[:data] = data
+            end
+            on.failure do |error|
+              actual_data[:data] = { 'status' => 'ERROR' }
+              puts 'error callback was called, reason: ' + error.to_s
+            end
+          end
+          actual_data = wait_for actual_data
+          expect(actual_data['status']).to eq('OK')
+          expect(actual_data['message']).to start_with('Added Datasource')
+          expect(actual_data['xaDatasource']).to be_truthy
           expect(actual_data['datasourceName']).to eq(payload[:datasourceName])
           expect(actual_data['resourcePath']).to eq(payload[:resourcePath])
         end
