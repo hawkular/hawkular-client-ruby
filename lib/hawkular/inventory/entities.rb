@@ -112,7 +112,7 @@ module Hawkular::Inventory
       @type_id = metric_hash['type']['id']
       @unit = metric_hash['type']['unit']
       @collection_interval = metric_hash['type']['collectionInterval']
-      @hawkular_metric_id = @properties.key?('metric-id') ? @properties['metric-id'] : @id
+      @hawkular_metric_id = @properties.key?('hawkular-metric-id') ? @properties['hawkular-metric-id'] : @id
     end
   end
 
