@@ -7,7 +7,7 @@ _hawkular-client_ project.
 
 * Allow to list tags in Hawkular-Metrics
 * Adding support for Hawkular-Admin-Token via admin_token
-* "ackBy no longer exists on alerts" -
+* Use the new "ackBy" mechanism in Hawkular Alerts. The Ruby-client API stayed the same.
 * Support for string metrics
 * Exposes metric-id property if it exists and follow internal renaming
 * Addition of 'delete_event' on the client.
