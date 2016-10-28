@@ -194,7 +194,7 @@ module Hawkular::Inventory
     # @return inventory entity
     def get_entity(path)
       c_path = path.is_a?(CanonicalPath) ? path : CanonicalPath.parse(path)
-      http_get("/entity/#{c_path}")
+      http_get("/entity#{c_path}")
     end
 
     # List the metrics for the passed metric type. If feed is not passed in the path,

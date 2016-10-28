@@ -522,6 +522,18 @@ module Hawkular::Inventory::RSpec
           expect(r2.properties).not_to be_empty
         end
 
+        it 'Should return data from get_entity' do
+          new_feed_id = 'feed_may_exist'
+          @client.create_feed new_feed_id
+          ret = @client.create_resource_type new_feed_id, 'dummy-resource-type', 'ResourceType'
+          type_path = ret.path
+          entity = @client.get_entity(type_path)
+
+          expect(entity['path']).to eq(type_path)
+          expect(entity['name']).to eq('ResourceType')
+          expect(entity['id']).to eq('dummy-resource-type')
+        end
+
         it 'Should not find an unknown resource' do
           new_feed_id = 'feed_may_exist'
           path = Hawkular::Inventory::CanonicalPath.new(
