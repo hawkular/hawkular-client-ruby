@@ -62,7 +62,7 @@ http_interactions:
             "name" : "Total Space",
             "identityHash" : "4753b6bbe4fad4dfd57fae8fc2d35f91af13e53",
             "unit" : "BYTES",
-            "type" : "GAUGE",
+            "metricDataType" : "GAUGE",
             "collectionInterval" : 300,
             "id" : "Total Space"
           },
@@ -79,7 +79,7 @@ http_interactions:
             "name" : "Total Space",
             "identityHash" : "4753b6bbe4fad4dfd57fae8fc2d35f91af13e53",
             "unit" : "BYTES",
-            "type" : "GAUGE",
+            "metricDataType" : "GAUGE",
             "collectionInterval" : 300,
             "id" : "Total Space"
           },

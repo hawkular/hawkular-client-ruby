@@ -65,7 +65,7 @@ http_interactions:
             "unit" : "BYTES",
             "metricDataType" : "gauge",
             "collectionInterval" : 300,
-            "type" : "GAUGE",
+            "metricDataType" : "GAUGE",
             "id" : "Platform_File Store_Total Space"
           },
           "id" : "MI~R~[<%= feed_uuid %>/platform~/OPERATING_SYSTEM=<%= feed_uuid %>_OperatingSystem/FILE_STORE=/dev/mapper/fedora-root]~MT~Platform_File Store_Total Space"
@@ -84,7 +84,7 @@ http_interactions:
             "unit" : "BYTES",
             "metricDataType" : "gauge",
             "collectionInterval" : 300,
-            "type" : "GAUGE",
+            "metricDataType" : "GAUGE",
             "id" : "Platform_File Store_Total Space"
           },
           "id" : "MI~R~[<%= feed_uuid %>/platform~/OPERATING_SYSTEM=<%= feed_uuid %>_OperatingSystem/FILE_STORE=~]~MT~Platform_File Store_Total Space"

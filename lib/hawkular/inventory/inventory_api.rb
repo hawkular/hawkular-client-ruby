@@ -539,7 +539,7 @@ module Hawkular::Inventory
     def build_metric_type_hash(collection_interval, metric_kind, metric_type_id, unit)
       mt = {}
       mt['id'] = metric_type_id
-      mt['type'] = metric_kind
+      mt['metricDataType'] = metric_kind
       mt['unit'] = unit.nil? ? 'NONE' : unit.upcase
       mt['collectionInterval'] = collection_interval.nil? ? 60 : collection_interval
       mt
