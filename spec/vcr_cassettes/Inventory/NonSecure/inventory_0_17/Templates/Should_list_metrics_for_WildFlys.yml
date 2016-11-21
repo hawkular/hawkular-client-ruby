@@ -129,7 +129,7 @@ http_interactions:
             "name" : "Server Availability",
             "identityHash" : "69beedc2b0c5cf2f3d0484b9c1aa9e4cdcf93",
             "unit" : "NONE",
-            "metricDataType" : "AVAILABILITY",
+            "metricDataType" : "availability",
             "collectionInterval" : 30,
             "id" : "Server Availability~Server Availability"
           },
@@ -146,7 +146,7 @@ http_interactions:
             "name" : "Aggregated Active Web Sessions",
             "identityHash" : "a82dc495957628db4b96ca5c44213ce023c792b9",
             "unit" : "NONE",
-            "metricDataType" : "GAUGE",
+            "metricDataType" : "gauge",
             "collectionInterval" : 60,
             "id" : "WildFly Aggregated Web Metrics~Aggregated Active Web Sessions"
           },
@@ -163,7 +163,7 @@ http_interactions:
             "name" : "Aggregated Expired Web Sessions",
             "identityHash" : "3c806e8b625362b37f972a3594448c4aa8b3",
             "unit" : "NONE",
-            "metricDataType" : "COUNTER",
+            "metricDataType" : "counter",
             "collectionInterval" : 60,
             "id" : "WildFly Aggregated Web Metrics~Aggregated Expired Web Sessions"
           },
@@ -180,7 +180,7 @@ http_interactions:
             "name" : "Aggregated Max Active Web Sessions",
             "identityHash" : "a677b62ab5ec7632a32af8b6ef08aef813fd1f",
             "unit" : "NONE",
-            "metricDataType" : "GAUGE",
+            "metricDataType" : "gauge",
             "collectionInterval" : 60,
             "id" : "WildFly Aggregated Web Metrics~Aggregated Max Active Web Sessions"
           },
@@ -197,7 +197,7 @@ http_interactions:
             "name" : "Aggregated Rejected Web Sessions",
             "identityHash" : "6af37a7acb8c6eab4818313a281748152896534",
             "unit" : "NONE",
-            "metricDataType" : "COUNTER",
+            "metricDataType" : "counter",
             "collectionInterval" : 60,
             "id" : "WildFly Aggregated Web Metrics~Aggregated Rejected Web Sessions"
           },
@@ -214,7 +214,7 @@ http_interactions:
             "name" : "Aggregated Servlet Request Count",
             "identityHash" : "95556b3b6367d481ebfd12997646e08fef9291e0",
             "unit" : "NONE",
-            "metricDataType" : "COUNTER",
+            "metricDataType" : "counter",
             "collectionInterval" : 60,
             "id" : "WildFly Aggregated Web Metrics~Aggregated Servlet Request Count"
           },
@@ -231,7 +231,7 @@ http_interactions:
             "name" : "Aggregated Servlet Request Time",
             "identityHash" : "f949025e0087974acae8cffab1598344932f6c",
             "unit" : "NONE",
-            "metricDataType" : "COUNTER",
+            "metricDataType" : "counter",
             "collectionInterval" : 60,
             "id" : "WildFly Aggregated Web Metrics~Aggregated Servlet Request Time"
           },
@@ -248,7 +248,7 @@ http_interactions:
             "name" : "Accumulated GC Duration",
             "identityHash" : "44916cf1eae6344af4cd0b2a562c5328562c3",
             "unit" : "MILLISECONDS",
-            "metricDataType" : "COUNTER",
+            "metricDataType" : "counter",
             "collectionInterval" : 60,
             "id" : "WildFly Memory Metrics~Accumulated GC Duration"
           },
@@ -265,7 +265,7 @@ http_interactions:
             "name" : "Heap Committed",
             "identityHash" : "405253f87a6e98aabe2d7a4a524f5796d9d97e",
             "unit" : "BYTES",
-            "metricDataType" : "GAUGE",
+            "metricDataType" : "gauge",
             "collectionInterval" : 60,
             "id" : "WildFly Memory Metrics~Heap Committed"
           },
@@ -282,7 +282,7 @@ http_interactions:
             "name" : "Heap Max",
             "identityHash" : "a84cf574232510897e26b98fd9ea5702a95dfc7",
             "unit" : "BYTES",
-            "metricDataType" : "GAUGE",
+            "metricDataType" : "gauge",
             "collectionInterval" : 60,
             "id" : "WildFly Memory Metrics~Heap Max"
           },
@@ -299,7 +299,7 @@ http_interactions:
             "name" : "Heap Used",
             "identityHash" : "3be5b5fdabed925ac46fdc6d8295e34bbd3147a",
             "unit" : "BYTES",
-            "metricDataType" : "GAUGE",
+            "metricDataType" : "gauge",
             "collectionInterval" : 30,
             "id" : "WildFly Memory Metrics~Heap Used"
           },
@@ -316,7 +316,7 @@ http_interactions:
             "name" : "NonHeap Committed",
             "identityHash" : "55d9f8e5b0a3b5d0af3fd3bac67b08b186c68b5",
             "unit" : "BYTES",
-            "metricDataType" : "GAUGE",
+            "metricDataType" : "gauge",
             "collectionInterval" : 60,
             "id" : "WildFly Memory Metrics~NonHeap Committed"
           },
@@ -333,7 +333,7 @@ http_interactions:
             "name" : "NonHeap Used",
             "identityHash" : "c785eddfb0f0baa1e832fc38485d686e2297497",
             "unit" : "BYTES",
-            "metricDataType" : "GAUGE",
+            "metricDataType" : "gauge",
             "collectionInterval" : 30,
             "id" : "WildFly Memory Metrics~NonHeap Used"
           },
@@ -350,7 +350,7 @@ http_interactions:
             "name" : "Thread Count",
             "identityHash" : "1e41cf1c2b3c07e23983a3789c91bdc6f1cc88",
             "unit" : "NONE",
-            "metricDataType" : "GAUGE",
+            "metricDataType" : "gauge",
             "collectionInterval" : 120,
             "id" : "WildFly Threading Metrics~Thread Count"
           },

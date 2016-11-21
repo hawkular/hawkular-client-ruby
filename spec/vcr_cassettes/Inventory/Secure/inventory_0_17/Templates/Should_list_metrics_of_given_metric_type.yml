@@ -62,7 +62,7 @@ http_interactions:
             "name" : "Total Space",
             "identityHash" : "4753b6bbe4fad4dfd57fae8fc2d35f91af13e53",
             "unit" : "BYTES",
-            "metricDataType" : "GAUGE",
+            "metricDataType" : "gauge",
             "collectionInterval" : 300,
             "id" : "Total Space"
           },
@@ -79,12 +79,12 @@ http_interactions:
             "name" : "Total Space",
             "identityHash" : "4753b6bbe4fad4dfd57fae8fc2d35f91af13e53",
             "unit" : "BYTES",
-            "metricDataType" : "GAUGE",
+            "metricDataType" : "gauge",
             "collectionInterval" : 300,
             "id" : "Total Space"
           },
           "id" : "MI~R~[<%= feed_uuid %>/platform~/OPERATING_SYSTEM=<%= feed_uuid %>_OperatingSystem/FILE_STORE=tmpfs]~MT~Total Space"
         } ]
-    http_version: 
+    http_version:
   recorded_at: Wed, 10 Aug 2016 22:35:49 GMT
 recorded_with: VCR 3.0.3

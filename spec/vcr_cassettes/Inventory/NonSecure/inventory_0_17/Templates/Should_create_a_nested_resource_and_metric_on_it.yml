@@ -297,7 +297,7 @@ http_interactions:
     uri: http://<%= super_secret_username %>:<%= super_secret_password %>@localhost:8080/hawkular/inventory/entity/f;NonSecure_feed_may_exist/metricType
     body:
       encoding: UTF-8
-      string: '{"id":"mt-124-a","metricDataType":"GAUGE","unit":"NONE","collectionInterval":60}'
+      string: '{"id":"mt-124-a","metricDataType":"gauge","unit":"NONE","collectionInterval":60}'
     headers:
       Accept:
       - application/json
@@ -345,7 +345,7 @@ http_interactions:
           "path" : "/t;hawkular/f;NonSecure_feed_may_exist/mt;mt-124-a",
           "identityHash" : "b06c658d2341eedf26fcff6667bcf3b2556c994",
           "unit" : "NONE",
-          "metricDataType" : "GAUGE",
+          "metricDataType" : "gauge",
           "collectionInterval" : 60,
           "id" : "mt-124-a"
         }
@@ -400,7 +400,7 @@ http_interactions:
           "path" : "/t;hawkular/f;NonSecure_feed_may_exist/mt;mt-124-a",
           "identityHash" : "b06c658d2341eedf26fcff6667bcf3b2556c994",
           "unit" : "NONE",
-          "metricDataType" : "GAUGE",
+          "metricDataType" : "gauge",
           "collectionInterval" : 60,
           "id" : "mt-124-a"
         }
@@ -463,7 +463,7 @@ http_interactions:
             "path" : "/t;hawkular/f;NonSecure_feed_may_exist/mt;mt-124-a",
             "identityHash" : "b06c658d2341eedf26fcff6667bcf3b2556c994",
             "unit" : "NONE",
-            "metricDataType" : "GAUGE",
+            "metricDataType" : "gauge",
             "collectionInterval" : 60,
             "id" : "mt-124-a"
           },
@@ -527,7 +527,7 @@ http_interactions:
             "path" : "/t;hawkular/f;NonSecure_feed_may_exist/mt;mt-124-a",
             "identityHash" : "b06c658d2341eedf26fcff6667bcf3b2556c994",
             "unit" : "NONE",
-            "metricDataType" : "GAUGE",
+            "metricDataType" : "gauge",
             "collectionInterval" : 60,
             "id" : "mt-124-a"
           },
@@ -653,7 +653,7 @@ http_interactions:
             "path" : "/t;hawkular/f;NonSecure_feed_may_exist/mt;mt-124-a",
             "identityHash" : "b06c658d2341eedf26fcff6667bcf3b2556c994",
             "unit" : "NONE",
-            "metricDataType" : "GAUGE",
+            "metricDataType" : "gauge",
             "collectionInterval" : 60,
             "id" : "mt-124-a"
           },

@@ -62,12 +62,12 @@ http_interactions:
             "name" : "Server Availability",
             "identityHash" : "69beedc2b0c5cf2f3d0484b9c1aa9e4cdcf93",
             "unit" : "NONE",
-            "metricDataType" : "AVAILABILITY",
+            "metricDataType" : "availability",
             "collectionInterval" : 30,
             "id" : "Server Availability~Server Availability"
           },
           "id" : "AI~R~[<%= feed_uuid %>/Local~~]~AT~Server Availability~Server Availability"
         } ]
-    http_version: 
+    http_version:
   recorded_at: Wed, 10 Aug 2016 22:35:50 GMT
 recorded_with: VCR 3.0.3

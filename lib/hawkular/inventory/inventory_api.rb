@@ -243,14 +243,14 @@ module Hawkular::Inventory
     #   result by a filter to only return a subset. The
     # @param [String] resource_path Canonical path of the resource.
     # @param [Hash{Symbol=>String}] filter for 'type' and 'match'
-    #   Metric type can be one of 'GAUGE', 'COUNTER', 'AVAILABILITY'. If a key is missing
+    #   Metric type can be one of 'gauge', 'counter', 'availability'. If a key is missing
     #   it will not be used for filtering
     # @return [Array<Metric>] List of metrics that can be empty.
     # @example
     #    # Filter by type and match on metrics id
-    #    client.list_metrics_for_resource(wild_fly, type: 'GAUGE', match: 'Metrics~Heap')
+    #    client.list_metrics_for_resource(wild_fly, type: 'gauge', match: 'Metrics~Heap')
     #    # Filter by type only
-    #    client.list_metrics_for_resource(wild_fly, type: 'COUNTER')
+    #    client.list_metrics_for_resource(wild_fly, type: 'counter')
     #    # Don't filter, return all metric definitions
     #    client.list_metrics_for_resource(wild_fly)
     def list_metrics_for_resource(resource_path, filter = {})
@@ -381,15 +381,15 @@ module Hawkular::Inventory
     # Create a new metric type for a feed
     # @param [String] feed_id Id of the feed
     # @param [String] metric_type_id Id of the metric type to create
-    # @param [String] type Type of the Metric. Allowed are GAUGE,COUNTER, AVAILABILITY
+    # @param [String] type Type of the Metric. Allowed are gauge, counter, availability
     # @param [String] unit Unit of the metric
     # @param [Numeric] collection_interval
     # @return [MetricType] Type just created or the one from the server if it already existed.
-    def create_metric_type(feed_id, metric_type_id, type = 'GAUGE', unit = 'NONE', collection_interval = 60)
+    def create_metric_type(feed_id, metric_type_id, type = 'gauge', unit = 'NONE', collection_interval = 60)
       the_feed = hawk_escape_id feed_id
 
-      metric_kind = type.nil? ? 'GAUGE' : type.upcase
-      fail "Unknown type #{metric_kind}" unless %w(GAUGE COUNTER AVAILABILITY').include?(metric_kind)
+      metric_kind = type.nil? ? 'gauge' : type.downcase
+      fail "Unknown type #{metric_kind}" unless %w(gauge counter availability').include?(metric_kind)
 
       mt = build_metric_type_hash(collection_interval, metric_kind, metric_type_id, unit)
 

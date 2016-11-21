@@ -75,7 +75,7 @@ module Hawkular::Inventory
 
   # Fields that are common for MetricType and Metric
   module MetricFields
-    # @return [String] GAUGE, COUNTER, etc.
+    # @return [String] gauge, counter, etc.
     attr_reader :type
     # @return [String] metric unit such as NONE, BYTES, etc.
     attr_reader :unit
