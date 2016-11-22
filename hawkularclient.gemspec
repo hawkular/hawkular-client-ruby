@@ -26,6 +26,7 @@ Gem::Specification.new do |gem|
   gem.add_runtime_dependency('addressable')
   gem.add_development_dependency('shoulda')
   gem.add_development_dependency('rspec-rails', '~> 3.1')
+  gem.add_development_dependency('actionpack',  '~> 4')
   gem.add_development_dependency('rake', '< 11')
   gem.add_development_dependency('simple-websocket-vcr', '= 0.0.7')
   gem.add_development_dependency('yard')
