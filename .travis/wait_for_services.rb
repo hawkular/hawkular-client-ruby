@@ -34,3 +34,6 @@ services.each do |name, service|
     sleep 5
   end
 end
+puts 'Waiting 2 minutes for agent to complete it\'s first round...'
+sleep 120
+puts 'Hawkular-services started successfully... '
