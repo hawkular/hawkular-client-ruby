@@ -406,6 +406,7 @@ module Hawkular::Alerts
         @data2_id = cond_hash['data2Id']
         @data2_multiplier = cond_hash['data2Multiplier']
         @trigger_id = cond_hash['triggerId']
+        @interval = cond_hash['interval']
       end
 
       def to_h
@@ -420,6 +421,7 @@ module Hawkular::Alerts
         cond_hash['data2Id'] = @data2_id
         cond_hash['data2Multiplier'] = @data2_multiplier
         cond_hash['triggerId'] = @trigger_id
+        cond_hash['interval'] = @interval
         cond_hash
       end
     end
