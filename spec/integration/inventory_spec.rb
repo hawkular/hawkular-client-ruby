@@ -603,6 +603,10 @@ module Hawkular::Inventory::RSpec
               # create 3 resources
               @client.create_resource type_path, id_1, 'My Resource 1', 'version' => 1.0
               @client.create_resource type_path, id_2, 'My Resource 2', 'version' => 1.1
+              # Wait for id_1 and id_2 before stop listening.
+              wait_while do
+                !hash_include_all(new_resource_events, [id_1, id_2])
+              end
               resources_closable.close
               @client.create_resource type_path, id_3, 'My Resource 3', 'version' => 1.2
 
