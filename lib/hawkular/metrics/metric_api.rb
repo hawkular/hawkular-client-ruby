@@ -12,6 +12,25 @@ module Hawkular::Metrics
       array
     end
 
+    def tags_param(tags)
+      tags.map { |k, v| "#{k}:#{v}" }.join(',')
+    end
+
+    # Retrieve all types of metrics datapoints by tags
+    # @param tags [Hash]
+    # @param buckets [Integer] optional number of buckets
+    # @param bucketDuration [String] optional interval (default no aggregation)
+    # @param starts [Integer] optional timestamp (default now - 8h)
+    # @param ends [Integer] optional timestamp (default now)
+    # @return [Array[Hash]] datapoints
+    def data_by_tags(tags, buckets: nil, bucketDuration:nil, start:nil, ends: nil)
+      data = {
+        tags: tags_param(tags), buckets: buckets, bucketDuration: bucketDuration, start: start, end: ends
+      }
+
+      http_post('metrics/stats/query', data)
+    end
+
     # Return version and status information for the used version of Hawkular-Metrics
     # @return [Hash{String=>String}]
     #         ('Implementation-Version', 'Built-From-Git-SHA1', 'Status')
@@ -112,7 +131,7 @@ module Hawkular::Metrics
       # @param tags [Hash]
       # @return [Array[MetricDefinition]]
       def query(tags = nil)
-        tags_filter = tags.nil? ? '' : "&tags=#{tags_param(tags)}"
+        tags_filter = tags.nil? ? '' : "&tags=#{@client.tags_param(tags)}"
         @client.http_get("/metrics/?type=#{@type}#{tags_filter}").map do |g|
           Hawkular::Metrics::MetricDefinition.new(g)
         end
@@ -189,19 +208,16 @@ module Hawkular::Metrics
       # @param starts [Integer] optional timestamp (default now - 8h)
       # @param ends [Integer] optional timestamp (default now)
       # @param bucketDuration [String] optional interval (default no aggregation)
+      # @param buckets [Integer] optional number of buckets
       # @return [Array[Hash]] datapoints
       # @see #push_data #push_data for datapoint detail
-      def get_data_by_tags(tags, starts: nil, ends: nil, bucketDuration: nil)
-        params = { tags: tags_param(tags), start: starts,
-                   end: ends, bucketDuration: bucketDuration }
+      def get_data_by_tags(tags, starts: nil, ends: nil, bucketDuration: nil, buckets:nil)
+        params = { tags: @client.tags_param(tags), start: starts,
+                   end: ends, bucketDuration: bucketDuration, buckets: buckets }
         path = "/#{@resource}/"
         @legacy_api ? path << 'data/?' : path << 'stats/?'
         resp = @client.http_get(path + encode_params(params))
         resp.is_a?(Array) ? resp : [] # API returns no content (empty Hash) instead of empty array
-      end
-
-      def tags_param(tags)
-        tags.map { |k, v| "#{k}:#{v}" }.join(',')
       end
 
       def encode_params(params)

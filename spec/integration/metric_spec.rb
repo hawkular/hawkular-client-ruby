@@ -751,13 +751,71 @@ security_contexts.each do |security_context|
 
       describe 'All Tags for metrics', run_for: [services_context] do
         before(:each) do
-          @tenant = 'all_tags_tenant'
+          @tenant = SecureRandom.uuid
           options = setup_options.merge(tenant: @tenant)
           record("Metrics/#{security_context}/#{metrics_context}",
                  options,
                  'Tags_Metrics/setup_client') do
             setup_client(options)
           end
+        end
+
+        it 'Should fetch all metrics with some tags', :skip_auto_vcr do
+          id1 = SecureRandom.uuid
+          id2 = SecureRandom.uuid
+          id3 = SecureRandom.uuid
+          id4 = SecureRandom.uuid
+
+          bindings = { id1: id1, id2: id2, id3: id3, id4: id4 }
+          tag = { miq_metric: true }
+          example = proc do
+            create_metric_using_md @client.gauges, id1, tag
+            create_metric_using_md @client.gauges, id2, tag
+            create_metric_using_md @client.gauges, id3, tag
+            create_metric_using_md @client.gauges, id4, tag
+
+            create_metric_using_md @client.avail, id1, tag
+            create_metric_using_md @client.avail, id2, tag
+            create_metric_using_md @client.avail, id3, tag
+            create_metric_using_md @client.avail, id4, tag
+
+            create_metric_using_md @client.counters, id1, tag
+            create_metric_using_md @client.counters, id2, tag
+            create_metric_using_md @client.counters, id3, tag
+            create_metric_using_md @client.counters, id4, tag
+
+            @client.push_data(
+              counters: [
+                { id: id1, data: [{ value: 1 }] },
+                { id: id2, data: [{ value: 2 }] },
+                { id: id3, data: [{ value: 3 }] }
+              ],
+              availabilities: [
+                { id: id1, data: [{ value: 'up' }] },
+                { id: id2, data: [{ value: 'down' }] },
+                { id: id3, data: [{ value: 'up' }] },
+                { id: id4, data: [{ value: 'up', timestamp: 10_000 },
+                                  { value: 'down', timestamp: 100_000 },
+                                  { value: 'admin', timestamp: 1_000_000 }] }
+              ],
+              gauges: [
+                { id: id1, data: [{ value: 1.1 }] },
+                { id: id2, data: [{ value: 2.2 }] },
+                { id: id3, data: [{ value: 3.3 }] }
+              ]
+            )
+            data = @client.data_by_tags(tag, buckets: 1)
+
+            expect(data.size).to eql(3)
+            expect(data['gauge'].size).to eql(4)
+            expect(data['availability'].size).to eql(4)
+            expect(data['counter'].size).to eql(4)
+          end
+
+          record("Metrics/#{security_context}/#{metrics_context}",
+                 vcr_bindings.merge(bindings),
+                 cassette_name,
+                 example: example)
         end
 
         it 'Should fetch all metric tags for metrics definitions' do

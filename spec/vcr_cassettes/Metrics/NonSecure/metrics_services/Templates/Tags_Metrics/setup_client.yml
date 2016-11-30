@@ -35,10 +35,10 @@ http_interactions:
       Content-Length:
       - '133'
       Date:
-      - Fri, 14 Oct 2016 21:11:20 GMT
+      - Wed, 30 Nov 2016 06:47:08 GMT
     body:
       encoding: UTF-8
-      string: '{"MetricsService":"STARTED","Implementation-Version":"0.20.1.Final","Built-From-Git-SHA1":"f23946235446d3425db31d262b47b4f950ddabb3"}'
+      string: '{"MetricsService":"STARTED","Implementation-Version":"0.21.5.Final","Built-From-Git-SHA1":"e779588593f13224225356a94f1d8642fbccb30f"}'
     http_version: 
-  recorded_at: Fri, 14 Oct 2016 21:11:20 GMT
+  recorded_at: Wed, 30 Nov 2016 06:47:08 GMT
 recorded_with: VCR 3.0.3
