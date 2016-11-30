@@ -1,0 +1,1251 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://jdoe:password@localhost:8080/hawkular/metrics/gauges
+    body:
+      encoding: UTF-8
+      string: '{"id":"<%= id1 %>","dataRetention":90,"tags":{"miq_metric":true}}'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - all_tags_tenant
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '91'
+      Host:
+      - localhost:8080
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Location:
+      - http://localhost:8080/hawkular/metrics/gauges/<%= id1 %>
+      Date:
+      - Wed, 30 Nov 2016 06:47:08 GMT
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 30 Nov 2016 06:47:08 GMT
+- request:
+    method: get
+    uri: http://jdoe:password@localhost:8080/hawkular/metrics/gauges/<%= id1 %>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - all_tags_tenant
+      Content-Type:
+      - application/json
+      Host:
+      - localhost:8080
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Wed, 30 Nov 2016 06:47:08 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '137'
+    body:
+      encoding: UTF-8
+      string: '{"id":"<%= id1 %>","tags":{"miq_metric":"true"},"dataRetention":90,"type":"gauge","tenantId":"all_tags_tenant"}'
+    http_version: 
+  recorded_at: Wed, 30 Nov 2016 06:47:08 GMT
+- request:
+    method: post
+    uri: http://jdoe:password@localhost:8080/hawkular/metrics/gauges
+    body:
+      encoding: UTF-8
+      string: '{"id":"<%= id2 %>","dataRetention":90,"tags":{"miq_metric":true}}'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - all_tags_tenant
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '91'
+      Host:
+      - localhost:8080
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Location:
+      - http://localhost:8080/hawkular/metrics/gauges/<%= id2 %>
+      Date:
+      - Wed, 30 Nov 2016 06:47:09 GMT
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 30 Nov 2016 06:47:09 GMT
+- request:
+    method: get
+    uri: http://jdoe:password@localhost:8080/hawkular/metrics/gauges/<%= id2 %>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - all_tags_tenant
+      Content-Type:
+      - application/json
+      Host:
+      - localhost:8080
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Wed, 30 Nov 2016 06:47:09 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '137'
+    body:
+      encoding: UTF-8
+      string: '{"id":"<%= id2 %>","tags":{"miq_metric":"true"},"dataRetention":90,"type":"gauge","tenantId":"all_tags_tenant"}'
+    http_version: 
+  recorded_at: Wed, 30 Nov 2016 06:47:09 GMT
+- request:
+    method: post
+    uri: http://jdoe:password@localhost:8080/hawkular/metrics/gauges
+    body:
+      encoding: UTF-8
+      string: '{"id":"<%= id3 %>","dataRetention":90,"tags":{"miq_metric":true}}'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - all_tags_tenant
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '91'
+      Host:
+      - localhost:8080
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Location:
+      - http://localhost:8080/hawkular/metrics/gauges/<%= id3 %>
+      Date:
+      - Wed, 30 Nov 2016 06:47:09 GMT
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 30 Nov 2016 06:47:09 GMT
+- request:
+    method: get
+    uri: http://jdoe:password@localhost:8080/hawkular/metrics/gauges/<%= id3 %>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - all_tags_tenant
+      Content-Type:
+      - application/json
+      Host:
+      - localhost:8080
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Wed, 30 Nov 2016 06:47:09 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '137'
+    body:
+      encoding: UTF-8
+      string: '{"id":"<%= id3 %>","tags":{"miq_metric":"true"},"dataRetention":90,"type":"gauge","tenantId":"all_tags_tenant"}'
+    http_version: 
+  recorded_at: Wed, 30 Nov 2016 06:47:09 GMT
+- request:
+    method: post
+    uri: http://jdoe:password@localhost:8080/hawkular/metrics/gauges
+    body:
+      encoding: UTF-8
+      string: '{"id":"<%= id4 %>","dataRetention":90,"tags":{"miq_metric":true}}'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - all_tags_tenant
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '91'
+      Host:
+      - localhost:8080
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Location:
+      - http://localhost:8080/hawkular/metrics/gauges/<%= id4 %>
+      Date:
+      - Wed, 30 Nov 2016 06:47:09 GMT
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 30 Nov 2016 06:47:09 GMT
+- request:
+    method: get
+    uri: http://jdoe:password@localhost:8080/hawkular/metrics/gauges/<%= id4 %>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - all_tags_tenant
+      Content-Type:
+      - application/json
+      Host:
+      - localhost:8080
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Wed, 30 Nov 2016 06:47:09 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '137'
+    body:
+      encoding: UTF-8
+      string: '{"id":"<%= id4 %>","tags":{"miq_metric":"true"},"dataRetention":90,"type":"gauge","tenantId":"all_tags_tenant"}'
+    http_version: 
+  recorded_at: Wed, 30 Nov 2016 06:47:09 GMT
+- request:
+    method: post
+    uri: http://jdoe:password@localhost:8080/hawkular/metrics/availability
+    body:
+      encoding: UTF-8
+      string: '{"id":"<%= id1 %>","dataRetention":90,"tags":{"miq_metric":true}}'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - all_tags_tenant
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '91'
+      Host:
+      - localhost:8080
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Location:
+      - http://localhost:8080/hawkular/metrics/availability/<%= id1 %>
+      Date:
+      - Wed, 30 Nov 2016 06:47:09 GMT
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 30 Nov 2016 06:47:09 GMT
+- request:
+    method: get
+    uri: http://jdoe:password@localhost:8080/hawkular/metrics/availability/<%= id1 %>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - all_tags_tenant
+      Content-Type:
+      - application/json
+      Host:
+      - localhost:8080
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Wed, 30 Nov 2016 06:47:09 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '144'
+    body:
+      encoding: UTF-8
+      string: '{"id":"<%= id1 %>","tags":{"miq_metric":"true"},"dataRetention":90,"type":"availability","tenantId":"all_tags_tenant"}'
+    http_version: 
+  recorded_at: Wed, 30 Nov 2016 06:47:09 GMT
+- request:
+    method: post
+    uri: http://jdoe:password@localhost:8080/hawkular/metrics/availability
+    body:
+      encoding: UTF-8
+      string: '{"id":"<%= id2 %>","dataRetention":90,"tags":{"miq_metric":true}}'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - all_tags_tenant
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '91'
+      Host:
+      - localhost:8080
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Location:
+      - http://localhost:8080/hawkular/metrics/availability/<%= id2 %>
+      Date:
+      - Wed, 30 Nov 2016 06:47:09 GMT
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 30 Nov 2016 06:47:09 GMT
+- request:
+    method: get
+    uri: http://jdoe:password@localhost:8080/hawkular/metrics/availability/<%= id2 %>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - all_tags_tenant
+      Content-Type:
+      - application/json
+      Host:
+      - localhost:8080
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Wed, 30 Nov 2016 06:47:09 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '144'
+    body:
+      encoding: UTF-8
+      string: '{"id":"<%= id2 %>","tags":{"miq_metric":"true"},"dataRetention":90,"type":"availability","tenantId":"all_tags_tenant"}'
+    http_version: 
+  recorded_at: Wed, 30 Nov 2016 06:47:09 GMT
+- request:
+    method: post
+    uri: http://jdoe:password@localhost:8080/hawkular/metrics/availability
+    body:
+      encoding: UTF-8
+      string: '{"id":"<%= id3 %>","dataRetention":90,"tags":{"miq_metric":true}}'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - all_tags_tenant
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '91'
+      Host:
+      - localhost:8080
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Location:
+      - http://localhost:8080/hawkular/metrics/availability/<%= id3 %>
+      Date:
+      - Wed, 30 Nov 2016 06:47:09 GMT
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 30 Nov 2016 06:47:09 GMT
+- request:
+    method: get
+    uri: http://jdoe:password@localhost:8080/hawkular/metrics/availability/<%= id3 %>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - all_tags_tenant
+      Content-Type:
+      - application/json
+      Host:
+      - localhost:8080
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Wed, 30 Nov 2016 06:47:09 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '144'
+    body:
+      encoding: UTF-8
+      string: '{"id":"<%= id3 %>","tags":{"miq_metric":"true"},"dataRetention":90,"type":"availability","tenantId":"all_tags_tenant"}'
+    http_version: 
+  recorded_at: Wed, 30 Nov 2016 06:47:09 GMT
+- request:
+    method: post
+    uri: http://jdoe:password@localhost:8080/hawkular/metrics/availability
+    body:
+      encoding: UTF-8
+      string: '{"id":"<%= id4 %>","dataRetention":90,"tags":{"miq_metric":true}}'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - all_tags_tenant
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '91'
+      Host:
+      - localhost:8080
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Location:
+      - http://localhost:8080/hawkular/metrics/availability/<%= id4 %>
+      Date:
+      - Wed, 30 Nov 2016 06:47:09 GMT
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 30 Nov 2016 06:47:09 GMT
+- request:
+    method: get
+    uri: http://jdoe:password@localhost:8080/hawkular/metrics/availability/<%= id4 %>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - all_tags_tenant
+      Content-Type:
+      - application/json
+      Host:
+      - localhost:8080
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Wed, 30 Nov 2016 06:47:09 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '144'
+    body:
+      encoding: UTF-8
+      string: '{"id":"<%= id4 %>","tags":{"miq_metric":"true"},"dataRetention":90,"type":"availability","tenantId":"all_tags_tenant"}'
+    http_version: 
+  recorded_at: Wed, 30 Nov 2016 06:47:09 GMT
+- request:
+    method: post
+    uri: http://jdoe:password@localhost:8080/hawkular/metrics/counters
+    body:
+      encoding: UTF-8
+      string: '{"id":"<%= id1 %>","dataRetention":90,"tags":{"miq_metric":true}}'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - all_tags_tenant
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '91'
+      Host:
+      - localhost:8080
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Location:
+      - http://localhost:8080/hawkular/metrics/counters/<%= id1 %>
+      Date:
+      - Wed, 30 Nov 2016 06:47:09 GMT
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 30 Nov 2016 06:47:09 GMT
+- request:
+    method: get
+    uri: http://jdoe:password@localhost:8080/hawkular/metrics/counters/<%= id1 %>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - all_tags_tenant
+      Content-Type:
+      - application/json
+      Host:
+      - localhost:8080
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Wed, 30 Nov 2016 06:47:09 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '139'
+    body:
+      encoding: UTF-8
+      string: '{"id":"<%= id1 %>","tags":{"miq_metric":"true"},"dataRetention":90,"type":"counter","tenantId":"all_tags_tenant"}'
+    http_version: 
+  recorded_at: Wed, 30 Nov 2016 06:47:09 GMT
+- request:
+    method: post
+    uri: http://jdoe:password@localhost:8080/hawkular/metrics/counters
+    body:
+      encoding: UTF-8
+      string: '{"id":"<%= id2 %>","dataRetention":90,"tags":{"miq_metric":true}}'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - all_tags_tenant
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '91'
+      Host:
+      - localhost:8080
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Location:
+      - http://localhost:8080/hawkular/metrics/counters/<%= id2 %>
+      Date:
+      - Wed, 30 Nov 2016 06:47:09 GMT
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 30 Nov 2016 06:47:09 GMT
+- request:
+    method: get
+    uri: http://jdoe:password@localhost:8080/hawkular/metrics/counters/<%= id2 %>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - all_tags_tenant
+      Content-Type:
+      - application/json
+      Host:
+      - localhost:8080
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Wed, 30 Nov 2016 06:47:09 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '139'
+    body:
+      encoding: UTF-8
+      string: '{"id":"<%= id2 %>","tags":{"miq_metric":"true"},"dataRetention":90,"type":"counter","tenantId":"all_tags_tenant"}'
+    http_version: 
+  recorded_at: Wed, 30 Nov 2016 06:47:09 GMT
+- request:
+    method: post
+    uri: http://jdoe:password@localhost:8080/hawkular/metrics/counters
+    body:
+      encoding: UTF-8
+      string: '{"id":"<%= id3 %>","dataRetention":90,"tags":{"miq_metric":true}}'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - all_tags_tenant
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '91'
+      Host:
+      - localhost:8080
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Location:
+      - http://localhost:8080/hawkular/metrics/counters/<%= id3 %>
+      Date:
+      - Wed, 30 Nov 2016 06:47:09 GMT
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 30 Nov 2016 06:47:09 GMT
+- request:
+    method: get
+    uri: http://jdoe:password@localhost:8080/hawkular/metrics/counters/<%= id3 %>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - all_tags_tenant
+      Content-Type:
+      - application/json
+      Host:
+      - localhost:8080
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Wed, 30 Nov 2016 06:47:09 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '139'
+    body:
+      encoding: UTF-8
+      string: '{"id":"<%= id3 %>","tags":{"miq_metric":"true"},"dataRetention":90,"type":"counter","tenantId":"all_tags_tenant"}'
+    http_version: 
+  recorded_at: Wed, 30 Nov 2016 06:47:09 GMT
+- request:
+    method: post
+    uri: http://jdoe:password@localhost:8080/hawkular/metrics/counters
+    body:
+      encoding: UTF-8
+      string: '{"id":"<%= id4 %>","dataRetention":90,"tags":{"miq_metric":true}}'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - all_tags_tenant
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '91'
+      Host:
+      - localhost:8080
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Location:
+      - http://localhost:8080/hawkular/metrics/counters/<%= id4 %>
+      Date:
+      - Wed, 30 Nov 2016 06:47:09 GMT
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 30 Nov 2016 06:47:09 GMT
+- request:
+    method: get
+    uri: http://jdoe:password@localhost:8080/hawkular/metrics/counters/<%= id4 %>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - all_tags_tenant
+      Content-Type:
+      - application/json
+      Host:
+      - localhost:8080
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Wed, 30 Nov 2016 06:47:09 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '139'
+    body:
+      encoding: UTF-8
+      string: '{"id":"<%= id4 %>","tags":{"miq_metric":"true"},"dataRetention":90,"type":"counter","tenantId":"all_tags_tenant"}'
+    http_version: 
+  recorded_at: Wed, 30 Nov 2016 06:47:09 GMT
+- request:
+    method: post
+    uri: http://jdoe:password@localhost:8080/hawkular/metrics/metrics/raw
+    body:
+      encoding: UTF-8
+      string: '{"gauges":[{"id":"<%= id1 %>","data":[{"value":1.1,"timestamp":1480488429672}]},{"id":"<%= id2 %>","data":[{"value":2.2,"timestamp":1480488429672}]},{"id":"<%= id3 %>","data":[{"value":3.3,"timestamp":1480488429672}]}],"counters":[{"id":"<%= id1 %>","data":[{"value":1,"timestamp":1480488429672}]},{"id":"<%= id2 %>","data":[{"value":2,"timestamp":1480488429672}]},{"id":"<%= id3 %>","data":[{"value":3,"timestamp":1480488429672}]}],"availabilities":[{"id":"<%= id1 %>","data":[{"value":"up","timestamp":1480488429672}]},{"id":"<%= id2 %>","data":[{"value":"down","timestamp":1480488429672}]},{"id":"<%= id3 %>","data":[{"value":"up","timestamp":1480488429672}]},{"id":"<%= id4 %>","data":[{"value":"up","timestamp":10000},{"value":"down","timestamp":100000},{"value":"admin","timestamp":1000000}]}],"strings":[]}'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - all_tags_tenant
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '1073'
+      Host:
+      - localhost:8080
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Content-Length:
+      - '0'
+      Date:
+      - Wed, 30 Nov 2016 06:47:09 GMT
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 30 Nov 2016 06:47:09 GMT
+- request:
+    method: post
+    uri: http://jdoe:password@localhost:8080/hawkular/metrics/metrics/stats/query
+    body:
+      encoding: UTF-8
+      string: '{"tags":"miq_metric:true","buckets":1,"bucketDuration":null,"start":null,"end":null}'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - all_tags_tenant
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '84'
+      Host:
+      - localhost:8080
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Wed, 30 Nov 2016 06:47:10 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '2351'
+    body:
+      encoding: UTF-8
+      string: '{"gauge":{"<%= id3 %>":[{"start":1480459629830,"end":1480488429830,"min":3.3,"avg":3.3,"median":3.3,"max":3.3,"sum":3.3,"samples":1,"empty":false}],"<%= id4 %>":[{"start":1480459629830,"end":1480488429830,"empty":true}],"<%= id1 %>":[{"start":1480459629830,"end":1480488429830,"min":1.1,"avg":1.1,"median":1.1,"max":1.1,"sum":1.1,"samples":1,"empty":false}],"<%= id2 %>":[{"start":1480459629830,"end":1480488429830,"min":2.2,"avg":2.2,"median":2.2,"max":2.2,"sum":2.2,"samples":1,"empty":false}]},"counter":{"<%= id3 %>":[{"start":1480459629830,"end":1480488429830,"min":3.0,"avg":3.0,"median":3.0,"max":3.0,"sum":3.0,"samples":1,"empty":false}],"<%= id4 %>":[{"start":1480459629830,"end":1480488429830,"empty":true}],"<%= id1 %>":[{"start":1480459629830,"end":1480488429830,"min":1.0,"avg":1.0,"median":1.0,"max":1.0,"sum":1.0,"samples":1,"empty":false}],"<%= id2 %>":[{"start":1480459629830,"end":1480488429830,"min":2.0,"avg":2.0,"median":2.0,"max":2.0,"sum":2.0,"samples":1,"empty":false}]},"availability":{"<%= id3 %>":[{"start":1480459629830,"end":1480488429830,"durationMap":{"up":28800000},"lastNotUptime":0,"uptimeRatio":1.0,"notUpCount":0,"downtimeDuration":0,"lastDowntime":0,"downtimeCount":0,"adminDuration":0,"downDuration":0,"unknownDuration":0,"upDuration":28800000,"notUpDuration":0,"empty":false}],"<%= id4 %>":[{"start":1480459629830,"end":1480488429830,"empty":true}],"<%= id1 %>":[{"start":1480459629830,"end":1480488429830,"durationMap":{"up":28800000},"lastNotUptime":0,"uptimeRatio":1.0,"notUpCount":0,"downtimeDuration":0,"lastDowntime":0,"downtimeCount":0,"adminDuration":0,"downDuration":0,"unknownDuration":0,"upDuration":28800000,"notUpDuration":0,"empty":false}],"<%= id2 %>":[{"start":1480459629830,"end":1480488429830,"durationMap":{"down":28800000},"lastNotUptime":1480488429830,"uptimeRatio":0.0,"notUpCount":1,"downtimeDuration":28800000,"lastDowntime":1480488429830,"downtimeCount":1,"adminDuration":0,"downDuration":28800000,"unknownDuration":0,"upDuration":0,"notUpDuration":28800000,"empty":false}]}}'
+    http_version: 
+  recorded_at: Wed, 30 Nov 2016 06:47:10 GMT
+recorded_with: VCR 3.0.3
