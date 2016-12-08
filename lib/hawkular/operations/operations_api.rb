@@ -135,6 +135,7 @@ module Hawkular::Operations
     #
     # @param [Hash] hash Arguments for deployment
     # @option hash [String]  :resource_path canonical path of the WildFly server into which we deploy
+    #                        or of the domain controller if we deploy into a server group (in case of domain mode)
     # @option hash [String]  :destination_file_name resulting file name
     # @option hash [String]  :binary_content binary content representing the war file
     # @option hash [String]  :enabled whether the deployment should be enabled immediately, or not (default = true)
