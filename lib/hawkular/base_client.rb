@@ -24,15 +24,11 @@ module Hawkular
         token: nil
       }.merge(credentials)
       @options = {
-        tenant: nil,
-        admin_token: nil,
-        ssl_ca_file: nil,
         verify_ssl: OpenSSL::SSL::VERIFY_PEER,
-        ssl_client_cert: nil,
-        ssl_client_key: nil,
-        http_proxy_uri: nil,
         headers: {}
       }.merge(options)
+      @tenant = @options.delete(:tenant)
+      @admin_token = @options.delete(:admin_token)
 
       fail 'You need to provide an entrypoint' if entrypoint.nil?
     end
@@ -73,17 +69,14 @@ module Hawkular
 
     # @!visibility private
     def rest_client(suburl)
-      options[:timeout] = ENV['HAWKULARCLIENT_REST_TIMEOUT'] if ENV['HAWKULARCLIENT_REST_TIMEOUT']
-      options[:ssl_ca_file] = @options[:ssl_ca_file]
-      options[:verify_ssl] = @options[:verify_ssl]
-      options[:ssl_client_cert] = @options[:ssl_client_cert]
-      options[:ssl_client_key] = @options[:ssl_client_key]
-      options[:proxy] = @options[:http_proxy_uri]
-      options[:user] = @credentials[:username]
-      options[:password] = @credentials[:password]
+      opts = @options.dup
+      opts[:timeout] ||= ENV['HAWKULARCLIENT_REST_TIMEOUT'] if ENV['HAWKULARCLIENT_REST_TIMEOUT']
+      opts[:proxy] ||= opts.delete(:http_proxy_uri)
+      opts[:user] = @credentials[:username]
+      opts[:password] = @credentials[:password]
       # strip @endpoint in case suburl is absolute
       suburl = suburl[@entrypoint.length, suburl.length] if suburl.match(/^http/)
-      RestClient::Resource.new(@entrypoint, options)[suburl]
+      RestClient::Resource.new(@entrypoint, opts)[suburl]
     end
 
     # @!visibility private
@@ -177,7 +170,7 @@ module Hawkular
 
     def admin_header
       headers = {}
-      headers[:'Hawkular-Admin-Token'] = @options[:admin_token] unless @options[:admin_token].nil?
+      headers[:'Hawkular-Admin-Token'] = @admin_token unless @admin_token.nil?
       headers
     end
 
@@ -189,7 +182,7 @@ module Hawkular
 
     def tenant_header
       headers = {}
-      headers[:'Hawkular-Tenant'] = @options[:tenant] unless @options[:tenant].nil?
+      headers[:'Hawkular-Tenant'] = @tenant unless @tenant.nil?
       headers
     end
 

@@ -77,13 +77,35 @@ describe 'Base Spec' do
     expect(ret).to eq('a1%252%203%7c45%2f')
   end
 
-  it 'should pass http_proxy_uri to rest_client' do
+  it 'should pass through options to rest_client' do
+    proxy_uri = 'http://myproxy.com'
+    c = Hawkular::BaseClient.new('not-needed-for-this-test', {},
+                                 { proxy: proxy_uri, timeout: 10 })
+    rc = c.rest_client('myurl')
+
+    expect(rc.options).to include(proxy: proxy_uri, timeout: 10)
+  end
+
+  # backward compatibility
+  it 'should pass :http_proxy_uri to rest_client :proxy' do
     proxy_uri = 'http://myproxy.com'
     c = Hawkular::BaseClient.new('not-needed-for-this-test', {},
                                  { http_proxy_uri: proxy_uri })
     rc = c.rest_client('myurl')
 
     expect(rc.options[:proxy]).to eq(proxy_uri)
+    expect(rc.options).to include(proxy: proxy_uri)
+    expect(rc.options).not_to have_key(:http_proxy_uri)
+  end
+
+  it 'should merge constructor, hawkular, and call headers' do
+    c = Hawkular::BaseClient.new('not-needed-for-this-test', {},
+                                 { tenant: 'Me', headers: { 'X-Foo' => 'bar' } })
+    headers = c.http_headers('Referer' => 'them.example.com')
+
+    expect(headers).to include('Hawkular-Tenant': 'Me',
+                               'Referer' => 'them.example.com',
+                               'X-Foo' => 'bar')
   end
 
   it 'Should normalize different types of url and suffix combinations with or without slash' do

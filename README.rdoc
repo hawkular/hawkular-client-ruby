@@ -61,6 +61,18 @@ You can also access each subproject's API individually, if you would like to use
     options: { tenant: 'hawkular' }
   )
 
+=== HTTP and HTTPS options
+
+Will all client classes, the +:options+ hash can contain extra parameters passed through to +RestClient+ gem.  It can include a +:headers+ sub-hash to add custom headers:
+
+  require 'hawkular/hawkular_client'
+  client = Hawkular::Client.new(
+    entrypoint: 'http://localhost:8080',
+    credentials: { username: 'jdoe', password: 'password' },
+    options: { tenant: 'hawkular', proxy: 'proxy.example.com', ssl_ca_file: 'ca.pem',
+               headers: {'Max-Forwards': 5} }
+  )
+
 === Examples
 
 Suppose you will monitor the availability of two networks to later determine which one is the best.
@@ -147,4 +159,3 @@ variables:
 Client documentation can be generated using http://yardoc.org
 
     yardoc
-
