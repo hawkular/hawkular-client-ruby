@@ -357,6 +357,13 @@ module Hawkular::Inventory
       rescue HawkularException => error
         # 409 We already exist -> that is ok
         raise unless error.status_code == 409
+        # Ensure we have a consistent behaviour if resource already exists Issue#180
+        if parent_res_path.nil?
+          hash = type_path.to_h
+          hash.delete(:metric_type_id)
+          path = CanonicalPath.new(hash)
+        end
+        res = get_resource(path.to_resource(resource_id)).to_h
       end
       Resource.new(res)
     end

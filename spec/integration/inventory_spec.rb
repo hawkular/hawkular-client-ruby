@@ -522,6 +522,22 @@ module Hawkular::Inventory::RSpec
           expect(r2.properties).not_to be_empty
         end
 
+        it 'Should have a consistent behaviour when creating an already existing resource' do
+          new_feed_id = "#{security_context}_feed_may_exist"
+          @client.create_feed new_feed_id
+          ret = @client.create_resource_type new_feed_id, 'rt-123', 'ResourceType'
+          type_path = ret.path
+
+          r1 = @client.create_resource type_path, 'r999', 'My Resource', 'version' => 1.0
+          r2 = @client.create_resource type_path, 'r999', 'My Resource', 'version' => 1.0
+
+          r3 = @client.create_resource_under_resource type_path, r1.path, 'r1000', 'My Resource', 'version' => 1.0
+          r4 = @client.create_resource_under_resource type_path, r1.path, 'r1000', 'My Resource', 'version' => 1.0
+
+          expect(r1).to eq(r2)
+          expect(r3).to eq(r4)
+        end
+
         it 'Should return data from get_entity' do
           new_feed_id = 'feed_may_exist'
           @client.create_feed new_feed_id

@@ -193,6 +193,15 @@ module Hawkular::Inventory
       CanonicalPath.new(hash)
     end
 
+    # Adds a resource to the path.
+    # @return CanonicalPath referring to resource_id using current as its ancestor.
+    def to_resource(resource_id)
+      hash = to_h
+      hash[:resource_ids] = [] if hash[:resource_ids].nil?
+      hash[:resource_ids].push resource_id
+      CanonicalPath.new(hash)
+    end
+
     def ==(other)
       self.equal?(other) || other.class == self.class && other.state == state
     end
