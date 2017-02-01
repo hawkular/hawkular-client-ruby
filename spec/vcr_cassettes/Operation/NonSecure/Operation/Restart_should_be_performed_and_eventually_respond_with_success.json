@@ -3,21 +3,21 @@
     {
       "operation": "read",
       "type": "text",
-      "data": "WelcomeResponse={\"sessionId\":\"7gt_ULq42AEj8Sae8JL7emm6McpZek0o0FSjvnk7\"}"
+      "data": "WelcomeResponse={\"sessionId\":\"m_E2HZzEWyWyR6Y0zHGUKpMDouJziaKPWRlLOVm4\"}"
     },
     {
       "operation": "write",
-      "data": "RestartApplicationRequest={\"resourcePath\":\"/t;<%= tenant_id %>/f;<%= feed_id %>/r;Local~~\",\"destinationFileName\":\"<%= tenant_id %>-alerts-actions-email.war\",\"authentication\":{\"username\":\"jdoe\",\"password\":\"password\"}}"
+      "data": "RestartApplicationRequest={\"resourcePath\":\"/t;<%= tenant_id %>/f;<%= feed_id %>/r;Local~~\",\"destinationFileName\":\"<%= tenant_id %>-status.war\",\"authentication\":{\"username\":\"jdoe\",\"password\":\"password\"}}"
     },
     {
       "operation": "read",
       "type": "text",
-      "data": "GenericSuccessResponse={\"message\":\"The request has been forwarded to feed [<%= feed_id %>] (MessageId=ID:2129551e-6637-11e6-a149-05583a5efefa)\"}"
+      "data": "GenericSuccessResponse={\"message\":\"The request has been forwarded to feed [<%= feed_id %>] (MessageId=ID:81a0a8c0-e8d0-11e6-a6d2-4b35aefc3b69)\"}"
     },
     {
       "operation": "read",
       "type": "text",
-      "data": "RestartApplicationResponse={\"destinationFileName\":\"<%= tenant_id %>-alerts-actions-email.war\",\"resourcePath\":\"/t;<%= tenant_id %>/f;<%= feed_id %>/r;Local~~\",\"destinationSessionId\":\"7gt_ULq42AEj8Sae8JL7emm6McpZek0o0FSjvnk7\",\"status\":\"OK\",\"message\":\"Performed [Restart Deployment] on a [Application] given by Inventory path [/t;<%= tenant_id %>/f;<%= feed_id %>/r;Local~~]\"}"
+      "data": "RestartApplicationResponse={\"destinationFileName\":\"<%= tenant_id %>-status.war\",\"resourcePath\":\"/t;<%= tenant_id %>/f;<%= feed_id %>/r;Local~~\",\"destinationSessionId\":\"m_E2HZzEWyWyR6Y0zHGUKpMDouJziaKPWRlLOVm4\",\"status\":\"OK\",\"message\":\"Performed [Restart Deployment] on a [Application] given by Inventory path [/t;<%= tenant_id %>/f;<%= feed_id %>/r;Local~~]\"}"
     }
   ]
 ]
