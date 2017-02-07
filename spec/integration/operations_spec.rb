@@ -11,6 +11,7 @@ SKIP_SECURE_CONTEXT = ENV['SKIP_SECURE_CONTEXT'] || '1'
 module Hawkular::Operations::RSpec
   NON_SECURE_CONTEXT = :NonSecure
   SECURE_CONTEXT = :Secure
+
   [NON_SECURE_CONTEXT, SECURE_CONTEXT].each do |security_context|
     next if security_context == SECURE_CONTEXT && SKIP_SECURE_CONTEXT == '1'
     if security_context == NON_SECURE_CONTEXT && ENV['SKIP_NON_SECURE_CONTEXT'] == '1'

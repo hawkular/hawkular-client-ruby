@@ -1,13 +1,13 @@
 require 'base64'
 require 'addressable/uri'
-require 'hawkular/hawkular_client_utils'
+require 'hawkular/client_utils'
 
 module Hawkular
   # This is the base functionality for all the clients,
   # that inherit from it. You should not directly use it,
   # but through the more specialized clients.
   class BaseClient
-    include HawkularUtilsMixin
+    include ClientUtils
 
     # @!visibility private
     attr_reader :credentials, :entrypoint, :options

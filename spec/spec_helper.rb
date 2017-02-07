@@ -4,7 +4,7 @@ Coveralls.wear!
 
 # Now the application requires.
 require 'hawkular/hawkular_client'
-require 'hawkular/hawkular_client_utils'
+require 'hawkular/client_utils'
 require 'rspec/core'
 require 'rspec/mocks'
 require 'socket'
@@ -306,7 +306,7 @@ RSpec.configure do |config|
   config.include Hawkular::Inventory::RSpec
   config.include Hawkular::Metrics::RSpec
   config.include Hawkular::Operations::RSpec
-  config.include HawkularUtilsMixin
+  config.include Hawkular::ClientUtils
   config.include Hawkular::Inventory
 
   # skip the tests that have the :skip metadata on them
