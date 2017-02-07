@@ -2,10 +2,10 @@ require 'logger'
 
 module Hawkular
   module EnvConfig
-    extend self
+    module_function
 
     def log_response?
-      !!ENV['HAWKULARCLIENT_LOG_RESPONSE']
+      ENV['HAWKULARCLIENT_LOG_RESPONSE']
     end
 
     def rest_timeout

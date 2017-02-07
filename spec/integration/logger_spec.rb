@@ -1,4 +1,4 @@
-require "#{File.dirname(__FILE__)}/../spec_helper"
+require_relative '../spec_helper'
 require 'hawkular/logger'
 
 describe Hawkular::Logger do
@@ -9,16 +9,16 @@ describe Hawkular::Logger do
     before { allow(Hawkular::EnvConfig).to receive(:log_response?) { true } }
 
     it 'logs the message to a file' do
-      logger.log("this is a message")
+      logger.log('this is a message')
       file.flush
 
-      expect(File.read(file)).to include "this is a message"
+      expect(File.read(file)).to include 'this is a message'
     end
 
     it 'does not log anything if the config does not allow it' do
       allow(Hawkular::EnvConfig).to receive(:log_response?) { false }
 
-      logger.log("this is a message")
+      logger.log('this is a message')
       file.flush
 
       expect(File.read(file)).to be_empty
@@ -26,7 +26,7 @@ describe Hawkular::Logger do
 
     %w(debug info warn error fatal).each do |priority|
       it "allows to log with #{priority} priority" do
-        logger.log("this is a message", priority)
+        logger.log('this is a message', priority)
         file.flush
 
         expect(File.read(file)).to include priority.upcase

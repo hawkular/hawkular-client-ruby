@@ -8,9 +8,7 @@ module Hawkular
     end
 
     def log(message, priority = :info)
-      return unless EnvConfig.log_response?
-
-      @logger.send(priority, message)
+      @logger.send(priority, message) if EnvConfig.log_response?
     end
   end
 end

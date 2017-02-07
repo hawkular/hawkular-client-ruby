@@ -181,7 +181,7 @@ end
 module Helpers
   def config
     @config ||= YAML.load(
-      File.read(File.expand_path('endpoint.yml', File.dirname(__FILE__)))
+      File.read(File.expand_path('endpoint.yml', __dir__))
     )
   end
 

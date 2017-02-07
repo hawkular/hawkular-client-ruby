@@ -1,4 +1,5 @@
-require "#{File.dirname(__FILE__)}/../spec_helper"
+require_relative '../spec_helper'
+
 require 'hawkular/env_config'
 
 describe Hawkular::EnvConfig do
@@ -6,13 +7,13 @@ describe Hawkular::EnvConfig do
   describe '.log_response?' do
     it 'is true if defined' do
       swap_env('HAWKULARCLIENT_LOG_RESPONSE', 'true') do
-        expect(config.log_response?).to be true
+        expect(config.log_response?).to be_truthy
       end
     end
 
     it 'is false if null' do
       swap_env('HAWKULARCLIENT_LOG_RESPONSE', nil) do
-        expect(config.log_response?).to be false
+        expect(config.log_response?).to be_falsey
       end
     end
   end
