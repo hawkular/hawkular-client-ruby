@@ -190,14 +190,14 @@ module Hawkular::Operations::RSpec
 
         it 'Restart should be performed and eventually respond with success' do
           wf_server_resource_id = 'Local~~'
-          alerts_war_resource_id = 'Local~%2Fdeployment%3Dhawkular-alerts-actions-email.war'
+          status_war_resource_id = 'Local~%2Fdeployment%3Dhawkular-status.war'
           path = CanonicalPath.new(tenant_id: @tenant_id,
                                    feed_id: @feed_id,
-                                   resource_ids: [wf_server_resource_id, alerts_war_resource_id])
+                                   resource_ids: [wf_server_resource_id, status_war_resource_id])
 
           restart = {
             resource_path: path.to_s,
-            deployment_name: 'hawkular-alerts-actions-email.war'
+            deployment_name: 'hawkular-status.war'
           }
 
           actual_data = {}
@@ -244,14 +244,14 @@ module Hawkular::Operations::RSpec
 
         it 'Disable should be performed and eventually respond with success' do
           wf_server_resource_id = 'Local~~'
-          alerts_war_resource_id = 'Local~%2Fdeployment%3Dhawkular-alerts-actions-email.war'
+          status_war_resource_id = 'Local~%2Fdeployment%3Dhawkular-status.war'
           path = CanonicalPath.new(tenant_id: @tenant_id,
                                    feed_id: @feed_id,
-                                   resource_ids: [wf_server_resource_id, alerts_war_resource_id])
+                                   resource_ids: [wf_server_resource_id, status_war_resource_id])
 
           disable = {
             resource_path: path.to_s,
-            deployment_name: 'hawkular-alerts-actions-email.war'
+            deployment_name: 'hawkular-status.war'
           }
           actual_data = {}
           client.disable_deployment(disable) do |on|
@@ -371,18 +371,18 @@ module Hawkular::Operations::RSpec
 
         it 'Restart can be run multiple times in parallel' do
           wf_server_resource_id = 'Local~~'
-          alerts_war_resource_id = 'Local~%2Fdeployment%3Dhawkular-alerts-actions-email.war'
+          status_war_resource_id = 'Local~%2Fdeployment%3Dhawkular-status.war'
           console_war_resource_id = 'Local~%2Fdeployment%3Dhawkular-wildfly-agent-download.war'
           path1 = CanonicalPath.new(tenant_id: @tenant_id,
                                     feed_id: @feed_id,
-                                    resource_ids: [wf_server_resource_id, alerts_war_resource_id])
+                                    resource_ids: [wf_server_resource_id, status_war_resource_id])
           path2 = CanonicalPath.new(tenant_id: @tenant_id,
                                     feed_id: @feed_id,
                                     resource_ids: [wf_server_resource_id, console_war_resource_id])
 
           restart1 = {
             resource_path: path1.to_s,
-            deployment_name: 'hawkular-alerts-actions-email.war'
+            deployment_name: 'hawkular-status.war'
           }
 
           restart2 = {

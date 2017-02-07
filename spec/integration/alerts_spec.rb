@@ -192,7 +192,7 @@ module Hawkular::Alerts::RSpec
 
       ret = @client.get_action_definition 'email'
       expect(ret.size).to be(1)
-      expect(ret['email'].size).to be(7)
+      expect(ret['email'].size).to be(8)
 
       expect { @client.get_action_definition '-does-not-exist-' }
         .to raise_error(Hawkular::BaseClient::HawkularException)
