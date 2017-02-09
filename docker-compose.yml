@@ -6,6 +6,8 @@ hawkular:
     - "9990:9990"
   links:
     - myCassandra
+  volumes:
+    - /tmp/opt/hawkular/server:/opt/data
   environment:
     - CASSANDRA_NODES=myCassandra
     - ADMIN_TOKEN
