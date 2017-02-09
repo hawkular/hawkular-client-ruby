@@ -15,4 +15,7 @@ while [ "$CASSANDRA_STATUS" != "running" ] && [ $TOTAL_WAIT -lt 60 ]; do
  echo "Waited $TOTAL_WAIT seconds for Cassandra to start."
 done
 
+# Ensure the volume exists and has correct permissions.
+mkdir -p /tmp/opt/hawkular/server
+chown 1000:1000 -R /tmp/opt/hawkular
 docker-compose up -d hawkular
