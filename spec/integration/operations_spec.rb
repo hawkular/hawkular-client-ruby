@@ -6,6 +6,8 @@ include Hawkular::Inventory
 include Hawkular::Operations
 
 SKIP_SECURE_CONTEXT = ENV['SKIP_SECURE_CONTEXT'] || '1'
+# We should query the server to know if it's running inside a container or not
+RUNNING_IN_CONTAINER = (ENV['RUNNING_IN_CONTAINER'] || '0') != '0'
 
 # examples for operations, it uses the websocket communication
 module Hawkular::Operations::RSpec
@@ -158,7 +160,7 @@ module Hawkular::Operations::RSpec
                            example)
         end
 
-        it 'Add JDBC driver should add the driver' do
+        it 'Add JDBC driver should add the driver' do # Unless it runs in a container
           wf_server_resource_id = 'Local~~'
           driver_name = 'CreatedByRubyDriver' + @not_so_random_uuid
           driver_bits = IO.binread("#{File.dirname(__FILE__)}/../resources/driver.jar")
@@ -178,14 +180,15 @@ module Hawkular::Operations::RSpec
               actual_data[:data] = data
             end
             on.failure do |error|
-              actual_data[:data] = {}
-              puts 'error callback was called, reason: ' + error.to_s
+              actual_data[:data] = :error
+              puts 'error callback was called, reason: ' + error.to_s unless RUNNING_IN_CONTAINER
             end
           end
           actual_data = wait_for actual_data
-          expect(actual_data['status']).to eq('OK')
-          expect(actual_data['message']).to start_with('Added JDBC Driver')
-          expect(actual_data['driverName']).to eq(driver_name)
+          expect(actual_data['status']).to eq('OK') unless RUNNING_IN_CONTAINER
+          expect(actual_data['message']).to start_with('Added JDBC Driver') unless RUNNING_IN_CONTAINER
+          expect(actual_data['driverName']).to eq(driver_name) unless RUNNING_IN_CONTAINER
+          expect(actual_data).to eq(:error) if RUNNING_IN_CONTAINER
         end
 
         it 'Restart should be performed and eventually respond with success' do
@@ -491,6 +494,7 @@ module Hawkular::Operations::RSpec
         end
 
         it 'Remove JDBC driver should be performed and eventually respond with success' do
+          # Unless it runs in a container
           wf_server_resource_id = 'Local~~'
           driver_resource_id = 'Local~%2Fsubsystem%3Ddatasources%2Fjdbc-driver%3DCreatedByRubyDriver'
           driver_resource_id << @not_so_random_uuid
@@ -504,14 +508,16 @@ module Hawkular::Operations::RSpec
               actual_data[:data] = data
             end
             on.failure do |error|
-              actual_data[:data] = {}
-              puts 'error callback was called, reason: ' + error.to_s
+              actual_data[:data] = :error
+              puts 'error callback was called, reason: ' + error.to_s unless RUNNING_IN_CONTAINER
             end
           end
           actual_data = wait_for actual_data
-          expect(actual_data['status']).to eq('OK')
-          expect(actual_data['resourcePath']).to eq(path)
-          expect(actual_data['message']).to start_with('Performed [Remove] on a [JDBC Driver]')
+          expect(actual_data['status']).to eq('OK') unless RUNNING_IN_CONTAINER
+          expect(actual_data['resourcePath']).to eq(path) unless RUNNING_IN_CONTAINER
+          expect(actual_data['message']).to start_with(
+            'Performed [Remove] on a [JDBC Driver]') unless RUNNING_IN_CONTAINER
+          expect(actual_data).to eq(:error) if RUNNING_IN_CONTAINER
         end
 
         xit 'Export JDR should retrieve the zip file with the report' do
