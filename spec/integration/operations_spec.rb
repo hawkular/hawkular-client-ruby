@@ -6,8 +6,6 @@ include Hawkular::Inventory
 include Hawkular::Operations
 
 SKIP_SECURE_CONTEXT = ENV['SKIP_SECURE_CONTEXT'] || '1'
-# We should query the server to know if it's running inside a container or not
-RUNNING_IN_CONTAINER = (ENV['RUNNING_IN_CONTAINER'] || '0') != '0'
 
 # examples for operations, it uses the websocket communication
 module Hawkular::Operations::RSpec
@@ -152,6 +150,15 @@ module Hawkular::Operations::RSpec
             record("Operation/#{security_context}/Helpers", { tenant_id: @tenant_id }, 'get_feed') do
               @feed_id = inventory_client.list_feeds[0]
             end
+            record("Operation/#{security_context}/Helpers", { tenant_id: @tenant_id, feed_id: @feed_id },
+                   'agent_properties') do
+              @wf_server_resource_id = 'Local~~'
+              wf_path = CanonicalPath.new(tenant_id: @tenant_id,
+                                          feed_id: @feed_id,
+                                          resource_ids: [@wf_server_resource_id])
+              wf_agent_path = path_for_installed_agent(wf_path)
+              @agent_in_container = in_container(inventory_client, wf_agent_path)
+            end
           end
           @bindings = { random_uuid: @random_uuid, tenant_id: @tenant_id, feed_id: @feed_id }
           record_websocket("Operation/#{security_context}/Operation",
@@ -161,12 +168,11 @@ module Hawkular::Operations::RSpec
         end
 
         it 'Add JDBC driver should add the driver' do # Unless it runs in a container
-          wf_server_resource_id = 'Local~~'
           driver_name = 'CreatedByRubyDriver' + @not_so_random_uuid
           driver_bits = IO.binread("#{File.dirname(__FILE__)}/../resources/driver.jar")
           wf_path = CanonicalPath.new(tenant_id: @tenant_id,
                                       feed_id: @feed_id,
-                                      resource_ids: [wf_server_resource_id]).to_s
+                                      resource_ids: [@wf_server_resource_id]).to_s
 
           actual_data = {}
 
@@ -181,14 +187,14 @@ module Hawkular::Operations::RSpec
             end
             on.failure do |error|
               actual_data[:data] = :error
-              puts 'error callback was called, reason: ' + error.to_s unless RUNNING_IN_CONTAINER
+              puts 'error callback was called, reason: ' + error.to_s unless @agent_in_container
             end
           end
           actual_data = wait_for actual_data
-          expect(actual_data['status']).to eq('OK') unless RUNNING_IN_CONTAINER
-          expect(actual_data['message']).to start_with('Added JDBC Driver') unless RUNNING_IN_CONTAINER
-          expect(actual_data['driverName']).to eq(driver_name) unless RUNNING_IN_CONTAINER
-          expect(actual_data).to eq(:error) if RUNNING_IN_CONTAINER
+          expect(actual_data['status']).to eq('OK') unless @agent_in_container
+          expect(actual_data['message']).to start_with('Added JDBC Driver') unless @agent_in_container
+          expect(actual_data['driverName']).to eq(driver_name) unless @agent_in_container
+          expect(actual_data).to eq(:error) if @agent_in_container
         end
 
         it 'Restart should be performed and eventually respond with success' do
@@ -495,12 +501,11 @@ module Hawkular::Operations::RSpec
 
         it 'Remove JDBC driver should be performed and eventually respond with success' do
           # Unless it runs in a container
-          wf_server_resource_id = 'Local~~'
           driver_resource_id = 'Local~%2Fsubsystem%3Ddatasources%2Fjdbc-driver%3DCreatedByRubyDriver'
           driver_resource_id << @not_so_random_uuid
           path = CanonicalPath.new(tenant_id: @tenant_id,
                                    feed_id: @feed_id,
-                                   resource_ids: [wf_server_resource_id, driver_resource_id]).to_s
+                                   resource_ids: [@wf_server_resource_id, driver_resource_id]).to_s
 
           actual_data = {}
           client.invoke_specific_operation({ resourcePath: path }, 'RemoveJdbcDriver') do |on|
@@ -509,15 +514,15 @@ module Hawkular::Operations::RSpec
             end
             on.failure do |error|
               actual_data[:data] = :error
-              puts 'error callback was called, reason: ' + error.to_s unless RUNNING_IN_CONTAINER
+              puts 'error callback was called, reason: ' + error.to_s unless @agent_in_container
             end
           end
           actual_data = wait_for actual_data
-          expect(actual_data['status']).to eq('OK') unless RUNNING_IN_CONTAINER
-          expect(actual_data['resourcePath']).to eq(path) unless RUNNING_IN_CONTAINER
+          expect(actual_data['status']).to eq('OK') unless @agent_in_container
+          expect(actual_data['resourcePath']).to eq(path) unless @agent_in_container
           expect(actual_data['message']).to start_with(
-            'Performed [Remove] on a [JDBC Driver]') unless RUNNING_IN_CONTAINER
-          expect(actual_data).to eq(:error) if RUNNING_IN_CONTAINER
+            'Performed [Remove] on a [JDBC Driver]') unless @agent_in_container
+          expect(actual_data).to eq(:error) if @agent_in_container
         end
 
         xit 'Export JDR should retrieve the zip file with the report' do
