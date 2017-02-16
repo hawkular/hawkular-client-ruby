@@ -35,7 +35,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Fri, 19 Aug 2016 18:03:10 GMT
+      - Tue, 14 Feb 2017 17:44:47 GMT
       X-Total-Count:
       - '1'
       Connection:
@@ -43,19 +43,19 @@ http_interactions:
       Content-Type:
       - application/json
       Content-Length:
-      - '300'
+      - '299'
       Link:
       - <http://localhost:8080/<%= tenant_id %>/inventory/traversal/type=f>; rel="current"
     body:
       encoding: UTF-8
       string: |-
         [ {
-          "path" : "/t;<%= tenant_id %>/f;e2daaa52-a9c1-4578-8a60-c6699de99871",
-          "identityHash" : "4751bcb625ddefdb35cf4e6b545f21392b833446",
+          "path" : "/t;<%= tenant_id %>/f;2f0eca4b-2083-4ccd-b718-5f94398dc3a5",
+          "identityHash" : "76be1d325e539297d582bb0834eabf14d3ea3fa",
           "contentHash" : "da39a3ee5e6b4bd3255bfef95601890afd879",
-          "syncHash" : "6da17a73f27304ebc7c96fe21eadfe5a52e82e6",
-          "id" : "e2daaa52-a9c1-4578-8a60-c6699de99871"
+          "syncHash" : "b6a67c8663bc55e53c48cb8d92fa1ae650af62a",
+          "id" : "2f0eca4b-2083-4ccd-b718-5f94398dc3a5"
         } ]
     http_version: 
-  recorded_at: Fri, 19 Aug 2016 18:03:10 GMT
+  recorded_at: Tue, 14 Feb 2017 17:44:47 GMT
 recorded_with: VCR 3.0.3

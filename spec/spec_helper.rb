@@ -196,6 +196,21 @@ module Helpers
     "#{base['host']}:#{base['port']}"
   end
 
+  def path_for_installed_agent(wf_server_path)
+    wf_server_path.to_resource('Local~%2Fsubsystem%3Dhawkular-wildfly-agent')
+  end
+
+  def in_container(inventory, resource_path)
+    properties = inventory.get_resource(resource_path, true).properties
+    properties.key?('In Container') ? (properties['In Container'] == 'true') : false
+  end
+
+  def immutable(inventory, resource_path)
+    inventory.get_resource(resource_path, true).properties
+    properties['Immutable'] == 'true' if properties.key? 'Immutable'
+    false
+  end
+
   def make_template(base_directory, cassette_name, bindings)
     cassette = cassette_name.gsub(/\s+/, '_')
     input_file_path = "#{VCR.configuration.cassette_library_dir}/#{base_directory}/tmp/#{cassette}.yml"
