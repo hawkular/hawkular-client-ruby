@@ -308,6 +308,22 @@ module Hawkular::Operations
       invoke_specific_operation({ resourcePath: resource_path }, 'ExportJdr', &callback)
     end
 
+    # Updates the collection intervals.
+    #
+    # @param [Hash] hash Arguments for update collection intervals
+    # @option hash {resourcePath} a resource managed by the target agent
+    # @option hash {metricTypes} A map with key=MetricTypeId, value=interval (seconds).
+    # MetricTypeId must be of form MetricTypeSet~MetricTypeName
+    # @option hash {availTypes} A map with key=AvailTypeId, value=interval (seconds).
+    # AvailTypeId must be of form AvailTypeSet~AvailTypeName
+    #
+    # @param callback [Block] callback that is run after the operation is done
+    def update_collection_intervals(hash, &callback)
+      required = [:resourcePath, :metricTypes, :availTypes]
+      check_pre_conditions hash, required, &callback
+      invoke_specific_operation(hash, 'UpdateCollectionIntervals', &callback)
+    end
+
     private
 
     def invoke_operation_helper(operation_payload, operation_name = nil, binary_content = nil, &callback)

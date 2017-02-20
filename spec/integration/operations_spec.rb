@@ -555,6 +555,34 @@ module Hawkular::Operations::RSpec
           expect(actual_data['message']).to start_with('Performed [Export JDR] on')
           expect(actual_data['fileName']).to start_with('jdr_')
         end
+
+        it 'Update collection intervals should be performed and eventually respond with success' do
+          wf_server_resource_id = 'Local~~'
+          wf_agent_id = 'Local~%2Fsubsystem%3Dhawkular-wildfly-agent'
+          path = CanonicalPath.new(tenant_id: @tenant_id,
+                                   feed_id: @feed_id,
+                                   resource_ids: [wf_server_resource_id, wf_agent_id])
+
+          hash = {
+            resourcePath: path.to_s,
+            metricTypes: { 'WildFly Memory Metrics~Heap Max' => 77, 'Unknown~Metric' => 666 },
+            availTypes: { 'Server Availability~Server Availability' => 77, 'Unknown~Avail' => 666 }
+          }
+
+          actual_data = {}
+          client.update_collection_intervals(hash) do |on|
+            on.success do |data|
+              actual_data[:data] = data
+            end
+            on.failure do |error|
+              actual_data[:data] = {}
+              puts 'error callback was called, reason: ' + error.to_s
+            end
+          end
+          actual_data = wait_for actual_data
+          expect(actual_data['status']).to eq('OK')
+          expect(actual_data['message']).to start_with('Performed [Update Collection Intervals] on')
+        end
       end
     end
   end
