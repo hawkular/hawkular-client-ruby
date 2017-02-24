@@ -16,6 +16,8 @@ module Hawkular::Client::RSpec
         mock_inventory_client '0.17.2.Final'
         mock_metrics_version
         @hawkular_client = Hawkular::Client.new(entrypoint: HOST, credentials: @creds, options: { tenant: 'hawkular' })
+        @hawkular_client.inventory
+        @hawkular_client.metrics
       end
       @state = {
         hostname: 'localhost.localdomain',
@@ -30,7 +32,7 @@ module Hawkular::Client::RSpec
           password: 'password'
         }
         expect do
-          Hawkular::Client.new(entrypoint: HOST, credentials: @creds)
+          Hawkular::Client.new(entrypoint: HOST, credentials: @creds).inventory_list_feeds
         end.to raise_error(Hawkular::BaseClient::HawkularException, 'Unauthorized')
       end
     end
