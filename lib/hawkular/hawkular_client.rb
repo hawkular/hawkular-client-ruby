@@ -58,8 +58,8 @@ module Hawkular
 
     def tokens
       @tokens ||= Token::TokenClient.new(@state[:entrypoint],
-                                       @state[:credentials],
-                                       @state[:options])
+                                         @state[:credentials],
+                                         @state[:options])
     end
 
     private
