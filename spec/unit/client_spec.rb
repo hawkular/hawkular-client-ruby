@@ -1,4 +1,5 @@
-require '#{File.dirname(__FILE__)}/../spec_helper'
+require_relative '../spec_helper'
+
 HOST = 'localhost:8080'
 describe Hawkular::Metrics::Client do
   context 'client initialization' do

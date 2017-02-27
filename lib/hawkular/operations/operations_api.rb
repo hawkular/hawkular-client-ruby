@@ -13,6 +13,7 @@ class Proc
       method_name = callable.to_sym
       define_method(method_name) { |&block| block.nil? ? true : block.call(result) }
       define_method("#{method_name}?") { true }
+
       # method_missing is here because we are not forcing the client to provide both success and error callbacks
       # rubocop:disable Lint/NestedMethodDefinition
       # https://github.com/bbatsov/rubocop/issues/2704
@@ -30,16 +31,14 @@ module Hawkular::Operations
   class OperationsClient < Hawkular::BaseClient
     include WebSocket::Client
 
-    attr_accessor :ws, :session_id
+    attr_accessor :ws, :session_id, :logger
 
     # helper for parsing the "OperationName=json_payload" messages
     class WebSocket::Frame::Data
       def to_msg_hash
         chunks = split('=', 2)
-        {
-          operationName: chunks[0],
-          data: JSON.parse(chunks[1])
-        }
+
+        { operationName: chunks[0], data: JSON.parse(chunks[1]) }
       rescue
         {}
       end
@@ -62,39 +61,52 @@ module Hawkular::Operations
     # @example
     #   Hawkular::Operations::OperationsClient.new(credentials: {username: 'jdoe', password: 'password'})
     def initialize(args)
-      args[:use_secure_connection] ||= false
-      ep = args[:entrypoint]
+      args = {
+        credentials: {},
+        options: {},
+        wait_time: 0.5,
+        use_secure_connection: false,
+        entrypoint: nil
+      }.merge(args)
 
-      unless ep.nil?
-        uri = URI.parse ep.to_s
+      if args[:entrypoint]
+        uri = URI.parse(args[:entrypoint].to_s)
         args[:host] = "#{uri.host}:#{uri.port}"
         args[:use_secure_connection] = %w(https wss).include?(uri.scheme) ? true : false
       end
 
       fail 'no parameter ":host" or ":entrypoint" given' if args[:host].nil?
-      args[:credentials] ||= {}
-      args[:options] ||= {}
-      args[:wait_time] ||= 0.5
+
       super(args[:host], args[:credentials], args[:options])
+
       url = "ws#{args[:use_secure_connection] ? 's' : ''}://#{args[:host]}/hawkular/command-gateway/ui/ws"
-      ws_options = {}
+
       creds = args[:credentials]
       base64_creds = ["#{creds[:username]}:#{creds[:password]}"].pack('m').delete("\r\n")
-      ws_options[:headers] = { 'Authorization' => 'Basic ' + base64_creds,
-                               'Hawkular-Tenant' => args[:options][:tenant],
-                               'Accept' => 'application/json'
+
+      ws_options = {
+        headers:  {
+          'Authorization' => 'Basic ' + base64_creds,
+          'Hawkular-Tenant' => args[:options][:tenant],
+          'Accept' => 'application/json'
+        }
       }
+
+      @logger = Hawkular::Logger.new
 
       @ws = Simple.connect url, ws_options do |client|
         client.on(:message, once: true) do |msg|
           parsed_message = msg.data.to_msg_hash
-          puts parsed_message if ENV['HAWKULARCLIENT_LOG_RESPONSE']
+
+          logger.log("Sent WebSocket message: #{parsed_message}")
+
           case parsed_message[:operationName]
           when 'WelcomeResponse'
             @session_id = parsed_message[:data]['sessionId']
           end
         end
       end
+
       sleep args[:wait_time]
     end
 
@@ -334,7 +346,10 @@ module Hawkular::Operations
       # register a callback handler
       @ws.on :message do |msg|
         parsed = msg.data.to_msg_hash
-        OperationsClient.log_message(parsed)
+
+        logger = Hawkular::Logger.new
+        logger.log("Received WebSocket msg: #{parsed}")
+
         case parsed[:operationName]
         when "#{operation_name}Response"
           same_path = parsed[:data]['resourcePath'] == operation_payload[:resourcePath]
@@ -355,10 +370,6 @@ module Hawkular::Operations
 
     def self.handle_error(parsed_message, &callback)
       callback.perform(:failure, parsed_message == {} ? 'error' : parsed_message[:data]['errorMessage'])
-    end
-
-    def self.log_message(message)
-      puts "\nreceived WebSocket msg: #{message}\n" if ENV['HAWKULARCLIENT_LOG_RESPONSE']
     end
 
     def prepare_payload_hash(ignored_params, hash)

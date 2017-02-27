@@ -1,5 +1,6 @@
-require "#{File.dirname(__FILE__)}/../vcr/vcr_setup"
-require "#{File.dirname(__FILE__)}/../spec_helper"
+require_relative '../vcr/vcr_setup'
+require_relative '../spec_helper'
+
 require 'securerandom'
 
 include Hawkular::Inventory
@@ -11,6 +12,7 @@ SKIP_SECURE_CONTEXT = ENV['SKIP_SECURE_CONTEXT'] || '1'
 module Hawkular::Operations::RSpec
   NON_SECURE_CONTEXT = :NonSecure
   SECURE_CONTEXT = :Secure
+
   [NON_SECURE_CONTEXT, SECURE_CONTEXT].each do |security_context|
     next if security_context == SECURE_CONTEXT && SKIP_SECURE_CONTEXT == '1'
     if security_context == NON_SECURE_CONTEXT && ENV['SKIP_NON_SECURE_CONTEXT'] == '1'

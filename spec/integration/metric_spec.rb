@@ -1,5 +1,6 @@
-require "#{File.dirname(__FILE__)}/../vcr/vcr_setup"
-require "#{File.dirname(__FILE__)}/../spec_helper"
+require_relative '../vcr/vcr_setup'
+require_relative '../spec_helper'
+
 require 'securerandom'
 
 SKIP_SECURE_CONTEXT = ENV['SKIP_SECURE_CONTEXT'] || '1'

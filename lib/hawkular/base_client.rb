@@ -1,16 +1,18 @@
 require 'base64'
 require 'addressable/uri'
-require 'hawkular/hawkular_client_utils'
+
+require 'hawkular/logger'
+require 'hawkular/client_utils'
 
 module Hawkular
   # This is the base functionality for all the clients,
   # that inherit from it. You should not directly use it,
   # but through the more specialized clients.
   class BaseClient
-    include HawkularUtilsMixin
+    include ClientUtils
 
     # @!visibility private
-    attr_reader :credentials, :entrypoint, :options
+    attr_reader :credentials, :entrypoint, :options, :logger
     # @return [Tenants] access tenants API
     attr_reader :tenants
 
@@ -30,12 +32,16 @@ module Hawkular
       @tenant = @options.delete(:tenant)
       @admin_token = @options.delete(:admin_token)
 
+      @logger = Hawkular::Logger.new
+
       fail 'You need to provide an entrypoint' if entrypoint.nil?
     end
 
     def http_get(suburl, headers = {})
       res = rest_client(suburl).get(http_headers(headers))
-      puts "#{res}\n" if ENV['HAWKULARCLIENT_LOG_RESPONSE']
+
+      logger.log(res)
+
       res.empty? ? {} : JSON.parse(res)
     rescue
       handle_fault $ERROR_INFO
@@ -44,7 +50,9 @@ module Hawkular
     def http_post(suburl, hash, headers = {})
       body = JSON.generate(hash)
       res = rest_client(suburl).post(body, http_headers(headers))
-      puts "#{res}\n" if ENV['HAWKULARCLIENT_LOG_RESPONSE']
+
+      logger.log(res)
+
       res.empty? ? {} : JSON.parse(res)
     rescue
       handle_fault $ERROR_INFO
@@ -53,7 +61,9 @@ module Hawkular
     def http_put(suburl, hash, headers = {})
       body = JSON.generate(hash)
       res = rest_client(suburl).put(body, http_headers(headers))
-      puts "#{res}\n" if ENV['HAWKULARCLIENT_LOG_RESPONSE']
+
+      logger.log(res)
+
       res.empty? ? {} : JSON.parse(res)
     rescue
       handle_fault $ERROR_INFO
@@ -61,7 +71,9 @@ module Hawkular
 
     def http_delete(suburl, headers = {})
       res = rest_client(suburl).delete(http_headers(headers))
-      puts "#{res}\n" if ENV['HAWKULARCLIENT_LOG_RESPONSE']
+
+      logger.log(res)
+
       res.empty? ? {} : JSON.parse(res)
     rescue
       handle_fault $ERROR_INFO

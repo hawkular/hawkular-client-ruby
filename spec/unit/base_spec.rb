@@ -1,5 +1,5 @@
-require "#{File.dirname(__FILE__)}/../vcr/vcr_setup"
-require "#{File.dirname(__FILE__)}/../spec_helper"
+require_relative '../vcr/vcr_setup'
+require_relative '../spec_helper'
 
 describe 'Base Spec' do
   it 'should know encode' do

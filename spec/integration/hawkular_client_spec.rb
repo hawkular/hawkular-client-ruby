@@ -1,5 +1,6 @@
-require "#{File.dirname(__FILE__)}/../vcr/vcr_setup"
-require "#{File.dirname(__FILE__)}/../spec_helper"
+require_relative '../vcr/vcr_setup'
+require_relative '../spec_helper'
+
 require 'securerandom'
 
 # examples that tests the main client which delegates all the calls to Hawkular component clients
