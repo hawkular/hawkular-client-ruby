@@ -38,7 +38,7 @@ module Hawkular::Operations
       def to_msg_hash
         chunks = split('=', 2)
 
-        { :operationName => chunks[0], :data => JSON.parse(chunks[1]) }
+        { operationName: chunks[0], data: JSON.parse(chunks[1]) }
       rescue
         {}
       end
@@ -62,11 +62,11 @@ module Hawkular::Operations
     #   Hawkular::Operations::OperationsClient.new(credentials: {username: 'jdoe', password: 'password'})
     def initialize(args)
       args = {
-        :credentials => {},
-        :options => {},
-        :wait_time => 0.5,
-        :use_secure_connection => false,
-        :entrypoint => nil
+        credentials: {},
+        options: {},
+        wait_time: 0.5,
+        use_secure_connection: false,
+        entrypoint: nil
       }.merge(args)
 
       if args[:entrypoint]
@@ -80,13 +80,12 @@ module Hawkular::Operations
       super(args[:host], args[:credentials], args[:options])
 
       url = "ws#{args[:use_secure_connection] ? 's' : ''}://#{args[:host]}/hawkular/command-gateway/ui/ws"
-      ws_options = {}
 
       creds = args[:credentials]
       base64_creds = ["#{creds[:username]}:#{creds[:password]}"].pack('m').delete("\r\n")
 
       ws_options = {
-        :headers =>  {
+        headers:  {
           'Authorization' => 'Basic ' + base64_creds,
           'Hawkular-Tenant' => args[:options][:tenant],
           'Accept' => 'application/json'
