@@ -322,6 +322,14 @@ module Hawkular::Alerts
     def delete_event(id)
       http_delete "/events/#{id}"
     end
+
+    # Add tags to existing Alerts.
+    # @param [Array<numeric>] alert_ids List of alert IDs
+    # @param [Array<String>] tags List of tags. Each tag of format 'name|value'.
+    def add_tags(alert_ids, tags)
+      query = generate_query_params(alertIds: alert_ids, tags: tags)
+      http_put('/tags' + query, {})
+    end
   end
 
   # Representation of one Trigger
