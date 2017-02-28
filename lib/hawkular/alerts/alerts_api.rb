@@ -330,6 +330,14 @@ module Hawkular::Alerts
       query = generate_query_params(alertIds: alert_ids, tags: tags)
       http_put('/tags' + query, {})
     end
+
+    # Remove tags from existing Alerts.
+    # @param [Array<numeric>] alert_ids List of alert IDs
+    # @param [Array<String>] tag_names List of tag names.
+    def remove_tags(alert_ids, tag_names)
+      query = generate_query_params(alertIds: alert_ids, tagNames: tag_names)
+      http_delete('/tags' + query)
+    end
   end
 
   # Representation of one Trigger

@@ -546,6 +546,18 @@ module Hawkular::Alerts::RSpec
       expect(alert_not_found).to be_nil
       expect(alert_found_by_new_tag_name).to_not be_nil
     end
+
+    it 'Should remove tags from existing alert' do
+      client = Hawkular::Alerts::AlertsClient.new(ALERTS_BASE, creds, options)
+      alert_id = client.list_alerts.first.id
+      client.add_tags([alert_id], ['new-tag-name|tag_value', 'othertag|othervalue'])
+      alert_found_by_new_tag_name = client.list_alerts(tags: 'new-tag-name|tag_value', thin: true).first
+      client.remove_tags([alert_id], ['new-tag-name'])
+      alert_not_found = client.list_alerts(tags: 'new-tag-name|tag_value', thin: true).first
+
+      expect(alert_found_by_new_tag_name).to_not be_nil
+      expect(alert_not_found).to be_nil
+    end
   end
 
   describe 'Alert' do
