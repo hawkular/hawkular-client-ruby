@@ -71,7 +71,7 @@ module Hawkular::Inventory::RSpec
           VCR.eject_cassette
           record("Inventory/#{security_context}/Connection", @creds, cassette_name) do
             expect do
-              Hawkular::Inventory::InventoryClient.create(entrypoint: entrypoint, credentials: @creds)
+              Hawkular::Inventory::Client.create(entrypoint: entrypoint, credentials: @creds)
             end.to raise_error(Hawkular::BaseClient::HawkularException, 'Unauthorized')
           end
         end

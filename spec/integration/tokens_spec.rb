@@ -7,7 +7,7 @@ module Hawkular::Token::RSpec
     it 'Should be able to list the available tokens' do
       creds = { username: 'jdoe', password: 'password' }
       options = { tenant: 'hawkular' }
-      client = Hawkular::Token::TokenClient.new(HAWKULAR_BASE, creds, options)
+      client = Hawkular::Token::Client.new(HAWKULAR_BASE, creds, options)
       tokens = client.get_tokens(creds)
       expect(tokens).to be_empty
     end
@@ -15,7 +15,7 @@ module Hawkular::Token::RSpec
     it 'Should be able to create a new token for an actual user' do
       creds = { username: 'jdoe', password: 'password' }
       options = { tenant: 'hawkular' }
-      client = Hawkular::Token::TokenClient.new(HAWKULAR_BASE, creds, options)
+      client = Hawkular::Token::Client.new(HAWKULAR_BASE, creds, options)
       token = client.create_token(creds)
       expect(token['key']).not_to be_nil
       expect(token['secret']).not_to be_nil
@@ -25,7 +25,7 @@ module Hawkular::Token::RSpec
     it 'Should get a 401 when attempting to create a token with a wrong password' do
       creds = { username: 'jdoe', password: 'mywrongpassword' }
       options = { tenant: 'hawkular' }
-      client = Hawkular::Token::TokenClient.new(HAWKULAR_BASE, creds, options)
+      client = Hawkular::Token::Client.new(HAWKULAR_BASE, creds, options)
       begin
         client.create_token(creds)
         fail 'Should have failed with 401'
@@ -37,7 +37,7 @@ module Hawkular::Token::RSpec
     it 'Should get a 401 when attempting to create a token without a password' do
       creds = { username: 'jdoe', password: '' }
       options = { tenant: 'hawkular' }
-      client = Hawkular::Token::TokenClient.new(HAWKULAR_BASE, creds, options)
+      client = Hawkular::Token::Client.new(HAWKULAR_BASE, creds, options)
       begin
         client.create_token(creds)
         fail 'Should have failed with 401'

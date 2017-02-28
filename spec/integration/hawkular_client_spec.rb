@@ -85,9 +85,9 @@ module Hawkular::Client::RSpec
       before(:all) do
         ::RSpec::Mocks.with_temporary_scope do
           mock_inventory_client '0.17.2.Final'
-          @client = Hawkular::Inventory::InventoryClient.create(entrypoint: HOST,
-                                                                credentials: @creds,
-                                                                options: { tenant: 'hawkular' })
+          @client = Hawkular::Inventory::Client.create(entrypoint: HOST,
+                                                       credentials: @creds,
+                                                       options: { tenant: 'hawkular' })
         end
       end
 
@@ -251,7 +251,7 @@ module Hawkular::Client::RSpec
           }
 
           actual_data = {}
-          client = Hawkular::Operations::OperationsClient.new(entrypoint: HOST, credentials: @creds)
+          client = Hawkular::Operations::Client.new(entrypoint: HOST, credentials: @creds)
           client.invoke_generic_operation(redeploy) do |on|
             on.success do |data|
               actual_data[:data] = data

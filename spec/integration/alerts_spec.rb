@@ -10,7 +10,7 @@ module Hawkular::Alerts::RSpec
     before(:all) do
       # Setup for testing
       record('Alert/Triggers', credentials, 'setup') do
-        @client = Hawkular::Alerts::AlertsClient.new(ALERTS_BASE, credentials, options)
+        @client = Hawkular::Alerts::Client.new(ALERTS_BASE, credentials, options)
         json = IO.read('spec/integration/alert-resources/triggers-test-data.json')
         trigger_hash = JSON.parse(json)
         @client.bulk_import_triggers trigger_hash
@@ -20,7 +20,7 @@ module Hawkular::Alerts::RSpec
     after(:all) do
       # cleanup test values
       record('Alert/Triggers', credentials, 'setup_cleanup') do
-        @client = Hawkular::Alerts::AlertsClient.new(ALERTS_BASE, credentials, options)
+        @client = Hawkular::Alerts::Client.new(ALERTS_BASE, credentials, options)
         json = IO.read('spec/integration/alert-resources/triggers-test-data.json')
         trigger_hash = JSON.parse(json)
         trigger_hash['triggers'].each do |trigger|
@@ -39,7 +39,7 @@ module Hawkular::Alerts::RSpec
     end
 
     before(:each) do
-      @client = Hawkular::Alerts::AlertsClient.new(ALERTS_BASE, creds, options)
+      @client = Hawkular::Alerts::Client.new(ALERTS_BASE, creds, options)
     end
 
     it 'Should List Triggers' do
@@ -229,7 +229,7 @@ module Hawkular::Alerts::RSpec
     end
 
     before(:each) do
-      @client = Hawkular::Alerts::AlertsClient.new(ALERTS_BASE, creds, options)
+      @client = Hawkular::Alerts::Client.new(ALERTS_BASE, creds, options)
     end
 
     it 'Should operate a complex group trigger' do
@@ -414,7 +414,7 @@ module Hawkular::Alerts::RSpec
     before(:all) do
       # Setup for testing
       record('Alert/Alerts', credentials, 'setup') do
-        @client = Hawkular::Alerts::AlertsClient.new(ALERTS_BASE, credentials, options)
+        @client = Hawkular::Alerts::Client.new(ALERTS_BASE, credentials, options)
         json = IO.read('spec/integration/alert-resources/alerts-test-data.json')
         trigger_hash = JSON.parse(json)
         @client.bulk_import_triggers trigger_hash
@@ -429,7 +429,7 @@ module Hawkular::Alerts::RSpec
     after(:all) do
       # cleanup test values
       record('Alert/Alerts', credentials, 'setup_cleanup') do
-        @client = Hawkular::Alerts::AlertsClient.new(ALERTS_BASE, credentials, options)
+        @client = Hawkular::Alerts::Client.new(ALERTS_BASE, credentials, options)
         json = IO.read('spec/integration/alert-resources/alerts-test-data.json')
         trigger_hash = JSON.parse(json)
         trigger_hash['triggers'].each do |trigger|
@@ -451,11 +451,11 @@ module Hawkular::Alerts::RSpec
     end
 
     before(:each) do
-      @client = Hawkular::Alerts::AlertsClient.new(ALERTS_BASE, creds, options)
+      @client = Hawkular::Alerts::Client.new(ALERTS_BASE, creds, options)
     end
 
     it 'Should list alerts' do
-      client = Hawkular::Alerts::AlertsClient.new(ALERTS_BASE, creds, options)
+      client = Hawkular::Alerts::Client.new(ALERTS_BASE, creds, options)
 
       alerts = client.list_alerts
 
@@ -464,7 +464,7 @@ module Hawkular::Alerts::RSpec
     end
 
     it 'Should list open alerts' do
-      client = Hawkular::Alerts::AlertsClient.new(ALERTS_BASE, creds, options)
+      client = Hawkular::Alerts::Client.new(ALERTS_BASE, creds, options)
 
       alerts = client.list_alerts('statuses' => 'OPEN')
 
@@ -473,7 +473,7 @@ module Hawkular::Alerts::RSpec
     end
 
     it 'Should list alerts for trigger' do
-      client = Hawkular::Alerts::AlertsClient.new(ALERTS_BASE, creds, options)
+      client = Hawkular::Alerts::Client.new(ALERTS_BASE, creds, options)
 
       alerts = client.get_alerts_for_trigger 'hello-world-trigger'
 
@@ -482,7 +482,7 @@ module Hawkular::Alerts::RSpec
     end
 
     it 'Should list alerts for unknown trigger' do
-      client = Hawkular::Alerts::AlertsClient.new(ALERTS_BASE, creds, options)
+      client = Hawkular::Alerts::Client.new(ALERTS_BASE, creds, options)
 
       alerts = client.get_alerts_for_trigger 'does-not-exist'
 
@@ -491,7 +491,7 @@ module Hawkular::Alerts::RSpec
     end
 
     it 'Should fetch single alert' do
-      client = Hawkular::Alerts::AlertsClient.new(ALERTS_BASE, creds, options)
+      client = Hawkular::Alerts::Client.new(ALERTS_BASE, creds, options)
 
       alert_id = client.list_alerts('statuses' => 'OPEN').first.id
 
@@ -502,7 +502,7 @@ module Hawkular::Alerts::RSpec
     end
 
     it 'Should resolve an alert' do
-      client = Hawkular::Alerts::AlertsClient.new(ALERTS_BASE, creds, options)
+      client = Hawkular::Alerts::Client.new(ALERTS_BASE, creds, options)
 
       alert_id = client.list_alerts('statuses' => 'OPEN').first.id
       alert = client.get_single_alert alert_id
@@ -517,7 +517,7 @@ module Hawkular::Alerts::RSpec
 
     # # TODO enable when the semantics on the server side is known
     #     it 'Should resolve an alert2' do
-    #       client = Hawkular::Alerts::AlertsClient.new(ALERTS_BASE,creds)
+    #       client = Hawkular::Alerts::Client.new(ALERTS_BASE,creds)
     #
     #       alert_id = '28026b36-8fe4-4332-84c8-524e173a68bf-snert~Local_jvm_garba-1446977734134'
     #       client.resolve_alert alert_id
@@ -525,7 +525,7 @@ module Hawkular::Alerts::RSpec
     #     end
 
     it 'Should acknowledge an alert' do
-      client = Hawkular::Alerts::AlertsClient.new(ALERTS_BASE, creds, options)
+      client = Hawkular::Alerts::Client.new(ALERTS_BASE, creds, options)
 
       alert_id = client.list_alerts('statuses' => 'OPEN').first.id
       client.get_single_alert alert_id
@@ -548,7 +548,7 @@ module Hawkular::Alerts::RSpec
     end
 
     before(:each) do
-      @client = Hawkular::Alerts::AlertsClient.new(ALERTS_BASE, creds)
+      @client = Hawkular::Alerts::Client.new(ALERTS_BASE, creds)
     end
 
     it 'Should return the version' do
@@ -561,7 +561,7 @@ module Hawkular::Alerts::RSpec
     before(:all) do
       # Setup for testing
       record('Alert/Events', credentials, 'setup') do
-        @client = Hawkular::Alerts::AlertsClient.new(ALERTS_BASE, credentials, options)
+        @client = Hawkular::Alerts::Client.new(ALERTS_BASE, credentials, options)
         json = IO.read('spec/integration/alert-resources/events-test-data.json')
         hash = JSON.parse(json)
         hash['events'].each do |event|
@@ -573,7 +573,7 @@ module Hawkular::Alerts::RSpec
     after(:all) do
       # cleanup test values
       record('Alert/Events', credentials, 'setup_cleanup') do
-        @client = Hawkular::Alerts::AlertsClient.new(ALERTS_BASE, credentials, options)
+        @client = Hawkular::Alerts::Client.new(ALERTS_BASE, credentials, options)
         json = IO.read('spec/integration/alert-resources/events-test-data.json')
         hash = JSON.parse(json)
         hash['events'].each do |event|
@@ -592,7 +592,7 @@ module Hawkular::Alerts::RSpec
     end
 
     it 'Should list events' do
-      client = Hawkular::Alerts::AlertsClient.new(ALERTS_BASE, creds, options)
+      client = Hawkular::Alerts::Client.new(ALERTS_BASE, creds, options)
 
       events = client.list_events('thin' => true)
 
@@ -601,7 +601,7 @@ module Hawkular::Alerts::RSpec
     end
 
     it 'Should list events using criteria' do
-      client = Hawkular::Alerts::AlertsClient.new(ALERTS_BASE, creds, options)
+      client = Hawkular::Alerts::Client.new(ALERTS_BASE, creds, options)
 
       events = client.list_events('categories' => %w(my-category-01 my-category-02))
 
@@ -610,7 +610,7 @@ module Hawkular::Alerts::RSpec
     end
 
     it 'Should not list events using criteria' do
-      client = Hawkular::Alerts::AlertsClient.new(ALERTS_BASE, creds, options)
+      client = Hawkular::Alerts::Client.new(ALERTS_BASE, creds, options)
 
       events = client.list_events('startTime' => 0, 'endTime' => 1000)
 
@@ -622,7 +622,7 @@ module Hawkular::Alerts::RSpec
       the_id = "test-event@#{Time.new.to_i}"
       VCR.eject_cassette
       record('Alert/Events', credentials.merge(id: the_id), cassette_name) do
-        client = Hawkular::Alerts::AlertsClient.new(ALERTS_BASE, creds, options)
+        client = Hawkular::Alerts::Client.new(ALERTS_BASE, creds, options)
 
         the_event = client.create_event(the_id, 'MyCategory', 'Li la lu',
                                         context: { message: 'This is a test' },
@@ -639,7 +639,7 @@ module Hawkular::Alerts::RSpec
       the_id = "test-event@#{Time.new.to_i}"
       VCR.eject_cassette
       record('Alert/Events', credentials.merge(id: the_id), cassette_name) do
-        client = Hawkular::Alerts::AlertsClient.new(ALERTS_BASE, creds, options)
+        client = Hawkular::Alerts::Client.new(ALERTS_BASE, creds, options)
         client.create_event(the_id, 'MyCategory', 'Li la lu',
                             context: { message: 'This is a test' },
                             tags: { tag_name: 'tag-value' })
@@ -662,7 +662,7 @@ module Hawkular::Alerts::RSpec
     end
 
     before(:each) do
-      @client = Hawkular::Alerts::AlertsClient.new(ALERTS_BASE, creds, options)
+      @client = Hawkular::Alerts::Client.new(ALERTS_BASE, creds, options)
     end
 
     it 'Should create and fire a trigger' do
