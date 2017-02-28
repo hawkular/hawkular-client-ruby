@@ -206,9 +206,8 @@ module Helpers
   end
 
   def immutable(inventory, resource_path)
-    inventory.get_resource(resource_path, true).properties
-    properties['Immutable'] == 'true' if properties.key? 'Immutable'
-    false
+    properties = inventory.get_resource(resource_path, true).properties
+    properties.key?('Immutable') ? (properties['Immutable'] == 'true') : false
   end
 
   def make_template(base_directory, cassette_name, bindings)
