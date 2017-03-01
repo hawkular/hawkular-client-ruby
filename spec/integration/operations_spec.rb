@@ -575,13 +575,15 @@ module Hawkular::Operations::RSpec
               actual_data[:data] = data
             end
             on.failure do |error|
-              actual_data[:data] = {}
-              puts 'error callback was called, reason: ' + error.to_s
+              actual_data[:data] = error
+              puts 'error callback was called, reason: ' + error.to_s unless @agent_immutable
             end
           end
           actual_data = wait_for actual_data
-          expect(actual_data['status']).to eq('OK')
-          expect(actual_data['message']).to start_with('Performed [Update Collection Intervals] on')
+          expect(actual_data['status']).to eq('OK') unless @agent_immutable
+          expect(
+            actual_data['message']).to start_with('Performed [Update Collection Intervals] on') unless @agent_immutable
+          expect(actual_data).to include('Command not allowed because the agent is immutable') if @agent_immutable
         end
       end
     end
