@@ -32,9 +32,9 @@ module Hawkular
     end
 
     def inventory
-      @inventory ||= Inventory::InventoryClient.create(entrypoint: "#{@state[:entrypoint]}/hawkular/inventory",
-                                                       credentials: @state[:credentials],
-                                                       options: @state[:options])
+      @inventory ||= Inventory::Client.new("#{@state[:entrypoint]}/hawkular/inventory",
+                                           @state[:credentials],
+                                           @state[:options])
     end
 
     def metrics
@@ -44,9 +44,9 @@ module Hawkular
     end
 
     def alerts
-      @alerts ||= Alerts::AlertsClient.new("#{@state[:entrypoint]}/hawkular/alerts",
-                                           @state[:credentials],
-                                           @state[:options])
+      @alerts ||= Alerts::Client.new("#{@state[:entrypoint]}/hawkular/alerts",
+                                     @state[:credentials],
+                                     @state[:options])
     end
 
     # adds a way to explicitly open the new web socket connection (the default is to recycle it)
@@ -57,18 +57,18 @@ module Hawkular
     end
 
     def tokens
-      @tokens ||= Token::TokenClient.new(@state[:entrypoint],
-                                         @state[:credentials],
-                                         @state[:options])
+      @tokens ||= Token::Client.new(@state[:entrypoint],
+                                    @state[:credentials],
+                                    @state[:options])
     end
 
     private
 
     # this is in a dedicated method, because constructor opens the websocket connection to make the handshake
     def init_operations_client
-      Operations::OperationsClient.new(entrypoint: @state[:entrypoint],
-                                       credentials: @state[:credentials],
-                                       options: @state[:options])
+      Operations::Client.new(entrypoint: @state[:entrypoint],
+                             credentials: @state[:credentials],
+                             options: @state[:options])
     end
   end
 end

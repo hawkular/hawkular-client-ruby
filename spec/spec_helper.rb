@@ -18,11 +18,11 @@ module Hawkular::Inventory::RSpec
       username: options[:username].nil? ? config['user'] : options[:username],
       password: options[:password].nil? ? config['password'] : options[:password]
     }
-    @client = Hawkular::Inventory::InventoryClient.new(entrypoint, credentials, options)
+    @client = Hawkular::Inventory::Client.new(entrypoint, credentials, options)
   end
 
   def mock_inventory_client(for_version = '0.16.1.Final')
-    allow_any_instance_of(Hawkular::Inventory::InventoryClient).to receive(:fetch_version_and_status).and_return(
+    allow_any_instance_of(Hawkular::Inventory::Client).to receive(:fetch_version_and_status).and_return(
       'Implementation-Version' => for_version
     )
   end

@@ -3,7 +3,7 @@ require 'hawkular/base_client'
 # Token module provides access to the Secret Store REST API.
 module Hawkular::Token
   # Client class to interact with the Secret Store
-  class TokenClient < Hawkular::BaseClient
+  class Client < Hawkular::BaseClient
     # Create a new Secret Store client
     # @param entrypoint [String] base url of Hawkular - e.g http://localhost:8080
     # @param credentials [Hash{String=>String}] Hash of username, password
@@ -31,4 +31,7 @@ module Hawkular::Token
       http_post('/secret-store/v1/tokens/create', token_attributes, auth_header)
     end
   end
+
+  TokenClient = Client
+  deprecate_constant :TokenClient if self.respond_to? :deprecate_constant
 end

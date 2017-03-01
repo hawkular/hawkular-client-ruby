@@ -11,7 +11,7 @@ require 'hawkular/inventory/entities'
 #   and thus set to 'test' as default value.
 module Hawkular::Inventory
   # Client class to interact with Hawkular Inventory
-  class InventoryClient < Hawkular::BaseClient
+  class Client < Hawkular::BaseClient
     attr_reader :version
 
     # Create a new Inventory Client
@@ -35,7 +35,7 @@ module Hawkular::Inventory
       fail 'no parameter ":entrypoint" given' if hash[:entrypoint].nil?
       hash[:credentials] ||= {}
       hash[:options] ||= {}
-      InventoryClient.new(hash[:entrypoint], hash[:credentials], hash[:options])
+      Client.new(hash[:entrypoint], hash[:credentials], hash[:options])
     end
 
     # Retrieve the tenant id for the passed credentials.
@@ -565,4 +565,7 @@ module Hawkular::Inventory
       end
     end
   end
+
+  InventoryClient = Client
+  deprecate_constant :InventoryClient if self.respond_to? :deprecate_constant
 end

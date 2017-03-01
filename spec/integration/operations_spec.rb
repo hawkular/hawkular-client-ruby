@@ -49,7 +49,7 @@ module Hawkular::Operations::RSpec
       end
 
       let(:client) do
-        OperationsClient.new(options)
+        Client.new(options)
       end
 
       before(:all) do
@@ -75,7 +75,7 @@ module Hawkular::Operations::RSpec
         it 'should be established via entrypoint' do
           ep = host_with_scheme(host, security_context == SECURE_CONTEXT)
 
-          client = OperationsClient.new(options.merge entrypoint: ep, host: nil)
+          client = Client.new(options.merge entrypoint: ep, host: nil)
           ws = client.ws
           expect(ws).not_to be nil
           expect(ws.open?).to be true
@@ -128,7 +128,7 @@ module Hawkular::Operations::RSpec
 
         it 'should bail with no host' do
           expect do
-            OperationsClient.new(options.merge host: nil)
+            Client.new(options.merge host: nil)
           end.to raise_error(StandardError, 'no parameter ":host" or ":entrypoint" given')
         end
       end
@@ -143,7 +143,7 @@ module Hawkular::Operations::RSpec
           record("Operation/#{security_context}/Helpers", nil, 'get_tenant') do
             ::RSpec::Mocks.with_temporary_scope do
               mock_inventory_client
-              @inventory_client = InventoryClient.create(
+              @inventory_client = ::Hawkular::Inventory::Client.create(
                 options.merge entrypoint: host_with_scheme(host, security_context == SECURE_CONTEXT))
             end
             inventory_client = @inventory_client

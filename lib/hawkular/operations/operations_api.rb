@@ -28,7 +28,7 @@ end
 # Operations module allows invoking operation on the WildFly agent.
 module Hawkular::Operations
   # Client class to interact with the agent via websockets
-  class OperationsClient < Hawkular::BaseClient
+  class Client < Hawkular::BaseClient
     include WebSocket::Client
 
     attr_accessor :ws, :session_id, :logger
@@ -382,4 +382,7 @@ module Hawkular::Operations
       ret[0, 1].downcase + ret[1..-1]
     end
   end
+
+  OperationsClient = Client
+  deprecate_constant :OperationsClient if self.respond_to? :deprecate_constant
 end

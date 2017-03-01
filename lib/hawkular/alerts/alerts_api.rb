@@ -13,7 +13,7 @@ module Hawkular::Alerts
   #   http://localhost:8080/hawkular/alerts
   # @param credentials [Hash{String=>String}] Hash of username, password, token(optional)
   # @param options [Hash{String=>String}] Additional rest client options
-  class AlertsClient < Hawkular::BaseClient
+  class Client < Hawkular::BaseClient
     def initialize(entrypoint, credentials = {}, options = {})
       entrypoint = normalize_entrypoint_url entrypoint, 'hawkular/alerts'
       @entrypoint = entrypoint
@@ -575,4 +575,7 @@ module Hawkular::Alerts
       super(event_hash)
     end
   end
+
+  AlertsClient = Client
+  deprecate_constant :AlertsClient if self.respond_to? :deprecate_constant
 end
