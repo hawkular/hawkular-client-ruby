@@ -35,7 +35,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 14 Feb 2017 17:44:47 GMT
+      - Tue, 28 Feb 2017 19:01:50 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -48,9 +48,9 @@ http_interactions:
         {
           "path" : "/t;<%= tenant_id %>/f;<%= feed_id %>/r;Local~~/r;Local~%2Fsubsystem%3D<%= tenant_id %>-wildfly-agent",
           "name" : "Hawkular WildFly Agent",
-          "identityHash" : "ca3ea548183e2532a5ffaf865c0478912c36db9",
+          "identityHash" : "abd839c5fa791b74657018e17d9aecfa9786b",
           "contentHash" : "fba7866bc34d2ba1ed776115ad9eceb79b6e1c",
-          "syncHash" : "38d3207c80968a4ff640b9d8691ee786a0aebb",
+          "syncHash" : "d7debc21147afd49656e9c5ac9ce96f3b3b58b7d",
           "type" : {
             "path" : "/t;<%= tenant_id %>/f;<%= feed_id %>/rt;Hawkular%20WildFly%20Agent",
             "name" : "Hawkular WildFly Agent",
@@ -62,7 +62,7 @@ http_interactions:
           "id" : "Local~/subsystem=<%= tenant_id %>-wildfly-agent"
         }
     http_version: 
-  recorded_at: Tue, 14 Feb 2017 17:44:47 GMT
+  recorded_at: Tue, 28 Feb 2017 19:01:50 GMT
 - request:
     method: get
     uri: http://jdoe:password@localhost:8080/<%= tenant_id %>/inventory/entity/f;<%= feed_id %>/r;Local~~/r;Local~%2Fsubsystem=<%= tenant_id %>-wildfly-agent/d;configuration
@@ -98,27 +98,27 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 14 Feb 2017 17:44:47 GMT
+      - Tue, 28 Feb 2017 19:01:50 GMT
       Connection:
       - keep-alive
       Content-Type:
       - application/json
       Content-Length:
-      - '420'
+      - '419'
     body:
       encoding: UTF-8
       string: |-
         {
           "path" : "/t;<%= tenant_id %>/f;<%= feed_id %>/r;Local~~/r;Local~%2Fsubsystem%3D<%= tenant_id %>-wildfly-agent/d;configuration",
           "name" : "configuration",
-          "identityHash" : "8ca59e14f916fea25c98ef577e9cdbf953e3fa",
-          "contentHash" : "c4d12e3cada20db25d2896ed186f82d1c98c10",
-          "syncHash" : "95f426f9167fdebd6e342ec7c8b77427a10c1fe",
+          "identityHash" : "d2851885538c95d1123aabd688c36853a2e6754",
+          "contentHash" : "8382d39456925614b0358197cd27599704b4d",
+          "syncHash" : "9759b4b59ced68d7895fcc91889c743eaa5cd",
           "value" : {
             "Immutable" : "false",
-            "In Container" : "true"
+            "In Container" : "false"
           }
         }
     http_version: 
-  recorded_at: Tue, 14 Feb 2017 17:44:47 GMT
+  recorded_at: Tue, 28 Feb 2017 19:01:50 GMT
 recorded_with: VCR 3.0.3

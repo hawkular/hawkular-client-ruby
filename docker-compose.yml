@@ -1,5 +1,5 @@
 hawkular:
-  image: "pilhuhn/hawkular-services:latest"
+  image: "hawkular/hawkular-services:latest"
   ports:
     - "8080:8080"
     - "8443:8443"

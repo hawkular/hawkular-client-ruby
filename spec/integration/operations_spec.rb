@@ -159,7 +159,7 @@ module Hawkular::Operations::RSpec
                                           feed_id: @feed_id,
                                           resource_ids: [@wf_server_resource_id])
               wf_agent_path = path_for_installed_agent(wf_path)
-              @agent_in_container = in_container(inventory_client, wf_agent_path)
+              @agent_immutable = immutable(inventory_client, wf_agent_path)
             end
           end
           @bindings = { random_uuid: @random_uuid, tenant_id: @tenant_id, feed_id: @feed_id }
@@ -188,15 +188,15 @@ module Hawkular::Operations::RSpec
               actual_data[:data] = data
             end
             on.failure do |error|
-              actual_data[:data] = :error
-              puts 'error callback was called, reason: ' + error.to_s unless @agent_in_container
+              actual_data[:data] = error
+              puts 'error callback was called, reason: ' + error.to_s unless @agent_immutable
             end
           end
           actual_data = wait_for actual_data
-          expect(actual_data['status']).to eq('OK') unless @agent_in_container
-          expect(actual_data['message']).to start_with('Added JDBC Driver') unless @agent_in_container
-          expect(actual_data['driverName']).to eq(driver_name) unless @agent_in_container
-          expect(actual_data).to eq(:error) if @agent_in_container
+          expect(actual_data['status']).to eq('OK') unless @agent_immutable
+          expect(actual_data['message']).to start_with('Added JDBC Driver') unless @agent_immutable
+          expect(actual_data['driverName']).to eq(driver_name) unless @agent_immutable
+          expect(actual_data).to include('Command not allowed because the agent is immutable') if @agent_immutable
         end
 
         it 'Restart should be performed and eventually respond with success' do
@@ -270,13 +270,14 @@ module Hawkular::Operations::RSpec
               actual_data[:data] = data
             end
             on.failure do |error|
-              actual_data[:data] = {}
-              puts 'error callback was called, reason: ' + error.to_s
+              actual_data[:data] = error
+              puts 'error callback was called, reason: ' + error.to_s unless @agent_immutable
             end
           end
           actual_data = wait_for actual_data
-          expect(actual_data['status']).to eq('OK')
-          expect(actual_data['message']).to start_with('Performed [Disable Deployment] on')
+          expect(actual_data['status']).to eq('OK') unless @agent_immutable
+          expect(actual_data['message']).to start_with('Performed [Disable Deployment] on') unless @agent_immutable
+          expect(actual_data).to include('Command not allowed because the agent is immutable') if @agent_immutable
         end
 
         it 'Add non-XA datasource should be doable' do
@@ -311,16 +312,17 @@ module Hawkular::Operations::RSpec
               actual_data[:data] = data
             end
             on.failure do |error|
-              actual_data[:data] = { 'status' => 'ERROR' }
-              puts 'error callback was called, reason: ' + error.to_s
+              actual_data[:data] = error
+              puts 'error callback was called, reason: ' + error.to_s unless @agent_immutable
             end
           end
           actual_data = wait_for actual_data
-          expect(actual_data['status']).to eq('OK')
-          expect(actual_data['message']).to start_with('Added Datasource')
-          expect(actual_data['xaDatasource']).to be_falsey
-          expect(actual_data['datasourceName']).to eq(payload[:datasourceName])
-          expect(actual_data['resourcePath']).to eq(payload[:resourcePath])
+          expect(actual_data['status']).to eq('OK') unless @agent_immutable
+          expect(actual_data['message']).to start_with('Added Datasource') unless @agent_immutable
+          expect(actual_data['xaDatasource']).to be_falsey unless @agent_immutable
+          expect(actual_data['datasourceName']).to eq(payload[:datasourceName]) unless @agent_immutable
+          expect(actual_data['resourcePath']).to eq(payload[:resourcePath]) unless @agent_immutable
+          expect(actual_data).to include('Command not allowed because the agent is immutable') if @agent_immutable
         end
 
         it 'Add XA datasource should be doable' do
@@ -355,16 +357,17 @@ module Hawkular::Operations::RSpec
               actual_data[:data] = data
             end
             on.failure do |error|
-              actual_data[:data] = { 'status' => 'ERROR' }
-              puts 'error callback was called, reason: ' + error.to_s
+              actual_data[:data] = error
+              puts 'error callback was called, reason: ' + error.to_s unless @agent_immutable
             end
           end
           actual_data = wait_for actual_data
-          expect(actual_data['status']).to eq('OK')
-          expect(actual_data['message']).to start_with('Added Datasource')
-          expect(actual_data['xaDatasource']).to be_truthy
-          expect(actual_data['datasourceName']).to eq(payload[:datasourceName])
-          expect(actual_data['resourcePath']).to eq(payload[:resourcePath])
+          expect(actual_data['status']).to eq('OK') unless @agent_immutable
+          expect(actual_data['message']).to start_with('Added Datasource') unless @agent_immutable
+          expect(actual_data['xaDatasource']).to be_truthy unless @agent_immutable
+          expect(actual_data['datasourceName']).to eq(payload[:datasourceName]) unless @agent_immutable
+          expect(actual_data['resourcePath']).to eq(payload[:resourcePath]) unless @agent_immutable
+          expect(actual_data).to include('Command not allowed because the agent is immutable') if @agent_immutable
         end
 
         it 'should not be possible to perform on closed client' do
@@ -438,15 +441,16 @@ module Hawkular::Operations::RSpec
               actual_data[:data] = data
             end
             on.failure do |error|
-              actual_data[:data] = {}
-              puts 'error callback was called, reason: ' + error.to_s
+              actual_data[:data] = error
+              puts 'error callback was called, reason: ' + error.to_s unless @agent_immutable
             end
           end
           actual_data = wait_for actual_data
-          expect(actual_data['status']).to eq('OK')
-          expect(actual_data['message']).to start_with('Performed [Deploy] on')
-          expect(actual_data['destinationFileName']).to eq(app_name)
-          expect(actual_data['resourcePath']).to eq(wf_path)
+          expect(actual_data['status']).to eq('OK') unless @agent_immutable
+          expect(actual_data['message']).to start_with('Performed [Deploy] on') unless @agent_immutable
+          expect(actual_data['destinationFileName']).to eq(app_name) unless @agent_immutable
+          expect(actual_data['resourcePath']).to eq(wf_path) unless @agent_immutable
+          expect(actual_data).to include('Command not allowed because the agent is immutable') if @agent_immutable
         end
 
         it 'Undeploy deployment should be performed and eventually respond with success' do
@@ -465,13 +469,14 @@ module Hawkular::Operations::RSpec
               actual_data[:data] = data
             end
             on.failure do |error|
-              actual_data[:data] = { 'status' => 'ERROR' }
-              puts 'error callback was called, reason: ' + error.to_s
+              actual_data[:data] = error
+              puts 'error callback was called, reason: ' + error.to_s unless @agent_immutable
             end
           end
           actual_data = wait_for actual_data
-          expect(actual_data['status']).to eq('OK')
-          expect(actual_data['message']).to start_with('Performed [Undeploy] on')
+          expect(actual_data['status']).to eq('OK') unless @agent_immutable
+          expect(actual_data['message']).to start_with('Performed [Undeploy] on') unless @agent_immutable
+          expect(actual_data).to include('Command not allowed because the agent is immutable') if @agent_immutable
         end
 
         it 'Remove datasource should be performed and eventually respond with success' do
@@ -491,14 +496,15 @@ module Hawkular::Operations::RSpec
               actual_data[:data] = data
             end
             on.failure do |error|
-              actual_data[:data] = {}
-              puts 'error callback was called, reason: ' + error.to_s
+              actual_data[:data] = error
+              puts 'error callback was called, reason: ' + error.to_s unless @agent_immutable
             end
           end
           actual_data = wait_for actual_data
-          expect(actual_data['status']).to eq('OK')
-          expect(actual_data['message']).to start_with('Performed [Remove] on')
-          expect(actual_data['serverRefreshIndicator']).to eq('RELOAD-REQUIRED')
+          expect(actual_data['status']).to eq('OK') unless @agent_immutable
+          expect(actual_data['message']).to start_with('Performed [Remove] on') unless @agent_immutable
+          expect(actual_data['serverRefreshIndicator']).to eq('RELOAD-REQUIRED') unless @agent_immutable
+          expect(actual_data).to include('Command not allowed because the agent is immutable') if @agent_immutable
         end
 
         it 'Remove JDBC driver should be performed and eventually respond with success' do
@@ -515,16 +521,16 @@ module Hawkular::Operations::RSpec
               actual_data[:data] = data
             end
             on.failure do |error|
-              actual_data[:data] = :error
-              puts 'error callback was called, reason: ' + error.to_s unless @agent_in_container
+              actual_data[:data] = error
+              puts 'error callback was called, reason: ' + error.to_s unless @agent_immutable
             end
           end
           actual_data = wait_for actual_data
-          expect(actual_data['status']).to eq('OK') unless @agent_in_container
-          expect(actual_data['resourcePath']).to eq(path) unless @agent_in_container
+          expect(actual_data['status']).to eq('OK') unless @agent_immutable
+          expect(actual_data['resourcePath']).to eq(path) unless @agent_immutable
           expect(actual_data['message']).to start_with(
-            'Performed [Remove] on a [JDBC Driver]') unless @agent_in_container
-          expect(actual_data).to eq(:error) if @agent_in_container
+            'Performed [Remove] on a [JDBC Driver]') unless @agent_immutable
+          expect(actual_data).to include('Command not allowed because the agent is immutable') if @agent_immutable
         end
 
         xit 'Export JDR should retrieve the zip file with the report' do
