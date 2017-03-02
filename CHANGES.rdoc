@@ -3,6 +3,15 @@
 This document describes the relevant changes between releases of the
 _hawkular-client_ project.
 
+=== V 2.9.0
+* Adds the ability to assign tags to existing alerts
+* Uniform Client names
+* Supports Update Collection Intervals command.
+* Clients classes pass through options to RestClient
+* Added an option to query metrics based on tag only
+
+Full list of changes can be found at https://github.com/hawkular/hawkular-client-ruby/milestone/14?closed=1
+
 === V 2.8.0
 
 * Allow to list tags in Hawkular-Metrics
