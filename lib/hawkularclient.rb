@@ -1,0 +1,8 @@
+require 'hawkular/version'
+require 'hawkular/inventory/inventory_api'
+require 'hawkular/metrics/metrics_client'
+require 'hawkular/alerts/alerts_api'
+require 'hawkular/tokens/tokens_api'
+require 'hawkular/operations/operations_api'
+require 'hawkular/base_client'
+require 'hawkular/hawkular_client'
