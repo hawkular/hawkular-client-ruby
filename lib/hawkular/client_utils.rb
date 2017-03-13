@@ -37,3 +37,6 @@ module Hawkular
     end
   end
 end
+
+HawkularUtilsMixin = Hawkular::ClientUtils
+deprecate_constant(:HawkularUtilsMixin) if self.respond_to?(:deprecate_constant)
