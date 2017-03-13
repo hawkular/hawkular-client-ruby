@@ -1,12 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE html>
+<html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>
-  Class: Hawkular::Operations::OperationsClient
+  Class: Hawkular::Operations::Client
   
-    &mdash; Documentation by YARD 0.8.7.6
+    &mdash; Documentation by YARD 0.9.8
   
 </title>
 
@@ -15,9 +15,8 @@
   <link rel="stylesheet" href="../../css/common.css" type="text/css" charset="utf-8" />
 
 <script type="text/javascript" charset="utf-8">
-  hasFrames = window.top.frames.main ? true : false;
+  pathId = "Hawkular::Operations::Client";
   relpath = '../../';
-  framesUrl = "../../frames.html#!Hawkular/Operations/OperationsClient.html";
 </script>
 
 
@@ -28,51 +27,48 @@
 
   </head>
   <body>
-    <div id="header">
-      <div id="menu">
+    <div class="nav_wrap">
+      <iframe id="nav" src="../../class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
   
-    <a href="../../_index.html">Index (O)</a> &raquo;
+    <a href="../../_index.html">Index (C)</a> &raquo;
     <span class='title'><span class='object_link'><a href="../../Hawkular.html" title="Hawkular (module)">Hawkular</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Operations.html" title="Hawkular::Operations (module)">Operations</a></span></span>
      &raquo; 
-    <span class="title">OperationsClient</span>
+    <span class="title">Client</span>
   
-
-  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
 </div>
 
-      <div id="search">
+        <div id="search">
   
     <a class="full_list_link" id="class_list_link"
         href="../../class_list.html">
-      Class List
-    </a>
-  
-    <a class="full_list_link" id="method_list_link"
-        href="../../method_list.html">
-      Method List
-    </a>
-  
-    <a class="full_list_link" id="file_list_link"
-        href="../../file_list.html">
-      File List
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
     </a>
   
 </div>
-      <div class="clear"></div>
-    </div>
+        <div class="clear"></div>
+      </div>
 
-    <iframe id="search_frame"></iframe>
-
-    <div id="content"><h1>Class: Hawkular::Operations::OperationsClient
+      <div id="content"><h1>Class: Hawkular::Operations::Client
   
   
   
 </h1>
-
-<dl class="box">
+<div class="box_info">
   
-    <dt class="r1">Inherits:</dt>
-    <dd class="r1">
+  <dl>
+    <dt>Inherits:</dt>
+    <dd>
       <span class="inheritName"><span class='object_link'><a href="../BaseClient.html" title="Hawkular::BaseClient (class)">BaseClient</a></span></span>
       
         <ul class="fullTree">
@@ -80,30 +76,35 @@
           
             <li class="next"><span class='object_link'><a href="../BaseClient.html" title="Hawkular::BaseClient (class)">BaseClient</a></span></li>
           
-            <li class="next">Hawkular::Operations::OperationsClient</li>
+            <li class="next">Hawkular::Operations::Client</li>
           
         </ul>
         <a href="#" class="inheritanceTree">show all</a>
       
-      </dd>
-    
+    </dd>
+  </dl>
   
-  
-    
-  
-    
-      <dt class="r2">Includes:</dt>
-      <dd class="r2">WebSocket::Client</dd>
-      
-    
+
   
   
   
-    <dt class="r1 last">Defined in:</dt>
-    <dd class="r1 last">lib/hawkular/operations/operations_api.rb</dd>
   
-</dl>
-<div class="clear"></div>
+  <dl>
+      <dt>Includes:</dt>
+      <dd>WebSocket::Client</dd>
+  </dl>
+  
+  
+
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>lib/hawkular/operations/operations_api.rb</dd>
+  </dl>
+  
+</div>
 
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
@@ -120,13 +121,40 @@
 
 
 
-  <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
+  <h2>Instance Attribute Summary <small><a href="#" class="summary_toggle">collapse</a></small></h2>
   <ul class="summary">
     
       <li class="public ">
   <span class="summary_signature">
     
-      <a href="#session_id-instance_method" title="#session_id (instance method)">- (Object) <strong>session_id</strong> </a>
+      <a href="#logger-instance_method" title="#logger (instance method)">#<strong>logger</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the value of attribute logger.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#session_id-instance_method" title="#session_id (instance method)">#<strong>session_id</strong>  &#x21d2; Object </a>
     
 
     
@@ -153,7 +181,7 @@
       <li class="public ">
   <span class="summary_signature">
     
-      <a href="#ws-instance_method" title="#ws (instance method)">- (Object) <strong>ws</strong> </a>
+      <a href="#ws-instance_method" title="#ws (instance method)">#<strong>ws</strong>  &#x21d2; Object </a>
     
 
     
@@ -190,7 +218,7 @@
   
     <h2>
       Instance Method Summary
-      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+      <small><a href="#" class="summary_toggle">collapse</a></small>
     </h2>
 
     <ul class="summary">
@@ -198,7 +226,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#add_datasource-instance_method" title="#add_datasource (instance method)">- (Object) <strong>add_datasource</strong>(hash, &amp;callback) </a>
+      <a href="#add_datasource-instance_method" title="#add_datasource (instance method)">#<strong>add_datasource</strong>(hash, &amp;callback)  &#x21d2; Object </a>
     
 
     
@@ -222,7 +250,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#add_deployment-instance_method" title="#add_deployment (instance method)">- (Object) <strong>add_deployment</strong>(hash, &amp;callback) </a>
+      <a href="#add_deployment-instance_method" title="#add_deployment (instance method)">#<strong>add_deployment</strong>(hash, &amp;callback)  &#x21d2; Object </a>
     
 
     
@@ -246,7 +274,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#add_jdbc_driver-instance_method" title="#add_jdbc_driver (instance method)">- (Object) <strong>add_jdbc_driver</strong>(hash, &amp;callback) </a>
+      <a href="#add_jdbc_driver-instance_method" title="#add_jdbc_driver (instance method)">#<strong>add_jdbc_driver</strong>(hash, &amp;callback)  &#x21d2; Object </a>
     
 
     
@@ -270,7 +298,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#close_connection%21-instance_method" title="#close_connection! (instance method)">- (Object) <strong>close_connection!</strong> </a>
+      <a href="#close_connection!-instance_method" title="#close_connection! (instance method)">#<strong>close_connection!</strong>  &#x21d2; Object </a>
     
 
     
@@ -294,7 +322,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#disable_deployment-instance_method" title="#disable_deployment (instance method)">- (Object) <strong>disable_deployment</strong>(hash, &amp;callback) </a>
+      <a href="#disable_deployment-instance_method" title="#disable_deployment (instance method)">#<strong>disable_deployment</strong>(hash, &amp;callback)  &#x21d2; Object </a>
     
 
     
@@ -318,7 +346,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#enable_deployment-instance_method" title="#enable_deployment (instance method)">- (Object) <strong>enable_deployment</strong>(hash, &amp;callback) </a>
+      <a href="#enable_deployment-instance_method" title="#enable_deployment (instance method)">#<strong>enable_deployment</strong>(hash, &amp;callback)  &#x21d2; Object </a>
     
 
     
@@ -342,7 +370,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#export_jdr-instance_method" title="#export_jdr (instance method)">- (Object) <strong>export_jdr</strong>(resource_path, &amp;callback) </a>
+      <a href="#export_jdr-instance_method" title="#export_jdr (instance method)">#<strong>export_jdr</strong>(resource_path, &amp;callback)  &#x21d2; Object </a>
     
 
     
@@ -366,7 +394,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#initialize-instance_method" title="#initialize (instance method)">- (OperationsClient) <strong>initialize</strong>(args) </a>
+      <a href="#initialize-instance_method" title="#initialize (instance method)">#<strong>initialize</strong>(args)  &#x21d2; Client </a>
     
 
     
@@ -392,7 +420,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#invoke_generic_operation-instance_method" title="#invoke_generic_operation (instance method)">- (Object) <strong>invoke_generic_operation</strong>(hash, &amp;callback) </a>
+      <a href="#invoke_generic_operation-instance_method" title="#invoke_generic_operation (instance method)">#<strong>invoke_generic_operation</strong>(hash, &amp;callback)  &#x21d2; Object </a>
     
 
     
@@ -419,7 +447,7 @@ operation is about to run, operationName [String].</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#invoke_specific_operation-instance_method" title="#invoke_specific_operation (instance method)">- (Object) <strong>invoke_specific_operation</strong>(operation_payload, operation_name, &amp;callback) </a>
+      <a href="#invoke_specific_operation-instance_method" title="#invoke_specific_operation (instance method)">#<strong>invoke_specific_operation</strong>(operation_payload, operation_name, &amp;callback)  &#x21d2; Object </a>
     
 
     
@@ -446,7 +474,7 @@ the name without the Request/Response suffix), e.g.</p>
         <li class="public deprecated">
   <span class="summary_signature">
     
-      <a href="#remove_deployment-instance_method" title="#remove_deployment (instance method)">- (Object) <strong>remove_deployment</strong>(hash, &amp;callback) </a>
+      <a href="#remove_deployment-instance_method" title="#remove_deployment (instance method)">#<strong>remove_deployment</strong>(hash, &amp;callback)  &#x21d2; Object </a>
     
 
     
@@ -470,7 +498,7 @@ the name without the Request/Response suffix), e.g.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#restart_deployment-instance_method" title="#restart_deployment (instance method)">- (Object) <strong>restart_deployment</strong>(hash, &amp;callback) </a>
+      <a href="#restart_deployment-instance_method" title="#restart_deployment (instance method)">#<strong>restart_deployment</strong>(hash, &amp;callback)  &#x21d2; Object </a>
     
 
     
@@ -494,7 +522,7 @@ the name without the Request/Response suffix), e.g.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#undeploy-instance_method" title="#undeploy (instance method)">- (Object) <strong>undeploy</strong>(hash, &amp;callback) </a>
+      <a href="#undeploy-instance_method" title="#undeploy (instance method)">#<strong>undeploy</strong>(hash, &amp;callback)  &#x21d2; Object </a>
     
 
     
@@ -515,6 +543,30 @@ the name without the Request/Response suffix), e.g.</p>
 </li>
 
       
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#update_collection_intervals-instance_method" title="#update_collection_intervals (instance method)">#<strong>update_collection_intervals</strong>(hash, &amp;callback)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Updates the collection intervals.</p>
+</div></span>
+  
+</li>
+
+      
     </ul>
   
 
@@ -529,7 +581,7 @@ the name without the Request/Response suffix), e.g.</p>
   
   
   <h3 class="inherited">Methods inherited from <span class='object_link'><a href="../BaseClient.html" title="Hawkular::BaseClient (class)">BaseClient</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="../BaseClient.html#base_64_credentials-instance_method" title="Hawkular::BaseClient#base_64_credentials (method)">#base_64_credentials</a></span>, <span class='object_link'><a href="../BaseClient.html#generate_query_params-instance_method" title="Hawkular::BaseClient#generate_query_params (method)">#generate_query_params</a></span>, <span class='object_link'><a href="../BaseClient.html#http_delete-instance_method" title="Hawkular::BaseClient#http_delete (method)">#http_delete</a></span>, <span class='object_link'><a href="../BaseClient.html#http_get-instance_method" title="Hawkular::BaseClient#http_get (method)">#http_get</a></span>, <span class='object_link'><a href="../BaseClient.html#http_post-instance_method" title="Hawkular::BaseClient#http_post (method)">#http_post</a></span>, <span class='object_link'><a href="../BaseClient.html#http_put-instance_method" title="Hawkular::BaseClient#http_put (method)">#http_put</a></span>, <span class='object_link'><a href="../BaseClient.html#normalize_entrypoint_url-instance_method" title="Hawkular::BaseClient#normalize_entrypoint_url (method)">#normalize_entrypoint_url</a></span>, <span class='object_link'><a href="../BaseClient.html#now-instance_method" title="Hawkular::BaseClient#now (method)">#now</a></span>, <span class='object_link'><a href="../BaseClient.html#url_with_websocket_scheme-instance_method" title="Hawkular::BaseClient#url_with_websocket_scheme (method)">#url_with_websocket_scheme</a></span></p>
+  <p class="inherited"><span class='object_link'><a href="../BaseClient.html#admin_header-instance_method" title="Hawkular::BaseClient#admin_header (method)">#admin_header</a></span>, <span class='object_link'><a href="../BaseClient.html#base_64_credentials-instance_method" title="Hawkular::BaseClient#base_64_credentials (method)">#base_64_credentials</a></span>, <span class='object_link'><a href="../BaseClient.html#generate_query_params-instance_method" title="Hawkular::BaseClient#generate_query_params (method)">#generate_query_params</a></span>, <span class='object_link'><a href="../BaseClient.html#http_delete-instance_method" title="Hawkular::BaseClient#http_delete (method)">#http_delete</a></span>, <span class='object_link'><a href="../BaseClient.html#http_get-instance_method" title="Hawkular::BaseClient#http_get (method)">#http_get</a></span>, <span class='object_link'><a href="../BaseClient.html#http_post-instance_method" title="Hawkular::BaseClient#http_post (method)">#http_post</a></span>, <span class='object_link'><a href="../BaseClient.html#http_put-instance_method" title="Hawkular::BaseClient#http_put (method)">#http_put</a></span>, <span class='object_link'><a href="../BaseClient.html#normalize_entrypoint_url-instance_method" title="Hawkular::BaseClient#normalize_entrypoint_url (method)">#normalize_entrypoint_url</a></span>, <span class='object_link'><a href="../BaseClient.html#now-instance_method" title="Hawkular::BaseClient#now (method)">#now</a></span>, <span class='object_link'><a href="../BaseClient.html#url_with_websocket_scheme-instance_method" title="Hawkular::BaseClient#url_with_websocket_scheme (method)">#url_with_websocket_scheme</a></span></p>
 
   
   
@@ -539,15 +591,15 @@ the name without the Request/Response suffix), e.g.</p>
   
   
   
-  <h3 class="inherited">Methods included from <span class='object_link'><a href="../../HawkularUtilsMixin.html" title="HawkularUtilsMixin (module)">HawkularUtilsMixin</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="../../HawkularUtilsMixin.html#hawk_escape-instance_method" title="HawkularUtilsMixin#hawk_escape (method)">#hawk_escape</a></span>, <span class='object_link'><a href="../../HawkularUtilsMixin.html#hawk_escape_id-instance_method" title="HawkularUtilsMixin#hawk_escape_id (method)">#hawk_escape_id</a></span></p>
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="../ClientUtils.html" title="Hawkular::ClientUtils (module)">ClientUtils</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="../ClientUtils.html#hawk_escape-instance_method" title="Hawkular::ClientUtils#hawk_escape (method)">#hawk_escape</a></span>, <span class='object_link'><a href="../ClientUtils.html#hawk_escape_id-instance_method" title="Hawkular::ClientUtils#hawk_escape_id (method)">#hawk_escape_id</a></span></p>
 <div id="constructor_details" class="method_details_list">
   <h2>Constructor Details</h2>
   
     <div class="method_details first">
   <h3 class="signature first" id="initialize-instance_method">
   
-    - (<tt><span class='object_link'><a href="" title="Hawkular::Operations::OperationsClient (class)">OperationsClient</a></span></tt>) <strong>initialize</strong>(args) 
+    #<strong>initialize</strong>(args)  &#x21d2; <tt><span class='object_link'><a href="" title="Hawkular::Operations::Client (class)">Client</a></span></tt> 
   
 
   
@@ -570,7 +622,7 @@ the name without the Request/Response suffix), e.g.</p>
     <p class="tag_title">Examples:</p>
     
       
-      <pre class="example code"><code><span class='const'>Hawkular</span><span class='op'>::</span><span class='const'>Operations</span><span class='op'>::</span><span class='const'>OperationsClient</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='label'>credentials:</span> <span class='lbrace'>{</span><span class='label'>username:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>jdoe</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>password:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>password</span><span class='tstring_end'>&#39;</span></span><span class='rbrace'>}</span><span class='rparen'>)</span></code></pre>
+      <pre class="example code"><code><span class='const'><span class='object_link'><a href="../../Hawkular.html" title="Hawkular (module)">Hawkular</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Operations.html" title="Hawkular::Operations (module)">Operations</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Operations.html#OperationsClient-constant" title="Hawkular::Operations::OperationsClient (constant)">OperationsClient</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='label'>credentials:</span> <span class='lbrace'>{</span><span class='label'>username:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>jdoe</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>password:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>password</span><span class='tstring_end'>&#39;</span></span><span class='rbrace'>}</span><span class='rparen'>)</span></code></pre>
     
   </div>
 <p class="tag_title">Parameters:</p>
@@ -691,6 +743,7 @@ handshake</p>
       <pre class="lines">
 
 
+63
 64
 65
 66
@@ -726,45 +779,70 @@ handshake</p>
 96
 97
 98
-99</pre>
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkular/operations/operations_api.rb', line 64</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/operations/operations_api.rb', line 63</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_args'>args</span><span class='lbracket'>[</span><span class='symbol'>:use_secure_connection</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='kw'>false</span>
-  <span class='id identifier rubyid_ep'>ep</span> <span class='op'>=</span> <span class='id identifier rubyid_args'>args</span><span class='lbracket'>[</span><span class='symbol'>:entrypoint</span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_args'>args</span> <span class='op'>=</span> <span class='lbrace'>{</span>
+    <span class='label'>credentials:</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span>
+    <span class='label'>options:</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span>
+    <span class='label'>wait_time:</span> <span class='float'>0.5</span><span class='comma'>,</span>
+    <span class='label'>use_secure_connection:</span> <span class='kw'>false</span><span class='comma'>,</span>
+    <span class='label'>entrypoint:</span> <span class='kw'>nil</span>
+  <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
 
-  <span class='kw'>unless</span> <span class='id identifier rubyid_ep'>ep</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
-    <span class='id identifier rubyid_uri'>uri</span> <span class='op'>=</span> <span class='const'>URI</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span> <span class='id identifier rubyid_ep'>ep</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_args'>args</span><span class='lbracket'>[</span><span class='symbol'>:entrypoint</span><span class='rbracket'>]</span>
+    <span class='id identifier rubyid_uri'>uri</span> <span class='op'>=</span> <span class='const'>URI</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='id identifier rubyid_args'>args</span><span class='lbracket'>[</span><span class='symbol'>:entrypoint</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_args'>args</span><span class='lbracket'>[</span><span class='symbol'>:host</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_uri'>uri</span><span class='period'>.</span><span class='id identifier rubyid_host'>host</span><span class='embexpr_end'>}</span><span class='tstring_content'>:</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_uri'>uri</span><span class='period'>.</span><span class='id identifier rubyid_port'>port</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
     <span class='id identifier rubyid_args'>args</span><span class='lbracket'>[</span><span class='symbol'>:use_secure_connection</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='qwords_beg'>%w(</span><span class='tstring_content'>https</span><span class='words_sep'> </span><span class='tstring_content'>wss</span><span class='words_sep'>)</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='id identifier rubyid_uri'>uri</span><span class='period'>.</span><span class='id identifier rubyid_scheme'>scheme</span><span class='rparen'>)</span> <span class='op'>?</span> <span class='kw'>true</span> <span class='op'>:</span> <span class='kw'>false</span>
   <span class='kw'>end</span>
 
   <span class='id identifier rubyid_fail'>fail</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>no parameter &quot;:host&quot; or &quot;:entrypoint&quot; given</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>if</span> <span class='id identifier rubyid_args'>args</span><span class='lbracket'>[</span><span class='symbol'>:host</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
-  <span class='id identifier rubyid_args'>args</span><span class='lbracket'>[</span><span class='symbol'>:credentials</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
-  <span class='id identifier rubyid_args'>args</span><span class='lbracket'>[</span><span class='symbol'>:options</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
-  <span class='id identifier rubyid_args'>args</span><span class='lbracket'>[</span><span class='symbol'>:wait_time</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='float'>0.5</span>
+
   <span class='kw'>super</span><span class='lparen'>(</span><span class='id identifier rubyid_args'>args</span><span class='lbracket'>[</span><span class='symbol'>:host</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_args'>args</span><span class='lbracket'>[</span><span class='symbol'>:credentials</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_args'>args</span><span class='lbracket'>[</span><span class='symbol'>:options</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+
   <span class='id identifier rubyid_url'>url</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ws</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_args'>args</span><span class='lbracket'>[</span><span class='symbol'>:use_secure_connection</span><span class='rbracket'>]</span> <span class='op'>?</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>s</span><span class='tstring_end'>&#39;</span></span> <span class='op'>:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='embexpr_end'>}</span><span class='tstring_content'>://</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_args'>args</span><span class='lbracket'>[</span><span class='symbol'>:host</span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_content'>/hawkular/command-gateway/ui/ws</span><span class='tstring_end'>&quot;</span></span>
-  <span class='id identifier rubyid_ws_options'>ws_options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+
   <span class='id identifier rubyid_creds'>creds</span> <span class='op'>=</span> <span class='id identifier rubyid_args'>args</span><span class='lbracket'>[</span><span class='symbol'>:credentials</span><span class='rbracket'>]</span>
   <span class='id identifier rubyid_base64_creds'>base64_creds</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_creds'>creds</span><span class='lbracket'>[</span><span class='symbol'>:username</span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_content'>:</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_creds'>creds</span><span class='lbracket'>[</span><span class='symbol'>:password</span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_pack'>pack</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>m</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>\r\n</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_ws_options'>ws_options</span><span class='lbracket'>[</span><span class='symbol'>:headers</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='lbrace'>{</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Authorization</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Basic </span><span class='tstring_end'>&#39;</span></span> <span class='op'>+</span> <span class='id identifier rubyid_base64_creds'>base64_creds</span><span class='comma'>,</span>
-                           <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Hawkular-Tenant</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_args'>args</span><span class='lbracket'>[</span><span class='symbol'>:options</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:tenant</span><span class='rbracket'>]</span><span class='comma'>,</span>
-                           <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Accept</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>application/json</span><span class='tstring_end'>&#39;</span></span>
+
+  <span class='id identifier rubyid_ws_options'>ws_options</span> <span class='op'>=</span> <span class='lbrace'>{</span>
+    <span class='label'>headers:</span>  <span class='lbrace'>{</span>
+      <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Authorization</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Basic </span><span class='tstring_end'>&#39;</span></span> <span class='op'>+</span> <span class='id identifier rubyid_base64_creds'>base64_creds</span><span class='comma'>,</span>
+      <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Hawkular-Tenant</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_args'>args</span><span class='lbracket'>[</span><span class='symbol'>:options</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='symbol'>:tenant</span><span class='rbracket'>]</span><span class='comma'>,</span>
+      <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Accept</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>application/json</span><span class='tstring_end'>&#39;</span></span>
+    <span class='rbrace'>}</span>
   <span class='rbrace'>}</span>
+
+  <span class='ivar'>@logger</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../Hawkular.html" title="Hawkular (module)">Hawkular</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Logger.html" title="Hawkular::Logger (class)">Logger</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="../Logger.html#initialize-instance_method" title="Hawkular::Logger#initialize (method)">new</a></span></span>
 
   <span class='ivar'>@ws</span> <span class='op'>=</span> <span class='const'>Simple</span><span class='period'>.</span><span class='id identifier rubyid_connect'>connect</span> <span class='id identifier rubyid_url'>url</span><span class='comma'>,</span> <span class='id identifier rubyid_ws_options'>ws_options</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_client'>client</span><span class='op'>|</span>
     <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_on'>on</span><span class='lparen'>(</span><span class='symbol'>:message</span><span class='comma'>,</span> <span class='label'>once:</span> <span class='kw'>true</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_msg'>msg</span><span class='op'>|</span>
       <span class='id identifier rubyid_parsed_message'>parsed_message</span> <span class='op'>=</span> <span class='id identifier rubyid_msg'>msg</span><span class='period'>.</span><span class='id identifier rubyid_data'>data</span><span class='period'>.</span><span class='id identifier rubyid_to_msg_hash'>to_msg_hash</span>
-      <span class='id identifier rubyid_puts'>puts</span> <span class='id identifier rubyid_parsed_message'>parsed_message</span> <span class='kw'>if</span> <span class='const'>ENV</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>HAWKULARCLIENT_LOG_RESPONSE</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
+
+      <span class='id identifier rubyid_logger'>logger</span><span class='period'>.</span><span class='id identifier rubyid_log'>log</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Sent WebSocket message: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_parsed_message'>parsed_message</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+
       <span class='kw'>case</span> <span class='id identifier rubyid_parsed_message'>parsed_message</span><span class='lbracket'>[</span><span class='symbol'>:operationName</span><span class='rbracket'>]</span>
       <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>WelcomeResponse</span><span class='tstring_end'>&#39;</span></span>
         <span class='ivar'>@session_id</span> <span class='op'>=</span> <span class='id identifier rubyid_parsed_message'>parsed_message</span><span class='lbracket'>[</span><span class='symbol'>:data</span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>sessionId</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
       <span class='kw'>end</span>
     <span class='kw'>end</span>
   <span class='kw'>end</span>
+
   <span class='id identifier rubyid_sleep'>sleep</span> <span class='id identifier rubyid_args'>args</span><span class='lbracket'>[</span><span class='symbol'>:wait_time</span><span class='rbracket'>]</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -778,11 +856,54 @@ handshake</p>
     <h2>Instance Attribute Details</h2>
     
       
-      <span id="session_id=-instance_method"></span>
+      <span id="logger=-instance_method"></span>
       <div class="method_details first">
-  <h3 class="signature first" id="session_id-instance_method">
+  <h3 class="signature first" id="logger-instance_method">
   
-    - (<tt>Object</tt>) <strong>session_id</strong> 
+    #<strong>logger</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the value of attribute logger</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+34
+35
+36</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/operations/operations_api.rb', line 34</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_logger'>logger</span>
+  <span class='ivar'>@logger</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="session_id=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="session_id-instance_method">
+  
+    #<strong>session_id</strong>  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -805,12 +926,12 @@ handshake</p>
       <pre class="lines">
 
 
-33
 34
-35</pre>
+35
+36</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkular/operations/operations_api.rb', line 33</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/operations/operations_api.rb', line 34</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_session_id'>session_id</span>
   <span class='ivar'>@session_id</span>
@@ -825,7 +946,7 @@ handshake</p>
       <div class="method_details ">
   <h3 class="signature " id="ws-instance_method">
   
-    - (<tt>Object</tt>) <strong>ws</strong> 
+    #<strong>ws</strong>  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -848,12 +969,12 @@ handshake</p>
       <pre class="lines">
 
 
-33
 34
-35</pre>
+35
+36</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkular/operations/operations_api.rb', line 33</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/operations/operations_api.rb', line 34</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_ws'>ws</span>
   <span class='ivar'>@ws</span>
@@ -873,7 +994,7 @@ handshake</p>
       <div class="method_details first">
   <h3 class="signature first" id="add_datasource-instance_method">
   
-    - (<tt>Object</tt>) <strong>add_datasource</strong>(hash, &amp;callback) 
+    #<strong>add_datasource</strong>(hash, &amp;callback)  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -1073,15 +1194,15 @@ handshake</p>
       <pre class="lines">
 
 
-261
-262
-263
-264
-265
-266</pre>
+274
+275
+276
+277
+278
+279</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkular/operations/operations_api.rb', line 261</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/operations/operations_api.rb', line 274</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_add_datasource'>add_datasource</span><span class='lparen'>(</span><span class='id identifier rubyid_hash'>hash</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_callback'>callback</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_required'>required</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='symbol'>:resourcePath</span><span class='comma'>,</span> <span class='symbol'>:xaDatasource</span><span class='comma'>,</span> <span class='symbol'>:datasourceName</span><span class='comma'>,</span> <span class='symbol'>:jndiName</span><span class='comma'>,</span> <span class='symbol'>:driverName</span><span class='comma'>,</span> <span class='symbol'>:driverClass</span><span class='comma'>,</span> <span class='symbol'>:connectionUrl</span><span class='rbracket'>]</span>
@@ -1097,7 +1218,7 @@ handshake</p>
       <div class="method_details ">
   <h3 class="signature " id="add_deployment-instance_method">
   
-    - (<tt>Object</tt>) <strong>add_deployment</strong>(hash, &amp;callback) 
+    #<strong>add_deployment</strong>(hash, &amp;callback)  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -1163,7 +1284,8 @@ handshake</p>
           </span>
           
             &mdash; <div class='inline'>
-<p>canonical path of the WildFly server into which we deploy</p>
+<p>canonical path of the WildFly server into which we deploy or of the domain
+controller if we deploy into a server group (in case of domain mode)</p>
 </div>
           
         </li>
@@ -1246,18 +1368,18 @@ true)</p>
       <pre class="lines">
 
 
-145
-146
-147
-148
-149
-150
-151
-152
-153</pre>
+158
+159
+160
+161
+162
+163
+164
+165
+166</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkular/operations/operations_api.rb', line 145</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/operations/operations_api.rb', line 158</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_add_deployment'>add_deployment</span><span class='lparen'>(</span><span class='id identifier rubyid_hash'>hash</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_callback'>callback</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_hash'>hash</span><span class='lbracket'>[</span><span class='symbol'>:enabled</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_hash'>hash</span><span class='period'>.</span><span class='id identifier rubyid_key?'>key?</span><span class='lparen'>(</span><span class='symbol'>:enabled</span><span class='rparen'>)</span> <span class='op'>?</span> <span class='id identifier rubyid_hash'>hash</span><span class='lbracket'>[</span><span class='symbol'>:enabled</span><span class='rbracket'>]</span> <span class='op'>:</span> <span class='kw'>true</span>
@@ -1276,7 +1398,7 @@ true)</p>
       <div class="method_details ">
   <h3 class="signature " id="add_jdbc_driver-instance_method">
   
-    - (<tt>Object</tt>) <strong>add_jdbc_driver</strong>(hash, &amp;callback) 
+    #<strong>add_jdbc_driver</strong>(hash, &amp;callback)  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -1426,16 +1548,16 @@ true)</p>
       <pre class="lines">
 
 
-279
-280
-281
-282
-283
-284
-285</pre>
+292
+293
+294
+295
+296
+297
+298</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkular/operations/operations_api.rb', line 279</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/operations/operations_api.rb', line 292</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_add_jdbc_driver'>add_jdbc_driver</span><span class='lparen'>(</span><span class='id identifier rubyid_hash'>hash</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_callback'>callback</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_required'>required</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='symbol'>:resource_path</span><span class='comma'>,</span> <span class='symbol'>:driver_jar_name</span><span class='comma'>,</span> <span class='symbol'>:driver_name</span><span class='comma'>,</span> <span class='symbol'>:module_name</span><span class='comma'>,</span> <span class='symbol'>:driver_class</span><span class='comma'>,</span> <span class='symbol'>:binary_content</span><span class='rbracket'>]</span>
@@ -1452,7 +1574,7 @@ true)</p>
       <div class="method_details ">
   <h3 class="signature " id="close_connection!-instance_method">
   
-    - (<tt>Object</tt>) <strong>close_connection!</strong> 
+    #<strong>close_connection!</strong>  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -1475,12 +1597,12 @@ true)</p>
       <pre class="lines">
 
 
-102
-103
-104</pre>
+114
+115
+116</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkular/operations/operations_api.rb', line 102</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/operations/operations_api.rb', line 114</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_close_connection!'>close_connection!</span>
   <span class='ivar'>@ws</span><span class='period'>.</span><span class='id identifier rubyid_close'>close</span>
@@ -1493,7 +1615,7 @@ true)</p>
       <div class="method_details ">
   <h3 class="signature " id="disable_deployment-instance_method">
   
-    - (<tt>Object</tt>) <strong>disable_deployment</strong>(hash, &amp;callback) 
+    #<strong>disable_deployment</strong>(hash, &amp;callback)  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -1602,27 +1724,27 @@ true)</p>
       <pre class="lines">
 
 
-212
-213
-214
-215
-216
-217
-218
-219
-220
-221
-222
-223</pre>
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkular/operations/operations_api.rb', line 212</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/operations/operations_api.rb', line 225</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_disable_deployment'>disable_deployment</span><span class='lparen'>(</span><span class='id identifier rubyid_hash'>hash</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_callback'>callback</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_required'>required</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='symbol'>:resource_path</span><span class='comma'>,</span> <span class='symbol'>:deployment_name</span><span class='rbracket'>]</span>
   <span class='id identifier rubyid_check_pre_conditions'>check_pre_conditions</span> <span class='id identifier rubyid_hash'>hash</span><span class='comma'>,</span> <span class='id identifier rubyid_required'>required</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_callback'>callback</span>
 
-  <span class='id identifier rubyid_cp'>cp</span> <span class='op'>=</span> <span class='op'>::</span><span class='const'>Hawkular</span><span class='op'>::</span><span class='const'>Inventory</span><span class='op'>::</span><span class='const'>CanonicalPath</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span> <span class='id identifier rubyid_hash'>hash</span><span class='lbracket'>[</span><span class='symbol'>:resource_path</span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_cp'>cp</span> <span class='op'>=</span> <span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Hawkular.html" title="Hawkular (module)">Hawkular</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Inventory.html" title="Hawkular::Inventory (module)">Inventory</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Inventory/CanonicalPath.html" title="Hawkular::Inventory::CanonicalPath (class)">CanonicalPath</a></span></span><span class='period'>.</span><span class='id identifier rubyid_parse'><span class='object_link'><a href="../Inventory/CanonicalPath.html#parse-class_method" title="Hawkular::Inventory::CanonicalPath.parse (method)">parse</a></span></span> <span class='id identifier rubyid_hash'>hash</span><span class='lbracket'>[</span><span class='symbol'>:resource_path</span><span class='rbracket'>]</span>
   <span class='id identifier rubyid_server_path'>server_path</span> <span class='op'>=</span> <span class='id identifier rubyid_cp'>cp</span><span class='period'>.</span><span class='id identifier rubyid_up'>up</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
   <span class='id identifier rubyid_hash'>hash</span><span class='lbracket'>[</span><span class='symbol'>:resource_path</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_server_path'>server_path</span>
   <span class='id identifier rubyid_hash'>hash</span><span class='lbracket'>[</span><span class='symbol'>:destination_file_name</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_hash'>hash</span><span class='lbracket'>[</span><span class='symbol'>:deployment_name</span><span class='rbracket'>]</span>
@@ -1638,7 +1760,7 @@ true)</p>
       <div class="method_details ">
   <h3 class="signature " id="enable_deployment-instance_method">
   
-    - (<tt>Object</tt>) <strong>enable_deployment</strong>(hash, &amp;callback) 
+    #<strong>enable_deployment</strong>(hash, &amp;callback)  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -1747,27 +1869,27 @@ true)</p>
       <pre class="lines">
 
 
-191
-192
-193
-194
-195
-196
-197
-198
-199
-200
-201
-202</pre>
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkular/operations/operations_api.rb', line 191</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/operations/operations_api.rb', line 204</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_enable_deployment'>enable_deployment</span><span class='lparen'>(</span><span class='id identifier rubyid_hash'>hash</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_callback'>callback</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_required'>required</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='symbol'>:resource_path</span><span class='comma'>,</span> <span class='symbol'>:deployment_name</span><span class='rbracket'>]</span>
   <span class='id identifier rubyid_check_pre_conditions'>check_pre_conditions</span> <span class='id identifier rubyid_hash'>hash</span><span class='comma'>,</span> <span class='id identifier rubyid_required'>required</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_callback'>callback</span>
 
-  <span class='id identifier rubyid_cp'>cp</span> <span class='op'>=</span> <span class='op'>::</span><span class='const'>Hawkular</span><span class='op'>::</span><span class='const'>Inventory</span><span class='op'>::</span><span class='const'>CanonicalPath</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span> <span class='id identifier rubyid_hash'>hash</span><span class='lbracket'>[</span><span class='symbol'>:resource_path</span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_cp'>cp</span> <span class='op'>=</span> <span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Hawkular.html" title="Hawkular (module)">Hawkular</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Inventory.html" title="Hawkular::Inventory (module)">Inventory</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Inventory/CanonicalPath.html" title="Hawkular::Inventory::CanonicalPath (class)">CanonicalPath</a></span></span><span class='period'>.</span><span class='id identifier rubyid_parse'><span class='object_link'><a href="../Inventory/CanonicalPath.html#parse-class_method" title="Hawkular::Inventory::CanonicalPath.parse (method)">parse</a></span></span> <span class='id identifier rubyid_hash'>hash</span><span class='lbracket'>[</span><span class='symbol'>:resource_path</span><span class='rbracket'>]</span>
   <span class='id identifier rubyid_server_path'>server_path</span> <span class='op'>=</span> <span class='id identifier rubyid_cp'>cp</span><span class='period'>.</span><span class='id identifier rubyid_up'>up</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
   <span class='id identifier rubyid_hash'>hash</span><span class='lbracket'>[</span><span class='symbol'>:resource_path</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_server_path'>server_path</span>
   <span class='id identifier rubyid_hash'>hash</span><span class='lbracket'>[</span><span class='symbol'>:destination_file_name</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_hash'>hash</span><span class='lbracket'>[</span><span class='symbol'>:deployment_name</span><span class='rbracket'>]</span>
@@ -1783,7 +1905,7 @@ true)</p>
       <div class="method_details ">
   <h3 class="signature " id="export_jdr-instance_method">
   
-    - (<tt>Object</tt>) <strong>export_jdr</strong>(resource_path, &amp;callback) 
+    #<strong>export_jdr</strong>(resource_path, &amp;callback)  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -1842,15 +1964,15 @@ true)</p>
       <pre class="lines">
 
 
-291
-292
-293
-294
-295
-296</pre>
+304
+305
+306
+307
+308
+309</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkular/operations/operations_api.rb', line 291</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/operations/operations_api.rb', line 304</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_export_jdr'>export_jdr</span><span class='lparen'>(</span><span class='id identifier rubyid_resource_path'>resource_path</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_callback'>callback</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_fail'>fail</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>resource_path must be specified</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>if</span> <span class='id identifier rubyid_resource_path'>resource_path</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
@@ -1866,7 +1988,7 @@ true)</p>
       <div class="method_details ">
   <h3 class="signature " id="invoke_generic_operation-instance_method">
   
-    - (<tt>Object</tt>) <strong>invoke_generic_operation</strong>(hash, &amp;callback) 
+    #<strong>invoke_generic_operation</strong>(hash, &amp;callback)  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -1928,15 +2050,15 @@ operation is about to run, operationName [String]</p>
       <pre class="lines">
 
 
-112
-113
-114
-115
-116
-117</pre>
+124
+125
+126
+127
+128
+129</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkular/operations/operations_api.rb', line 112</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/operations/operations_api.rb', line 124</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_invoke_generic_operation'>invoke_generic_operation</span><span class='lparen'>(</span><span class='id identifier rubyid_hash'>hash</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_callback'>callback</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_required'>required</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='symbol'>:resourcePath</span><span class='comma'>,</span> <span class='symbol'>:operationName</span><span class='rbracket'>]</span>
@@ -1952,7 +2074,7 @@ operation is about to run, operationName [String]</p>
       <div class="method_details ">
   <h3 class="signature " id="invoke_specific_operation-instance_method">
   
-    - (<tt>Object</tt>) <strong>invoke_specific_operation</strong>(operation_payload, operation_name, &amp;callback) 
+    #<strong>invoke_specific_operation</strong>(operation_payload, operation_name, &amp;callback)  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -2032,16 +2154,16 @@ can be</p>
       <pre class="lines">
 
 
-126
-127
-128
-129
-130
-131
-132</pre>
+138
+139
+140
+141
+142
+143
+144</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkular/operations/operations_api.rb', line 126</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/operations/operations_api.rb', line 138</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_invoke_specific_operation'>invoke_specific_operation</span><span class='lparen'>(</span><span class='id identifier rubyid_operation_payload'>operation_payload</span><span class='comma'>,</span> <span class='id identifier rubyid_operation_name'>operation_name</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_callback'>callback</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_fail'>fail</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Operation must be specified</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>if</span> <span class='id identifier rubyid_operation_name'>operation_name</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
@@ -2058,7 +2180,7 @@ can be</p>
       <div class="method_details ">
   <h3 class="signature " id="remove_deployment-instance_method">
   
-    - (<tt>Object</tt>) <strong>remove_deployment</strong>(hash, &amp;callback) 
+    #<strong>remove_deployment</strong>(hash, &amp;callback)  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -2082,12 +2204,12 @@ can be</p>
       <pre class="lines">
 
 
-179
-180
-181</pre>
+192
+193
+194</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkular/operations/operations_api.rb', line 179</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/operations/operations_api.rb', line 192</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_remove_deployment'>remove_deployment</span><span class='lparen'>(</span><span class='id identifier rubyid_hash'>hash</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_callback'>callback</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_undeploy'>undeploy</span><span class='lparen'>(</span><span class='id identifier rubyid_hash'>hash</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_callback'>callback</span><span class='rparen'>)</span>
@@ -2100,7 +2222,7 @@ can be</p>
       <div class="method_details ">
   <h3 class="signature " id="restart_deployment-instance_method">
   
-    - (<tt>Object</tt>) <strong>restart_deployment</strong>(hash, &amp;callback) 
+    #<strong>restart_deployment</strong>(hash, &amp;callback)  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -2209,27 +2331,27 @@ can be</p>
       <pre class="lines">
 
 
-233
-234
-235
-236
-237
-238
-239
-240
-241
-242
-243
-244</pre>
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkular/operations/operations_api.rb', line 233</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/operations/operations_api.rb', line 246</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_restart_deployment'>restart_deployment</span><span class='lparen'>(</span><span class='id identifier rubyid_hash'>hash</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_callback'>callback</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_required'>required</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='symbol'>:resource_path</span><span class='comma'>,</span> <span class='symbol'>:deployment_name</span><span class='rbracket'>]</span>
   <span class='id identifier rubyid_check_pre_conditions'>check_pre_conditions</span> <span class='id identifier rubyid_hash'>hash</span><span class='comma'>,</span> <span class='id identifier rubyid_required'>required</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_callback'>callback</span>
 
-  <span class='id identifier rubyid_cp'>cp</span> <span class='op'>=</span> <span class='op'>::</span><span class='const'>Hawkular</span><span class='op'>::</span><span class='const'>Inventory</span><span class='op'>::</span><span class='const'>CanonicalPath</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span> <span class='id identifier rubyid_hash'>hash</span><span class='lbracket'>[</span><span class='symbol'>:resource_path</span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_cp'>cp</span> <span class='op'>=</span> <span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Hawkular.html" title="Hawkular (module)">Hawkular</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Inventory.html" title="Hawkular::Inventory (module)">Inventory</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Inventory/CanonicalPath.html" title="Hawkular::Inventory::CanonicalPath (class)">CanonicalPath</a></span></span><span class='period'>.</span><span class='id identifier rubyid_parse'><span class='object_link'><a href="../Inventory/CanonicalPath.html#parse-class_method" title="Hawkular::Inventory::CanonicalPath.parse (method)">parse</a></span></span> <span class='id identifier rubyid_hash'>hash</span><span class='lbracket'>[</span><span class='symbol'>:resource_path</span><span class='rbracket'>]</span>
   <span class='id identifier rubyid_server_path'>server_path</span> <span class='op'>=</span> <span class='id identifier rubyid_cp'>cp</span><span class='period'>.</span><span class='id identifier rubyid_up'>up</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
   <span class='id identifier rubyid_hash'>hash</span><span class='lbracket'>[</span><span class='symbol'>:resource_path</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_server_path'>server_path</span>
   <span class='id identifier rubyid_hash'>hash</span><span class='lbracket'>[</span><span class='symbol'>:destination_file_name</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_hash'>hash</span><span class='lbracket'>[</span><span class='symbol'>:deployment_name</span><span class='rbracket'>]</span>
@@ -2245,7 +2367,7 @@ can be</p>
       <div class="method_details ">
   <h3 class="signature " id="undeploy-instance_method">
   
-    - (<tt>Object</tt>) <strong>undeploy</strong>(hash, &amp;callback) 
+    #<strong>undeploy</strong>(hash, &amp;callback)  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -2367,29 +2489,29 @@ can be</p>
       <pre class="lines">
 
 
-164
-165
-166
-167
-168
-169
-170
-171
-172
-173
-174
-175
-176</pre>
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkular/operations/operations_api.rb', line 164</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/operations/operations_api.rb', line 177</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_undeploy'>undeploy</span><span class='lparen'>(</span><span class='id identifier rubyid_hash'>hash</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_callback'>callback</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_hash'>hash</span><span class='lbracket'>[</span><span class='symbol'>:remove_content</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_hash'>hash</span><span class='period'>.</span><span class='id identifier rubyid_key?'>key?</span><span class='lparen'>(</span><span class='symbol'>:remove_content</span><span class='rparen'>)</span> <span class='op'>?</span> <span class='id identifier rubyid_hash'>hash</span><span class='lbracket'>[</span><span class='symbol'>:remove_content</span><span class='rbracket'>]</span> <span class='op'>:</span> <span class='kw'>true</span>
   <span class='id identifier rubyid_required'>required</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='symbol'>:resource_path</span><span class='comma'>,</span> <span class='symbol'>:deployment_name</span><span class='rbracket'>]</span>
   <span class='id identifier rubyid_check_pre_conditions'>check_pre_conditions</span> <span class='id identifier rubyid_hash'>hash</span><span class='comma'>,</span> <span class='id identifier rubyid_required'>required</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_callback'>callback</span>
 
-  <span class='id identifier rubyid_cp'>cp</span> <span class='op'>=</span> <span class='op'>::</span><span class='const'>Hawkular</span><span class='op'>::</span><span class='const'>Inventory</span><span class='op'>::</span><span class='const'>CanonicalPath</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span> <span class='id identifier rubyid_hash'>hash</span><span class='lbracket'>[</span><span class='symbol'>:resource_path</span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_cp'>cp</span> <span class='op'>=</span> <span class='op'>::</span><span class='const'><span class='object_link'><a href="../../Hawkular.html" title="Hawkular (module)">Hawkular</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Inventory.html" title="Hawkular::Inventory (module)">Inventory</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Inventory/CanonicalPath.html" title="Hawkular::Inventory::CanonicalPath (class)">CanonicalPath</a></span></span><span class='period'>.</span><span class='id identifier rubyid_parse'><span class='object_link'><a href="../Inventory/CanonicalPath.html#parse-class_method" title="Hawkular::Inventory::CanonicalPath.parse (method)">parse</a></span></span> <span class='id identifier rubyid_hash'>hash</span><span class='lbracket'>[</span><span class='symbol'>:resource_path</span><span class='rbracket'>]</span>
   <span class='id identifier rubyid_server_path'>server_path</span> <span class='op'>=</span> <span class='id identifier rubyid_cp'>cp</span><span class='period'>.</span><span class='id identifier rubyid_up'>up</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
   <span class='id identifier rubyid_hash'>hash</span><span class='lbracket'>[</span><span class='symbol'>:resource_path</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_server_path'>server_path</span>
   <span class='id identifier rubyid_hash'>hash</span><span class='lbracket'>[</span><span class='symbol'>:destination_file_name</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_hash'>hash</span><span class='lbracket'>[</span><span class='symbol'>:deployment_name</span><span class='rbracket'>]</span>
@@ -2402,15 +2524,150 @@ can be</p>
 </table>
 </div>
     
+      <div class="method_details ">
+  <h3 class="signature " id="update_collection_intervals-instance_method">
+  
+    #<strong>update_collection_intervals</strong>(hash, &amp;callback)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Updates the collection intervals.</p>
+
+<p>MetricTypeId must be of form MetricTypeSet~MetricTypeName AvailTypeId must
+be of form AvailTypeSet~AvailTypeName</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>hash</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Arguments for update collection intervals</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>callback</span>
+      
+      
+        <span class='type'>(<tt>Block</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>callback that is run after the operation is done</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    <p class="tag_title">Options Hash (<tt>hash</tt>):</p>
+    <ul class="option">
+      
+        <li>
+          <span class="name">a</span>
+          <span class="type">(<tt>resourcePath</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>resource managed by the target agent</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">A</span>
+          <span class="type">(<tt>metricTypes</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>map with key=MetricTypeId, value=interval (seconds).</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">A</span>
+          <span class="type">(<tt>availTypes</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>map with key=AvailTypeId, value=interval (seconds).</p>
+</div>
+          
+        </li>
+      
+    </ul>
+  
+    
+    
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+321
+322
+323
+324
+325</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/operations/operations_api.rb', line 321</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_update_collection_intervals'>update_collection_intervals</span><span class='lparen'>(</span><span class='id identifier rubyid_hash'>hash</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_callback'>callback</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_required'>required</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='symbol'>:resourcePath</span><span class='comma'>,</span> <span class='symbol'>:metricTypes</span><span class='comma'>,</span> <span class='symbol'>:availTypes</span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_check_pre_conditions'>check_pre_conditions</span> <span class='id identifier rubyid_hash'>hash</span><span class='comma'>,</span> <span class='id identifier rubyid_required'>required</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_callback'>callback</span>
+  <span class='id identifier rubyid_invoke_specific_operation'>invoke_specific_operation</span><span class='lparen'>(</span><span class='id identifier rubyid_hash'>hash</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>UpdateCollectionIntervals</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id identifier rubyid_callback'>callback</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
   </div>
 
 </div>
 
-    <div id="footer">
-  Generated on Mon Sep 19 13:22:36 2016 by
+      <div id="footer">
+  Generated on Mon Mar 13 17:38:46 2017 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.8.7.6 (ruby-2.3.1).
+  0.9.8 (ruby-2.3.0).
 </div>
 
+    </div>
   </body>
 </html>

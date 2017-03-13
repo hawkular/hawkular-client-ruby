@@ -1,12 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE html>
+<html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>
   Class: Hawkular::BaseClient
   
-    &mdash; Documentation by YARD 0.8.7.6
+    &mdash; Documentation by YARD 0.9.8
   
 </title>
 
@@ -15,9 +15,8 @@
   <link rel="stylesheet" href="../css/common.css" type="text/css" charset="utf-8" />
 
 <script type="text/javascript" charset="utf-8">
-  hasFrames = window.top.frames.main ? true : false;
+  pathId = "Hawkular::BaseClient";
   relpath = '../';
-  framesUrl = "../frames.html#!Hawkular/BaseClient.html";
 </script>
 
 
@@ -28,51 +27,48 @@
 
   </head>
   <body>
-    <div id="header">
-      <div id="menu">
+    <div class="nav_wrap">
+      <iframe id="nav" src="../class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
   
     <a href="../_index.html">Index (B)</a> &raquo;
     <span class='title'><span class='object_link'><a href="../Hawkular.html" title="Hawkular (module)">Hawkular</a></span></span>
      &raquo; 
     <span class="title">BaseClient</span>
   
-
-  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
 </div>
 
-      <div id="search">
+        <div id="search">
   
     <a class="full_list_link" id="class_list_link"
         href="../class_list.html">
-      Class List
-    </a>
-  
-    <a class="full_list_link" id="method_list_link"
-        href="../method_list.html">
-      Method List
-    </a>
-  
-    <a class="full_list_link" id="file_list_link"
-        href="../file_list.html">
-      File List
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
     </a>
   
 </div>
-      <div class="clear"></div>
-    </div>
+        <div class="clear"></div>
+      </div>
 
-    <iframe id="search_frame"></iframe>
-
-    <div id="content"><h1>Class: Hawkular::BaseClient
+      <div id="content"><h1>Class: Hawkular::BaseClient
   
   
   
 </h1>
-
-<dl class="box">
+<div class="box_info">
   
-    <dt class="r1">Inherits:</dt>
-    <dd class="r1">
+  <dl>
+    <dt>Inherits:</dt>
+    <dd>
       <span class="inheritName">Object</span>
       
         <ul class="fullTree">
@@ -83,25 +79,30 @@
         </ul>
         <a href="#" class="inheritanceTree">show all</a>
       
-      </dd>
-    
+    </dd>
+  </dl>
   
-  
-    
-  
-    
-      <dt class="r2">Includes:</dt>
-      <dd class="r2"><span class='object_link'><a href="../HawkularUtilsMixin.html" title="HawkularUtilsMixin (module)">HawkularUtilsMixin</a></span></dd>
-      
-    
+
   
   
   
-    <dt class="r1 last">Defined in:</dt>
-    <dd class="r1 last">lib/hawkular/base_client.rb</dd>
   
-</dl>
-<div class="clear"></div>
+  <dl>
+      <dt>Includes:</dt>
+      <dd><span class='object_link'><a href="ClientUtils.html" title="Hawkular::ClientUtils (module)">ClientUtils</a></span></dd>
+  </dl>
+  
+  
+
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>lib/hawkular/base_client.rb</dd>
+  </dl>
+  
+</div>
 
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
@@ -117,7 +118,7 @@ You should not directly use it, but through the more specialized clients.</p>
 
 </div><div id="subclasses">
   <h2>Direct Known Subclasses</h2>
-  <p class="children"><span class='object_link'><a href="Alerts/AlertsClient.html" title="Hawkular::Alerts::AlertsClient (class)">Alerts::AlertsClient</a></span>, <span class='object_link'><a href="Inventory/InventoryClient.html" title="Hawkular::Inventory::InventoryClient (class)">Inventory::InventoryClient</a></span>, <span class='object_link'><a href="Metrics/Client.html" title="Hawkular::Metrics::Client (class)">Metrics::Client</a></span>, <span class='object_link'><a href="Operations/OperationsClient.html" title="Hawkular::Operations::OperationsClient (class)">Operations::OperationsClient</a></span>, <span class='object_link'><a href="Token/TokenClient.html" title="Hawkular::Token::TokenClient (class)">Token::TokenClient</a></span></p>
+  <p class="children"><span class='object_link'><a href="Alerts/Client.html" title="Hawkular::Alerts::Client (class)">Alerts::Client</a></span>, <span class='object_link'><a href="Inventory/Client.html" title="Hawkular::Inventory::Client (class)">Inventory::Client</a></span>, <span class='object_link'><a href="Metrics/Client.html" title="Hawkular::Metrics::Client (class)">Metrics::Client</a></span>, <span class='object_link'><a href="Operations/Client.html" title="Hawkular::Operations::Client (class)">Operations::Client</a></span>, <span class='object_link'><a href="Token/Client.html" title="Hawkular::Token::Client (class)">Token::Client</a></span></p>
 </div>
 <h2>Defined Under Namespace</h2>
 <p class="children">
@@ -133,13 +134,13 @@ You should not directly use it, but through the more specialized clients.</p>
 
 
 
-  <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
+  <h2>Instance Attribute Summary <small><a href="#" class="summary_toggle">collapse</a></small></h2>
   <ul class="summary">
     
       <li class="public ">
   <span class="summary_signature">
     
-      <a href="#tenants-instance_method" title="#tenants (instance method)">- (Tenants) <strong>tenants</strong> </a>
+      <a href="#tenants-instance_method" title="#tenants (instance method)">#<strong>tenants</strong>  &#x21d2; Tenants </a>
     
 
     
@@ -173,7 +174,7 @@ You should not directly use it, but through the more specialized clients.</p>
   
     <h2>
       Instance Method Summary
-      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+      <small><a href="#" class="summary_toggle">collapse</a></small>
     </h2>
 
     <ul class="summary">
@@ -181,7 +182,29 @@ You should not directly use it, but through the more specialized clients.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#base_64_credentials-instance_method" title="#base_64_credentials (instance method)">- (String) <strong>base_64_credentials</strong>(credentials = {}) </a>
+      <a href="#admin_header-instance_method" title="#admin_header (instance method)">#<strong>admin_header</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#base_64_credentials-instance_method" title="#base_64_credentials (instance method)">#<strong>base_64_credentials</strong>(credentials = {})  &#x21d2; String </a>
     
 
     
@@ -206,7 +229,7 @@ representation that can be used to generate a Http-Authentication header.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#generate_query_params-instance_method" title="#generate_query_params (instance method)">- (String) <strong>generate_query_params</strong>(params = {}) </a>
+      <a href="#generate_query_params-instance_method" title="#generate_query_params (instance method)">#<strong>generate_query_params</strong>(params = {})  &#x21d2; String </a>
     
 
     
@@ -232,7 +255,7 @@ by `,`.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#http_delete-instance_method" title="#http_delete (instance method)">- (Object) <strong>http_delete</strong>(suburl, headers = {}) </a>
+      <a href="#http_delete-instance_method" title="#http_delete (instance method)">#<strong>http_delete</strong>(suburl, headers = {})  &#x21d2; Object </a>
     
 
     
@@ -254,7 +277,7 @@ by `,`.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#http_get-instance_method" title="#http_get (instance method)">- (Object) <strong>http_get</strong>(suburl, headers = {}) </a>
+      <a href="#http_get-instance_method" title="#http_get (instance method)">#<strong>http_get</strong>(suburl, headers = {})  &#x21d2; Object </a>
     
 
     
@@ -276,7 +299,7 @@ by `,`.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#http_post-instance_method" title="#http_post (instance method)">- (Object) <strong>http_post</strong>(suburl, hash, headers = {}) </a>
+      <a href="#http_post-instance_method" title="#http_post (instance method)">#<strong>http_post</strong>(suburl, hash, headers = {})  &#x21d2; Object </a>
     
 
     
@@ -298,7 +321,7 @@ by `,`.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#http_put-instance_method" title="#http_put (instance method)">- (Object) <strong>http_put</strong>(suburl, hash, headers = {}) </a>
+      <a href="#http_put-instance_method" title="#http_put (instance method)">#<strong>http_put</strong>(suburl, hash, headers = {})  &#x21d2; Object </a>
     
 
     
@@ -320,7 +343,7 @@ by `,`.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#initialize-instance_method" title="#initialize (instance method)">- (BaseClient) <strong>initialize</strong>(entrypoint = nil, credentials = {}, options = {}) </a>
+      <a href="#initialize-instance_method" title="#initialize (instance method)">#<strong>initialize</strong>(entrypoint = nil, credentials = {}, options = {})  &#x21d2; BaseClient </a>
     
 
     
@@ -346,7 +369,7 @@ by `,`.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#normalize_entrypoint_url-instance_method" title="#normalize_entrypoint_url (instance method)">- (String) <strong>normalize_entrypoint_url</strong>(entrypoint, suffix_path) </a>
+      <a href="#normalize_entrypoint_url-instance_method" title="#normalize_entrypoint_url (instance method)">#<strong>normalize_entrypoint_url</strong>(entrypoint, suffix_path)  &#x21d2; String </a>
     
 
     
@@ -376,7 +399,7 @@ to the URL.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#now-instance_method" title="#now (instance method)">- (Integer) <strong>now</strong> </a>
+      <a href="#now-instance_method" title="#now (instance method)">#<strong>now</strong>  &#x21d2; Integer </a>
     
 
     
@@ -400,7 +423,7 @@ to the URL.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#url_with_websocket_scheme-instance_method" title="#url_with_websocket_scheme (instance method)">- (String) <strong>url_with_websocket_scheme</strong>(url) </a>
+      <a href="#url_with_websocket_scheme-instance_method" title="#url_with_websocket_scheme (instance method)">#<strong>url_with_websocket_scheme</strong>(url)  &#x21d2; String </a>
     
 
     
@@ -433,15 +456,15 @@ to the URL.</p>
   
   
   
-  <h3 class="inherited">Methods included from <span class='object_link'><a href="../HawkularUtilsMixin.html" title="HawkularUtilsMixin (module)">HawkularUtilsMixin</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="../HawkularUtilsMixin.html#hawk_escape-instance_method" title="HawkularUtilsMixin#hawk_escape (method)">#hawk_escape</a></span>, <span class='object_link'><a href="../HawkularUtilsMixin.html#hawk_escape_id-instance_method" title="HawkularUtilsMixin#hawk_escape_id (method)">#hawk_escape_id</a></span></p>
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="ClientUtils.html" title="Hawkular::ClientUtils (module)">ClientUtils</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="ClientUtils.html#hawk_escape-instance_method" title="Hawkular::ClientUtils#hawk_escape (method)">#hawk_escape</a></span>, <span class='object_link'><a href="ClientUtils.html#hawk_escape_id-instance_method" title="Hawkular::ClientUtils#hawk_escape_id (method)">#hawk_escape_id</a></span></p>
 <div id="constructor_details" class="method_details_list">
   <h2>Constructor Details</h2>
   
     <div class="method_details first">
   <h3 class="signature first" id="initialize-instance_method">
   
-    - (<tt><span class='object_link'><a href="" title="Hawkular::BaseClient (class)">BaseClient</a></span></tt>) <strong>initialize</strong>(entrypoint = nil, credentials = {}, options = {}) 
+    #<strong>initialize</strong>(entrypoint = nil, credentials = {}, options = {})  &#x21d2; <tt><span class='object_link'><a href="" title="Hawkular::BaseClient (class)">BaseClient</a></span></tt> 
   
 
   
@@ -464,8 +487,6 @@ to the URL.</p>
       <pre class="lines">
 
 
-17
-18
 19
 20
 21
@@ -484,10 +505,11 @@ to the URL.</p>
 34
 35
 36
-37</pre>
+37
+38</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkular/base_client.rb', line 17</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/base_client.rb', line 19</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_entrypoint'>entrypoint</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span>
                <span class='id identifier rubyid_credentials'>credentials</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='comma'>,</span>
@@ -499,14 +521,13 @@ to the URL.</p>
     <span class='label'>token:</span> <span class='kw'>nil</span>
   <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='id identifier rubyid_credentials'>credentials</span><span class='rparen'>)</span>
   <span class='ivar'>@options</span> <span class='op'>=</span> <span class='lbrace'>{</span>
-    <span class='label'>tenant:</span> <span class='kw'>nil</span><span class='comma'>,</span>
-    <span class='label'>ssl_ca_file:</span> <span class='kw'>nil</span><span class='comma'>,</span>
     <span class='label'>verify_ssl:</span> <span class='const'>OpenSSL</span><span class='op'>::</span><span class='const'>SSL</span><span class='op'>::</span><span class='const'>VERIFY_PEER</span><span class='comma'>,</span>
-    <span class='label'>ssl_client_cert:</span> <span class='kw'>nil</span><span class='comma'>,</span>
-    <span class='label'>ssl_client_key:</span> <span class='kw'>nil</span><span class='comma'>,</span>
-    <span class='label'>http_proxy_uri:</span> <span class='kw'>nil</span><span class='comma'>,</span>
     <span class='label'>headers:</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
   <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span><span class='lparen'>(</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
+  <span class='ivar'>@tenant</span> <span class='op'>=</span> <span class='ivar'>@options</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='symbol'>:tenant</span><span class='rparen'>)</span>
+  <span class='ivar'>@admin_token</span> <span class='op'>=</span> <span class='ivar'>@options</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='symbol'>:admin_token</span><span class='rparen'>)</span>
+
+  <span class='ivar'>@logger</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../Hawkular.html" title="Hawkular (module)">Hawkular</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Logger.html" title="Hawkular::Logger (class)">Logger</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Logger.html#initialize-instance_method" title="Hawkular::Logger#initialize (method)">new</a></span></span>
 
   <span class='id identifier rubyid_fail'>fail</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>You need to provide an entrypoint</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>if</span> <span class='id identifier rubyid_entrypoint'>entrypoint</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
 <span class='kw'>end</span></pre>
@@ -525,7 +546,7 @@ to the URL.</p>
       <div class="method_details first">
   <h3 class="signature first" id="tenants-instance_method">
   
-    - (<tt>Tenants</tt>) <strong>tenants</strong>  <span class="extras">(readonly)</span>
+    #<strong>tenants</strong>  &#x21d2; <tt>Tenants</tt>  <span class="extras">(readonly)</span>
   
 
   
@@ -566,12 +587,12 @@ to the URL.</p>
       <pre class="lines">
 
 
-15
-16
-17</pre>
+17
+18
+19</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkular/base_client.rb', line 15</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/base_client.rb', line 17</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_tenants'>tenants</span>
   <span class='ivar'>@tenants</span>
@@ -589,9 +610,43 @@ to the URL.</p>
 
     
       <div class="method_details first">
-  <h3 class="signature first" id="base_64_credentials-instance_method">
+  <h3 class="signature first" id="admin_header-instance_method">
   
-    - (<tt>String</tt>) <strong>base_64_credentials</strong>(credentials = {}) 
+    #<strong>admin_header</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+183
+184
+185
+186
+187</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/base_client.rb', line 183</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_admin_header'>admin_header</span>
+  <span class='id identifier rubyid_headers'>headers</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+  <span class='id identifier rubyid_headers'>headers</span><span class='lbracket'>[</span><span class='symbol'>:Hawkular-Admin-Token</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='ivar'>@admin_token</span> <span class='kw'>unless</span> <span class='ivar'>@admin_token</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+  <span class='id identifier rubyid_headers'>headers</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="base_64_credentials-instance_method">
+  
+    #<strong>base_64_credentials</strong>(credentials = {})  &#x21d2; <tt>String</tt> 
   
 
   
@@ -650,15 +705,15 @@ representation that can be used to generate a Http-Authentication header</p>
       <pre class="lines">
 
 
-108
-109
-110
-111
-112
-113</pre>
+114
+115
+116
+117
+118
+119</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkular/base_client.rb', line 108</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/base_client.rb', line 114</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_base_64_credentials'>base_64_credentials</span><span class='lparen'>(</span><span class='id identifier rubyid_credentials'>credentials</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_creds'>creds</span> <span class='op'>=</span> <span class='id identifier rubyid_credentials'>credentials</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span> <span class='op'>?</span> <span class='ivar'>@credentials</span> <span class='op'>:</span> <span class='id identifier rubyid_credentials'>credentials</span>
@@ -674,7 +729,7 @@ representation that can be used to generate a Http-Authentication header</p>
       <div class="method_details ">
   <h3 class="signature " id="generate_query_params-instance_method">
   
-    - (<tt>String</tt>) <strong>generate_query_params</strong>(params = {}) 
+    #<strong>generate_query_params</strong>(params = {})  &#x21d2; <tt>String</tt> 
   
 
   
@@ -740,19 +795,19 @@ params</p>
       <pre class="lines">
 
 
-119
-120
-121
-122
-123
-124
 125
 126
 127
-128</pre>
+128
+129
+130
+131
+132
+133
+134</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkular/base_client.rb', line 119</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/base_client.rb', line 125</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_generate_query_params'>generate_query_params</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_params'>params</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='period'>.</span><span class='id identifier rubyid_select'>select</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid__k'>_k</span><span class='comma'>,</span> <span class='id identifier rubyid_v'>v</span><span class='op'>|</span> <span class='op'>!</span><span class='lparen'>(</span><span class='id identifier rubyid_v'>v</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>||</span> <span class='lparen'>(</span><span class='lparen'>(</span><span class='id identifier rubyid_v'>v</span><span class='period'>.</span><span class='id identifier rubyid_instance_of?'>instance_of?</span> <span class='const'>Array</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_v'>v</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span><span class='rparen'>)</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
@@ -772,7 +827,7 @@ params</p>
       <div class="method_details ">
   <h3 class="signature " id="http_delete-instance_method">
   
-    - (<tt>Object</tt>) <strong>http_delete</strong>(suburl, headers = {}) 
+    #<strong>http_delete</strong>(suburl, headers = {})  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -784,20 +839,24 @@ params</p>
       <pre class="lines">
 
 
-65
-66
-67
-68
-69
-70
-71</pre>
+72
+73
+74
+75
+76
+77
+78
+79
+80</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkular/base_client.rb', line 65</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/base_client.rb', line 72</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_http_delete'>http_delete</span><span class='lparen'>(</span><span class='id identifier rubyid_suburl'>suburl</span><span class='comma'>,</span> <span class='id identifier rubyid_headers'>headers</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_res'>res</span> <span class='op'>=</span> <span class='id identifier rubyid_rest_client'>rest_client</span><span class='lparen'>(</span><span class='id identifier rubyid_suburl'>suburl</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='id identifier rubyid_http_headers'>http_headers</span><span class='lparen'>(</span><span class='id identifier rubyid_headers'>headers</span><span class='rparen'>)</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_res'>res</span><span class='embexpr_end'>}</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='const'>ENV</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>HAWKULARCLIENT_LOG_RESPONSE</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
+
+  <span class='id identifier rubyid_logger'>logger</span><span class='period'>.</span><span class='id identifier rubyid_log'>log</span><span class='lparen'>(</span><span class='id identifier rubyid_res'>res</span><span class='rparen'>)</span>
+
   <span class='id identifier rubyid_res'>res</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span> <span class='op'>?</span> <span class='lbrace'>{</span><span class='rbrace'>}</span> <span class='op'>:</span> <span class='const'>JSON</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='id identifier rubyid_res'>res</span><span class='rparen'>)</span>
 <span class='kw'>rescue</span>
   <span class='id identifier rubyid_handle_fault'>handle_fault</span> <span class='gvar'>$ERROR_INFO</span>
@@ -810,7 +869,7 @@ params</p>
       <div class="method_details ">
   <h3 class="signature " id="http_get-instance_method">
   
-    - (<tt>Object</tt>) <strong>http_get</strong>(suburl, headers = {}) 
+    #<strong>http_get</strong>(suburl, headers = {})  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -822,20 +881,24 @@ params</p>
       <pre class="lines">
 
 
-39
 40
 41
 42
 43
 44
-45</pre>
+45
+46
+47
+48</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkular/base_client.rb', line 39</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/base_client.rb', line 40</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_http_get'>http_get</span><span class='lparen'>(</span><span class='id identifier rubyid_suburl'>suburl</span><span class='comma'>,</span> <span class='id identifier rubyid_headers'>headers</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_res'>res</span> <span class='op'>=</span> <span class='id identifier rubyid_rest_client'>rest_client</span><span class='lparen'>(</span><span class='id identifier rubyid_suburl'>suburl</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='id identifier rubyid_http_headers'>http_headers</span><span class='lparen'>(</span><span class='id identifier rubyid_headers'>headers</span><span class='rparen'>)</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_res'>res</span><span class='embexpr_end'>}</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='const'>ENV</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>HAWKULARCLIENT_LOG_RESPONSE</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
+
+  <span class='id identifier rubyid_logger'>logger</span><span class='period'>.</span><span class='id identifier rubyid_log'>log</span><span class='lparen'>(</span><span class='id identifier rubyid_res'>res</span><span class='rparen'>)</span>
+
   <span class='id identifier rubyid_res'>res</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span> <span class='op'>?</span> <span class='lbrace'>{</span><span class='rbrace'>}</span> <span class='op'>:</span> <span class='const'>JSON</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='id identifier rubyid_res'>res</span><span class='rparen'>)</span>
 <span class='kw'>rescue</span>
   <span class='id identifier rubyid_handle_fault'>handle_fault</span> <span class='gvar'>$ERROR_INFO</span>
@@ -848,7 +911,7 @@ params</p>
       <div class="method_details ">
   <h3 class="signature " id="http_post-instance_method">
   
-    - (<tt>Object</tt>) <strong>http_post</strong>(suburl, hash, headers = {}) 
+    #<strong>http_post</strong>(suburl, hash, headers = {})  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -860,22 +923,26 @@ params</p>
       <pre class="lines">
 
 
-47
-48
-49
 50
 51
 52
 53
-54</pre>
+54
+55
+56
+57
+58
+59</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkular/base_client.rb', line 47</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/base_client.rb', line 50</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_http_post'>http_post</span><span class='lparen'>(</span><span class='id identifier rubyid_suburl'>suburl</span><span class='comma'>,</span> <span class='id identifier rubyid_hash'>hash</span><span class='comma'>,</span> <span class='id identifier rubyid_headers'>headers</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_body'>body</span> <span class='op'>=</span> <span class='const'>JSON</span><span class='period'>.</span><span class='id identifier rubyid_generate'>generate</span><span class='lparen'>(</span><span class='id identifier rubyid_hash'>hash</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_res'>res</span> <span class='op'>=</span> <span class='id identifier rubyid_rest_client'>rest_client</span><span class='lparen'>(</span><span class='id identifier rubyid_suburl'>suburl</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_post'>post</span><span class='lparen'>(</span><span class='id identifier rubyid_body'>body</span><span class='comma'>,</span> <span class='id identifier rubyid_http_headers'>http_headers</span><span class='lparen'>(</span><span class='id identifier rubyid_headers'>headers</span><span class='rparen'>)</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_res'>res</span><span class='embexpr_end'>}</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='const'>ENV</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>HAWKULARCLIENT_LOG_RESPONSE</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
+
+  <span class='id identifier rubyid_logger'>logger</span><span class='period'>.</span><span class='id identifier rubyid_log'>log</span><span class='lparen'>(</span><span class='id identifier rubyid_res'>res</span><span class='rparen'>)</span>
+
   <span class='id identifier rubyid_res'>res</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span> <span class='op'>?</span> <span class='lbrace'>{</span><span class='rbrace'>}</span> <span class='op'>:</span> <span class='const'>JSON</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='id identifier rubyid_res'>res</span><span class='rparen'>)</span>
 <span class='kw'>rescue</span>
   <span class='id identifier rubyid_handle_fault'>handle_fault</span> <span class='gvar'>$ERROR_INFO</span>
@@ -888,7 +955,7 @@ params</p>
       <div class="method_details ">
   <h3 class="signature " id="http_put-instance_method">
   
-    - (<tt>Object</tt>) <strong>http_put</strong>(suburl, hash, headers = {}) 
+    #<strong>http_put</strong>(suburl, hash, headers = {})  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -900,22 +967,26 @@ params</p>
       <pre class="lines">
 
 
-56
-57
-58
-59
-60
 61
 62
-63</pre>
+63
+64
+65
+66
+67
+68
+69
+70</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkular/base_client.rb', line 56</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/base_client.rb', line 61</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_http_put'>http_put</span><span class='lparen'>(</span><span class='id identifier rubyid_suburl'>suburl</span><span class='comma'>,</span> <span class='id identifier rubyid_hash'>hash</span><span class='comma'>,</span> <span class='id identifier rubyid_headers'>headers</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_body'>body</span> <span class='op'>=</span> <span class='const'>JSON</span><span class='period'>.</span><span class='id identifier rubyid_generate'>generate</span><span class='lparen'>(</span><span class='id identifier rubyid_hash'>hash</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_res'>res</span> <span class='op'>=</span> <span class='id identifier rubyid_rest_client'>rest_client</span><span class='lparen'>(</span><span class='id identifier rubyid_suburl'>suburl</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_put'>put</span><span class='lparen'>(</span><span class='id identifier rubyid_body'>body</span><span class='comma'>,</span> <span class='id identifier rubyid_http_headers'>http_headers</span><span class='lparen'>(</span><span class='id identifier rubyid_headers'>headers</span><span class='rparen'>)</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_res'>res</span><span class='embexpr_end'>}</span><span class='tstring_content'>\n</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='const'>ENV</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>HAWKULARCLIENT_LOG_RESPONSE</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
+
+  <span class='id identifier rubyid_logger'>logger</span><span class='period'>.</span><span class='id identifier rubyid_log'>log</span><span class='lparen'>(</span><span class='id identifier rubyid_res'>res</span><span class='rparen'>)</span>
+
   <span class='id identifier rubyid_res'>res</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span> <span class='op'>?</span> <span class='lbrace'>{</span><span class='rbrace'>}</span> <span class='op'>:</span> <span class='const'>JSON</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='id identifier rubyid_res'>res</span><span class='rparen'>)</span>
 <span class='kw'>rescue</span>
   <span class='id identifier rubyid_handle_fault'>handle_fault</span> <span class='gvar'>$ERROR_INFO</span>
@@ -928,7 +999,7 @@ params</p>
       <div class="method_details ">
   <h3 class="signature " id="normalize_entrypoint_url-instance_method">
   
-    - (<tt>String</tt>) <strong>normalize_entrypoint_url</strong>(entrypoint, suffix_path) 
+    #<strong>normalize_entrypoint_url</strong>(entrypoint, suffix_path)  &#x21d2; <tt>String</tt> 
   
 
   
@@ -1011,12 +1082,6 @@ to the URL</p>
       <pre class="lines">
 
 
-137
-138
-139
-140
-141
-142
 143
 144
 145
@@ -1026,10 +1091,16 @@ to the URL</p>
 149
 150
 151
-152</pre>
+152
+153
+154
+155
+156
+157
+158</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkular/base_client.rb', line 137</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/base_client.rb', line 143</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_normalize_entrypoint_url'>normalize_entrypoint_url</span><span class='lparen'>(</span><span class='id identifier rubyid_entrypoint'>entrypoint</span><span class='comma'>,</span> <span class='id identifier rubyid_suffix_path'>suffix_path</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_fail'>fail</span> <span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>suffix_path must not be empty</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>if</span> <span class='id identifier rubyid_suffix_path'>suffix_path</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
@@ -1055,7 +1126,7 @@ to the URL</p>
       <div class="method_details ">
   <h3 class="signature " id="now-instance_method">
   
-    - (<tt>Integer</tt>) <strong>now</strong> 
+    #<strong>now</strong>  &#x21d2; <tt>Integer</tt> 
   
 
   
@@ -1096,12 +1167,12 @@ to the URL</p>
       <pre class="lines">
 
 
-100
-101
-102</pre>
+106
+107
+108</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkular/base_client.rb', line 100</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/base_client.rb', line 106</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_now'>now</span>
   <span class='const'>Integer</span><span class='lparen'>(</span><span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span><span class='period'>.</span><span class='id identifier rubyid_to_f'>to_f</span> <span class='op'>*</span> <span class='int'>1000</span><span class='rparen'>)</span>
@@ -1114,7 +1185,7 @@ to the URL</p>
       <div class="method_details ">
   <h3 class="signature " id="url_with_websocket_scheme-instance_method">
   
-    - (<tt>String</tt>) <strong>url_with_websocket_scheme</strong>(url) 
+    #<strong>url_with_websocket_scheme</strong>(url)  &#x21d2; <tt>String</tt> 
   
 
   
@@ -1178,12 +1249,12 @@ the current scheme.</p>
       <pre class="lines">
 
 
-158
-159
-160</pre>
+164
+165
+166</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/hawkular/base_client.rb', line 158</span>
+      <pre class="code"><span class="info file"># File 'lib/hawkular/base_client.rb', line 164</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_url_with_websocket_scheme'>url_with_websocket_scheme</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_url'>url</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='period'>.</span><span class='id identifier rubyid_sub'>sub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^http(s?)</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>ws\1</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
@@ -1197,11 +1268,12 @@ the current scheme.</p>
 
 </div>
 
-    <div id="footer">
-  Generated on Mon Sep 19 13:22:35 2016 by
+      <div id="footer">
+  Generated on Mon Mar 13 17:38:43 2017 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.8.7.6 (ruby-2.3.1).
+  0.9.8 (ruby-2.3.0).
 </div>
 
+    </div>
   </body>
 </html>
