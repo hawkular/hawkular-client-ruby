@@ -4,11 +4,28 @@ This document describes the relevant changes between releases of the
 _hawkular-client_ project.
 
 === V 2.9.0
-* Adds the ability to assign tags to existing alerts
-* Uniform Client names
-* Supports Update Collection Intervals command.
-* Clients classes pass through options to RestClient
-* Added an option to query metrics based on tag only
+* Adding a way to update collection interval on the agent
+* Fixed <code>get_entity</code> method in the inventory client
+* Big improvements to the testing suite. Now we run the tests against live Hawkular server that runs as a Docker container
+* Fixed a bug in operations client where it was necessary to pass the operation name only as a string and it silently failed with symbol
+* Alert conditions now expose also the interval field
+* Added an option to query metrics based on tag only (regardless to type)
+* Improved passing of options to underlying Rest client
+* The API is now consistent when creating resource that already existed
+* Making sure the gem can work with Alerts 1.5.1
+* Now it's unable to add/remove datasources if the Hawkular Services are running in container
+* All the sub-clients are now lazily initiated with the first usage
+* Adds the ability to assign and remove tags to existing alerts
+* Uniform client names
+
+==== Deprecations
+* instead of <code>HawkularUtilsMixin</code> use <code>Hawkular::ClientUtils</code>
+* instead of <code>Hawkular::Operations::OperationsClient</code> use <code>Hawkular::Operations::Client</code>
+* instead of <code>Hawkular::Alerts::AlertsClient</code> use <code>Hawkular::Alerts::Client</code>
+* instead of <code>Hawkular::Token::TokenClient</code> use <code>Hawkular::Token::Client</code>
+* instead of <code>Hawkular::Inventory::InventoryClient</code> use <code>Hawkular::Inventory::Client</code>
+
+Warning: in the next major version we may remove the deprecated API
 
 Full list of changes can be found at https://github.com/hawkular/hawkular-client-ruby/milestone/14?closed=1
 
