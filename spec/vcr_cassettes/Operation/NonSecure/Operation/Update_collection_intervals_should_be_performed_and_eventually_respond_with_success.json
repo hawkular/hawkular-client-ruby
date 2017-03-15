@@ -3,7 +3,7 @@
     {
       "operation": "read",
       "type": "text",
-      "data": "WelcomeResponse={\"sessionId\":\"xlrBtN7CfOPEFbAFsCzgn3p7wq2Ykf7OEFqPmP-F\"}"
+      "data": "WelcomeResponse={\"sessionId\":\"seofWglPDIDWyvYLjYVhcf8xIshe04wqNKWLWwmH\"}"
     },
     {
       "operation": "write",
@@ -12,12 +12,12 @@
     {
       "operation": "read",
       "type": "text",
-      "data": "GenericSuccessResponse={\"message\":\"The request has been forwarded to feed [<%= feed_id %>] (MessageId=ID:cdfef562-f793-11e6-9448-dbddd5ca48d1)\"}"
+      "data": "GenericSuccessResponse={\"message\":\"The request has been forwarded to feed [<%= feed_id %>] (MessageId=ID:fc65b046-29c8-11e7-9346-cb514f6228a4)\"}"
     },
     {
       "operation": "read",
       "type": "text",
-      "data": "UpdateCollectionIntervalsResponse={\"resourcePath\":\"/t;<%= tenant_id %>/f;<%= feed_id %>/r;Local~~/r;Local~%2Fsubsystem%3D<%= tenant_id %>-wildfly-agent\",\"destinationSessionId\":\"xlrBtN7CfOPEFbAFsCzgn3p7wq2Ykf7OEFqPmP-F\",\"status\":\"OK\",\"message\":\"Performed [Update Collection Intervals] on a [DMR Nodes] given by Inventory path [/t;<%= tenant_id %>/f;<%= feed_id %>/r;Local~~/r;Local~%2Fsubsystem%3D<%= tenant_id %>-wildfly-agent]\"}"
+      "data": "UpdateCollectionIntervalsResponse={\"resourcePath\":\"/t;<%= tenant_id %>/f;<%= feed_id %>/r;Local~~/r;Local~%2Fsubsystem%3D<%= tenant_id %>-wildfly-agent\",\"destinationSessionId\":\"seofWglPDIDWyvYLjYVhcf8xIshe04wqNKWLWwmH\",\"status\":\"ERROR\",\"message\":\"Could not perform [Update Collection Intervals] on a [Agent[DMR]] given by inventory path [/t;<%= tenant_id %>/f;<%= feed_id %>/r;Local~~/r;Local~%2Fsubsystem%3D<%= tenant_id %>-wildfly-agent] requested on [2017-04-25T15:08Z]: java.lang.IllegalStateException: Command not allowed because the agent is immutable\"}"
     }
   ]
 ]

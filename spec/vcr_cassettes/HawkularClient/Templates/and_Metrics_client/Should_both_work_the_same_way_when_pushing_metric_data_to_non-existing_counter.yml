@@ -5,7 +5,7 @@ http_interactions:
     uri: http://jdoe:password@localhost:8080/hawkular/metrics/counters/<%= id %>/data
     body:
       encoding: UTF-8
-      string: '[{"value":4,"timestamp":1492883543945}]'
+      string: '[{"value":4,"timestamp":1493132813132}]'
     headers:
       Accept:
       - application/json
@@ -19,8 +19,6 @@ http_interactions:
       - application/json
       Content-Length:
       - '39'
-      Host:
-      - localhost:8080
   response:
     status:
       code: 200
@@ -41,12 +39,12 @@ http_interactions:
       Content-Length:
       - '0'
       Date:
-      - Sat, 22 Apr 2017 17:52:24 GMT
+      - Tue, 25 Apr 2017 15:06:53 GMT
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Sat, 22 Apr 2017 17:52:24 GMT
+  recorded_at: Tue, 25 Apr 2017 15:06:53 GMT
 - request:
     method: get
     uri: http://jdoe:password@localhost:8080/hawkular/metrics/counters/<%= id %>/data/
@@ -64,8 +62,6 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
-      Host:
-      - localhost:8080
   response:
     status:
       code: 200
@@ -82,7 +78,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Sat, 22 Apr 2017 17:52:54 GMT
+      - Tue, 25 Apr 2017 15:06:53 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -91,9 +87,9 @@ http_interactions:
       - '39'
     body:
       encoding: UTF-8
-      string: '[{"timestamp":1492883543945,"value":4}]'
+      string: '[{"timestamp":1493132813132,"value":4}]'
     http_version: 
-  recorded_at: Sat, 22 Apr 2017 17:52:54 GMT
+  recorded_at: Tue, 25 Apr 2017 15:06:53 GMT
 - request:
     method: get
     uri: http://jdoe:password@localhost:8080/hawkular/metrics/counters/<%= id %>
@@ -111,8 +107,6 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
-      Host:
-      - localhost:8080
   response:
     status:
       code: 200
@@ -129,16 +123,16 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Sat, 22 Apr 2017 17:52:54 GMT
+      - Tue, 25 Apr 2017 15:06:53 GMT
       Connection:
       - keep-alive
       Content-Type:
       - application/json
       Content-Length:
-      - '160'
+      - '161'
     body:
       encoding: UTF-8
-      string: '{"id":"<%= id %>","dataRetention":7,"type":"counter","tenantId":"hawkular","minTimestamp":1492883543945,"maxTimestamp":1492883543945}'
+      string: '{"id":"<%= id %>","dataRetention":14,"type":"counter","tenantId":"hawkular","minTimestamp":1493132813132,"maxTimestamp":1493132813132}'
     http_version: 
-  recorded_at: Sat, 22 Apr 2017 17:52:54 GMT
+  recorded_at: Tue, 25 Apr 2017 15:06:53 GMT
 recorded_with: VCR 3.0.3

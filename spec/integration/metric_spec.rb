@@ -533,7 +533,7 @@ security_contexts.each do |security_context|
         hawkular_tenant_id = 'hawkular'.freeze
 
         let(:inventory_client) do
-          inventory_entrypoint = entrypoint(security_context, 'inventory')
+          inventory_entrypoint = entrypoint(security_context, 'metrics')
           setup_inventory_client(inventory_entrypoint, tenant: hawkular_tenant_id)
         end
 

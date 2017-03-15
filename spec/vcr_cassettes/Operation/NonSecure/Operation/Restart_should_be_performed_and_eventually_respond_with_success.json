@@ -3,7 +3,7 @@
     {
       "operation": "read",
       "type": "text",
-      "data": "WelcomeResponse={\"sessionId\":\"m_E2HZzEWyWyR6Y0zHGUKpMDouJziaKPWRlLOVm4\"}"
+      "data": "WelcomeResponse={\"sessionId\":\"Quf9pBFEAJsZeyvp9pMPibh5IpNa3uY4nVQv_n1K\"}"
     },
     {
       "operation": "write",
@@ -12,12 +12,12 @@
     {
       "operation": "read",
       "type": "text",
-      "data": "GenericSuccessResponse={\"message\":\"The request has been forwarded to feed [<%= feed_id %>] (MessageId=ID:81a0a8c0-e8d0-11e6-a6d2-4b35aefc3b69)\"}"
+      "data": "GenericSuccessResponse={\"message\":\"The request has been forwarded to feed [<%= feed_id %>] (MessageId=ID:e8efb1bf-29c8-11e7-9346-cb514f6228a4)\"}"
     },
     {
       "operation": "read",
       "type": "text",
-      "data": "RestartApplicationResponse={\"destinationFileName\":\"<%= tenant_id %>-status.war\",\"resourcePath\":\"/t;<%= tenant_id %>/f;<%= feed_id %>/r;Local~~\",\"destinationSessionId\":\"m_E2HZzEWyWyR6Y0zHGUKpMDouJziaKPWRlLOVm4\",\"status\":\"OK\",\"message\":\"Performed [Restart Deployment] on a [Application] given by Inventory path [/t;<%= tenant_id %>/f;<%= feed_id %>/r;Local~~]\"}"
+      "data": "RestartApplicationResponse={\"destinationFileName\":\"<%= tenant_id %>-status.war\",\"resourcePath\":\"/t;<%= tenant_id %>/f;<%= feed_id %>/r;Local~~\",\"destinationSessionId\":\"Quf9pBFEAJsZeyvp9pMPibh5IpNa3uY4nVQv_n1K\",\"status\":\"OK\",\"message\":\"Performed [Restart Deployment] on a [Application] given by Inventory path [/t;<%= tenant_id %>/f;<%= feed_id %>/r;Local~~]\"}"
     }
   ]
 ]

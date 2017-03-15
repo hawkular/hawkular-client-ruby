@@ -21,8 +21,6 @@ http_interactions:
       - application/json
       Content-Length:
       - '498'
-      Host:
-      - localhost:8080
   response:
     status:
       code: 200
@@ -39,7 +37,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 04 Apr 2017 23:55:58 GMT
+      - Tue, 25 Apr 2017 15:11:08 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -52,7 +50,7 @@ http_interactions:
         World Trigger","description":"A mandatory Hello World Trigger","type":"STANDARD","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"HIGH","autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","enabled":true,"firingMatch":"ALL","source":"_none_"},"conditions":[{"tenantId":"hawkular","triggerId":"hello-world-trigger","triggerMode":"FIRING","type":"THRESHOLD","conditionSetSize":1,"conditionSetIndex":1,"conditionId":"hawkular-hello-world-trigger-FIRING-1-1","dataId":"data-x","operator":"LT","threshold":5.0}]},{"trigger":{"tenantId":"hawkular","id":"a-trigger","name":"A
         trigger name","description":"Just a trigger","type":"STANDARD","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"HIGH","autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","enabled":true,"firingMatch":"ALL","source":"_none_"},"conditions":[{"tenantId":"hawkular","triggerId":"a-trigger","triggerMode":"FIRING","type":"THRESHOLD","conditionSetSize":1,"conditionSetIndex":1,"conditionId":"hawkular-a-trigger-FIRING-1-1","dataId":"data-x","operator":"LT","threshold":5.0}]}]}'
     http_version: 
-  recorded_at: Tue, 04 Apr 2017 23:55:58 GMT
+  recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
 - request:
     method: post
     uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/import/all
@@ -74,8 +72,6 @@ http_interactions:
       - application/json
       Content-Length:
       - '498'
-      Host:
-      - localhost:8080
   response:
     status:
       code: 200
@@ -92,7 +88,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 04 Apr 2017 23:55:58 GMT
+      - Tue, 25 Apr 2017 15:11:08 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -105,7 +101,7 @@ http_interactions:
         World Trigger","description":"A mandatory Hello World Trigger","type":"STANDARD","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"HIGH","autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","enabled":true,"firingMatch":"ALL","source":"_none_"},"conditions":[{"tenantId":"foo","triggerId":"hello-world-trigger","triggerMode":"FIRING","type":"THRESHOLD","conditionSetSize":1,"conditionSetIndex":1,"conditionId":"foo-hello-world-trigger-FIRING-1-1","dataId":"data-x","operator":"LT","threshold":5.0}]},{"trigger":{"tenantId":"foo","id":"a-trigger","name":"A
         trigger name","description":"Just a trigger","type":"STANDARD","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"HIGH","autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","enabled":true,"firingMatch":"ALL","source":"_none_"},"conditions":[{"tenantId":"foo","triggerId":"a-trigger","triggerMode":"FIRING","type":"THRESHOLD","conditionSetSize":1,"conditionSetIndex":1,"conditionId":"foo-a-trigger-FIRING-1-1","dataId":"data-x","operator":"LT","threshold":5.0}]}]}'
     http_version: 
-  recorded_at: Tue, 04 Apr 2017 23:55:58 GMT
+  recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
 - request:
     method: get
     uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/?statuses=OPEN
@@ -123,8 +119,6 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
-      Host:
-      - localhost:8080
   response:
     status:
       code: 200
@@ -141,7 +135,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 04 Apr 2017 23:55:58 GMT
+      - Tue, 25 Apr 2017 15:11:08 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -152,7 +146,7 @@ http_interactions:
       encoding: UTF-8
       string: "[]"
     http_version: 
-  recorded_at: Tue, 04 Apr 2017 23:55:58 GMT
+  recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
 - request:
     method: get
     uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/?statuses=OPEN
@@ -170,8 +164,6 @@ http_interactions:
       - foo
       Content-Type:
       - application/json
-      Host:
-      - localhost:8080
   response:
     status:
       code: 200
@@ -188,7 +180,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 04 Apr 2017 23:55:58 GMT
+      - Tue, 25 Apr 2017 15:11:08 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -199,13 +191,13 @@ http_interactions:
       encoding: UTF-8
       string: "[]"
     http_version: 
-  recorded_at: Tue, 04 Apr 2017 23:55:58 GMT
+  recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
 - request:
     method: post
     uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/data
     body:
       encoding: UTF-8
-      string: '[{"id":"data-x","timestamp":1491350158,"value":4}]'
+      string: '[{"id":"data-x","timestamp":1493133068,"value":4}]'
     headers:
       Accept:
       - application/json
@@ -219,8 +211,6 @@ http_interactions:
       - application/json
       Content-Length:
       - '50'
-      Host:
-      - localhost:8080
   response:
     status:
       code: 200
@@ -237,7 +227,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 04 Apr 2017 23:55:58 GMT
+      - Tue, 25 Apr 2017 15:11:08 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -248,13 +238,13 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Tue, 04 Apr 2017 23:55:58 GMT
+  recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
 - request:
     method: post
     uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/data
     body:
       encoding: UTF-8
-      string: '[{"id":"data-x","timestamp":1491350158,"value":4}]'
+      string: '[{"id":"data-x","timestamp":1493133068,"value":4}]'
     headers:
       Accept:
       - application/json
@@ -268,8 +258,6 @@ http_interactions:
       - application/json
       Content-Length:
       - '50'
-      Host:
-      - localhost:8080
   response:
     status:
       code: 200
@@ -286,7 +274,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 04 Apr 2017 23:55:58 GMT
+      - Tue, 25 Apr 2017 15:11:08 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -297,7 +285,7 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Tue, 04 Apr 2017 23:55:58 GMT
+  recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
 - request:
     method: get
     uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/?statuses=OPEN
@@ -315,8 +303,6 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
-      Host:
-      - localhost:8080
   response:
     status:
       code: 200
@@ -333,7 +319,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 04 Apr 2017 23:55:58 GMT
+      - Tue, 25 Apr 2017 15:11:08 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -344,7 +330,7 @@ http_interactions:
       encoding: UTF-8
       string: "[]"
     http_version: 
-  recorded_at: Tue, 04 Apr 2017 23:55:58 GMT
+  recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
 - request:
     method: get
     uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/?statuses=OPEN
@@ -362,8 +348,6 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
-      Host:
-      - localhost:8080
   response:
     status:
       code: 200
@@ -380,7 +364,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 04 Apr 2017 23:55:59 GMT
+      - Tue, 25 Apr 2017 15:11:09 GMT
       X-Total-Count:
       - '2'
       Connection:
@@ -394,13 +378,13 @@ http_interactions:
         rel="last"
     body:
       encoding: UTF-8
-      string: '[{"eventType":"ALERT","tenantId":"hawkular","id":"hello-world-trigger-1491350158872-a89eaf14-b380-4461-b10a-4990c24afb85","ctime":1491350158872,"dataSource":"_none_","dataId":"hello-world-trigger","category":"ALERT","text":"A
+      string: '[{"eventType":"ALERT","tenantId":"hawkular","id":"hello-world-trigger-1493133069305-aae71f54-966a-4c3b-bb70-a745adf6a8e7","ctime":1493133069305,"dataSource":"_none_","dataId":"hello-world-trigger","category":"ALERT","text":"A
         mandatory Hello World Trigger","trigger":{"tenantId":"hawkular","id":"hello-world-trigger","name":"Hello
-        World Trigger","description":"A mandatory Hello World Trigger","type":"STANDARD","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"HIGH","autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","enabled":true,"firingMatch":"ALL","source":"_none_"},"dampening":{"tenantId":"hawkular","triggerId":"hello-world-trigger","triggerMode":"FIRING","type":"STRICT","evalTrueSetting":1,"evalTotalSetting":1,"evalTimeSetting":0,"dampeningId":"hawkular-hello-world-trigger-FIRING"},"evalSets":[[{"evalTimestamp":1491350158846,"dataTimestamp":1491350158,"type":"THRESHOLD","condition":{"tenantId":"hawkular","triggerId":"hello-world-trigger","triggerMode":"FIRING","type":"THRESHOLD","conditionSetSize":1,"conditionSetIndex":1,"conditionId":"hawkular-hello-world-trigger-FIRING-1-1","dataId":"data-x","operator":"LT","threshold":5.0},"value":4.0}]],"severity":"HIGH","status":"OPEN","lifecycle":[{"status":"OPEN","user":"system","stime":1491350158872}]},{"eventType":"ALERT","tenantId":"hawkular","id":"a-trigger-1491350158876-9e5ab1fc-4a62-4d83-882f-2b965ce369d6","ctime":1491350158876,"dataSource":"_none_","dataId":"a-trigger","category":"ALERT","text":"Just
+        World Trigger","description":"A mandatory Hello World Trigger","type":"STANDARD","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"HIGH","autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","enabled":true,"firingMatch":"ALL","source":"_none_"},"dampening":{"tenantId":"hawkular","triggerId":"hello-world-trigger","triggerMode":"FIRING","type":"STRICT","evalTrueSetting":1,"evalTotalSetting":1,"evalTimeSetting":0,"dampeningId":"hawkular-hello-world-trigger-FIRING"},"evalSets":[[{"evalTimestamp":1493133069270,"dataTimestamp":1493133068,"type":"THRESHOLD","condition":{"tenantId":"hawkular","triggerId":"hello-world-trigger","triggerMode":"FIRING","type":"THRESHOLD","conditionSetSize":1,"conditionSetIndex":1,"conditionId":"hawkular-hello-world-trigger-FIRING-1-1","dataId":"data-x","operator":"LT","threshold":5.0},"value":4.0}]],"severity":"HIGH","status":"OPEN","lifecycle":[{"status":"OPEN","user":"system","stime":1493133069305}]},{"eventType":"ALERT","tenantId":"hawkular","id":"a-trigger-1493133069307-0e836017-694e-4c59-b435-f2e9aeaa546f","ctime":1493133069307,"dataSource":"_none_","dataId":"a-trigger","category":"ALERT","text":"Just
         a trigger","trigger":{"tenantId":"hawkular","id":"a-trigger","name":"A trigger
-        name","description":"Just a trigger","type":"STANDARD","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"HIGH","autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","enabled":true,"firingMatch":"ALL","source":"_none_"},"dampening":{"tenantId":"hawkular","triggerId":"a-trigger","triggerMode":"FIRING","type":"STRICT","evalTrueSetting":1,"evalTotalSetting":1,"evalTimeSetting":0,"dampeningId":"hawkular-a-trigger-FIRING"},"evalSets":[[{"evalTimestamp":1491350158846,"dataTimestamp":1491350158,"type":"THRESHOLD","condition":{"tenantId":"hawkular","triggerId":"a-trigger","triggerMode":"FIRING","type":"THRESHOLD","conditionSetSize":1,"conditionSetIndex":1,"conditionId":"hawkular-a-trigger-FIRING-1-1","dataId":"data-x","operator":"LT","threshold":5.0},"value":4.0}]],"severity":"HIGH","status":"OPEN","lifecycle":[{"status":"OPEN","user":"system","stime":1491350158876}]}]'
+        name","description":"Just a trigger","type":"STANDARD","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"HIGH","autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","enabled":true,"firingMatch":"ALL","source":"_none_"},"dampening":{"tenantId":"hawkular","triggerId":"a-trigger","triggerMode":"FIRING","type":"STRICT","evalTrueSetting":1,"evalTotalSetting":1,"evalTimeSetting":0,"dampeningId":"hawkular-a-trigger-FIRING"},"evalSets":[[{"evalTimestamp":1493133069270,"dataTimestamp":1493133068,"type":"THRESHOLD","condition":{"tenantId":"hawkular","triggerId":"a-trigger","triggerMode":"FIRING","type":"THRESHOLD","conditionSetSize":1,"conditionSetIndex":1,"conditionId":"hawkular-a-trigger-FIRING-1-1","dataId":"data-x","operator":"LT","threshold":5.0},"value":4.0}]],"severity":"HIGH","status":"OPEN","lifecycle":[{"status":"OPEN","user":"system","stime":1493133069307}]}]'
     http_version: 
-  recorded_at: Tue, 04 Apr 2017 23:55:59 GMT
+  recorded_at: Tue, 25 Apr 2017 15:11:09 GMT
 - request:
     method: get
     uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/?statuses=OPEN
@@ -418,8 +402,6 @@ http_interactions:
       - foo
       Content-Type:
       - application/json
-      Host:
-      - localhost:8080
   response:
     status:
       code: 200
@@ -436,7 +418,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 04 Apr 2017 23:55:59 GMT
+      - Tue, 25 Apr 2017 15:11:09 GMT
       X-Total-Count:
       - '2'
       Connection:
@@ -450,11 +432,11 @@ http_interactions:
         rel="last"
     body:
       encoding: UTF-8
-      string: '[{"eventType":"ALERT","tenantId":"foo","id":"hello-world-trigger-1491350158878-9b9e112a-3054-4681-b25e-058a67a52824","ctime":1491350158878,"dataSource":"_none_","dataId":"hello-world-trigger","category":"ALERT","text":"A
+      string: '[{"eventType":"ALERT","tenantId":"foo","id":"hello-world-trigger-1493133069308-46573831-fb7b-43ab-8b1a-23f0f7db7bbd","ctime":1493133069308,"dataSource":"_none_","dataId":"hello-world-trigger","category":"ALERT","text":"A
         mandatory Hello World Trigger","trigger":{"tenantId":"foo","id":"hello-world-trigger","name":"Hello
-        World Trigger","description":"A mandatory Hello World Trigger","type":"STANDARD","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"HIGH","autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","enabled":true,"firingMatch":"ALL","source":"_none_"},"dampening":{"tenantId":"foo","triggerId":"hello-world-trigger","triggerMode":"FIRING","type":"STRICT","evalTrueSetting":1,"evalTotalSetting":1,"evalTimeSetting":0,"dampeningId":"foo-hello-world-trigger-FIRING"},"evalSets":[[{"evalTimestamp":1491350158845,"dataTimestamp":1491350158,"type":"THRESHOLD","condition":{"tenantId":"foo","triggerId":"hello-world-trigger","triggerMode":"FIRING","type":"THRESHOLD","conditionSetSize":1,"conditionSetIndex":1,"conditionId":"foo-hello-world-trigger-FIRING-1-1","dataId":"data-x","operator":"LT","threshold":5.0},"value":4.0}]],"severity":"HIGH","status":"OPEN","lifecycle":[{"status":"OPEN","user":"system","stime":1491350158878}]},{"eventType":"ALERT","tenantId":"foo","id":"a-trigger-1491350158880-b4217978-99b2-4cf9-b239-1dff6da09904","ctime":1491350158880,"dataSource":"_none_","dataId":"a-trigger","category":"ALERT","text":"Just
+        World Trigger","description":"A mandatory Hello World Trigger","type":"STANDARD","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"HIGH","autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","enabled":true,"firingMatch":"ALL","source":"_none_"},"dampening":{"tenantId":"foo","triggerId":"hello-world-trigger","triggerMode":"FIRING","type":"STRICT","evalTrueSetting":1,"evalTotalSetting":1,"evalTimeSetting":0,"dampeningId":"foo-hello-world-trigger-FIRING"},"evalSets":[[{"evalTimestamp":1493133069270,"dataTimestamp":1493133068,"type":"THRESHOLD","condition":{"tenantId":"foo","triggerId":"hello-world-trigger","triggerMode":"FIRING","type":"THRESHOLD","conditionSetSize":1,"conditionSetIndex":1,"conditionId":"foo-hello-world-trigger-FIRING-1-1","dataId":"data-x","operator":"LT","threshold":5.0},"value":4.0}]],"severity":"HIGH","status":"OPEN","lifecycle":[{"status":"OPEN","user":"system","stime":1493133069308}]},{"eventType":"ALERT","tenantId":"foo","id":"a-trigger-1493133069308-66209db8-d432-4e16-a0f7-920f99b0e6e0","ctime":1493133069308,"dataSource":"_none_","dataId":"a-trigger","category":"ALERT","text":"Just
         a trigger","trigger":{"tenantId":"foo","id":"a-trigger","name":"A trigger
-        name","description":"Just a trigger","type":"STANDARD","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"HIGH","autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","enabled":true,"firingMatch":"ALL","source":"_none_"},"dampening":{"tenantId":"foo","triggerId":"a-trigger","triggerMode":"FIRING","type":"STRICT","evalTrueSetting":1,"evalTotalSetting":1,"evalTimeSetting":0,"dampeningId":"foo-a-trigger-FIRING"},"evalSets":[[{"evalTimestamp":1491350158845,"dataTimestamp":1491350158,"type":"THRESHOLD","condition":{"tenantId":"foo","triggerId":"a-trigger","triggerMode":"FIRING","type":"THRESHOLD","conditionSetSize":1,"conditionSetIndex":1,"conditionId":"foo-a-trigger-FIRING-1-1","dataId":"data-x","operator":"LT","threshold":5.0},"value":4.0}]],"severity":"HIGH","status":"OPEN","lifecycle":[{"status":"OPEN","user":"system","stime":1491350158880}]}]'
+        name","description":"Just a trigger","type":"STANDARD","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"HIGH","autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","enabled":true,"firingMatch":"ALL","source":"_none_"},"dampening":{"tenantId":"foo","triggerId":"a-trigger","triggerMode":"FIRING","type":"STRICT","evalTrueSetting":1,"evalTotalSetting":1,"evalTimeSetting":0,"dampeningId":"foo-a-trigger-FIRING"},"evalSets":[[{"evalTimestamp":1493133069269,"dataTimestamp":1493133068,"type":"THRESHOLD","condition":{"tenantId":"foo","triggerId":"a-trigger","triggerMode":"FIRING","type":"THRESHOLD","conditionSetSize":1,"conditionSetIndex":1,"conditionId":"foo-a-trigger-FIRING-1-1","dataId":"data-x","operator":"LT","threshold":5.0},"value":4.0}]],"severity":"HIGH","status":"OPEN","lifecycle":[{"status":"OPEN","user":"system","stime":1493133069308}]}]'
     http_version: 
-  recorded_at: Tue, 04 Apr 2017 23:55:59 GMT
+  recorded_at: Tue, 25 Apr 2017 15:11:09 GMT
 recorded_with: VCR 3.0.3

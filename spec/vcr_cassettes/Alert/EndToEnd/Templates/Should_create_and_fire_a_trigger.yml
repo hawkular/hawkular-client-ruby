@@ -17,8 +17,6 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
-      Host:
-      - localhost:8080
   response:
     status:
       code: 200
@@ -35,18 +33,18 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 27 Sep 2016 18:17:18 GMT
+      - Tue, 25 Apr 2017 15:11:10 GMT
       Connection:
       - keep-alive
       Content-Type:
       - application/json
       Content-Length:
-      - '87'
+      - '94'
     body:
       encoding: UTF-8
-      string: '["cc","from","from-name","template.hawkular.url","template.html","template.plain","to"]'
+      string: '["cc","from","from-name","mail","template.hawkular.url","template.html","template.plain","to"]'
     http_version: 
-  recorded_at: Tue, 27 Sep 2016 18:17:18 GMT
+  recorded_at: Tue, 25 Apr 2017 15:11:10 GMT
 - request:
     method: post
     uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/actions
@@ -66,8 +64,6 @@ http_interactions:
       - application/json
       Content-Length:
       - '111'
-      Host:
-      - localhost:8080
   response:
     status:
       code: 200
@@ -84,25 +80,25 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 27 Sep 2016 18:17:18 GMT
+      - Tue, 25 Apr 2017 15:11:10 GMT
       Connection:
       - keep-alive
       Content-Type:
       - application/json
       Content-Length:
-      - '133'
+      - '148'
     body:
       encoding: UTF-8
-      string: '{"tenantId":"hawkular","actionPlugin":"email","actionId":"send-via-email","properties":{"to":"joe@acme.org","from":"admin@acme.org"}}'
+      string: '{"tenantId":"hawkular","actionPlugin":"email","actionId":"send-via-email","global":false,"properties":{"to":"joe@acme.org","from":"admin@acme.org"}}'
     http_version: 
-  recorded_at: Tue, 27 Sep 2016 18:17:18 GMT
+  recorded_at: Tue, 25 Apr 2017 15:11:10 GMT
 - request:
     method: post
     uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/trigger
     body:
       encoding: UTF-8
       string: '{"trigger":{"id":"my-cool-email-trigger","name":"Just a trigger","enabled":true,"severity":"HIGH","description":"Just
-        a test trigger","actions":[{"actionPlugin":"email","actionId":"send-via-email","tenantId":null,"states":null}]},"conditions":[{"conditionId":null,"type":"THRESHOLD","operator":"GT","threshold":5,"triggerMode":"FIRING","dataId":"my-metric-id1","data2Id":null,"data2Multiplier":null,"triggerId":null}],"dampenings":[]}'
+        a test trigger","actions":[{"actionPlugin":"email","actionId":"send-via-email","tenantId":null,"states":null}]},"conditions":[{"conditionId":null,"type":"THRESHOLD","operator":"GT","threshold":5,"triggerMode":"FIRING","dataId":"my-metric-id1","data2Id":null,"data2Multiplier":null,"triggerId":null,"interval":null}],"dampenings":[]}'
     headers:
       Accept:
       - application/json
@@ -115,9 +111,7 @@ http_interactions:
       Content-Type:
       - application/json
       Content-Length:
-      - '434'
-      Host:
-      - localhost:8080
+      - '450'
   response:
     status:
       code: 200
@@ -134,7 +128,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 27 Sep 2016 18:17:18 GMT
+      - Tue, 25 Apr 2017 15:11:10 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -146,7 +140,7 @@ http_interactions:
       string: '{"trigger":{"tenantId":"hawkular","id":"my-cool-email-trigger","name":"Just
         a trigger","description":"Just a test trigger","type":"STANDARD","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"HIGH","actions":[{"tenantId":"hawkular","actionPlugin":"email","actionId":"send-via-email"}],"autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","enabled":true,"firingMatch":"ALL","source":"_none_"},"conditions":[{"tenantId":"hawkular","triggerId":"my-cool-email-trigger","triggerMode":"FIRING","type":"THRESHOLD","conditionSetSize":1,"conditionSetIndex":1,"conditionId":"hawkular-my-cool-email-trigger-FIRING-1-1","dataId":"my-metric-id1","operator":"GT","threshold":5.0}]}'
     http_version: 
-  recorded_at: Tue, 27 Sep 2016 18:17:18 GMT
+  recorded_at: Tue, 25 Apr 2017 15:11:10 GMT
 - request:
     method: get
     uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/my-cool-email-trigger
@@ -164,8 +158,6 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
-      Host:
-      - localhost:8080
   response:
     status:
       code: 200
@@ -182,7 +174,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 27 Sep 2016 18:17:18 GMT
+      - Tue, 25 Apr 2017 15:11:10 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -194,7 +186,7 @@ http_interactions:
       string: '{"tenantId":"hawkular","id":"my-cool-email-trigger","name":"Just a
         trigger","description":"Just a test trigger","type":"STANDARD","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"HIGH","actions":[{"tenantId":"hawkular","actionPlugin":"email","actionId":"send-via-email"}],"autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","enabled":true,"firingMatch":"ALL","source":"_none_"}'
     http_version: 
-  recorded_at: Tue, 27 Sep 2016 18:17:18 GMT
+  recorded_at: Tue, 25 Apr 2017 15:11:10 GMT
 - request:
     method: get
     uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/my-cool-email-trigger/conditions
@@ -212,8 +204,6 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
-      Host:
-      - localhost:8080
   response:
     status:
       code: 200
@@ -230,7 +220,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 27 Sep 2016 18:17:18 GMT
+      - Tue, 25 Apr 2017 15:11:10 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -241,7 +231,7 @@ http_interactions:
       encoding: UTF-8
       string: '[{"tenantId":"hawkular","triggerId":"my-cool-email-trigger","triggerMode":"FIRING","type":"THRESHOLD","conditionSetSize":1,"conditionSetIndex":1,"conditionId":"hawkular-my-cool-email-trigger-FIRING-1-1","dataId":"my-metric-id1","operator":"GT","threshold":5.0}]'
     http_version: 
-  recorded_at: Tue, 27 Sep 2016 18:17:18 GMT
+  recorded_at: Tue, 25 Apr 2017 15:11:10 GMT
 - request:
     method: get
     uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/my-cool-email-trigger/dampenings
@@ -259,8 +249,6 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
-      Host:
-      - localhost:8080
   response:
     status:
       code: 200
@@ -277,7 +265,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 27 Sep 2016 18:17:18 GMT
+      - Tue, 25 Apr 2017 15:11:10 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -288,13 +276,13 @@ http_interactions:
       encoding: UTF-8
       string: "[]"
     http_version: 
-  recorded_at: Tue, 27 Sep 2016 18:17:18 GMT
+  recorded_at: Tue, 25 Apr 2017 15:11:10 GMT
 - request:
     method: post
     uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/metrics/metrics/data
     body:
       encoding: UTF-8
-      string: '{"gauges":[{"id":"my-metric-id1","data":[{"timestamp":1475000238000,"value":42}]}],"counters":[],"availabilities":[],"strings":[]}'
+      string: '{"gauges":[{"id":"my-metric-id1","data":[{"timestamp":1493133070000,"value":42}]}],"counters":[],"availabilities":[],"strings":[]}'
     headers:
       Accept:
       - application/json
@@ -308,8 +296,6 @@ http_interactions:
       - application/json
       Content-Length:
       - '130'
-      Host:
-      - localhost:8080
   response:
     status:
       code: 200
@@ -330,12 +316,12 @@ http_interactions:
       Content-Length:
       - '0'
       Date:
-      - Tue, 27 Sep 2016 18:17:18 GMT
+      - Tue, 25 Apr 2017 15:11:10 GMT
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Tue, 27 Sep 2016 18:17:18 GMT
+  recorded_at: Tue, 25 Apr 2017 15:11:10 GMT
 - request:
     method: get
     uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/?triggerIds=my-cool-email-trigger
@@ -353,8 +339,6 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
-      Host:
-      - localhost:8080
   response:
     status:
       code: 200
@@ -371,7 +355,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 27 Sep 2016 18:17:18 GMT
+      - Tue, 25 Apr 2017 15:11:10 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -382,7 +366,7 @@ http_interactions:
       encoding: UTF-8
       string: "[]"
     http_version: 
-  recorded_at: Tue, 27 Sep 2016 18:17:18 GMT
+  recorded_at: Tue, 25 Apr 2017 15:11:10 GMT
 - request:
     method: get
     uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/?triggerIds=my-cool-email-trigger
@@ -400,8 +384,6 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
-      Host:
-      - localhost:8080
   response:
     status:
       code: 200
@@ -418,7 +400,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 27 Sep 2016 18:17:18 GMT
+      - Tue, 25 Apr 2017 15:11:10 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -429,7 +411,7 @@ http_interactions:
       encoding: UTF-8
       string: "[]"
     http_version: 
-  recorded_at: Tue, 27 Sep 2016 18:17:18 GMT
+  recorded_at: Tue, 25 Apr 2017 15:11:10 GMT
 - request:
     method: delete
     uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/my-cool-email-trigger
@@ -447,8 +429,6 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
-      Host:
-      - localhost:8080
   response:
     status:
       code: 200
@@ -465,7 +445,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 27 Sep 2016 18:17:18 GMT
+      - Tue, 25 Apr 2017 15:11:10 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -476,7 +456,7 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Tue, 27 Sep 2016 18:17:18 GMT
+  recorded_at: Tue, 25 Apr 2017 15:11:10 GMT
 - request:
     method: delete
     uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/actions/email/send-via-email
@@ -494,8 +474,6 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
-      Host:
-      - localhost:8080
   response:
     status:
       code: 200
@@ -512,7 +490,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 27 Sep 2016 18:17:18 GMT
+      - Tue, 25 Apr 2017 15:11:10 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -523,5 +501,5 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Tue, 27 Sep 2016 18:17:18 GMT
+  recorded_at: Tue, 25 Apr 2017 15:11:10 GMT
 recorded_with: VCR 3.0.3

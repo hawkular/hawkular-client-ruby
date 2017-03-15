@@ -197,7 +197,7 @@ module Helpers
   end
 
   def path_for_installed_agent(wf_server_path)
-    wf_server_path.to_resource('Local~%2Fsubsystem%3Dhawkular-wildfly-agent')
+    wf_server_path.down('Local~/subsystem=hawkular-wildfly-agent')
   end
 
   def in_container(inventory, resource_path)

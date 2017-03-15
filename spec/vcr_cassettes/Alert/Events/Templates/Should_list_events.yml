@@ -17,8 +17,6 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
-      Host:
-      - localhost:8080
   response:
     status:
       code: 200
@@ -35,57 +33,54 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Fri, 07 Oct 2016 15:36:35 GMT
+      - Tue, 25 Apr 2017 15:11:10 GMT
       X-Total-Count:
-      - '24'
+      - '20'
       Connection:
       - keep-alive
       Content-Type:
       - application/json
       Content-Length:
-      - '9827'
+      - '6864'
       Link:
       - <http://localhost:8080/hawkular/alerts/events?thin=true>; rel="current", <http://localhost:8080/hawkular/alerts/events?thin=true&page=0>;
         rel="last"
     body:
       encoding: UTF-8
-      string: '[{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-12","ctime":1475854595000,"dataSource":"_none_","category":"general-category","text":"some
-        text for this event"},{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-11","ctime":1475854595000,"dataSource":"_none_","category":"general-category","text":"some
-        text for this event"},{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-10","ctime":1475854595000,"dataSource":"_none_","category":"general-category","text":"some
-        text for this event"},{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-09","ctime":1475854595000,"dataSource":"_none_","category":"general-category","text":"some
-        text for this event"},{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-08","ctime":1475854595000,"dataSource":"_none_","category":"general-category","text":"some
-        text for this event"},{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-07","ctime":1475854595000,"dataSource":"_none_","category":"my-category-01","text":"some
-        text for this event"},{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-06","ctime":1475854595000,"dataSource":"_none_","category":"general-category","text":"some
-        text for this event"},{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-05","ctime":1475854595000,"dataSource":"_none_","category":"my-category-02","text":"some
-        text for this event"},{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-04","ctime":1475854595000,"dataSource":"_none_","category":"general-category","text":"some
-        text for this event"},{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-03","ctime":1475854595000,"dataSource":"_none_","category":"my-category-01","text":"some
-        text for this event"},{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-02","ctime":1475854595000,"dataSource":"_none_","category":"my-category-01","text":"some
-        text for this event"},{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-01","ctime":1475854595000,"dataSource":"_none_","category":"general-category","text":"some
-        text for this event"},{"eventType":"ALERT","tenantId":"hawkular","id":"hello-world-trigger-1475854594703-00be41f3-564e-4947-9b3c-47ae155b957f","ctime":1475854594703,"dataSource":"_none_","dataId":"hello-world-trigger","category":"ALERT","text":"A
+      string: '[{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-12","ctime":1493133070000,"dataSource":"_none_","category":"general-category","text":"some
+        text for this event"},{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-11","ctime":1493133070000,"dataSource":"_none_","category":"general-category","text":"some
+        text for this event"},{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-10","ctime":1493133070000,"dataSource":"_none_","category":"general-category","text":"some
+        text for this event"},{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-09","ctime":1493133070000,"dataSource":"_none_","category":"general-category","text":"some
+        text for this event"},{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-08","ctime":1493133070000,"dataSource":"_none_","category":"general-category","text":"some
+        text for this event"},{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-07","ctime":1493133070000,"dataSource":"_none_","category":"my-category-01","text":"some
+        text for this event"},{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-06","ctime":1493133070000,"dataSource":"_none_","category":"general-category","text":"some
+        text for this event"},{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-05","ctime":1493133070000,"dataSource":"_none_","category":"my-category-02","text":"some
+        text for this event"},{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-04","ctime":1493133070000,"dataSource":"_none_","category":"general-category","text":"some
+        text for this event"},{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-03","ctime":1493133070000,"dataSource":"_none_","category":"my-category-01","text":"some
+        text for this event"},{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-02","ctime":1493133070000,"dataSource":"_none_","category":"my-category-01","text":"some
+        text for this event"},{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-01","ctime":1493133070000,"dataSource":"_none_","category":"general-category","text":"some
+        text for this event"},{"eventType":"ALERT","tenantId":"hawkular","id":"hello-world-trigger-1493133069320-4742f282-b23f-4e0a-9969-2be13a8c9a93","ctime":1493133069320,"dataSource":"_none_","dataId":"hello-world-trigger","category":"ALERT","text":"A
         mandatory Hello World Trigger","trigger":{"tenantId":"hawkular","id":"hello-world-trigger","name":"Hello
-        World Trigger","description":"A mandatory Hello World Trigger","type":"STANDARD","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"HIGH","autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","enabled":true,"firingMatch":"ALL","source":"_none_"},"severity":null,"status":"OPEN"},{"eventType":"ALERT","tenantId":"hawkular","id":"hello-world-trigger-1475854314589-0865e142-fe65-4a21-94bc-78099abad518","ctime":1475854314589,"dataSource":"_none_","dataId":"hello-world-trigger","category":"ALERT","text":"A
-        mandatory Hello World Trigger","trigger":{"tenantId":"hawkular","id":"hello-world-trigger","name":"Hello
-        World Trigger","description":"A mandatory Hello World Trigger","type":"STANDARD","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"HIGH","autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","enabled":true,"firingMatch":"ALL","source":"_none_"},"severity":null,"status":"OPEN"},{"eventType":"ALERT","tenantId":"hawkular","id":"hello-world-trigger-1475854248579-8e6ddbb0-f84d-410b-b330-0e6e3bf22606","ctime":1475854248579,"dataSource":"_none_","dataId":"hello-world-trigger","category":"ALERT","text":"A
-        mandatory Hello World Trigger","trigger":{"tenantId":"hawkular","id":"hello-world-trigger","name":"Hello
-        World Trigger","description":"A mandatory Hello World Trigger","type":"STANDARD","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"HIGH","autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","enabled":true,"firingMatch":"ALL","source":"_none_"},"severity":null,"status":"OPEN"},{"eventType":"ALERT","tenantId":"hawkular","id":"hello-world-trigger-1475853996414-45f549ed-8446-4ea6-b9c5-d9ea8b198f8e","ctime":1475853996414,"dataSource":"_none_","dataId":"hello-world-trigger","category":"ALERT","text":"A
-        mandatory Hello World Trigger","trigger":{"tenantId":"hawkular","id":"hello-world-trigger","name":"Hello
-        World Trigger","description":"A mandatory Hello World Trigger","type":"STANDARD","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"HIGH","autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","enabled":true,"firingMatch":"ALL","source":"_none_"},"severity":null,"status":"OPEN"},{"eventType":"ALERT","tenantId":"hawkular","id":"hello-world-trigger-1475851553407-cfb818f5-15cf-4b74-b9e4-327d2e7e00d4","ctime":1475851553407,"dataSource":"_none_","dataId":"hello-world-trigger","category":"ALERT","text":"A
-        mandatory Hello World Trigger","trigger":{"tenantId":"hawkular","id":"hello-world-trigger","name":"Hello
-        World Trigger","description":"A mandatory Hello World Trigger","type":"STANDARD","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"HIGH","autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","enabled":true,"firingMatch":"ALL","source":"_none_"},"severity":null,"status":"OPEN"},{"eventType":"ALERT","tenantId":"hawkular","id":"hello-world-trigger-1475850883309-de9cf48d-519e-48be-b576-516901da3b18","ctime":1475850883309,"dataSource":"_none_","dataId":"hello-world-trigger","category":"ALERT","text":"A
-        mandatory Hello World Trigger","trigger":{"tenantId":"hawkular","id":"hello-world-trigger","name":"Hello
-        World Trigger","description":"A mandatory Hello World Trigger","type":"STANDARD","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"HIGH","autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","enabled":true,"firingMatch":"ALL","source":"_none_"},"severity":null,"status":"OPEN"},{"eventType":"ALERT","tenantId":"hawkular","id":"a-trigger-1475854594704-c90d2b71-6a15-4f7c-8cf8-38d5525bb694","ctime":1475854594704,"dataSource":"_none_","dataId":"a-trigger","category":"ALERT","text":"Just
+        World Trigger","description":"A mandatory Hello World Trigger","type":"STANDARD","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"HIGH","autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","enabled":true,"firingMatch":"ALL","source":"_none_"},"severity":null,"status":"OPEN"},{"eventType":"EVENT","tenantId":"hawkular","id":"dc2a7c04-cee5-4758-be76-75507d2a85e5","ctime":1493132877182,"dataSource":"_none_","category":"UndeployApplicationResponse","text":"error","context":{"resource_path":"/t;hawkular/f;aa87aba58bf5/r;Local~~","message":"Could
+        not perform [Undeploy] on a [Application] given by inventory path [/t;hawkular/f;aa87aba58bf5/r;Local~~]
+        requested on [2017-04-25T15:07Z]: java.lang.IllegalStateException: Command
+        not allowed because the agent is immutable"},"tags":{"miq.event_type":"hawkular_deployment_remove.error","miq.resource_type":"MiddlewareServer"}},{"eventType":"EVENT","tenantId":"hawkular","id":"a28a11d4-5322-431e-a0cd-9bc65ddfc125","ctime":1493132880224,"dataSource":"_none_","category":"RemoveDatasourceResponse","text":"error","context":{"resource_path":"/t;hawkular/f;aa87aba58bf5/r;Local~~/r;Local~%2Fsubsystem%3Ddatasources%2Fdata-source%3DCreatedByRubyDSdc3ab189-5a52-47af-b880-aaa6f25491a4","message":"Could
+        not perform [Remove] on a [Datasource] given by inventory path [/t;hawkular/f;aa87aba58bf5/r;Local~~/r;Local~%2Fsubsystem%3Ddatasources%2Fdata-source%3DCreatedByRubyDSdc3ab189-5a52-47af-b880-aaa6f25491a4]
+        requested on [2017-04-25T15:08Z]: java.lang.IllegalStateException: Command
+        not allowed because the agent is immutable"},"tags":{"miq.event_type":"hawkular_datasource_remove.error","miq.resource_type":"MiddlewareServer"}},{"eventType":"ALERT","tenantId":"hawkular","id":"a-trigger-1493133069320-a801e2ac-daf8-4148-99b4-4d23a1b96f4b","ctime":1493133069320,"dataSource":"_none_","dataId":"a-trigger","category":"ALERT","text":"Just
         a trigger","trigger":{"tenantId":"hawkular","id":"a-trigger","name":"A trigger
-        name","description":"Just a trigger","type":"STANDARD","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"HIGH","autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","enabled":true,"firingMatch":"ALL","source":"_none_"},"severity":null,"status":"OPEN"},{"eventType":"ALERT","tenantId":"hawkular","id":"a-trigger-1475854314589-1aae54bf-f4d4-44de-a111-25dc699730cd","ctime":1475854314589,"dataSource":"_none_","dataId":"a-trigger","category":"ALERT","text":"Just
-        a trigger","trigger":{"tenantId":"hawkular","id":"a-trigger","name":"A trigger
-        name","description":"Just a trigger","type":"STANDARD","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"HIGH","autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","enabled":true,"firingMatch":"ALL","source":"_none_"},"severity":null,"status":"OPEN"},{"eventType":"ALERT","tenantId":"hawkular","id":"a-trigger-1475854248579-6ac8cd80-9cea-4208-aed6-27019bc0f2af","ctime":1475854248579,"dataSource":"_none_","dataId":"a-trigger","category":"ALERT","text":"Just
-        a trigger","trigger":{"tenantId":"hawkular","id":"a-trigger","name":"A trigger
-        name","description":"Just a trigger","type":"STANDARD","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"HIGH","autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","enabled":true,"firingMatch":"ALL","source":"_none_"},"severity":null,"status":"OPEN"},{"eventType":"ALERT","tenantId":"hawkular","id":"a-trigger-1475853996415-a2309fad-d638-4c3c-9a50-b175495f9f3c","ctime":1475853996415,"dataSource":"_none_","dataId":"a-trigger","category":"ALERT","text":"Just
-        a trigger","trigger":{"tenantId":"hawkular","id":"a-trigger","name":"A trigger
-        name","description":"Just a trigger","type":"STANDARD","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"HIGH","autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","enabled":true,"firingMatch":"ALL","source":"_none_"},"severity":null,"status":"OPEN"},{"eventType":"ALERT","tenantId":"hawkular","id":"a-trigger-1475851553407-047dd705-7139-4c7c-8ad8-3ec032081165","ctime":1475851553407,"dataSource":"_none_","dataId":"a-trigger","category":"ALERT","text":"Just
-        a trigger","trigger":{"tenantId":"hawkular","id":"a-trigger","name":"A trigger
-        name","description":"Just a trigger","type":"STANDARD","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"HIGH","autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","enabled":true,"firingMatch":"ALL","source":"_none_"},"severity":null,"status":"OPEN"},{"eventType":"ALERT","tenantId":"hawkular","id":"a-trigger-1475850883309-3b3e2129-1ea3-49ab-b5fd-3f64c4186d33","ctime":1475850883309,"dataSource":"_none_","dataId":"a-trigger","category":"ALERT","text":"Just
-        a trigger","trigger":{"tenantId":"hawkular","id":"a-trigger","name":"A trigger
-        name","description":"Just a trigger","type":"STANDARD","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"HIGH","autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","enabled":true,"firingMatch":"ALL","source":"_none_"},"severity":null,"status":"OPEN"}]'
+        name","description":"Just a trigger","type":"STANDARD","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"HIGH","autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","enabled":true,"firingMatch":"ALL","source":"_none_"},"severity":null,"status":"OPEN"},{"eventType":"EVENT","tenantId":"hawkular","id":"RESOURCE_ADDED_/t;hawkular/f;aa87aba58bf5/r;Local~~","ctime":1493132807059,"dataSource":"_none_","category":"Inventory
+        Change","text":"Added: WildFly Server","context":{"resource_path":"/t;hawkular/f;aa87aba58bf5/r;Local~~","message":"Added:
+        WildFly Server"},"tags":{"miq.event_type":"hawkular_event","miq.resource_type":"MiddlewareServer"}},{"eventType":"EVENT","tenantId":"hawkular","id":"9941fac6-197d-4d86-bbd8-4b35da262984","ctime":1493132865857,"dataSource":"_none_","category":"AddDatasourceResponse","text":"error","context":{"resource_path":"/t;hawkular/f;aa87aba58bf5/r;Local~~","message":"Could
+        not perform [Add] on a [Datasource] given by inventory path [/t;hawkular/f;aa87aba58bf5/r;Local~~]
+        requested on [2017-04-25T15:07Z]: java.lang.IllegalStateException: Command
+        not allowed because the agent is immutable"},"tags":{"miq.event_type":"hawkular_datasource.error","miq.resource_type":"MiddlewareServer"}},{"eventType":"EVENT","tenantId":"hawkular","id":"6eea1f5b-52ee-491d-bb5e-508dd041b710","ctime":1493132874090,"dataSource":"_none_","category":"DeployApplicationResponse","text":"error","context":{"resource_path":"/t;hawkular/f;aa87aba58bf5/r;Local~~","message":"Could
+        not perform [Deploy] on a [Application] given by inventory path [/t;hawkular/f;aa87aba58bf5/r;Local~~]
+        requested on [2017-04-25T15:07Z]: java.lang.IllegalStateException: Command
+        not allowed because the agent is immutable"},"tags":{"miq.event_type":"hawkular_deployment.error","miq.resource_type":"MiddlewareServer"}},{"eventType":"EVENT","tenantId":"hawkular","id":"589a4159-0a30-4cdf-acec-3b2b098e7ecf","ctime":1493132862856,"dataSource":"_none_","category":"AddDatasourceResponse","text":"error","context":{"resource_path":"/t;hawkular/f;aa87aba58bf5/r;Local~~","message":"Could
+        not perform [Add] on a [Datasource] given by inventory path [/t;hawkular/f;aa87aba58bf5/r;Local~~]
+        requested on [2017-04-25T15:07Z]: java.lang.IllegalStateException: Command
+        not allowed because the agent is immutable"},"tags":{"miq.event_type":"hawkular_datasource.error","miq.resource_type":"MiddlewareServer"}}]'
     http_version: 
-  recorded_at: Fri, 07 Oct 2016 15:36:35 GMT
+  recorded_at: Tue, 25 Apr 2017 15:11:10 GMT
 recorded_with: VCR 3.0.3

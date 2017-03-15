@@ -105,4 +105,88 @@ http_interactions:
         } ]
     http_version: 
   recorded_at: Sat, 22 Apr 2017 17:52:23 GMT
+- request:
+    method: get
+    uri: http://jdoe:password@localhost:8080/hawkular/metrics/status
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - hawkular
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '150'
+      Date:
+      - Tue, 25 Apr 2017 15:06:52 GMT
+    body:
+      encoding: UTF-8
+      string: '{"MetricsService":"STARTED","Implementation-Version":"0.26.0.Final","Built-From-Git-SHA1":"fe3ef3ccc36a0c85bcdbf3e96aae8d36a636f7f2","Cassandra":"up"}'
+    http_version: 
+  recorded_at: Tue, 25 Apr 2017 15:06:52 GMT
+- request:
+    method: get
+    uri: http://jdoe:password@localhost:8080/hawkular/metrics/strings/tags/module:inventory,feed:*
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - hawkular
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Tue, 25 Apr 2017 15:06:52 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '48'
+    body:
+      encoding: UTF-8
+      string: '{"feed":["aa87aba58bf5"],"module":["inventory"]}'
+    http_version: 
+  recorded_at: Tue, 25 Apr 2017 15:06:52 GMT
 recorded_with: VCR 3.0.3

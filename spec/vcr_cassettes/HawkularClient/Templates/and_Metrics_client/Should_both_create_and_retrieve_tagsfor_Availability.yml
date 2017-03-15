@@ -19,8 +19,6 @@ http_interactions:
       - application/json
       Content-Length:
       - '101'
-      Host:
-      - localhost:8080
   response:
     status:
       code: 201
@@ -39,7 +37,7 @@ http_interactions:
       Location:
       - http://localhost:8080/hawkular/metrics/availability/<%= id1 %>
       Date:
-      - Sat, 22 Apr 2017 17:52:54 GMT
+      - Tue, 25 Apr 2017 15:06:53 GMT
       Connection:
       - keep-alive
       Content-Length:
@@ -48,7 +46,7 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Sat, 22 Apr 2017 17:52:54 GMT
+  recorded_at: Tue, 25 Apr 2017 15:06:53 GMT
 - request:
     method: get
     uri: http://jdoe:password@localhost:8080/hawkular/metrics/availability/<%= id1 %>
@@ -66,8 +64,6 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
-      Host:
-      - localhost:8080
   response:
     status:
       code: 200
@@ -84,18 +80,18 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Sat, 22 Apr 2017 17:52:54 GMT
+      - Tue, 25 Apr 2017 15:06:53 GMT
       Connection:
       - keep-alive
       Content-Type:
       - application/json
       Content-Length:
-      - '163'
+      - '164'
     body:
       encoding: UTF-8
-      string: '{"id":"<%= id1 %>","tags":{"myTag":"<%= id1 %>"},"dataRetention":7,"type":"availability","tenantId":"hawkular"}'
+      string: '{"id":"<%= id1 %>","tags":{"myTag":"<%= id1 %>"},"dataRetention":14,"type":"availability","tenantId":"hawkular"}'
     http_version: 
-  recorded_at: Sat, 22 Apr 2017 17:52:54 GMT
+  recorded_at: Tue, 25 Apr 2017 15:06:53 GMT
 - request:
     method: post
     uri: http://jdoe:password@localhost:8080/hawkular/metrics/availability
@@ -115,8 +111,6 @@ http_interactions:
       - application/json
       Content-Length:
       - '101'
-      Host:
-      - localhost:8080
   response:
     status:
       code: 201
@@ -135,7 +129,7 @@ http_interactions:
       Location:
       - http://localhost:8080/hawkular/metrics/availability/<%= id2 %>
       Date:
-      - Sat, 22 Apr 2017 17:52:54 GMT
+      - Tue, 25 Apr 2017 15:06:53 GMT
       Connection:
       - keep-alive
       Content-Length:
@@ -144,7 +138,7 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Sat, 22 Apr 2017 17:52:54 GMT
+  recorded_at: Tue, 25 Apr 2017 15:06:53 GMT
 - request:
     method: get
     uri: http://jdoe:password@localhost:8080/hawkular/metrics/availability/<%= id2 %>
@@ -162,8 +156,6 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
-      Host:
-      - localhost:8080
   response:
     status:
       code: 200
@@ -180,16 +172,16 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Sat, 22 Apr 2017 17:52:54 GMT
+      - Tue, 25 Apr 2017 15:06:53 GMT
       Connection:
       - keep-alive
       Content-Type:
       - application/json
       Content-Length:
-      - '163'
+      - '164'
     body:
       encoding: UTF-8
-      string: '{"id":"<%= id2 %>","tags":{"myTag":"<%= id2 %>"},"dataRetention":7,"type":"availability","tenantId":"hawkular"}'
+      string: '{"id":"<%= id2 %>","tags":{"myTag":"<%= id2 %>"},"dataRetention":14,"type":"availability","tenantId":"hawkular"}'
     http_version: 
-  recorded_at: Sat, 22 Apr 2017 17:52:54 GMT
+  recorded_at: Tue, 25 Apr 2017 15:06:53 GMT
 recorded_with: VCR 3.0.3

@@ -75,6 +75,21 @@ describe 'CanonicalPath' do
       expect(other_path.feed_id).to eql(feed_id)
       expect(other_path.resource_ids).to eql([res1_id, res2_id])
     end
+
+    it 'should be immutable' do
+      feed = Hawkular::Inventory::CanonicalPath.new(feed_id: 'feed')
+      r1 = feed.down('r1')
+      r2 = feed.down('r2')
+      r3 = r1.down('r3')
+      r1_again = r3.up
+      feed_again = r1.up
+      expect(feed.to_s).to eq('/t;/f;feed')
+      expect(r1.to_s).to eq('/t;/f;feed/r;r1')
+      expect(r2.to_s).to eq('/t;/f;feed/r;r2')
+      expect(r3.to_s).to eq('/t;/f;feed/r;r1/r;r3')
+      expect(r1_again.to_s).to eq('/t;/f;feed/r;r1')
+      expect(feed_again.to_s).to eq('/t;/f;feed')
+    end
   end
 
   # negative cases :(

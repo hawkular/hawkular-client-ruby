@@ -17,8 +17,6 @@ http_interactions:
       - <%= vcr_test_tenant %>
       Content-Type:
       - application/json
-      Host:
-      - localhost:8080
   response:
     status:
       code: 200
@@ -35,7 +33,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Thu, 13 Oct 2016 03:10:06 GMT
+      - Wed, 05 Apr 2017 08:18:51 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -45,7 +43,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"id":"MI~R~[8b*}{''\\14#?/5-7%92e[-c9_.r1//;/74eddf/L=c~~]~MT~    *  /
-        Met@ics~Aggre&? ated s  Active\" Ses;ns","tags":{"name1":"value1","name2":"value2","name3":"value3","tag":"value"},"dataRetention":90,"type":"gauge","tenantId":"<%= vcr_test_tenant %>","minTimestamp":1476328206273,"maxTimestamp":1476328206273}'
+        Met@ics~Aggre&? ated s  Active\" Ses;ns","tags":{"name1":"value1","name2":"value2","name3":"value3","tag":"value"},"dataRetention":90,"type":"gauge","tenantId":"<%= vcr_test_tenant %>","minTimestamp":1491380331371,"maxTimestamp":1491380331371}'
     http_version: 
-  recorded_at: Thu, 13 Oct 2016 03:10:06 GMT
+  recorded_at: Wed, 05 Apr 2017 08:18:51 GMT
 recorded_with: VCR 3.0.3
