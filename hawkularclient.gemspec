@@ -16,7 +16,7 @@ Gem::Specification.new do |gem|
     A Ruby client for Hawkular
   EOS
 
-  gem.files         = `git ls-files -z`.split("\x0")
+  gem.files         = `git ls-files -z lib LICENSE README.rdoc`.split("\x0")
   gem.executables   = gem.files.grep(%r{^bin/}).map { |f| File.basename(f) }
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ['lib']

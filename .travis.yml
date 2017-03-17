@@ -7,6 +7,8 @@ rvm:
 env:
   global:
     - ADMIN_TOKEN=4f4a1434-8cb3-11e6-ae22-56b6b6499611
+    # GH_TOKEN=...  used by hawkular-website-bot to publish the documentation
+    - secure: "EpOp9rU8GW2v/QyuDFRZQPQ2vGZ8vPsheVvLE7KSsu3UjNF8STiE50a2gmUW6KYQU+8jwSDHl8zUjIgpBko1tAUMd4NXNPMxZA+ybBLyUwQbbkTvFcG7FVFeB0UyjPQzOAw7qLm53HvknDv/P65OgkWXfjUVFWo4plgZKdwufDHyUqyN1ZBOUKu1w8HZ00HLnUWkhSiV9YG4RRFKJfEriElyv24L0RA9X8yVsS1eGr9MJhTzVgF0bAW6dSyxarZEo4qvLnqko98mva/wfGkmIBJBy7wxBSfy92flSh44s+s/nPzNKh1vZ9RF5lUekvh3Iw3pzZ9gb9wiNIvVM3Fa3jRl82fFUsGmpD2frE0cy4us+YodvPpAYn2EgGoVQnTJaFCTeMRbQpQ67j71JO6fBxGkIHb+TtdyieVajPGlRnJa6RDpT2QDiwuzhOOMvNkxO+6k+87ePUGu3geng7RXIBV3FqsjfkY79cDo3EsVg95BAa2rEuyqysbdVWox1VK0QuvBaFtNCbBoegnk0PX0uNMKmt1cLsxvz5zfwgAVPTEXsa8/FcDC2X6Ua+oVmSVZTEW1anEjQUjz+CYwWaBTwXknZvRNsM3x/kYskVyieDzehu71L5exZtg6+P+In6N/NXw7DL0SokPE4VbPng71eOlMW3cTDnnxeR1fmffABGg="
   matrix:
     - RUN_ON_LIVE_SERVER=1 \
       VCR_UPDATE=1 \
@@ -18,3 +20,5 @@ services:
   - docker
 before_install:
   - (test $RUN_ON_LIVE_SERVER = 1 && ./.travis/start_hawkular_services.sh -d && ./.travis/wait_for_services.rb) || echo "Skipping live server"
+after_success:
+  - ./.travis.docs.rb
