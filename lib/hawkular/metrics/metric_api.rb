@@ -132,7 +132,7 @@ module Hawkular::Metrics
       # @return [Array[MetricDefinition]]
       def query(tags = nil)
         tags_filter = tags.nil? ? '' : "&tags=#{@client.tags_param(tags)}"
-        @client.http_get("/metrics/?type=#{@type}#{tags_filter}").map do |g|
+        @client.http_get("/metrics/?timestamps=true&type=#{@type}#{tags_filter}").map do |g|
           Hawkular::Metrics::MetricDefinition.new(g)
         end
       end
