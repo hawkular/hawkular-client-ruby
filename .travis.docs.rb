@@ -31,7 +31,7 @@ def copy_docs
   `cp -r #{DOCS_DIR} docs/#{VERSION}`
   `rm docs/latest`
   `ln -s #{VERSION} docs/latest`
-  `echo "      <li><a href='/docs/#{VERSION}'>#{VERSION}</a></li>" >> docs/index.html`
+  `echo "      <li><a href='/hawkular-client-ruby/docs/#{VERSION}'>#{VERSION}</a></li>" >> docs/index.html`
 end
 
 def add_to_scm
