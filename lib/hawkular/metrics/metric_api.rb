@@ -129,10 +129,13 @@ module Hawkular::Metrics
 
       # Query metric definitions by tags
       # @param tags [Hash]
+      # @param options [Hash] Additional options to configure
+      # @option options [Boolean] :timestamps If timestamps should be included on the response. Defaults to true
       # @return [Array[MetricDefinition]]
-      def query(tags = nil)
+      def query(tags = nil, options = {})
+        timestamps = (options.key?(:timestamps) ? options[:timestamps] : true).to_s
         tags_filter = tags.nil? ? '' : "&tags=#{@client.tags_param(tags)}"
-        @client.http_get("/metrics/?type=#{@type}#{tags_filter}").map do |g|
+        @client.http_get("/metrics/?timestamps=#{timestamps}&type=#{@type}#{tags_filter}").map do |g|
           Hawkular::Metrics::MetricDefinition.new(g)
         end
       end

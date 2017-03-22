@@ -14,7 +14,7 @@ http_interactions:
       User-Agent:
       - hawkular-client-ruby
       Hawkular-Tenant:
-      - <%= type %>metrics_services-vcr-tenant-bb1eb255-4bcb-4dbe-9253-d32fbcfd134c
+      - <%= type %>metrics_services-vcr-tenant-9a0f8a39-7e06-4614-9a6f-51cb8ea418a5
       Content-Type:
       - application/json
       Host:
@@ -33,12 +33,12 @@ http_interactions:
       Content-Type:
       - application/json
       Content-Length:
-      - '133'
+      - '150'
       Date:
-      - Thu, 13 Oct 2016 03:23:56 GMT
+      - Wed, 22 Mar 2017 19:52:26 GMT
     body:
       encoding: UTF-8
-      string: '{"MetricsService":"STARTED","Implementation-Version":"0.20.1.Final","Built-From-Git-SHA1":"f23946235446d3425db31d262b47b4f950ddabb3"}'
+      string: '{"MetricsService":"STARTED","Implementation-Version":"0.24.1.Final","Built-From-Git-SHA1":"397e6ce2e56828276c6c38a8ae04ecadb548a101","Cassandra":"up"}'
     http_version: 
-  recorded_at: Thu, 13 Oct 2016 03:23:56 GMT
+  recorded_at: Wed, 22 Mar 2017 19:52:26 GMT
 recorded_with: VCR 3.0.3
