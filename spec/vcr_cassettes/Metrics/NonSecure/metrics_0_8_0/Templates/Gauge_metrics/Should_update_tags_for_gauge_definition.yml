@@ -160,7 +160,7 @@ http_interactions:
   recorded_at: Thu, 30 Jun 2016 16:31:38 GMT
 - request:
     method: get
-    uri: http://localhost:8080/hawkular/metrics/metrics/?tags=myTag:<%= id %>&type=gauge
+    uri: http://localhost:8080/hawkular/metrics/metrics/?tags=myTag:<%= id %>&timestamps=true&type=gauge
     body:
       encoding: US-ASCII
       string: ''
