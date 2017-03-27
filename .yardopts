@@ -1,1 +1,7 @@
-- CHANGES.rdoc api_breaking_changes.rdoc
+--protected
+--no-private
+--readme README.rdoc
+-
+CHANGES.rdoc
+api_breaking_changes.rdoc
+LICENSE
