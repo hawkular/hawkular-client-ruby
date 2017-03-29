@@ -10,8 +10,8 @@ Documentation[http://www.hawkular.org/hawkular-client-ruby/docs/]
 
 == Changelog
 
-See {CHANGELOG}[http://www.hawkular.org/docs/latest/hawkular-client-ruby/file.CHANGES.html] for a list of changes and
-{API-Breaking-Changes}[link:http://www.hawkular.org/docs/latest/hawkular-client-ruby/file.api_breaking_changes.html] for a list of api-breaking changes.
+See {CHANGELOG}[http://www.hawkular.org/hawkular-client-ruby/docs/latest/file.CHANGES.html] for a list of changes and
+{API-Breaking-Changes}[link:http://www.hawkular.org/hawkular-client-ruby/docs/latest/file.api_breaking_changes.html] for a list of api-breaking changes.
 
 == Overview
 
@@ -145,7 +145,7 @@ Integration tests are recorded and played against cassettes recorded with VCR
 * Currently, we support two posible metrics contexts: <code>hawkular-metrics 0.8.0.Final</code> and <code>hawkular-services</code> that contain metrics. If you want to run/re-record the tests only for services, you can skip the other context by <code>SKIP_V8_METRICS=1</code>, or similarly <code>SKIP_SERVICES_METRICS=1</code>. So for instance updating the VCR templates only for hawkular-services would require command:
     VCR_UPDATE=1 SKIP_V8_METRICS=1 rspec ./spec/integration/metric_spec.rb
 
-For more details consult the {spec readme}[link:http://www.hawkular.org/docs/latest/hawkular-client-ruby/file.README.html].
+For more details consult the {spec readme}[link:http://www.hawkular.org/hawkular-client-ruby/docs/latest/file.README.html].
 
 == Logging
 
