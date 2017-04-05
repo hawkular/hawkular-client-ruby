@@ -415,13 +415,20 @@ module Hawkular::Alerts::RSpec
       # Setup for testing
       record('Alert/Alerts', credentials, 'setup') do
         @client = Hawkular::Alerts::Client.new(ALERTS_BASE, credentials, options)
+        @client_tenant = Hawkular::Alerts::Client.new(
+          ALERTS_BASE, credentials, options.merge(tenant: 'foo'))
+
         json = IO.read('spec/integration/alert-resources/alerts-test-data.json')
         trigger_hash = JSON.parse(json)
         @client.bulk_import_triggers trigger_hash
+        @client_tenant.bulk_import_triggers trigger_hash
         current_open_alert_count = @client.list_alerts('statuses' => 'OPEN')
+        current_open_alert_count_tenant = @client_tenant.list_alerts('statuses' => 'OPEN')
         @client.http_post('data', [{ id: 'data-x', timestamp: Time.new.to_i, value: 4 }])
+        @client_tenant.http_post('data', [{ id: 'data-x', timestamp: Time.new.to_i, value: 4 }])
         wait_while do
-          current_open_alert_count == @client.list_alerts('statuses' => 'OPEN')
+          current_open_alert_count == @client.list_alerts('statuses' => 'OPEN') ||
+            current_open_alert_count_tenant == @client_tenant.list_alerts('statuses' => 'OPEN')
         end
       end
     end
@@ -430,13 +437,18 @@ module Hawkular::Alerts::RSpec
       # cleanup test values
       record('Alert/Alerts', credentials, 'setup_cleanup') do
         @client = Hawkular::Alerts::Client.new(ALERTS_BASE, credentials, options)
+        @client_tenant = Hawkular::Alerts::Client.new(
+          ALERTS_BASE, credentials, options.merge(tenant: 'foo'))
+
         json = IO.read('spec/integration/alert-resources/alerts-test-data.json')
         trigger_hash = JSON.parse(json)
-        trigger_hash['triggers'].each do |trigger|
-          @client.list_alerts('triggerIds' => [trigger['trigger']['id']]).each do |alert|
-            @client.http_delete(alert.id)
+        [@client, @client_tenant].each do |client|
+          trigger_hash['triggers'].each do |trigger|
+            client.list_alerts('triggerIds' => [trigger['trigger']['id']]).each do |alert|
+              client.http_delete(alert.id)
+            end
+            client.delete_trigger trigger['trigger']['id']
           end
-          @client.delete_trigger trigger['trigger']['id']
         end
       end
     end
@@ -461,6 +473,17 @@ module Hawkular::Alerts::RSpec
 
       expect(alerts).to_not be_nil
       expect(alerts.size).to be >= 2
+    end
+
+    it 'Should list alerts for multiple tenants' do
+      client = Hawkular::Alerts::Client.new(ALERTS_BASE, creds, options)
+
+      alerts = client.alerts(tenants: [:hawkular, :foo])
+
+      expect(alerts).to_not be_nil
+      expect(alerts.size).to eq(4)
+      expect(alerts.count { |a| a.tenantId == 'hawkular' }).to eq(2)
+      expect(alerts.count { |a| a.tenantId == 'foo' }).to eq(2)
     end
 
     it 'Should list open alerts' do
@@ -585,10 +608,14 @@ module Hawkular::Alerts::RSpec
       # Setup for testing
       record('Alert/Events', credentials, 'setup') do
         @client = Hawkular::Alerts::Client.new(ALERTS_BASE, credentials, options)
+        @client_tenant = Hawkular::Alerts::Client.new(
+          ALERTS_BASE, credentials, options.merge(tenant: 'foo'))
+
         json = IO.read('spec/integration/alert-resources/events-test-data.json')
         hash = JSON.parse(json)
         hash['events'].each do |event|
           @client.create_event event['id'], event['category'], event['text'], event['extras']
+          @client_tenant.create_event event['id'], event['category'], event['text'], event['extras']
         end
       end
     end
@@ -596,11 +623,16 @@ module Hawkular::Alerts::RSpec
     after(:all) do
       # cleanup test values
       record('Alert/Events', credentials, 'setup_cleanup') do
-        @client = Hawkular::Alerts::Client.new(ALERTS_BASE, credentials, options)
+        @client = Hawkular::Alerts::Client.new(
+          ALERTS_BASE, credentials, options)
+        @client_tenant = Hawkular::Alerts::Client.new(
+          ALERTS_BASE, credentials, options.merge(tenant: 'foo'))
+
         json = IO.read('spec/integration/alert-resources/events-test-data.json')
         hash = JSON.parse(json)
         hash['events'].each do |event|
           @client.delete_event event['id']
+          @client_tenant.delete_event event['id']
         end
       end
     end
@@ -621,6 +653,18 @@ module Hawkular::Alerts::RSpec
 
       expect(events).to_not be_nil
       expect(events.size).to be >= 12
+    end
+
+    it 'Should list events for multiple tenants' do
+      client = Hawkular::Alerts::Client.new(ALERTS_BASE, creds, options)
+
+      events = client.events(criteria: { 'thin' => true }, tenants: [:hawkular, :foo])
+      events.select! { |e| e.eventType == 'EVENT' }
+
+      expect(events).to_not be_nil
+      expect(events.size).to be >= 24
+      expect(events.count { |e| e.tenantId == 'hawkular' }).to be >= 12
+      expect(events.count { |e| e.tenantId == 'foo' }).to eq(12)
     end
 
     it 'Should list events using criteria' do
