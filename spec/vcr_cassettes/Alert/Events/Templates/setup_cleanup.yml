@@ -35,7 +35,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 27 Sep 2016 18:17:18 GMT
+      - Tue, 04 Apr 2017 23:55:59 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -46,7 +46,54 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Tue, 27 Sep 2016 18:17:18 GMT
+  recorded_at: Tue, 04 Apr 2017 23:55:59 GMT
+- request:
+    method: delete
+    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/events/my-event-01
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - foo
+      Content-Type:
+      - application/json
+      Host:
+      - localhost:8080
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Tue, 04 Apr 2017 23:55:59 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 04 Apr 2017 23:55:59 GMT
 - request:
     method: delete
     uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/events/my-event-02
@@ -82,7 +129,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 27 Sep 2016 18:17:18 GMT
+      - Tue, 04 Apr 2017 23:55:59 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -93,7 +140,54 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Tue, 27 Sep 2016 18:17:18 GMT
+  recorded_at: Tue, 04 Apr 2017 23:55:59 GMT
+- request:
+    method: delete
+    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/events/my-event-02
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - foo
+      Content-Type:
+      - application/json
+      Host:
+      - localhost:8080
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Tue, 04 Apr 2017 23:55:59 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 04 Apr 2017 23:55:59 GMT
 - request:
     method: delete
     uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/events/my-event-03
@@ -129,7 +223,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 27 Sep 2016 18:17:18 GMT
+      - Tue, 04 Apr 2017 23:55:59 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -140,7 +234,54 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Tue, 27 Sep 2016 18:17:18 GMT
+  recorded_at: Tue, 04 Apr 2017 23:55:59 GMT
+- request:
+    method: delete
+    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/events/my-event-03
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - foo
+      Content-Type:
+      - application/json
+      Host:
+      - localhost:8080
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Tue, 04 Apr 2017 23:55:59 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 04 Apr 2017 23:55:59 GMT
 - request:
     method: delete
     uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/events/my-event-04
@@ -176,7 +317,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 27 Sep 2016 18:17:18 GMT
+      - Tue, 04 Apr 2017 23:55:59 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -187,7 +328,54 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Tue, 27 Sep 2016 18:17:18 GMT
+  recorded_at: Tue, 04 Apr 2017 23:55:59 GMT
+- request:
+    method: delete
+    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/events/my-event-04
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - foo
+      Content-Type:
+      - application/json
+      Host:
+      - localhost:8080
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Tue, 04 Apr 2017 23:55:59 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 04 Apr 2017 23:55:59 GMT
 - request:
     method: delete
     uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/events/my-event-05
@@ -223,7 +411,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 27 Sep 2016 18:17:18 GMT
+      - Tue, 04 Apr 2017 23:55:59 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -234,7 +422,54 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Tue, 27 Sep 2016 18:17:18 GMT
+  recorded_at: Tue, 04 Apr 2017 23:55:59 GMT
+- request:
+    method: delete
+    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/events/my-event-05
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - foo
+      Content-Type:
+      - application/json
+      Host:
+      - localhost:8080
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Tue, 04 Apr 2017 23:55:59 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 04 Apr 2017 23:55:59 GMT
 - request:
     method: delete
     uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/events/my-event-06
@@ -270,7 +505,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 27 Sep 2016 18:17:18 GMT
+      - Tue, 04 Apr 2017 23:55:59 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -281,7 +516,54 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Tue, 27 Sep 2016 18:17:18 GMT
+  recorded_at: Tue, 04 Apr 2017 23:55:59 GMT
+- request:
+    method: delete
+    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/events/my-event-06
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - foo
+      Content-Type:
+      - application/json
+      Host:
+      - localhost:8080
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Tue, 04 Apr 2017 23:55:59 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 04 Apr 2017 23:55:59 GMT
 - request:
     method: delete
     uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/events/my-event-07
@@ -317,7 +599,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 27 Sep 2016 18:17:18 GMT
+      - Tue, 04 Apr 2017 23:55:59 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -328,7 +610,54 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Tue, 27 Sep 2016 18:17:18 GMT
+  recorded_at: Tue, 04 Apr 2017 23:55:59 GMT
+- request:
+    method: delete
+    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/events/my-event-07
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - foo
+      Content-Type:
+      - application/json
+      Host:
+      - localhost:8080
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Tue, 04 Apr 2017 23:55:59 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 04 Apr 2017 23:55:59 GMT
 - request:
     method: delete
     uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/events/my-event-08
@@ -364,7 +693,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 27 Sep 2016 18:17:18 GMT
+      - Tue, 04 Apr 2017 23:55:59 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -375,7 +704,54 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Tue, 27 Sep 2016 18:17:18 GMT
+  recorded_at: Tue, 04 Apr 2017 23:55:59 GMT
+- request:
+    method: delete
+    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/events/my-event-08
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - foo
+      Content-Type:
+      - application/json
+      Host:
+      - localhost:8080
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Tue, 04 Apr 2017 23:55:59 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 04 Apr 2017 23:55:59 GMT
 - request:
     method: delete
     uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/events/my-event-09
@@ -411,7 +787,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 27 Sep 2016 18:17:18 GMT
+      - Tue, 04 Apr 2017 23:55:59 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -422,7 +798,54 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Tue, 27 Sep 2016 18:17:18 GMT
+  recorded_at: Tue, 04 Apr 2017 23:55:59 GMT
+- request:
+    method: delete
+    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/events/my-event-09
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - foo
+      Content-Type:
+      - application/json
+      Host:
+      - localhost:8080
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Tue, 04 Apr 2017 23:55:59 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 04 Apr 2017 23:55:59 GMT
 - request:
     method: delete
     uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/events/my-event-10
@@ -458,7 +881,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 27 Sep 2016 18:17:18 GMT
+      - Tue, 04 Apr 2017 23:55:59 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -469,7 +892,54 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Tue, 27 Sep 2016 18:17:18 GMT
+  recorded_at: Tue, 04 Apr 2017 23:55:59 GMT
+- request:
+    method: delete
+    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/events/my-event-10
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - foo
+      Content-Type:
+      - application/json
+      Host:
+      - localhost:8080
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Tue, 04 Apr 2017 23:55:59 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 04 Apr 2017 23:55:59 GMT
 - request:
     method: delete
     uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/events/my-event-11
@@ -505,7 +975,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 27 Sep 2016 18:17:18 GMT
+      - Tue, 04 Apr 2017 23:55:59 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -516,7 +986,54 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Tue, 27 Sep 2016 18:17:18 GMT
+  recorded_at: Tue, 04 Apr 2017 23:55:59 GMT
+- request:
+    method: delete
+    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/events/my-event-11
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - foo
+      Content-Type:
+      - application/json
+      Host:
+      - localhost:8080
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Tue, 04 Apr 2017 23:55:59 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 04 Apr 2017 23:55:59 GMT
 - request:
     method: delete
     uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/events/my-event-12
@@ -552,7 +1069,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 27 Sep 2016 18:17:18 GMT
+      - Tue, 04 Apr 2017 23:55:59 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -563,5 +1080,52 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Tue, 27 Sep 2016 18:17:18 GMT
+  recorded_at: Tue, 04 Apr 2017 23:55:59 GMT
+- request:
+    method: delete
+    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/events/my-event-12
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - foo
+      Content-Type:
+      - application/json
+      Host:
+      - localhost:8080
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Tue, 04 Apr 2017 23:55:59 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 04 Apr 2017 23:55:59 GMT
 recorded_with: VCR 3.0.3

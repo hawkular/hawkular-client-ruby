@@ -246,8 +246,18 @@ module Hawkular::Alerts
     # @param [Hash]criteria optional query criteria
     # @return [Array<Alert>] List of alerts in the system. Can be empty
     def list_alerts(criteria = {})
+      alerts(criteria: criteria)
+    end
+
+    # List fired alerts
+    # @param [Hash] criteria optional query criteria
+    # @param [Array] tenants optional list of tenants. The elements of the array can be any object
+    #   convertible to a string
+    # @return [Array<Alert>] List of alerts in the system. Can be empty
+    def alerts(criteria: {}, tenants:nil)
       query = generate_query_params(criteria)
-      ret = http_get('/' + query)
+      uri = tenants ? '/admin/alerts/' : '/'
+      ret = http_get(uri + query, multi_tenants_header(tenants))
       val = []
       ret.each { |a| val.push(Alert.new(a)) }
       val
@@ -298,9 +308,26 @@ module Hawkular::Alerts
     #  thin        boolean, return lighter events (omits triggering data for trigger-generated events)
     # @param [Hash] criteria optional query criteria
     # @return [Array<Event>] List of events. Can be empty
-    def list_events(*criteria)
-      query = generate_query_params(*criteria)
-      http_get('/events' + query).map { |e| Event.new(e) }
+    def list_events(criteria = {})
+      events(criteria: criteria)
+    end
+
+    # List Events given optional criteria. Criteria keys are strings (not symbols):
+    #  startTime   numeric, milliseconds from epoch
+    #  endTime     numeric, milliseconds from epoch
+    #  eventIds    array of strings
+    #  triggerIds  array of strings
+    #  categories  array of strings
+    #  tags        array of strings, each tag of format 'name|value'. Specify '*' for value to match all values
+    #  thin        boolean, return lighter events (omits triggering data for trigger-generated events)
+    # @param [Hash] criteria optional query criteria
+    # @param [Array] tenants optional list of tenants. The elements of the array can be any object
+    #   convertible to a string
+    # @return [Array<Event>] List of events. Can be empty
+    def events(criteria: {}, tenants: nil)
+      query = generate_query_params(criteria)
+      uri = tenants ? '/admin/events' : '/events'
+      http_get(uri + query, multi_tenants_header(tenants)).map { |e| Event.new(e) }
     end
 
     # Inject an event into Hawkular-alerts
@@ -337,6 +364,18 @@ module Hawkular::Alerts
     def remove_tags(alert_ids, tag_names)
       query = generate_query_params(alertIds: alert_ids, tagNames: tag_names)
       http_delete('/tags' + query)
+    end
+
+    private
+
+    # Builds the tenant HTTP header for multi-tenant operations
+    # @param [Array] tenants an array of tenant names. The elements of the array can
+    #   be any object convertible to a string. Can be nil
+    # @return [Hash] The HTTP header for multi-tenant operations. An empty hash is returned
+    #   if tenants parameter is nil
+    def multi_tenants_header(tenants)
+      tenants = tenants.join(',') if tenants.respond_to?(:join)
+      tenants ? { 'Hawkular-Tenant': tenants } : {}
     end
   end
 
