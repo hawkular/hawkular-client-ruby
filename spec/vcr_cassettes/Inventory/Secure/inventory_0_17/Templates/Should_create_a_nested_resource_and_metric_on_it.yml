@@ -54,7 +54,7 @@ http_interactions:
           "identityHash" : "68e7c253d97d52d5a4e412a0297567440ba5f5",
           "id" : "Secure_feed_may_exist"
         }
-    http_version: 
+    http_version:
   recorded_at: Wed, 10 Aug 2016 22:35:52 GMT
 - request:
     method: post
@@ -111,7 +111,7 @@ http_interactions:
           "identityHash" : "5c475fba1eab01a3f0fbabfbe0efac752aeb7",
           "id" : "rt-123-1"
         }
-    http_version: 
+    http_version:
   recorded_at: Wed, 10 Aug 2016 22:35:52 GMT
 - request:
     method: get
@@ -164,7 +164,7 @@ http_interactions:
           "identityHash" : "5c475fba1eab01a3f0fbabfbe0efac752aeb7",
           "id" : "rt-123-1"
         }
-    http_version: 
+    http_version:
   recorded_at: Wed, 10 Aug 2016 22:35:52 GMT
 - request:
     method: post
@@ -227,7 +227,7 @@ http_interactions:
           },
           "id" : "r124-a"
         }
-    http_version: 
+    http_version:
   recorded_at: Wed, 10 Aug 2016 22:35:52 GMT
 - request:
     method: post
@@ -290,14 +290,14 @@ http_interactions:
           },
           "id" : "r124-b"
         }
-    http_version: 
+    http_version:
   recorded_at: Wed, 10 Aug 2016 22:35:52 GMT
 - request:
     method: post
     uri: https://<%= super_secret_username %>:<%= super_secret_password %>@127.0.0.1:8443/hawkular/inventory/entity/f;Secure_feed_may_exist/metricType
     body:
       encoding: UTF-8
-      string: '{"id":"mt-124-a","type":"GAUGE","unit":"NONE","collectionInterval":60}'
+      string: '{"id":"mt-124-a","metricDataType":"gauge","unit":"NONE","collectionInterval":60}'
     headers:
       Accept:
       - application/json
@@ -345,11 +345,11 @@ http_interactions:
           "path" : "/t;hawkular/f;Secure_feed_may_exist/mt;mt-124-a",
           "identityHash" : "b06c658d2341eedf26fcff6667bcf3b2556c994",
           "unit" : "NONE",
-          "type" : "GAUGE",
+          "metricDataType" : "gauge",
           "collectionInterval" : 60,
           "id" : "mt-124-a"
         }
-    http_version: 
+    http_version:
   recorded_at: Wed, 10 Aug 2016 22:35:52 GMT
 - request:
     method: get
@@ -400,11 +400,11 @@ http_interactions:
           "path" : "/t;hawkular/f;Secure_feed_may_exist/mt;mt-124-a",
           "identityHash" : "b06c658d2341eedf26fcff6667bcf3b2556c994",
           "unit" : "NONE",
-          "type" : "GAUGE",
+          "metricDataType" : "gauge",
           "collectionInterval" : 60,
           "id" : "mt-124-a"
         }
-    http_version: 
+    http_version:
   recorded_at: Wed, 10 Aug 2016 22:35:52 GMT
 - request:
     method: post
@@ -463,13 +463,13 @@ http_interactions:
             "path" : "/t;hawkular/f;Secure_feed_may_exist/mt;mt-124-a",
             "identityHash" : "b06c658d2341eedf26fcff6667bcf3b2556c994",
             "unit" : "NONE",
-            "type" : "GAUGE",
+            "metricDataType" : "gauge",
             "collectionInterval" : 60,
             "id" : "mt-124-a"
           },
           "id" : "m-124-a"
         }
-    http_version: 
+    http_version:
   recorded_at: Wed, 10 Aug 2016 22:35:53 GMT
 - request:
     method: get
@@ -527,13 +527,13 @@ http_interactions:
             "path" : "/t;hawkular/f;Secure_feed_may_exist/mt;mt-124-a",
             "identityHash" : "b06c658d2341eedf26fcff6667bcf3b2556c994",
             "unit" : "NONE",
-            "type" : "GAUGE",
+            "metricDataType" : "gauge",
             "collectionInterval" : 60,
             "id" : "mt-124-a"
           },
           "id" : "m-124-a"
         }
-    http_version: 
+    http_version:
   recorded_at: Wed, 10 Aug 2016 22:35:53 GMT
 - request:
     method: post
@@ -590,7 +590,7 @@ http_interactions:
           "source" : "/t;hawkular/f;Secure_feed_may_exist/r;r124-a/r;r124-b",
           "target" : "/t;hawkular/f;Secure_feed_may_exist/m;m-124-a"
         } ]
-    http_version: 
+    http_version:
   recorded_at: Wed, 10 Aug 2016 22:35:53 GMT
 - request:
     method: get
@@ -653,12 +653,12 @@ http_interactions:
             "path" : "/t;hawkular/f;Secure_feed_may_exist/mt;mt-124-a",
             "identityHash" : "b06c658d2341eedf26fcff6667bcf3b2556c994",
             "unit" : "NONE",
-            "type" : "GAUGE",
+            "metricDataType" : "gauge",
             "collectionInterval" : 60,
             "id" : "mt-124-a"
           },
           "id" : "m-124-a"
         } ]
-    http_version: 
+    http_version:
   recorded_at: Wed, 10 Aug 2016 22:35:53 GMT
 recorded_with: VCR 3.0.3

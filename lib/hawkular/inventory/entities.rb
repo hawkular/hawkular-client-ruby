@@ -75,7 +75,7 @@ module Hawkular::Inventory
 
   # Fields that are common for MetricType and Metric
   module MetricFields
-    # @return [String] GAUGE, COUNTER, etc.
+    # @return [String] gauge, counter, etc.
     attr_reader :type
     # @return [String] metric unit such as NONE, BYTES, etc.
     attr_reader :unit
@@ -91,7 +91,7 @@ module Hawkular::Inventory
 
     def initialize(type_hash)
       super(type_hash)
-      @type = type_hash['type']
+      @type = type_hash['metricDataType']
       @unit = type_hash['unit']
       @collection_interval = type_hash['collectionInterval']
     end
@@ -107,7 +107,7 @@ module Hawkular::Inventory
 
     def initialize(metric_hash)
       super(metric_hash)
-      @type = metric_hash['type']['type']
+      @type = metric_hash['type']['metricDataType']
       @type_path = metric_hash['type']['path']
       @type_id = metric_hash['type']['id']
       @unit = metric_hash['type']['unit']

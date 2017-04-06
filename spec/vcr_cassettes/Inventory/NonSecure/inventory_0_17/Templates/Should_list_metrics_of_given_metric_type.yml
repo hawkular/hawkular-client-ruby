@@ -65,7 +65,6 @@ http_interactions:
             "unit" : "BYTES",
             "metricDataType" : "gauge",
             "collectionInterval" : 300,
-            "type" : "GAUGE",
             "id" : "Platform_File Store_Total Space"
           },
           "id" : "MI~R~[<%= feed_uuid %>/platform~/OPERATING_SYSTEM=<%= feed_uuid %>_OperatingSystem/FILE_STORE=/dev/mapper/fedora-root]~MT~Platform_File Store_Total Space"
@@ -84,11 +83,10 @@ http_interactions:
             "unit" : "BYTES",
             "metricDataType" : "gauge",
             "collectionInterval" : 300,
-            "type" : "GAUGE",
             "id" : "Platform_File Store_Total Space"
           },
           "id" : "MI~R~[<%= feed_uuid %>/platform~/OPERATING_SYSTEM=<%= feed_uuid %>_OperatingSystem/FILE_STORE=~]~MT~Platform_File Store_Total Space"
         } ]
-    http_version: 
+    http_version:
   recorded_at: Tue, 27 Sep 2016 22:09:35 GMT
 recorded_with: VCR 3.0.3

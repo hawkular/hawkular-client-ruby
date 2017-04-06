@@ -308,13 +308,13 @@ module Hawkular::Inventory::RSpec
           resources = @client.list_resources_for_type(wildfly_type.to_s)
           wild_fly = resources[0]
 
-          metrics = @client.list_metrics_for_resource(wild_fly.path, type: 'GAUGE', match: 'Metrics~Heap')
+          metrics = @client.list_metrics_for_resource(wild_fly.path, type: 'gauge', match: 'Metrics~Heap')
           expect(metrics.size).to be(3)
 
           metrics = @client.list_metrics_for_resource(wild_fly.path, match: 'Metrics~Heap')
           expect(metrics.size).to be(3)
 
-          metrics = @client.list_metrics_for_resource(wild_fly.path, type: 'GAUGE')
+          metrics = @client.list_metrics_for_resource(wild_fly.path, type: 'gauge')
           expect(metrics.size).to be(8)
         end
 
@@ -564,7 +564,7 @@ module Hawkular::Inventory::RSpec
           new_feed_id = 'feed_may_exist'
 
           expect { @client.create_metric_type new_feed_id, 'abc', 'FOOBaR' }.to raise_error(RuntimeError,
-                                                                                            /Unknown type FOOBAR/)
+                                                                                            /Unknown type foobar/)
         end
 
         let(:example) do |e|
