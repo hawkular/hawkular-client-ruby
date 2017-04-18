@@ -1,5 +1,5 @@
 require 'hawkular/base_client'
-require 'websocket-client-simple'
+require 'hawkular/websocket_client'
 require 'json'
 require 'zlib'
 require 'stringio'
