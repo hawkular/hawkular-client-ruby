@@ -338,7 +338,8 @@ module Hawkular::Operations
         when "#{operation_name}Response"
           same_path = parsed[:data]['resourcePath'] == operation_payload[:resourcePath]
           # failed operations don't return the operation name from some strange reason
-          same_name = parsed[:data]['operationName'] == operation_payload[:operationName]
+          same_name = operation_payload[:operationName].nil? ||
+                      parsed[:data]['operationName'] == operation_payload[:operationName].to_s
           if same_path # using the resource path as a correlation id
             success = same_name && parsed[:data]['status'] == 'OK'
             success ? callback.perform(:success, parsed[:data]) : callback.perform(:failure, parsed[:data]['message'])

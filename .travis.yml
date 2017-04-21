@@ -18,6 +18,7 @@ services:
   - docker
 before_install:
   - (test $RUN_ON_LIVE_SERVER = 1 && docker-compose up -d && ./.travis/wait_for_services.rb) || echo "Skipping live server"
+  - gem update bundler
 # Lets wait a bit for the agent to load everything it needs.
 before_script:
   - (test $RUN_ON_LIVE_SERVER = 1 && sleep 20s) || true
