@@ -10,13 +10,15 @@ http_interactions:
       Accept:
       - application/json
       Accept-Encoding:
-      - gzip, deflate
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
       Hawkular-Tenant:
       - hawkular
       Content-Type:
       - application/json
-      User-Agent:
-      - Ruby
+      Host:
+      - localhost:8080
   response:
     status:
       code: 200
@@ -33,9 +35,9 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 13 Jul 2016 23:58:02 GMT
+      - Sat, 22 Apr 2017 17:52:23 GMT
       X-Total-Count:
-      - "-1"
+      - '0'
       Connection:
       - keep-alive
       Content-Type:
@@ -46,10 +48,10 @@ http_interactions:
       - <http://localhost:8080/hawkular/inventory/traversal/f;does%20not%20exist/type=rt>;
         rel="current"
     body:
-      encoding: ASCII-8BIT
+      encoding: UTF-8
       string: "[ ]"
     http_version: 
-  recorded_at: Wed, 13 Jul 2016 23:58:02 GMT
+  recorded_at: Sat, 22 Apr 2017 17:52:23 GMT
 - request:
     method: get
     uri: http://jdoe:password@localhost:8080/hawkular/inventory/traversal/f;does%20not%20exist/type=rt
@@ -60,13 +62,15 @@ http_interactions:
       Accept:
       - application/json
       Accept-Encoding:
-      - gzip, deflate
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
       Hawkular-Tenant:
       - hawkular
       Content-Type:
       - application/json
-      User-Agent:
-      - Ruby
+      Host:
+      - localhost:8080
   response:
     status:
       code: 200
@@ -83,9 +87,9 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 13 Jul 2016 23:58:02 GMT
+      - Sat, 22 Apr 2017 17:52:23 GMT
       X-Total-Count:
-      - "-1"
+      - '0'
       Connection:
       - keep-alive
       Content-Type:
@@ -96,8 +100,8 @@ http_interactions:
       - <http://localhost:8080/hawkular/inventory/traversal/f;does%20not%20exist/type=rt>;
         rel="current"
     body:
-      encoding: ASCII-8BIT
+      encoding: UTF-8
       string: "[ ]"
     http_version: 
-  recorded_at: Wed, 13 Jul 2016 23:58:02 GMT
-recorded_with: VCR 3.0.1
+  recorded_at: Sat, 22 Apr 2017 17:52:23 GMT
+recorded_with: VCR 3.0.3

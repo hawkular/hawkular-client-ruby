@@ -5,38 +5,48 @@ http_interactions:
     uri: http://jdoe:password@localhost:8080/hawkular/metrics/counters/<%= id %>/data
     body:
       encoding: UTF-8
-      string: '[{"value":4,"timestamp":1458682555177}]'
+      string: '[{"value":4,"timestamp":1492883543945}]'
     headers:
       Accept:
       - application/json
       Accept-Encoding:
-      - gzip, deflate
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - hawkular
       Content-Type:
       - application/json
       Content-Length:
       - '39'
-      User-Agent:
-      - Ruby
+      Host:
+      - localhost:8080
   response:
     status:
       code: 200
       message: OK
     headers:
+      Expires:
+      - '0'
       Connection:
       - keep-alive
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
       X-Powered-By:
       - Undertow/1
       Server:
       - WildFly/10
+      Pragma:
+      - no-cache
       Content-Length:
       - '0'
       Date:
-      - Tue, 22 Mar 2016 21:35:55 GMT
+      - Sat, 22 Apr 2017 17:52:24 GMT
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Tue, 22 Mar 2016 21:35:55 GMT
+  recorded_at: Sat, 22 Apr 2017 17:52:24 GMT
 - request:
     method: get
     uri: http://jdoe:password@localhost:8080/hawkular/metrics/counters/<%= id %>/data/
@@ -47,33 +57,43 @@ http_interactions:
       Accept:
       - application/json
       Accept-Encoding:
-      - gzip, deflate
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - hawkular
       Content-Type:
       - application/json
-      User-Agent:
-      - Ruby
+      Host:
+      - localhost:8080
   response:
     status:
       code: 200
       message: OK
     headers:
-      Connection:
-      - keep-alive
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
       X-Powered-By:
       - Undertow/1
       Server:
       - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Sat, 22 Apr 2017 17:52:54 GMT
+      Connection:
+      - keep-alive
       Content-Type:
       - application/json
       Content-Length:
       - '39'
-      Date:
-      - Tue, 22 Mar 2016 21:35:55 GMT
     body:
-      encoding: ASCII-8BIT
-      string: '[{"timestamp":1458682555177,"value":4}]'
+      encoding: UTF-8
+      string: '[{"timestamp":1492883543945,"value":4}]'
     http_version: 
-  recorded_at: Tue, 22 Mar 2016 21:35:55 GMT
+  recorded_at: Sat, 22 Apr 2017 17:52:54 GMT
 - request:
     method: get
     uri: http://jdoe:password@localhost:8080/hawkular/metrics/counters/<%= id %>
@@ -84,31 +104,41 @@ http_interactions:
       Accept:
       - application/json
       Accept-Encoding:
-      - gzip, deflate
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - hawkular
       Content-Type:
       - application/json
-      User-Agent:
-      - Ruby
+      Host:
+      - localhost:8080
   response:
     status:
       code: 200
       message: OK
     headers:
-      Connection:
-      - keep-alive
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
       X-Powered-By:
       - Undertow/1
       Server:
       - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Sat, 22 Apr 2017 17:52:54 GMT
+      Connection:
+      - keep-alive
       Content-Type:
       - application/json
       Content-Length:
-      - '130'
-      Date:
-      - Tue, 22 Mar 2016 21:35:55 GMT
+      - '160'
     body:
-      encoding: ASCII-8BIT
-      string: '{"id":"<%= id %>","dataRetention":7,"type":"counter","tenantId":"28026b36-8fe4-4332-84c8-524e173a68bf"}'
+      encoding: UTF-8
+      string: '{"id":"<%= id %>","dataRetention":7,"type":"counter","tenantId":"hawkular","minTimestamp":1492883543945,"maxTimestamp":1492883543945}'
     http_version: 
-  recorded_at: Tue, 22 Mar 2016 21:35:55 GMT
-recorded_with: VCR 3.0.1
+  recorded_at: Sat, 22 Apr 2017 17:52:54 GMT
+recorded_with: VCR 3.0.3

@@ -17,6 +17,8 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
+      Host:
+      - localhost:8080
   response:
     status:
       code: 200
@@ -33,22 +35,23 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Fri, 22 Jul 2016 17:59:37 GMT
+      - Sat, 22 Apr 2017 17:52:54 GMT
       Connection:
       - keep-alive
       Content-Type:
       - application/json
       Content-Length:
-      - '49'
+      - '108'
     body:
       encoding: UTF-8
       string: |-
         {
           "path" : "/t;hawkular",
+          "contentHash" : "da39a3ee5e6b4bd3255bfef95601890afd879",
           "id" : "hawkular"
         }
     http_version: 
-  recorded_at: Fri, 22 Jul 2016 17:59:37 GMT
+  recorded_at: Sat, 22 Apr 2017 17:52:54 GMT
 - request:
     method: get
     uri: http://jdoe:password@localhost:8080/hawkular/inventory/tenant
@@ -66,6 +69,8 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
+      Host:
+      - localhost:8080
   response:
     status:
       code: 200
@@ -82,22 +87,23 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Fri, 22 Jul 2016 17:59:37 GMT
+      - Sat, 22 Apr 2017 17:52:54 GMT
       Connection:
       - keep-alive
       Content-Type:
       - application/json
       Content-Length:
-      - '49'
+      - '108'
     body:
       encoding: UTF-8
       string: |-
         {
           "path" : "/t;hawkular",
+          "contentHash" : "da39a3ee5e6b4bd3255bfef95601890afd879",
           "id" : "hawkular"
         }
     http_version: 
-  recorded_at: Fri, 22 Jul 2016 17:59:37 GMT
+  recorded_at: Sat, 22 Apr 2017 17:52:54 GMT
 - request:
     method: get
     uri: http://jdoe:password@localhost:8080/hawkular/inventory/traversal/type=f
@@ -115,6 +121,8 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
+      Host:
+      - localhost:8080
   response:
     status:
       code: 200
@@ -131,7 +139,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Fri, 22 Jul 2016 17:59:37 GMT
+      - Sat, 22 Apr 2017 17:52:54 GMT
       X-Total-Count:
       - '1'
       Connection:
@@ -139,20 +147,19 @@ http_interactions:
       Content-Type:
       - application/json
       Content-Length:
-      - '271'
+      - '300'
       Link:
       - <http://localhost:8080/hawkular/inventory/traversal/type=f>; rel="current"
     body:
       encoding: UTF-8
       string: |-
         [ {
-          "path" : "/t;hawkular/f;8eba5e52-8082-4326-9bbe-eaf4c4eba263",
-          "properties" : {
-            "__identityHash" : "f05eb6ac69ba64e95f47d12445a3cd34132655e"
-          },
-          "identityHash" : "f05eb6ac69ba64e95f47d12445a3cd34132655e",
-          "id" : "8eba5e52-8082-4326-9bbe-eaf4c4eba263"
+          "path" : "/t;hawkular/f;45c79380-1a30-444a-b535-0773b6c3641a",
+          "identityHash" : "2ea868c622a2bfaef120ed54833cc311ab409743",
+          "contentHash" : "da39a3ee5e6b4bd3255bfef95601890afd879",
+          "syncHash" : "7974aa97bfd5ae2e6369cfbcde12fa606eae738",
+          "id" : "45c79380-1a30-444a-b535-0773b6c3641a"
         } ]
     http_version: 
-  recorded_at: Fri, 22 Jul 2016 17:59:37 GMT
+  recorded_at: Sat, 22 Apr 2017 17:52:54 GMT
 recorded_with: VCR 3.0.3

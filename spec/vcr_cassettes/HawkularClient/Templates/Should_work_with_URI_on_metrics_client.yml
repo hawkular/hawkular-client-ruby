@@ -10,13 +10,15 @@ http_interactions:
       Accept:
       - application/json
       Accept-Encoding:
-      - gzip, deflate
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
       Hawkular-Tenant:
       - hawkular
       Content-Type:
       - application/json
-      User-Agent:
-      - Ruby
+      Host:
+      - localhost:8080
   response:
     status:
       code: 200
@@ -31,12 +33,12 @@ http_interactions:
       Content-Type:
       - application/json
       Content-Length:
-      - '133'
+      - '150'
       Date:
-      - Wed, 13 Jul 2016 23:58:37 GMT
+      - Sat, 22 Apr 2017 17:52:23 GMT
     body:
       encoding: UTF-8
-      string: '{"MetricsService":"STARTED","Implementation-Version":"0.17.0.Final","Built-From-Git-SHA1":"c439d3797397425d340eac7c549e330d51fc2cac"}'
+      string: '{"MetricsService":"STARTED","Implementation-Version":"0.26.0.Final","Built-From-Git-SHA1":"fe3ef3ccc36a0c85bcdbf3e96aae8d36a636f7f2","Cassandra":"up"}'
     http_version: 
-  recorded_at: Wed, 13 Jul 2016 23:58:37 GMT
-recorded_with: VCR 3.0.1
+  recorded_at: Sat, 22 Apr 2017 17:52:23 GMT
+recorded_with: VCR 3.0.3
