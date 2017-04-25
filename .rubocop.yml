@@ -1,6 +1,10 @@
 # possible values:
 # https://github.com/bbatsov/rubocop/blob/master/config/
 
+AllCops:
+  Exclude:
+    - Gemfile.dev.rb
+
 #
 # Overrides
 #
@@ -30,3 +34,4 @@ Style/ClassAndModuleChildren:
   Enabled: false
 Style/BracesAroundHashParameters:
   EnforcedStyle: context_dependent
+
