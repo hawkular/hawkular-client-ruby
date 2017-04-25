@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  File: README
+  
+    &mdash; Documentation by YARD 0.9.9
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  pathId = "README";
+  relpath = '';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="file_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="_index.html">Index</a> &raquo; 
+    <span class="title">File: README</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><div id='filecontents'>
+<p><a href="https://travis-ci.org/hawkular/hawkular-client-ruby"><img
+src="https://travis-ci.org/hawkular/hawkular-client-ruby.svg?branch=master"
+alt="Build Status" /></a> <a
+href="https://coveralls.io/github/hawkular/hawkular-client-ruby?branch=master"><img
+src="https://coveralls.io/repos/github/hawkular/hawkular-client-ruby/badge.svg?branch=master"
+alt="Coverage Status" /></a> <a
+href="https://codeclimate.com/github/hawkular/hawkular-client-ruby"><img
+src="https://codeclimate.com/github/hawkular/hawkular-client-ruby/badges/gpa.svg"
+/></a></p>
+
+<h1 id="label-hawkular-client-ruby">hawkular-client-ruby</h1>
+
+<p>A Ruby Hawkular Client.</p>
+
+<p><a
+href="http://www.hawkular.org/hawkular-client-ruby/docs/">Documentation</a></p>
+
+<h2 id="label-Changelog">Changelog</h2>
+
+<p>See <a
+href="http://www.hawkular.org/hawkular-client-ruby/docs/latest/file.CHANGES.html">CHANGELOG</a>
+for a list of changes and <a
+href="http:/www.hawkular.org/hawkular-client-ruby/docs/latest/file.api_breaking_changes.html">API-Breaking-Changes</a>
+for a list of api-breaking changes.</p>
+
+<h2 id="label-Overview">Overview</h2>
+
+<p>Ruby Hawkular Client provides a Ruby API to communicate with the following
+Hawkular subprojects:</p>
+<ul><li>
+<p><a href="https://github.com/hawkular/hawkular-alerts">Hawkular Alerts</a></p>
+</li><li>
+<p><a href="https://github.com/hawkular/hawkular-inventory">Hawkular
+Inventory</a></p>
+</li><li>
+<p><a href="https://github.com/hawkular/hawkular-metrics">Hawkular Metrics</a></p>
+</li><li>
+<p>Invoking operations on <a
+href="https://github.com/hawkular/hawkular-agent">Hawkular Wildfly
+Agent</a>.</p>
+</li></ul>
+
+<h2 id="label-Usage">Usage</h2>
+
+<p>You must initialize the Hawkular Client with the server url, your username,
+password and tenant.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>hawkular/hawkular_client</span><span class='tstring_end'>&#39;</span></span>
+<span class='id identifier rubyid_client'>client</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Hawkular.html" title="Hawkular (module)">Hawkular</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Hawkular/Client.html" title="Hawkular::Client (class)">Client</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Hawkular/Client.html#initialize-instance_method" title="Hawkular::Client#initialize (method)">new</a></span></span><span class='lparen'>(</span>
+  <span class='label'>entrypoint:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>http://localhost:8080</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
+  <span class='label'>credentials:</span> <span class='lbrace'>{</span> <span class='label'>username:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>jdoe</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>password:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>password</span><span class='tstring_end'>&#39;</span></span> <span class='rbrace'>}</span><span class='comma'>,</span>
+  <span class='label'>options:</span> <span class='lbrace'>{</span> <span class='label'>tenant:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>hawkular</span><span class='tstring_end'>&#39;</span></span> <span class='rbrace'>}</span>
+<span class='rparen'>)</span>
+</code></pre>
+
+<p>Each subproject API is packed in its own class, which you can access
+through the client object.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_alerts'>alerts</span> <span class='comment'># Alerts API
+</span><span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_inventory'>inventory</span> <span class='comment'># Inventory API
+</span><span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_metrics'>metrics</span> <span class='comment'># Metrics API
+</span><span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_operations'>operations</span> <span class='comment'># Operations API
+</span></code></pre>
+
+<p>Metrics API is also subdivided to: Mixed, Availability, Counters, Gauges
+and Tenants.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_metrics'>metrics</span> <span class='comment'># Mixed API
+</span><span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_metrics'>metrics</span><span class='period'>.</span><span class='id identifier rubyid_avail'>avail</span> <span class='comment'># Availability
+</span><span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_metrics'>metrics</span><span class='period'>.</span><span class='id identifier rubyid_counters'>counters</span> <span class='comment'># Counters
+</span><span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_metrics'>metrics</span><span class='period'>.</span><span class='id identifier rubyid_gauges'>gauges</span> <span class='comment'># Gauges
+</span><span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_metrics'>metrics</span><span class='period'>.</span><span class='id identifier rubyid_tenants'>tenants</span> <span class='comment'># Tenants
+</span></code></pre>
+
+<p>The Mixed API is capable of handling multiple types of metrics, like the <a
+href="http://www.hawkular.org/hawkular-client-ruby/docs/latest/Hawkular/Metrics/Client.html#push_data-instance_method">push_data</a>
+method, which pushes data for multiple metrics of all supported data.</p>
+
+<p>You can also access each subproject&#39;s API individually, if you would
+like to use only the metrics API you could do</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>hawkular/metrics/metrics_client</span><span class='tstring_end'>&#39;</span></span>
+<span class='id identifier rubyid_metrics_client'>metrics_client</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Hawkular.html" title="Hawkular (module)">Hawkular</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Hawkular/Metrics.html" title="Hawkular::Metrics (module)">Metrics</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Hawkular/Metrics/Client.html" title="Hawkular::Metrics::Client (class)">Client</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Hawkular/Metrics/Client.html#initialize-instance_method" title="Hawkular::Metrics::Client#initialize (method)">new</a></span></span><span class='lparen'>(</span>
+  <span class='label'>entrypoint:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>http://localhost:8080/hawkular/metrics</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
+  <span class='label'>credentials:</span> <span class='lbrace'>{</span> <span class='label'>username:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>jdoe</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>password:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>password</span><span class='tstring_end'>&#39;</span></span> <span class='rbrace'>}</span><span class='comma'>,</span>
+  <span class='label'>options:</span> <span class='lbrace'>{</span> <span class='label'>tenant:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>hawkular</span><span class='tstring_end'>&#39;</span></span> <span class='rbrace'>}</span>
+<span class='rparen'>)</span>
+</code></pre>
+
+<h3 id="label-HTTP+and+HTTPS+options">HTTP and HTTPS options</h3>
+
+<p>Will all client classes, the <code>:options</code> hash can contain extra
+parameters passed through to <code>RestClient</code> gem.  It can include a
+<code>:headers</code> sub-hash to add custom headers:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>hawkular/hawkular_client</span><span class='tstring_end'>&#39;</span></span>
+<span class='id identifier rubyid_client'>client</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Hawkular.html" title="Hawkular (module)">Hawkular</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Hawkular/Client.html" title="Hawkular::Client (class)">Client</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Hawkular/Client.html#initialize-instance_method" title="Hawkular::Client#initialize (method)">new</a></span></span><span class='lparen'>(</span>
+  <span class='label'>entrypoint:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>http://localhost:8080</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
+  <span class='label'>credentials:</span> <span class='lbrace'>{</span> <span class='label'>username:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>jdoe</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>password:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>password</span><span class='tstring_end'>&#39;</span></span> <span class='rbrace'>}</span><span class='comma'>,</span>
+  <span class='label'>options:</span> <span class='lbrace'>{</span> <span class='label'>tenant:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>hawkular</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>proxy:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>proxy.example.com</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>ssl_ca_file:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>ca.pem</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span>
+             <span class='label'>headers:</span> <span class='lbrace'>{</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Max-Forwards</span><span class='label_end'>&#39;:</span> <span class='int'>5</span><span class='rbrace'>}</span> <span class='rbrace'>}</span>
+<span class='rparen'>)</span>
+</code></pre>
+
+<h3 id="label-Examples">Examples</h3>
+
+<p>Suppose you will monitor the availability of two networks to later
+determine which one is the best. Every certain time, you would get the
+availability of each network and push them to Hawkular Metrics.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='comment'># ... Initialize client ...
+</span><span class='id identifier rubyid_is_network01_available'>is_network01_available</span> <span class='op'>=</span> <span class='kw'>true</span>
+<span class='id identifier rubyid_is_network02_available'>is_network02_available</span> <span class='op'>=</span> <span class='kw'>false</span>
+<span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_metrics'>metrics</span><span class='period'>.</span><span class='id identifier rubyid_push_data'>push_data</span><span class='lparen'>(</span><span class='label'>availabilities:</span> <span class='lbracket'>[</span>
+  <span class='lbrace'>{</span> <span class='label'>id:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>network-01</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>data:</span> <span class='lbracket'>[</span><span class='lbrace'>{</span> <span class='label'>value:</span> <span class='id identifier rubyid_is_network01_available'>is_network01_available</span> <span class='op'>?</span>  <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>up</span><span class='tstring_end'>&#39;</span></span> <span class='op'>:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>down</span><span class='tstring_end'>&#39;</span></span> <span class='rbrace'>}</span><span class='rbracket'>]</span> <span class='rbrace'>}</span><span class='comma'>,</span>
+  <span class='lbrace'>{</span> <span class='label'>id:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>network-02</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>data:</span> <span class='lbracket'>[</span><span class='lbrace'>{</span> <span class='label'>value:</span> <span class='id identifier rubyid_is_network02_available'>is_network02_available</span> <span class='op'>?</span>  <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>up</span><span class='tstring_end'>&#39;</span></span> <span class='op'>:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>down</span><span class='tstring_end'>&#39;</span></span> <span class='rbrace'>}</span><span class='rbracket'>]</span> <span class='rbrace'>}</span>
+<span class='rbracket'>]</span><span class='rparen'>)</span>
+</code></pre>
+
+<p>At some other point you might want to access that data to analyze it</p>
+
+<pre class="code ruby"><code class="ruby"><span class='comment'># ... Initialize client ...
+</span><span class='comment'># Fetches the 5 last availabilities reported in the last 8 hours.
+</span><span class='id identifier rubyid_network01_avail'>network01_avail</span> <span class='op'>=</span> <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_metrics'>metrics</span><span class='period'>.</span><span class='id identifier rubyid_avail'>avail</span><span class='period'>.</span><span class='id identifier rubyid_get_data'>get_data</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>network-01</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>limit:</span> <span class='int'>5</span><span class='comma'>,</span> <span class='label'>order:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>DESC</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+<span class='id identifier rubyid_network02_avail'>network02_avail</span> <span class='op'>=</span> <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_metrics'>metrics</span><span class='period'>.</span><span class='id identifier rubyid_avail'>avail</span><span class='period'>.</span><span class='id identifier rubyid_get_data'>get_data</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>network-02</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>limit:</span> <span class='int'>5</span><span class='comma'>,</span> <span class='label'>order:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>DESC</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+<span class='comment'># ... Do something with the availabilities ...
+</span></code></pre>
+
+<p>Each network01_avail will be an array like:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='lbracket'>[</span>
+  <span class='lbrace'>{</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>timestamp</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='int'>1467312571473</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>value</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>up</span><span class='tstring_end'>&quot;</span></span> <span class='rbrace'>}</span><span class='comma'>,</span>
+  <span class='lbrace'>{</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>timestamp</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='int'>1467312492650</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>value</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>up</span><span class='tstring_end'>&quot;</span></span> <span class='rbrace'>}</span><span class='comma'>,</span>
+  <span class='comment'># ...
+</span><span class='rbracket'>]</span>
+</code></pre>
+
+<p>You can get more info on the other parameters by checking the metrics API
+<a
+href="http://www.hawkular.org/hawkular-client-ruby/docs/latest/Hawkular/Metrics/Client/Metrics#get_data-instance_method">get_data</a></p>
+
+<h3 id="label-More+info">More info</h3>
+
+<p>Check each resource API for a detailed description of what methods are
+available.</p>
+<ul><li>
+<p><a
+href="http://www.hawkular.org/hawkular-client-ruby/docs/latest/Hawkular/Alerts/AlertsClient.html">Alerts</a></p>
+</li><li>
+<p><a
+href="http://www.hawkular.org/hawkular-client-ruby/docs/latest/Hawkular/Inventory/InventoryClient.html">Inventory</a></p>
+</li><li>
+<p>Metrics:</p>
+<ul><li>
+<p><a
+href="http://www.hawkular.org/hawkular-client-ruby/docs/latest/Hawkular/Metrics/Client.html">Mixed</a></p>
+</li><li>
+<p><a
+href="http://www.hawkular.org/hawkular-client-ruby/docs/latest/Hawkular/Metrics/Client/Availability.html">Availability</a></p>
+</li><li>
+<p><a
+href="http://www.hawkular.org/hawkular-client-ruby/docs/latest/Hawkular/Metrics/Client/Counters.html">Counters</a></p>
+</li><li>
+<p><a
+href="http://www.hawkular.org/hawkular-client-ruby/docs/latest/Hawkular/Metrics/Client/Gauges.html">Gauges</a></p>
+</li><li>
+<p><a
+href="http://www.hawkular.org/hawkular-client-ruby/docs/latest/Hawkular/Metrics/Client/Tenants.html">Tenants</a></p>
+</li></ul>
+</li><li>
+<p><a
+href="http://www.hawkular.org/hawkular-client-ruby/docs/latest/Hawkular/Operations/OperationsClient.html">Operations</a></p>
+</li></ul>
+
+<h2 id="label-Contributing+to+hawkular-client-ruby">Contributing to hawkular-client-ruby</h2>
+<ul><li>
+<p>Check out the latest master to make sure the feature hasn&#39;t been
+implemented or the bug hasn&#39;t been fixed yet</p>
+</li><li>
+<p>Check out the issue tracker to make sure someone already hasn&#39;t
+requested it and/or contributed it</p>
+</li><li>
+<p>Fork the project</p>
+</li><li>
+<p>Start a feature/bugfix branch</p>
+</li><li>
+<p>Commit and push until you are happy with your contribution</p>
+</li><li>
+<p>Make sure to add tests for it. This is important so it won&#39;t break in a
+future version unintentionally.</p>
+</li><li>
+<p>Run your code through RuboCop (which is default when running
+<code>rake</code>) and fix complaints.</p>
+</li><li>
+<p>When you open a pull request, watch out for failures on Travis.</p>
+</li><li>
+<p>Please try not to mess with the Rakefile, version, or history. If you want
+to have your own version, or is otherwise necessary, that is fine, but
+please isolate to its own commit so we can cherry-pick around it.</p>
+</li></ul>
+
+<h2 id="label-Running+the+tests">Running the tests</h2>
+
+<p>Integration tests are recorded and played against cassettes recorded with
+VCR (<a
+href="http://www.relishapp.com/vcr/vcr/docs">www.relishapp.com/vcr/vcr/docs</a>)</p>
+<ul><li>
+<p>Edit the endpoint properties in the file <code>spec/endpoint.yml</code>
+(user, password and host name) if needed</p>
+</li><li>
+<p>From command line run</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_rake'>rake</span> <span class='id identifier rubyid_spec'>spec</span>
+</code></pre>
+</li><li>
+<p>To run the tests against a live server, set <code>VCR_OFF</code> to
+<code>1</code> as in</p>
+
+<pre class="code ruby"><code class="ruby">VCR_OFF=1 rake spec</code></pre>
+</li><li>
+<p>To update the VCR tapes that supports it (metrics and inventory), set
+<code>VCR_UPDATE</code> to <code>1</code> as in</p>
+
+<pre class="code ruby"><code class="ruby">VCR_UPDATE=1 rake spec</code></pre>
+</li><li>
+<p>Currently, we support two posible metrics contexts: <code>hawkular-metrics
+0.8.0.Final</code> and <code>hawkular-services</code> that contain metrics.
+If you want to run/re-record the tests only for services, you can skip the
+other context by <code>SKIP_V8_METRICS=1</code>, or similarly
+<code>SKIP_SERVICES_METRICS=1</code>. So for instance updating the VCR
+templates only for hawkular-services would require command:</p>
+
+<pre class="code ruby"><code class="ruby">VCR_UPDATE=1 SKIP_V8_METRICS=1 rspec ./spec/integration/metric_spec.rb</code></pre>
+</li></ul>
+
+<p>For more details consult the <a
+href="http:/www.hawkular.org/hawkular-client-ruby/docs/latest/file.README.html">spec
+readme</a>.</p>
+
+<h2 id="label-Logging">Logging</h2>
+
+<p>If you want to see API requests and responses, use the following
+environment variables:</p>
+
+<pre class="code ruby"><code class="ruby">RESTCLIENT_LOG=stdout HAWKULARCLIENT_LOG_RESPONSE=1 rake spec</code></pre>
+
+<h2 id="label-Generate+documentation">Generate documentation</h2>
+
+<p>Client documentation can be generated using <a
+href="http://yardoc.org">yardoc.org</a></p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_yardoc'>yardoc</span>
+</code></pre>
+</div></div>
+
+      <div id="footer">
+  Generated on Tue Apr 25 20:13:39 2017 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.9 (ruby-2.3.0).
+</div>
+
+    </div>
+  </body>
+</html>
