@@ -188,11 +188,6 @@ module Hawkular::Operations
       invoke_operation_helper(operation_payload, 'UndeployApplication', &callback)
     end
 
-    # @deprecated Please use undeploy() instead
-    def remove_deployment(hash, &callback)
-      undeploy(hash, &callback)
-    end
-
     # Enable a WildFly deployment
     #
     # @param [Hash] hash Arguments for enable deployment
@@ -398,7 +393,4 @@ module Hawkular::Operations
       ret[0, 1].downcase + ret[1..-1]
     end
   end
-
-  OperationsClient = Client
-  deprecate_constant :OperationsClient if self.respond_to? :deprecate_constant
 end

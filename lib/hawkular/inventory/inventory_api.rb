@@ -469,7 +469,4 @@ module Hawkular::Inventory
       JSON.parse(gz.read)
     end
   end
-
-  InventoryClient = Client
-  deprecate_constant :InventoryClient if self.respond_to? :deprecate_constant
 end

@@ -614,7 +614,4 @@ module Hawkular::Alerts
       super(event_hash)
     end
   end
-
-  AlertsClient = Client
-  deprecate_constant :AlertsClient if self.respond_to? :deprecate_constant
 end

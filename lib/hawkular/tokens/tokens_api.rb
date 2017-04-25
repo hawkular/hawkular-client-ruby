@@ -31,7 +31,4 @@ module Hawkular::Token
       http_post('/secret-store/v1/tokens/create', token_attributes, auth_header)
     end
   end
-
-  TokenClient = Client
-  deprecate_constant :TokenClient if self.respond_to? :deprecate_constant
 end

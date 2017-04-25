@@ -10,10 +10,7 @@ describe 'Deprecations' do
   end
 
   describe 'pre-3.0' do
-    changed_constant from: HawkularUtilsMixin, to: Hawkular::ClientUtils
-    changed_constant from: Hawkular::Operations::OperationsClient, to: Hawkular::Operations::Client
-    changed_constant from: Hawkular::Alerts::AlertsClient, to: Hawkular::Alerts::Client
-    changed_constant from: Hawkular::Token::TokenClient, to: Hawkular::Token::Client
-    changed_constant from: Hawkular::Inventory::InventoryClient, to: Hawkular::Inventory::Client
+    # example:
+    # changed_constant from: HawkularUtilsMixin, to: Hawkular::ClientUtils
   end
 end
