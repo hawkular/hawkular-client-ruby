@@ -156,7 +156,7 @@ module Hawkular::Client::RSpec
       before(:all) do
         ::RSpec::Mocks.with_temporary_scope do
           mock_metrics_version
-          @client = Hawkular::Metrics::Client.new(HOST, @creds)
+          @client = Hawkular::Metrics::Client.new(HOST, @creds, { tenant: 'hawkular' })
         end
       end
 
