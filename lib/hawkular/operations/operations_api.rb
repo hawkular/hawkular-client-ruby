@@ -44,7 +44,7 @@ module Hawkular::Operations
       end
     end
 
-    # Initialize new OperationsClient
+    # Initialize new Client
     #
     # @param [Hash] args Arguments for client.
     # There are two ways of passing in the target host/port: via :host and via :entrypoint. If
@@ -59,7 +59,7 @@ module Hawkular::Operations
     # @option args [Fixnum]  :wait_time Time in seconds describing how long the constructor should block - handshake
     #
     # @example
-    #   Hawkular::Operations::OperationsClient.new(credentials: {username: 'jdoe', password: 'password'})
+    #   Hawkular::Operations::Client.new(credentials: {username: 'jdoe', password: 'password'})
     def initialize(args)
       args = {
         credentials: {},
@@ -373,7 +373,7 @@ module Hawkular::Operations
             client.remove_listener :message
           end
         when 'GenericErrorResponse'
-          OperationsClient.handle_error parsed, &callback
+          Client.handle_error parsed, &callback
           client.remove_listener :message
         end
       end
