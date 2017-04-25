@@ -19,8 +19,6 @@ http_interactions:
       - application/json
       Content-Length:
       - '115'
-      Host:
-      - localhost:8080
   response:
     status:
       code: 200
@@ -41,12 +39,12 @@ http_interactions:
       Content-Length:
       - '0'
       Date:
-      - Thu, 13 Oct 2016 03:30:33 GMT
+      - Wed, 05 Apr 2017 08:18:50 GMT
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Thu, 13 Oct 2016 03:30:33 GMT
+  recorded_at: Wed, 05 Apr 2017 08:18:50 GMT
 - request:
     method: get
     uri: http://jdoe:password@localhost:8080/hawkular/metrics/gauges/<%= id %>/periods?op=lte&start=<%= before4h %>&threshold=4
@@ -64,8 +62,6 @@ http_interactions:
       - <%= vcr_test_tenant %>
       Content-Type:
       - application/json
-      Host:
-      - localhost:8080
   response:
     status:
       code: 200
@@ -82,7 +78,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Thu, 13 Oct 2016 03:30:33 GMT
+      - Wed, 05 Apr 2017 08:18:50 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -93,5 +89,5 @@ http_interactions:
       encoding: UTF-8
       string: "[[<%= minus30 %>,<%= start %>]]"
     http_version: 
-  recorded_at: Thu, 13 Oct 2016 03:30:33 GMT
+  recorded_at: Wed, 05 Apr 2017 08:18:50 GMT
 recorded_with: VCR 3.0.3

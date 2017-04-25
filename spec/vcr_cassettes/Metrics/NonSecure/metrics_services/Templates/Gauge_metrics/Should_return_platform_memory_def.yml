@@ -17,8 +17,6 @@ http_interactions:
       - <%= tenant %>
       Content-Type:
       - application/json
-      Host:
-      - localhost:8080
   response:
     status:
       code: 200
@@ -33,17 +31,17 @@ http_interactions:
       Content-Type:
       - application/json
       Content-Length:
-      - '133'
+      - '153'
       Date:
-      - Thu, 13 Oct 2016 03:30:35 GMT
+      - Wed, 05 Apr 2017 08:18:50 GMT
     body:
       encoding: UTF-8
-      string: '{"MetricsService":"STARTED","Implementation-Version":"0.20.1.Final","Built-From-Git-SHA1":"f23946235446d3425db31d262b47b4f950ddabb3"}'
+      string: '{"MetricsService":"STARTED","Implementation-Version":"0.26.0-SNAPSHOT","Built-From-Git-SHA1":"65cace494ecb1fe770989a9e57d140f1918ef0e9","Cassandra":"up"}'
     http_version: 
-  recorded_at: Thu, 13 Oct 2016 03:30:35 GMT
+  recorded_at: Wed, 05 Apr 2017 08:18:50 GMT
 - request:
     method: get
-    uri: http://jdoe:password@localhost:8080/<%= tenant %>/inventory/status
+    uri: http://jdoe:password@localhost:8080/<%= tenant %>/metrics/status
     body:
       encoding: US-ASCII
       string: ''
@@ -58,8 +56,6 @@ http_interactions:
       - <%= tenant %>
       Content-Type:
       - application/json
-      Host:
-      - localhost:8080
   response:
     status:
       code: 200
@@ -74,23 +70,17 @@ http_interactions:
       Content-Type:
       - application/json
       Content-Length:
-      - '234'
+      - '153'
       Date:
-      - Thu, 13 Oct 2016 03:30:35 GMT
+      - Wed, 05 Apr 2017 08:18:50 GMT
     body:
       encoding: UTF-8
-      string: |-
-        {
-          "Implementation-Version" : "0.20.0.Final",
-          "Built-From-Git-SHA1" : "a3b55c0c65a141fdbb007524d063b5d57bf2d96c",
-          "Inventory-Implementation" : "org.<%= tenant %>.inventory.impl.tinkerpop.TinkerpopInventory",
-          "Initialized" : "true"
-        }
+      string: '{"MetricsService":"STARTED","Implementation-Version":"0.26.0-SNAPSHOT","Built-From-Git-SHA1":"65cace494ecb1fe770989a9e57d140f1918ef0e9","Cassandra":"up"}'
     http_version: 
-  recorded_at: Thu, 13 Oct 2016 03:30:35 GMT
+  recorded_at: Wed, 05 Apr 2017 08:18:50 GMT
 - request:
     method: get
-    uri: http://jdoe:password@localhost:8080/<%= tenant %>/inventory/traversal/type=f
+    uri: http://jdoe:password@localhost:8080/<%= tenant %>/metrics/strings/tags/module:inventory,feed:*
     body:
       encoding: US-ASCII
       string: ''
@@ -105,8 +95,6 @@ http_interactions:
       - <%= tenant %>
       Content-Type:
       - application/json
-      Host:
-      - localhost:8080
   response:
     status:
       code: 200
@@ -123,32 +111,21 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Thu, 13 Oct 2016 03:30:35 GMT
-      X-Total-Count:
-      - '1'
+      - Wed, 05 Apr 2017 08:18:50 GMT
       Connection:
       - keep-alive
       Content-Type:
       - application/json
       Content-Length:
-      - '300'
-      Link:
-      - <http://localhost:8080/<%= tenant %>/inventory/traversal/type=f>; rel="current"
+      - '72'
     body:
       encoding: UTF-8
-      string: |-
-        [ {
-          "path" : "/t;<%= tenant %>/f;d19d84dc-f403-4f5b-a987-fbd48863ea4f",
-          "identityHash" : "12efca83e331bdae189fa5db13d2d5a6b70f5a6",
-          "contentHash" : "da39a3ee5e6b4bd3255bfef95601890afd879",
-          "syncHash" : "af2860c4e1bb64fc3177139eeb3ab967d654f324",
-          "id" : "d19d84dc-f403-4f5b-a987-fbd48863ea4f"
-        } ]
+      string: '{"feed":["03eca767-e48f-4f0b-9a8a-d8f46112c9a5"],"module":["inventory"]}'
     http_version: 
-  recorded_at: Thu, 13 Oct 2016 03:30:35 GMT
+  recorded_at: Wed, 05 Apr 2017 08:18:50 GMT
 - request:
     method: get
-    uri: http://jdoe:password@localhost:8080/<%= tenant %>/metrics/gauges/MI~R~%5Bd19d84dc-f403-4f5b-a987-fbd48863ea4f%2Fplatform~%2FOPERATING_SYSTEM=d19d84dc-f403-4f5b-a987-fbd48863ea4f_OperatingSystem%2FMEMORY=Memory%5D~MT~Platform_Memory_Total%20Memory
+    uri: http://jdoe:password@localhost:8080/<%= tenant %>/metrics/gauges/MI~R~%5B03eca767-e48f-4f0b-9a8a-d8f46112c9a5%2Fplatform~%2FOPERATING_SYSTEM=03eca767-e48f-4f0b-9a8a-d8f46112c9a5_OperatingSystem%2FMEMORY=Memory%5D~MT~Platform_Memory_Total%20Memory
     body:
       encoding: US-ASCII
       string: ''
@@ -163,8 +140,6 @@ http_interactions:
       - <%= tenant %>
       Content-Type:
       - application/json
-      Host:
-      - localhost:8080
   response:
     status:
       code: 200
@@ -181,7 +156,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Thu, 13 Oct 2016 03:30:35 GMT
+      - Wed, 05 Apr 2017 08:18:50 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -190,8 +165,8 @@ http_interactions:
       - '292'
     body:
       encoding: UTF-8
-      string: '{"id":"MI~R~[d19d84dc-f403-4f5b-a987-fbd48863ea4f/platform~/OPERATING_SYSTEM=d19d84dc-f403-4f5b-a987-fbd48863ea4f_OperatingSystem/MEMORY=Memory]~MT~Platform_Memory_Total
-        Memory","dataRetention":14,"type":"gauge","tenantId":"<%= tenant %>","minTimestamp":1476294284064,"maxTimestamp":1476329399006}'
+      string: '{"id":"MI~R~[03eca767-e48f-4f0b-9a8a-d8f46112c9a5/platform~/OPERATING_SYSTEM=03eca767-e48f-4f0b-9a8a-d8f46112c9a5_OperatingSystem/MEMORY=Memory]~MT~Platform_Memory_Total
+        Memory","dataRetention":14,"type":"gauge","tenantId":"<%= tenant %>","minTimestamp":1491379481011,"maxTimestamp":1491380326008}'
     http_version: 
-  recorded_at: Thu, 13 Oct 2016 03:30:35 GMT
+  recorded_at: Wed, 05 Apr 2017 08:18:50 GMT
 recorded_with: VCR 3.0.3

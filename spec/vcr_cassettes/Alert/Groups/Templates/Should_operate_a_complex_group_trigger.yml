@@ -20,8 +20,6 @@ http_interactions:
       - application/json
       Content-Length:
       - '148'
-      Host:
-      - localhost:8080
   response:
     status:
       code: 200
@@ -38,7 +36,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 27 Sep 2016 18:17:15 GMT
+      - Tue, 25 Apr 2017 15:11:08 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -50,13 +48,13 @@ http_interactions:
       string: '{"tenantId":"hawkular","id":"a-group-trigger","name":"A Group Trigger","description":"A
         Group Trigger generated from test","type":"GROUP","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"HIGH","autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","enabled":false,"firingMatch":"ALL","source":"_none_"}'
     http_version: 
-  recorded_at: Tue, 27 Sep 2016 18:17:15 GMT
+  recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
 - request:
     method: put
     uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/groups/a-group-trigger/conditions/FIRING
     body:
       encoding: UTF-8
-      string: '{"conditions":[{"conditionId":null,"type":"THRESHOLD","operator":"LT","threshold":5,"triggerMode":"FIRING","dataId":"my-metric-id","data2Id":null,"data2Multiplier":null,"triggerId":null}],"dataIdMemberMap":{}}'
+      string: '{"conditions":[{"conditionId":null,"type":"THRESHOLD","operator":"LT","threshold":5,"triggerMode":"FIRING","dataId":"my-metric-id","data2Id":null,"data2Multiplier":null,"triggerId":null,"interval":null}],"dataIdMemberMap":{}}'
     headers:
       Accept:
       - application/json
@@ -69,9 +67,7 @@ http_interactions:
       Content-Type:
       - application/json
       Content-Length:
-      - '209'
-      Host:
-      - localhost:8080
+      - '225'
   response:
     status:
       code: 200
@@ -88,7 +84,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 27 Sep 2016 18:17:15 GMT
+      - Tue, 25 Apr 2017 15:11:08 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -99,7 +95,7 @@ http_interactions:
       encoding: UTF-8
       string: '[{"tenantId":"hawkular","triggerId":"a-group-trigger","triggerMode":"FIRING","type":"THRESHOLD","conditionSetSize":1,"conditionSetIndex":1,"conditionId":"hawkular-a-group-trigger-FIRING-1-1","dataId":"my-metric-id","operator":"LT","threshold":5.0}]'
     http_version: 
-  recorded_at: Tue, 27 Sep 2016 18:17:15 GMT
+  recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
 - request:
     method: post
     uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/groups/members
@@ -120,8 +116,6 @@ http_interactions:
       - application/json
       Content-Length:
       - '192'
-      Host:
-      - localhost:8080
   response:
     status:
       code: 200
@@ -138,7 +132,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 27 Sep 2016 18:17:15 GMT
+      - Tue, 25 Apr 2017 15:11:08 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -150,7 +144,7 @@ http_interactions:
       string: '{"tenantId":"hawkular","id":"member1","name":"Member One","description":"A
         Group Trigger generated from test","type":"MEMBER","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"HIGH","autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","dataIdMap":{"my-metric-id":"my-metric-id-member1"},"memberOf":"a-group-trigger","enabled":false,"firingMatch":"ALL","source":"_none_"}'
     http_version: 
-  recorded_at: Tue, 27 Sep 2016 18:17:15 GMT
+  recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
 - request:
     method: get
     uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/member1
@@ -168,8 +162,6 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
-      Host:
-      - localhost:8080
   response:
     status:
       code: 200
@@ -186,7 +178,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 27 Sep 2016 18:17:15 GMT
+      - Tue, 25 Apr 2017 15:11:08 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -198,7 +190,7 @@ http_interactions:
       string: '{"tenantId":"hawkular","id":"member1","name":"Member One","description":"A
         Group Trigger generated from test","type":"MEMBER","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"HIGH","autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","dataIdMap":{"my-metric-id":"my-metric-id-member1"},"memberOf":"a-group-trigger","enabled":false,"firingMatch":"ALL","source":"_none_"}'
     http_version: 
-  recorded_at: Tue, 27 Sep 2016 18:17:15 GMT
+  recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
 - request:
     method: get
     uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/member1/conditions
@@ -216,8 +208,6 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
-      Host:
-      - localhost:8080
   response:
     status:
       code: 200
@@ -234,7 +224,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 27 Sep 2016 18:17:15 GMT
+      - Tue, 25 Apr 2017 15:11:08 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -245,7 +235,7 @@ http_interactions:
       encoding: UTF-8
       string: '[{"tenantId":"hawkular","triggerId":"member1","triggerMode":"FIRING","type":"THRESHOLD","conditionSetSize":1,"conditionSetIndex":1,"conditionId":"hawkular-member1-FIRING-1-1","dataId":"my-metric-id-member1","operator":"LT","threshold":5.0}]'
     http_version: 
-  recorded_at: Tue, 27 Sep 2016 18:17:15 GMT
+  recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
 - request:
     method: get
     uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/member1/dampenings
@@ -263,8 +253,6 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
-      Host:
-      - localhost:8080
   response:
     status:
       code: 200
@@ -281,7 +269,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 27 Sep 2016 18:17:15 GMT
+      - Tue, 25 Apr 2017 15:11:08 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -292,7 +280,7 @@ http_interactions:
       encoding: UTF-8
       string: "[]"
     http_version: 
-  recorded_at: Tue, 27 Sep 2016 18:17:15 GMT
+  recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
 - request:
     method: get
     uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/groups/a-group-trigger/members?includeOrphans=false
@@ -310,8 +298,6 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
-      Host:
-      - localhost:8080
   response:
     status:
       code: 200
@@ -328,7 +314,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 27 Sep 2016 18:17:15 GMT
+      - Tue, 25 Apr 2017 15:11:08 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -340,7 +326,7 @@ http_interactions:
       string: '[{"tenantId":"hawkular","id":"member1","name":"Member One","description":"A
         Group Trigger generated from test","type":"MEMBER","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"HIGH","autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","dataIdMap":{"my-metric-id":"my-metric-id-member1"},"memberOf":"a-group-trigger","enabled":false,"firingMatch":"ALL","source":"_none_"}]'
     http_version: 
-  recorded_at: Tue, 27 Sep 2016 18:17:15 GMT
+  recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
 - request:
     method: post
     uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/groups/members
@@ -361,8 +347,6 @@ http_interactions:
       - application/json
       Content-Length:
       - '192'
-      Host:
-      - localhost:8080
   response:
     status:
       code: 200
@@ -379,7 +363,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 27 Sep 2016 18:17:15 GMT
+      - Tue, 25 Apr 2017 15:11:08 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -391,7 +375,7 @@ http_interactions:
       string: '{"tenantId":"hawkular","id":"member2","name":"Member Two","description":"A
         Group Trigger generated from test","type":"MEMBER","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"HIGH","autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","dataIdMap":{"my-metric-id":"my-metric-id-member2"},"memberOf":"a-group-trigger","enabled":false,"firingMatch":"ALL","source":"_none_"}'
     http_version: 
-  recorded_at: Tue, 27 Sep 2016 18:17:15 GMT
+  recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
 - request:
     method: get
     uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/member2
@@ -409,8 +393,6 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
-      Host:
-      - localhost:8080
   response:
     status:
       code: 200
@@ -427,7 +409,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 27 Sep 2016 18:17:15 GMT
+      - Tue, 25 Apr 2017 15:11:08 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -439,7 +421,7 @@ http_interactions:
       string: '{"tenantId":"hawkular","id":"member2","name":"Member Two","description":"A
         Group Trigger generated from test","type":"MEMBER","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"HIGH","autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","dataIdMap":{"my-metric-id":"my-metric-id-member2"},"memberOf":"a-group-trigger","enabled":false,"firingMatch":"ALL","source":"_none_"}'
     http_version: 
-  recorded_at: Tue, 27 Sep 2016 18:17:15 GMT
+  recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
 - request:
     method: get
     uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/member2/conditions
@@ -457,8 +439,6 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
-      Host:
-      - localhost:8080
   response:
     status:
       code: 200
@@ -475,7 +455,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 27 Sep 2016 18:17:15 GMT
+      - Tue, 25 Apr 2017 15:11:08 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -486,7 +466,7 @@ http_interactions:
       encoding: UTF-8
       string: '[{"tenantId":"hawkular","triggerId":"member2","triggerMode":"FIRING","type":"THRESHOLD","conditionSetSize":1,"conditionSetIndex":1,"conditionId":"hawkular-member2-FIRING-1-1","dataId":"my-metric-id-member2","operator":"LT","threshold":5.0}]'
     http_version: 
-  recorded_at: Tue, 27 Sep 2016 18:17:15 GMT
+  recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
 - request:
     method: get
     uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/member2/dampenings
@@ -504,8 +484,6 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
-      Host:
-      - localhost:8080
   response:
     status:
       code: 200
@@ -522,7 +500,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 27 Sep 2016 18:17:15 GMT
+      - Tue, 25 Apr 2017 15:11:08 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -533,7 +511,7 @@ http_interactions:
       encoding: UTF-8
       string: "[]"
     http_version: 
-  recorded_at: Tue, 27 Sep 2016 18:17:15 GMT
+  recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
 - request:
     method: get
     uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/groups/a-group-trigger/members?includeOrphans=false
@@ -551,8 +529,6 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
-      Host:
-      - localhost:8080
   response:
     status:
       code: 200
@@ -569,7 +545,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 27 Sep 2016 18:17:15 GMT
+      - Tue, 25 Apr 2017 15:11:08 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -582,7 +558,7 @@ http_interactions:
         Group Trigger generated from test","type":"MEMBER","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"HIGH","autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","dataIdMap":{"my-metric-id":"my-metric-id-member1"},"memberOf":"a-group-trigger","enabled":false,"firingMatch":"ALL","source":"_none_"},{"tenantId":"hawkular","id":"member2","name":"Member
         Two","description":"A Group Trigger generated from test","type":"MEMBER","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"HIGH","autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","dataIdMap":{"my-metric-id":"my-metric-id-member2"},"memberOf":"a-group-trigger","enabled":false,"firingMatch":"ALL","source":"_none_"}]'
     http_version: 
-  recorded_at: Tue, 27 Sep 2016 18:17:15 GMT
+  recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
 - request:
     method: post
     uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/groups/members/member2/orphan
@@ -602,8 +578,6 @@ http_interactions:
       - application/json
       Content-Length:
       - '2'
-      Host:
-      - localhost:8080
   response:
     status:
       code: 200
@@ -620,7 +594,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 27 Sep 2016 18:17:15 GMT
+      - Tue, 25 Apr 2017 15:11:08 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -631,7 +605,7 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Tue, 27 Sep 2016 18:17:15 GMT
+  recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
 - request:
     method: get
     uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/member2
@@ -649,8 +623,6 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
-      Host:
-      - localhost:8080
   response:
     status:
       code: 200
@@ -667,7 +639,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 27 Sep 2016 18:17:15 GMT
+      - Tue, 25 Apr 2017 15:11:08 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -679,7 +651,7 @@ http_interactions:
       string: '{"tenantId":"hawkular","id":"member2","name":"Member Two","description":"A
         Group Trigger generated from test","type":"ORPHAN","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"HIGH","autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","dataIdMap":{"my-metric-id":"my-metric-id-member2"},"memberOf":"a-group-trigger","enabled":false,"firingMatch":"ALL","source":"_none_"}'
     http_version: 
-  recorded_at: Tue, 27 Sep 2016 18:17:15 GMT
+  recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
 - request:
     method: get
     uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/groups/a-group-trigger/members?includeOrphans=false
@@ -697,8 +669,6 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
-      Host:
-      - localhost:8080
   response:
     status:
       code: 200
@@ -715,7 +685,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 27 Sep 2016 18:17:15 GMT
+      - Tue, 25 Apr 2017 15:11:08 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -727,7 +697,7 @@ http_interactions:
       string: '[{"tenantId":"hawkular","id":"member1","name":"Member One","description":"A
         Group Trigger generated from test","type":"MEMBER","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"HIGH","autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","dataIdMap":{"my-metric-id":"my-metric-id-member1"},"memberOf":"a-group-trigger","enabled":false,"firingMatch":"ALL","source":"_none_"}]'
     http_version: 
-  recorded_at: Tue, 27 Sep 2016 18:17:15 GMT
+  recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
 - request:
     method: get
     uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/groups/a-group-trigger/members?includeOrphans=true
@@ -745,8 +715,6 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
-      Host:
-      - localhost:8080
   response:
     status:
       code: 200
@@ -763,7 +731,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 27 Sep 2016 18:17:15 GMT
+      - Tue, 25 Apr 2017 15:11:08 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -776,7 +744,7 @@ http_interactions:
         Group Trigger generated from test","type":"MEMBER","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"HIGH","autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","dataIdMap":{"my-metric-id":"my-metric-id-member1"},"memberOf":"a-group-trigger","enabled":false,"firingMatch":"ALL","source":"_none_"},{"tenantId":"hawkular","id":"member2","name":"Member
         Two","description":"A Group Trigger generated from test","type":"ORPHAN","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"HIGH","autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","dataIdMap":{"my-metric-id":"my-metric-id-member2"},"memberOf":"a-group-trigger","enabled":false,"firingMatch":"ALL","source":"_none_"}]'
     http_version: 
-  recorded_at: Tue, 27 Sep 2016 18:17:15 GMT
+  recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
 - request:
     method: post
     uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/groups/a-group-trigger/dampenings
@@ -796,8 +764,6 @@ http_interactions:
       - application/json
       Content-Length:
       - '130'
-      Host:
-      - localhost:8080
   response:
     status:
       code: 200
@@ -814,7 +780,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 27 Sep 2016 18:17:15 GMT
+      - Tue, 25 Apr 2017 15:11:08 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -825,7 +791,7 @@ http_interactions:
       encoding: UTF-8
       string: '{"tenantId":"hawkular","triggerId":"a-group-trigger","triggerMode":"FIRING","type":"STRICT","evalTrueSetting":2,"evalTotalSetting":2,"evalTimeSetting":0,"dampeningId":"hawkular-a-group-trigger-FIRING"}'
     http_version: 
-  recorded_at: Tue, 27 Sep 2016 18:17:15 GMT
+  recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
 - request:
     method: get
     uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/member1
@@ -843,8 +809,6 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
-      Host:
-      - localhost:8080
   response:
     status:
       code: 200
@@ -861,7 +825,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 27 Sep 2016 18:17:15 GMT
+      - Tue, 25 Apr 2017 15:11:08 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -873,7 +837,7 @@ http_interactions:
       string: '{"tenantId":"hawkular","id":"member1","name":"Member One","description":"A
         Group Trigger generated from test","type":"MEMBER","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"HIGH","autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","dataIdMap":{"my-metric-id":"my-metric-id-member1"},"memberOf":"a-group-trigger","enabled":false,"firingMatch":"ALL","source":"_none_"}'
     http_version: 
-  recorded_at: Tue, 27 Sep 2016 18:17:15 GMT
+  recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
 - request:
     method: get
     uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/member1/conditions
@@ -891,8 +855,6 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
-      Host:
-      - localhost:8080
   response:
     status:
       code: 200
@@ -909,7 +871,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 27 Sep 2016 18:17:15 GMT
+      - Tue, 25 Apr 2017 15:11:08 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -920,7 +882,7 @@ http_interactions:
       encoding: UTF-8
       string: '[{"tenantId":"hawkular","triggerId":"member1","triggerMode":"FIRING","type":"THRESHOLD","conditionSetSize":1,"conditionSetIndex":1,"conditionId":"hawkular-member1-FIRING-1-1","dataId":"my-metric-id-member1","operator":"LT","threshold":5.0}]'
     http_version: 
-  recorded_at: Tue, 27 Sep 2016 18:17:15 GMT
+  recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
 - request:
     method: get
     uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/member1/dampenings
@@ -938,8 +900,6 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
-      Host:
-      - localhost:8080
   response:
     status:
       code: 200
@@ -956,7 +916,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 27 Sep 2016 18:17:15 GMT
+      - Tue, 25 Apr 2017 15:11:08 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -967,7 +927,7 @@ http_interactions:
       encoding: UTF-8
       string: '[{"tenantId":"hawkular","triggerId":"member1","triggerMode":"FIRING","type":"STRICT","evalTrueSetting":2,"evalTotalSetting":2,"evalTimeSetting":0,"dampeningId":"hawkular-member1-FIRING"}]'
     http_version: 
-  recorded_at: Tue, 27 Sep 2016 18:17:15 GMT
+  recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
 - request:
     method: put
     uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/groups/a-group-trigger/
@@ -988,8 +948,6 @@ http_interactions:
       - application/json
       Content-Length:
       - '372'
-      Host:
-      - localhost:8080
   response:
     status:
       code: 200
@@ -1006,7 +964,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 27 Sep 2016 18:17:15 GMT
+      - Tue, 25 Apr 2017 15:11:08 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -1017,7 +975,7 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Tue, 27 Sep 2016 18:17:15 GMT
+  recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
 - request:
     method: get
     uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/a-group-trigger
@@ -1035,8 +993,6 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
-      Host:
-      - localhost:8080
   response:
     status:
       code: 200
@@ -1053,7 +1009,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 27 Sep 2016 18:17:15 GMT
+      - Tue, 25 Apr 2017 15:11:08 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -1065,7 +1021,7 @@ http_interactions:
       string: '{"tenantId":"hawkular","id":"a-group-trigger","name":"A Group Trigger","description":"A
         Group Trigger generated from test","type":"GROUP","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"HIGH","tags":{"group-tname":"group-tvalue"},"autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","enabled":false,"firingMatch":"ALL","source":"_none_"}'
     http_version: 
-  recorded_at: Tue, 27 Sep 2016 18:17:15 GMT
+  recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
 - request:
     method: get
     uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/member1
@@ -1083,8 +1039,6 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
-      Host:
-      - localhost:8080
   response:
     status:
       code: 200
@@ -1101,7 +1055,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 27 Sep 2016 18:17:15 GMT
+      - Tue, 25 Apr 2017 15:11:08 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -1113,13 +1067,13 @@ http_interactions:
       string: '{"tenantId":"hawkular","id":"member1","name":"Member One","description":"A
         Group Trigger generated from test","type":"MEMBER","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"HIGH","tags":{"group-tname":"group-tvalue"},"autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","dataIdMap":{"my-metric-id":"my-metric-id-member1"},"memberOf":"a-group-trigger","enabled":false,"firingMatch":"ALL","source":"_none_"}'
     http_version: 
-  recorded_at: Tue, 27 Sep 2016 18:17:15 GMT
+  recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
 - request:
     method: put
     uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/groups/a-group-trigger/conditions/FIRING
     body:
       encoding: UTF-8
-      string: '{"conditions":[{"conditionId":null,"type":"THRESHOLD","operator":"LT","threshold":5,"triggerMode":"FIRING","dataId":"my-metric-id","data2Id":null,"data2Multiplier":null,"triggerId":null},{"conditionId":null,"type":"THRESHOLD","operator":"GT","threshold":50,"triggerMode":"FIRING","dataId":"my-metric-id2","data2Id":null,"data2Multiplier":null,"triggerId":null}],"dataIdMemberMap":{"my-metric-id":{"member1":"my-metric-id-member1"},"my-metric-id2":{"member1":"my-metric-id2-member1"}}}'
+      string: '{"conditions":[{"conditionId":null,"type":"THRESHOLD","operator":"LT","threshold":5,"triggerMode":"FIRING","dataId":"my-metric-id","data2Id":null,"data2Multiplier":null,"triggerId":null,"interval":null},{"conditionId":null,"type":"THRESHOLD","operator":"GT","threshold":50,"triggerMode":"FIRING","dataId":"my-metric-id2","data2Id":null,"data2Multiplier":null,"triggerId":null,"interval":null}],"dataIdMemberMap":{"my-metric-id":{"member1":"my-metric-id-member1"},"my-metric-id2":{"member1":"my-metric-id2-member1"}}}'
     headers:
       Accept:
       - application/json
@@ -1132,9 +1086,7 @@ http_interactions:
       Content-Type:
       - application/json
       Content-Length:
-      - '484'
-      Host:
-      - localhost:8080
+      - '516'
   response:
     status:
       code: 200
@@ -1151,7 +1103,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 27 Sep 2016 18:17:15 GMT
+      - Tue, 25 Apr 2017 15:11:08 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -1162,7 +1114,7 @@ http_interactions:
       encoding: UTF-8
       string: '[{"tenantId":"hawkular","triggerId":"a-group-trigger","triggerMode":"FIRING","type":"THRESHOLD","conditionSetSize":2,"conditionSetIndex":1,"conditionId":"hawkular-a-group-trigger-FIRING-2-1","dataId":"my-metric-id","operator":"LT","threshold":5.0},{"tenantId":"hawkular","triggerId":"a-group-trigger","triggerMode":"FIRING","type":"THRESHOLD","conditionSetSize":2,"conditionSetIndex":2,"conditionId":"hawkular-a-group-trigger-FIRING-2-2","dataId":"my-metric-id2","operator":"GT","threshold":50.0}]'
     http_version: 
-  recorded_at: Tue, 27 Sep 2016 18:17:15 GMT
+  recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
 - request:
     method: get
     uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/member1
@@ -1180,8 +1132,6 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
-      Host:
-      - localhost:8080
   response:
     status:
       code: 200
@@ -1198,7 +1148,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 27 Sep 2016 18:17:15 GMT
+      - Tue, 25 Apr 2017 15:11:08 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -1210,7 +1160,7 @@ http_interactions:
       string: '{"tenantId":"hawkular","id":"member1","name":"Member One","description":"A
         Group Trigger generated from test","type":"MEMBER","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"HIGH","tags":{"group-tname":"group-tvalue"},"autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","dataIdMap":{"my-metric-id":"my-metric-id-member1"},"memberOf":"a-group-trigger","enabled":false,"firingMatch":"ALL","source":"_none_"}'
     http_version: 
-  recorded_at: Tue, 27 Sep 2016 18:17:15 GMT
+  recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
 - request:
     method: get
     uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/member1/conditions
@@ -1228,8 +1178,6 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
-      Host:
-      - localhost:8080
   response:
     status:
       code: 200
@@ -1246,7 +1194,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 27 Sep 2016 18:17:15 GMT
+      - Tue, 25 Apr 2017 15:11:08 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -1257,7 +1205,7 @@ http_interactions:
       encoding: UTF-8
       string: '[{"tenantId":"hawkular","triggerId":"member1","triggerMode":"FIRING","type":"THRESHOLD","conditionSetSize":2,"conditionSetIndex":1,"conditionId":"hawkular-member1-FIRING-2-1","dataId":"my-metric-id-member1","operator":"LT","threshold":5.0},{"tenantId":"hawkular","triggerId":"member1","triggerMode":"FIRING","type":"THRESHOLD","conditionSetSize":2,"conditionSetIndex":2,"conditionId":"hawkular-member1-FIRING-2-2","dataId":"my-metric-id2-member1","operator":"GT","threshold":50.0}]'
     http_version: 
-  recorded_at: Tue, 27 Sep 2016 18:17:15 GMT
+  recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
 - request:
     method: get
     uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/member1/dampenings
@@ -1275,8 +1223,6 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
-      Host:
-      - localhost:8080
   response:
     status:
       code: 200
@@ -1293,7 +1239,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 27 Sep 2016 18:17:15 GMT
+      - Tue, 25 Apr 2017 15:11:08 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -1304,7 +1250,7 @@ http_interactions:
       encoding: UTF-8
       string: '[{"tenantId":"hawkular","triggerId":"member1","triggerMode":"FIRING","type":"STRICT","evalTrueSetting":2,"evalTotalSetting":2,"evalTimeSetting":0,"dampeningId":"hawkular-member1-FIRING"}]'
     http_version: 
-  recorded_at: Tue, 27 Sep 2016 18:17:15 GMT
+  recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
 - request:
     method: put
     uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/groups/a-group-trigger/dampenings/hawkular-a-group-trigger-FIRING
@@ -1324,8 +1270,6 @@ http_interactions:
       - application/json
       Content-Length:
       - '163'
-      Host:
-      - localhost:8080
   response:
     status:
       code: 200
@@ -1342,7 +1286,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 27 Sep 2016 18:17:15 GMT
+      - Tue, 25 Apr 2017 15:11:08 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -1353,7 +1297,7 @@ http_interactions:
       encoding: UTF-8
       string: '{"tenantId":"hawkular","triggerId":"a-group-trigger","triggerMode":"FIRING","type":"RELAXED_COUNT","evalTrueSetting":2,"evalTotalSetting":4,"evalTimeSetting":0,"dampeningId":"hawkular-a-group-trigger-FIRING"}'
     http_version: 
-  recorded_at: Tue, 27 Sep 2016 18:17:15 GMT
+  recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
 - request:
     method: put
     uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/groups/a-group-trigger/
@@ -1374,8 +1318,6 @@ http_interactions:
       - application/json
       Content-Length:
       - '412'
-      Host:
-      - localhost:8080
   response:
     status:
       code: 200
@@ -1392,7 +1334,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 27 Sep 2016 18:17:15 GMT
+      - Tue, 25 Apr 2017 15:11:08 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -1403,7 +1345,7 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Tue, 27 Sep 2016 18:17:15 GMT
+  recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
 - request:
     method: get
     uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/a-group-trigger
@@ -1421,8 +1363,6 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
-      Host:
-      - localhost:8080
   response:
     status:
       code: 200
@@ -1439,7 +1379,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 27 Sep 2016 18:17:15 GMT
+      - Tue, 25 Apr 2017 15:11:08 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -1451,7 +1391,7 @@ http_interactions:
       string: '{"tenantId":"hawkular","id":"a-group-trigger","name":"A Group Trigger","description":"A
         Group Trigger generated from test","type":"GROUP","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"HIGH","context":{"alert-profiles":"profile1"},"tags":{"group-tname":"group-tvalue"},"autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","enabled":false,"firingMatch":"ALL","source":"_none_"}'
     http_version: 
-  recorded_at: Tue, 27 Sep 2016 18:17:15 GMT
+  recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
 - request:
     method: delete
     uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/groups/a-group-trigger/dampenings/hawkular-a-group-trigger-FIRING
@@ -1469,8 +1409,6 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
-      Host:
-      - localhost:8080
   response:
     status:
       code: 200
@@ -1487,7 +1425,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 27 Sep 2016 18:17:15 GMT
+      - Tue, 25 Apr 2017 15:11:08 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -1498,7 +1436,7 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Tue, 27 Sep 2016 18:17:15 GMT
+  recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
 - request:
     method: get
     uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/member1
@@ -1516,8 +1454,6 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
-      Host:
-      - localhost:8080
   response:
     status:
       code: 200
@@ -1534,7 +1470,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 27 Sep 2016 18:17:15 GMT
+      - Tue, 25 Apr 2017 15:11:08 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -1546,7 +1482,7 @@ http_interactions:
       string: '{"tenantId":"hawkular","id":"member1","name":"Member One","description":"A
         Group Trigger generated from test","type":"MEMBER","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"HIGH","context":{"alert-profiles":"profile1"},"tags":{"group-tname":"group-tvalue"},"autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","dataIdMap":{"my-metric-id":"my-metric-id-member1"},"memberOf":"a-group-trigger","enabled":false,"firingMatch":"ALL","source":"_none_"}'
     http_version: 
-  recorded_at: Tue, 27 Sep 2016 18:17:15 GMT
+  recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
 - request:
     method: get
     uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/member1/conditions
@@ -1564,8 +1500,6 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
-      Host:
-      - localhost:8080
   response:
     status:
       code: 200
@@ -1582,7 +1516,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 27 Sep 2016 18:17:15 GMT
+      - Tue, 25 Apr 2017 15:11:08 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -1593,7 +1527,7 @@ http_interactions:
       encoding: UTF-8
       string: '[{"tenantId":"hawkular","triggerId":"member1","triggerMode":"FIRING","type":"THRESHOLD","conditionSetSize":2,"conditionSetIndex":1,"conditionId":"hawkular-member1-FIRING-2-1","dataId":"my-metric-id-member1","operator":"LT","threshold":5.0},{"tenantId":"hawkular","triggerId":"member1","triggerMode":"FIRING","type":"THRESHOLD","conditionSetSize":2,"conditionSetIndex":2,"conditionId":"hawkular-member1-FIRING-2-2","dataId":"my-metric-id2-member1","operator":"GT","threshold":50.0}]'
     http_version: 
-  recorded_at: Tue, 27 Sep 2016 18:17:15 GMT
+  recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
 - request:
     method: get
     uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/member1/dampenings
@@ -1611,8 +1545,6 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
-      Host:
-      - localhost:8080
   response:
     status:
       code: 200
@@ -1629,7 +1561,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 27 Sep 2016 18:17:15 GMT
+      - Tue, 25 Apr 2017 15:11:08 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -1640,13 +1572,13 @@ http_interactions:
       encoding: UTF-8
       string: "[]"
     http_version: 
-  recorded_at: Tue, 27 Sep 2016 18:17:15 GMT
+  recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
 - request:
     method: put
     uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/groups/a-group-trigger/conditions/FIRING
     body:
       encoding: UTF-8
-      string: '{"conditions":[{"conditionId":null,"type":"THRESHOLD","operator":"LT","threshold":5,"triggerMode":"FIRING","dataId":"my-metric-id","data2Id":null,"data2Multiplier":null,"triggerId":null},{"conditionId":null,"type":"THRESHOLD","operator":"GT","threshold":50,"triggerMode":"FIRING","dataId":"my-metric-id2","data2Id":null,"data2Multiplier":null,"triggerId":null},{"conditionId":null,"type":"COMPARE","operator":"GT","threshold":null,"triggerMode":"FIRING","dataId":"my-metric-id3","data2Id":"my-metric-id4","data2Multiplier":1,"triggerId":null}],"dataIdMemberMap":{"my-metric-id":{"member1":"my-metric-id-member1"},"my-metric-id2":{"member1":"my-metric-id2-member1"},"my-metric-id3":{"member1":"my-metric-id3-member1"},"my-metric-id4":{"member1":"my-metric-id4-member1"}}}'
+      string: '{"conditions":[{"conditionId":null,"type":"THRESHOLD","operator":"LT","threshold":5,"triggerMode":"FIRING","dataId":"my-metric-id","data2Id":null,"data2Multiplier":null,"triggerId":null,"interval":null},{"conditionId":null,"type":"THRESHOLD","operator":"GT","threshold":50,"triggerMode":"FIRING","dataId":"my-metric-id2","data2Id":null,"data2Multiplier":null,"triggerId":null,"interval":null},{"conditionId":null,"type":"COMPARE","operator":"GT","threshold":null,"triggerMode":"FIRING","dataId":"my-metric-id3","data2Id":"my-metric-id4","data2Multiplier":1,"triggerId":null,"interval":null}],"dataIdMemberMap":{"my-metric-id":{"member1":"my-metric-id-member1"},"my-metric-id2":{"member1":"my-metric-id2-member1"},"my-metric-id3":{"member1":"my-metric-id3-member1"},"my-metric-id4":{"member1":"my-metric-id4-member1"}}}'
     headers:
       Accept:
       - application/json
@@ -1659,9 +1591,7 @@ http_interactions:
       Content-Type:
       - application/json
       Content-Length:
-      - '770'
-      Host:
-      - localhost:8080
+      - '818'
   response:
     status:
       code: 200
@@ -1678,7 +1608,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 27 Sep 2016 18:17:15 GMT
+      - Tue, 25 Apr 2017 15:11:08 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -1689,7 +1619,7 @@ http_interactions:
       encoding: UTF-8
       string: '[{"tenantId":"hawkular","triggerId":"a-group-trigger","triggerMode":"FIRING","type":"THRESHOLD","conditionSetSize":3,"conditionSetIndex":1,"conditionId":"hawkular-a-group-trigger-FIRING-3-1","dataId":"my-metric-id","operator":"LT","threshold":5.0},{"tenantId":"hawkular","triggerId":"a-group-trigger","triggerMode":"FIRING","type":"THRESHOLD","conditionSetSize":3,"conditionSetIndex":2,"conditionId":"hawkular-a-group-trigger-FIRING-3-2","dataId":"my-metric-id2","operator":"GT","threshold":50.0},{"tenantId":"hawkular","triggerId":"a-group-trigger","triggerMode":"FIRING","type":"COMPARE","conditionSetSize":3,"conditionSetIndex":3,"conditionId":"hawkular-a-group-trigger-FIRING-3-3","dataId":"my-metric-id3","operator":"GT","data2Id":"my-metric-id4","data2Multiplier":1.0}]'
     http_version: 
-  recorded_at: Tue, 27 Sep 2016 18:17:15 GMT
+  recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
 - request:
     method: get
     uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/member1
@@ -1707,8 +1637,6 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
-      Host:
-      - localhost:8080
   response:
     status:
       code: 200
@@ -1725,7 +1653,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 27 Sep 2016 18:17:15 GMT
+      - Tue, 25 Apr 2017 15:11:08 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -1737,7 +1665,7 @@ http_interactions:
       string: '{"tenantId":"hawkular","id":"member1","name":"Member One","description":"A
         Group Trigger generated from test","type":"MEMBER","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"HIGH","context":{"alert-profiles":"profile1"},"tags":{"group-tname":"group-tvalue"},"autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","dataIdMap":{"my-metric-id":"my-metric-id-member1"},"memberOf":"a-group-trigger","enabled":false,"firingMatch":"ALL","source":"_none_"}'
     http_version: 
-  recorded_at: Tue, 27 Sep 2016 18:17:15 GMT
+  recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
 - request:
     method: get
     uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/member1/conditions
@@ -1755,8 +1683,6 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
-      Host:
-      - localhost:8080
   response:
     status:
       code: 200
@@ -1773,7 +1699,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 27 Sep 2016 18:17:15 GMT
+      - Tue, 25 Apr 2017 15:11:08 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -1784,7 +1710,7 @@ http_interactions:
       encoding: UTF-8
       string: '[{"tenantId":"hawkular","triggerId":"member1","triggerMode":"FIRING","type":"THRESHOLD","conditionSetSize":3,"conditionSetIndex":1,"conditionId":"hawkular-member1-FIRING-3-1","dataId":"my-metric-id-member1","operator":"LT","threshold":5.0},{"tenantId":"hawkular","triggerId":"member1","triggerMode":"FIRING","type":"THRESHOLD","conditionSetSize":3,"conditionSetIndex":2,"conditionId":"hawkular-member1-FIRING-3-2","dataId":"my-metric-id2-member1","operator":"GT","threshold":50.0},{"tenantId":"hawkular","triggerId":"member1","triggerMode":"FIRING","type":"COMPARE","conditionSetSize":3,"conditionSetIndex":3,"conditionId":"hawkular-member1-FIRING-3-3","dataId":"my-metric-id3-member1","operator":"GT","data2Id":"my-metric-id4-member1","data2Multiplier":1.0}]'
     http_version: 
-  recorded_at: Tue, 27 Sep 2016 18:17:15 GMT
+  recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
 - request:
     method: get
     uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/member1/dampenings
@@ -1802,8 +1728,6 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
-      Host:
-      - localhost:8080
   response:
     status:
       code: 200
@@ -1820,7 +1744,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 27 Sep 2016 18:17:15 GMT
+      - Tue, 25 Apr 2017 15:11:08 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -1831,7 +1755,7 @@ http_interactions:
       encoding: UTF-8
       string: "[]"
     http_version: 
-  recorded_at: Tue, 27 Sep 2016 18:17:15 GMT
+  recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
 - request:
     method: delete
     uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/groups/a-group-trigger
@@ -1849,8 +1773,6 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
-      Host:
-      - localhost:8080
   response:
     status:
       code: 200
@@ -1867,7 +1789,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 27 Sep 2016 18:17:15 GMT
+      - Tue, 25 Apr 2017 15:11:08 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -1878,5 +1800,5 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Tue, 27 Sep 2016 18:17:15 GMT
+  recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
 recorded_with: VCR 3.0.3

@@ -17,8 +17,6 @@ http_interactions:
       - <%= tenant %>
       Content-Type:
       - application/json
-      Host:
-      - localhost:8080
   response:
     status:
       code: 200
@@ -33,12 +31,12 @@ http_interactions:
       Content-Type:
       - application/json
       Content-Length:
-      - '133'
+      - '153'
       Date:
-      - Wed, 30 Nov 2016 06:47:08 GMT
+      - Wed, 05 Apr 2017 08:18:51 GMT
     body:
       encoding: UTF-8
-      string: '{"MetricsService":"STARTED","Implementation-Version":"0.21.5.Final","Built-From-Git-SHA1":"e779588593f13224225356a94f1d8642fbccb30f"}'
+      string: '{"MetricsService":"STARTED","Implementation-Version":"0.26.0-SNAPSHOT","Built-From-Git-SHA1":"65cace494ecb1fe770989a9e57d140f1918ef0e9","Cassandra":"up"}'
     http_version: 
-  recorded_at: Wed, 30 Nov 2016 06:47:08 GMT
+  recorded_at: Wed, 05 Apr 2017 08:18:51 GMT
 recorded_with: VCR 3.0.3

@@ -1,6 +1,8 @@
 require 'hawkular/base_client'
 require 'websocket-client-simple'
 require 'json'
+require 'zlib'
+require 'stringio'
 
 require 'hawkular/inventory/entities'
 
@@ -20,7 +22,7 @@ module Hawkular::Inventory
     # @param credentials [Hash{String=>String}] Hash of username, password, token(optional)
     # @param options [Hash{String=>String}] Additional rest client options
     def initialize(entrypoint = nil, credentials = {}, options = {})
-      entrypoint = normalize_entrypoint_url entrypoint, 'hawkular/inventory'
+      entrypoint = normalize_entrypoint_url entrypoint, 'hawkular/metrics'
       @entrypoint = entrypoint
       super(entrypoint, credentials, options)
       version = fetch_version_and_status['Implementation-Version']
@@ -32,45 +34,54 @@ module Hawkular::Inventory
     #   entrypoint: http://localhost:8080/hawkular/inventory
     # and another sub-hash containing the hash with username[String], password[String], token(optional)
     def self.create(hash)
-      fail 'no parameter ":entrypoint" given' if hash[:entrypoint].nil?
+      fail 'no parameter ":entrypoint" given' unless hash[:entrypoint]
       hash[:credentials] ||= {}
       hash[:options] ||= {}
       Client.new(hash[:entrypoint], hash[:credentials], hash[:options])
     end
 
-    # Retrieve the tenant id for the passed credentials.
-    # If no credentials are passed, the ones from the constructor are used
-    # @param credentials [Hash{String=>String}] Hash of username, password, token(optional)
-    # @return [String] tenant id
-    # @deprecated this doesn't provide any value, because it merely returns the tenant ID which is known before the
-    # call anyway.
-    def get_tenant(credentials = {})
-      creds = credentials.empty? ? @credentials : credentials
-      auth_header = { Authorization: base_64_credentials(creds) }
-
-      ret = http_get('/tenant', auth_header)
-
-      ret['id']
-    end
-
     # List feeds in the system
     # @return [Array<String>] List of feed ids
     def list_feeds
-      ret = http_get('/traversal/type=f')
-      ret.map { |f| f['id'] }
+      ret = http_get('/strings/tags/module:inventory,feed:*')
+      return [] unless ret.key? 'feed'
+      ret['feed']
     end
 
-    # List resource types. If no feed_id is given all types are listed
-    # @param [String] feed_id The id of the feed the type lives under. Can be nil for feedless types
+    # List resource types for the given feed
+    # @param [String] feed_id The id of the feed the type lives under
     # @return [Array<ResourceType>] List of types, that can be empty
-    def list_resource_types(feed_id = nil)
-      if feed_id.nil?
-        ret = http_get('/traversal/type=rt')
-      else
-        the_feed = hawk_escape_id feed_id
-        ret = http_get("/traversal/f;#{the_feed}/type=rt")
+    def list_resource_types(feed_id)
+      fail 'Feed id must be given' unless feed_id
+      feed_path = feed_cp(feed_id)
+      response = http_post(
+        '/strings/raw/query',
+        fromEarliest: true,
+        order: 'DESC',
+        tags: "#{feed_path.to_tags},type:rt")
+      structures = extract_structures_from_body(response)
+      structures.map do |rt|
+        root_hash = entity_json_to_hash(-> (id) { feed_path.resource_type(id) }, rt['inventoryStructure'], false)
+        ResourceType.new(root_hash)
       end
-      ret.map { |rt| ResourceType.new(rt) }
+    end
+
+    # List metric types for the given feed
+    # @param [String] feed_id The id of the feed the type lives under
+    # @return [Array<MetricType>] List of types, that can be empty
+    def list_metric_types(feed_id)
+      fail 'Feed id must be given' unless feed_id
+      feed_path = feed_cp(feed_id)
+      response = http_post(
+        '/strings/raw/query',
+        fromEarliest: true,
+        order: 'DESC',
+        tags: "#{feed_path.to_tags},type:mt")
+      structures = extract_structures_from_body(response)
+      structures.map do |mt|
+        root_hash = entity_json_to_hash(-> (id) { feed_path.metric_type(id) }, mt['inventoryStructure'], false)
+        MetricType.new(root_hash)
+      end
     end
 
     # Return all resources for a feed
@@ -79,14 +90,16 @@ module Hawkular::Inventory
     # @return [Array<Resource>] List of resources, which can be empty.
     def list_resources_for_feed(feed_id, fetch_properties = false, filter = {})
       fail 'Feed id must be given' unless feed_id
-      the_feed = hawk_escape_id feed_id
-      ret = http_get("/traversal/f;#{the_feed}/type=r")
-      to_filter = ret.map do |r|
-        if fetch_properties
-          p = get_config_data_for_resource(r['path'])
-          r['properties'] = p['value']
-        end
-        Resource.new(r)
+      feed_path = feed_cp(feed_id)
+      response = http_post(
+        '/strings/raw/query',
+        fromEarliest: true,
+        order: 'DESC',
+        tags: "#{feed_path.to_tags},type:r")
+      structures = extract_structures_from_body(response)
+      to_filter = structures.map do |r|
+        root_hash = entity_json_to_hash(-> (id) { feed_path.down(id) }, r['inventoryStructure'], fetch_properties)
+        Resource.new(root_hash)
       end
       filter_entities(to_filter, filter)
     end
@@ -99,33 +112,34 @@ module Hawkular::Inventory
     # @param [Boolean] fetch_properties Shall additional runtime properties be fetched?
     # @return [Array<Resource>] List of resources. Can be empty
     def list_resources_for_type(resource_type_path, fetch_properties = false)
-      path = resource_type_path.is_a?(CanonicalPath) ? resource_type_path : CanonicalPath.parse(resource_type_path)
-      resource_type_id = path.resource_type_id
-      feed_id = path.feed_id
-      if feed_id.nil?
-        ret = http_get("/traversal/rt;#{resource_type_id}/rl;defines/type=r")
-      else
-        ret = http_get("/traversal/f;#{feed_id}/rt;#{resource_type_id}/rl;defines/type=r")
-      end
-      ret.map do |r|
-        if fetch_properties && !feed_id.nil?
-          p = get_config_data_for_resource(r['path'])
-          r['properties'] = p['value']
-        end
-        Resource.new(r)
-      end
+      path = CanonicalPath.parse_if_string(resource_type_path)
+      fail 'Feed id must be given' unless path.feed_id
+      fail 'Resource type must be given' unless path.resource_type_id
+
+      # Fetch metrics by tag
+      feed_path = feed_cp(URI.unescape(path.feed_id))
+      resource_type_id = URI.unescape(path.resource_type_id)
+      escaped_for_regex = Regexp.quote("|#{resource_type_id}|")
+      response = http_post(
+        '/strings/raw/query',
+        fromEarliest: true,
+        order: 'DESC',
+        tags: "#{feed_path.to_tags},type:r,restypes:.*#{escaped_for_regex}.*")
+      structures = extract_structures_from_body(response)
+      return [] if structures.empty?
+
+      # Now find each collected resource path in their belonging InventoryStructure
+      extract_resources_for_type(structures, feed_path, resource_type_id, fetch_properties)
     end
 
     # Retrieve runtime properties for the passed resource
     # @param [String] resource_path Canonical path of the resource to read properties from.
     # @return [Hash<String,Object] Hash with additional data
     def get_config_data_for_resource(resource_path)
-      path = resource_path.is_a?(CanonicalPath) ? resource_path : CanonicalPath.parse(resource_path)
-      resource_path = 'r;' + path.resource_ids.join('/r;')
-      feed_id = path.feed_id
-      http_get("/entity/f;#{feed_id}/#{resource_path}/d;configuration")
-    rescue
-      {}
+      path = CanonicalPath.parse_if_string(resource_path)
+      raw_hash = get_raw_entity_hash(path)
+      return {} unless raw_hash
+      { 'value' => fetch_properties(raw_hash) }
     end
 
     # Obtain the child resources of the passed resource. In case of a WildFly server,
@@ -135,108 +149,38 @@ module Hawkular::Inventory
     # @return [Array<Resource>] List of resources that are children of the given parent resource.
     #   Can be empty
     def list_child_resources(parent_res_path, recursive = false)
-      path = parent_res_path.is_a?(CanonicalPath) ? parent_res_path : CanonicalPath.parse(parent_res_path)
-      parent_resource_path = 'r;' + path.resource_ids.join('/r;')
+      path = CanonicalPath.parse_if_string(parent_res_path)
       feed_id = path.feed_id
-
-      if recursive
-        ret = http_get("/traversal/f;#{feed_id}/#{parent_resource_path}/recursive;over=isParentOf;type=r")
-      else
-        ret = http_get("/traversal/f;#{feed_id}/#{parent_resource_path}/type=r")
-      end
-      ret.map { |r| Resource.new(r) }
-    end
-
-    # Obtain a list of relationships starting at the passed resource
-    # @param [String] entity_path Canonical path of the entity that forms the one end of the relationship
-    # @param [String] named Name of the relationship
-    # @return [Array<Relationship>] List of relationships
-    def list_relationships(entity_path, named = nil)
-      path = entity_path.is_a?(CanonicalPath) ? entity_path : CanonicalPath.parse(entity_path)
-      query_params = {
-        sort: '__targetCp'
-      }
-
-      query = generate_query_params query_params
-      if named.nil?
-        ret = http_get("/traversal#{path}/relationships#{query}")
-      else
-        ret = http_get("/traversal#{path}/relationships;name=#{named}#{query}")
-      end
-
-      ret.map { |r| Relationship.new(r) }
-    end
-
-    # Obtain a list of relationships for the passed feed
-    # @param [String] feed_id Id of the feed
-    # @param [String] named Name of the relationship
-    # @return [Array<Relationship>] List of relationships
-    def list_relationships_for_feed(feed_id, named = nil)
-      the_feed = hawk_escape_id feed_id
-      query_params = {
-        sort: '__targetCp'
-      }
-
-      query = generate_query_params query_params
-      if named.nil?
-        ret = http_get("/traversal/f;#{the_feed}/relationships#{query}")
-      else
-        ret = http_get("/traversal;/f;#{the_feed}/relationships;named=#{named}#{query}")
-      end
-
-      ret.map { |r| Relationship.new(r) }
-    rescue
-      []
-    end
-
-    # Retrieve a single entity from inventory by its canonical path
-    # @param [String] path canonical path of the entity
-    # @return inventory entity
-    def get_entity(path)
-      c_path = path.is_a?(CanonicalPath) ? path : CanonicalPath.parse(path)
-      http_get("/entity#{c_path}")
+      fail 'Feed id must be given' unless feed_id
+      entity_hash = get_raw_entity_hash(path)
+      extract_child_resources([], path.to_s, entity_hash, recursive) if entity_hash
     end
 
     # List the metrics for the passed metric type. If feed is not passed in the path,
     # all the metrics across all the feeds of a given type will be retrieved
-    # This method may perform multiple REST calls.
     # @param [String] metric_type_path Canonical path of the resource type to look for. Can be obtained from
     #   {MetricType}.path. Must not be nil. The tenant_id in the canonical path doesn't have to be there.
     # @return [Array<Metric>] List of metrics. Can be empty
     def list_metrics_for_metric_type(metric_type_path)
-      path = metric_type_path.is_a?(CanonicalPath) ? metric_type_path : CanonicalPath.parse(metric_type_path)
-      metric_type_id = path.metric_type_id
-      feed_id = path.feed_id
-      if feed_id.nil?
-        ret = http_get("/traversal/mt;#{metric_type_id}/rl;defines/type=m")
-      else
-        ret = http_get("/traversal/f;#{feed_id}/mt;#{metric_type_id}/rl;defines/type=m")
-      end
+      path = CanonicalPath.parse_if_string(metric_type_path)
+      fail 'Feed id must be given' unless path.feed_id
+      fail 'Metric type id must be given' unless path.metric_type_id
+      feed_id = URI.unescape(path.feed_id)
+      metric_type_id = URI.unescape(path.metric_type_id)
 
-      ret.map { |m| Metric.new(m) }
-    rescue
-      []
-    end
+      feed_path = feed_cp(feed_id)
+      escaped_for_regex = Regexp.quote("|#{metric_type_id}|")
+      response = http_post(
+        '/strings/raw/query',
+        fromEarliest: true,
+        order: 'DESC',
+        tags: "#{feed_path.to_tags},type:r,mtypes:.*#{escaped_for_regex}.*")
+      structures = extract_structures_from_body(response)
+      return [] if structures.empty?
 
-    # List the metrics for all the resources of a given resource type.
-    # If feed is not passed in the resource type canonical path, all the metrics across all the feeds of a resource
-    # type will be retrieved. This method may perform multiple REST calls.
-    # @param [String] resource_type_path Canonical path of the resource type to look for. Can be obtained from
-    #   {ResourceType}.path. Must not be nil. The tenant_id in the canonical path doesn't have to be there.
-    # @return [Array<Metric>] List of metrics. Can be empty
-    def list_metrics_for_resource_type(resource_type_path)
-      path = resource_type_path.is_a?(CanonicalPath) ? resource_type_path : CanonicalPath.parse(resource_type_path)
-      resource_type_id = path.resource_type_id
-      feed_id = path.feed_id
-
-      query = generate_query_params sort: 'id'
-      if feed_id.nil?
-        ret = http_get("/traversal/rt;#{resource_type_id}/rl;defines/type=r/rl;incorporates/type=m#{query}")
-      else
-        ret = http_get(
-          "/traversal/f;#{feed_id}/rt;#{resource_type_id}/rl;defines/type=r/rl;incorporates/type=m#{query}")
-      end
-      ret.map { |m| Metric.new(m) }
+      # Now find each collected resource path in their belonging InventoryStructure
+      metric_type = get_metric_type(path)
+      extract_metrics_for_type(structures, feed_path, metric_type)
     end
 
     # List metric (definitions) for the passed resource. It is possible to filter down the
@@ -254,179 +198,87 @@ module Hawkular::Inventory
     #    # Don't filter, return all metric definitions
     #    client.list_metrics_for_resource(wild_fly)
     def list_metrics_for_resource(resource_path, filter = {})
-      path = resource_path.is_a?(CanonicalPath) ? resource_path : CanonicalPath.parse(resource_path)
-      feed_id = path.feed_id
-      resource_path_escaped = 'r;' + path.resource_ids.join('/r;')
-
-      query = generate_query_params sort: 'id'
-      ret = http_get("/traversal/f;#{feed_id}/#{resource_path_escaped}/rl;incorporates/type=m#{query}")
-      to_filter = ret.map { |m| Metric.new(m) }
+      path = CanonicalPath.parse_if_string(resource_path)
+      raw_hash = get_raw_entity_hash(path)
+      return [] unless raw_hash
+      to_filter = []
+      if (raw_hash.key? 'children') && (raw_hash['children'].key? 'metric') && !raw_hash['children']['metric'].empty?
+        # Need to merge metric type info that we must grab from another place
+        metric_types = list_metric_types(path.feed_id)
+        metric_types_index = {}
+        metric_types.each { |mt| metric_types_index[mt.path] = mt }
+        to_filter = raw_hash['children']['metric'].map do |m|
+          metric_data = m['data']
+          metric_data['path'] = "#{path}/m;#{metric_data['id']}"
+          metric_type = metric_types_index[metric_data['metricTypePath']]
+          Metric.new(metric_data, metric_type) if metric_type
+        end
+        to_filter = to_filter.select { |m| m }
+      end
       filter_entities(to_filter, filter)
-    end
-
-    # Create a new feed
-    # @param [String] feed_id  Id of a feed - required
-    # @param [String] feed_name A display name for the feed
-    # @return [Object]
-    def create_feed(feed_id, feed_name = nil)
-      feed = create_blueprint
-      feed[:id] = feed_id
-      feed[:name] = feed_name
-
-      begin
-        return http_post('/entity/feed', feed)
-      rescue HawkularException  => error
-        # 409 We already exist -> that is ok
-        if error.status_code == 409
-          the_feed = hawk_escape_id feed_id
-          http_get("/entity/f;#{the_feed}")
-        else
-          raise
-        end
-      end
-    end
-
-    # Delete the feed with the passed feed id.
-    # @param feed_id Id of the feed to be deleted.
-    def delete_feed(feed_id)
-      the_feed = hawk_escape_id feed_id
-      http_delete("/entity/f;#{the_feed}")
-    end
-
-    # Create a new resource type
-    # @param [String] feed_id Id of the feed to add the type to
-    # @param [String] type_id Id of the new type
-    # @param [String] type_name Name of the type
-    # @return [ResourceType] ResourceType object just created
-    def create_resource_type(feed_id, type_id, type_name)
-      the_feed = hawk_escape_id feed_id
-
-      type = create_blueprint
-      type[:id] = type_id
-      type[:name] = type_name
-
-      begin
-        http_post("/entity/f;#{the_feed}/resourceType", type)
-      rescue HawkularException => error
-        # 409 We already exist -> that is ok
-        raise unless error.status_code == 409
-      ensure
-        the_type = hawk_escape_id type_id
-        res = http_get("/entity/f;#{the_feed}/rt;#{the_type}")
-      end
-      ResourceType.new(res)
-    end
-
-    # Create a resource of a given type. To retrieve that resource
-    # you need to call {#get_resource}
-    # @param [String] resource_type_path Canonical path of the new resource's type.
-    # @param [String] resource_id Id of the new resource
-    # @param [String] resource_name Name of the new resource
-    # @param [Hash<String,Object>] properties Additional properties. Those are not the config-properties
-    def create_resource(resource_type_path, resource_id, resource_name = nil, properties = {})
-      create_resource_under_resource(resource_type_path, nil, resource_id, resource_name, properties)
-    end
-
-    # Create a resource of a given type under a given resource. To retrieve that resource
-    # you need to call {#get_resource}
-    # @param [String] res_type_path Canonical path of the new resource's type.
-    # @param [String] parent_res_path Canonical path of the resource under which we create this resource.
-    #   If nil, the top-lvl resource will be created.
-    # @param [String] resource_id Id of the resource
-    # @param [String] resource_name Name of the resource
-    # @param [Hash<String,Object>] properties Additional properties. Those are not the config-properties
-    def create_resource_under_resource(res_type_path, parent_res_path, resource_id, resource_name = nil,
-                                       properties = {})
-      type_path = res_type_path.is_a?(CanonicalPath) ? res_type_path : CanonicalPath.parse(res_type_path)
-      feed_id = type_path.feed_id
-
-      res = create_blueprint
-      res[:properties] = properties
-      res[:id] = resource_id
-      res[:name] = resource_name
-      res[:resourceTypePath] = type_path.to_s
-
-      begin
-        if parent_res_path.nil?
-          res = http_post("/entity/f;#{feed_id}/resource", res)
-        else
-          path = parent_res_path.is_a?(CanonicalPath) ? parent_res_path : CanonicalPath.parse(parent_res_path)
-          resource_path = 'r;' + path.resource_ids.join('/r;')
-          res = http_post("/entity/f;#{feed_id}/#{resource_path}/resource", res)
-        end
-      rescue HawkularException => error
-        # 409 We already exist -> that is ok
-        raise unless error.status_code == 409
-        # Ensure we have a consistent behaviour if resource already exists Issue#180
-        if parent_res_path.nil?
-          hash = type_path.to_h
-          hash.delete(:metric_type_id)
-          path = CanonicalPath.new(hash)
-        end
-        res = get_resource(path.to_resource(resource_id)).to_h
-      end
-      Resource.new(res)
     end
 
     # Return the resource object for the passed path
     # @param [String] resource_path Canonical path of the resource to fetch.
-    # @param [Boolean] fetch_resource_config Should the resource config data be fetched?
-    def get_resource(resource_path, fetch_resource_config = true)
-      path = resource_path.is_a?(CanonicalPath) ? resource_path : CanonicalPath.parse(resource_path)
-      feed_id = path.feed_id
-      res_path = 'r;' + path.resource_ids.join('/r;')
-
-      res = http_get("/entity/f;#{feed_id}/#{res_path}")
-      if fetch_resource_config
-        p = get_config_data_for_resource(resource_path)
-        res['properties'] ||= {}
-        res['properties'].merge! p['value'] unless p['value'].nil?
+    # @param [Boolean] fetch_properties Should the resource config data be fetched?
+    def get_resource(resource_path, fetch_properties = true)
+      path = CanonicalPath.parse_if_string(resource_path)
+      raw_hash = get_raw_entity_hash(path)
+      unless raw_hash
+        exception = HawkularException.new("Resource not found: #{resource_path}")
+        fail exception
       end
-      Resource.new(res)
+      entity_hash = entity_json_to_hash(-> (_) { path }, raw_hash, fetch_properties)
+      Resource.new(entity_hash)
     end
 
-    # Create a new metric type for a feed
-    # @param [String] feed_id Id of the feed
-    # @param [String] metric_type_id Id of the metric type to create
-    # @param [String] type Type of the Metric. Allowed are GAUGE,COUNTER, AVAILABILITY
-    # @param [String] unit Unit of the metric
-    # @param [Numeric] collection_interval
-    # @return [MetricType] Type just created or the one from the server if it already existed.
-    def create_metric_type(feed_id, metric_type_id, type = 'GAUGE', unit = 'NONE', collection_interval = 60)
-      the_feed = hawk_escape_id feed_id
-
-      metric_kind = type.nil? ? 'GAUGE' : type.upcase
-      fail "Unknown type #{metric_kind}" unless %w(GAUGE COUNTER AVAILABILITY').include?(metric_kind)
-
-      mt = build_metric_type_hash(collection_interval, metric_kind, metric_type_id, unit)
-
-      begin
-        http_post("/entity/f;#{the_feed}/metricType", mt)
-      rescue HawkularException => error
-        # 409 We already exist -> that is ok
-        raise unless error.status_code == 409
+    # Return the resource type object for the passed path
+    # @param [String] resource_type_path Canonical path of the resource type to fetch.
+    def get_resource_type(resource_type_path)
+      path = CanonicalPath.parse_if_string(resource_type_path)
+      raw_hash = get_raw_entity_hash(path)
+      unless raw_hash
+        exception = HawkularException.new("Resource type not found: #{resource_type_path}")
+        fail exception
       end
+      entity_hash = entity_json_to_hash(-> (_) { path }, raw_hash, false)
+      ResourceType.new(entity_hash)
+    end
 
-      new_mt = http_get("/entity/f;#{the_feed}/mt;#{metric_type_id}")
-
-      MetricType.new(new_mt)
+    # Return the metric type object for the passed path
+    # @param [String] metric_type_path Canonical path of the metric type to fetch.
+    def get_metric_type(metric_type_path)
+      path = CanonicalPath.parse_if_string(metric_type_path)
+      raw_hash = get_raw_entity_hash(path)
+      unless raw_hash
+        exception = HawkularException.new("Metric type not found: #{metric_type_path}")
+        fail exception
+      end
+      entity_hash = entity_json_to_hash(-> (_) { path }, raw_hash, false)
+      MetricType.new(entity_hash)
     end
 
     # List operation definitions (types) for a given resource type
     # @param [String] resource_type_path canonical path of the resource type entity
     # @return [Array<String>] List of operation type ids
     def list_operation_definitions(resource_type_path)
-      parsed_path = CanonicalPath.parse(resource_type_path.to_s)
-      feed_id = parsed_path.feed_id
-      resource_type_id = parsed_path.resource_type_id
-      ots = http_get("/traversal/f;#{feed_id}/rt;#{resource_type_id}/type=ot")
+      path = CanonicalPath.parse_if_string(resource_type_path)
+      fail 'Missing feed_id in resource_type_path' unless path.feed_id
+      fail 'Missing resource_type_id in resource_type_path' unless path.resource_type_id
+      response = http_post(
+        '/strings/raw/query',
+        fromEarliest: true,
+        order: 'DESC',
+        tags: path.to_tags)
+      structures = extract_structures_from_body(response)
       res = {}
-      ots.each do |ot|
-        ot_name = ERB::Util.url_encode ot['name']
-        pts = http_get("/traversal/f;#{feed_id}/rt;#{resource_type_id}/ot;#{ot_name}/d;parameterTypes")
-        ot['parameters'] = pts[0]['value'] unless pts.empty?
-        od = OperationDefinition.new ot
-        res.store od.name, od
+      structures.map { |rt| rt['inventoryStructure'] }
+        .select { |rt| rt['children'] && rt['children']['operationType'] }
+        .flat_map { |rt| rt['children']['operationType'] }
+        .each do |ot|
+        hash = optype_json_to_hash(ot)
+        od = OperationDefinition.new hash
+        res[od.name] = od
       end
       res
     end
@@ -435,92 +287,8 @@ module Hawkular::Inventory
     # @param [String] resource_path canonical path of the resource entity
     # @return [Array<String>] List of operation type ids
     def list_operation_definitions_for_resource(resource_path)
-      resource = get_resource(resource_path.to_s, false)
+      resource = get_resource(resource_path, false)
       list_operation_definitions(resource.type_path)
-    end
-
-    # Create a Metric and associate it with a resource.
-    # @param [String] metric_type_path Canonical path of the metric type of the new metric.
-    # @param [String] resource_path Canonical path of the resource to which we want to associate the metric.
-    # @param [String] metric_id Id of the metric
-    # @param [String] metric_name a (display) name for the metric. If nil, #metric_id is used.
-    # @return [Metric] The metric created or if it already existed the version from the server
-    def create_metric_for_resource(metric_type_path, resource_path, metric_id, metric_name = nil)
-      type_path = metric_type_path.is_a?(CanonicalPath) ? metric_type_path : CanonicalPath.parse(metric_type_path)
-      feed_id = type_path.feed_id
-      res_path = resource_path.is_a?(CanonicalPath) ? resource_path : CanonicalPath.parse(resource_path)
-      res_path_str = 'r;' + res_path.resource_ids.join('/r;')
-
-      m = {}
-      m['id'] = metric_id
-      m['name'] = metric_name || metric_id
-      m['metricTypePath'] = type_path.to_s
-
-      begin
-        http_post("/entity/f;#{feed_id}/metric", m)
-      rescue HawkularException => error
-        # 409 We already exist -> that is ok
-        raise unless error.status_code == 409
-      end
-
-      ret = http_get("/entity/f;#{feed_id}/m;#{metric_id}")
-      the_metric = Metric.new(ret)
-
-      begin
-        rl = {}
-        rl['otherEnd'] = the_metric.path.to_s
-        rl['name'] = 'incorporates'
-        http_post("/entity/f;#{feed_id}/#{res_path_str}/relationship", [rl])
-      rescue HawkularException => error
-        # 409 We already exist -> that is ok
-        raise unless error.status_code == 409
-      end
-      the_metric
-    end
-
-    # Listen on inventory changes
-    # @param [String] type Type of entity for which we want the events.
-    # Allowed values: resource, metric, resourcetype, metrictype, feed, environment, operationtype, metadatapack
-    # @param [String] action What types of events are we interested in.
-    # Allowed values: created, updated, deleted, copied, registered
-    def events(type = 'resource', action = 'created')
-      tenant_id = get_tenant
-
-      base64_creds = ["#{@credentials[:username]}:#{@credentials[:password]}"].pack('m').delete("\r\n")
-      ws_options = {
-        headers: {
-          Authorization: 'Basic ' + base64_creds,
-          Accept: 'application/json'
-        }
-      }
-      ws_options[:headers][:'Hawkular-Tenant'] = tenant_id
-
-      url = normalize_entrypoint_url(@entrypoint, "ws/events?tenantId=#{tenant_id}&type=#{type}&action=#{action}")
-      url = url_with_websocket_scheme(url)
-      @ws = WebSocket::Client::Simple.connect url, ws_options do |client|
-        client.on :message do |msg|
-          parsed_message = JSON.parse(msg.data)
-          entity = case type
-                   when 'resource'
-                     Resource.new(parsed_message)
-                   when 'resourcetype'
-                     ResourceType.new(parsed_message)
-                   when 'metric'
-                     Metric.new(parsed_message)
-                   when 'metrictype'
-                     MetricType.new(parsed_message)
-                   else
-                     BaseEntity.new(parsed_message)
-                   end
-          yield entity
-        end
-      end
-    end
-
-    # Stop listening on inventory events.
-    # this method closes the web socket connection
-    def no_more_events!
-      @ws.close
     end
 
     # Return version and status information for the used version of Hawkular-Inventory
@@ -530,27 +298,11 @@ module Hawkular::Inventory
       http_get('/status')
     end
 
+    def feed_cp(feed_id)
+      CanonicalPath.new(tenant_id: @tenant, feed_id: hawk_escape_id(feed_id))
+    end
+
     private
-
-    # Creates a hash with the fields required by the Blueprint api in Hawkular-Inventory
-    def create_blueprint
-      res = {}
-      res[:properties] = {}
-      res[:id] = nil
-      res[:name] = nil
-      res[:outgoing] = {}
-      res[:incoming] = {}
-      res
-    end
-
-    def build_metric_type_hash(collection_interval, metric_kind, metric_type_id, unit)
-      mt = {}
-      mt['id'] = metric_type_id
-      mt['type'] = metric_kind
-      mt['unit'] = unit.nil? ? 'NONE' : unit.upcase
-      mt['collectionInterval'] = collection_interval.nil? ? 60 : collection_interval
-      mt
-    end
 
     def filter_entities(entities, filter)
       entities.select do |entity|
@@ -563,6 +315,158 @@ module Hawkular::Inventory
         end
         found
       end
+    end
+
+    def entity_json_to_hash(path_getter, json, fetch_properties)
+      data = json['data']
+      data['path'] = path_getter.call(data['id']).to_s
+      if fetch_properties
+        props = fetch_properties(json)
+        data['properties'].merge! props if props
+      end
+      data
+    end
+
+    def fetch_properties(json)
+      return unless (json.key? 'children') && (json['children'].key? 'dataEntity')
+      config = json['children']['dataEntity'].find { |d| d['data']['id'] == 'configuration' }
+      config['data']['value'] if config
+    end
+
+    def optype_json_to_hash(json)
+      data = json['data']
+      # Fetch parameterTypes
+      if (json.key? 'children') && (json['children'].key? 'dataEntity')
+        param_types = json['children']['dataEntity'].find { |d| d['data']['id'] == 'parameterTypes' }
+        data['parameters'] = param_types['data']['value'] if param_types
+      end
+      data
+    end
+
+    def get_raw_entity_hash(path)
+      c_path = CanonicalPath.parse_if_string(path)
+      raw = http_post(
+        '/strings/raw/query',
+        fromEarliest: true,
+        order: 'DESC',
+        tags: c_path.to_tags
+      )
+      structure = extract_structure_from_body(raw)
+      find_entity_in_tree(c_path, structure)
+    end
+
+    def find_entity_in_tree(fullpath, inventory_structure)
+      entity = inventory_structure
+      if fullpath.resource_ids
+        relative = fullpath.resource_ids.drop(1)
+        relative.each do |child|
+          if (entity.key? 'children') && (entity['children'].key? 'resource')
+            unescaped = URI.unescape(child)
+            entity = entity['children']['resource'].find { |r| r['data']['id'] == unescaped }
+          else
+            entity = nil
+            break
+          end
+        end
+      end
+      if fullpath.metric_id
+        if (entity.key? 'children') && (entity['children'].key? 'metric')
+          unescaped = URI.unescape(fullpath.metric_id)
+          entity = entity['children']['metric'].find { |r| r['data']['id'] == unescaped }
+        else
+          entity = nil
+        end
+      end
+      entity
+    end
+
+    def extract_child_resources(arr, path, parent_hash, recursive)
+      c_path = CanonicalPath.parse_if_string(path)
+      if (parent_hash.key? 'children') && (parent_hash['children'].key? 'resource')
+        parent_hash['children']['resource'].each do |r|
+          entity = entity_json_to_hash(-> (id) { c_path.down(id) }, r, false)
+          arr.push(Resource.new(entity))
+          extract_child_resources(arr, entity['path'], r, true) if recursive
+        end
+      end
+      arr
+    end
+
+    def extract_resources_for_type(structures, feed_path, resource_type_id, fetch_properties)
+      matching_resources = []
+      structures.each do |full_struct|
+        next unless full_struct.key? 'typesIndex'
+        next unless full_struct['typesIndex'].key? resource_type_id
+        inventory_structure = full_struct['inventoryStructure']
+        root_path = feed_path.down(inventory_structure['data']['id'])
+        full_struct['typesIndex'][resource_type_id].each do |relative_path|
+          if relative_path.empty?
+            # Root resource
+            resource = entity_json_to_hash(-> (id) { feed_path.down(id) }, inventory_structure, fetch_properties)
+            matching_resources.push(Resource.new(resource))
+          else
+            # Search for child
+            fullpath = CanonicalPath.parse("#{root_path}/#{relative_path}")
+            resource_json = find_entity_in_tree(fullpath, inventory_structure)
+            if resource_json
+              resource = entity_json_to_hash(-> (_) { fullpath }, resource_json, fetch_properties)
+              matching_resources.push(Resource.new(resource))
+            end
+          end
+        end
+      end
+      matching_resources
+    end
+
+    def extract_metrics_for_type(structures, feed_path, metric_type)
+      matching_metrics = []
+      structures.each do |full_struct|
+        next unless full_struct.key? 'metricTypesIndex'
+        next unless full_struct['metricTypesIndex'].key? metric_type.id
+        inventory_structure = full_struct['inventoryStructure']
+        root_path = feed_path.down(inventory_structure['data']['id'])
+        full_struct['metricTypesIndex'][metric_type.id].each do |relative_path|
+          # Search for child
+          fullpath = CanonicalPath.parse("#{root_path}/#{relative_path}")
+          metric_json = find_entity_in_tree(fullpath, inventory_structure)
+          if metric_json
+            metric_hash = entity_json_to_hash(-> (_) { fullpath }, metric_json, false)
+            matching_metrics.push(Metric.new(metric_hash, metric_type))
+          end
+        end
+      end
+      matching_metrics
+    end
+
+    def extract_structure_from_body(response_body_array)
+      # Expecting only 1 structure (but may have several chunks)
+      structures = extract_structures_from_body(response_body_array)
+      structures[0]['inventoryStructure'] unless structures.empty?
+    end
+
+    def extract_structures_from_body(response_body_array)
+      response_body_array.map { |element| rebuild_from_chunks(element['data']) }
+        .select { |full| full } # evict nil
+        .map { |full| decompress(full) }
+    end
+
+    def rebuild_from_chunks(data_node)
+      return if data_node.empty?
+      master_data = data_node[0]
+      return Base64.decode64(master_data['value']) unless (master_data.key? 'tags') &&
+                                                          (master_data['tags'].key? 'chunks')
+      last_chunk = master_data['tags']['chunks'].to_i - 1
+      all = Base64.decode64(master_data['value'])
+      return if all.empty?
+      (1..last_chunk).inject(all) do |full, chunk_id|
+        slave_data = data_node[chunk_id]
+        full.concat(Base64.decode64(slave_data['value']))
+      end
+    end
+
+    def decompress(raw)
+      gz = Zlib::GzipReader.new(StringIO.new(raw))
+      JSON.parse(gz.read)
     end
   end
 

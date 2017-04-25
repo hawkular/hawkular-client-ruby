@@ -5,7 +5,7 @@ http_interactions:
     uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/events
     body:
       encoding: UTF-8
-      string: '{"id":"<%= id %>","ctime":1475000238000,"category":"MyCategory","text":"Li
+      string: '{"id":"<%= id %>","ctime":1493133070000,"category":"MyCategory","text":"Li
         la lu","context":{"message":"This is a test"},"tags":{"tag_name":"tag-value"}}'
     headers:
       Accept:
@@ -20,8 +20,6 @@ http_interactions:
       - application/json
       Content-Length:
       - '165'
-      Host:
-      - localhost:8080
   response:
     status:
       code: 200
@@ -38,7 +36,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 27 Sep 2016 18:17:18 GMT
+      - Tue, 25 Apr 2017 15:11:10 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -47,10 +45,10 @@ http_interactions:
       - '229'
     body:
       encoding: UTF-8
-      string: '{"eventType":"EVENT","tenantId":"hawkular","id":"<%= id %>","ctime":1475000238000,"dataSource":"_none_","category":"MyCategory","text":"Li
+      string: '{"eventType":"EVENT","tenantId":"hawkular","id":"<%= id %>","ctime":1493133070000,"dataSource":"_none_","category":"MyCategory","text":"Li
         la lu","context":{"message":"This is a test"},"tags":{"tag_name":"tag-value"}}'
     http_version: 
-  recorded_at: Tue, 27 Sep 2016 18:17:18 GMT
+  recorded_at: Tue, 25 Apr 2017 15:11:10 GMT
 - request:
     method: delete
     uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/events/<%= id %>
@@ -68,8 +66,6 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
-      Host:
-      - localhost:8080
   response:
     status:
       code: 200
@@ -86,7 +82,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 27 Sep 2016 18:17:18 GMT
+      - Tue, 25 Apr 2017 15:11:10 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -97,7 +93,7 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Tue, 27 Sep 2016 18:17:18 GMT
+  recorded_at: Tue, 25 Apr 2017 15:11:10 GMT
 - request:
     method: get
     uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/events?eventIds=<%= id %>&thin=true
@@ -115,8 +111,6 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
-      Host:
-      - localhost:8080
   response:
     status:
       code: 200
@@ -133,7 +127,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 27 Sep 2016 18:17:18 GMT
+      - Tue, 25 Apr 2017 15:11:10 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -144,5 +138,5 @@ http_interactions:
       encoding: UTF-8
       string: "[]"
     http_version: 
-  recorded_at: Tue, 27 Sep 2016 18:17:18 GMT
+  recorded_at: Tue, 25 Apr 2017 15:11:10 GMT
 recorded_with: VCR 3.0.3

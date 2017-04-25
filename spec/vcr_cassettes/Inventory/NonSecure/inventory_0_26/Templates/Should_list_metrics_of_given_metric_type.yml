@@ -1,0 +1,98 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://<%= super_secret_username %>:<%= super_secret_password %>@localhost:8080/hawkular/metrics/strings/raw/query
+    body:
+      encoding: UTF-8
+      string: '{"fromEarliest":true,"order":"DESC","tags":"module:inventory,feed:<%= feed_uuid %>,type:r,mtypes:.*\\|Platform_File\\
+        Store_Total\\ Space\\|.*"}'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - hawkular
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '140'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Tue, 25 Apr 2017 15:07:04 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '1643'
+    body:
+      encoding: UTF-8
+      string: '[{"id":"inventory.<%= feed_uuid %>.r.platform~/OPERATING_SYSTEM=<%= feed_uuid %>_OperatingSystem","data":[{"timestamp":1493132804678,"value":"H4sIAAAAAAAAAO2bXW/iOBSG/0oUqXcdpXwERkW96HboCmlYEKEXI4SQm5g2msRGxmEXVeS3j02AxMEE6OSDHXLTNI7xOefhPY7jHD5UGy0gopgsDUo8k3oEqvcfKl3O2FElcI49YkL1VrUABfzKjOAZJNSGc3a2ulVti/WbOYBOMXF9rddvDx6HnX/+nhg/jGG7+wDA1yZ4BfrX16k+6bGPAmqjN2M5p9BlwyLgckNHemGPvmHWsDGJTOzuzrY+DpnLfUDf2Wgabb2Df396DiDatBUdWyO01d84G9q5qd5tTLHxzHfbsQhEPFgXUmKb6v3oIzn+bscf+CPB0CeRjP3u0N/3UAmuTvoEm3A+V56wh2iIL96cxCuI6TRabiKtrTesYWvYxI4DTWpj1EEUkgVw1HvkOY7IdbW6vRSgwUF56r8o3zGwQqT7F3KCGhw40/4L+7sx/n8Fy91XHhfs4hvcgxu7mDdgbp4dQgdOhTwOZ53jc8Mn8WrPne/tiTHsDdoPmgUXmgtmrIc2hRYm4Ms7diM8n20HKgabxaEyOtB5nNk0yo1zutx88RPoCdxE5YbsJkNMgaMYM2BG2IqNWWg0CjDwgZ9tDF5e4v8O4Zc5eOUnIuJYa+aMA3ufgDw+zjkbqARjenK6885luocoynQvinCZ7idA9Q8k9jWmsF8maw4sy7Q8hK/b7vYGPx660MVkGaLZnWeTj5vhi89EIXxRPkHb5HEBbGetkzgjyZUsJBT3g+lnZ+8C8/E40WAOi9OMtWZIcjupnU0xwzTsD3pPbcPoDR7u9ja5MFFGd9ndG3dWLiAdIxhE6eycnPD9KTaRRjdXok1Z6EYwzoSztXVRuqlIdVO5Nt1USt2cB6wq1U312nRTLXVzHrCaVDe1a9NNrdTNecDqUt3Ur0039VI35wHTpbrRr003eqmb84A1pLppXJtuGqVuzgPWlOqmeW26af5ZuhkHdV1tRG26PI7UxGhqv3mcDUa7QPnYyREyF7x1WdkTRhTYCBKlY20/2AXMKwTXLUIdGP/iCXbgnmFZAqwr1uYdZMH/uKH41ur9SCWt3dd/U32OC+Cm9i1JAuwTwU4e67cZkrE7WP3C7Qkdws33NFwJN/lZX3ZuwQX7G7yXY/+IJSL5GNu8oE7VmC8gDCeEFAjuMpp1vUvB7+h4lZTHq6Y8Xi3l8eopj6enPF4j5fGa6liYtSWzztEyQyZht7W+Q93of0VtM1u/46n+TV6Vl1xemDSVxUpOi3M8XmwadVr2KiX9KV/LJPI9M3EW8vc0kvD33sD9aQgkL/3kN1mhWiDXG25WgE73IM4usYIhv8VBsWC4B8WB8XMJ3j8jQOnCKvIQk/YSKysAgpF4/IcekFJd7OURWaWIyKp5RFYtIrJaHpHVioisnkdk9SIi0/OITC8iskYekTWKiKyZR2TN0yJLfMSR/RzpAp7QYr9POrDUFco2y7VuQn1pudjNhcwlrHZjEY5Xq19htoCY6jwAAA=="}]}]'
+    http_version: 
+  recorded_at: Tue, 25 Apr 2017 15:07:04 GMT
+- request:
+    method: post
+    uri: http://<%= super_secret_username %>:<%= super_secret_password %>@localhost:8080/hawkular/metrics/strings/raw/query
+    body:
+      encoding: UTF-8
+      string: '{"fromEarliest":true,"order":"DESC","tags":"module:inventory,feed:<%= feed_uuid %>,type:mt,id:Platform_File%20Store_Total%20Space"}'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - hawkular
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '127'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Tue, 25 Apr 2017 15:07:04 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '396'
+    body:
+      encoding: UTF-8
+      string: '[{"id":"inventory.<%= feed_uuid %>.mt.Platform_File Store_Total Space","data":[{"timestamp":1493132804116,"value":"H4sIAAAAAAAAAFWPT4vCQAzFv4rk3IPgrbdd/IO3hXYPnmSYxm4gTUrMiCL97s5QFfcU3kvej5c7kFxQXO3WuKXoyRDqO/htzBMGdKPYFlFBFzyU3Wg6ojnhOaupAury5Q8HP6kNxy0xLpoMxGOrHnjRjCGWuIShIP+bmrxXkv5JkqjDWyUhz4HvQ7tp8uncZZ1LtHO5PqS+MKIyY3RS2YujXQJDvVouq9cTu6/f3QYyMP4Rd4ZS8NO8Pu+lwyvUkpirj3c//ekB8Z4mnSUBAAA="}]}]'
+    http_version: 
+  recorded_at: Tue, 25 Apr 2017 15:07:04 GMT
+recorded_with: VCR 3.0.3

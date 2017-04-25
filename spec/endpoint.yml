@@ -21,6 +21,5 @@ password: "password"
 token_v8:
 
 metrics: "hawkular/metrics"
-inventory: "hawkular/inventory"
 alerts: "hawkular/alerts"
 urls: "hawkular/api/urls"

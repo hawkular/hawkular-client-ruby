@@ -17,8 +17,6 @@ http_interactions:
       - <%= tenant %>
       Content-Type:
       - application/json
-      Host:
-      - localhost:8080
   response:
     status:
       code: 200
@@ -33,17 +31,17 @@ http_interactions:
       Content-Type:
       - application/json
       Content-Length:
-      - '133'
+      - '153'
       Date:
-      - Thu, 13 Oct 2016 03:30:38 GMT
+      - Wed, 05 Apr 2017 08:18:50 GMT
     body:
       encoding: UTF-8
-      string: '{"MetricsService":"STARTED","Implementation-Version":"0.20.1.Final","Built-From-Git-SHA1":"f23946235446d3425db31d262b47b4f950ddabb3"}'
+      string: '{"MetricsService":"STARTED","Implementation-Version":"0.26.0-SNAPSHOT","Built-From-Git-SHA1":"65cace494ecb1fe770989a9e57d140f1918ef0e9","Cassandra":"up"}'
     http_version: 
-  recorded_at: Thu, 13 Oct 2016 03:30:38 GMT
+  recorded_at: Wed, 05 Apr 2017 08:18:50 GMT
 - request:
     method: get
-    uri: http://jdoe:password@localhost:8080/<%= tenant %>/inventory/status
+    uri: http://jdoe:password@localhost:8080/<%= tenant %>/metrics/status
     body:
       encoding: US-ASCII
       string: ''
@@ -58,8 +56,6 @@ http_interactions:
       - <%= tenant %>
       Content-Type:
       - application/json
-      Host:
-      - localhost:8080
   response:
     status:
       code: 200
@@ -74,23 +70,17 @@ http_interactions:
       Content-Type:
       - application/json
       Content-Length:
-      - '234'
+      - '153'
       Date:
-      - Thu, 13 Oct 2016 03:30:38 GMT
+      - Wed, 05 Apr 2017 08:18:50 GMT
     body:
       encoding: UTF-8
-      string: |-
-        {
-          "Implementation-Version" : "0.20.0.Final",
-          "Built-From-Git-SHA1" : "a3b55c0c65a141fdbb007524d063b5d57bf2d96c",
-          "Inventory-Implementation" : "org.<%= tenant %>.inventory.impl.tinkerpop.TinkerpopInventory",
-          "Initialized" : "true"
-        }
+      string: '{"MetricsService":"STARTED","Implementation-Version":"0.26.0-SNAPSHOT","Built-From-Git-SHA1":"65cace494ecb1fe770989a9e57d140f1918ef0e9","Cassandra":"up"}'
     http_version: 
-  recorded_at: Thu, 13 Oct 2016 03:30:38 GMT
+  recorded_at: Wed, 05 Apr 2017 08:18:50 GMT
 - request:
     method: get
-    uri: http://jdoe:password@localhost:8080/<%= tenant %>/inventory/traversal/type=f
+    uri: http://jdoe:password@localhost:8080/<%= tenant %>/metrics/strings/tags/module:inventory,feed:*
     body:
       encoding: US-ASCII
       string: ''
@@ -105,8 +95,6 @@ http_interactions:
       - <%= tenant %>
       Content-Type:
       - application/json
-      Host:
-      - localhost:8080
   response:
     status:
       code: 200
@@ -123,32 +111,21 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Thu, 13 Oct 2016 03:30:38 GMT
-      X-Total-Count:
-      - '1'
+      - Wed, 05 Apr 2017 08:18:50 GMT
       Connection:
       - keep-alive
       Content-Type:
       - application/json
       Content-Length:
-      - '300'
-      Link:
-      - <http://localhost:8080/<%= tenant %>/inventory/traversal/type=f>; rel="current"
+      - '72'
     body:
       encoding: UTF-8
-      string: |-
-        [ {
-          "path" : "/t;<%= tenant %>/f;d19d84dc-f403-4f5b-a987-fbd48863ea4f",
-          "identityHash" : "12efca83e331bdae189fa5db13d2d5a6b70f5a6",
-          "contentHash" : "da39a3ee5e6b4bd3255bfef95601890afd879",
-          "syncHash" : "af2860c4e1bb64fc3177139eeb3ab967d654f324",
-          "id" : "d19d84dc-f403-4f5b-a987-fbd48863ea4f"
-        } ]
+      string: '{"feed":["03eca767-e48f-4f0b-9a8a-d8f46112c9a5"],"module":["inventory"]}'
     http_version: 
-  recorded_at: Thu, 13 Oct 2016 03:30:38 GMT
+  recorded_at: Wed, 05 Apr 2017 08:18:50 GMT
 - request:
     method: get
-    uri: http://jdoe:password@localhost:8080/<%= tenant %>/metrics/gauges/MI~R~%5Bd19d84dc-f403-4f5b-a987-fbd48863ea4f%2Fplatform~%2FOPERATING_SYSTEM=d19d84dc-f403-4f5b-a987-fbd48863ea4f_OperatingSystem%2FMEMORY=Memory%5D~MT~Platform_Memory_Total%20Memory/raw/
+    uri: http://jdoe:password@localhost:8080/<%= tenant %>/metrics/gauges/MI~R~%5B03eca767-e48f-4f0b-9a8a-d8f46112c9a5%2Fplatform~%2FOPERATING_SYSTEM=03eca767-e48f-4f0b-9a8a-d8f46112c9a5_OperatingSystem%2FMEMORY=Memory%5D~MT~Platform_Memory_Total%20Memory/raw/
     body:
       encoding: US-ASCII
       string: ''
@@ -163,8 +140,6 @@ http_interactions:
       - <%= tenant %>
       Content-Type:
       - application/json
-      Host:
-      - localhost:8080
   response:
     status:
       code: 200
@@ -181,16 +156,16 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Thu, 13 Oct 2016 03:30:38 GMT
+      - Wed, 05 Apr 2017 08:18:50 GMT
       Connection:
       - keep-alive
       Content-Type:
       - application/json
       Content-Length:
-      - '10609'
+      - '751'
     body:
       encoding: UTF-8
-      string: '[{"timestamp":1476329399006,"value":1.6438665216E10},{"timestamp":1476329339006,"value":1.6438665216E10},{"timestamp":1476329279006,"value":1.6438665216E10},{"timestamp":1476329219005,"value":1.6438665216E10},{"timestamp":1476329159005,"value":1.6438665216E10},{"timestamp":1476329099006,"value":1.6438665216E10},{"timestamp":1476329039006,"value":1.6438665216E10},{"timestamp":1476328979019,"value":1.6438665216E10},{"timestamp":1476328919005,"value":1.6438665216E10},{"timestamp":1476328859005,"value":1.6438665216E10},{"timestamp":1476328798006,"value":1.6438665216E10},{"timestamp":1476328738005,"value":1.6438665216E10},{"timestamp":1476328678006,"value":1.6438665216E10},{"timestamp":1476328618006,"value":1.6438665216E10},{"timestamp":1476328558006,"value":1.6438665216E10},{"timestamp":1476328497005,"value":1.6438665216E10},{"timestamp":1476328437006,"value":1.6438665216E10},{"timestamp":1476328377005,"value":1.6438665216E10},{"timestamp":1476328317005,"value":1.6438665216E10},{"timestamp":1476328257005,"value":1.6438665216E10},{"timestamp":1476328197004,"value":1.6438665216E10},{"timestamp":1476328137006,"value":1.6438665216E10},{"timestamp":1476328076005,"value":1.6438665216E10},{"timestamp":1476328016005,"value":1.6438665216E10},{"timestamp":1476327956005,"value":1.6438665216E10},{"timestamp":1476327895005,"value":1.6438665216E10},{"timestamp":1476327835005,"value":1.6438665216E10},{"timestamp":1476327775005,"value":1.6438665216E10},{"timestamp":1476327715005,"value":1.6438665216E10},{"timestamp":1476327655022,"value":1.6438665216E10},{"timestamp":1476327595005,"value":1.6438665216E10},{"timestamp":1476325203005,"value":1.6438665216E10},{"timestamp":1476325143005,"value":1.6438665216E10},{"timestamp":1476325083004,"value":1.6438665216E10},{"timestamp":1476325023005,"value":1.6438665216E10},{"timestamp":1476324962006,"value":1.6438665216E10},{"timestamp":1476324902005,"value":1.6438665216E10},{"timestamp":1476324842005,"value":1.6438665216E10},{"timestamp":1476324782006,"value":1.6438665216E10},{"timestamp":1476324722005,"value":1.6438665216E10},{"timestamp":1476324662005,"value":1.6438665216E10},{"timestamp":1476324602005,"value":1.6438665216E10},{"timestamp":1476324542004,"value":1.6438665216E10},{"timestamp":1476324481005,"value":1.6438665216E10},{"timestamp":1476324421005,"value":1.6438665216E10},{"timestamp":1476324361005,"value":1.6438665216E10},{"timestamp":1476324301005,"value":1.6438665216E10},{"timestamp":1476324241005,"value":1.6438665216E10},{"timestamp":1476324181005,"value":1.6438665216E10},{"timestamp":1476324120005,"value":1.6438665216E10},{"timestamp":1476324060005,"value":1.6438665216E10},{"timestamp":1476324000005,"value":1.6438665216E10},{"timestamp":1476300775012,"value":1.6438665216E10},{"timestamp":1476300715021,"value":1.6438665216E10},{"timestamp":1476300654013,"value":1.6438665216E10},{"timestamp":1476323940005,"value":1.6438665216E10},{"timestamp":1476323880005,"value":1.6438665216E10},{"timestamp":1476323820006,"value":1.6438665216E10},{"timestamp":1476323760005,"value":1.6438665216E10},{"timestamp":1476323700006,"value":1.6438665216E10},{"timestamp":1476323640005,"value":1.6438665216E10},{"timestamp":1476323580005,"value":1.6438665216E10},{"timestamp":1476323520005,"value":1.6438665216E10},{"timestamp":1476323460004,"value":1.6438665216E10},{"timestamp":1476323400005,"value":1.6438665216E10},{"timestamp":1476323340004,"value":1.6438665216E10},{"timestamp":1476323280004,"value":1.6438665216E10},{"timestamp":1476323220005,"value":1.6438665216E10},{"timestamp":1476323160006,"value":1.6438665216E10},{"timestamp":1476323100005,"value":1.6438665216E10},{"timestamp":1476323040008,"value":1.6438665216E10},{"timestamp":1476322980005,"value":1.6438665216E10},{"timestamp":1476322920005,"value":1.6438665216E10},{"timestamp":1476322860021,"value":1.6438665216E10},{"timestamp":1476322800006,"value":1.6438665216E10},{"timestamp":1476322739005,"value":1.6438665216E10},{"timestamp":1476322679005,"value":1.6438665216E10},{"timestamp":1476322619005,"value":1.6438665216E10},{"timestamp":1476322559005,"value":1.6438665216E10},{"timestamp":1476322499005,"value":1.6438665216E10},{"timestamp":1476322439005,"value":1.6438665216E10},{"timestamp":1476322379005,"value":1.6438665216E10},{"timestamp":1476322319006,"value":1.6438665216E10},{"timestamp":1476322259005,"value":1.6438665216E10},{"timestamp":1476322199005,"value":1.6438665216E10},{"timestamp":1476322139005,"value":1.6438665216E10},{"timestamp":1476322079004,"value":1.6438665216E10},{"timestamp":1476322019005,"value":1.6438665216E10},{"timestamp":1476321959005,"value":1.6438665216E10},{"timestamp":1476321899005,"value":1.6438665216E10},{"timestamp":1476321839005,"value":1.6438665216E10},{"timestamp":1476321779005,"value":1.6438665216E10},{"timestamp":1476321718005,"value":1.6438665216E10},{"timestamp":1476321658005,"value":1.6438665216E10},{"timestamp":1476321598005,"value":1.6438665216E10},{"timestamp":1476321538004,"value":1.6438665216E10},{"timestamp":1476321478005,"value":1.6438665216E10},{"timestamp":1476321418005,"value":1.6438665216E10},{"timestamp":1476321358005,"value":1.6438665216E10},{"timestamp":1476321298005,"value":1.6438665216E10},{"timestamp":1476321238005,"value":1.6438665216E10},{"timestamp":1476321177005,"value":1.6438665216E10},{"timestamp":1476321117006,"value":1.6438665216E10},{"timestamp":1476321057005,"value":1.6438665216E10},{"timestamp":1476320997005,"value":1.6438665216E10},{"timestamp":1476320937006,"value":1.6438665216E10},{"timestamp":1476320877005,"value":1.6438665216E10},{"timestamp":1476320817017,"value":1.6438665216E10},{"timestamp":1476320757005,"value":1.6438665216E10},{"timestamp":1476320697005,"value":1.6438665216E10},{"timestamp":1476320637005,"value":1.6438665216E10},{"timestamp":1476320577004,"value":1.6438665216E10},{"timestamp":1476320516006,"value":1.6438665216E10},{"timestamp":1476320456019,"value":1.6438665216E10},{"timestamp":1476320396005,"value":1.6438665216E10},{"timestamp":1476320336005,"value":1.6438665216E10},{"timestamp":1476320276005,"value":1.6438665216E10},{"timestamp":1476320215006,"value":1.6438665216E10},{"timestamp":1476320155006,"value":1.6438665216E10},{"timestamp":1476320095005,"value":1.6438665216E10},{"timestamp":1476320035004,"value":1.6438665216E10},{"timestamp":1476319974007,"value":1.6438665216E10},{"timestamp":1476319914005,"value":1.6438665216E10},{"timestamp":1476319854007,"value":1.6438665216E10},{"timestamp":1476319794006,"value":1.6438665216E10},{"timestamp":1476319733005,"value":1.6438665216E10},{"timestamp":1476319673005,"value":1.6438665216E10},{"timestamp":1476319612006,"value":1.6438665216E10},{"timestamp":1476319552005,"value":1.6438665216E10},{"timestamp":1476319492019,"value":1.6438665216E10},{"timestamp":1476319432005,"value":1.6438665216E10},{"timestamp":1476319372005,"value":1.6438665216E10},{"timestamp":1476319312006,"value":1.6438665216E10},{"timestamp":1476319252006,"value":1.6438665216E10},{"timestamp":1476319192005,"value":1.6438665216E10},{"timestamp":1476319132006,"value":1.6438665216E10},{"timestamp":1476319072005,"value":1.6438665216E10},{"timestamp":1476319012005,"value":1.6438665216E10},{"timestamp":1476318952006,"value":1.6438665216E10},{"timestamp":1476318892005,"value":1.6438665216E10},{"timestamp":1476318832005,"value":1.6438665216E10},{"timestamp":1476318771006,"value":1.6438665216E10},{"timestamp":1476318711005,"value":1.6438665216E10},{"timestamp":1476318651006,"value":1.6438665216E10},{"timestamp":1476318590006,"value":1.6438665216E10},{"timestamp":1476318529006,"value":1.6438665216E10},{"timestamp":1476318469005,"value":1.6438665216E10},{"timestamp":1476318408006,"value":1.6438665216E10},{"timestamp":1476318348005,"value":1.6438665216E10},{"timestamp":1476318288021,"value":1.6438665216E10},{"timestamp":1476318228005,"value":1.6438665216E10},{"timestamp":1476318168005,"value":1.6438665216E10},{"timestamp":1476318108005,"value":1.6438665216E10},{"timestamp":1476318047004,"value":1.6438665216E10},{"timestamp":1476317987019,"value":1.6438665216E10},{"timestamp":1476317927003,"value":1.6438665216E10},{"timestamp":1476317867004,"value":1.6438665216E10},{"timestamp":1476317807004,"value":1.6438665216E10},{"timestamp":1476317747003,"value":1.6438665216E10},{"timestamp":1476317687004,"value":1.6438665216E10},{"timestamp":1476317627006,"value":1.6438665216E10},{"timestamp":1476317567006,"value":1.6438665216E10},{"timestamp":1476317507005,"value":1.6438665216E10},{"timestamp":1476317447005,"value":1.6438665216E10},{"timestamp":1476317387006,"value":1.6438665216E10},{"timestamp":1476317327005,"value":1.6438665216E10},{"timestamp":1476317266006,"value":1.6438665216E10},{"timestamp":1476317205006,"value":1.6438665216E10},{"timestamp":1476317145006,"value":1.6438665216E10},{"timestamp":1476317085006,"value":1.6438665216E10},{"timestamp":1476317025021,"value":1.6438665216E10},{"timestamp":1476316965006,"value":1.6438665216E10},{"timestamp":1476316904006,"value":1.6438665216E10},{"timestamp":1476316844005,"value":1.6438665216E10},{"timestamp":1476316784010,"value":1.6438665216E10},{"timestamp":1476316724006,"value":1.6438665216E10},{"timestamp":1476316664006,"value":1.6438665216E10},{"timestamp":1476316604005,"value":1.6438665216E10},{"timestamp":1476316544006,"value":1.6438665216E10},{"timestamp":1476316484012,"value":1.6438665216E10},{"timestamp":1476316424006,"value":1.6438665216E10},{"timestamp":1476316364006,"value":1.6438665216E10},{"timestamp":1476316304007,"value":1.6438665216E10},{"timestamp":1476316244006,"value":1.6438665216E10},{"timestamp":1476316184027,"value":1.6438665216E10},{"timestamp":1476316124006,"value":1.6438665216E10},{"timestamp":1476316064006,"value":1.6438665216E10},{"timestamp":1476316004006,"value":1.6438665216E10},{"timestamp":1476315944006,"value":1.6438665216E10},{"timestamp":1476315884012,"value":1.6438665216E10},{"timestamp":1476315824008,"value":1.6438665216E10},{"timestamp":1476315764007,"value":1.6438665216E10},{"timestamp":1476315704009,"value":1.6438665216E10},{"timestamp":1476315644010,"value":1.6438665216E10},{"timestamp":1476315584023,"value":1.6438665216E10},{"timestamp":1476315524009,"value":1.6438665216E10},{"timestamp":1476315464008,"value":1.6438665216E10},{"timestamp":1476315404012,"value":1.6438665216E10},{"timestamp":1476315344012,"value":1.6438665216E10},{"timestamp":1476315284250,"value":1.6438665216E10},{"timestamp":1476315224019,"value":1.6438665216E10},{"timestamp":1476315164013,"value":1.6438665216E10},{"timestamp":1476315104009,"value":1.6438665216E10},{"timestamp":1476315044023,"value":1.6438665216E10}]'
+      string: '[{"timestamp":1491380326008,"value":1.62359296E10},{"timestamp":1491380266013,"value":1.62359296E10},{"timestamp":1491380206008,"value":1.62359296E10},{"timestamp":1491380145008,"value":1.62359296E10},{"timestamp":1491380084004,"value":1.62359296E10},{"timestamp":1491380024006,"value":1.62359296E10},{"timestamp":1491379964006,"value":1.62359296E10},{"timestamp":1491379904008,"value":1.62359296E10},{"timestamp":1491379844011,"value":1.62359296E10},{"timestamp":1491379784005,"value":1.62359296E10},{"timestamp":1491379723013,"value":1.62359296E10},{"timestamp":1491379663012,"value":1.62359296E10},{"timestamp":1491379603019,"value":1.62359296E10},{"timestamp":1491379542020,"value":1.62359296E10},{"timestamp":1491379481011,"value":1.62359296E10}]'
     http_version: 
-  recorded_at: Thu, 13 Oct 2016 03:30:38 GMT
+  recorded_at: Wed, 05 Apr 2017 08:18:50 GMT
 recorded_with: VCR 3.0.3

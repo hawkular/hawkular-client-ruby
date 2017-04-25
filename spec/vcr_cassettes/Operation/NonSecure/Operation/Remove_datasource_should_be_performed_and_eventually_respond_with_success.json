@@ -3,7 +3,7 @@
     {
       "operation": "read",
       "type": "text",
-      "data": "WelcomeResponse={\"sessionId\":\"9qZcwBOFyoPw0u0-e1aab9WwINZxDsLxtCBBKbx1\"}"
+      "data": "WelcomeResponse={\"sessionId\":\"x4ooyA0le_aov2g3rNyjdsjV3FcBDEze1D7Ut3xu\"}"
     },
     {
       "operation": "write",
@@ -12,12 +12,12 @@
     {
       "operation": "read",
       "type": "text",
-      "data": "GenericSuccessResponse={\"message\":\"The request has been forwarded to feed [<%= feed_id %>] (MessageId=ID:3023b655-6637-11e6-a149-05583a5efefa)\"}"
+      "data": "GenericSuccessResponse={\"message\":\"The request has been forwarded to feed [<%= feed_id %>] (MessageId=ID:f8c0ea81-29c8-11e7-9346-cb514f6228a4)\"}"
     },
     {
       "operation": "read",
       "type": "text",
-      "data": "RemoveDatasourceResponse={\"resourcePath\":\"/t;<%= tenant_id %>/f;<%= feed_id %>/r;Local~~/r;Local~%2Fsubsystem%3Ddatasources%2Fdata-source%3DCreatedByRubyDS<%= random_uuid %>\",\"destinationSessionId\":\"9qZcwBOFyoPw0u0-e1aab9WwINZxDsLxtCBBKbx1\",\"status\":\"OK\",\"message\":\"Performed [Remove] on a [Datasource] given by Inventory path [/t;<%= tenant_id %>/f;<%= feed_id %>/r;Local~~/r;Local~%2Fsubsystem%3Ddatasources%2Fdata-source%3DCreatedByRubyDS<%= random_uuid %>]\",\"serverRefreshIndicator\":\"RELOAD-REQUIRED\"}"
+      "data": "RemoveDatasourceResponse={\"resourcePath\":\"/t;<%= tenant_id %>/f;<%= feed_id %>/r;Local~~/r;Local~%2Fsubsystem%3Ddatasources%2Fdata-source%3DCreatedByRubyDS<%= random_uuid %>\",\"destinationSessionId\":\"x4ooyA0le_aov2g3rNyjdsjV3FcBDEze1D7Ut3xu\",\"status\":\"ERROR\",\"message\":\"Could not perform [Remove] on a [Datasource] given by inventory path [/t;<%= tenant_id %>/f;<%= feed_id %>/r;Local~~/r;Local~%2Fsubsystem%3Ddatasources%2Fdata-source%3DCreatedByRubyDS<%= random_uuid %>] requested on [2017-04-25T15:08Z]: java.lang.IllegalStateException: Command not allowed because the agent is immutable\"}"
     }
   ]
 ]

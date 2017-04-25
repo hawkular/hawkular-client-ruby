@@ -66,6 +66,8 @@ module Hawkular::Inventory
       super(res_hash)
       if res_hash.key? :resourceTypePath
         @type_path = res_hash[:resourceTypePath]
+      elsif res_hash.key? 'resourceTypePath'
+        @type_path = res_hash['resourceTypePath']
       else
         @type = res_hash['type']
         @type_path = res_hash['type']['path']
@@ -105,13 +107,13 @@ module Hawkular::Inventory
     # @return [String] metric id used in Hawkular Metrics
     attr_reader :hawkular_metric_id
 
-    def initialize(metric_hash)
+    def initialize(metric_hash, metric_type)
       super(metric_hash)
-      @type = metric_hash['type']['type']
-      @type_path = metric_hash['type']['path']
-      @type_id = metric_hash['type']['id']
-      @unit = metric_hash['type']['unit']
-      @collection_interval = metric_hash['type']['collectionInterval']
+      @type = metric_type.type
+      @type_path = metric_hash['metricTypePath']
+      @type_id = metric_type.id
+      @unit = metric_type.unit
+      @collection_interval = metric_hash['collectionInterval'] || metric_type.collection_interval
       @hawkular_metric_id = @properties.key?('hawkular-metric-id') ? @properties['hawkular-metric-id'] : @id
     end
   end
@@ -158,6 +160,8 @@ module Hawkular::Inventory
   end
 
   class CanonicalPath
+    include Hawkular::ClientUtils
+
     attr_reader :tenant_id
     attr_reader :feed_id
     attr_reader :environment_id
@@ -181,24 +185,47 @@ module Hawkular::Inventory
       CanonicalPath.new(path_to_h path)
     end
 
+    def self.parse_if_string(path)
+      path.is_a?(CanonicalPath) ? path : CanonicalPath.parse(path)
+    end
+
+    def copy_hash
+      hash = to_h
+      hash[:resource_ids] = hash[:resource_ids].clone unless hash[:resource_ids].nil?
+      hash
+    end
+
     # Move up to the parent path of the resource. resource_ids set to empty array when there is no parent.
     # @return CanonicalPath corresponding to the direct ancestor of the resource represented by this path object.
     def up
-      hash = to_h
-      if hash[:resource_ids].nil?
-        hash[:resource_ids] = []
-      else
-        hash[:resource_ids].pop
-      end
+      hash = copy_hash
+      res = hash[:resource_ids] || []
+      res = res.take(res.length - 1) unless res.empty?
+      hash[:resource_ids] = res
       CanonicalPath.new(hash)
     end
 
-    # Adds a resource to the path.
-    # @return CanonicalPath referring to resource_id using current as its ancestor.
-    def to_resource(resource_id)
-      hash = to_h
-      hash[:resource_ids] = [] if hash[:resource_ids].nil?
-      hash[:resource_ids].push resource_id
+    # Add resource down to the current path
+    # @return a new CanonicalPath based on the current one
+    def down(resource)
+      hash = copy_hash
+      hash[:resource_ids] = (hash[:resource_ids] || []) << hawk_escape_id(resource)
+      CanonicalPath.new(hash)
+    end
+
+    # Set resource type to the current path
+    # @return a new CanonicalPath based on the current one
+    def resource_type(resource_type)
+      hash = copy_hash
+      hash[:resource_type_id] = hawk_escape_id(resource_type)
+      CanonicalPath.new(hash)
+    end
+
+    # Set metric type to the current path
+    # @return a new CanonicalPath based on the current one
+    def metric_type(metric_type)
+      hash = copy_hash
+      hash[:metric_type_id] = hawk_escape_id(metric_type)
       CanonicalPath.new(hash)
     end
 
@@ -224,9 +251,18 @@ module Hawkular::Inventory
       ret += "/e;#{@environment_id}" unless @environment_id.nil?
       ret += "/rt;#{@resource_type_id}" unless @resource_type_id.nil?
       ret += "/mt;#{@metric_type_id}" unless @metric_type_id.nil?
-      ret += "/m;#{@metric_id}" unless @metric_id.nil?
       ret += resources_chunk.to_s
+      ret += "/m;#{@metric_id}" unless @metric_id.nil?
       ret
+    end
+
+    def to_tags
+      fail 'Missing feed_id' if @feed_id.nil?
+      tags = "module:inventory,feed:#{Regexp.quote(@feed_id)}"
+      tags += ",type:rt,id:#{Regexp.quote(@resource_type_id)}" if @resource_type_id
+      tags += ",type:mt,id:#{Regexp.quote(@metric_type_id)}" if @metric_type_id
+      tags += ",type:r,id:#{Regexp.quote(@resource_ids[0])}" if @resource_ids && (!@resource_ids.empty?)
+      tags
     end
 
     protected

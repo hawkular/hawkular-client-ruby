@@ -17,8 +17,6 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
-      Host:
-      - localhost:8080
   response:
     status:
       code: 200
@@ -35,7 +33,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Fri, 07 Oct 2016 15:36:35 GMT
+      - Tue, 25 Apr 2017 15:11:09 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -46,5 +44,5 @@ http_interactions:
       encoding: UTF-8
       string: "[]"
     http_version: 
-  recorded_at: Fri, 07 Oct 2016 15:36:35 GMT
+  recorded_at: Tue, 25 Apr 2017 15:11:09 GMT
 recorded_with: VCR 3.0.3

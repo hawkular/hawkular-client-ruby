@@ -15,8 +15,6 @@ http_interactions:
       - hawkular-client-ruby
       Content-Type:
       - application/json
-      Host:
-      - localhost:8080
   response:
     status:
       code: 200
@@ -31,12 +29,12 @@ http_interactions:
       Content-Type:
       - application/json
       Content-Length:
-      - '124'
+      - '146'
       Date:
-      - Tue, 27 Sep 2016 18:17:17 GMT
+      - Tue, 25 Apr 2017 15:11:10 GMT
     body:
       encoding: UTF-8
-      string: '{"Implementation-Version":"1.1.4.Final","Built-From-Git-SHA1":"11c30f7336b0bca239d2eaa72ab511ef111a0ea6","status":"STARTED"}'
+      string: '{"distributed":"false","Implementation-Version":"1.6.0.Final","Built-From-Git-SHA1":"82b3bb25a3b5a6d3e0e793110c6c544d6d0ce1cf","status":"STARTED"}'
     http_version: 
-  recorded_at: Tue, 27 Sep 2016 18:17:17 GMT
+  recorded_at: Tue, 25 Apr 2017 15:11:10 GMT
 recorded_with: VCR 3.0.3

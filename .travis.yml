@@ -15,7 +15,8 @@ env:
       SKIP_SSL_WITHOUT_CERTIFICATE_TEST=1 \
       SKIP_SECURE_CONTEXT=1 \
       SKIP_V8_METRICS=1 \
-    - RUN_ON_LIVE_SERVER=0
+    - RUN_ON_LIVE_SERVER=0 \
+      SKIP_SSL_WITHOUT_CERTIFICATE_TEST=1
 services:
   - docker
 before_install:

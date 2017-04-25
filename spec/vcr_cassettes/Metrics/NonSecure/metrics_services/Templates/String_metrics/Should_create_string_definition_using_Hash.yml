@@ -19,8 +19,6 @@ http_interactions:
       - application/json
       Content-Length:
       - '89'
-      Host:
-      - localhost:8080
   response:
     status:
       code: 201
@@ -39,7 +37,7 @@ http_interactions:
       Location:
       - http://localhost:8080/hawkular/metrics/strings/<%= id %>
       Date:
-      - Thu, 13 Oct 2016 03:10:06 GMT
+      - Wed, 05 Apr 2017 08:18:50 GMT
       Connection:
       - keep-alive
       Content-Length:
@@ -48,7 +46,7 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Thu, 13 Oct 2016 03:10:06 GMT
+  recorded_at: Wed, 05 Apr 2017 08:18:50 GMT
 - request:
     method: get
     uri: http://jdoe:password@localhost:8080/hawkular/metrics/strings/<%= id %>
@@ -66,8 +64,6 @@ http_interactions:
       - <%= vcr_test_tenant %>
       Content-Type:
       - application/json
-      Host:
-      - localhost:8080
   response:
     status:
       code: 200
@@ -84,7 +80,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Thu, 13 Oct 2016 03:10:06 GMT
+      - Wed, 05 Apr 2017 08:18:50 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -95,5 +91,5 @@ http_interactions:
       encoding: UTF-8
       string: '{"id":"<%= id %>","tags":{"some":"value"},"dataRetention":123,"type":"string","tenantId":"<%= vcr_test_tenant %>"}'
     http_version: 
-  recorded_at: Thu, 13 Oct 2016 03:10:06 GMT
+  recorded_at: Wed, 05 Apr 2017 08:18:50 GMT
 recorded_with: VCR 3.0.3
