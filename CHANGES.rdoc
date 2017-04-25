@@ -3,6 +3,33 @@
 This document describes the relevant changes between releases of the
 _hawkular-client_ project.
 
+
+=== V 3.0.0
+* Starting this version the older Hawkular Services (prior version 0.36.0.Final, excluding) are not compatible
+* We added support for multitenancy
+* We removed the deprecated API mentioned in the previous release notes
+* A lot of methods in the inventory client have been changed or removed, here is the list:
+1. <code>get_tenant</code> - removed
+2. <code>list_relationships</code> - removed
+3. <code>list_relationships_for_feed</code> - removed
+4. <code>get_entity</code> - removed
+5. <code>delete_feed</code> - removed
+6. <code>create_feed</code> - removed
+7. <code>create_resource_type</code> - removed
+8. <code>create_resource</code> - removed
+9. <code>create_resource_under_resource</code> - removed
+10. <code>create_metric_type</code> - removed
+11. <code>create_metric_for_resource</code> - removed
+12. <code>events</code> - removed
+13. <code>no_more_events!</code> - removed
+14. <code>list_metrics_for_resource_type
+15. <code>list_resource_types(feed_id)</code> - now the feed_id parameter is mandatory
+
+Also the payload/parameters are now different:
+* Metric ids follow this pattern <code>inventory.#{feedid}.#{type}.#{id}</code>
+* Each metric is tagged with following tag <code>{module: 'inventory', feed: #{feedid}, type: #{type}, id: #{id}}</code>
+* more details in the PR description (https://github.com/hawkular/hawkular-client-ruby/pull/196#issue-214961468)
+
 === V 2.9.0
 * Adding a way to update collection interval on the agent
 * Fixed <code>get_entity</code> method in the inventory client

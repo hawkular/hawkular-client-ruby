@@ -1,5 +1,35 @@
 == Breaking changes in the major releases
 
+=== 3.0.0
+
+* A lot of methods in the inventory client have been changed or removed, here is the list:
+1. <code>get_tenant</code> - removed
+2. <code>list_relationships</code> - removed
+3. <code>list_relationships_for_feed</code> - removed
+4. <code>get_entity</code> - removed
+5. <code>delete_feed</code> - removed
+6. <code>create_feed</code> - removed
+7. <code>create_resource_type</code> - removed
+8. <code>create_resource</code> - removed
+9. <code>create_resource_under_resource</code> - removed
+10. <code>create_metric_type</code> - removed
+11. <code>create_metric_for_resource</code> - removed
+12. <code>events</code> - removed
+13. <code>no_more_events!</code> - removed
+14. <code>list_metrics_for_resource_type
+15. <code>list_resource_types(feed_id)</code> - now the feed_id parameter is mandatory
+
+* instead of <code>Hawkular::Inventory::CanonicalPath.to_resource</code> use <code>Hawkular::Inventory::CanonicalPath.down</code>
+
+removed deprecated API:
+
+* instead of <code>HawkularUtilsMixin</code> use <code>Hawkular::ClientUtils</code>
+* instead of <code>Hawkular::Operations::OperationsClient</code> use <code>Hawkular::Operations::Client</code>
+* instead of <code>Hawkular::Alerts::AlertsClient</code> use <code>Hawkular::Alerts::Client</code>
+* instead of <code>Hawkular::Token::TokenClient</code> use <code>Hawkular::Token::Client</code>
+* instead of <code>Hawkular::Inventory::InventoryClient</code> use <code>Hawkular::Inventory::Client</code>
+
+
 === 2.0.0
 
 By default no Hawkular-Tenant HTTP header is being set. If you need it (for instance for hawkular-services), provide the tenant option when creating a client.
