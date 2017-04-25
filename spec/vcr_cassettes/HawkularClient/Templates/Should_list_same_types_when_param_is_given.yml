@@ -1,0 +1,501 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://jdoe:password@localhost:8080/hawkular/inventory/traversal/f;45c79380-1a30-444a-b535-0773b6c3641a/type=rt
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - hawkular
+      Content-Type:
+      - application/json
+      Host:
+      - localhost:8080
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Sat, 22 Apr 2017 17:52:23 GMT
+      X-Total-Count:
+      - '28'
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '9247'
+      Link:
+      - <http://localhost:8080/hawkular/inventory/traversal/f;45c79380-1a30-444a-b535-0773b6c3641a/type=rt>;
+        rel="current"
+    body:
+      encoding: UTF-8
+      string: |-
+        [ {
+          "path" : "/t;hawkular/f;45c79380-1a30-444a-b535-0773b6c3641a/rt;Platform_Memory",
+          "name" : "Memory",
+          "identityHash" : "a9cae1bf58f7305834ab1f715092a1ff19c09792",
+          "contentHash" : "89c8a2851d1755cf87365b4a7c55e5551cf878c6",
+          "syncHash" : "63c252f9da9ffbaf9ad5ebbaab52b87c516f6fc6",
+          "id" : "Platform_Memory"
+        }, {
+          "path" : "/t;hawkular/f;45c79380-1a30-444a-b535-0773b6c3641a/rt;Platform_Processor",
+          "name" : "Processor",
+          "identityHash" : "dc2c42d6db87dde238adda3b1e231221d8a997e",
+          "contentHash" : "b74dd4bb546c66fff9ea6bb459c135aaf94616",
+          "syncHash" : "805d15af89246196997560ea7a772bda4b717b8",
+          "id" : "Platform_Processor"
+        }, {
+          "path" : "/t;hawkular/f;45c79380-1a30-444a-b535-0773b6c3641a/rt;Platform_Operating%20System",
+          "name" : "Operating System",
+          "identityHash" : "b6e7df83517c59134eae5c01deca7998939d5c",
+          "contentHash" : "e5ba86326755952233b0543acced2995e5faf457",
+          "syncHash" : "c4a9e5f36dc5def7c17699684e64a026c139e2be",
+          "id" : "Platform_Operating System"
+        }, {
+          "path" : "/t;hawkular/f;45c79380-1a30-444a-b535-0773b6c3641a/rt;Platform_File%20Store",
+          "name" : "File Store",
+          "identityHash" : "80e01775b6149f31d2ecf2b6e8b2d85ad06cf7",
+          "contentHash" : "e1698edca6d8d938fd7c84ea634847ab3e99fa9",
+          "syncHash" : "7c77753bf56e3ca9bbcbb90faa11e40dbabb7",
+          "id" : "Platform_File Store"
+        }, {
+          "path" : "/t;hawkular/f;45c79380-1a30-444a-b535-0773b6c3641a/rt;Datasource",
+          "name" : "Datasource",
+          "identityHash" : "b3291af08b396960f425871b493b6d9ee97e339f",
+          "contentHash" : "546c2a207bd841a0c2d94a6ae8a87371c36ffa9f",
+          "syncHash" : "f65ba261ef70efe3812e95a9ecb68d4fb6f3157",
+          "id" : "Datasource"
+        }, {
+          "path" : "/t;hawkular/f;45c79380-1a30-444a-b535-0773b6c3641a/rt;SubDeployment",
+          "name" : "SubDeployment",
+          "identityHash" : "e7c36274c35e9eeeb9564de6c5e7f14697bdbdc",
+          "contentHash" : "ed9a1f4e8965cb7c17a2278f406ef1d9bae45d7",
+          "syncHash" : "a7fcbe50b890591b1346776254aa8c2826ec4b3f",
+          "id" : "SubDeployment"
+        }, {
+          "path" : "/t;hawkular/f;45c79380-1a30-444a-b535-0773b6c3641a/rt;Hawkular%20WildFly%20Agent",
+          "name" : "Hawkular WildFly Agent",
+          "identityHash" : "2e59b7dd889e76c28508b931b37de26b16bfc20",
+          "contentHash" : "5631a1c89f7b7a5f5adcd5c8555cd43dcfe588",
+          "syncHash" : "4cbc757c804eb3fa5419bda6eac1db9a2912d2",
+          "id" : "Hawkular WildFly Agent"
+        }, {
+          "path" : "/t;hawkular/f;45c79380-1a30-444a-b535-0773b6c3641a/rt;Stateful%20Session%20EJB",
+          "name" : "Stateful Session EJB",
+          "identityHash" : "113c4e7fe012f6d1952ae3b8f27e865a01fc519",
+          "contentHash" : "848ca2bad67291fd1449c648265d6cd05c5f29",
+          "syncHash" : "cdd617cf5f718e38451b83a19fcc1fba4613e360",
+          "id" : "Stateful Session EJB"
+        }, {
+          "path" : "/t;hawkular/f;45c79380-1a30-444a-b535-0773b6c3641a/rt;Deployment",
+          "name" : "Deployment",
+          "identityHash" : "92a9199548fbbcd8acebf2e3e8e2816886c1ce2",
+          "contentHash" : "327a55f82dc6818877a68e37b722bb7f2360b633",
+          "syncHash" : "c8796acaee8cc41a97c3999ce696ab50a9d6f8",
+          "id" : "Deployment"
+        }, {
+          "path" : "/t;hawkular/f;45c79380-1a30-444a-b535-0773b6c3641a/rt;Transaction%20Manager",
+          "name" : "Transaction Manager",
+          "identityHash" : "2c82df7330b7ae48c43ae5413f9b8857f24a85f",
+          "contentHash" : "46c527a46c609bf03a66b2b9d8e091838a28107",
+          "syncHash" : "af0db9d805244129d4b12e8d4c5167ad52c2ca1",
+          "id" : "Transaction Manager"
+        }, {
+          "path" : "/t;hawkular/f;45c79380-1a30-444a-b535-0773b6c3641a/rt;JMS%20Topic",
+          "name" : "JMS Topic",
+          "identityHash" : "75c24027bbd562b062152731fd59a0cee80ffa2",
+          "contentHash" : "2eb3b63ebb579817658d11a75d0299b2daf334a",
+          "syncHash" : "f3d5fa41258b4ab487abd41428b89a15372533",
+          "id" : "JMS Topic"
+        }, {
+          "path" : "/t;hawkular/f;45c79380-1a30-444a-b535-0773b6c3641a/rt;Remote%20Destination%20Outbound%20Socket%20Binding",
+          "name" : "Remote Destination Outbound Socket Binding",
+          "identityHash" : "35c9cb7b4ea86e90f10e3fe64c6d14d3456ee96",
+          "contentHash" : "ae41459183688898119286f4e1d5c972297b54f",
+          "syncHash" : "5d39254c7e28d0fbbd30d6f34e7c51bfb8f3a1ce",
+          "id" : "Remote Destination Outbound Socket Binding"
+        }, {
+          "path" : "/t;hawkular/f;45c79380-1a30-444a-b535-0773b6c3641a/rt;Socket%20Binding%20Group",
+          "name" : "Socket Binding Group",
+          "identityHash" : "689259496c606a774ff8d4288893cf656230642d",
+          "contentHash" : "cb6167f7e9aabb8464bef22c93e8e16f6365ea3",
+          "syncHash" : "50a5241e87dab3c4b71cad0632ac8f13395e69",
+          "id" : "Socket Binding Group"
+        }, {
+          "path" : "/t;hawkular/f;45c79380-1a30-444a-b535-0773b6c3641a/rt;Message%20Driven%20EJB",
+          "name" : "Message Driven EJB",
+          "identityHash" : "2eee38e96ef09ab44422a49bc5a8623596a34bc",
+          "contentHash" : "f410641c3079566b173ec6274a361357a77cd49",
+          "syncHash" : "5a568d8bb5d49c38a303f667fa432a3de6b5cfd",
+          "id" : "Message Driven EJB"
+        }, {
+          "path" : "/t;hawkular/f;45c79380-1a30-444a-b535-0773b6c3641a/rt;JMS%20Queue",
+          "name" : "JMS Queue",
+          "identityHash" : "e231d2d4c8c38b428725c32f4e695fad772c1db8",
+          "contentHash" : "75b04b43485b3d9ee4da2153e44944e2f63ef",
+          "syncHash" : "646cd44497a45d7afbdabbd466c412829c3262",
+          "id" : "JMS Queue"
+        }, {
+          "path" : "/t;hawkular/f;45c79380-1a30-444a-b535-0773b6c3641a/rt;Messaging%20Server",
+          "name" : "Messaging Server",
+          "identityHash" : "c21e2c4be8b952d760ef3929652e304bd951ac4e",
+          "contentHash" : "333ae92fb6535ccf71d18badfd388f14a441d0",
+          "syncHash" : "35896341e6bfb41fe41e262adfe462dd854ada88",
+          "id" : "Messaging Server"
+        }, {
+          "path" : "/t;hawkular/f;45c79380-1a30-444a-b535-0773b6c3641a/rt;WildFly%20Server",
+          "name" : "WildFly Server",
+          "identityHash" : "755514da45467710ce1e458f6f957824ea1c1b7c",
+          "contentHash" : "96dfab5fa91ff8fea2be793138eb9f9d84399bc",
+          "syncHash" : "38f8b952a9c522c38fc42f4b87efdc13e6d9562",
+          "id" : "WildFly Server"
+        }, {
+          "path" : "/t;hawkular/f;45c79380-1a30-444a-b535-0773b6c3641a/rt;Socket%20Binding",
+          "name" : "Socket Binding",
+          "identityHash" : "9e8eefdeb8e37da1b2fa96e756b262caeea5",
+          "contentHash" : "2f81bc49e564e3806c1179824029ffcac3ecb8ed",
+          "syncHash" : "429b6e781fd8cc8734d8e7c74dcded0cf716a39",
+          "id" : "Socket Binding"
+        }, {
+          "path" : "/t;hawkular/f;45c79380-1a30-444a-b535-0773b6c3641a/rt;Singleton%20EJB",
+          "name" : "Singleton EJB",
+          "identityHash" : "42f0638e5e8e266d17d2f7e95f35313e96fa9b39",
+          "contentHash" : "9c45b8135d1640115bd1e16ddf6ed623abe9833",
+          "syncHash" : "2260ecbd58da298aae11888aaa666a21dbe71f",
+          "id" : "Singleton EJB"
+        }, {
+          "path" : "/t;hawkular/f;45c79380-1a30-444a-b535-0773b6c3641a/rt;JGroups",
+          "name" : "JGroups",
+          "identityHash" : "dd6a37f1e791f41312ab3ce894dad8db26ee3ad",
+          "contentHash" : "7cb9431daf07a2dc58d3786ac5a76f915891564",
+          "syncHash" : "c5a9d8fab9907672ac042ae415ac7e62b2234",
+          "id" : "JGroups"
+        }, {
+          "path" : "/t;hawkular/f;45c79380-1a30-444a-b535-0773b6c3641a/rt;ModCluster",
+          "name" : "ModCluster",
+          "identityHash" : "364f9437230722b5892c9595b29c77b62d3396f",
+          "contentHash" : "dbf826da8a4c333766883dba8952e10746225e7",
+          "syncHash" : "3a43f4e6781e56c218cc9cdd548ff4d362858e2",
+          "id" : "ModCluster"
+        }, {
+          "path" : "/t;hawkular/f;45c79380-1a30-444a-b535-0773b6c3641a/rt;JDBC%20Driver",
+          "name" : "JDBC Driver",
+          "identityHash" : "7c311a2fb888f2334317cf055191db7811b7f4a",
+          "contentHash" : "3f1b769e6846f49e2d5cfc55b8fe7a58e2742f2",
+          "syncHash" : "e28b2abe7a5746ecdcd12910ecc1baaf5593cca",
+          "id" : "JDBC Driver"
+        }, {
+          "path" : "/t;hawkular/f;45c79380-1a30-444a-b535-0773b6c3641a/rt;Servlet",
+          "name" : "Servlet",
+          "identityHash" : "d844da746834ebfc4aa7782c94eeaea85b4abb74",
+          "contentHash" : "8a3d655f3696d872a783c7b5b2888a97188bc29",
+          "syncHash" : "c225714570836f79fdafeeb5eb71fe2ce8b987",
+          "id" : "Servlet"
+        }, {
+          "path" : "/t;hawkular/f;45c79380-1a30-444a-b535-0773b6c3641a/rt;Infinispan%20Cache%20Container",
+          "name" : "Infinispan Cache Container",
+          "identityHash" : "53f33112d2fa8726fd7a36b3b09827b874f36c2",
+          "contentHash" : "58e8394667e6d252b359de36a5fd148a2c15352",
+          "syncHash" : "f2771559147eedc294f187c9d2acfa94df82175",
+          "id" : "Infinispan Cache Container"
+        }, {
+          "path" : "/t;hawkular/f;45c79380-1a30-444a-b535-0773b6c3641a/rt;XA%20Datasource",
+          "name" : "XA Datasource",
+          "identityHash" : "738cead59778159f64fa3911e2eff113f0f9d8",
+          "contentHash" : "3e6a387dbbbcf637e951b8c4c5bfa3dbdce858",
+          "syncHash" : "fddf22b49da75825cb141ca5615d1292cfa4457",
+          "id" : "XA Datasource"
+        }, {
+          "path" : "/t;hawkular/f;45c79380-1a30-444a-b535-0773b6c3641a/rt;JGroups%20Channel",
+          "name" : "JGroups Channel",
+          "identityHash" : "b076f142fbf9a283551583114ab2a58039bd488d",
+          "contentHash" : "bbc51e1ef3ddc3f6db28051af5f9ef3ac62ae59",
+          "syncHash" : "60d66189547e89e6bcaadaa74ccbf9d96444fdd1",
+          "id" : "JGroups Channel"
+        }, {
+          "path" : "/t;hawkular/f;45c79380-1a30-444a-b535-0773b6c3641a/rt;Infinispan",
+          "name" : "Infinispan",
+          "identityHash" : "a02a9a0121b9fe564ef869e72765e7f1c56b2a",
+          "contentHash" : "acbd2d38de78a774e94c399a2922ae46bea3783",
+          "syncHash" : "4daf646564159dbdc4ec5b5c8f9ba62a0ffb6",
+          "id" : "Infinispan"
+        }, {
+          "path" : "/t;hawkular/f;45c79380-1a30-444a-b535-0773b6c3641a/rt;Stateless%20Session%20EJB",
+          "name" : "Stateless Session EJB",
+          "identityHash" : "8db06fc15c4b85fdfc5843944dde9594652a634",
+          "contentHash" : "bfa5b10fe4963014f26cdf5a6541b7f42814",
+          "syncHash" : "dc33e68f960d5393464f9cec9e915d5842b3835",
+          "id" : "Stateless Session EJB"
+        } ]
+    http_version: 
+  recorded_at: Sat, 22 Apr 2017 17:52:23 GMT
+- request:
+    method: get
+    uri: http://jdoe:password@localhost:8080/hawkular/inventory/traversal/f;45c79380-1a30-444a-b535-0773b6c3641a/type=rt
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - hawkular
+      Content-Type:
+      - application/json
+      Host:
+      - localhost:8080
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Sat, 22 Apr 2017 17:52:23 GMT
+      X-Total-Count:
+      - '28'
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '9247'
+      Link:
+      - <http://localhost:8080/hawkular/inventory/traversal/f;45c79380-1a30-444a-b535-0773b6c3641a/type=rt>;
+        rel="current"
+    body:
+      encoding: UTF-8
+      string: |-
+        [ {
+          "path" : "/t;hawkular/f;45c79380-1a30-444a-b535-0773b6c3641a/rt;Platform_Memory",
+          "name" : "Memory",
+          "identityHash" : "a9cae1bf58f7305834ab1f715092a1ff19c09792",
+          "contentHash" : "89c8a2851d1755cf87365b4a7c55e5551cf878c6",
+          "syncHash" : "63c252f9da9ffbaf9ad5ebbaab52b87c516f6fc6",
+          "id" : "Platform_Memory"
+        }, {
+          "path" : "/t;hawkular/f;45c79380-1a30-444a-b535-0773b6c3641a/rt;Platform_Processor",
+          "name" : "Processor",
+          "identityHash" : "dc2c42d6db87dde238adda3b1e231221d8a997e",
+          "contentHash" : "b74dd4bb546c66fff9ea6bb459c135aaf94616",
+          "syncHash" : "805d15af89246196997560ea7a772bda4b717b8",
+          "id" : "Platform_Processor"
+        }, {
+          "path" : "/t;hawkular/f;45c79380-1a30-444a-b535-0773b6c3641a/rt;Platform_Operating%20System",
+          "name" : "Operating System",
+          "identityHash" : "b6e7df83517c59134eae5c01deca7998939d5c",
+          "contentHash" : "e5ba86326755952233b0543acced2995e5faf457",
+          "syncHash" : "c4a9e5f36dc5def7c17699684e64a026c139e2be",
+          "id" : "Platform_Operating System"
+        }, {
+          "path" : "/t;hawkular/f;45c79380-1a30-444a-b535-0773b6c3641a/rt;Platform_File%20Store",
+          "name" : "File Store",
+          "identityHash" : "80e01775b6149f31d2ecf2b6e8b2d85ad06cf7",
+          "contentHash" : "e1698edca6d8d938fd7c84ea634847ab3e99fa9",
+          "syncHash" : "7c77753bf56e3ca9bbcbb90faa11e40dbabb7",
+          "id" : "Platform_File Store"
+        }, {
+          "path" : "/t;hawkular/f;45c79380-1a30-444a-b535-0773b6c3641a/rt;Datasource",
+          "name" : "Datasource",
+          "identityHash" : "b3291af08b396960f425871b493b6d9ee97e339f",
+          "contentHash" : "546c2a207bd841a0c2d94a6ae8a87371c36ffa9f",
+          "syncHash" : "f65ba261ef70efe3812e95a9ecb68d4fb6f3157",
+          "id" : "Datasource"
+        }, {
+          "path" : "/t;hawkular/f;45c79380-1a30-444a-b535-0773b6c3641a/rt;SubDeployment",
+          "name" : "SubDeployment",
+          "identityHash" : "e7c36274c35e9eeeb9564de6c5e7f14697bdbdc",
+          "contentHash" : "ed9a1f4e8965cb7c17a2278f406ef1d9bae45d7",
+          "syncHash" : "a7fcbe50b890591b1346776254aa8c2826ec4b3f",
+          "id" : "SubDeployment"
+        }, {
+          "path" : "/t;hawkular/f;45c79380-1a30-444a-b535-0773b6c3641a/rt;Hawkular%20WildFly%20Agent",
+          "name" : "Hawkular WildFly Agent",
+          "identityHash" : "2e59b7dd889e76c28508b931b37de26b16bfc20",
+          "contentHash" : "5631a1c89f7b7a5f5adcd5c8555cd43dcfe588",
+          "syncHash" : "4cbc757c804eb3fa5419bda6eac1db9a2912d2",
+          "id" : "Hawkular WildFly Agent"
+        }, {
+          "path" : "/t;hawkular/f;45c79380-1a30-444a-b535-0773b6c3641a/rt;Stateful%20Session%20EJB",
+          "name" : "Stateful Session EJB",
+          "identityHash" : "113c4e7fe012f6d1952ae3b8f27e865a01fc519",
+          "contentHash" : "848ca2bad67291fd1449c648265d6cd05c5f29",
+          "syncHash" : "cdd617cf5f718e38451b83a19fcc1fba4613e360",
+          "id" : "Stateful Session EJB"
+        }, {
+          "path" : "/t;hawkular/f;45c79380-1a30-444a-b535-0773b6c3641a/rt;Deployment",
+          "name" : "Deployment",
+          "identityHash" : "92a9199548fbbcd8acebf2e3e8e2816886c1ce2",
+          "contentHash" : "327a55f82dc6818877a68e37b722bb7f2360b633",
+          "syncHash" : "c8796acaee8cc41a97c3999ce696ab50a9d6f8",
+          "id" : "Deployment"
+        }, {
+          "path" : "/t;hawkular/f;45c79380-1a30-444a-b535-0773b6c3641a/rt;Transaction%20Manager",
+          "name" : "Transaction Manager",
+          "identityHash" : "2c82df7330b7ae48c43ae5413f9b8857f24a85f",
+          "contentHash" : "46c527a46c609bf03a66b2b9d8e091838a28107",
+          "syncHash" : "af0db9d805244129d4b12e8d4c5167ad52c2ca1",
+          "id" : "Transaction Manager"
+        }, {
+          "path" : "/t;hawkular/f;45c79380-1a30-444a-b535-0773b6c3641a/rt;JMS%20Topic",
+          "name" : "JMS Topic",
+          "identityHash" : "75c24027bbd562b062152731fd59a0cee80ffa2",
+          "contentHash" : "2eb3b63ebb579817658d11a75d0299b2daf334a",
+          "syncHash" : "f3d5fa41258b4ab487abd41428b89a15372533",
+          "id" : "JMS Topic"
+        }, {
+          "path" : "/t;hawkular/f;45c79380-1a30-444a-b535-0773b6c3641a/rt;Remote%20Destination%20Outbound%20Socket%20Binding",
+          "name" : "Remote Destination Outbound Socket Binding",
+          "identityHash" : "35c9cb7b4ea86e90f10e3fe64c6d14d3456ee96",
+          "contentHash" : "ae41459183688898119286f4e1d5c972297b54f",
+          "syncHash" : "5d39254c7e28d0fbbd30d6f34e7c51bfb8f3a1ce",
+          "id" : "Remote Destination Outbound Socket Binding"
+        }, {
+          "path" : "/t;hawkular/f;45c79380-1a30-444a-b535-0773b6c3641a/rt;Socket%20Binding%20Group",
+          "name" : "Socket Binding Group",
+          "identityHash" : "689259496c606a774ff8d4288893cf656230642d",
+          "contentHash" : "cb6167f7e9aabb8464bef22c93e8e16f6365ea3",
+          "syncHash" : "50a5241e87dab3c4b71cad0632ac8f13395e69",
+          "id" : "Socket Binding Group"
+        }, {
+          "path" : "/t;hawkular/f;45c79380-1a30-444a-b535-0773b6c3641a/rt;Message%20Driven%20EJB",
+          "name" : "Message Driven EJB",
+          "identityHash" : "2eee38e96ef09ab44422a49bc5a8623596a34bc",
+          "contentHash" : "f410641c3079566b173ec6274a361357a77cd49",
+          "syncHash" : "5a568d8bb5d49c38a303f667fa432a3de6b5cfd",
+          "id" : "Message Driven EJB"
+        }, {
+          "path" : "/t;hawkular/f;45c79380-1a30-444a-b535-0773b6c3641a/rt;JMS%20Queue",
+          "name" : "JMS Queue",
+          "identityHash" : "e231d2d4c8c38b428725c32f4e695fad772c1db8",
+          "contentHash" : "75b04b43485b3d9ee4da2153e44944e2f63ef",
+          "syncHash" : "646cd44497a45d7afbdabbd466c412829c3262",
+          "id" : "JMS Queue"
+        }, {
+          "path" : "/t;hawkular/f;45c79380-1a30-444a-b535-0773b6c3641a/rt;Messaging%20Server",
+          "name" : "Messaging Server",
+          "identityHash" : "c21e2c4be8b952d760ef3929652e304bd951ac4e",
+          "contentHash" : "333ae92fb6535ccf71d18badfd388f14a441d0",
+          "syncHash" : "35896341e6bfb41fe41e262adfe462dd854ada88",
+          "id" : "Messaging Server"
+        }, {
+          "path" : "/t;hawkular/f;45c79380-1a30-444a-b535-0773b6c3641a/rt;WildFly%20Server",
+          "name" : "WildFly Server",
+          "identityHash" : "755514da45467710ce1e458f6f957824ea1c1b7c",
+          "contentHash" : "96dfab5fa91ff8fea2be793138eb9f9d84399bc",
+          "syncHash" : "38f8b952a9c522c38fc42f4b87efdc13e6d9562",
+          "id" : "WildFly Server"
+        }, {
+          "path" : "/t;hawkular/f;45c79380-1a30-444a-b535-0773b6c3641a/rt;Socket%20Binding",
+          "name" : "Socket Binding",
+          "identityHash" : "9e8eefdeb8e37da1b2fa96e756b262caeea5",
+          "contentHash" : "2f81bc49e564e3806c1179824029ffcac3ecb8ed",
+          "syncHash" : "429b6e781fd8cc8734d8e7c74dcded0cf716a39",
+          "id" : "Socket Binding"
+        }, {
+          "path" : "/t;hawkular/f;45c79380-1a30-444a-b535-0773b6c3641a/rt;Singleton%20EJB",
+          "name" : "Singleton EJB",
+          "identityHash" : "42f0638e5e8e266d17d2f7e95f35313e96fa9b39",
+          "contentHash" : "9c45b8135d1640115bd1e16ddf6ed623abe9833",
+          "syncHash" : "2260ecbd58da298aae11888aaa666a21dbe71f",
+          "id" : "Singleton EJB"
+        }, {
+          "path" : "/t;hawkular/f;45c79380-1a30-444a-b535-0773b6c3641a/rt;JGroups",
+          "name" : "JGroups",
+          "identityHash" : "dd6a37f1e791f41312ab3ce894dad8db26ee3ad",
+          "contentHash" : "7cb9431daf07a2dc58d3786ac5a76f915891564",
+          "syncHash" : "c5a9d8fab9907672ac042ae415ac7e62b2234",
+          "id" : "JGroups"
+        }, {
+          "path" : "/t;hawkular/f;45c79380-1a30-444a-b535-0773b6c3641a/rt;ModCluster",
+          "name" : "ModCluster",
+          "identityHash" : "364f9437230722b5892c9595b29c77b62d3396f",
+          "contentHash" : "dbf826da8a4c333766883dba8952e10746225e7",
+          "syncHash" : "3a43f4e6781e56c218cc9cdd548ff4d362858e2",
+          "id" : "ModCluster"
+        }, {
+          "path" : "/t;hawkular/f;45c79380-1a30-444a-b535-0773b6c3641a/rt;JDBC%20Driver",
+          "name" : "JDBC Driver",
+          "identityHash" : "7c311a2fb888f2334317cf055191db7811b7f4a",
+          "contentHash" : "3f1b769e6846f49e2d5cfc55b8fe7a58e2742f2",
+          "syncHash" : "e28b2abe7a5746ecdcd12910ecc1baaf5593cca",
+          "id" : "JDBC Driver"
+        }, {
+          "path" : "/t;hawkular/f;45c79380-1a30-444a-b535-0773b6c3641a/rt;Servlet",
+          "name" : "Servlet",
+          "identityHash" : "d844da746834ebfc4aa7782c94eeaea85b4abb74",
+          "contentHash" : "8a3d655f3696d872a783c7b5b2888a97188bc29",
+          "syncHash" : "c225714570836f79fdafeeb5eb71fe2ce8b987",
+          "id" : "Servlet"
+        }, {
+          "path" : "/t;hawkular/f;45c79380-1a30-444a-b535-0773b6c3641a/rt;Infinispan%20Cache%20Container",
+          "name" : "Infinispan Cache Container",
+          "identityHash" : "53f33112d2fa8726fd7a36b3b09827b874f36c2",
+          "contentHash" : "58e8394667e6d252b359de36a5fd148a2c15352",
+          "syncHash" : "f2771559147eedc294f187c9d2acfa94df82175",
+          "id" : "Infinispan Cache Container"
+        }, {
+          "path" : "/t;hawkular/f;45c79380-1a30-444a-b535-0773b6c3641a/rt;XA%20Datasource",
+          "name" : "XA Datasource",
+          "identityHash" : "738cead59778159f64fa3911e2eff113f0f9d8",
+          "contentHash" : "3e6a387dbbbcf637e951b8c4c5bfa3dbdce858",
+          "syncHash" : "fddf22b49da75825cb141ca5615d1292cfa4457",
+          "id" : "XA Datasource"
+        }, {
+          "path" : "/t;hawkular/f;45c79380-1a30-444a-b535-0773b6c3641a/rt;JGroups%20Channel",
+          "name" : "JGroups Channel",
+          "identityHash" : "b076f142fbf9a283551583114ab2a58039bd488d",
+          "contentHash" : "bbc51e1ef3ddc3f6db28051af5f9ef3ac62ae59",
+          "syncHash" : "60d66189547e89e6bcaadaa74ccbf9d96444fdd1",
+          "id" : "JGroups Channel"
+        }, {
+          "path" : "/t;hawkular/f;45c79380-1a30-444a-b535-0773b6c3641a/rt;Infinispan",
+          "name" : "Infinispan",
+          "identityHash" : "a02a9a0121b9fe564ef869e72765e7f1c56b2a",
+          "contentHash" : "acbd2d38de78a774e94c399a2922ae46bea3783",
+          "syncHash" : "4daf646564159dbdc4ec5b5c8f9ba62a0ffb6",
+          "id" : "Infinispan"
+        }, {
+          "path" : "/t;hawkular/f;45c79380-1a30-444a-b535-0773b6c3641a/rt;Stateless%20Session%20EJB",
+          "name" : "Stateless Session EJB",
+          "identityHash" : "8db06fc15c4b85fdfc5843944dde9594652a634",
+          "contentHash" : "bfa5b10fe4963014f26cdf5a6541b7f42814",
+          "syncHash" : "dc33e68f960d5393464f9cec9e915d5842b3835",
+          "id" : "Stateless Session EJB"
+        } ]
+    http_version: 
+  recorded_at: Sat, 22 Apr 2017 17:52:23 GMT
+recorded_with: VCR 3.0.3

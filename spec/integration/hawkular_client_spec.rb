@@ -3,11 +3,21 @@ require_relative '../spec_helper'
 
 require 'securerandom'
 
+include Hawkular::Inventory
+include Hawkular::Operations
+
 # examples that tests the main client which delegates all the calls to Hawkular component clients
 module Hawkular::Client::RSpec
   HOST = 'http://localhost:8080'
 
   describe 'HawkularClient' do
+    alias_method :helper_host, :host
+
+    let(:cassette_name) do |example|
+      description = example.description
+      description
+    end
+
     before(:all) do
       @creds = {
         username: 'jdoe',
@@ -27,7 +37,7 @@ module Hawkular::Client::RSpec
     end
 
     it 'Should err on bad credentials' do
-      VCR.use_cassette('HawkularClient/Should err on bad credentials') do
+      record('HawkularClient', nil, cassette_name) do
         @creds = {
           username: '-XX-X-jdoe-X',
           password: 'password'
@@ -50,11 +60,11 @@ module Hawkular::Client::RSpec
       expect { @hawkular_client.tokens_lyst_feeds }.to raise_error(NoMethodError)
     end
 
-    context 'and URIs as input', vcr: { decode_compressed_response: true } do
+    context 'and URIs as input' do
       it 'Should work with URI' do
-        uri = URI.parse HOST
-        opts = { tenant: 'hawkular' }
-        ::RSpec::Mocks.with_temporary_scope do
+        record('HawkularClient', nil, cassette_name) do
+          uri = URI.parse HOST
+          opts = { tenant: 'hawkular' }
           mock_metrics_version
           the_client = Hawkular::Client.new(entrypoint: uri, credentials: @creds, options: opts)
           expect { the_client.inventory.list_feeds }.to_not raise_error
@@ -64,7 +74,7 @@ module Hawkular::Client::RSpec
       it 'Should work with URI on metrics client' do
         uri = URI.parse HOST
         opts = { tenant: 'hawkular' }
-        ::RSpec::Mocks.with_temporary_scope do
+        record('HawkularClient', nil, cassette_name) do
           mock_metrics_version
           the_client = Hawkular::Metrics::Client.new(uri, @creds, opts)
           expect { the_client.http_get '/status' }.to_not raise_error
@@ -74,15 +84,13 @@ module Hawkular::Client::RSpec
       it 'Should work with https URI on metrics client' do
         uri = URI.parse 'https://localhost:8080'
         opts = { tenant: 'hawkular' }
-        ::RSpec::Mocks.with_temporary_scope do
-          mock_metrics_version
-          the_client = Hawkular::Metrics::Client.new(uri, @creds, opts)
-          expect !the_client.nil?
-        end
+        mock_metrics_version
+        the_client = Hawkular::Metrics::Client.new(uri, @creds, opts)
+        expect !the_client.nil?
       end
     end
 
-    context 'and Inventory client', vcr: { decode_compressed_response: true } do
+    context 'and Inventory client' do
       before(:all) do
         ::RSpec::Mocks.with_temporary_scope do
           mock_inventory_client '0.17.2.Final'
@@ -90,6 +98,10 @@ module Hawkular::Client::RSpec
                                                        credentials: @creds,
                                                        options: { tenant: 'hawkular' })
         end
+      end
+
+      around(:each) do |example|
+        record('HawkularClient', nil, cassette_name, example: example)
       end
 
       it 'Should list the same feeds' do
@@ -156,19 +168,16 @@ module Hawkular::Client::RSpec
       before(:all) do
         ::RSpec::Mocks.with_temporary_scope do
           mock_metrics_version
-          @client = Hawkular::Metrics::Client.new(HOST, @creds)
+          opts = { tenant: 'hawkular' }
+          @client = Hawkular::Metrics::Client.new(HOST, @creds, opts)
         end
       end
 
       it 'Should both work the same way when pushing metric data to non-existing counter' do
         id = SecureRandom.uuid
-
-        VCR.use_cassette('HawkularClient/and_Metrics_client/Should both work the same way when' \
-                             ' pushing metric data to non-existing counter',
-                         erb: { id: id }, record: :none, decode_compressed_response: true
-                        ) do
+        record('HawkularClient', { id: id }, 'and_Metrics_client/Should both work the same way when' \
+                              ' pushing metric data to non-existing counter') do
           @client.counters.push_data(id, value: 4)
-
           data = @hawkular_client.metrics.counters.get_data(id)
           expect(data.size).to be 1
           counter = @hawkular_client.metrics.counters.get(id)
@@ -179,10 +188,8 @@ module Hawkular::Client::RSpec
       it 'Should both create and return Availability using Hash parameter' do
         id1 = SecureRandom.uuid
         id2 = SecureRandom.uuid
-        VCR.use_cassette(
-          'HawkularClient/and_Metrics_client/Should both create and return Availability using Hash parameter',
-          erb: { id1: id1, id2: id2 }, record: :none, decode_compressed_response: true
-        ) do
+        record('HawkularClient', { id1: id1, id2: id2 }, 'and_Metrics_client/Should both create and return' \
+                  'Availability using Hash parameter') do
           @client.avail.create(id: id1, dataRetention: 123, tags: { some: 'value' })
           metric = @hawkular_client.metrics.avail.get(id1)
           expect(metric.id).to eql(id1)
@@ -198,14 +205,11 @@ module Hawkular::Client::RSpec
       it 'Should both update tags for Availability' do
         id1 = SecureRandom.uuid
         id2 = SecureRandom.uuid
-
-        VCR.use_cassette('HawkularClient/and_Metrics_client/Should both create and retrieve tags for Availability',
-                         erb: { id1: id1, id2: id2 }, record: :none, decode_compressed_response: true
-                        ) do
+        record('HawkularClient', { id1: id1, id2: id2 }, 'and_Metrics_client/Should both create and retrieve tags'\
+                  'for Availability') do
           @client.avail.create(id: id1, tags: { myTag: id1 })
           metric = @hawkular_client.metrics.avail.get(id1)
           expect(metric.id).to eql(id1)
-
           @hawkular_client.metrics.avail.create(id: id2, tags: { myTag: id2 })
           metric = @client.avail.get(id2)
           expect(metric.id).to eql(id2)
@@ -213,7 +217,7 @@ module Hawkular::Client::RSpec
       end
 
       it 'Should both return the version' do
-        VCR.use_cassette('HawkularClient/and_Metrics_client/Should both return the version') do
+        record('HawkularClient', nil, 'and_Metrics_client/Should both return the version') do
           data1 = @client.fetch_version_and_status
           data2 = @hawkular_client.metrics.fetch_version_and_status
           expect(data1).to eql(data2)
@@ -221,31 +225,68 @@ module Hawkular::Client::RSpec
       end
     end
 
-    context 'and Operations client', vcr: { decode_compressed_response: true } do
+    context 'and Operations client' do
       include Hawkular::Operations::RSpec
 
       WebSocketVCR.configure do |c|
         c.hook_uris = ['localhost:8080']
       end
 
-      let(:example) do |e|
-        e
+      let(:host) do
+        helper_host(:NonSecure)
+      end
+
+      let(:options) do
+        {
+          host: host,
+          wait_time: WebSocketVCR.live? ? 1.5 : 2,
+          use_secure_connection: false,
+          credentials: credentials,
+          options: {
+            tenant: 'hawkular'
+          }
+        }
+      end
+
+      before(:each) do
+        record('HawkularClient/Helpers', nil, 'get_tenant') do
+          mock_inventory_client
+          @inventory_client = ::Hawkular::Inventory::Client.create(
+            options.merge entrypoint: host_with_scheme(host, false))
+          inventory_client = @inventory_client
+          remove_instance_variable(:@inventory_client)
+          @tenant_id = inventory_client.get_tenant
+          record('HawkularClient/Helpers', { tenant_id: @tenant_id }, 'get_feed') do
+            @feed_id = inventory_client.list_feeds[0]
+          end
+          record('HawkularClient/Helpers', { tenant_id: @tenant_id, feed_id: @feed_id },
+                 'agent_properties') do
+            @wf_server_resource_id = 'Local~~'
+            wf_path = CanonicalPath.new(tenant_id: @tenant_id,
+                                        feed_id: @feed_id,
+                                        resource_ids: [@wf_server_resource_id])
+            wf_agent_path = path_for_installed_agent(wf_path)
+            @agent_immutable = immutable(inventory_client, wf_agent_path)
+          end
+        end
+      end
+
+      around(:each) do |example|
+        record('HawkularClient', nil, cassette_name, example: example)
       end
 
       it 'Should both work the same way', :websocket do
-        tenant_id = @hawkular_client.inventory_get_tenant
-        tenant_id2 = @hawkular_client.inventory.get_tenant
-        expect(tenant_id).to eql(tenant_id2)
+        record_websocket('HawkularClient', nil, cassette_name) do
+          tenant_id = @hawkular_client.inventory_get_tenant
+          tenant_id2 = @hawkular_client.inventory.get_tenant
+          expect(tenant_id).to eql(tenant_id2)
+          feed_id = @hawkular_client.inventory.list_feeds.first
+          wf_server_resource_id = 'Local~~'
+          status_war_resource_id = 'Local~%2Fdeployment%3Dhawkular-status.war'
 
-        feed_id = @hawkular_client.inventory.list_feeds.first
-        wf_server_resource_id = 'Local~~'
-        alerts_war_resource_id = 'Local~%2Fdeployment%3Dhawkular-alerts-actions-email.war'
-
-        WebSocketVCR.record(example, self) do
           path = Hawkular::Inventory::CanonicalPath.new(tenant_id: tenant_id,
                                                         feed_id: feed_id,
-                                                        resource_ids: [wf_server_resource_id, alerts_war_resource_id])
-
+                                                        resource_ids: [wf_server_resource_id, status_war_resource_id])
           redeploy = {
             operationName: 'Redeploy',
             resourcePath: path.to_s
@@ -258,13 +299,13 @@ module Hawkular::Client::RSpec
               actual_data[:data] = data
             end
             on.failure do |error|
-              actual_data[:data] = {}
-              puts 'error callback was called, reason: ' + error.to_s
+              actual_data[:data] = error
             end
           end
 
           actual_data = wait_for actual_data
-          expect(actual_data['status']).to eq('OK')
+          expect(actual_data['status']).to eq('OK') unless @agent_immutable
+          expect(actual_data).to include('not allowed because the agent is immutable') if @agent_immutable
 
           # now do the same on the main client
           actual_data = {}
@@ -273,30 +314,23 @@ module Hawkular::Client::RSpec
               actual_data[:data] = data
             end
             on.failure do |error|
-              actual_data[:data] = {}
-              puts 'error callback was called, reason: ' + error.to_s
+              actual_data[:data] = error
             end
           end
 
           actual_data = wait_for actual_data
-          expect(actual_data['status']).to eq('OK')
+          expect(actual_data['status']).to eq('OK') unless @agent_immutable
+          expect(actual_data).to include('not allowed because the agent is immutable') if @agent_immutable
         end
       end
 
       it 'Should work initializing with URI' do
         uri = URI.parse HOST
         opts = { tenant: 'hawkular' }
-        WebSocketVCR.record(example, self) do
-          ::RSpec::Mocks.with_temporary_scope do
-            mock_metrics_version
-            the_client = Hawkular::Client.new(entrypoint: uri, credentials: @creds, options: opts)
-            expect { the_client.operations }.to_not raise_error
-          end
-        end
-      end
-
-      xit 'Should both reuse the websocket connection', :websocket do
-        WebSocketVCR.record(example, self) do
+        record_websocket('HawkularClient', nil, cassette_name) do
+          mock_metrics_version
+          the_client = Hawkular::Client.new(entrypoint: uri, credentials: @creds, options: opts)
+          expect { the_client.operations }.to_not raise_error
         end
       end
     end
