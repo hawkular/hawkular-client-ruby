@@ -4,6 +4,9 @@ This document describes the relevant changes between releases of the
 _hawkular-client_ project.
 
 
+=== V 3.0.1
+* Fixed the issue in operations client when dealing with error handling
+
 === V 3.0.0
 * Starting this version the older Hawkular Services (prior version 0.36.0.Final, excluding) are not compatible
 * We added support for multitenancy
@@ -22,7 +25,7 @@ _hawkular-client_ project.
 11. <code>create_metric_for_resource</code> - removed
 12. <code>events</code> - removed
 13. <code>no_more_events!</code> - removed
-14. <code>list_metrics_for_resource_type
+14. <code>list_metrics_for_resource_type</code> - removed
 15. <code>list_resource_types(feed_id)</code> - now the feed_id parameter is mandatory
 
 Also the payload/parameters are now different:
