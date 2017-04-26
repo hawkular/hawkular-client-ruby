@@ -20,6 +20,6 @@ env:
 services:
   - docker
 before_install:
-  - (test $RUN_ON_LIVE_SERVER = 1 && ./.travis/start_hawkular_services.sh -d && ./.travis/wait_for_services.rb) || echo "Skipping live server"
+  - (test $RUN_ON_LIVE_SERVER = 1 && ./.travis/start_hawkular_services.sh && ./.travis/wait_for_services.rb) || (test $RUN_ON_LIVE_SERVER = 0  && echo "Skipping live server")
 after_success:
   - ./.travis.docs.rb
