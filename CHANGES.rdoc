@@ -22,7 +22,7 @@ _hawkular-client_ project.
 11. <code>create_metric_for_resource</code> - removed
 12. <code>events</code> - removed
 13. <code>no_more_events!</code> - removed
-14. <code>list_metrics_for_resource_type
+14. <code>list_metrics_for_resource_type</code> - removed
 15. <code>list_resource_types(feed_id)</code> - now the feed_id parameter is mandatory
 
 Also the payload/parameters are now different:
