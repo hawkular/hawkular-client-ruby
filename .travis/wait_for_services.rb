@@ -21,6 +21,10 @@ services = {
   }
 }
 
+wait_time = 5
+max_attempts = 30
+
+attempt = 0
 services.each do |name, service|
   loop do
     uri = URI(service[:url])
@@ -31,7 +35,13 @@ services.each do |name, service|
     rescue
       puts 'Waiting for Hawkular-Services to accept connections'
     end
-    sleep 5
+    if attempt < max_attempts
+      sleep wait_time
+      attempt += 1
+    else
+      puts "Can't connect to [#{name}] using url [#{service[:url]}] after [#{attempt}] attemps"
+      exit 1
+    end
   end
 end
 puts 'Waiting 2 minutes for agent to complete it\'s first round...'
