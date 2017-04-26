@@ -4,6 +4,9 @@ This document describes the relevant changes between releases of the
 _hawkular-client_ project.
 
 
+=== V 3.0.1
+* Fixed the issue in operations client when dealing with error handling
+
 === V 3.0.0
 * Starting this version the older Hawkular Services (prior version 0.36.0.Final, excluding) are not compatible
 * We added support for multitenancy

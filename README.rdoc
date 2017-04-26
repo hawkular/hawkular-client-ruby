@@ -11,7 +11,7 @@ Documentation[http://www.hawkular.org/hawkular-client-ruby/docs/]
 == Changelog
 
 See {CHANGELOG}[http://www.hawkular.org/hawkular-client-ruby/docs/latest/file.CHANGES.html] for a list of changes and
-{API-Breaking-Changes}[link:http://www.hawkular.org/hawkular-client-ruby/docs/latest/file.api_breaking_changes.html] for a list of api-breaking changes.
+{API-Breaking-Changes}[http://www.hawkular.org/hawkular-client-ruby/docs/latest/file.api_breaking_changes.html] for a list of api-breaking changes.
 
 == Overview
 
