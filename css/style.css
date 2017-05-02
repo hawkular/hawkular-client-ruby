@@ -1,0 +1,13 @@
+body {
+  font-family: "Lucida Sans", "Lucida Grande", Verdana, Arial, sans-serif;
+  font-size: 20px;
+}
+
+a {
+  text-decoration: none;
+  color: #05a;
+}
+
+a:hover {
+  background: #ffffa5;
+}
