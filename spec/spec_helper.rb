@@ -196,17 +196,22 @@ module Helpers
     "#{base['host']}:#{base['port']}"
   end
 
-  def path_for_installed_agent(wf_server_path)
-    wf_server_path.down('Local~/subsystem=hawkular-wildfly-agent')
+  def installed_agent(inventory, tenant_id, feed_id)
+    resource_type_path = CanonicalPath.new(
+      feed_id: feed_id,
+      tenant_id: tenant_id,
+      resource_type_id: 'Hawkular WildFly Agent'
+    )
+    inventory.list_resources_for_type(resource_type_path, true).first
   end
 
-  def in_container(inventory, resource_path)
-    properties = inventory.get_resource(resource_path, true).properties
+  def agent_in_container?(agent)
+    properties = agent.properties
     properties.key?('In Container') ? (properties['In Container'] == 'true') : false
   end
 
-  def immutable(inventory, resource_path)
-    properties = inventory.get_resource(resource_path, true).properties
+  def agent_immutable?(agent)
+    properties = agent.properties
     properties.key?('Immutable') ? (properties['Immutable'] == 'true') : false
   end
 

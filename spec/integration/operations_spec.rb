@@ -134,9 +134,20 @@ module Hawkular::Operations::RSpec
       end
 
       describe 'Operation/Operation' do
-        before(:all) do
-          @random_uuid = SecureRandom.uuid
-          @not_so_random_uuid = 'not_so_random_uuid'
+        let(:random_uuid) do
+          SecureRandom.uuid
+        end
+
+        let (:not_so_random_uuid) do
+          'not_so_random_uuid'
+        end
+
+        let (:driver_name) do
+          'CreatedByRubyDriver' + not_so_random_uuid
+        end
+
+        let (:wf_server_resource_id) do
+          'Local~~'
         end
 
         around(:each) do |example|
@@ -154,12 +165,8 @@ module Hawkular::Operations::RSpec
             end
             record("Operation/#{security_context}/Helpers", { tenant_id: @tenant_id, feed_id: @feed_id },
                    'agent_properties') do
-              @wf_server_resource_id = 'Local~~'
-              wf_path = CanonicalPath.new(tenant_id: @tenant_id,
-                                          feed_id: @feed_id,
-                                          resource_ids: [@wf_server_resource_id])
-              wf_agent_path = path_for_installed_agent(wf_path)
-              @agent_immutable = immutable(inventory_client, wf_agent_path)
+              @agent = installed_agent(inventory_client, @tenant_id, @feed_id)
+              @agent_immutable = agent_immutable?(@agent)
             end
           end
           @bindings = { random_uuid: @random_uuid, tenant_id: @tenant_id, feed_id: @feed_id }
@@ -169,19 +176,18 @@ module Hawkular::Operations::RSpec
                            example)
         end
 
-        it 'Add JDBC driver should add the driver' do # Unless it runs in a container
-          driver_name = 'CreatedByRubyDriver' + @not_so_random_uuid
+        def add_jdbc_driver
           driver_bits = IO.binread("#{File.dirname(__FILE__)}/../resources/driver.jar")
           wf_path = CanonicalPath.new(tenant_id: @tenant_id,
                                       feed_id: @feed_id,
-                                      resource_ids: [@wf_server_resource_id]).to_s
+                                      resource_ids: [wf_server_resource_id]).to_s
 
           actual_data = {}
 
           client.add_jdbc_driver(resource_path: wf_path,
                                  driver_jar_name: 'driver.jar',
                                  driver_name: driver_name,
-                                 module_name: 'foo.bar' + @not_so_random_uuid, # jboss module
+                                 module_name: 'foo.bar' + not_so_random_uuid, # jboss module
                                  driver_class: 'com.mysql.jdbc.Driver',
                                  binary_content: driver_bits) do |on|
             on.success do |data|
@@ -189,14 +195,32 @@ module Hawkular::Operations::RSpec
             end
             on.failure do |error|
               actual_data[:data] = error
-              puts 'error callback was called, reason: ' + error.to_s unless @agent_immutable
             end
           end
-          actual_data = wait_for actual_data
-          expect(actual_data['status']).to eq('OK') unless @agent_immutable
-          expect(actual_data['message']).to start_with('Added JDBC Driver') unless @agent_immutable
-          expect(actual_data['driverName']).to eq(driver_name) unless @agent_immutable
-          expect(actual_data).to include('Command not allowed because the agent is immutable') if @agent_immutable
+          wait_for actual_data
+        end
+
+        context 'Mutable agent' do
+          before(:each) do
+            skip 'mutable agent specs don\'t run on immutable agent' if @agent_immutable
+          end
+
+          it 'Add JDBC driver does add the driver' do
+            data = add_jdbc_driver
+            expect(data['status']).to eq('OK')
+            expect(data['driverName']).to eq(driver_name)
+            expect(actual_data['message']).to start_with('Added JDBC Driver')
+          end
+        end
+
+        context 'Immutable agent' do
+          before(:each) do
+            skip 'immutable agent specs don\'t run on mutable agent' unless @agent_immutable
+          end
+
+          it 'Add JDBC driver fails' do
+            expect(add_jdbc_driver).to include('Command not allowed because the agent is immutable')
+          end
         end
 
         it 'Restart should be performed and eventually respond with success' do
@@ -513,7 +537,7 @@ module Hawkular::Operations::RSpec
           driver_resource_id << @not_so_random_uuid
           path = CanonicalPath.new(tenant_id: @tenant_id,
                                    feed_id: @feed_id,
-                                   resource_ids: [@wf_server_resource_id, driver_resource_id]).to_s
+                                   resource_ids: [wf_server_resource_id, driver_resource_id]).to_s
 
           actual_data = {}
           client.invoke_specific_operation({ resourcePath: path }, 'RemoveJdbcDriver') do |on|
