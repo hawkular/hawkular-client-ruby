@@ -155,11 +155,9 @@ module Hawkular::Operations::RSpec
             record("Operation/#{security_context}/Helpers", { tenant_id: @tenant_id, feed_id: @feed_id },
                    'agent_properties') do
               @wf_server_resource_id = 'Local~~'
-              wf_path = CanonicalPath.new(tenant_id: @tenant_id,
-                                          feed_id: @feed_id,
-                                          resource_ids: [@wf_server_resource_id])
-              wf_agent_path = path_for_installed_agent(wf_path)
-              @agent_immutable = immutable(inventory_client, wf_agent_path)
+              agent = installed_agent(inventory_client, @feed_id)
+              @agent_immutable = agent_immutable?(agent)
+              @agent_path = agent.path
             end
           end
           @bindings = { random_uuid: @random_uuid, tenant_id: @tenant_id, feed_id: @feed_id }
@@ -557,14 +555,8 @@ module Hawkular::Operations::RSpec
         end
 
         it 'Update collection intervals should be performed and eventually respond with success' do
-          wf_server_resource_id = 'Local~~'
-          wf_agent_id = 'Local~%2Fsubsystem%3Dhawkular-wildfly-agent'
-          path = CanonicalPath.new(tenant_id: @tenant_id,
-                                   feed_id: @feed_id,
-                                   resource_ids: [wf_server_resource_id, wf_agent_id])
-
           hash = {
-            resourcePath: path.to_s,
+            resourcePath: @agent_path.to_s,
             metricTypes: { 'WildFly Memory Metrics~Heap Max' => 77, 'Unknown~Metric' => 666 },
             availTypes: { 'Server Availability~Server Availability' => 77, 'Unknown~Avail' => 666 }
           }

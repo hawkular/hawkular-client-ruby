@@ -237,12 +237,8 @@ module Hawkular::Client::RSpec
           end
           record('HawkularClient/Helpers', { tenant_id: @tenant_id, feed_id: @feed_id },
                  'agent_properties') do
-            @wf_server_resource_id = 'Local~~'
-            wf_path = CanonicalPath.new(tenant_id: @tenant_id,
-                                        feed_id: @feed_id,
-                                        resource_ids: [@wf_server_resource_id])
-            wf_agent_path = path_for_installed_agent(wf_path)
-            @agent_immutable = immutable(inventory_client, wf_agent_path)
+            agent = installed_agent(inventory_client, @feed_id)
+            @agent_immutable = agent_immutable?(agent)
           end
         end
       end

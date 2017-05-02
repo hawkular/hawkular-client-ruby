@@ -196,18 +196,17 @@ module Helpers
     "#{base['host']}:#{base['port']}"
   end
 
-  def path_for_installed_agent(wf_server_path)
-    wf_server_path.down('Local~/subsystem=hawkular-wildfly-agent')
+  def installed_agent(inventory, feed_id)
+    resource_type_path = inventory.feed_cp(feed_id).resource_type('Hawkular WildFly Agent')
+    inventory.list_resources_for_type(resource_type_path, true).first
   end
 
-  def in_container(inventory, resource_path)
-    properties = inventory.get_resource(resource_path, true).properties
-    properties.key?('In Container') ? (properties['In Container'] == 'true') : false
+  def agent_in_container?(agent)
+    agent.properties['In Container'] == 'true'
   end
 
-  def immutable(inventory, resource_path)
-    properties = inventory.get_resource(resource_path, true).properties
-    properties.key?('Immutable') ? (properties['Immutable'] == 'true') : false
+  def agent_immutable?(agent)
+    agent.properties['Immutable'] == 'true'
   end
 
   def make_template(base_directory, cassette_name, bindings)
