@@ -445,26 +445,34 @@ module Hawkular::Inventory
     end
 
     def extract_structures_from_body(response_body_array)
-      response_body_array.map { |element| rebuild_from_chunks(element['data']) }
+      response_body_array.map { |element| Client.rebuild_from_chunks(element['data']) }
         .select { |full| full } # evict nil
-        .map { |full| decompress(full) }
+        .map { |full| Client.decompress(full) }
     end
 
-    def rebuild_from_chunks(data_node)
+    def self.rebuild_from_chunks(data_node)
       return if data_node.empty?
       master_data = data_node[0]
       return Base64.decode64(master_data['value']) unless (master_data.key? 'tags') &&
                                                           (master_data['tags'].key? 'chunks')
+      master_timestamp = master_data['timestamp']
       last_chunk = master_data['tags']['chunks'].to_i - 1
       all = Base64.decode64(master_data['value'])
       return if all.empty?
       (1..last_chunk).inject(all) do |full, chunk_id|
         slave_data = data_node[chunk_id]
+        # Race condition: slave_data might be nil if not all chunks have been written yet on DB
+        # Consider the object is not there yet
+        return nil unless slave_data
+        # The same race condition could give us an expirated slave_data; do sanity check to cover that
+        # Timestamps are useful here, they're in consecutive, decreasing order
+        slave_timestamp = slave_data['timestamp']
+        return nil unless slave_timestamp == master_timestamp - chunk_id
         full.concat(Base64.decode64(slave_data['value']))
       end
     end
 
-    def decompress(raw)
+    def self.decompress(raw)
       gz = Zlib::GzipReader.new(StringIO.new(raw))
       JSON.parse(gz.read)
     end
