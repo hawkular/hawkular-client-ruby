@@ -179,6 +179,8 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
+      Host:
+      - localhost:8080
   response:
     status:
       code: 200
@@ -195,16 +197,16 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 25 Apr 2017 15:06:53 GMT
+      - Tue, 02 May 2017 19:28:01 GMT
       Connection:
       - keep-alive
       Content-Type:
       - application/json
       Content-Length:
-      - '48'
+      - '63'
     body:
       encoding: UTF-8
-      string: '{"feed":["aa87aba58bf5"],"module":["inventory"]}'
+      string: '{"feed":["9a8378da4a7d","1adc16c1551d"],"module":["inventory"]}'
     http_version: 
-  recorded_at: Tue, 25 Apr 2017 15:06:53 GMT
+  recorded_at: Tue, 02 May 2017 19:28:01 GMT
 recorded_with: VCR 3.0.3

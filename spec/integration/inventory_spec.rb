@@ -152,7 +152,7 @@ module Hawkular::Inventory::RSpec
         it 'Should list resources for feed' do
           resources = @client.list_resources_for_feed feed_id
 
-          expect(resources.size).to be(2)
+          expect(resources.size).to be >= 2
         end
 
         it 'Should list types with feed' do
@@ -244,7 +244,7 @@ module Hawkular::Inventory::RSpec
           expect(metrics.size).to be(3)
 
           metrics = @client.list_metrics_for_resource(wild_fly.path, type: 'GAUGE')
-          expect(metrics.size).to be(8)
+          expect(metrics.size).to be >= 8
         end
 
         it 'Should list metrics of given metric type' do

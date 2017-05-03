@@ -3,42 +3,42 @@
     {
       "operation": "read",
       "type": "text",
-      "data": "WelcomeResponse={\"sessionId\":\"pJBVR74ULdQBRKwbgJLyJYvPWTVTocpmiHgpDnv-\"}"
+      "data": "WelcomeResponse={\"sessionId\":\"VFlKNRObmHRknNdZGdJFjowbfPUEOL3jnVhRS-k2\"}"
     },
     {
       "operation": "write",
-      "data": "ExecuteOperationRequest={\"operationName\":\"Redeploy\",\"resourcePath\":\"/t;hawkular/f;aa87aba58bf5/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-status.war\",\"authentication\":{\"username\":\"jdoe\",\"password\":\"password\"}}"
+      "data": "ExecuteOperationRequest={\"operationName\":\"Redeploy\",\"resourcePath\":\"/t;hawkular/f;9a8378da4a7d/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-status.war\",\"authentication\":{\"username\":\"jdoe\",\"password\":\"password\"}}"
     },
     {
       "operation": "read",
       "type": "text",
-      "data": "GenericSuccessResponse={\"message\":\"The request has been forwarded to feed [aa87aba58bf5] (MessageId=ID:d14865ab-29c8-11e7-9346-cb514f6228a4)\"}"
+      "data": "GenericSuccessResponse={\"message\":\"The request has been forwarded to feed [9a8378da4a7d] (MessageId=ID:74cea585-2f6d-11e7-a0d8-f5da34e341e7)\"}"
     },
     {
       "operation": "read",
       "type": "text",
-      "data": "ExecuteOperationResponse={\"resourcePath\":\"/t;hawkular/f;aa87aba58bf5/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-status.war\",\"destinationSessionId\":\"pJBVR74ULdQBRKwbgJLyJYvPWTVTocpmiHgpDnv-\",\"status\":\"ERROR\",\"message\":\"Could not perform [Redeploy] on a [DMR Node] given by inventory path [/t;hawkular/f;aa87aba58bf5/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-status.war] requested on [2017-04-25T15:06Z]: java.lang.IllegalStateException: Operation [Redeploy] not allowed because the agent is immutable\"}"
+      "data": "ExecuteOperationResponse={\"resourcePath\":\"/t;hawkular/f;9a8378da4a7d/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-status.war\",\"destinationSessionId\":\"VFlKNRObmHRknNdZGdJFjowbfPUEOL3jnVhRS-k2\",\"status\":\"ERROR\",\"message\":\"Could not perform [Redeploy] on a [DMR Node] given by inventory path [/t;hawkular/f;9a8378da4a7d/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-status.war] requested on [2017-05-02T19:28Z]: java.lang.IllegalStateException: Operation [Redeploy] not allowed because the agent is immutable\"}"
     }
   ],
   [
     {
       "operation": "read",
       "type": "text",
-      "data": "WelcomeResponse={\"sessionId\":\"t6LrcoQikcqfvnKj9FWVAjP7v4H7R9YjUm39uSfT\"}"
+      "data": "WelcomeResponse={\"sessionId\":\"Oi-VTOLRrJqOb-q-KMJqus3wNo30xcemGGpwdYsX\"}"
     },
     {
       "operation": "write",
-      "data": "ExecuteOperationRequest={\"operationName\":\"Redeploy\",\"resourcePath\":\"/t;hawkular/f;aa87aba58bf5/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-status.war\",\"authentication\":{\"username\":\"jdoe\",\"password\":\"password\"}}"
+      "data": "ExecuteOperationRequest={\"operationName\":\"Redeploy\",\"resourcePath\":\"/t;hawkular/f;9a8378da4a7d/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-status.war\",\"authentication\":{\"username\":\"jdoe\",\"password\":\"password\"}}"
     },
     {
       "operation": "read",
       "type": "text",
-      "data": "GenericSuccessResponse={\"message\":\"The request has been forwarded to feed [aa87aba58bf5] (MessageId=ID:d226b6cc-29c8-11e7-9346-cb514f6228a4)\"}"
+      "data": "GenericSuccessResponse={\"message\":\"The request has been forwarded to feed [9a8378da4a7d] (MessageId=ID:75b3d576-2f6d-11e7-a0d8-f5da34e341e7)\"}"
     },
     {
       "operation": "read",
       "type": "text",
-      "data": "ExecuteOperationResponse={\"resourcePath\":\"/t;hawkular/f;aa87aba58bf5/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-status.war\",\"destinationSessionId\":\"t6LrcoQikcqfvnKj9FWVAjP7v4H7R9YjUm39uSfT\",\"status\":\"ERROR\",\"message\":\"Could not perform [Redeploy] on a [DMR Node] given by inventory path [/t;hawkular/f;aa87aba58bf5/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-status.war] requested on [2017-04-25T15:06Z]: java.lang.IllegalStateException: Operation [Redeploy] not allowed because the agent is immutable\"}"
+      "data": "ExecuteOperationResponse={\"resourcePath\":\"/t;hawkular/f;9a8378da4a7d/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-status.war\",\"destinationSessionId\":\"Oi-VTOLRrJqOb-q-KMJqus3wNo30xcemGGpwdYsX\",\"status\":\"ERROR\",\"message\":\"Could not perform [Redeploy] on a [DMR Node] given by inventory path [/t;hawkular/f;9a8378da4a7d/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-status.war] requested on [2017-05-02T19:28Z]: java.lang.IllegalStateException: Operation [Redeploy] not allowed because the agent is immutable\"}"
     }
   ]
 ]

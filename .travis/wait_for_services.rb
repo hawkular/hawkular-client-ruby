@@ -18,7 +18,7 @@ services = {
 }
 
 wait_time = 5
-max_attempts = 30
+max_attempts = 50
 
 attempt = 0
 services.each do |name, service|
@@ -40,6 +40,6 @@ services.each do |name, service|
     end
   end
 end
-puts 'Waiting 2 minutes for agent to complete it\'s first round...'
-sleep 120
+puts 'Waiting 1 minute for agent to complete it\'s first round...'
+sleep 60
 puts 'Hawkular-services started successfully... '
