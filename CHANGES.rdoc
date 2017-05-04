@@ -4,6 +4,9 @@ This document describes the relevant changes between releases of the
 _hawkular-client_ project.
 
 
+=== v 3.0.2
+* Adding <code>URI.unescape</code> in the <code>list_metrics_for_resource</code> method to fix the behavior of the method
+
 === V 3.0.1
 * Fixed the issue in operations client when dealing with error handling
 
