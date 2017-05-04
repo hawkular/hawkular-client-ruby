@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: delete
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/events/my-event-01
+    uri: http://localhost:8080/hawkular/alerts/events/my-event-01
     body:
       encoding: US-ASCII
       string: ''
@@ -17,6 +17,9 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
@@ -47,7 +50,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:11:10 GMT
 - request:
     method: delete
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/events/my-event-01
+    uri: http://localhost:8080/hawkular/alerts/events/my-event-01
     body:
       encoding: US-ASCII
       string: ''
@@ -62,6 +65,9 @@ http_interactions:
       - foo
       Content-Type:
       - application/json
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
@@ -92,7 +98,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:11:10 GMT
 - request:
     method: delete
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/events/my-event-02
+    uri: http://localhost:8080/hawkular/alerts/events/my-event-02
     body:
       encoding: US-ASCII
       string: ''
@@ -107,6 +113,9 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
@@ -137,7 +146,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:11:10 GMT
 - request:
     method: delete
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/events/my-event-02
+    uri: http://localhost:8080/hawkular/alerts/events/my-event-02
     body:
       encoding: US-ASCII
       string: ''
@@ -152,6 +161,9 @@ http_interactions:
       - foo
       Content-Type:
       - application/json
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
@@ -182,7 +194,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:11:10 GMT
 - request:
     method: delete
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/events/my-event-03
+    uri: http://localhost:8080/hawkular/alerts/events/my-event-03
     body:
       encoding: US-ASCII
       string: ''
@@ -197,6 +209,9 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
@@ -227,7 +242,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:11:10 GMT
 - request:
     method: delete
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/events/my-event-03
+    uri: http://localhost:8080/hawkular/alerts/events/my-event-03
     body:
       encoding: US-ASCII
       string: ''
@@ -242,6 +257,9 @@ http_interactions:
       - foo
       Content-Type:
       - application/json
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
@@ -272,7 +290,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:11:10 GMT
 - request:
     method: delete
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/events/my-event-04
+    uri: http://localhost:8080/hawkular/alerts/events/my-event-04
     body:
       encoding: US-ASCII
       string: ''
@@ -287,6 +305,9 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
@@ -317,7 +338,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:11:10 GMT
 - request:
     method: delete
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/events/my-event-04
+    uri: http://localhost:8080/hawkular/alerts/events/my-event-04
     body:
       encoding: US-ASCII
       string: ''
@@ -332,6 +353,9 @@ http_interactions:
       - foo
       Content-Type:
       - application/json
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
@@ -362,7 +386,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:11:10 GMT
 - request:
     method: delete
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/events/my-event-05
+    uri: http://localhost:8080/hawkular/alerts/events/my-event-05
     body:
       encoding: US-ASCII
       string: ''
@@ -377,6 +401,9 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
@@ -407,7 +434,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:11:10 GMT
 - request:
     method: delete
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/events/my-event-05
+    uri: http://localhost:8080/hawkular/alerts/events/my-event-05
     body:
       encoding: US-ASCII
       string: ''
@@ -422,6 +449,9 @@ http_interactions:
       - foo
       Content-Type:
       - application/json
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
@@ -452,7 +482,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:11:10 GMT
 - request:
     method: delete
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/events/my-event-06
+    uri: http://localhost:8080/hawkular/alerts/events/my-event-06
     body:
       encoding: US-ASCII
       string: ''
@@ -467,6 +497,9 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
@@ -497,7 +530,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:11:10 GMT
 - request:
     method: delete
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/events/my-event-06
+    uri: http://localhost:8080/hawkular/alerts/events/my-event-06
     body:
       encoding: US-ASCII
       string: ''
@@ -512,6 +545,9 @@ http_interactions:
       - foo
       Content-Type:
       - application/json
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
@@ -542,7 +578,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:11:10 GMT
 - request:
     method: delete
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/events/my-event-07
+    uri: http://localhost:8080/hawkular/alerts/events/my-event-07
     body:
       encoding: US-ASCII
       string: ''
@@ -557,6 +593,9 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
@@ -587,7 +626,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:11:10 GMT
 - request:
     method: delete
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/events/my-event-07
+    uri: http://localhost:8080/hawkular/alerts/events/my-event-07
     body:
       encoding: US-ASCII
       string: ''
@@ -602,6 +641,9 @@ http_interactions:
       - foo
       Content-Type:
       - application/json
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
@@ -632,7 +674,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:11:10 GMT
 - request:
     method: delete
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/events/my-event-08
+    uri: http://localhost:8080/hawkular/alerts/events/my-event-08
     body:
       encoding: US-ASCII
       string: ''
@@ -647,6 +689,9 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
@@ -677,7 +722,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:11:10 GMT
 - request:
     method: delete
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/events/my-event-08
+    uri: http://localhost:8080/hawkular/alerts/events/my-event-08
     body:
       encoding: US-ASCII
       string: ''
@@ -692,6 +737,9 @@ http_interactions:
       - foo
       Content-Type:
       - application/json
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
@@ -722,7 +770,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:11:10 GMT
 - request:
     method: delete
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/events/my-event-09
+    uri: http://localhost:8080/hawkular/alerts/events/my-event-09
     body:
       encoding: US-ASCII
       string: ''
@@ -737,6 +785,9 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
@@ -767,7 +818,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:11:10 GMT
 - request:
     method: delete
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/events/my-event-09
+    uri: http://localhost:8080/hawkular/alerts/events/my-event-09
     body:
       encoding: US-ASCII
       string: ''
@@ -782,6 +833,9 @@ http_interactions:
       - foo
       Content-Type:
       - application/json
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
@@ -812,7 +866,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:11:10 GMT
 - request:
     method: delete
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/events/my-event-10
+    uri: http://localhost:8080/hawkular/alerts/events/my-event-10
     body:
       encoding: US-ASCII
       string: ''
@@ -827,6 +881,9 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
@@ -857,7 +914,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:11:10 GMT
 - request:
     method: delete
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/events/my-event-10
+    uri: http://localhost:8080/hawkular/alerts/events/my-event-10
     body:
       encoding: US-ASCII
       string: ''
@@ -872,6 +929,9 @@ http_interactions:
       - foo
       Content-Type:
       - application/json
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
@@ -902,7 +962,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:11:10 GMT
 - request:
     method: delete
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/events/my-event-11
+    uri: http://localhost:8080/hawkular/alerts/events/my-event-11
     body:
       encoding: US-ASCII
       string: ''
@@ -917,6 +977,9 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
@@ -947,7 +1010,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:11:10 GMT
 - request:
     method: delete
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/events/my-event-11
+    uri: http://localhost:8080/hawkular/alerts/events/my-event-11
     body:
       encoding: US-ASCII
       string: ''
@@ -962,6 +1025,9 @@ http_interactions:
       - foo
       Content-Type:
       - application/json
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
@@ -992,7 +1058,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:11:10 GMT
 - request:
     method: delete
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/events/my-event-12
+    uri: http://localhost:8080/hawkular/alerts/events/my-event-12
     body:
       encoding: US-ASCII
       string: ''
@@ -1007,6 +1073,9 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
@@ -1037,7 +1106,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:11:10 GMT
 - request:
     method: delete
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/events/my-event-12
+    uri: http://localhost:8080/hawkular/alerts/events/my-event-12
     body:
       encoding: US-ASCII
       string: ''
@@ -1052,6 +1121,9 @@ http_interactions:
       - foo
       Content-Type:
       - application/json
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200

@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://jdoe:password@127.0.0.1:8443/hawkular/metrics/gauges/MI~R~%5B8b*%7D%7B'%5C14%23%3F%2F5-7%2592e%5B-c9_.r1%2F%2F;%2F74eddf%2FL=c~~%5D~MT~%20%20%20%20*%20%20%2F%20Met@ics~Aggre&%3F%20ated%20s%20%20Active%22%20Ses;ns/data
+    uri: https://127.0.0.1:8443/hawkular/metrics/gauges/MI~R~%5B8b*%7D%7B'%5C14%23%3F%2F5-7%2592e%5B-c9_.r1%2F%2F;%2F74eddf%2FL=c~~%5D~MT~%20%20%20%20*%20%20%2F%20Met@ics~Aggre&%3F%20ated%20s%20%20Active%22%20Ses;ns/data
     body:
       encoding: UTF-8
       string: '[{"value":0.1,"tags":{"tagName":"myMin"},"timestamp":1471274443355},{"value":99.9,"tags":{"tagName":"myMax"},"timestamp":1471274443355}]'
@@ -14,13 +14,16 @@ http_interactions:
       User-Agent:
       - hawkular-client-ruby
       Hawkular-Tenant:
-      - <%= vcr_test_tenant %>
+      - "<%= vcr_test_tenant %>"
       Content-Type:
       - application/json
       Content-Length:
       - '136'
       Host:
       - 127.0.0.1:8443
+      Authorization: 'Basic amRvZTpwYXNzd29yZA==
+
+'
   response:
     status:
       code: 200

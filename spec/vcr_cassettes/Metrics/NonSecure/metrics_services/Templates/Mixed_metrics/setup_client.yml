@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://jdoe:password@localhost:8080/hawkular/metrics/status
+    uri: http://localhost:8080/hawkular/metrics/status
     body:
       encoding: US-ASCII
       string: ''
@@ -17,6 +17,9 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
+      Authorization: 'Basic amRvZTpwYXNzd29yZA==
+
+'
   response:
     status:
       code: 200

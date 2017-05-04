@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/trigger
+    uri: http://localhost:8080/hawkular/alerts/triggers/trigger
     body:
       encoding: UTF-8
       string: '{"trigger":{"id":"my-cool-trigger","name":"Just a trigger","enabled":true,"severity":"HIGH","description":"Just
@@ -20,6 +20,9 @@ http_interactions:
       - application/json
       Content-Length:
       - '174'
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
@@ -51,7 +54,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:11:07 GMT
 - request:
     method: get
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/my-cool-trigger
+    uri: http://localhost:8080/hawkular/alerts/triggers/my-cool-trigger
     body:
       encoding: US-ASCII
       string: ''
@@ -66,6 +69,9 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
@@ -97,7 +103,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:11:07 GMT
 - request:
     method: get
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/my-cool-trigger/conditions
+    uri: http://localhost:8080/hawkular/alerts/triggers/my-cool-trigger/conditions
     body:
       encoding: US-ASCII
       string: ''
@@ -112,6 +118,9 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
@@ -142,7 +151,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:11:07 GMT
 - request:
     method: get
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/my-cool-trigger/dampenings
+    uri: http://localhost:8080/hawkular/alerts/triggers/my-cool-trigger/dampenings
     body:
       encoding: US-ASCII
       string: ''
@@ -157,6 +166,9 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
@@ -187,7 +199,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:11:07 GMT
 - request:
     method: delete
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/my-cool-trigger
+    uri: http://localhost:8080/hawkular/alerts/triggers/my-cool-trigger
     body:
       encoding: US-ASCII
       string: ''
@@ -202,6 +214,9 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
@@ -232,7 +247,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:11:07 GMT
 - request:
     method: post
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/trigger
+    uri: http://localhost:8080/hawkular/alerts/triggers/trigger
     body:
       encoding: UTF-8
       string: '{"trigger":{"id":"my-cool-trigger","name":"Just a trigger","enabled":true,"severity":"HIGH","description":"Just
@@ -250,6 +265,9 @@ http_interactions:
       - application/json
       Content-Length:
       - '219'
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
@@ -281,7 +299,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:11:07 GMT
 - request:
     method: get
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/my-cool-trigger
+    uri: http://localhost:8080/hawkular/alerts/triggers/my-cool-trigger
     body:
       encoding: US-ASCII
       string: ''
@@ -296,6 +314,9 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
@@ -327,7 +348,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:11:07 GMT
 - request:
     method: get
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/my-cool-trigger/conditions
+    uri: http://localhost:8080/hawkular/alerts/triggers/my-cool-trigger/conditions
     body:
       encoding: US-ASCII
       string: ''
@@ -342,6 +363,9 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
@@ -372,7 +396,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:11:07 GMT
 - request:
     method: get
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/my-cool-trigger/dampenings
+    uri: http://localhost:8080/hawkular/alerts/triggers/my-cool-trigger/dampenings
     body:
       encoding: US-ASCII
       string: ''
@@ -387,6 +411,9 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
@@ -417,7 +444,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:11:07 GMT
 - request:
     method: delete
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/my-cool-trigger
+    uri: http://localhost:8080/hawkular/alerts/triggers/my-cool-trigger
     body:
       encoding: US-ASCII
       string: ''
@@ -432,6 +459,9 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200

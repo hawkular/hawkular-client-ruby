@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: http://jdoe:password@localhost:8080/hawkular/metrics/counters/<%= id %>/data
+    uri: http://localhost:8080/hawkular/metrics/counters/<%= id %>/data
     body:
       encoding: UTF-8
       string: '[{"value":4,"timestamp":1493132813132}]'
@@ -19,6 +19,9 @@ http_interactions:
       - application/json
       Content-Length:
       - '39'
+      Authorization: 'Basic amRvZTpwYXNzd29yZA==
+
+'
   response:
     status:
       code: 200
@@ -47,7 +50,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:06:53 GMT
 - request:
     method: get
-    uri: http://jdoe:password@localhost:8080/hawkular/metrics/counters/<%= id %>/data/
+    uri: http://localhost:8080/hawkular/metrics/counters/<%= id %>/data/
     body:
       encoding: US-ASCII
       string: ''
@@ -62,6 +65,9 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
+      Authorization: 'Basic amRvZTpwYXNzd29yZA==
+
+'
   response:
     status:
       code: 200
@@ -92,7 +98,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:06:53 GMT
 - request:
     method: get
-    uri: http://jdoe:password@localhost:8080/hawkular/metrics/counters/<%= id %>
+    uri: http://localhost:8080/hawkular/metrics/counters/<%= id %>
     body:
       encoding: US-ASCII
       string: ''
@@ -107,6 +113,9 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
+      Authorization: 'Basic amRvZTpwYXNzd29yZA==
+
+'
   response:
     status:
       code: 200

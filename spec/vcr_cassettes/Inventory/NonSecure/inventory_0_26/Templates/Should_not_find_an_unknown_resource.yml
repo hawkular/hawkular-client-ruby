@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: http://<%= super_secret_username %>:<%= super_secret_password %>@localhost:8080/hawkular/metrics/strings/raw/query
+    uri: http://localhost:8080/hawkular/metrics/strings/raw/query
     body:
       encoding: UTF-8
       string: '{"fromEarliest":true,"order":"DESC","tags":"module:inventory,feed:feed_may_exist,type:r,id:\\*bla%20does%20not%20exist\\*"}'
@@ -19,6 +19,9 @@ http_interactions:
       - application/json
       Content-Length:
       - '123'
+      Authorization: |
+        Basic PCU9IHN1cGVyX3NlY3JldF91c2VybmFtZSAlPjo8JT0gc3VwZXJfc2VjcmV0
+        X3Bhc3N3b3JkICU+
   response:
     status:
       code: 204

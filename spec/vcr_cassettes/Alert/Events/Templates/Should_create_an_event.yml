@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/events
+    uri: http://localhost:8080/hawkular/alerts/events
     body:
       encoding: UTF-8
       string: '{"id":"<%= id %>","ctime":1493133070000,"category":"MyCategory","text":"Li
@@ -20,6 +20,9 @@ http_interactions:
       - application/json
       Content-Length:
       - '165'
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
@@ -51,7 +54,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:11:10 GMT
 - request:
     method: delete
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/events/<%= id %>
+    uri: http://localhost:8080/hawkular/alerts/events/<%= id %>
     body:
       encoding: US-ASCII
       string: ''
@@ -66,6 +69,9 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200

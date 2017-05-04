@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://jdoe:password@127.0.0.1:8443/hawkular/metrics/counters/<%= id %>/data
+    uri: https://127.0.0.1:8443/hawkular/metrics/counters/<%= id %>/data
     body:
       encoding: UTF-8
       string: '[{"value":4,"timestamp":1471274438767}]'
@@ -19,6 +19,9 @@ http_interactions:
       - '39'
       Host:
       - 127.0.0.1:8443
+      Authorization: 'Basic amRvZTpwYXNzd29yZA==
+
+'
   response:
     status:
       code: 400

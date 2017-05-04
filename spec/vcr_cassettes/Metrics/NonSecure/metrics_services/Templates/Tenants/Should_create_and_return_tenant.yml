@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: http://jdoe:password@localhost:8080/hawkular/metrics/tenants
+    uri: http://localhost:8080/hawkular/metrics/tenants
     body:
       encoding: UTF-8
       string: '{"id":"<%= id %>"}'
@@ -18,11 +18,14 @@ http_interactions:
       Content-Type:
       - application/json
       Hawkular-Admin-Token:
-      - <%= admin_token %>
+      - "<%= admin_token %>"
       Content-Length:
       - '45'
       Host:
       - localhost:8080
+      Authorization: 'Basic amRvZTpwYXNzd29yZA==
+
+'
   response:
     status:
       code: 201
@@ -53,7 +56,7 @@ http_interactions:
   recorded_at: Fri, 07 Oct 2016 17:56:22 GMT
 - request:
     method: get
-    uri: http://jdoe:password@localhost:8080/hawkular/metrics/tenants
+    uri: http://localhost:8080/hawkular/metrics/tenants
     body:
       encoding: US-ASCII
       string: ''
@@ -69,9 +72,12 @@ http_interactions:
       Content-Type:
       - application/json
       Hawkular-Admin-Token:
-      - <%= admin_token %>
+      - "<%= admin_token %>"
       Host:
       - localhost:8080
+      Authorization: 'Basic amRvZTpwYXNzd29yZA==
+
+'
   response:
     status:
       code: 200
@@ -97,7 +103,8 @@ http_interactions:
       - '115'
     body:
       encoding: UTF-8
-      string: '[{"id":"other-tenant"},{"id":"dea3f721-2e73-4d7e-8cfb-cf073680f77b"},{"id":"<%= id %>"}]'
+      string: '[{"id":"other-tenant"},{"id":"dea3f721-2e73-4d7e-8cfb-cf073680f77b"},{"id":"<%=
+        id %>"}]'
     http_version: 
   recorded_at: Fri, 07 Oct 2016 17:56:22 GMT
 recorded_with: VCR 3.0.3

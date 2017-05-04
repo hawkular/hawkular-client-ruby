@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://jdoe:password@127.0.0.1:8443/hawkular/metrics/counters
+    uri: https://127.0.0.1:8443/hawkular/metrics/counters
     body:
       encoding: UTF-8
       string: '{"id":"<%= id %>"}'
@@ -14,13 +14,16 @@ http_interactions:
       User-Agent:
       - hawkular-client-ruby
       Hawkular-Tenant:
-      - <%= vcr_test_tenant %>
+      - "<%= vcr_test_tenant %>"
       Content-Type:
       - application/json
       Content-Length:
       - '45'
       Host:
       - 127.0.0.1:8443
+      Authorization: 'Basic amRvZTpwYXNzd29yZA==
+
+'
   response:
     status:
       code: 201
@@ -51,10 +54,11 @@ http_interactions:
   recorded_at: Mon, 15 Aug 2016 15:20:39 GMT
 - request:
     method: post
-    uri: https://jdoe:password@127.0.0.1:8443/hawkular/metrics/counters/<%= id %>/data
+    uri: https://127.0.0.1:8443/hawkular/metrics/counters/<%= id %>/data
     body:
       encoding: UTF-8
-      string: '[{"value":1,"timestamp":<%= minus30 %>},{"value":2,"timestamp":<%= minus20 %>},{"value":3,"timestamp":<%= minus10 %>}]'
+      string: '[{"value":1,"timestamp":<%= minus30 %>},{"value":2,"timestamp":<%=
+        minus20 %>},{"value":3,"timestamp":<%= minus10 %>}]'
     headers:
       Accept:
       - application/json
@@ -63,13 +67,16 @@ http_interactions:
       User-Agent:
       - hawkular-client-ruby
       Hawkular-Tenant:
-      - <%= vcr_test_tenant %>
+      - "<%= vcr_test_tenant %>"
       Content-Type:
       - application/json
       Content-Length:
       - '115'
       Host:
       - 127.0.0.1:8443
+      Authorization: 'Basic amRvZTpwYXNzd29yZA==
+
+'
   response:
     status:
       code: 200
@@ -98,7 +105,7 @@ http_interactions:
   recorded_at: Mon, 15 Aug 2016 15:20:39 GMT
 - request:
     method: get
-    uri: https://jdoe:password@127.0.0.1:8443/hawkular/metrics/counters/<%= id %>/data/
+    uri: https://127.0.0.1:8443/hawkular/metrics/counters/<%= id %>/data/
     body:
       encoding: US-ASCII
       string: ''
@@ -110,11 +117,14 @@ http_interactions:
       User-Agent:
       - hawkular-client-ruby
       Hawkular-Tenant:
-      - <%= vcr_test_tenant %>
+      - "<%= vcr_test_tenant %>"
       Content-Type:
       - application/json
       Host:
       - 127.0.0.1:8443
+      Authorization: 'Basic amRvZTpwYXNzd29yZA==
+
+'
   response:
     status:
       code: 200
@@ -140,12 +150,13 @@ http_interactions:
       - '115'
     body:
       encoding: UTF-8
-      string: '[{"timestamp":<%= minus10 %>,"value":3},{"timestamp":<%= minus20 %>,"value":2},{"timestamp":<%= minus30 %>,"value":1}]'
+      string: '[{"timestamp":<%= minus10 %>,"value":3},{"timestamp":<%= minus20 %>,"value":2},{"timestamp":<%=
+        minus30 %>,"value":1}]'
     http_version: 
   recorded_at: Mon, 15 Aug 2016 15:20:39 GMT
 - request:
     method: post
-    uri: https://jdoe:password@127.0.0.1:8443/hawkular/metrics/counters/<%= id %>/data
+    uri: https://127.0.0.1:8443/hawkular/metrics/counters/<%= id %>/data
     body:
       encoding: UTF-8
       string: '[{"value":4,"timestamp":1471274439562}]'
@@ -157,13 +168,16 @@ http_interactions:
       User-Agent:
       - hawkular-client-ruby
       Hawkular-Tenant:
-      - <%= vcr_test_tenant %>
+      - "<%= vcr_test_tenant %>"
       Content-Type:
       - application/json
       Content-Length:
       - '39'
       Host:
       - 127.0.0.1:8443
+      Authorization: 'Basic amRvZTpwYXNzd29yZA==
+
+'
   response:
     status:
       code: 200
@@ -192,7 +206,7 @@ http_interactions:
   recorded_at: Mon, 15 Aug 2016 15:20:39 GMT
 - request:
     method: get
-    uri: https://jdoe:password@127.0.0.1:8443/hawkular/metrics/counters/<%= id %>/data/
+    uri: https://127.0.0.1:8443/hawkular/metrics/counters/<%= id %>/data/
     body:
       encoding: US-ASCII
       string: ''
@@ -204,11 +218,14 @@ http_interactions:
       User-Agent:
       - hawkular-client-ruby
       Hawkular-Tenant:
-      - <%= vcr_test_tenant %>
+      - "<%= vcr_test_tenant %>"
       Content-Type:
       - application/json
       Host:
       - 127.0.0.1:8443
+      Authorization: 'Basic amRvZTpwYXNzd29yZA==
+
+'
   response:
     status:
       code: 200
@@ -234,12 +251,13 @@ http_interactions:
       - '153'
     body:
       encoding: UTF-8
-      string: '[{"timestamp":1471274439562,"value":4},{"timestamp":<%= minus10 %>,"value":3},{"timestamp":<%= minus20 %>,"value":2},{"timestamp":<%= minus30 %>,"value":1}]'
+      string: '[{"timestamp":1471274439562,"value":4},{"timestamp":<%= minus10 %>,"value":3},{"timestamp":<%=
+        minus20 %>,"value":2},{"timestamp":<%= minus30 %>,"value":1}]'
     http_version: 
   recorded_at: Mon, 15 Aug 2016 15:20:39 GMT
 - request:
     method: get
-    uri: https://jdoe:password@127.0.0.1:8443/hawkular/metrics/counters/<%= id %>/data/?limit=1&order=DESC
+    uri: https://127.0.0.1:8443/hawkular/metrics/counters/<%= id %>/data/?limit=1&order=DESC
     body:
       encoding: US-ASCII
       string: ''
@@ -251,11 +269,14 @@ http_interactions:
       User-Agent:
       - hawkular-client-ruby
       Hawkular-Tenant:
-      - <%= vcr_test_tenant %>
+      - "<%= vcr_test_tenant %>"
       Content-Type:
       - application/json
       Host:
       - 127.0.0.1:8443
+      Authorization: 'Basic amRvZTpwYXNzd29yZA==
+
+'
   response:
     status:
       code: 200
@@ -286,7 +307,8 @@ http_interactions:
   recorded_at: Mon, 15 Aug 2016 15:20:39 GMT
 - request:
     method: get
-    uri: https://jdoe:password@127.0.0.1:8443/hawkular/metrics/counters/<%= id %>/data/?end=<%= minus4h %>&start=<%= minus8h %>
+    uri: https://127.0.0.1:8443/hawkular/metrics/counters/<%= id %>/data/?end=<%=
+      minus4h %>&start=<%= minus8h %>
     body:
       encoding: US-ASCII
       string: ''
@@ -298,11 +320,14 @@ http_interactions:
       User-Agent:
       - hawkular-client-ruby
       Hawkular-Tenant:
-      - <%= vcr_test_tenant %>
+      - "<%= vcr_test_tenant %>"
       Content-Type:
       - application/json
       Host:
       - 127.0.0.1:8443
+      Authorization: 'Basic amRvZTpwYXNzd29yZA==
+
+'
   response:
     status:
       code: 204

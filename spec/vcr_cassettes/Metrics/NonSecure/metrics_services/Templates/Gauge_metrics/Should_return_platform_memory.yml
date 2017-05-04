@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://jdoe:password@localhost:8080/<%= tenant %>/metrics/status
+    uri: http://localhost:8080/<%= tenant %>/metrics/status
     body:
       encoding: US-ASCII
       string: ''
@@ -12,11 +12,14 @@ http_interactions:
       Accept-Encoding:
       - identity
       User-Agent:
-      - <%= tenant %>-client-ruby
+      - "<%= tenant %>-client-ruby"
       Hawkular-Tenant:
-      - <%= tenant %>
+      - "<%= tenant %>"
       Content-Type:
       - application/json
+      Authorization: 'Basic amRvZTpwYXNzd29yZA==
+
+'
   response:
     status:
       code: 200
@@ -41,7 +44,7 @@ http_interactions:
   recorded_at: Wed, 05 Apr 2017 08:18:50 GMT
 - request:
     method: get
-    uri: http://jdoe:password@localhost:8080/<%= tenant %>/metrics/status
+    uri: http://localhost:8080/<%= tenant %>/metrics/status
     body:
       encoding: US-ASCII
       string: ''
@@ -51,11 +54,14 @@ http_interactions:
       Accept-Encoding:
       - identity
       User-Agent:
-      - <%= tenant %>-client-ruby
+      - "<%= tenant %>-client-ruby"
       Hawkular-Tenant:
-      - <%= tenant %>
+      - "<%= tenant %>"
       Content-Type:
       - application/json
+      Authorization: 'Basic amRvZTpwYXNzd29yZA==
+
+'
   response:
     status:
       code: 200
@@ -80,7 +86,7 @@ http_interactions:
   recorded_at: Wed, 05 Apr 2017 08:18:50 GMT
 - request:
     method: get
-    uri: http://jdoe:password@localhost:8080/<%= tenant %>/metrics/strings/tags/module:inventory,feed:*
+    uri: http://localhost:8080/<%= tenant %>/metrics/strings/tags/module:inventory,feed:*
     body:
       encoding: US-ASCII
       string: ''
@@ -90,11 +96,14 @@ http_interactions:
       Accept-Encoding:
       - identity
       User-Agent:
-      - <%= tenant %>-client-ruby
+      - "<%= tenant %>-client-ruby"
       Hawkular-Tenant:
-      - <%= tenant %>
+      - "<%= tenant %>"
       Content-Type:
       - application/json
+      Authorization: 'Basic amRvZTpwYXNzd29yZA==
+
+'
   response:
     status:
       code: 200
@@ -125,7 +134,7 @@ http_interactions:
   recorded_at: Wed, 05 Apr 2017 08:18:50 GMT
 - request:
     method: get
-    uri: http://jdoe:password@localhost:8080/<%= tenant %>/metrics/gauges/MI~R~%5B03eca767-e48f-4f0b-9a8a-d8f46112c9a5%2Fplatform~%2FOPERATING_SYSTEM=03eca767-e48f-4f0b-9a8a-d8f46112c9a5_OperatingSystem%2FMEMORY=Memory%5D~MT~Platform_Memory_Total%20Memory/raw/
+    uri: http://localhost:8080/<%= tenant %>/metrics/gauges/MI~R~%5B03eca767-e48f-4f0b-9a8a-d8f46112c9a5%2Fplatform~%2FOPERATING_SYSTEM=03eca767-e48f-4f0b-9a8a-d8f46112c9a5_OperatingSystem%2FMEMORY=Memory%5D~MT~Platform_Memory_Total%20Memory/raw/
     body:
       encoding: US-ASCII
       string: ''
@@ -135,11 +144,14 @@ http_interactions:
       Accept-Encoding:
       - identity
       User-Agent:
-      - <%= tenant %>-client-ruby
+      - "<%= tenant %>-client-ruby"
       Hawkular-Tenant:
-      - <%= tenant %>
+      - "<%= tenant %>"
       Content-Type:
       - application/json
+      Authorization: 'Basic amRvZTpwYXNzd29yZA==
+
+'
   response:
     status:
       code: 200

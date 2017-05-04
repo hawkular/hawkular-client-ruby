@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://<%= username %>:<%= password %>@hawkular.torii.gva.redhat.com/hawkular/inventory/status
+    uri: https://hawkular.torii.gva.redhat.com/hawkular/inventory/status
     body:
       encoding: US-ASCII
       string: ''
@@ -19,6 +19,9 @@ http_interactions:
       - application/json
       Host:
       - hawkular.torii.gva.redhat.com
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
@@ -51,7 +54,7 @@ http_interactions:
   recorded_at: Wed, 10 Aug 2016 22:36:03 GMT
 - request:
     method: get
-    uri: https://<%= username %>:<%= password %>@hawkular.torii.gva.redhat.com/hawkular/inventory/traversal/type=f
+    uri: https://hawkular.torii.gva.redhat.com/hawkular/inventory/traversal/type=f
     body:
       encoding: US-ASCII
       string: ''
@@ -68,6 +71,9 @@ http_interactions:
       - application/json
       Host:
       - hawkular.torii.gva.redhat.com
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200

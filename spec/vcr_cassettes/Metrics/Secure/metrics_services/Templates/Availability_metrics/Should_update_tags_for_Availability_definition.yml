@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://jdoe:password@127.0.0.1:8443/hawkular/metrics/availability
+    uri: https://127.0.0.1:8443/hawkular/metrics/availability
     body:
       encoding: UTF-8
       string: '{"id":"<%= id %>","tags":{"myTag":"<%= id %>"}}'
@@ -14,13 +14,16 @@ http_interactions:
       User-Agent:
       - hawkular-client-ruby
       Hawkular-Tenant:
-      - <%= vcr_test_tenant %>
+      - "<%= vcr_test_tenant %>"
       Content-Type:
       - application/json
       Content-Length:
       - '101'
       Host:
       - 127.0.0.1:8443
+      Authorization: 'Basic amRvZTpwYXNzd29yZA==
+
+'
   response:
     status:
       code: 201
@@ -51,7 +54,7 @@ http_interactions:
   recorded_at: Mon, 15 Aug 2016 15:20:40 GMT
 - request:
     method: get
-    uri: https://jdoe:password@127.0.0.1:8443/hawkular/metrics/availability/<%= id %>
+    uri: https://127.0.0.1:8443/hawkular/metrics/availability/<%= id %>
     body:
       encoding: US-ASCII
       string: ''
@@ -63,11 +66,14 @@ http_interactions:
       User-Agent:
       - hawkular-client-ruby
       Hawkular-Tenant:
-      - <%= vcr_test_tenant %>
+      - "<%= vcr_test_tenant %>"
       Content-Type:
       - application/json
       Host:
       - 127.0.0.1:8443
+      Authorization: 'Basic amRvZTpwYXNzd29yZA==
+
+'
   response:
     status:
       code: 200
@@ -93,12 +99,13 @@ http_interactions:
       - '225'
     body:
       encoding: UTF-8
-      string: '{"id":"<%= id %>","tags":{"myTag":"<%= id %>"},"dataRetention":7,"type":"availability","tenantId":"<%= vcr_test_tenant %>"}'
+      string: '{"id":"<%= id %>","tags":{"myTag":"<%= id %>"},"dataRetention":7,"type":"availability","tenantId":"<%=
+        vcr_test_tenant %>"}'
     http_version: 
   recorded_at: Mon, 15 Aug 2016 15:20:40 GMT
 - request:
     method: put
-    uri: https://jdoe:password@127.0.0.1:8443/hawkular/metrics/availability/<%= id %>/tags
+    uri: https://127.0.0.1:8443/hawkular/metrics/availability/<%= id %>/tags
     body:
       encoding: UTF-8
       string: '{"newTag":"newValue"}'
@@ -110,13 +117,16 @@ http_interactions:
       User-Agent:
       - hawkular-client-ruby
       Hawkular-Tenant:
-      - <%= vcr_test_tenant %>
+      - "<%= vcr_test_tenant %>"
       Content-Type:
       - application/json
       Content-Length:
       - '21'
       Host:
       - 127.0.0.1:8443
+      Authorization: 'Basic amRvZTpwYXNzd29yZA==
+
+'
   response:
     status:
       code: 200
@@ -145,7 +155,7 @@ http_interactions:
   recorded_at: Mon, 15 Aug 2016 15:20:40 GMT
 - request:
     method: get
-    uri: https://jdoe:password@127.0.0.1:8443/hawkular/metrics/availability/<%= id %>
+    uri: https://127.0.0.1:8443/hawkular/metrics/availability/<%= id %>
     body:
       encoding: US-ASCII
       string: ''
@@ -157,11 +167,14 @@ http_interactions:
       User-Agent:
       - hawkular-client-ruby
       Hawkular-Tenant:
-      - <%= vcr_test_tenant %>
+      - "<%= vcr_test_tenant %>"
       Content-Type:
       - application/json
       Host:
       - 127.0.0.1:8443
+      Authorization: 'Basic amRvZTpwYXNzd29yZA==
+
+'
   response:
     status:
       code: 200
@@ -187,12 +200,13 @@ http_interactions:
       - '245'
     body:
       encoding: UTF-8
-      string: '{"id":"<%= id %>","tags":{"myTag":"<%= id %>","newTag":"newValue"},"dataRetention":7,"type":"availability","tenantId":"<%= vcr_test_tenant %>"}'
+      string: '{"id":"<%= id %>","tags":{"myTag":"<%= id %>","newTag":"newValue"},"dataRetention":7,"type":"availability","tenantId":"<%=
+        vcr_test_tenant %>"}'
     http_version: 
   recorded_at: Mon, 15 Aug 2016 15:20:40 GMT
 - request:
     method: get
-    uri: https://jdoe:password@127.0.0.1:8443/hawkular/metrics/metrics/?tags=myTag:<%= id %>&type=availability
+    uri: https://127.0.0.1:8443/hawkular/metrics/metrics/?tags=myTag:<%= id %>&type=availability
     body:
       encoding: US-ASCII
       string: ''
@@ -204,11 +218,14 @@ http_interactions:
       User-Agent:
       - hawkular-client-ruby
       Hawkular-Tenant:
-      - <%= vcr_test_tenant %>
+      - "<%= vcr_test_tenant %>"
       Content-Type:
       - application/json
       Host:
       - 127.0.0.1:8443
+      Authorization: 'Basic amRvZTpwYXNzd29yZA==
+
+'
   response:
     status:
       code: 200
@@ -234,7 +251,8 @@ http_interactions:
       - '247'
     body:
       encoding: UTF-8
-      string: '[{"id":"<%= id %>","tags":{"myTag":"<%= id %>","newTag":"newValue"},"dataRetention":7,"type":"availability","tenantId":"<%= vcr_test_tenant %>"}]'
+      string: '[{"id":"<%= id %>","tags":{"myTag":"<%= id %>","newTag":"newValue"},"dataRetention":7,"type":"availability","tenantId":"<%=
+        vcr_test_tenant %>"}]'
     http_version: 
   recorded_at: Mon, 15 Aug 2016 15:20:40 GMT
 recorded_with: VCR 3.0.3

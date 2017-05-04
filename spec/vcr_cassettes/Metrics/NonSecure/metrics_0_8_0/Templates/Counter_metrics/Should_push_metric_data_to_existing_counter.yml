@@ -46,7 +46,8 @@ http_interactions:
     uri: http://localhost:8080/hawkular/metrics/counters/<%= id %>/data
     body:
       encoding: UTF-8
-      string: '[{"value":1,"timestamp":<%= minus30 %>},{"value":2,"timestamp":<%= minus20 %>},{"value":3,"timestamp":<%= minus10 %>}]'
+      string: '[{"value":1,"timestamp":<%= minus30 %>},{"value":2,"timestamp":<%=
+        minus20 %>},{"value":3,"timestamp":<%= minus10 %>}]'
     headers:
       Accept:
       - application/json
@@ -116,7 +117,8 @@ http_interactions:
       - Thu, 30 Jun 2016 16:31:37 GMT
     body:
       encoding: UTF-8
-      string: '[{"timestamp":<%= minus30 %>,"value":1},{"timestamp":<%= minus20 %>,"value":2},{"timestamp":<%= minus10 %>,"value":3}]'
+      string: '[{"timestamp":<%= minus30 %>,"value":1},{"timestamp":<%= minus20 %>,"value":2},{"timestamp":<%=
+        minus10 %>,"value":3}]'
     http_version: 
   recorded_at: Thu, 30 Jun 2016 16:31:37 GMT
 - request:
@@ -194,12 +196,14 @@ http_interactions:
       - Thu, 30 Jun 2016 16:31:37 GMT
     body:
       encoding: UTF-8
-      string: '[{"timestamp":<%= minus30 %>,"value":1},{"timestamp":<%= minus20 %>,"value":2},{"timestamp":<%= minus10 %>,"value":3},{"timestamp":1467304297430,"value":4}]'
+      string: '[{"timestamp":<%= minus30 %>,"value":1},{"timestamp":<%= minus20 %>,"value":2},{"timestamp":<%=
+        minus10 %>,"value":3},{"timestamp":1467304297430,"value":4}]'
     http_version: 
   recorded_at: Thu, 30 Jun 2016 16:31:37 GMT
 - request:
     method: get
-    uri: http://localhost:8080/hawkular/metrics/counters/<%= id %>/data/?end=<%= minus4h %>&start=<%= minus8h %>
+    uri: http://localhost:8080/hawkular/metrics/counters/<%= id %>/data/?end=<%= minus4h
+      %>&start=<%= minus8h %>
     body:
       encoding: US-ASCII
       string: ''

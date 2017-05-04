@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://jdoe:password@localhost:8080/hawkular/inventory/traversal/f;does%20not%20exist/type=rt
+    uri: http://localhost:8080/hawkular/inventory/traversal/f;does%20not%20exist/type=rt
     body:
       encoding: US-ASCII
       string: ''
@@ -19,6 +19,9 @@ http_interactions:
       - application/json
       Host:
       - localhost:8080
+      Authorization: 'Basic amRvZTpwYXNzd29yZA==
+
+'
   response:
     status:
       code: 200
@@ -54,7 +57,7 @@ http_interactions:
   recorded_at: Sat, 22 Apr 2017 17:52:23 GMT
 - request:
     method: get
-    uri: http://jdoe:password@localhost:8080/hawkular/inventory/traversal/f;does%20not%20exist/type=rt
+    uri: http://localhost:8080/hawkular/inventory/traversal/f;does%20not%20exist/type=rt
     body:
       encoding: US-ASCII
       string: ''
@@ -71,6 +74,9 @@ http_interactions:
       - application/json
       Host:
       - localhost:8080
+      Authorization: 'Basic amRvZTpwYXNzd29yZA==
+
+'
   response:
     status:
       code: 200
@@ -106,7 +112,7 @@ http_interactions:
   recorded_at: Sat, 22 Apr 2017 17:52:23 GMT
 - request:
     method: post
-    uri: http://jdoe:password@localhost:8080/hawkular/metrics/strings/raw/query
+    uri: http://localhost:8080/hawkular/metrics/strings/raw/query
     body:
       encoding: UTF-8
       string: '{"fromEarliest":true,"order":"DESC","tags":"module:inventory,feed:does%20not%20exist,type:rt"}'
@@ -123,6 +129,9 @@ http_interactions:
       - application/json
       Content-Length:
       - '94'
+      Authorization: 'Basic amRvZTpwYXNzd29yZA==
+
+'
   response:
     status:
       code: 204
@@ -147,7 +156,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:06:53 GMT
 - request:
     method: post
-    uri: http://jdoe:password@localhost:8080/hawkular/metrics/strings/raw/query
+    uri: http://localhost:8080/hawkular/metrics/strings/raw/query
     body:
       encoding: UTF-8
       string: '{"fromEarliest":true,"order":"DESC","tags":"module:inventory,feed:does%20not%20exist,type:rt"}'
@@ -164,6 +173,9 @@ http_interactions:
       - application/json
       Content-Length:
       - '94'
+      Authorization: 'Basic amRvZTpwYXNzd29yZA==
+
+'
   response:
     status:
       code: 204

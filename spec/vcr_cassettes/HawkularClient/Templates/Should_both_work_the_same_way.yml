@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://jdoe:password@localhost:8080/hawkular/inventory/tenant
+    uri: http://localhost:8080/hawkular/inventory/tenant
     body:
       encoding: US-ASCII
       string: ''
@@ -19,6 +19,9 @@ http_interactions:
       - application/json
       Host:
       - localhost:8080
+      Authorization: 'Basic amRvZTpwYXNzd29yZA==
+
+'
   response:
     status:
       code: 200
@@ -54,7 +57,7 @@ http_interactions:
   recorded_at: Sat, 22 Apr 2017 17:52:54 GMT
 - request:
     method: get
-    uri: http://jdoe:password@localhost:8080/hawkular/inventory/tenant
+    uri: http://localhost:8080/hawkular/inventory/tenant
     body:
       encoding: US-ASCII
       string: ''
@@ -71,6 +74,9 @@ http_interactions:
       - application/json
       Host:
       - localhost:8080
+      Authorization: 'Basic amRvZTpwYXNzd29yZA==
+
+'
   response:
     status:
       code: 200
@@ -106,7 +112,7 @@ http_interactions:
   recorded_at: Sat, 22 Apr 2017 17:52:54 GMT
 - request:
     method: get
-    uri: http://jdoe:password@localhost:8080/hawkular/inventory/traversal/type=f
+    uri: http://localhost:8080/hawkular/inventory/traversal/type=f
     body:
       encoding: US-ASCII
       string: ''
@@ -123,6 +129,9 @@ http_interactions:
       - application/json
       Host:
       - localhost:8080
+      Authorization: 'Basic amRvZTpwYXNzd29yZA==
+
+'
   response:
     status:
       code: 200
@@ -164,7 +173,7 @@ http_interactions:
   recorded_at: Sat, 22 Apr 2017 17:52:54 GMT
 - request:
     method: get
-    uri: http://jdoe:password@localhost:8080/hawkular/metrics/strings/tags/module:inventory,feed:*
+    uri: http://localhost:8080/hawkular/metrics/strings/tags/module:inventory,feed:*
     body:
       encoding: US-ASCII
       string: ''
@@ -181,6 +190,9 @@ http_interactions:
       - application/json
       Host:
       - localhost:8080
+      Authorization: 'Basic amRvZTpwYXNzd29yZA==
+
+'
   response:
     status:
       code: 200

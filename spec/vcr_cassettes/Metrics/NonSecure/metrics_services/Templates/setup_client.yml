@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://jdoe:password@localhost:8080/hawkular/metrics/status
+    uri: http://localhost:8080/hawkular/metrics/status
     body:
       encoding: US-ASCII
       string: ''
@@ -14,11 +14,14 @@ http_interactions:
       User-Agent:
       - hawkular-client-ruby
       Hawkular-Tenant:
-      - <%= type %>metrics_services-vcr-tenant-b83d0822-4e59-45e4-b94d-c1b468e1a634
+      - "<%= type %>metrics_services-vcr-tenant-b83d0822-4e59-45e4-b94d-c1b468e1a634"
       Content-Type:
       - application/json
       Host:
       - localhost:8080
+      Authorization: 'Basic amRvZTpwYXNzd29yZA==
+
+'
   response:
     status:
       code: 200

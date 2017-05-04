@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: http://jdoe:password@localhost:8080/hawkular/metrics/counters
+    uri: http://localhost:8080/hawkular/metrics/counters
     body:
       encoding: UTF-8
       string: '{"id":"<%= id %>"}'
@@ -14,11 +14,14 @@ http_interactions:
       User-Agent:
       - hawkular-client-ruby
       Hawkular-Tenant:
-      - <%= vcr_test_tenant %>
+      - "<%= vcr_test_tenant %>"
       Content-Type:
       - application/json
       Content-Length:
       - '45'
+      Authorization: 'Basic amRvZTpwYXNzd29yZA==
+
+'
   response:
     status:
       code: 201
@@ -49,10 +52,11 @@ http_interactions:
   recorded_at: Wed, 05 Apr 2017 08:18:50 GMT
 - request:
     method: post
-    uri: http://jdoe:password@localhost:8080/hawkular/metrics/counters/<%= id %>/raw
+    uri: http://localhost:8080/hawkular/metrics/counters/<%= id %>/raw
     body:
       encoding: UTF-8
-      string: '[{"value":1,"timestamp":<%= minus30 %>},{"value":2,"timestamp":<%= minus20 %>},{"value":3,"timestamp":<%= minus10 %>}]'
+      string: '[{"value":1,"timestamp":<%= minus30 %>},{"value":2,"timestamp":<%=
+        minus20 %>},{"value":3,"timestamp":<%= minus10 %>}]'
     headers:
       Accept:
       - application/json
@@ -61,11 +65,14 @@ http_interactions:
       User-Agent:
       - hawkular-client-ruby
       Hawkular-Tenant:
-      - <%= vcr_test_tenant %>
+      - "<%= vcr_test_tenant %>"
       Content-Type:
       - application/json
       Content-Length:
       - '115'
+      Authorization: 'Basic amRvZTpwYXNzd29yZA==
+
+'
   response:
     status:
       code: 200
@@ -94,7 +101,7 @@ http_interactions:
   recorded_at: Wed, 05 Apr 2017 08:18:50 GMT
 - request:
     method: get
-    uri: http://jdoe:password@localhost:8080/hawkular/metrics/counters/<%= id %>/raw/
+    uri: http://localhost:8080/hawkular/metrics/counters/<%= id %>/raw/
     body:
       encoding: US-ASCII
       string: ''
@@ -106,9 +113,12 @@ http_interactions:
       User-Agent:
       - hawkular-client-ruby
       Hawkular-Tenant:
-      - <%= vcr_test_tenant %>
+      - "<%= vcr_test_tenant %>"
       Content-Type:
       - application/json
+      Authorization: 'Basic amRvZTpwYXNzd29yZA==
+
+'
   response:
     status:
       code: 200
@@ -134,12 +144,13 @@ http_interactions:
       - '115'
     body:
       encoding: UTF-8
-      string: '[{"timestamp":<%= minus10 %>,"value":3},{"timestamp":<%= minus20 %>,"value":2},{"timestamp":<%= minus30 %>,"value":1}]'
+      string: '[{"timestamp":<%= minus10 %>,"value":3},{"timestamp":<%= minus20 %>,"value":2},{"timestamp":<%=
+        minus30 %>,"value":1}]'
     http_version: 
   recorded_at: Wed, 05 Apr 2017 08:18:50 GMT
 - request:
     method: post
-    uri: http://jdoe:password@localhost:8080/hawkular/metrics/counters/<%= id %>/raw
+    uri: http://localhost:8080/hawkular/metrics/counters/<%= id %>/raw
     body:
       encoding: UTF-8
       string: '[{"value":4,"timestamp":1491380330312}]'
@@ -151,11 +162,14 @@ http_interactions:
       User-Agent:
       - hawkular-client-ruby
       Hawkular-Tenant:
-      - <%= vcr_test_tenant %>
+      - "<%= vcr_test_tenant %>"
       Content-Type:
       - application/json
       Content-Length:
       - '39'
+      Authorization: 'Basic amRvZTpwYXNzd29yZA==
+
+'
   response:
     status:
       code: 200
@@ -184,7 +198,7 @@ http_interactions:
   recorded_at: Wed, 05 Apr 2017 08:18:50 GMT
 - request:
     method: get
-    uri: http://jdoe:password@localhost:8080/hawkular/metrics/counters/<%= id %>/raw/
+    uri: http://localhost:8080/hawkular/metrics/counters/<%= id %>/raw/
     body:
       encoding: US-ASCII
       string: ''
@@ -196,9 +210,12 @@ http_interactions:
       User-Agent:
       - hawkular-client-ruby
       Hawkular-Tenant:
-      - <%= vcr_test_tenant %>
+      - "<%= vcr_test_tenant %>"
       Content-Type:
       - application/json
+      Authorization: 'Basic amRvZTpwYXNzd29yZA==
+
+'
   response:
     status:
       code: 200
@@ -224,12 +241,14 @@ http_interactions:
       - '153'
     body:
       encoding: UTF-8
-      string: '[{"timestamp":1491380330312,"value":4},{"timestamp":<%= minus10 %>,"value":3},{"timestamp":<%= minus20 %>,"value":2},{"timestamp":<%= minus30 %>,"value":1}]'
+      string: '[{"timestamp":1491380330312,"value":4},{"timestamp":<%= minus10 %>,"value":3},{"timestamp":<%=
+        minus20 %>,"value":2},{"timestamp":<%= minus30 %>,"value":1}]'
     http_version: 
   recorded_at: Wed, 05 Apr 2017 08:18:50 GMT
 - request:
     method: get
-    uri: http://jdoe:password@localhost:8080/hawkular/metrics/counters/<%= id %>/raw/?end=<%= minus4h %>&start=<%= minus8h %>
+    uri: http://localhost:8080/hawkular/metrics/counters/<%= id %>/raw/?end=<%= minus4h
+      %>&start=<%= minus8h %>
     body:
       encoding: US-ASCII
       string: ''
@@ -241,9 +260,12 @@ http_interactions:
       User-Agent:
       - hawkular-client-ruby
       Hawkular-Tenant:
-      - <%= vcr_test_tenant %>
+      - "<%= vcr_test_tenant %>"
       Content-Type:
       - application/json
+      Authorization: 'Basic amRvZTpwYXNzd29yZA==
+
+'
   response:
     status:
       code: 204

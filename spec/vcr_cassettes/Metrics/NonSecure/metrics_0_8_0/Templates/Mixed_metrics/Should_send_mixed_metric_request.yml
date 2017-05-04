@@ -116,7 +116,9 @@ http_interactions:
     uri: http://localhost:8080/hawkular/metrics/metrics/data
     body:
       encoding: UTF-8
-      string: '{"gauges":[{"id":"<%= id %>","data":[{"value":1.1,"timestamp":1467304297239}]}],"counters":[{"id":"<%= id %>","data":[{"value":1,"timestamp":1467304297239}]}],"availabilities":[{"id":"<%= id %>","data":[{"value":"down","timestamp":1467304297239}]}]}'
+      string: '{"gauges":[{"id":"<%= id %>","data":[{"value":1.1,"timestamp":1467304297239}]}],"counters":[{"id":"<%=
+        id %>","data":[{"value":1,"timestamp":1467304297239}]}],"availabilities":[{"id":"<%=
+        id %>","data":[{"value":"down","timestamp":1467304297239}]}]}'
     headers:
       Accept:
       - application/json
