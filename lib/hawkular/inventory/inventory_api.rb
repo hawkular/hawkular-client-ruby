@@ -204,7 +204,7 @@ module Hawkular::Inventory
       to_filter = []
       if (raw_hash.key? 'children') && (raw_hash['children'].key? 'metric') && !raw_hash['children']['metric'].empty?
         # Need to merge metric type info that we must grab from another place
-        metric_types = list_metric_types(path.feed_id)
+        metric_types = list_metric_types(URI.unescape(path.feed_id))
         metric_types_index = {}
         metric_types.each { |mt| metric_types_index[mt.path] = mt }
         to_filter = raw_hash['children']['metric'].map do |m|
