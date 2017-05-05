@@ -2,8 +2,9 @@ sudo: required
 
 language: ruby
 rvm:
-  - 2.2
-  - 2.3.0
+  - "2.2"
+  - "2.3.3"
+  - "2.4.1"
 env:
   global:
     - ADMIN_TOKEN=4f4a1434-8cb3-11e6-ae22-56b6b6499611
