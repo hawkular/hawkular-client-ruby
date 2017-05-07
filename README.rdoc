@@ -6,7 +6,7 @@
 
 A Ruby Hawkular Client.
 
-Documentation[http://www.hawkular.org/hawkular-client-ruby/docs/]
+Documentation[http://www.hawkular.org/hawkular-client-ruby/]
 
 == Changelog
 
