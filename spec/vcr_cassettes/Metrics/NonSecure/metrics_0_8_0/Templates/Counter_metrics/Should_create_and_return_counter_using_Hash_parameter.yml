@@ -5,14 +5,15 @@ http_interactions:
     uri: http://localhost:8080/hawkular/metrics/counters
     body:
       encoding: UTF-8
-      string: '{"id":"<%= id %>","dataRetention":123,"tags":{"some":"value"},"tenantId":"<%= vcr_test_tenant %>"}'
+      string: '{"id":"<%= id %>","dataRetention":123,"tags":{"some":"value"},"tenantId":"<%=
+        vcr_test_tenant %>"}'
     headers:
       Accept:
       - application/json
       Accept-Encoding:
       - gzip, deflate
       Hawkular-Tenant:
-      - <%= vcr_test_tenant %>
+      - "<%= vcr_test_tenant %>"
       Content-Type:
       - application/json
       Content-Length:
@@ -77,7 +78,8 @@ http_interactions:
       - Thu, 30 Jun 2016 16:31:37 GMT
     body:
       encoding: UTF-8
-      string: '{"id":"<%= id %>","tags":{"some":"value"},"dataRetention":123,"type":"counter","tenantId":"<%= vcr_test_tenant %>"}'
+      string: '{"id":"<%= id %>","tags":{"some":"value"},"dataRetention":123,"type":"counter","tenantId":"<%=
+        vcr_test_tenant %>"}'
     http_version: 
   recorded_at: Thu, 30 Jun 2016 16:31:37 GMT
 recorded_with: VCR 3.0.1

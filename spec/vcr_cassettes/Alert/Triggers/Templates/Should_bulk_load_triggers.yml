@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/import/all
+    uri: http://localhost:8080/hawkular/alerts/import/all
     body:
       encoding: UTF-8
       string: '{"triggers":[{"trigger":{"id":"hello-world-trigger","name":"Hello World
@@ -20,6 +20,9 @@ http_interactions:
       - application/json
       Content-Length:
       - '571'
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
@@ -51,7 +54,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:11:07 GMT
 - request:
     method: get
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/hello-world-trigger
+    uri: http://localhost:8080/hawkular/alerts/triggers/hello-world-trigger
     body:
       encoding: US-ASCII
       string: ''
@@ -66,6 +69,9 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
@@ -97,7 +103,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:11:07 GMT
 - request:
     method: get
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/hello-world-trigger/conditions
+    uri: http://localhost:8080/hawkular/alerts/triggers/hello-world-trigger/conditions
     body:
       encoding: US-ASCII
       string: ''
@@ -112,6 +118,9 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
@@ -142,7 +151,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:11:07 GMT
 - request:
     method: get
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/hello-world-trigger/dampenings
+    uri: http://localhost:8080/hawkular/alerts/triggers/hello-world-trigger/dampenings
     body:
       encoding: US-ASCII
       string: ''
@@ -157,6 +166,9 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
@@ -187,7 +199,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:11:07 GMT
 - request:
     method: delete
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/hello-world-trigger
+    uri: http://localhost:8080/hawkular/alerts/triggers/hello-world-trigger
     body:
       encoding: US-ASCII
       string: ''
@@ -202,6 +214,9 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200

@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://jdoe:password@localhost:8080/secret-store/v1/tokens
+    uri: http://localhost:8080/secret-store/v1/tokens
     body:
       encoding: US-ASCII
       string: ''
@@ -15,6 +15,9 @@ http_interactions:
       - rest-client/2.0.0.rc1 (linux-gnu x86_64) ruby/2.2.4p230
       Content-Type:
       - application/json
+      Authorization: 'Basic amRvZTpwYXNzd29yZA==
+
+'
   response:
     status:
       code: 200

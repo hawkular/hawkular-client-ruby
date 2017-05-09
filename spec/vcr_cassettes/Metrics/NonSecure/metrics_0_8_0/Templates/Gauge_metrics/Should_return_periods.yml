@@ -5,7 +5,8 @@ http_interactions:
     uri: http://localhost:8080/hawkular/metrics/gauges/<%= id %>/data
     body:
       encoding: UTF-8
-      string: '[{"value":1,"timestamp":<%= minus30 %>},{"value":2,"timestamp":<%= minus20 %>},{"value":3,"timestamp":<%= start %>}]'
+      string: '[{"value":1,"timestamp":<%= minus30 %>},{"value":2,"timestamp":<%=
+        minus20 %>},{"value":3,"timestamp":<%= start %>}]'
     headers:
       Accept:
       - application/json
@@ -41,7 +42,8 @@ http_interactions:
   recorded_at: Thu, 30 Jun 2016 16:31:38 GMT
 - request:
     method: get
-    uri: http://localhost:8080/hawkular/metrics/gauges/<%= id %>/periods?op=lte&start=<%= before4h %>&threshold=4
+    uri: http://localhost:8080/hawkular/metrics/gauges/<%= id %>/periods?op=lte&start=<%=
+      before4h %>&threshold=4
     body:
       encoding: US-ASCII
       string: ''

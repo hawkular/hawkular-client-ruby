@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: http://jdoe:password@localhost:8080/hawkular/metrics/gauges
+    uri: http://localhost:8080/hawkular/metrics/gauges
     body:
       encoding: UTF-8
       string: '{"id":"metric_1","dataRetention":90,"tags":{"tag1":"value1","tag2":"value2","tag3":"value3"}}'
@@ -19,6 +19,9 @@ http_interactions:
       - application/json
       Content-Length:
       - '93'
+      Authorization: 'Basic amRvZTpwYXNzd29yZA==
+
+'
   response:
     status:
       code: 201
@@ -49,7 +52,7 @@ http_interactions:
   recorded_at: Wed, 05 Apr 2017 08:18:51 GMT
 - request:
     method: get
-    uri: http://jdoe:password@localhost:8080/hawkular/metrics/gauges/metric_1
+    uri: http://localhost:8080/hawkular/metrics/gauges/metric_1
     body:
       encoding: US-ASCII
       string: ''
@@ -64,6 +67,9 @@ http_interactions:
       - 01aad6f9-52c0-4586-b812-07873a54834a
       Content-Type:
       - application/json
+      Authorization: 'Basic amRvZTpwYXNzd29yZA==
+
+'
   response:
     status:
       code: 200
@@ -94,7 +100,7 @@ http_interactions:
   recorded_at: Wed, 05 Apr 2017 08:18:51 GMT
 - request:
     method: post
-    uri: http://jdoe:password@localhost:8080/hawkular/metrics/availability
+    uri: http://localhost:8080/hawkular/metrics/availability
     body:
       encoding: UTF-8
       string: '{"id":"metric_2","dataRetention":90,"tags":{"tag1":"value1","tag4":"value4","tag5":"value5"}}'
@@ -111,6 +117,9 @@ http_interactions:
       - application/json
       Content-Length:
       - '93'
+      Authorization: 'Basic amRvZTpwYXNzd29yZA==
+
+'
   response:
     status:
       code: 201
@@ -141,7 +150,7 @@ http_interactions:
   recorded_at: Wed, 05 Apr 2017 08:18:51 GMT
 - request:
     method: get
-    uri: http://jdoe:password@localhost:8080/hawkular/metrics/availability/metric_2
+    uri: http://localhost:8080/hawkular/metrics/availability/metric_2
     body:
       encoding: US-ASCII
       string: ''
@@ -156,6 +165,9 @@ http_interactions:
       - 01aad6f9-52c0-4586-b812-07873a54834a
       Content-Type:
       - application/json
+      Authorization: 'Basic amRvZTpwYXNzd29yZA==
+
+'
   response:
     status:
       code: 200
@@ -186,7 +198,7 @@ http_interactions:
   recorded_at: Wed, 05 Apr 2017 08:18:51 GMT
 - request:
     method: post
-    uri: http://jdoe:password@localhost:8080/hawkular/metrics/counters
+    uri: http://localhost:8080/hawkular/metrics/counters
     body:
       encoding: UTF-8
       string: '{"id":"metric_2","dataRetention":90,"tags":{"tag1":"value1","tag4":"value4","tag5":"value5.1"}}'
@@ -203,6 +215,9 @@ http_interactions:
       - application/json
       Content-Length:
       - '95'
+      Authorization: 'Basic amRvZTpwYXNzd29yZA==
+
+'
   response:
     status:
       code: 201
@@ -233,7 +248,7 @@ http_interactions:
   recorded_at: Wed, 05 Apr 2017 08:18:51 GMT
 - request:
     method: get
-    uri: http://jdoe:password@localhost:8080/hawkular/metrics/counters/metric_2
+    uri: http://localhost:8080/hawkular/metrics/counters/metric_2
     body:
       encoding: US-ASCII
       string: ''
@@ -248,6 +263,9 @@ http_interactions:
       - 01aad6f9-52c0-4586-b812-07873a54834a
       Content-Type:
       - application/json
+      Authorization: 'Basic amRvZTpwYXNzd29yZA==
+
+'
   response:
     status:
       code: 200
@@ -278,7 +296,7 @@ http_interactions:
   recorded_at: Wed, 05 Apr 2017 08:18:51 GMT
 - request:
     method: post
-    uri: http://jdoe:password@localhost:8080/hawkular/metrics/counters
+    uri: http://localhost:8080/hawkular/metrics/counters
     body:
       encoding: UTF-8
       string: '{"id":"metric_3","dataRetention":90,"tags":{}}'
@@ -295,6 +313,9 @@ http_interactions:
       - application/json
       Content-Length:
       - '46'
+      Authorization: 'Basic amRvZTpwYXNzd29yZA==
+
+'
   response:
     status:
       code: 201
@@ -325,7 +346,7 @@ http_interactions:
   recorded_at: Wed, 05 Apr 2017 08:18:51 GMT
 - request:
     method: get
-    uri: http://jdoe:password@localhost:8080/hawkular/metrics/counters/metric_3
+    uri: http://localhost:8080/hawkular/metrics/counters/metric_3
     body:
       encoding: US-ASCII
       string: ''
@@ -340,6 +361,9 @@ http_interactions:
       - 01aad6f9-52c0-4586-b812-07873a54834a
       Content-Type:
       - application/json
+      Authorization: 'Basic amRvZTpwYXNzd29yZA==
+
+'
   response:
     status:
       code: 200
@@ -370,7 +394,7 @@ http_interactions:
   recorded_at: Wed, 05 Apr 2017 08:18:51 GMT
 - request:
     method: get
-    uri: http://jdoe:password@localhost:8080/hawkular/metrics/metrics/
+    uri: http://localhost:8080/hawkular/metrics/metrics/
     body:
       encoding: US-ASCII
       string: ''
@@ -385,6 +409,9 @@ http_interactions:
       - 01aad6f9-52c0-4586-b812-07873a54834a
       Content-Type:
       - application/json
+      Authorization: 'Basic amRvZTpwYXNzd29yZA==
+
+'
   response:
     status:
       code: 200

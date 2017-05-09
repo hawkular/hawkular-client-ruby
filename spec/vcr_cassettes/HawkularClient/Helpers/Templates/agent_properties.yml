@@ -2,26 +2,29 @@
 http_interactions:
 - request:
     method: post
-    uri: http://jdoe:password@localhost:8080/<%= tenant_id %>/metrics/strings/raw/query
+    uri: http://localhost:8080/<%= tenant_id %>/metrics/strings/raw/query
     body:
       encoding: UTF-8
-      string: '{"fromEarliest":true,"order":"DESC","tags":"module:inventory,feed:<%= feed_id %>,type:r,restypes:.*\\|Hawkular\\
-        WildFly\\ Agent\\|.*"}'
+      string: '{"fromEarliest":true,"order":"DESC","tags":"module:inventory,feed:<%=
+        feed_id %>,type:r,restypes:.*\\|Hawkular\\ WildFly\\ Agent\\|.*"}'
     headers:
       Accept:
       - application/json
       Accept-Encoding:
       - identity
       User-Agent:
-      - <%= tenant_id %>-client-ruby
+      - "<%= tenant_id %>-client-ruby"
       Hawkular-Tenant:
-      - <%= tenant_id %>
+      - "<%= tenant_id %>"
       Content-Type:
       - application/json
       Content-Length:
       - '133'
       Host:
       - localhost:8080
+      Authorization: 'Basic amRvZTpwYXNzd29yZA==
+
+'
   response:
     status:
       code: 200
@@ -47,7 +50,8 @@ http_interactions:
       - '534'
     body:
       encoding: UTF-8
-      string: '[{"id":"inventory.<%= feed_id %>.r.Local JMX~org.<%= tenant_id %>:type=<%= tenant_id %>-javaagent","data":[{"timestamp":1493741706882,"value":"H4sIAAAAAAAAAH2QT0vDQBDFv0pY8FatqNCa4EFEsaIgWFAoPYybbbK6mS3T2WoI8bM72ybFHuwpO3/yfvNeoyyuDbKn+oUpaA5kVNoorpfyVWRWPpA2aqByYIiTJfmlIbZmJVU7UDaXvUevwSUPT28/noqTEr4+gwNKo8pVXx1/wBqgEJioIVRR/76bJa/W5XeuTq67uQ9ceItFx0Dtq13VHzUV9WfgUnSGnPWY4SK7hPH5aJzDBYzyIXHWU47OTjuOvLYkkdOl9MhgNBdN3iJbrlU6aw571h4XtggEbD3uLGFw7vD5a3Bhk/GkqgLDu4tBSPYx5AkmNx4ZLBrqu9Gx3yztE/dPb9t5K52Y+GqCufmOhH/iTWdKzWW5MkxWT//+0ra/zqusnBICAAA="}]}]'
+      string: '[{"id":"inventory.<%= feed_id %>.r.Local JMX~org.<%= tenant_id %>:type=<%=
+        tenant_id %>-javaagent","data":[{"timestamp":1493741706882,"value":"H4sIAAAAAAAAAH2QT0vDQBDFv0pY8FatqNCa4EFEsaIgWFAoPYybbbK6mS3T2WoI8bM72ybFHuwpO3/yfvNeoyyuDbKn+oUpaA5kVNoorpfyVWRWPpA2aqByYIiTJfmlIbZmJVU7UDaXvUevwSUPT28/noqTEr4+gwNKo8pVXx1/wBqgEJioIVRR/76bJa/W5XeuTq67uQ9ceItFx0Dtq13VHzUV9WfgUnSGnPWY4SK7hPH5aJzDBYzyIXHWU47OTjuOvLYkkdOl9MhgNBdN3iJbrlU6aw571h4XtggEbD3uLGFw7vD5a3Bhk/GkqgLDu4tBSPYx5AkmNx4ZLBrqu9Gx3yztE/dPb9t5K52Y+GqCufmOhH/iTWdKzWW5MkxWT//+0ra/zqusnBICAAA="}]}]'
     http_version: 
   recorded_at: Tue, 02 May 2017 19:28:01 GMT
 recorded_with: VCR 3.0.3

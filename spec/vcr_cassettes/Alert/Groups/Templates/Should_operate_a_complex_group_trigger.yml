@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/groups
+    uri: http://localhost:8080/hawkular/alerts/triggers/groups
     body:
       encoding: UTF-8
       string: '{"id":"a-group-trigger","name":"A Group Trigger","enabled":false,"severity":"HIGH","description":"A
@@ -20,6 +20,9 @@ http_interactions:
       - application/json
       Content-Length:
       - '148'
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
@@ -51,7 +54,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
 - request:
     method: put
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/groups/a-group-trigger/conditions/FIRING
+    uri: http://localhost:8080/hawkular/alerts/triggers/groups/a-group-trigger/conditions/FIRING
     body:
       encoding: UTF-8
       string: '{"conditions":[{"conditionId":null,"type":"THRESHOLD","operator":"LT","threshold":5,"triggerMode":"FIRING","dataId":"my-metric-id","data2Id":null,"data2Multiplier":null,"triggerId":null,"interval":null}],"dataIdMemberMap":{}}'
@@ -68,6 +71,9 @@ http_interactions:
       - application/json
       Content-Length:
       - '225'
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
@@ -98,7 +104,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
 - request:
     method: post
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/groups/members
+    uri: http://localhost:8080/hawkular/alerts/triggers/groups/members
     body:
       encoding: UTF-8
       string: '{"groupId":"a-group-trigger","memberId":"member1","memberName":"Member
@@ -116,6 +122,9 @@ http_interactions:
       - application/json
       Content-Length:
       - '192'
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
@@ -147,7 +156,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
 - request:
     method: get
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/member1
+    uri: http://localhost:8080/hawkular/alerts/triggers/member1
     body:
       encoding: US-ASCII
       string: ''
@@ -162,6 +171,9 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
@@ -193,7 +205,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
 - request:
     method: get
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/member1/conditions
+    uri: http://localhost:8080/hawkular/alerts/triggers/member1/conditions
     body:
       encoding: US-ASCII
       string: ''
@@ -208,6 +220,9 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
@@ -238,7 +253,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
 - request:
     method: get
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/member1/dampenings
+    uri: http://localhost:8080/hawkular/alerts/triggers/member1/dampenings
     body:
       encoding: US-ASCII
       string: ''
@@ -253,6 +268,9 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
@@ -283,7 +301,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
 - request:
     method: get
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/groups/a-group-trigger/members?includeOrphans=false
+    uri: http://localhost:8080/hawkular/alerts/triggers/groups/a-group-trigger/members?includeOrphans=false
     body:
       encoding: US-ASCII
       string: ''
@@ -298,6 +316,9 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
@@ -329,7 +350,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
 - request:
     method: post
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/groups/members
+    uri: http://localhost:8080/hawkular/alerts/triggers/groups/members
     body:
       encoding: UTF-8
       string: '{"groupId":"a-group-trigger","memberId":"member2","memberName":"Member
@@ -347,6 +368,9 @@ http_interactions:
       - application/json
       Content-Length:
       - '192'
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
@@ -378,7 +402,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
 - request:
     method: get
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/member2
+    uri: http://localhost:8080/hawkular/alerts/triggers/member2
     body:
       encoding: US-ASCII
       string: ''
@@ -393,6 +417,9 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
@@ -424,7 +451,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
 - request:
     method: get
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/member2/conditions
+    uri: http://localhost:8080/hawkular/alerts/triggers/member2/conditions
     body:
       encoding: US-ASCII
       string: ''
@@ -439,6 +466,9 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
@@ -469,7 +499,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
 - request:
     method: get
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/member2/dampenings
+    uri: http://localhost:8080/hawkular/alerts/triggers/member2/dampenings
     body:
       encoding: US-ASCII
       string: ''
@@ -484,6 +514,9 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
@@ -514,7 +547,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
 - request:
     method: get
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/groups/a-group-trigger/members?includeOrphans=false
+    uri: http://localhost:8080/hawkular/alerts/triggers/groups/a-group-trigger/members?includeOrphans=false
     body:
       encoding: US-ASCII
       string: ''
@@ -529,6 +562,9 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
@@ -561,7 +597,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
 - request:
     method: post
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/groups/members/member2/orphan
+    uri: http://localhost:8080/hawkular/alerts/triggers/groups/members/member2/orphan
     body:
       encoding: UTF-8
       string: "{}"
@@ -578,6 +614,9 @@ http_interactions:
       - application/json
       Content-Length:
       - '2'
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
@@ -608,7 +647,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
 - request:
     method: get
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/member2
+    uri: http://localhost:8080/hawkular/alerts/triggers/member2
     body:
       encoding: US-ASCII
       string: ''
@@ -623,6 +662,9 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
@@ -654,7 +696,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
 - request:
     method: get
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/groups/a-group-trigger/members?includeOrphans=false
+    uri: http://localhost:8080/hawkular/alerts/triggers/groups/a-group-trigger/members?includeOrphans=false
     body:
       encoding: US-ASCII
       string: ''
@@ -669,6 +711,9 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
@@ -700,7 +745,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
 - request:
     method: get
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/groups/a-group-trigger/members?includeOrphans=true
+    uri: http://localhost:8080/hawkular/alerts/triggers/groups/a-group-trigger/members?includeOrphans=true
     body:
       encoding: US-ASCII
       string: ''
@@ -715,6 +760,9 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
@@ -747,7 +795,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
 - request:
     method: post
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/groups/a-group-trigger/dampenings
+    uri: http://localhost:8080/hawkular/alerts/triggers/groups/a-group-trigger/dampenings
     body:
       encoding: UTF-8
       string: '{"dampeningId":null,"triggerId":"a-group-trigger","type":"STRICT","evalTrueSetting":2,"evalTotalSetting":2,"evalTimeSetting":null}'
@@ -764,6 +812,9 @@ http_interactions:
       - application/json
       Content-Length:
       - '130'
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
@@ -794,7 +845,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
 - request:
     method: get
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/member1
+    uri: http://localhost:8080/hawkular/alerts/triggers/member1
     body:
       encoding: US-ASCII
       string: ''
@@ -809,6 +860,9 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
@@ -840,7 +894,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
 - request:
     method: get
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/member1/conditions
+    uri: http://localhost:8080/hawkular/alerts/triggers/member1/conditions
     body:
       encoding: US-ASCII
       string: ''
@@ -855,6 +909,9 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
@@ -885,7 +942,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
 - request:
     method: get
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/member1/dampenings
+    uri: http://localhost:8080/hawkular/alerts/triggers/member1/dampenings
     body:
       encoding: US-ASCII
       string: ''
@@ -900,6 +957,9 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
@@ -930,7 +990,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
 - request:
     method: put
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/groups/a-group-trigger/
+    uri: http://localhost:8080/hawkular/alerts/triggers/groups/a-group-trigger/
     body:
       encoding: UTF-8
       string: '{"id":"a-group-trigger","name":"A Group Trigger","enabled":false,"severity":"HIGH","autoResolve":false,"autoResolveAlerts":true,"eventType":"ALERT","description":"A
@@ -948,6 +1008,9 @@ http_interactions:
       - application/json
       Content-Length:
       - '372'
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
@@ -978,7 +1041,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
 - request:
     method: get
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/a-group-trigger
+    uri: http://localhost:8080/hawkular/alerts/triggers/a-group-trigger
     body:
       encoding: US-ASCII
       string: ''
@@ -993,6 +1056,9 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
@@ -1024,7 +1090,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
 - request:
     method: get
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/member1
+    uri: http://localhost:8080/hawkular/alerts/triggers/member1
     body:
       encoding: US-ASCII
       string: ''
@@ -1039,6 +1105,9 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
@@ -1070,7 +1139,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
 - request:
     method: put
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/groups/a-group-trigger/conditions/FIRING
+    uri: http://localhost:8080/hawkular/alerts/triggers/groups/a-group-trigger/conditions/FIRING
     body:
       encoding: UTF-8
       string: '{"conditions":[{"conditionId":null,"type":"THRESHOLD","operator":"LT","threshold":5,"triggerMode":"FIRING","dataId":"my-metric-id","data2Id":null,"data2Multiplier":null,"triggerId":null,"interval":null},{"conditionId":null,"type":"THRESHOLD","operator":"GT","threshold":50,"triggerMode":"FIRING","dataId":"my-metric-id2","data2Id":null,"data2Multiplier":null,"triggerId":null,"interval":null}],"dataIdMemberMap":{"my-metric-id":{"member1":"my-metric-id-member1"},"my-metric-id2":{"member1":"my-metric-id2-member1"}}}'
@@ -1087,6 +1156,9 @@ http_interactions:
       - application/json
       Content-Length:
       - '516'
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
@@ -1117,7 +1189,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
 - request:
     method: get
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/member1
+    uri: http://localhost:8080/hawkular/alerts/triggers/member1
     body:
       encoding: US-ASCII
       string: ''
@@ -1132,6 +1204,9 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
@@ -1163,7 +1238,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
 - request:
     method: get
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/member1/conditions
+    uri: http://localhost:8080/hawkular/alerts/triggers/member1/conditions
     body:
       encoding: US-ASCII
       string: ''
@@ -1178,6 +1253,9 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
@@ -1208,7 +1286,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
 - request:
     method: get
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/member1/dampenings
+    uri: http://localhost:8080/hawkular/alerts/triggers/member1/dampenings
     body:
       encoding: US-ASCII
       string: ''
@@ -1223,6 +1301,9 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
@@ -1253,7 +1334,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
 - request:
     method: put
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/groups/a-group-trigger/dampenings/hawkular-a-group-trigger-FIRING
+    uri: http://localhost:8080/hawkular/alerts/triggers/groups/a-group-trigger/dampenings/hawkular-a-group-trigger-FIRING
     body:
       encoding: UTF-8
       string: '{"dampeningId":"hawkular-a-group-trigger-FIRING","triggerId":"a-group-trigger","type":"RELAXED_COUNT","evalTrueSetting":2,"evalTotalSetting":4,"evalTimeSetting":0}'
@@ -1270,6 +1351,9 @@ http_interactions:
       - application/json
       Content-Length:
       - '163'
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
@@ -1300,7 +1384,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
 - request:
     method: put
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/groups/a-group-trigger/
+    uri: http://localhost:8080/hawkular/alerts/triggers/groups/a-group-trigger/
     body:
       encoding: UTF-8
       string: '{"id":"a-group-trigger","name":"A Group Trigger","enabled":false,"severity":"HIGH","autoResolve":false,"autoResolveAlerts":true,"eventType":"ALERT","description":"A
@@ -1318,6 +1402,9 @@ http_interactions:
       - application/json
       Content-Length:
       - '412'
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
@@ -1348,7 +1435,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
 - request:
     method: get
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/a-group-trigger
+    uri: http://localhost:8080/hawkular/alerts/triggers/a-group-trigger
     body:
       encoding: US-ASCII
       string: ''
@@ -1363,6 +1450,9 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
@@ -1394,7 +1484,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
 - request:
     method: delete
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/groups/a-group-trigger/dampenings/hawkular-a-group-trigger-FIRING
+    uri: http://localhost:8080/hawkular/alerts/triggers/groups/a-group-trigger/dampenings/hawkular-a-group-trigger-FIRING
     body:
       encoding: US-ASCII
       string: ''
@@ -1409,6 +1499,9 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
@@ -1439,7 +1532,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
 - request:
     method: get
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/member1
+    uri: http://localhost:8080/hawkular/alerts/triggers/member1
     body:
       encoding: US-ASCII
       string: ''
@@ -1454,6 +1547,9 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
@@ -1485,7 +1581,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
 - request:
     method: get
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/member1/conditions
+    uri: http://localhost:8080/hawkular/alerts/triggers/member1/conditions
     body:
       encoding: US-ASCII
       string: ''
@@ -1500,6 +1596,9 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
@@ -1530,7 +1629,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
 - request:
     method: get
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/member1/dampenings
+    uri: http://localhost:8080/hawkular/alerts/triggers/member1/dampenings
     body:
       encoding: US-ASCII
       string: ''
@@ -1545,6 +1644,9 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
@@ -1575,7 +1677,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
 - request:
     method: put
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/groups/a-group-trigger/conditions/FIRING
+    uri: http://localhost:8080/hawkular/alerts/triggers/groups/a-group-trigger/conditions/FIRING
     body:
       encoding: UTF-8
       string: '{"conditions":[{"conditionId":null,"type":"THRESHOLD","operator":"LT","threshold":5,"triggerMode":"FIRING","dataId":"my-metric-id","data2Id":null,"data2Multiplier":null,"triggerId":null,"interval":null},{"conditionId":null,"type":"THRESHOLD","operator":"GT","threshold":50,"triggerMode":"FIRING","dataId":"my-metric-id2","data2Id":null,"data2Multiplier":null,"triggerId":null,"interval":null},{"conditionId":null,"type":"COMPARE","operator":"GT","threshold":null,"triggerMode":"FIRING","dataId":"my-metric-id3","data2Id":"my-metric-id4","data2Multiplier":1,"triggerId":null,"interval":null}],"dataIdMemberMap":{"my-metric-id":{"member1":"my-metric-id-member1"},"my-metric-id2":{"member1":"my-metric-id2-member1"},"my-metric-id3":{"member1":"my-metric-id3-member1"},"my-metric-id4":{"member1":"my-metric-id4-member1"}}}'
@@ -1592,6 +1694,9 @@ http_interactions:
       - application/json
       Content-Length:
       - '818'
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
@@ -1622,7 +1727,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
 - request:
     method: get
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/member1
+    uri: http://localhost:8080/hawkular/alerts/triggers/member1
     body:
       encoding: US-ASCII
       string: ''
@@ -1637,6 +1742,9 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
@@ -1668,7 +1776,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
 - request:
     method: get
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/member1/conditions
+    uri: http://localhost:8080/hawkular/alerts/triggers/member1/conditions
     body:
       encoding: US-ASCII
       string: ''
@@ -1683,6 +1791,9 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
@@ -1713,7 +1824,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
 - request:
     method: get
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/member1/dampenings
+    uri: http://localhost:8080/hawkular/alerts/triggers/member1/dampenings
     body:
       encoding: US-ASCII
       string: ''
@@ -1728,6 +1839,9 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
@@ -1758,7 +1872,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
 - request:
     method: delete
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/groups/a-group-trigger
+    uri: http://localhost:8080/hawkular/alerts/triggers/groups/a-group-trigger
     body:
       encoding: US-ASCII
       string: ''
@@ -1773,6 +1887,9 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200

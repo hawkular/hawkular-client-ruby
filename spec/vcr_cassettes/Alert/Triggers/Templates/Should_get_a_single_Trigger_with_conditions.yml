@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/my-trigger-01
+    uri: http://localhost:8080/hawkular/alerts/triggers/my-trigger-01
     body:
       encoding: US-ASCII
       string: ''
@@ -17,6 +17,9 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
@@ -47,7 +50,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:11:07 GMT
 - request:
     method: get
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/my-trigger-01/conditions
+    uri: http://localhost:8080/hawkular/alerts/triggers/my-trigger-01/conditions
     body:
       encoding: US-ASCII
       string: ''
@@ -62,6 +65,9 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
@@ -92,7 +98,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:11:07 GMT
 - request:
     method: get
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/my-trigger-01/dampenings
+    uri: http://localhost:8080/hawkular/alerts/triggers/my-trigger-01/dampenings
     body:
       encoding: US-ASCII
       string: ''
@@ -107,6 +113,9 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200

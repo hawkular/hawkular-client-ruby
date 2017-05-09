@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: http://jdoe:password@localhost:8080/hawkular/metrics/strings/raw/query
+    uri: http://localhost:8080/hawkular/metrics/strings/raw/query
     body:
       encoding: UTF-8
       string: '{"fromEarliest":true,"order":"DESC","tags":"module:inventory,feed:dd1b2582\\-ffe2\\-4808\\-be47\\-a2e3ab662985,type:r,restypes:.*\\|WildFly\\
@@ -20,6 +20,9 @@ http_interactions:
       - application/json
       Content-Length:
       - '155'
+      Authorization: 'Basic amRvZTpwYXNzd29yZA==
+
+'
   response:
     status:
       code: 200
@@ -50,7 +53,7 @@ http_interactions:
   recorded_at: Mon, 27 Mar 2017 10:22:15 GMT
 - request:
     method: post
-    uri: http://jdoe:password@localhost:8080/hawkular/metrics/strings/raw/query
+    uri: http://localhost:8080/hawkular/metrics/strings/raw/query
     body:
       encoding: UTF-8
       string: '{"fromEarliest":true,"order":"DESC","tags":"module:inventory,feed:dd1b2582\\-ffe2\\-4808\\-be47\\-a2e3ab662985,type:r,restypes:.*\\|WildFly\\
@@ -68,6 +71,9 @@ http_interactions:
       - application/json
       Content-Length:
       - '155'
+      Authorization: 'Basic amRvZTpwYXNzd29yZA==
+
+'
   response:
     status:
       code: 200

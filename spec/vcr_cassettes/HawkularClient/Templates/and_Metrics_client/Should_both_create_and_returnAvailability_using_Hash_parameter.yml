@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: http://jdoe:password@localhost:8080/hawkular/metrics/availability
+    uri: http://localhost:8080/hawkular/metrics/availability
     body:
       encoding: UTF-8
       string: '{"id":"<%= id1 %>","dataRetention":123,"tags":{"some":"value"}}'
@@ -19,6 +19,9 @@ http_interactions:
       - application/json
       Content-Length:
       - '89'
+      Authorization: 'Basic amRvZTpwYXNzd29yZA==
+
+'
   response:
     status:
       code: 201
@@ -49,7 +52,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:06:53 GMT
 - request:
     method: get
-    uri: http://jdoe:password@localhost:8080/hawkular/metrics/availability/<%= id1 %>
+    uri: http://localhost:8080/hawkular/metrics/availability/<%= id1 %>
     body:
       encoding: US-ASCII
       string: ''
@@ -64,6 +67,9 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
+      Authorization: 'Basic amRvZTpwYXNzd29yZA==
+
+'
   response:
     status:
       code: 200
@@ -94,7 +100,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:06:53 GMT
 - request:
     method: post
-    uri: http://jdoe:password@localhost:8080/hawkular/metrics/availability
+    uri: http://localhost:8080/hawkular/metrics/availability
     body:
       encoding: UTF-8
       string: '{"id":"<%= id2 %>","dataRetention":321,"tags":{"some":"value"}}'
@@ -111,6 +117,9 @@ http_interactions:
       - application/json
       Content-Length:
       - '89'
+      Authorization: 'Basic amRvZTpwYXNzd29yZA==
+
+'
   response:
     status:
       code: 201
@@ -141,7 +150,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:06:53 GMT
 - request:
     method: get
-    uri: http://jdoe:password@localhost:8080/hawkular/metrics/availability/<%= id2 %>
+    uri: http://localhost:8080/hawkular/metrics/availability/<%= id2 %>
     body:
       encoding: US-ASCII
       string: ''
@@ -156,6 +165,9 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
+      Authorization: 'Basic amRvZTpwYXNzd29yZA==
+
+'
   response:
     status:
       code: 200

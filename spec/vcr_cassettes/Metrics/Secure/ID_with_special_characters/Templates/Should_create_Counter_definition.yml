@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://jdoe:password@127.0.0.1:8443/hawkular/metrics/counters
+    uri: https://127.0.0.1:8443/hawkular/metrics/counters
     body:
       encoding: UTF-8
       string: '{"id":"AA~R~[8b*}{''\\14#?/5-7%92[d-c9_.r1///7;:4eddf/L=c~~]~MT~  %-Met@ics~Aggre&?ated
@@ -15,13 +15,16 @@ http_interactions:
       User-Agent:
       - hawkular-client-ruby
       Hawkular-Tenant:
-      - <%= vcr_test_tenant %>
+      - "<%= vcr_test_tenant %>"
       Content-Type:
       - application/json
       Content-Length:
       - '142'
       Host:
       - 127.0.0.1:8443
+      Authorization: 'Basic amRvZTpwYXNzd29yZA==
+
+'
   response:
     status:
       code: 201
@@ -52,7 +55,7 @@ http_interactions:
   recorded_at: Mon, 15 Aug 2016 15:20:43 GMT
 - request:
     method: get
-    uri: https://jdoe:password@127.0.0.1:8443/hawkular/metrics/counters/AA~R~%5B8b*%7D%7B'%5C14%23%3F%2F5-7%2592%5Bd-c9_.r1%2F%2F%2F7;:4eddf%2FL=c~~%5D~MT~%20%20%25-Met@ics~Aggre&%3Fated%20%22%20Sess%7Bons
+    uri: https://127.0.0.1:8443/hawkular/metrics/counters/AA~R~%5B8b*%7D%7B'%5C14%23%3F%2F5-7%2592%5Bd-c9_.r1%2F%2F%2F7;:4eddf%2FL=c~~%5D~MT~%20%20%25-Met@ics~Aggre&%3Fated%20%22%20Sess%7Bons
     body:
       encoding: US-ASCII
       string: ''
@@ -64,11 +67,14 @@ http_interactions:
       User-Agent:
       - hawkular-client-ruby
       Hawkular-Tenant:
-      - <%= vcr_test_tenant %>
+      - "<%= vcr_test_tenant %>"
       Content-Type:
       - application/json
       Host:
       - 127.0.0.1:8443
+      Authorization: 'Basic amRvZTpwYXNzd29yZA==
+
+'
   response:
     status:
       code: 200
@@ -95,7 +101,8 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"id":"AA~R~[8b*}{''\\14#?/5-7%92[d-c9_.r1///7;:4eddf/L=c~~]~MT~  %-Met@ics~Aggre&?ated
-        \" Sess{ons","tags":{"tag":"value"},"dataRetention":90,"type":"counter","tenantId":"<%= vcr_test_tenant %>"}'
+        \" Sess{ons","tags":{"tag":"value"},"dataRetention":90,"type":"counter","tenantId":"<%=
+        vcr_test_tenant %>"}'
     http_version: 
   recorded_at: Mon, 15 Aug 2016 15:20:43 GMT
 recorded_with: VCR 3.0.3

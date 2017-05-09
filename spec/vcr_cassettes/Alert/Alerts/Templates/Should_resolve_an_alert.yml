@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/?statuses=OPEN
+    uri: http://localhost:8080/hawkular/alerts/?statuses=OPEN
     body:
       encoding: US-ASCII
       string: ''
@@ -17,6 +17,9 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
@@ -56,7 +59,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:11:09 GMT
 - request:
     method: get
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/alert/hello-world-trigger-1493133069305-aae71f54-966a-4c3b-bb70-a745adf6a8e7
+    uri: http://localhost:8080/hawkular/alerts/alert/hello-world-trigger-1493133069305-aae71f54-966a-4c3b-bb70-a745adf6a8e7
     body:
       encoding: US-ASCII
       string: ''
@@ -71,6 +74,9 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
@@ -103,7 +109,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:11:09 GMT
 - request:
     method: put
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/resolve/hello-world-trigger-1493133069305-aae71f54-966a-4c3b-bb70-a745adf6a8e7?resolvedBy=Heiko&resolvedNotes=Hello%20Ruby%20World%20:-)
+    uri: http://localhost:8080/hawkular/alerts/resolve/hello-world-trigger-1493133069305-aae71f54-966a-4c3b-bb70-a745adf6a8e7?resolvedBy=Heiko&resolvedNotes=Hello%20Ruby%20World%20:-)
     body:
       encoding: UTF-8
       string: "{}"
@@ -120,6 +126,9 @@ http_interactions:
       - application/json
       Content-Length:
       - '2'
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
@@ -150,7 +159,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:11:09 GMT
 - request:
     method: get
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/alert/hello-world-trigger-1493133069305-aae71f54-966a-4c3b-bb70-a745adf6a8e7
+    uri: http://localhost:8080/hawkular/alerts/alert/hello-world-trigger-1493133069305-aae71f54-966a-4c3b-bb70-a745adf6a8e7
     body:
       encoding: US-ASCII
       string: ''
@@ -165,6 +174,9 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200

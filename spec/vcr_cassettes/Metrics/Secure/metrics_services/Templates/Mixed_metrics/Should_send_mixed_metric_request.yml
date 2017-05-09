@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://jdoe:password@127.0.0.1:8443/hawkular/metrics/counters/<%= id %>/data/
+    uri: https://127.0.0.1:8443/hawkular/metrics/counters/<%= id %>/data/
     body:
       encoding: US-ASCII
       string: ''
@@ -19,6 +19,9 @@ http_interactions:
       - application/json
       Host:
       - 127.0.0.1:8443
+      Authorization: 'Basic amRvZTpwYXNzd29yZA==
+
+'
   response:
     status:
       code: 204
@@ -43,7 +46,7 @@ http_interactions:
   recorded_at: Mon, 15 Aug 2016 15:20:39 GMT
 - request:
     method: get
-    uri: https://jdoe:password@127.0.0.1:8443/hawkular/metrics/gauges/<%= id %>/data/
+    uri: https://127.0.0.1:8443/hawkular/metrics/gauges/<%= id %>/data/
     body:
       encoding: US-ASCII
       string: ''
@@ -60,6 +63,9 @@ http_interactions:
       - application/json
       Host:
       - 127.0.0.1:8443
+      Authorization: 'Basic amRvZTpwYXNzd29yZA==
+
+'
   response:
     status:
       code: 204
@@ -84,7 +90,7 @@ http_interactions:
   recorded_at: Mon, 15 Aug 2016 15:20:39 GMT
 - request:
     method: get
-    uri: https://jdoe:password@127.0.0.1:8443/hawkular/metrics/availability/<%= id %>/data/
+    uri: https://127.0.0.1:8443/hawkular/metrics/availability/<%= id %>/data/
     body:
       encoding: US-ASCII
       string: ''
@@ -101,6 +107,9 @@ http_interactions:
       - application/json
       Host:
       - 127.0.0.1:8443
+      Authorization: 'Basic amRvZTpwYXNzd29yZA==
+
+'
   response:
     status:
       code: 204
@@ -125,10 +134,12 @@ http_interactions:
   recorded_at: Mon, 15 Aug 2016 15:20:39 GMT
 - request:
     method: post
-    uri: https://jdoe:password@127.0.0.1:8443/hawkular/metrics/metrics/data
+    uri: https://127.0.0.1:8443/hawkular/metrics/metrics/data
     body:
       encoding: UTF-8
-      string: '{"gauges":[{"id":"<%= id %>","data":[{"value":1.1,"timestamp":1471274439156}]}],"counters":[{"id":"<%= id %>","data":[{"value":1,"timestamp":1471274439156}]}],"availabilities":[{"id":"<%= id %>","data":[{"value":"down","timestamp":1471274439156}]}]}'
+      string: '{"gauges":[{"id":"<%= id %>","data":[{"value":1.1,"timestamp":1471274439156}]}],"counters":[{"id":"<%=
+        id %>","data":[{"value":1,"timestamp":1471274439156}]}],"availabilities":[{"id":"<%=
+        id %>","data":[{"value":"down","timestamp":1471274439156}]}]}'
     headers:
       Accept:
       - application/json
@@ -144,6 +155,9 @@ http_interactions:
       - '330'
       Host:
       - 127.0.0.1:8443
+      Authorization: 'Basic amRvZTpwYXNzd29yZA==
+
+'
   response:
     status:
       code: 200
@@ -172,7 +186,7 @@ http_interactions:
   recorded_at: Mon, 15 Aug 2016 15:20:39 GMT
 - request:
     method: get
-    uri: https://jdoe:password@127.0.0.1:8443/hawkular/metrics/counters/<%= id %>/data/
+    uri: https://127.0.0.1:8443/hawkular/metrics/counters/<%= id %>/data/
     body:
       encoding: US-ASCII
       string: ''
@@ -189,6 +203,9 @@ http_interactions:
       - application/json
       Host:
       - 127.0.0.1:8443
+      Authorization: 'Basic amRvZTpwYXNzd29yZA==
+
+'
   response:
     status:
       code: 200
@@ -219,7 +236,7 @@ http_interactions:
   recorded_at: Mon, 15 Aug 2016 15:20:39 GMT
 - request:
     method: get
-    uri: https://jdoe:password@127.0.0.1:8443/hawkular/metrics/gauges/<%= id %>/data/
+    uri: https://127.0.0.1:8443/hawkular/metrics/gauges/<%= id %>/data/
     body:
       encoding: US-ASCII
       string: ''
@@ -236,6 +253,9 @@ http_interactions:
       - application/json
       Host:
       - 127.0.0.1:8443
+      Authorization: 'Basic amRvZTpwYXNzd29yZA==
+
+'
   response:
     status:
       code: 200
@@ -266,7 +286,7 @@ http_interactions:
   recorded_at: Mon, 15 Aug 2016 15:20:39 GMT
 - request:
     method: get
-    uri: https://jdoe:password@127.0.0.1:8443/hawkular/metrics/availability/<%= id %>/data/
+    uri: https://127.0.0.1:8443/hawkular/metrics/availability/<%= id %>/data/
     body:
       encoding: US-ASCII
       string: ''
@@ -283,6 +303,9 @@ http_interactions:
       - application/json
       Host:
       - 127.0.0.1:8443
+      Authorization: 'Basic amRvZTpwYXNzd29yZA==
+
+'
   response:
     status:
       code: 200

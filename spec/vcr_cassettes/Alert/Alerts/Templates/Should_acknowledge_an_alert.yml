@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/?statuses=OPEN
+    uri: http://localhost:8080/hawkular/alerts/?statuses=OPEN
     body:
       encoding: US-ASCII
       string: ''
@@ -17,6 +17,9 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
@@ -54,7 +57,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:11:09 GMT
 - request:
     method: get
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/alert/a-trigger-1493133069307-0e836017-694e-4c59-b435-f2e9aeaa546f
+    uri: http://localhost:8080/hawkular/alerts/alert/a-trigger-1493133069307-0e836017-694e-4c59-b435-f2e9aeaa546f
     body:
       encoding: US-ASCII
       string: ''
@@ -69,6 +72,9 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
@@ -101,7 +107,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:11:09 GMT
 - request:
     method: put
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/ack/a-trigger-1493133069307-0e836017-694e-4c59-b435-f2e9aeaa546f?ackBy=Heiko&ackNotes=Hello%20Ruby%20World%20:-)
+    uri: http://localhost:8080/hawkular/alerts/ack/a-trigger-1493133069307-0e836017-694e-4c59-b435-f2e9aeaa546f?ackBy=Heiko&ackNotes=Hello%20Ruby%20World%20:-)
     body:
       encoding: UTF-8
       string: "{}"
@@ -118,6 +124,9 @@ http_interactions:
       - application/json
       Content-Length:
       - '2'
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
@@ -148,7 +157,7 @@ http_interactions:
   recorded_at: Tue, 25 Apr 2017 15:11:10 GMT
 - request:
     method: get
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/alert/a-trigger-1493133069307-0e836017-694e-4c59-b435-f2e9aeaa546f
+    uri: http://localhost:8080/hawkular/alerts/alert/a-trigger-1493133069307-0e836017-694e-4c59-b435-f2e9aeaa546f
     body:
       encoding: US-ASCII
       string: ''
@@ -163,6 +172,9 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
+      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
+
+'
   response:
     status:
       code: 200
