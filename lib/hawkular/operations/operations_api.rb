@@ -1,8 +1,7 @@
 require 'hawkular/base_client'
-require 'websocket-client-simple'
 require 'json'
-
 require 'hawkular/inventory/entities'
+require 'hawkular/websocket_client'
 
 # Adding a method `perform` for each block so that we can write nice callbacks for this client
 class Proc
@@ -29,19 +28,13 @@ end
 module Hawkular::Operations
   # Client class to interact with the agent via websockets
   class Client < Hawkular::BaseClient
-    include WebSocket::Client
-
     attr_accessor :ws, :session_id, :logger
 
-    # helper for parsing the "OperationName=json_payload" messages
-    class WebSocket::Frame::Data
-      def to_msg_hash
-        chunks = split('=', 2)
-
-        { operationName: chunks[0], data: JSON.parse(chunks[1]) }
-      rescue
-        {}
-      end
+    def msg_to_hash(data)
+      chunks = data.split('=', 2)
+      { operationName: chunks[0], data: JSON.parse(chunks[1]) }
+    rescue
+      {}
     end
 
     # Initialize new Client
@@ -85,7 +78,7 @@ module Hawkular::Operations
       base64_creds = ["#{creds[:username]}:#{creds[:password]}"].pack('m').delete("\r\n")
 
       ws_options = {
-        headers:  {
+        headers: {
           'Authorization' => 'Basic ' + base64_creds,
           'Hawkular-Tenant' => args[:options][:tenant],
           'Accept' => 'application/json'
@@ -93,16 +86,17 @@ module Hawkular::Operations
       }
 
       @logger = Hawkular::Logger.new
-
-      @ws = Simple.connect url, ws_options do |client|
+      logger = @logger
+      op_api = self
+      @ws = Hawkular::WebsocketClient.connect url, ws_options do |client|
         client.on(:message, once: true) do |msg|
-          parsed_message = msg.data.to_msg_hash
+          parsed_message = op_api.msg_to_hash msg
 
           logger.log("Sent WebSocket message: #{parsed_message}")
 
           case parsed_message[:operationName]
           when 'WelcomeResponse'
-            @session_id = parsed_message[:data]['sessionId']
+            op_api.session_id = parsed_message[:data]['sessionId']
           end
         end
       end
@@ -330,8 +324,11 @@ module Hawkular::Operations
 
       # sends a message that will actually run the operation
       payload = "#{operation_name}Request=#{operation_payload.to_json}"
-      payload += binary_content unless binary_content.nil?
-      @ws.send payload, type: binary_content.nil? ? :text : :binary
+      unless binary_content.nil?
+        payload += binary_content
+        payload = payload.bytes.to_a
+      end
+      @ws.send payload
     end
 
     def check_pre_conditions(hash = {}, params = [], &callback)
@@ -354,9 +351,10 @@ module Hawkular::Operations
 
     def handle_message(operation_name, operation_payload, &callback)
       client = @ws
+      op_api = self
       # register a callback handler
       @ws.on :message do |msg|
-        parsed = msg.data.to_msg_hash
+        parsed = op_api.msg_to_hash(msg.data)
 
         logger = Hawkular::Logger.new
         logger.log("Received WebSocket msg: #{parsed}")

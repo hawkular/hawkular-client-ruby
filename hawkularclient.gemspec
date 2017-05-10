@@ -22,7 +22,9 @@ Gem::Specification.new do |gem|
   gem.require_paths = ['lib']
 
   gem.add_runtime_dependency('rest-client', '~> 2.0.0')
-  gem.add_runtime_dependency('websocket-client-simple', '~> 0.3.0')
+  gem.add_runtime_dependency('faye-websocket')
+  gem.add_runtime_dependency('eventmachine')
+  gem.add_runtime_dependency('event_emitter')
   gem.add_runtime_dependency('addressable')
   gem.add_development_dependency('shoulda')
   gem.add_development_dependency('rspec-rails', '~> 3.1')
