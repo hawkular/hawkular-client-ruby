@@ -1,4 +1,19 @@
 module Hawkular
+  # Specialized exception to be thrown
+  # when the interaction with Hawkular fails
+  class Exception < StandardError
+    def initialize(message, status_code = 0)
+      @message = message
+      @status_code = status_code
+      super(message)
+    end
+
+    attr_reader :message, :status_code
+  end
+
+  class ConnectionException < Exception
+  end
+
   module ClientUtils
     # Escapes the passed url part. This is necessary,
     # as many ids inside Hawkular can contain characters

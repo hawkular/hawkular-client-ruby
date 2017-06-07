@@ -4,6 +4,10 @@ This document describes the relevant changes between releases of the
 _hawkular-client_ project.
 
 
+=== v 3.0.3
+* Standardized Exceptions under the Hawkular namespace, and the old names were deprecated, here is the list:
+1. <code>Hawkular::BaseClient::HawkularException</code> -> <code>Hawkular::Exception</code>
+2. <code>Hawkular::BaseClient::HawkularConnectionException</code> -> <code>Hawkular::ConnectionException</code>
 === v 3.0.2
 * Adding <code>URI.unescape</code> in the <code>list_metrics_for_resource</code> method to fix the behavior of the method
 
