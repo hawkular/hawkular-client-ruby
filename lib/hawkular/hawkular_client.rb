@@ -12,7 +12,9 @@ module Hawkular
     def initialize(hash)
       hash[:credentials] ||= {}
       hash[:options] ||= {}
-      fail 'no parameter ":entrypoint" given' if hash[:entrypoint].nil?
+
+      fail Hawkular::ArgumentError, 'no parameter ":entrypoint" given' if hash[:entrypoint].nil?
+
       @state = hash
     end
 
@@ -24,7 +26,7 @@ module Hawkular
                         when /^operations_/ then operations
                         when /^tokens_/ then tokens
                         else
-                          fail "unknown method prefix `#{name}`, allowed prefixes:"\
+                          fail Hawkular::ArgumentError, "unknown method prefix `#{name}`, allowed prefixes:"\
       '`inventory_`, `metrics_`,`alerts_`,`operations_`, `tokens_`'
                         end
       method = name.to_s.sub(/^[^_]+_/, '')

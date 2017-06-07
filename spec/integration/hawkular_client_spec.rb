@@ -50,8 +50,8 @@ module Hawkular::Client::RSpec
     end
 
     it 'Should fail when calling method with unknown prefix' do
-      expect { @hawkular_client.ynventori_list_feeds }.to raise_error(RuntimeError)
-      expect { @hawkular_client.list_feeds }.to raise_error(RuntimeError)
+      expect { @hawkular_client.ynventori_list_feeds }.to raise_error(Hawkular::ArgumentError)
+      expect { @hawkular_client.list_feeds }.to raise_error(Hawkular::ArgumentError)
     end
 
     it 'Should fail when calling unknown method with known client prefix' do

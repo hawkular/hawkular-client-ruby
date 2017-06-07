@@ -11,7 +11,10 @@ module Hawkular
     attr_reader :message, :status_code
   end
 
-  class ConnectionException < Exception
+  class ConnectionException < Hawkular::Exception
+  end
+
+  class ArgumentError < Hawkular::Exception
   end
 
   module ClientUtils

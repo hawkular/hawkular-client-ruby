@@ -34,7 +34,8 @@ module Hawkular::Inventory
     #   entrypoint: http://localhost:8080/hawkular/inventory
     # and another sub-hash containing the hash with username[String], password[String], token(optional)
     def self.create(hash)
-      fail 'no parameter ":entrypoint" given' unless hash[:entrypoint]
+      fail Hawkular::ArgumentError, 'no parameter ":entrypoint" given' unless hash[:entrypoint]
+
       hash[:credentials] ||= {}
       hash[:options] ||= {}
       Client.new(hash[:entrypoint], hash[:credentials], hash[:options])
@@ -52,7 +53,8 @@ module Hawkular::Inventory
     # @param [String] feed_id The id of the feed the type lives under
     # @return [Array<ResourceType>] List of types, that can be empty
     def list_resource_types(feed_id)
-      fail 'Feed id must be given' unless feed_id
+      fail Hawkular::ArgumentError, 'Feed id must be given' unless feed_id
+
       feed_path = feed_cp(feed_id)
       response = http_post(
         '/strings/raw/query',
@@ -70,7 +72,8 @@ module Hawkular::Inventory
     # @param [String] feed_id The id of the feed the type lives under
     # @return [Array<MetricType>] List of types, that can be empty
     def list_metric_types(feed_id)
-      fail 'Feed id must be given' unless feed_id
+      fail Hawkular::ArgumentError, 'Feed id must be given' unless feed_id
+
       feed_path = feed_cp(feed_id)
       response = http_post(
         '/strings/raw/query',
@@ -89,7 +92,8 @@ module Hawkular::Inventory
     # @param [Boolean] fetch_properties Should the config data be fetched too
     # @return [Array<Resource>] List of resources, which can be empty.
     def list_resources_for_feed(feed_id, fetch_properties = false, filter = {})
-      fail 'Feed id must be given' unless feed_id
+      fail Hawkular::ArgumentError, 'Feed id must be given' unless feed_id
+
       feed_path = feed_cp(feed_id)
       response = http_post(
         '/strings/raw/query',
@@ -113,8 +117,9 @@ module Hawkular::Inventory
     # @return [Array<Resource>] List of resources. Can be empty
     def list_resources_for_type(resource_type_path, fetch_properties = false)
       path = CanonicalPath.parse_if_string(resource_type_path)
-      fail 'Feed id must be given' unless path.feed_id
-      fail 'Resource type must be given' unless path.resource_type_id
+
+      fail Hawkular::ArgumentError, 'Feed id must be given' unless path.feed_id
+      fail Hawkular::ArgumentError, 'Resource type must be given' unless path.resource_type_id
 
       # Fetch metrics by tag
       feed_path = feed_cp(URI.unescape(path.feed_id))
@@ -151,7 +156,9 @@ module Hawkular::Inventory
     def list_child_resources(parent_res_path, recursive = false)
       path = CanonicalPath.parse_if_string(parent_res_path)
       feed_id = path.feed_id
-      fail 'Feed id must be given' unless feed_id
+
+      fail Hawkular::ArgumentError, 'Feed id must be given' unless feed_id
+
       entity_hash = get_raw_entity_hash(path)
       extract_child_resources([], path.to_s, entity_hash, recursive) if entity_hash
     end
@@ -163,8 +170,10 @@ module Hawkular::Inventory
     # @return [Array<Metric>] List of metrics. Can be empty
     def list_metrics_for_metric_type(metric_type_path)
       path = CanonicalPath.parse_if_string(metric_type_path)
-      fail 'Feed id must be given' unless path.feed_id
-      fail 'Metric type id must be given' unless path.metric_type_id
+
+      fail Hawkular::ArgumentError, 'Feed id must be given' unless path.feed_id
+      fail Hawkular::ArgumentError, 'Metric type id must be given' unless path.metric_type_id
+
       feed_id = URI.unescape(path.feed_id)
       metric_type_id = URI.unescape(path.metric_type_id)
 
@@ -224,10 +233,11 @@ module Hawkular::Inventory
     def get_resource(resource_path, fetch_properties = true)
       path = CanonicalPath.parse_if_string(resource_path)
       raw_hash = get_raw_entity_hash(path)
+
       unless raw_hash
-        exception = HawkularException.new("Resource not found: #{resource_path}")
-        fail exception
+        fail Hawkular::Exception, "Resource not found: #{resource_path}"
       end
+
       entity_hash = entity_json_to_hash(-> (_) { path }, raw_hash, fetch_properties)
       Resource.new(entity_hash)
     end
@@ -237,10 +247,11 @@ module Hawkular::Inventory
     def get_resource_type(resource_type_path)
       path = CanonicalPath.parse_if_string(resource_type_path)
       raw_hash = get_raw_entity_hash(path)
+
       unless raw_hash
-        exception = HawkularException.new("Resource type not found: #{resource_type_path}")
-        fail exception
+        fail Hawkular::Exception, "Resource type not found: #{resource_type_path}"
       end
+
       entity_hash = entity_json_to_hash(-> (_) { path }, raw_hash, false)
       ResourceType.new(entity_hash)
     end
@@ -250,10 +261,11 @@ module Hawkular::Inventory
     def get_metric_type(metric_type_path)
       path = CanonicalPath.parse_if_string(metric_type_path)
       raw_hash = get_raw_entity_hash(path)
+
       unless raw_hash
-        exception = HawkularException.new("Metric type not found: #{metric_type_path}")
-        fail exception
+        fail Hawkular::Exception, "Metric type not found: #{metric_type_path}"
       end
+
       entity_hash = entity_json_to_hash(-> (_) { path }, raw_hash, false)
       MetricType.new(entity_hash)
     end
@@ -263,8 +275,10 @@ module Hawkular::Inventory
     # @return [Array<String>] List of operation type ids
     def list_operation_definitions(resource_type_path)
       path = CanonicalPath.parse_if_string(resource_type_path)
-      fail 'Missing feed_id in resource_type_path' unless path.feed_id
-      fail 'Missing resource_type_id in resource_type_path' unless path.resource_type_id
+
+      fail Hawkular::ArgumentError, 'Missing feed_id in resource_type_path' unless path.feed_id
+      fail Hawkular::ArgumentError, 'Missing resource_type_id in resource_type_path' unless path.resource_type_id
+
       response = http_post(
         '/strings/raw/query',
         fromEarliest: true,

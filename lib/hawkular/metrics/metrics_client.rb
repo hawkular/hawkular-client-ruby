@@ -35,11 +35,12 @@ module Hawkular::Metrics
 
     def check_version
       version_status_hash = fetch_version_and_status
+
       fail_version_msg = 'Unable to determine implementation version for metrics'
-      fail fail_version_msg if version_status_hash['Implementation-Version'].nil?
+      fail Hawkular::Exception, fail_version_msg if version_status_hash['Implementation-Version'].nil?
       version = version_status_hash['Implementation-Version']
       major, minor = version.scan(/\d+/).map(&:to_i)
-      fail fail_version_msg if major.nil? || minor.nil?
+      fail Hawkular::Exception, fail_version_msg if major.nil? || minor.nil?
       @legacy_api = (major == 0 && minor < 16)
     end
 
