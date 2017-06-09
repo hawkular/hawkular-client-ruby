@@ -58,27 +58,47 @@ module Hawkular::Operations::RSpec
         end
       end
 
+      it 'does not connect by default' do
+        expect(client.ws).to be nil
+      end
+
       describe 'Operation/Websocket connection' do
         around(:each) do |example|
-          record_websocket("Operation/#{security_context}/Websocket_connection",
-                           nil,
-                           cassette_name,
-                           example)
+          if example.metadata[:skip_vcr]
+            example.call
+          else
+            record_websocket("Operation/#{security_context}/Websocket_connection",
+                             nil,
+                             cassette_name,
+                             example)
+          end
         end
 
-        it 'should be established' do
-          ws = client.ws
-          expect(ws).not_to be nil
-          expect(ws.open?).to be true
-        end
-
-        it 'should be established via entrypoint' do
+        it 'connects correctly' do
           ep = host_with_scheme(host, security_context == SECURE_CONTEXT)
 
           client = Client.new(options.merge entrypoint: ep, host: nil)
-          ws = client.ws
-          expect(ws).not_to be nil
-          expect(ws.open?).to be true
+          client.connect
+
+          expect(client.ws).not_to be nil
+          expect(client.ws).to be_open
+        end
+
+        it 'catches errors on connection', :skip_vcr do
+          result = {}
+
+          allow(client).to receive(:connect) { raise }
+
+          client.invoke_generic_operation({}) do |on|
+            on.success do |_data|
+              result[:data] = 'should run into error'
+            end
+            on.failure do |_error|
+              result[:data] = 'fail'
+            end
+          end
+
+          expect(result[:data]).to eq 'fail'
         end
 
         it 'should run into error callback' do
@@ -366,19 +386,6 @@ module Hawkular::Operations::RSpec
           expect(actual_data['datasourceName']).to eq(payload[:datasourceName]) unless @agent_immutable
           expect(actual_data['resourcePath']).to eq(payload[:resourcePath]) unless @agent_immutable
           expect(actual_data).to include('Command not allowed because the agent is immutable') if @agent_immutable
-        end
-
-        it 'should not be possible to perform on closed client' do
-          restart = {
-            resource_path: '/t;t1/f;whatever/r;something',
-            deployment_name: 'something.war'
-          }
-
-          # close the connection
-          client.close_connection!
-          expect do
-            client.restart_deployment(restart)
-          end.to raise_error(RuntimeError, /Handshake with server has not been done./)
         end
 
         it 'Restart can be run multiple times in parallel' do
