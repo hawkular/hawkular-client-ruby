@@ -16,13 +16,7 @@ class Proc
       method_name = callable.to_sym
       define_method(method_name) { |&block| block.nil? ? true : block.call(result) }
       define_method("#{method_name}?") { true }
-
-      # method_missing is here because we are not forcing the client to provide both success and error callbacks
-      # https://github.com/bbatsov/rubocop/issues/2704
-      def method_missing(_method_name, *_args, &_block)
-        PerformMethodMissing
-      end
-      # rubocop:enable Lint/NestedMethodDefinition
+      define_method(:method_missing) { |*| PerformMethodMissing }
     end.new)
   end
 end
@@ -78,7 +72,7 @@ module Hawkular::Operations
         args[:use_secure_connection] = %w(https wss).include?(uri.scheme) ? true : false
       end
 
-      raise 'no parameter ":host" or ":entrypoint" given' if args[:host].nil?
+      fail 'no parameter ":host" or ":entrypoint" given' if args[:host].nil?
 
       super(args[:host], args[:credentials], args[:options])
 
@@ -151,7 +145,7 @@ module Hawkular::Operations
     # RemoveDatasource (and not RemoveDatasourceRequest)
     # @param callback [Block] callback that is run after the operation is done
     def invoke_specific_operation(operation_payload, operation_name, &callback)
-      raise 'Operation must be specified' if operation_name.nil?
+      fail 'Operation must be specified' if operation_name.nil?
       required = [:resourcePath]
       check_pre_conditions operation_payload, required, &callback
 
@@ -312,7 +306,7 @@ module Hawkular::Operations
     # @param [String] resource_path canonical path of the WildFly server
     # @param callback [Block] callback that is run after the operation is done
     def export_jdr(resource_path, &callback)
-      raise 'resource_path must be specified' if resource_path.nil?
+      fail 'resource_path must be specified' if resource_path.nil?
       check_pre_conditions(&callback)
 
       invoke_specific_operation({ resourcePath: resource_path }, 'ExportJdr', &callback)
@@ -354,15 +348,15 @@ module Hawkular::Operations
     end
 
     def check_pre_conditions(hash = {}, params = [], &callback)
-      raise 'Hash cannot be nil.' if hash.nil?
-      raise 'callback must have the perform method defined. include Hawkular::Operations' unless
+      fail 'Hash cannot be nil.' if hash.nil?
+      fail 'callback must have the perform method defined. include Hawkular::Operations' unless
           callback.nil? || callback.respond_to?('perform')
       params.each do |property|
         next unless hash[property].nil?
         err_callback = 'You need to specify error callback'
         err_message = "Hash property #{property} must be specified"
-        raise(ArgumentError, err_callback) if callback.nil?
-        raise(ArgumentError, err_callback) if callback.perform(:failure, err_message).equal? Proc::PerformMethodMissing
+        fail(ArgumentError, err_callback) if callback.nil?
+        fail(ArgumentError, err_callback) if callback.perform(:failure, err_message).equal? Proc::PerformMethodMissing
       end
     end
 

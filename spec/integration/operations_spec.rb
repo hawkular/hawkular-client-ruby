@@ -87,7 +87,7 @@ module Hawkular::Operations::RSpec
         it 'catches errors on connection', :skip_vcr do
           result = {}
 
-          allow(client).to receive(:connect) { raise }
+          allow(client).to receive(:connect) { fail }
 
           client.invoke_generic_operation({}) do |on|
             on.success do |_data|
