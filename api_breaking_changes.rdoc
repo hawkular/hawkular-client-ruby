@@ -1,5 +1,10 @@
 == Breaking changes in the major releases
 
+=== 4.0.0
+* Standardized Exceptions under the Hawkular namespace, and the old names were deprecated, here is the list:
+  1. <code>Hawkular::BaseClient::HawkularException</code> -> <code>Hawkular::Exception</code>
+  2. <code>Hawkular::BaseClient::HawkularConnectionException</code> -> <code>Hawkular::ConnectionException</code>
+
 === 3.0.0
 
 * A lot of methods in the inventory client have been changed or removed, here is the list:
