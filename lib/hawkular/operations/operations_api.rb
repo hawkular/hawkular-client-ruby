@@ -1,3 +1,6 @@
+require 'timeout'
+require 'monitor'
+
 require 'hawkular/base_client'
 require 'websocket-client-simple'
 require 'json'
@@ -13,14 +16,7 @@ class Proc
       method_name = callable.to_sym
       define_method(method_name) { |&block| block.nil? ? true : block.call(result) }
       define_method("#{method_name}?") { true }
-
-      # method_missing is here because we are not forcing the client to provide both success and error callbacks
-      # rubocop:disable Lint/NestedMethodDefinition
-      # https://github.com/bbatsov/rubocop/issues/2704
-      def method_missing(_method_name, *_args, &_block)
-        PerformMethodMissing
-      end
-      # rubocop:enable Lint/NestedMethodDefinition
+      define_method(:method_missing) { |*| PerformMethodMissing }
     end.new)
   end
 end
@@ -30,6 +26,7 @@ module Hawkular::Operations
   # Client class to interact with the agent via websockets
   class Client < Hawkular::BaseClient
     include WebSocket::Client
+    include MonitorMixin
 
     attr_accessor :ws, :session_id, :logger
 
@@ -79,22 +76,32 @@ module Hawkular::Operations
 
       super(args[:host], args[:credentials], args[:options])
 
-      url = "ws#{args[:use_secure_connection] ? 's' : ''}://#{args[:host]}/hawkular/command-gateway/ui/ws"
+      @logger = Hawkular::Logger.new
 
-      creds = args[:credentials]
-      base64_creds = ["#{creds[:username]}:#{creds[:password]}"].pack('m').delete("\r\n")
+      @url = "ws#{args[:use_secure_connection] ? 's' : ''}://#{args[:host]}/hawkular/command-gateway/ui/ws"
+      @credentials = args[:credentials]
+      @tenant = args[:options][:tenant]
+      @wait_time = args[:wait_time]
+    end
+
+    def base64_credentials
+      ["#{@credentials[:username]}:#{@credentials[:password]}"].pack('m').delete("\r\n")
+    end
+
+    def connect
+      return if @connecting || (@ws && @ws.open?)
+
+      @connecting = true
 
       ws_options = {
         headers:  {
-          'Authorization' => 'Basic ' + base64_creds,
-          'Hawkular-Tenant' => args[:options][:tenant],
+          'Authorization' => 'Basic ' + base64_credentials,
+          'Hawkular-Tenant' => @tenant,
           'Accept' => 'application/json'
         }
       }
 
-      @logger = Hawkular::Logger.new
-
-      @ws = Simple.connect url, ws_options do |client|
+      @ws = Simple.connect @url, ws_options do |client|
         client.on(:message, once: true) do |msg|
           parsed_message = msg.data.to_msg_hash
 
@@ -107,12 +114,14 @@ module Hawkular::Operations
         end
       end
 
-      sleep args[:wait_time]
+      Timeout.timeout(@wait_time) { sleep 0.1 until @ws.open? }
+    ensure
+      @connecting = false
     end
 
     # Closes the WebSocket connection
     def close_connection!
-      @ws.close
+      @ws && @ws.close
     end
 
     # Invokes a generic operation on the WildFly agent
@@ -322,6 +331,8 @@ module Hawkular::Operations
     private
 
     def invoke_operation_helper(operation_payload, operation_name = nil, binary_content = nil, &callback)
+      synchronize { connect }
+
       # fallback to generic 'ExecuteOperation' if nothing is specified
       operation_name ||= 'ExecuteOperation'
       add_credentials! operation_payload
@@ -332,10 +343,11 @@ module Hawkular::Operations
       payload = "#{operation_name}Request=#{operation_payload.to_json}"
       payload += binary_content unless binary_content.nil?
       @ws.send payload, type: binary_content.nil? ? :text : :binary
+    rescue => e
+      callback.perform(:failure, "#{e.class} - #{e.message}")
     end
 
     def check_pre_conditions(hash = {}, params = [], &callback)
-      fail 'Handshake with server has not been done.' unless @ws.open?
       fail 'Hash cannot be nil.' if hash.nil?
       fail 'callback must have the perform method defined. include Hawkular::Operations' unless
           callback.nil? || callback.respond_to?('perform')
