@@ -131,7 +131,7 @@ module Hawkular::Operations::RSpec
 
         it 'should bail with hash property error because no callback at all' do
           noop = { operationName: 'noop' }
-          expect { client.invoke_generic_operation(noop) }.to raise_error(ArgumentError,
+          expect { client.invoke_generic_operation(noop) }.to raise_error(Hawkular::ArgumentError,
                                                                           'You need to specify error callback')
         end
 
@@ -143,13 +143,13 @@ module Hawkular::Operations::RSpec
                 fail 'This should have failed'
               end
             end
-          end.to raise_error(ArgumentError, 'You need to specify error callback')
+          end.to raise_error(Hawkular::ArgumentError, 'You need to specify error callback')
         end
 
         it 'should bail with no host' do
           expect do
             Client.new(options.merge host: nil)
-          end.to raise_error(StandardError, 'no parameter ":host" or ":entrypoint" given')
+          end.to raise_error(Hawkular::ArgumentError, 'no parameter ":host" or ":entrypoint" given')
         end
       end
 

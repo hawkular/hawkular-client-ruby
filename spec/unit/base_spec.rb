@@ -168,7 +168,8 @@ describe 'Base Spec' do
     ret = c.normalize_entrypoint_url 'https://localhost:8080/', 'hawkular/alerts'
     expect(ret).to eq('https://localhost:8080/hawkular/alerts')
 
-    expect { c.normalize_entrypoint_url 'https://localhost:8080/hawkular/alerts', '' }.to raise_error(ArgumentError)
+    expect { c.normalize_entrypoint_url 'https://localhost:8080/hawkular/alerts', '' }
+      .to raise_error(Hawkular::ArgumentError)
 
     uri = URI.parse 'https://localhost:8080/'
     ret = c.normalize_entrypoint_url uri, 'hawkular/alerts'

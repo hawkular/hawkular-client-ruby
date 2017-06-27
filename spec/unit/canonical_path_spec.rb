@@ -94,24 +94,24 @@ describe 'CanonicalPath' do
 
   # negative cases :(
   it 'with empty path cannot be parsed' do
-    expect { CanonicalPath.parse(nil) }.to raise_error(RuntimeError)
-    expect { CanonicalPath.parse('') }.to raise_error(RuntimeError)
-    expect { CanonicalPath.parse(' ') }.to raise_error(RuntimeError)
+    expect { CanonicalPath.parse(nil) }.to raise_error(Hawkular::ArgumentError)
+    expect { CanonicalPath.parse('') }.to raise_error(Hawkular::ArgumentError)
+    expect { CanonicalPath.parse(' ') }.to raise_error(Hawkular::ArgumentError)
   end
 
   context 'with no tenant id' do
     xit 'should not be parseable' do
-      expect { CanonicalPath.parse('/f;myFeed/rt;resType') }.to raise_error(RuntimeError)
+      expect { CanonicalPath.parse('/f;myFeed/rt;resType') }.to raise_error(Hawkular::ArgumentError)
     end
 
     xit 'should not be constructed' do
-      expect { CanonicalPath.new(feed_id: 'something') }.to raise_error(RuntimeError)
+      expect { CanonicalPath.new(feed_id: 'something') }.to raise_error(Hawkular::ArgumentError)
     end
   end
 
   it 'with empty path cannot be parsed' do
-    expect { CanonicalPath.parse(nil) }.to raise_error(RuntimeError)
-    expect { CanonicalPath.parse('') }.to raise_error(RuntimeError)
-    expect { CanonicalPath.parse(' ') }.to raise_error(RuntimeError)
+    expect { CanonicalPath.parse(nil) }.to raise_error(Hawkular::ArgumentError)
+    expect { CanonicalPath.parse('') }.to raise_error(Hawkular::ArgumentError)
+    expect { CanonicalPath.parse(' ') }.to raise_error(Hawkular::ArgumentError)
   end
 end

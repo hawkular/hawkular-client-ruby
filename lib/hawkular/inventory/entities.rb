@@ -181,7 +181,8 @@ module Hawkular::Inventory
     end
 
     def self.parse(path)
-      fail 'CanonicalPath must not be nil or empty' if path.to_s.strip.length == 0
+      fail Hawkular::ArgumentError, 'CanonicalPath must not be nil or empty' if path.to_s.strip.length == 0
+
       CanonicalPath.new(path_to_h path)
     end
 
@@ -257,7 +258,8 @@ module Hawkular::Inventory
     end
 
     def to_tags
-      fail 'Missing feed_id' if @feed_id.nil?
+      fail Hawkular::ArgumentError, 'Missing feed_id' if @feed_id.nil?
+
       tags = "module:inventory,feed:#{Regexp.quote(@feed_id)}"
       tags += ",type:rt,id:#{Regexp.quote(@resource_type_id)}" if @resource_type_id
       tags += ",type:mt,id:#{Regexp.quote(@metric_type_id)}" if @metric_type_id

@@ -9,6 +9,9 @@ module Hawkular
   # that inherit from it. You should not directly use it,
   # but through the more specialized clients.
   class BaseClient
+    HawkularException = Hawkular::Exception
+    HawkularConnectionException = Hawkular::ConnectionException
+
     include ClientUtils
 
     # @!visibility private
@@ -34,7 +37,7 @@ module Hawkular
 
       @logger = Hawkular::Logger.new
 
-      fail 'You need to provide an entrypoint' if entrypoint.nil?
+      fail Hawkular::ArgumentError, 'You need to provide an entrypoint' if entrypoint.nil?
     end
 
     def http_get(suburl, headers = {})
@@ -141,7 +144,8 @@ module Hawkular
     # @param suffix_path [String] sufix path to be added if it doesn't exist
     # @return [String] URL with path attached to it at the end
     def normalize_entrypoint_url(entrypoint, suffix_path)
-      fail ArgumentError, 'suffix_path must not be empty' if suffix_path.empty?
+      fail Hawkular::ArgumentError, 'suffix_path must not be empty' if suffix_path.empty?
+
       strip_path = suffix_path.gsub(%r{/$}, '')
       strip_path.nil? || suffix_path = strip_path
       strip_path = suffix_path.gsub(%r{^/}, '')
@@ -165,21 +169,6 @@ module Hawkular
       url.to_s.sub(/^http(s?)/, 'ws\1')
     end
 
-    # Specialized exception to be thrown
-    # when the interaction with Hawkular fails
-    class HawkularException < StandardError
-      def initialize(message, status_code = 0)
-        @message = message
-        @status_code = status_code
-        super(message)
-      end
-
-      attr_reader :message, :status_code
-    end
-
-    class HawkularConnectionException < HawkularException
-    end
-
     def admin_header
       headers = {}
       headers[:'Hawkular-Admin-Token'] = @admin_token unless @admin_token.nil?
@@ -201,17 +190,18 @@ module Hawkular
     # @!visibility private
     def connect_error(fault)
       if fault.is_a?(SocketError)
-        HawkularConnectionException.new(fault.to_s)
+        Hawkular::ConnectionException.new(fault.to_s)
       elsif [Errno::ECONNREFUSED, Errno::ECONNRESET, Errno::EHOSTUNREACH,
              Errno::EADDRNOTAVAIL, Errno::ENETDOWN, Errno::ENETUNREACH,
              Errno::ETIMEDOUT].include?(fault.class)
-        HawkularConnectionException.new(fault.to_s, fault.class::Errno)
+        Hawkular::ConnectionException.new(fault.to_s, fault.class::Errno)
       end
     end
 
     def handle_fault(f)
       http_code = (f.respond_to?(:http_code) ? f.http_code : 0)
-      fail HawkularException.new('Unauthorized', http_code) if f.instance_of? RestClient::Unauthorized
+      fail Hawkular::Exception.new('Unauthorized', http_code) if f.instance_of? RestClient::Unauthorized
+
       if f.respond_to?(:http_body) && !f.http_body.nil?
         begin
           json_body = JSON.parse(f.http_body)
@@ -219,11 +209,12 @@ module Hawkular
         rescue JSON::ParserError
           fault_message = f.http_body
         end
-        fail HawkularException.new(fault_message, http_code)
+
+        fail Hawkular::Exception.new(fault_message, http_code)
       elsif (connect_error_exception = connect_error(f))
-        fail connect_error_exception
+        fail Hawkular::ConnectionException, connect_error_exception
       else
-        fail f
+        fail Hawkular::Exception, f
       end
     end
   end
