@@ -28,7 +28,7 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency('rspec-rails', '~> 3.1')
   gem.add_development_dependency('actionpack',  '~> 4')
   gem.add_development_dependency('rake', '< 11')
-  gem.add_development_dependency('simple-websocket-vcr', '= 0.0.7')
+  gem.add_development_dependency('simple-websocket-vcr', '= 0.1.0')
   gem.add_development_dependency('yard')
   gem.add_development_dependency('webmock', '~> 3.0')
   gem.add_development_dependency('vcr')
