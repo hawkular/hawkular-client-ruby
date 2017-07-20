@@ -28,14 +28,40 @@ module Hawkular::Operations
     include WebSocket::Client
     include MonitorMixin
 
-    attr_accessor :ws, :session_id, :logger
+    attr_accessor :ws, :logger
 
     # helper for parsing the "OperationName=json_payload" messages
     class WebSocket::Frame::Data
       def to_msg_hash
-        chunks = split('=', 2)
+        operation_name, json = split('=', 2)
 
-        { operationName: chunks[0], data: JSON.parse(chunks[1]) }
+        # Check if there is a zip file following JSON.
+        # This check is done only in the first 100KB, hoping it's unlikely to
+        # have such large amount of JSON before a zip file is attached.
+        magic_bits = [
+          "\x50\x4B\x03\x04", # "PK" + 0x03 + 0x04 = Regular ZIP file
+          "\x50\x4B\x05\x06", # "PK" + 0x05 + 0x06 = Empty ZIP
+          "\x50\x4B\x07\x08"  # "PK" + 0x07 + 0x08 = Spanned ZIP
+        ]
+        search_chunk = json[0, 102_400]
+        zip_file = nil
+
+        magic_bits.each do |bits|
+          idx = search_chunk.index(bits)
+
+          next unless idx
+
+          zip_file = json[idx..-1]
+          json = json[0, idx]
+          break
+        end
+
+        # Parse JSON and, if received, attach zip file
+        json = JSON.parse(json)
+        json[:attachments] = zip_file
+
+        # Return processed data
+        { operationName: operation_name, data: json }
       rescue
         {}
       end
@@ -105,12 +131,8 @@ module Hawkular::Operations
         client.on(:message, once: true) do |msg|
           parsed_message = msg.data.to_msg_hash
 
+          logger = Hawkular::Logger.new
           logger.log("Sent WebSocket message: #{parsed_message}")
-
-          case parsed_message[:operationName]
-          when 'WelcomeResponse'
-            @session_id = parsed_message[:data]['sessionId']
-          end
         end
       end
 

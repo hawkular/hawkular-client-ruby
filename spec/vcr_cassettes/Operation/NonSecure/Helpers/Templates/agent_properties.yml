@@ -5,26 +5,25 @@ http_interactions:
     uri: http://localhost:8080/<%= tenant_id %>/metrics/strings/raw/query
     body:
       encoding: UTF-8
-      string: '{"fromEarliest":true,"order":"DESC","tags":"module:inventory,feed:<%=
-        feed_id %>,type:r,restypes:.*\\|Hawkular\\ WildFly\\ Agent\\|.*"}'
+      string: '{"fromEarliest":true,"order":"DESC","tags":"module:inventory,feed:<%= feed_id %>,type:r,restypes:.*\\|Hawkular\\
+        WildFly\\ Agent\\|.*"}'
     headers:
       Accept:
       - application/json
       Accept-Encoding:
       - identity
       User-Agent:
-      - "<%= tenant_id %>-client-ruby"
+      - <%= tenant_id %>-client-ruby
       Hawkular-Tenant:
-      - "<%= tenant_id %>"
+      - <%= tenant_id %>
       Content-Type:
       - application/json
       Content-Length:
       - '133'
       Host:
       - localhost:8080
-      Authorization: 'Basic amRvZTpwYXNzd29yZA==
-
-'
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 200
@@ -41,17 +40,16 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 02 May 2017 19:07:23 GMT
+      - Thu, 13 Jul 2017 18:29:30 GMT
       Connection:
       - keep-alive
       Content-Type:
       - application/json
       Content-Length:
-      - '534'
+      - '1863'
     body:
       encoding: UTF-8
-      string: '[{"id":"inventory.<%= feed_id %>.r.Local JMX~org.<%= tenant_id %>:type=<%=
-        tenant_id %>-javaagent","data":[{"timestamp":1493741706882,"value":"H4sIAAAAAAAAAH2QT0vDQBDFv0pY8FatqNCa4EFEsaIgWFAoPYybbbK6mS3T2WoI8bM72ybFHuwpO3/yfvNeoyyuDbKn+oUpaA5kVNoorpfyVWRWPpA2aqByYIiTJfmlIbZmJVU7UDaXvUevwSUPT28/noqTEr4+gwNKo8pVXx1/wBqgEJioIVRR/76bJa/W5XeuTq67uQ9ceItFx0Dtq13VHzUV9WfgUnSGnPWY4SK7hPH5aJzDBYzyIXHWU47OTjuOvLYkkdOl9MhgNBdN3iJbrlU6aw571h4XtggEbD3uLGFw7vD5a3Bhk/GkqgLDu4tBSPYx5AkmNx4ZLBrqu9Gx3yztE/dPb9t5K52Y+GqCufmOhH/iTWdKzWW5MkxWT//+0ra/zqusnBICAAA="}]}]'
+      string: '[{"id":"inventory.<%= feed_id %>.r.Local JMX~org.<%= tenant_id %>:type=<%= tenant_id %>-javaagent","data":[{"timestamp":1499967151306,"value":"H4sIAAAAAAAAAH2QT0vDQBDFv0pY8FatrdRDigcRxYqCYEGh9DBuNsnqZrZMZ6OhxM/ubJsUe7Cn7PzJ+817G2WxNsiemhemoDmQUelGcbOSryKz9oG0UQOVAUOcrMivDLE1a6nagbKZ7D16DS55eHr78VSclfD1GRxQGlWu+ur0A2qAQmCihlBF/ftulrxal925Jrnu5j5w4S0WHQO1r/ZVf9Rc1J+BS9EZ8rTHDPNpPppcjjI9uQAYD4mnPeVkfN5x5LUjiZwupUcGo7lo8hbZcqPSxea4Z+0xt0UgYOtxbwmDc8fPr8GFbcazqgoM7y4GIdnHkGeY3HhksGio70bHfrt0SDw8vW2XrXRi4usZZuY7Ev6JN10otZTlyjBZPf/7S9v+Ar0CXb8SAgAA"},{"timestamp":1499890206873,"value":"H4sIAAAAAAAAAH2QT0vDQBDFv0pY8FatrdRDigcRxYqCYEGh9DBuNsnqZrZMZ6OhxM/ubJsUe7Cn7PzJ+817G2WxNsiemhemoDmQUelGcbOSryKz9oG0UQOVAUOcrMivDLE1a6nagbKZ7D16DS55eHr78VSclfD1GRxQGlWu+ur0A2qAQmCihlBF/ftulrxal925Jrnu5j5w4S0WHQO1r/ZVf9Rc1J+BS9EZ8rTHDPNpPppcjjI9uQAYD4mnPeVkfN5x5LUjiZwupUcGo7lo8hbZcqPSxea4Z+0xt0UgYOtxbwmDc8fPr8GFbcazqgoM7y4GIdnHkGeY3HhksGio70bHfrt0SDw8vW2XrXRi4usZZuY7Ev6JN10otZTlyjBZPf/7S9v+Ar0CXb8SAgAA"},{"timestamp":1499786791386,"value":"H4sIAAAAAAAAAH2QT0vDQBDFv0pY8FatrdRDigcRxYqCYEGh9DBuNsnqZrZMZ6OhxM/ubJsUe7Cn7PzJ+817G2WxNsiemhemoDmQUelGcbOSryKz9oG0UQOVAUOcrMivDLE1a6nagbKZ7D16DS55eHr78VSclfD1GRxQGlWu+ur0A2qAQmCihlBF/ftulrxal925Jrnu5j5w4S0WHQO1r/ZVf9Rc1J+BS9EZ8rTHDPNpPppcjjI9uQAYD4mnPeVkfN5x5LUjiZwupUcGo7lo8hbZcqPSxea4Z+0xt0UgYOtxbwmDc8fPr8GFbcazqgoM7y4GIdnHkGeY3HhksGio70bHfrt0SDw8vW2XrXRi4usZZuY7Ev6JN10otZTlyjBZPf/7S9v+Ar0CXb8SAgAA"},{"timestamp":1499720963707,"value":"H4sIAAAAAAAAAH2QT0vDQBDFv0pY8FatrdRDigcRxYqCYEGh9DBuNsnqZrZMZ6OhxM/ubJsUe7Cn7PzJ+817G2WxNsiemhemoDmQUelGcbOSryKz9oG0UQOVAUOcrMivDLE1a6nagbKZ7D16DS55eHr78VSclfD1GRxQGlWu+ur0A2qAQmCihlBF/ftulrxal925Jrnu5j5w4S0WHQO1r/ZVf9Rc1J+BS9EZ8rTHDPNpPppcjjI9uQAYD4mnPeVkfN5x5LUjiZwupUcGo7lo8hbZcqPSxea4Z+0xt0UgYOtxbwmDc8fPr8GFbcazqgoM7y4GIdnHkGeY3HhksGio70bHfrt0SDw8vW2XrXRi4usZZuY7Ev6JN10otZTlyjBZPf/7S9v+Ar0CXb8SAgAA"}]}]'
     http_version: 
-  recorded_at: Tue, 02 May 2017 19:07:23 GMT
+  recorded_at: Thu, 13 Jul 2017 18:29:30 GMT
 recorded_with: VCR 3.0.3

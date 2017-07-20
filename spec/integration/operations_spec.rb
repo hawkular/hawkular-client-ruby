@@ -538,7 +538,7 @@ module Hawkular::Operations::RSpec
           expect(actual_data).to include('Command not allowed because the agent is immutable') if @agent_immutable
         end
 
-        xit 'Export JDR should retrieve the zip file with the report' do
+        it 'Export JDR should retrieve the zip file with the report' do
           wf_server_resource_id = 'Local~~'
           path = CanonicalPath.new(tenant_id: @tenant_id,
                                    feed_id: @feed_id,
@@ -559,6 +559,7 @@ module Hawkular::Operations::RSpec
           expect(actual_data['resourcePath']).to eq(path)
           expect(actual_data['message']).to start_with('Performed [Export JDR] on')
           expect(actual_data['fileName']).to start_with('jdr_')
+          expect(actual_data[:attachments]).to_not be_blank
         end
 
         it 'Update collection intervals should be performed and eventually respond with success' do
