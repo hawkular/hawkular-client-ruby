@@ -3,7 +3,7 @@
     {
       "operation": "read",
       "type": "text",
-      "data": "WelcomeResponse={\"sessionId\":\"UwH-59a04c9Tl66vagAVejm6ExS_Y2u-ex_p31AK\"}"
+      "data": "WelcomeResponse={\"sessionId\":\"F5u3tmK1zjXNCZjD6Dd-7lakWiIyUJ8Ko2f4ZcVw\"}"
     },
     {
       "operation": "write",
@@ -12,12 +12,12 @@
     {
       "operation": "read",
       "type": "text",
-      "data": "GenericSuccessResponse={\"message\":\"The request has been forwarded to feed [<%= feed_id %>] (MessageId=ID:ec9253aa-29c8-11e7-9346-cb514f6228a4)\"}"
+      "data": "GenericSuccessResponse={\"message\":\"The request has been forwarded to feed [<%= feed_id %>] (MessageId=ID:58e13b0d-76c5-11e7-9321-df2a214aeb38)\"}"
     },
     {
       "operation": "read",
       "type": "text",
-      "data": "DisableApplicationResponse={\"resourcePath\":\"/t;<%= tenant_id %>/f;<%= feed_id %>/r;Local~~\",\"destinationSessionId\":\"UwH-59a04c9Tl66vagAVejm6ExS_Y2u-ex_p31AK\",\"status\":\"ERROR\",\"message\":\"Could not perform [Disable Deployment] on a [Application] given by inventory path [/t;<%= tenant_id %>/f;<%= feed_id %>/r;Local~~] requested on [2017-04-25T15:07Z]: java.lang.IllegalStateException: Command not allowed because the agent is immutable\"}"
+      "data": "DisableApplicationResponse={\"destinationFileName\":\"<%= tenant_id %>-status.war\",\"resourcePath\":\"/t;<%= tenant_id %>/f;<%= feed_id %>/r;Local~~\",\"destinationSessionId\":\"F5u3tmK1zjXNCZjD6Dd-7lakWiIyUJ8Ko2f4ZcVw\",\"status\":\"OK\",\"message\":\"Performed [Disable Deployment] on a [Application] given by Inventory path [/t;<%= tenant_id %>/f;<%= feed_id %>/r;Local~~]\"}"
     }
   ]
 ]

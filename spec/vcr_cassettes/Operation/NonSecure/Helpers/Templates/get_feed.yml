@@ -37,7 +37,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Mon, 31 Jul 2017 22:16:33 GMT
+      - Tue, 01 Aug 2017 14:30:37 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -48,5 +48,5 @@ http_interactions:
       encoding: UTF-8
       string: '{"feed":["Teya"],"module":["inventory"]}'
     http_version: 
-  recorded_at: Mon, 31 Jul 2017 22:16:33 GMT
+  recorded_at: Tue, 01 Aug 2017 14:30:37 GMT
 recorded_with: VCR 3.0.3
