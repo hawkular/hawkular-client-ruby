@@ -326,12 +326,16 @@ module Hawkular::Operations
     # Exports the JDR report
     #
     # @param [String] resource_path canonical path of the WildFly server
+    # @param [Boolean] delete_immediately specifies whether the temporary file at the remote
+    # server should be deleted. False, by default.
     # @param callback [Block] callback that is run after the operation is done
-    def export_jdr(resource_path, &callback)
+    def export_jdr(resource_path, delete_immediately = false, &callback)
       fail Hawkular::ArgumentError, 'resource_path must be specified' if resource_path.nil?
       check_pre_conditions(&callback)
 
-      invoke_specific_operation({ resourcePath: resource_path }, 'ExportJdr', &callback)
+      invoke_specific_operation({ resourcePath: resource_path,
+                                  deleteImmediately: delete_immediately },
+                                'ExportJdr', &callback)
     end
 
     # Updates the collection intervals.

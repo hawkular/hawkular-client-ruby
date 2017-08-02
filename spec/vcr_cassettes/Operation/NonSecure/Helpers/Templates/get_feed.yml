@@ -37,16 +37,16 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Thu, 13 Jul 2017 18:29:30 GMT
+      - Tue, 01 Aug 2017 14:30:37 GMT
       Connection:
       - keep-alive
       Content-Type:
       - application/json
       Content-Length:
-      - '48'
+      - '40'
     body:
       encoding: UTF-8
-      string: '{"feed":["f1561dc53aa2"],"module":["inventory"]}'
+      string: '{"feed":["Teya"],"module":["inventory"]}'
     http_version: 
-  recorded_at: Thu, 13 Jul 2017 18:29:30 GMT
+  recorded_at: Tue, 01 Aug 2017 14:30:37 GMT
 recorded_with: VCR 3.0.3
