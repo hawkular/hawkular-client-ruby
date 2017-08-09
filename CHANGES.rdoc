@@ -3,6 +3,9 @@
 This document describes the relevant changes between releases of the
 _hawkular-client_ project.
 
+=== v 4.1.0
+* Fixed binary data handling when invoking <em>Export JDR</em> on operations API.
+* Added <em>delete_immediately</em> parameter to <em>Export JDR</em> operation.
 
 === v 4.0.0
 * Standardized Exceptions under the Hawkular namespace, and the old names were deprecated, here is the list:
