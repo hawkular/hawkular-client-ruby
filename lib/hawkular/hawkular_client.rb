@@ -1,4 +1,5 @@
 require 'hawkular/inventory/inventory_api'
+require 'hawkular/inventory/inventory_api_v4'
 require 'hawkular/metrics/metrics_client'
 require 'hawkular/alerts/alerts_api'
 require 'hawkular/tokens/tokens_api'
@@ -7,7 +8,7 @@ require 'hawkular/base_client'
 
 module Hawkular
   class Client
-    attr_reader :inventory, :metrics, :alerts, :operations, :tokens, :state
+    attr_reader :inventory, :inventory_v4, :metrics, :alerts, :operations, :tokens, :state
 
     def initialize(hash)
       hash[:credentials] ||= {}
@@ -20,6 +21,7 @@ module Hawkular
 
     def method_missing(name, *args, &block)
       delegate_client = case name
+                  when /^inventory_v4_/ then inventory_v4
                         when /^inventory_/ then inventory
                         when /^metrics_/ then metrics
                         when /^alerts_/ then alerts
@@ -37,6 +39,12 @@ module Hawkular
       @inventory ||= Inventory::Client.new("#{@state[:entrypoint]}/hawkular/metrics",
                                            @state[:credentials],
                                            @state[:options])
+    end
+
+    def inventory_v4
+      @inventory_v4 ||= InventoryV4::Client.new("#{@state[:entrypoint]}/hawkular/inventory",
+                                                @state[:credentials],
+                                                @state[:options])
     end
 
     def metrics
