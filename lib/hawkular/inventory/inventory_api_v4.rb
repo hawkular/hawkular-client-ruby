@@ -57,14 +57,26 @@ module Hawkular::InventoryV4
     # @return [Array<Resource>] List of resources
     def root_resources
       # FIXME: pagination => lazy-loaded list with ruby?
-      http_get('/resources?root=true')['results'].map { |r| Resource.new(r) }
+      resources root: "true"
+    end
+
+    # List resources
+    # @param [Hash] filter options to filter the resource list
+    # @option filter :root If truthy, only get root resources
+    # @option filter :feedId Filter by feed id
+    # @option filter :typeId Filter by type id
+    def resources(filter = {})
+      # FIXME: pagination => lazy-loaded list with ruby?
+      filter[:root] = !! filter[:root] if filter.key? :root
+      filter_query = '?' + filter.keys.join('=%s&') + '=%s' unless filter.empty?
+      http_get(url("/resources#{filter_query}", *filter.values))['results'].map { |r| Resource.new(r) }
     end
 
     # List resources for type
     # @return [Array<Resource>] List of resources
     def resources_for_type(type)
       # FIXME: pagination => lazy-loaded list with ruby?
-      http_get(url('/resources?typeId=', type))['results'].map { |r| Resource.new(r) }
+      resources typeId: type
     end
 
     # Return version and status information for the used version of Hawkular-Inventory
