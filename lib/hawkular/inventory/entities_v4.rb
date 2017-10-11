@@ -71,7 +71,7 @@ module Hawkular::InventoryV4
     attr_reader :children
 
     def initialize(hash)
-      @id = hash[:id]
+      @id = hash['id']
       @name = hash['name']
       @feed = hash['feed']
       @type = ResourceType.new(hash['type'])
