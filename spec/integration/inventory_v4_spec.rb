@@ -15,15 +15,17 @@ module Hawkular::InventoryV4::RSpec
     it 'Should list root resources' do
       res = @client.root_resources
       expect(res.size).to be(4)
-      expect(res.map { |r| r.type.id }).to eq(["Runtime MBean", "WildFly Server", "Platform_Operating System", "Hawkular WildFly Agent"])
+      expect(res.map { |r| r.type.id }).to eq(
+        ['Runtime MBean', 'WildFly Server', 'Platform_Operating System', 'Hawkular WildFly Agent'])
       # Children are not loaded
-      expect(res.map { |r| r.children }).to eq([nil, nil, nil, nil])
+      expect(res.map(&:children)).to eq([nil, nil, nil, nil])
     end
 
     it 'Should get by type' do
       res = @client.resources_for_type('Memory Pool MBean')
       expect(res.size).to be(6)
-      expect(res.map { |r| r.name }).to include('JMX [Local JMX] MemoryPool Metaspace', 'JMX [Local JMX] MemoryPool PS Eden Space')
+      expect(res.map(&:name)).to include(
+        'JMX [Local JMX] MemoryPool Metaspace', 'JMX [Local JMX] MemoryPool PS Eden Space')
     end
 
     it 'Should get resource' do
@@ -36,7 +38,7 @@ module Hawkular::InventoryV4::RSpec
       expect(res.children).to be_nil
       expect(res.metrics).not_to be_nil
       expect(res.metrics.size).to eq(4)
-      expect(res.metrics.map { |r| r.name }).to include('VM Uptime', 'Used Heap Memory')
+      expect(res.metrics.map(&:name)).to include('VM Uptime', 'Used Heap Memory')
     end
 
     it 'Should get subtree' do
@@ -48,7 +50,8 @@ module Hawkular::InventoryV4::RSpec
       expect(res.type.id).to eq('Runtime MBean')
       expect(res.children).not_to be_nil
       expect(res.children.size).to eq(6)
-      expect(res.children.map { |r| r.name }).to include('JMX [Local JMX] MemoryPool Metaspace', 'JMX [Local JMX] MemoryPool PS Eden Space')
+      expect(res.children.map(&:name)).to include(
+        'JMX [Local JMX] MemoryPool Metaspace', 'JMX [Local JMX] MemoryPool PS Eden Space')
     end
 
     it 'Should return the version' do

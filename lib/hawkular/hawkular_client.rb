@@ -21,7 +21,7 @@ module Hawkular
 
     def method_missing(name, *args, &block)
       delegate_client = case name
-                  when /^inventory_v4_/ then inventory_v4
+                        when /^inventory_v4_/ then inventory_v4
                         when /^inventory_/ then inventory
                         when /^metrics_/ then metrics
                         when /^alerts_/ then alerts
