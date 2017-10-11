@@ -73,7 +73,7 @@ module Hawkular::InventoryV4
     def initialize(hash)
       @id = hash['id']
       @name = hash['name']
-      @feed = hash['feed']
+      @feed = hash['feedId']
       @type = ResourceType.new(hash['type'])
       @properties = hash['properties'] || {}
       @metrics = (hash['metrics'] || []).map { |m| Metric.new(m) }
