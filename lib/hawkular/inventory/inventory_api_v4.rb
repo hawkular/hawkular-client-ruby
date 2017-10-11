@@ -1,5 +1,5 @@
 require 'hawkular/base_client'
-# require 'json'
+require 'uri'
 
 require 'hawkular/inventory/entities_v4'
 
@@ -37,29 +37,29 @@ module Hawkular::InventoryV4
     # Get single resource by id
     # @return Resource the resource
     def resource(id)
-      hash = http_get("/resources/#{id}")
+      hash = http_get("/resources/#{URI.escape(id)}")
       Resource.new(hash)
     end
 
     # Get resource by id with its complete subtree
     # @return Resource the resource
     def resource_tree(id)
-      hash = http_get("/resources/#{id}/tree")
+      hash = http_get("/resources/#{URI.escape(id)}/tree")
       Resource.new(hash)
     end
 
     # List root resources
     # @return [Array<Resource>] List of resources
     def root_resources
-      # FIXME: pagination
+      # FIXME: pagination => lazy-loaded list with ruby?
       http_get('/resources?root=true')['results'].map { |r| Resource.new(r) }
     end
 
     # List resources for type
     # @return [Array<Resource>] List of resources
     def resources_for_type(type)
-      # FIXME: pagination
-      http_get("/resources?typeId=#{type}")['results'].map { |r| Resource.new(r) }
+      # FIXME: pagination => lazy-loaded list with ruby?
+      http_get("/resources?typeId=#{URI.escape(type)}")['results'].map { |r| Resource.new(r) }
     end
 
     # Return version and status information for the used version of Hawkular-Inventory
