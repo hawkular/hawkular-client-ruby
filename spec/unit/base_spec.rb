@@ -255,3 +255,32 @@ describe 'Base Spec' do
     end
   end
 end
+
+describe 'Url builder' do
+  it 'Should encode simple url' do
+    expect(Hawkular::BaseClient.new('not-needed').url('resource/endpoint')).to eql('resource/endpoint')
+  end
+
+  it 'Should encode with one param' do
+    expect(Hawkular::BaseClient.new('not-needed').url('resource/%s', 5)).to eql('resource/5')
+  end
+
+  it 'Should work with booleans' do
+    expect(Hawkular::BaseClient.new('not-needed').url('resource/%s', true)).to eql('resource/true')
+  end
+
+  it 'Should work with symbols' do
+    expect(Hawkular::BaseClient.new('not-needed').url('abc/%s', :true)).to eql('abc/true')
+  end
+
+  it 'Should work with multiple params' do
+    expect(Hawkular::BaseClient.new('not-needed').url('resource/%s/inner/%s', true, :ok)).to eql(
+      'resource/true/inner/ok')
+  end
+
+  it 'Should work with & and ? params' do
+    expect(Hawkular::BaseClient.new('not-needed')
+    .url('resource/%s/stuff?myid=%s&this=that', 'super', '0&delete_everything=true'))
+      .to eql('resource/super/stuff?myid=0%26delete_everything%3Dtrue&this=that')
+  end
+end

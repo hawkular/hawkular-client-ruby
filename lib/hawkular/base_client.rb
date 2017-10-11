@@ -3,6 +3,7 @@ require 'addressable/uri'
 
 require 'hawkular/logger'
 require 'hawkular/client_utils'
+require 'erb'
 
 module Hawkular
   # This is the base functionality for all the clients,
@@ -38,6 +39,10 @@ module Hawkular
       @logger = Hawkular::Logger.new
 
       fail Hawkular::ArgumentError, 'You need to provide an entrypoint' if entrypoint.nil?
+    end
+
+    def url(url_format, *params)
+      url_format % params.map { |p| ERB::Util.url_encode(p) }
     end
 
     def http_get(suburl, headers = {})
