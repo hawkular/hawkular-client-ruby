@@ -13,6 +13,14 @@ module Hawkular::InventoryV4
       @type = hash['type']
       @properties = hash['properties'] || {}
     end
+
+    def hawkular_id
+      @properties['hawkular.metric.id']
+    end
+
+    def hawkular_type
+      @properties['hawkular.metric.type']
+    end
   end
 
   class Operation
@@ -63,11 +71,11 @@ module Hawkular::InventoryV4
     attr_reader :type
     # @return [Hash<String,String>] Properties of this resource
     attr_reader :properties
+    # @return [Hash<String,String>] Config map of this resource
+    attr_reader :config
     # @return [List<Metric>] Metrics associated to this resource
     attr_reader :metrics
-    # @return [List<String>] List of children ids (might be null if 'self.children' exists)
-    attr_reader :children_ids
-    # @return [List<Resource>] List of children (might be null if 'self.children_ids' exists)
+    # @return [List<Resource>] List of children (present when the whole tree is loaded, else nil)
     attr_reader :children
 
     def initialize(hash)
@@ -76,8 +84,8 @@ module Hawkular::InventoryV4
       @feed = hash['feedId']
       @type = ResourceType.new(hash['type'])
       @properties = hash['properties'] || {}
+      @config = hash['config'] || {}
       @metrics = (hash['metrics'] || []).map { |m| Metric.new(m) }
-      @children_ids = hash['children_ids']
       @children = hash['children'].map { |r| Resource.new(r) } if hash.key? 'children'
       @_hash = hash.dup
     end
