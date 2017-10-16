@@ -20,25 +20,35 @@ describe 'Inventory v4' do
     }
   end
 
-  describe 'children by type' do
-    it 'should return direct children' do
-      r = Resource.new(resource_hash)
-      expect(r.children_by_type('type-02').size).to eq(1)
+  let(:resource) do
+    Resource.new(resource_hash)
+  end
+
+  describe '#children' do
+    it 'returns direct children' do
+      expect(resource.children.size).to eq(3)
     end
 
-    it 'should return 0 when direct children type is not found' do
-      r = Resource.new(resource_hash)
-      expect(r.children_by_type('type-03').size).to eq(0)
+    it 'returns all children' do
+      expect(resource.children(true).size).to eq(6)
+    end
+  end
+
+  describe '#children_by_type' do
+    it 'returns direct children' do
+      expect(resource.children_by_type('type-02').size).to eq(1)
     end
 
-    it 'should work recursive' do
-      r = Resource.new(resource_hash)
-      expect(r.children_by_type('type-02', true).size).to eq(3)
+    it 'returns 0 when direct children type is not found' do
+      expect(resource.children_by_type('type-03').size).to eq(0)
     end
 
-    it 'should work recursive when the type is not on top' do
-      r = Resource.new(resource_hash)
-      expect(r.children_by_type('type-03', true).size).to eq(1)
+    it 'works recursive' do
+      expect(resource.children_by_type('type-02', true).size).to eq(3)
+    end
+
+    it 'works recursive and does not matter if the type is not on top' do
+      expect(resource.children_by_type('type-03', true).size).to eq(1)
     end
   end
 end

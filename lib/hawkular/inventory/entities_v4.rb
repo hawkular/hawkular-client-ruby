@@ -82,14 +82,16 @@ module Hawkular::InventoryV4
       @_hash = hash.dup
     end
 
-    def children_by_type(type, recursive = false)
+    def children(recursive = false)
+      return @children unless recursive == true
       fail Hawkular::ArgumentError 'Resource tree not loaded, load it by calling resource_tree' if @children.nil?
-      selected_children = []
-      @children.each do |child|
-        selected_children << child if child.type.id == type
-        selected_children.push(*child.children_by_type(type, recursive)) if recursive
+      @children.flat_map do |child|
+        [child, *child.children(recursive)]
       end
-      selected_children
+    end
+
+    def children_by_type(type, recursive = false)
+      children(recursive).select { |c| c.type.id == type }
     end
 
     def ==(other)
