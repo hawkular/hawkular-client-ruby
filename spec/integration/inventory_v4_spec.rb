@@ -15,8 +15,8 @@ module Hawkular::InventoryV4::RSpec
     it 'Should list root resources' do
       res = @client.root_resources
       expect(res.size).to be(4)
-      expect(res.map { |r| r.type.id }).to eq(
-        ['Runtime MBean', 'WildFly Server', 'Platform_Operating System', 'Hawkular WildFly Agent'])
+      expect(res.map { |r| r.type.id }).to include(
+        'Runtime MBean', 'WildFly Server', 'Platform_Operating System', 'Hawkular WildFly Agent')
       # Children are not loaded
       expect(res.map(&:children)).to eq([nil, nil, nil, nil])
     end
