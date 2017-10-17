@@ -1,79 +1,54 @@
 require_relative '../spec_helper'
 
-module Hawkular::Inventory::RSpecUnit
-  context 'Inventory unit test' do
-    include Hawkular::Inventory
+include Hawkular::Inventory
+describe 'Inventory' do
+  let(:resource_hash) do
+    {
+      'id' => 'root',
+      'type' => {},
+      'children' => [
+        { 'id' => 'child-01', 'type' => { 'id' => 'type-01' }, 'children' => [] },
+        { 'id' => 'child-02', 'type' => { 'id' => 'type-02' },
+          'children' => [
+            { 'id' => 'child-03', 'type' => { 'id' => 'type-02' }, 'children' => [] },
+            { 'id' => 'child-04', 'type' => { 'id' => 'type-02' }, 'children' => [] },
+            { 'id' => 'child-05', 'type' => { 'id' => 'type-03' }, 'children' => [] }
+          ]
+        },
+        { 'id' => 'child-06', 'type' => { 'id' => 'type-01' }, 'children' => [] }
+      ]
+    }
+  end
 
-    describe 'building response object' do
-      it 'should rebuild without chunks' do
-        datapoints = [{
-          'value' => Base64.encode64('123'),
-          'timestamp' => 1000
-        }, {
-          'value' => Base64.encode64('456'),
-          'timestamp' => 999
-        }]
-        rebuilt = Hawkular::Inventory::Client.rebuild_from_chunks(datapoints)
-        expect(rebuilt).to eq('123')
-      end
+  let(:resource) do
+    Resource.new(resource_hash)
+  end
 
-      it 'should rebuild with chunks' do
-        datapoints = [{
-          'value' => Base64.encode64('123'),
-          'timestamp' => 1000,
-          'tags' => {
-            'chunks' => '3'
-          }
-        }, {
-          'value' => Base64.encode64('456'),
-          'timestamp' => 999
-        }, {
-          'value' => Base64.encode64('789'),
-          'timestamp' => 998
-        }, {
-          'value' => Base64.encode64('111'),
-          'timestamp' => 900
-        }]
-        rebuilt = Hawkular::Inventory::Client.rebuild_from_chunks(datapoints)
-        expect(rebuilt).to eq('123456789')
-      end
+  describe '#children' do
+    it 'returns direct children' do
+      expect(resource.children.size).to eq(3)
+    end
 
-      it 'should not fail on missing data' do
-        datapoints = [{
-          'value' => Base64.encode64('123'),
-          'timestamp' => 1000,
-          'tags' => {
-            'chunks' => '3'
-          }
-        }, {
-          'value' => Base64.encode64('456'),
-          'timestamp' => 999
-        }]
-        rebuilt = Hawkular::Inventory::Client.rebuild_from_chunks(datapoints)
-        expect(rebuilt).to be nil
-      end
+    it 'returns all children' do
+      expect(resource.children(true).size).to eq(6)
+    end
+  end
 
-      it 'should not fail on missing data with old data after' do
-        # Timestamps are not consecutive => sanity check must be performed and return nil
-        datapoints = [{
-          'value' => Base64.encode64('123'),
-          'timestamp' => 1000,
-          'tags' => {
-            'chunks' => '3'
-          }
-        }, {
-          'value' => Base64.encode64('456'),
-          'timestamp' => 999
-        }, {
-          'value' => Base64.encode64('111'),
-          'timestamp' => 900
-        }, {
-          'value' => Base64.encode64('222'),
-          'timestamp' => 800
-        }]
-        rebuilt = Hawkular::Inventory::Client.rebuild_from_chunks(datapoints)
-        expect(rebuilt).to be nil
-      end
+  describe '#children_by_type' do
+    it 'returns direct children' do
+      expect(resource.children_by_type('type-02').size).to eq(1)
+    end
+
+    it 'returns 0 when direct children type is not found' do
+      expect(resource.children_by_type('type-03').size).to eq(0)
+    end
+
+    it 'works recursive' do
+      expect(resource.children_by_type('type-02', true).size).to eq(3)
+    end
+
+    it 'works recursive and does not matter if the type is not on top' do
+      expect(resource.children_by_type('type-03', true).size).to eq(1)
     end
   end
 end

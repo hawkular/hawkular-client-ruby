@@ -197,8 +197,7 @@ module Helpers
   end
 
   def installed_agent(inventory, feed_id)
-    resource_type_path = inventory.feed_cp(feed_id).resource_type('Hawkular WildFly Agent')
-    inventory.list_resources_for_type(resource_type_path, true).first
+    inventory.resources_for_type('Hawkular WildFly Agent').first
   end
 
   def agent_in_container?(agent)
