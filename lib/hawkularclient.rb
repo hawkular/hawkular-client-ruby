@@ -1,6 +1,5 @@
 require 'hawkular/version'
 require 'hawkular/inventory/inventory_api'
-require 'hawkular/inventory/inventory_api_v4'
 require 'hawkular/metrics/metrics_client'
 require 'hawkular/alerts/alerts_api'
 require 'hawkular/tokens/tokens_api'

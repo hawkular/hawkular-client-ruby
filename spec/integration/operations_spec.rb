@@ -170,7 +170,7 @@ module Hawkular::Operations::RSpec
             remove_instance_variable(:@inventory_client)
             @tenant_id = 'hawkular'
             record("Operation/#{security_context}/Helpers", { tenant_id: @tenant_id }, 'get_feed') do
-              @feed_id = inventory_client.list_feeds[0]
+              @feed_id = inventory_client.root_resources[0].feed
             end
             record("Operation/#{security_context}/Helpers", { tenant_id: @tenant_id, feed_id: @feed_id },
                    'agent_properties') do

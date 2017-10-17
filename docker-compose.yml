@@ -1,5 +1,7 @@
 hawkular:
-  image: "hawkular/hawkular-services:latest"
+  # !! WARNING !! FIXME !! TODO !!
+  # Reset to hawkular/hawkular-services:latest before merging in master
+  image: "jotak/hawkular-services:0.40.0.Final-SNAPSHOT"
   ports:
     - "8080:8080"
     - "8443:8443"

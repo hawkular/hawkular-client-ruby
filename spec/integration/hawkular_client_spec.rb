@@ -68,7 +68,7 @@ module Hawkular::Client::RSpec
           opts = { tenant: 'hawkular' }
           mock_metrics_version
           the_client = Hawkular::Client.new(entrypoint: uri, credentials: @creds, options: opts)
-          expect { the_client.inventory.list_feeds }.to_not raise_error
+          expect { the_client.inventory.root_resources }.to_not raise_error
         end
       end
 
@@ -105,34 +105,16 @@ module Hawkular::Client::RSpec
         record('HawkularClient', nil, cassette_name, example: example)
       end
 
-      it 'Should list the same feeds' do
-        feeds1 = @client.list_feeds
-        feeds2 = @hawkular_client.inventory_list_feeds
+      it 'Should list the same root resources' do
+        rr1 = @client.root_resources
+        rr2 = @hawkular_client.inventory_root_resources
 
-        expect(feeds1).to match_array(feeds2)
-        @state[:feed] = feeds1[0] unless feeds1[0].nil?
-      end
-
-      it 'Should list same types when param is given' do
-        types1 = @client.list_resource_types(@state[:feed])
-        types2 = @hawkular_client.inventory_list_resource_types(@state[:feed])
-
-        expect(types1).to match_array(types2)
-      end
-
-      it 'Should both list types with bad feed' do
-        type = 'does not exist'
-        types1 = @client.list_resource_types(type)
-        types2 = @hawkular_client.inventory_list_resource_types(type)
-
-        expect(types1).to match_array(types2)
+        expect(rr1).to match_array(rr2)
       end
 
       it 'Should both list WildFlys' do
-        path = Hawkular::Inventory::CanonicalPath.new(feed_id: @state[:feed],
-                                                      resource_type_id: hawk_escape_id('WildFly Server'))
-        resources1 = @client.list_resources_for_type(path.to_s)
-        resources2 = @hawkular_client.inventory_list_resources_for_type(path)
+        resources1 = @client.resources_for_type('WildFly Server')
+        resources2 = @hawkular_client.inventory_resources_for_type('WildFly Server')
 
         expect(resources1).to match_array(resources2)
       end
@@ -233,7 +215,7 @@ module Hawkular::Client::RSpec
           remove_instance_variable(:@inventory_client)
           @tenant_id = 'hawkular'
           record('HawkularClient/Helpers', { tenant_id: @tenant_id }, 'get_feed') do
-            @feed_id = inventory_client.list_feeds[0]
+            @feed_id = inventory_client.root_resources[0].feed
           end
           record('HawkularClient/Helpers', { tenant_id: @tenant_id, feed_id: @feed_id },
                  'agent_properties') do
@@ -249,16 +231,14 @@ module Hawkular::Client::RSpec
 
       it 'Should both work the same way', :websocket do
         record_websocket('HawkularClient', nil, cassette_name) do
-          feed_id = @hawkular_client.inventory.list_feeds.first
-          wf_server_resource_id = 'Local~~'
-          status_war_resource_id = 'Local~%2Fdeployment%3Dhawkular-status.war'
+          wf_server = @hawkular_client.inventory.resources({typeId: 'WildFly Server', root: true})[0]
+          status_war_resource = @hawkular_client.inventory.children_resources(wf_server.id)
+              .select {|r| r.name == 'Deployment [hawkular-status.war]'}[0]
 
-          path = Hawkular::Inventory::CanonicalPath.new(tenant_id: 'hawkular',
-                                                        feed_id: feed_id,
-                                                        resource_ids: [wf_server_resource_id, status_war_resource_id])
           redeploy = {
             operationName: 'Redeploy',
-            resourcePath: path.to_s
+            resourceId: status_war_resource.id,
+            feedId: status_war_resource.feed
           }
 
           actual_data = {}
