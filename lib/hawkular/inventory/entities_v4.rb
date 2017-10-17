@@ -5,21 +5,24 @@ module Hawkular::InventoryV4
     attr_reader :name
     # @return [String] Type of the metric
     attr_reader :type
+    # @return [String] Unit of the metric
+    attr_reader :unit
     # @return [Hash<String,String>] Properties of this metric
     attr_reader :properties
 
     def initialize(hash)
       @name = hash['name']
       @type = hash['type']
+      @unit = hash['unit']
       @properties = hash['properties'] || {}
     end
 
     def hawkular_id
-      @properties['hawkular.metric.id']
+      @properties.fetch('hawkular.metric.id')
     end
 
     def hawkular_type
-      @properties['hawkular.metric.type']
+      @properties.fetch('hawkular.metric.type')
     end
   end
 
