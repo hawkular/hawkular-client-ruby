@@ -39,6 +39,7 @@ module Hawkular::InventoryV4::RSpec
       expect(res.metrics).not_to be_nil
       expect(res.metrics.size).to eq(4)
       expect(res.metrics.map(&:name)).to include('VM Uptime', 'Used Heap Memory')
+      expect(res.metrics.map(&:unit)).to include('MILLISECONDS', 'BYTES')
     end
 
     it 'Should get subtree' do
