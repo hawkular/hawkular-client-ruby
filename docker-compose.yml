@@ -9,7 +9,7 @@ hawkular:
   links:
     - myCassandra
   volumes:
-    - /tmp/opt/hawkular/server:/opt/data
+    - /tmp/opt/hawkular/server:/opt/data:Z
   environment:
     - CASSANDRA_NODES=myCassandra
     - ADMIN_TOKEN

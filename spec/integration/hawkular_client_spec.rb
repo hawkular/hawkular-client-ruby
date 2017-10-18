@@ -44,14 +44,14 @@ module Hawkular::Client::RSpec
         }
         expect do
           Hawkular::Client.new(entrypoint: HOST, credentials: @creds, options: { tenant: 'hawkular' })
-            .inventory_list_feeds
+            .inventory_root_resources
         end.to raise_error(Hawkular::BaseClient::HawkularException, 'Unauthorized')
       end
     end
 
     it 'Should fail when calling method with unknown prefix' do
-      expect { @hawkular_client.ynventori_list_feeds }.to raise_error(Hawkular::ArgumentError)
-      expect { @hawkular_client.list_feeds }.to raise_error(Hawkular::ArgumentError)
+      expect { @hawkular_client.ynventori_root_resources }.to raise_error(Hawkular::ArgumentError)
+      expect { @hawkular_client.root_resources }.to raise_error(Hawkular::ArgumentError)
     end
 
     it 'Should fail when calling unknown method with known client prefix' do
@@ -214,12 +214,8 @@ module Hawkular::Client::RSpec
           inventory_client = @inventory_client
           remove_instance_variable(:@inventory_client)
           @tenant_id = 'hawkular'
-          record('HawkularClient/Helpers', { tenant_id: @tenant_id }, 'get_feed') do
-            @feed_id = inventory_client.root_resources[0].feed
-          end
-          record('HawkularClient/Helpers', { tenant_id: @tenant_id, feed_id: @feed_id },
-                 'agent_properties') do
-            agent = installed_agent(inventory_client, @feed_id)
+          record('HawkularClient/Helpers', { tenant_id: @tenant_id }, 'agent_properties') do
+            agent = installed_agent(inventory_client)
             @agent_immutable = agent_immutable?(agent)
           end
         end
@@ -231,9 +227,10 @@ module Hawkular::Client::RSpec
 
       it 'Should both work the same way', :websocket do
         record_websocket('HawkularClient', nil, cassette_name) do
-          wf_server = @hawkular_client.inventory.resources({typeId: 'WildFly Server', root: true})[0]
-          status_war_resource = @hawkular_client.inventory.children_resources(wf_server.id)
-              .select {|r| r.name == 'Deployment [hawkular-status.war]'}[0]
+          wf_server = @hawkular_client.inventory.resources(typeId: 'WildFly Server', root: true)[0]
+          status_war_resource = @hawkular_client.inventory
+                                                .children_resources(wf_server.id)
+                                                .select { |r| r.name == 'Deployment [hawkular-status.war]' }[0]
 
           redeploy = {
             operationName: 'Redeploy',

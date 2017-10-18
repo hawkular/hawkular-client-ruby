@@ -3,21 +3,21 @@
     {
       "operation": "read",
       "type": "text",
-      "data": "WelcomeResponse={\"sessionId\":\"Ekz72gsKyNHvzOMkgRN7sSGSaDYIFUZZ0oIgTt1z\"}"
+      "data": "WelcomeResponse={\"sessionId\":\"R2ATUPOjHYG2MfJw9ZfZ79W5lwnAaa-b79YQaDjt\"}"
     },
     {
       "operation": "write",
-      "data": "RemoveDatasourceRequest={\"resourcePath\":\"/t;<%= tenant_id %>/f;<%= feed_id %>/r;Local~~/r;Local~%2Fsubsystem%3Ddatasources%2Fdata-source%3DCreatedByRubyDS<%= random_uuid %>\",\"authentication\":{\"username\":\"jdoe\",\"password\":\"password\"}}"
+      "data": "RemoveDatasourceRequest={\"resourceId\":\"Local~%2Fsubsystem%3Ddatasources%2Fdata-source%3DCreatedByRubyDS<%= random_uuid %>\",\"feedId\":\"<%= feed_id %>\",\"authentication\":{\"username\":\"jdoe\",\"password\":\"password\"}}"
     },
     {
       "operation": "read",
       "type": "text",
-      "data": "GenericSuccessResponse={\"message\":\"The request has been forwarded to feed [<%= feed_id %>] (MessageId=ID:fc71ca16-76c5-11e7-9321-df2a214aeb38)\"}"
+      "data": "GenericSuccessResponse={\"message\":\"The request has been forwarded to feed [<%= feed_id %>] (MessageId=ID:938da1ff-b3fd-11e7-8637-d5b18dcefaa5)\"}"
     },
     {
       "operation": "read",
       "type": "text",
-      "data": "RemoveDatasourceResponse={\"resourcePath\":\"/t;<%= tenant_id %>/f;<%= feed_id %>/r;Local~~/r;Local~%2Fsubsystem%3Ddatasources%2Fdata-source%3DCreatedByRubyDS<%= random_uuid %>\",\"destinationSessionId\":\"Ekz72gsKyNHvzOMkgRN7sSGSaDYIFUZZ0oIgTt1z\",\"status\":\"OK\",\"message\":\"Performed [Remove] on a [Datasource] given by Inventory path [/t;<%= tenant_id %>/f;<%= feed_id %>/r;Local~~/r;Local~%2Fsubsystem%3Ddatasources%2Fdata-source%3DCreatedByRubyDS<%= random_uuid %>]\",\"serverRefreshIndicator\":\"RELOAD-REQUIRED\"}"
+      "data": "RemoveDatasourceResponse={\"feedId\":\"<%= feed_id %>\",\"resourceId\":\"Local~%2Fsubsystem%3Ddatasources%2Fdata-source%3DCreatedByRubyDS<%= random_uuid %>\",\"destinationSessionId\":\"R2ATUPOjHYG2MfJw9ZfZ79W5lwnAaa-b79YQaDjt\",\"status\":\"ERROR\",\"message\":\"Could not perform [Remove] on a [Datasource] given by inventory path [Local~%2Fsubsystem%3Ddatasources%2Fdata-source%3DCreatedByRubyDS<%= random_uuid %>] requested on [2017-10-18T12:12Z]: java.lang.IllegalArgumentException: Cannot parse invalid ID: Local~%2Fsubsystem%3Ddatasources%2Fdata-source%3DCreatedByRubyDS<%= random_uuid %>\"}"
     }
   ]
 ]

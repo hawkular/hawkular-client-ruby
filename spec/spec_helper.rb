@@ -196,16 +196,16 @@ module Helpers
     "#{base['host']}:#{base['port']}"
   end
 
-  def installed_agent(inventory, feed_id)
+  def installed_agent(inventory)
     inventory.resources_for_type('Hawkular WildFly Agent').first
   end
 
   def agent_in_container?(agent)
-    agent.properties['In Container'] == 'true'
+    agent.config['In Container'] == 'true'
   end
 
   def agent_immutable?(agent)
-    agent.properties['Immutable'] == 'true'
+    agent.config['Immutable'] == 'true'
   end
 
   def make_template(base_directory, cassette_name, bindings)
