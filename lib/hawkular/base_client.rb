@@ -42,7 +42,7 @@ module Hawkular
     end
 
     def url(url_format, *params)
-      url_format % params.map { |p| ERB::Util.url_encode(p) }
+      url_format % params.map { |p| hawk_escape(p) }
     end
 
     def http_get(suburl, headers = {})

@@ -3,21 +3,11 @@
     {
       "operation": "read",
       "type": "text",
-      "data": "WelcomeResponse={\"sessionId\":\"LvHE5JsjGtrcPxwGHzw90-UarNOMpSd9z0X9ADT1\"}"
+      "data": "WelcomeResponse={\"sessionId\":\"6BNPDkfV6a4cE3hvkmzhJKXZIa4YEgjoidMkwDVG\"}"
     },
     {
       "operation": "write",
-      "data": "RemoveJdbcDriverRequest={\"resourceId\":\"Local~%2Fsubsystem%3Ddatasources%2Fjdbc-driver%3DCreatedByRubyDrivernot_so_random_uuid\",\"feedId\":\"<%= feed_id %>\",\"authentication\":{\"username\":\"jdoe\",\"password\":\"password\"}}"
-    },
-    {
-      "operation": "read",
-      "type": "text",
-      "data": "GenericSuccessResponse={\"message\":\"The request has been forwarded to feed [<%= feed_id %>] (MessageId=ID:943e2d66-b3fd-11e7-8637-d5b18dcefaa5)\"}"
-    },
-    {
-      "operation": "read",
-      "type": "text",
-      "data": "RemoveJdbcDriverResponse={\"feedId\":\"<%= feed_id %>\",\"resourceId\":\"Local~%2Fsubsystem%3Ddatasources%2Fjdbc-driver%3DCreatedByRubyDrivernot_so_random_uuid\",\"destinationSessionId\":\"LvHE5JsjGtrcPxwGHzw90-UarNOMpSd9z0X9ADT1\",\"status\":\"ERROR\",\"message\":\"Could not perform [Remove] on a [JDBC Driver] given by inventory path [Local~%2Fsubsystem%3Ddatasources%2Fjdbc-driver%3DCreatedByRubyDrivernot_so_random_uuid] requested on [2017-10-18T12:12Z]: java.lang.IllegalArgumentException: Cannot parse invalid ID: Local~%2Fsubsystem%3Ddatasources%2Fjdbc-driver%3DCreatedByRubyDrivernot_so_random_uuid\"}"
+      "data": "RemoveJdbcDriverRequest={\"resourceId\":null,\"feedId\":\"<%= feed_id %>\",\"authentication\":{\"username\":\"jdoe\",\"password\":\"password\"}}"
     }
   ]
 ]
