@@ -1,57 +1,45 @@
 ---
 http_interactions:
 - request:
-    method: post
-    uri: http://localhost:8080/<%= tenant_id %>/metrics/strings/raw/query
+    method: get
+    uri: http://jdoe:password@localhost:8080/<%= tenant_id %>/inventory/resources?typeId=Hawkular%20WildFly%20Agent
     body:
-      encoding: UTF-8
-      string: '{"fromEarliest":true,"order":"DESC","tags":"module:inventory,feed:<%=
-        feed_id %>,type:r,restypes:.*\\|Hawkular\\ WildFly\\ Agent\\|.*"}'
+      encoding: US-ASCII
+      string: ''
     headers:
       Accept:
       - application/json
       Accept-Encoding:
       - identity
       User-Agent:
-      - "<%= tenant_id %>-client-ruby"
+      - <%= tenant_id %>-client-ruby
       Hawkular-Tenant:
-      - "<%= tenant_id %>"
+      - <%= tenant_id %>
       Content-Type:
       - application/json
-      Content-Length:
-      - '133'
-      Host:
-      - localhost:8080
-      Authorization: 'Basic amRvZTpwYXNzd29yZA==
-
-'
   response:
     status:
       code: 200
       message: OK
     headers:
-      Expires:
-      - '0'
-      Cache-Control:
-      - no-cache, no-store, must-revalidate
+      Connection:
+      - keep-alive
       X-Powered-By:
       - Undertow/1
       Server:
       - WildFly/10
-      Pragma:
-      - no-cache
-      Date:
-      - Tue, 02 May 2017 19:28:01 GMT
-      Connection:
-      - keep-alive
       Content-Type:
       - application/json
       Content-Length:
-      - '534'
+      - '516'
+      Date:
+      - Wed, 18 Oct 2017 12:12:01 GMT
     body:
       encoding: UTF-8
-      string: '[{"id":"inventory.<%= feed_id %>.r.Local JMX~org.<%= tenant_id %>:type=<%=
-        tenant_id %>-javaagent","data":[{"timestamp":1493741706882,"value":"H4sIAAAAAAAAAH2QT0vDQBDFv0pY8FatqNCa4EFEsaIgWFAoPYybbbK6mS3T2WoI8bM72ybFHuwpO3/yfvNeoyyuDbKn+oUpaA5kVNoorpfyVWRWPpA2aqByYIiTJfmlIbZmJVU7UDaXvUevwSUPT28/noqTEr4+gwNKo8pVXx1/wBqgEJioIVRR/76bJa/W5XeuTq67uQ9ceItFx0Dtq13VHzUV9WfgUnSGnPWY4SK7hPH5aJzDBYzyIXHWU47OTjuOvLYkkdOl9MhgNBdN3iJbrlU6aw571h4XtggEbD3uLGFw7vD5a3Bhk/GkqgLDu4tBSPYx5AkmNx4ZLBrqu9Gx3yztE/dPb9t5K52Y+GqCufmOhH/iTWdKzWW5MkxWT//+0ra/zqusnBICAAA="}]}]'
+      string: '{"results":[{"id":"22b2911d3c1c~Local JMX~org.<%= tenant_id %>:type=<%= tenant_id %>-javaagent","name":"Hawkular
+        WildFly Agent","feedId":"22b2911d3c1c","type":{"id":"Hawkular WildFly Agent","operations":[{"name":"Start","parameters":{}},{"name":"Stop","parameters":{}},{"name":"Status","parameters":{}},{"name":"Inventory
+        Discovery Scan","parameters":{}},{"name":"Inventory Report","parameters":{}}],"properties":{}},"metrics":[],"properties":{},"config":{"Immutable":"false","In
+        Container":"true"}}],"resultSize":1,"startOffset":0}'
     http_version: 
-  recorded_at: Tue, 02 May 2017 19:28:01 GMT
+  recorded_at: Wed, 18 Oct 2017 12:12:01 GMT
 recorded_with: VCR 3.0.3

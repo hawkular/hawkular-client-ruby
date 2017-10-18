@@ -6,10 +6,43 @@ require 'securerandom'
 module Hawkular::Inventory::RSpec
   DEFAULT_VERSION = '0.9.8.Final'
   VERSION = ENV['INVENTORY_VERSION'] || DEFAULT_VERSION
+  HOST = 'http://localhost:8080'
 
   describe 'Inventory' do
+    let(:cassette_name) do |example|
+      description = example.description
+      description
+    end
+
     before(:all) do
-      @client = Hawkular::Client.new(entrypoint: 'http://localhost:8080', options: {}).inventory
+      @creds = {
+        username: 'jdoe',
+        password: 'password'
+      }
+      ::RSpec::Mocks.with_temporary_scope do
+        mock_inventory_client DEFAULT_VERSION
+        @client = Hawkular::Client.new(entrypoint: HOST, credentials: @creds, options: {}).inventory
+      end
+      @state = {
+        hostname: 'localhost.localdomain',
+        feed: nil
+      }
+    end
+
+    around(:each) do |example|
+      run_for = example.metadata[:run_for]
+      if run_for.nil? || run_for.empty? || run_for.include?(metrics_context)
+        @random_id = SecureRandom.uuid
+        if example.metadata[:skip_auto_vcr]
+          example.run
+        else
+          record('Inventory', {}, cassette_name, example: example)
+        end
+      end
+    end
+
+    after(:all) do
+      record_cleanup('Inventory')
     end
 
     it 'Should list root resources' do

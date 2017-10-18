@@ -149,26 +149,26 @@ module Hawkular::Operations
     # Invokes a generic operation on the WildFly agent
     # (the operation name must be specified in the hash)
     # Note: if success and failure callbacks are omitted, the client will not wait for the Response message
-    # @param hash [Hash{String=>Object}] a hash containing: resourcePath [String] denoting the resource on
-    # which the operation is about to run, operationName [String]
+    # @param hash [Hash{String=>Object}] a hash containing: resourceId [String] denoting the resource on
+    # which the operation is about to run, feedId [String], operationName [String]
     # @param callback [Block] callback that is run after the operation is done
     def invoke_generic_operation(hash, &callback)
-      required = [:resourcePath, :operationName]
+      required = [:resourceId, :feedId, :operationName]
       check_pre_conditions hash, required, &callback
 
       invoke_operation_helper(hash, &callback)
     end
 
     # Invokes operation on the WildFly agent that has it's own message type
-    # @param operation_payload [Hash{String=>Object}] a hash containing: resourcePath [String] denoting
-    # the resource on which the operation is about to run
+    # @param operation_payload [Hash{String=>Object}] a hash containing: resourceId [String] denoting
+    # the resource on which the operation is about to run, feedId [String]
     # @param operation_name [String] the name of the operation. This must correspond with the message type, they can be
     # found here https://git.io/v2h1a (Use only the first part of the name without the Request/Response suffix), e.g.
     # RemoveDatasource (and not RemoveDatasourceRequest)
     # @param callback [Block] callback that is run after the operation is done
     def invoke_specific_operation(operation_payload, operation_name, &callback)
       fail Hawkular::ArgumentError, 'Operation must be specified' if operation_name.nil?
-      required = [:resourcePath]
+      required = [:resourceId, :feedId]
       check_pre_conditions operation_payload, required, &callback
 
       invoke_operation_helper(operation_payload, operation_name, &callback)
@@ -177,8 +177,9 @@ module Hawkular::Operations
     # Deploys an archive file into WildFly
     #
     # @param [Hash] hash Arguments for deployment
-    # @option hash [String]  :resource_path canonical path of the WildFly server into which we deploy
+    # @option hash [String]  :resource_id ID of the WildFly server into which we deploy
     #                        or of the domain controller if we deploy into a server group (in case of domain mode)
+    # @option hash [String]  :feed_id feed containing this resource
     # @option hash [String]  :destination_file_name resulting file name
     # @option hash [String]  :binary_content binary content representing the war file
     # @option hash [String]  :enabled whether the deployment should be enabled immediately, or not (default = true)
@@ -189,7 +190,7 @@ module Hawkular::Operations
     def add_deployment(hash, &callback)
       hash[:enabled] = hash.key?(:enabled) ? hash[:enabled] : true
       hash[:force_deploy] = hash.key?(:force_deploy) ? hash[:force_deploy] : false
-      required = [:resource_path, :destination_file_name, :binary_content]
+      required = [:resource_id, :feed_id, :destination_file_name, :binary_content]
       check_pre_conditions hash, required, &callback
 
       operation_payload = prepare_payload_hash([:binary_content], hash)
@@ -199,7 +200,8 @@ module Hawkular::Operations
     # Undeploy a WildFly deployment
     #
     # @param [Hash] hash Arguments for deployment removal
-    # @option hash [String]  :resource_path canonical path of the WildFly server from which to undeploy the deployment
+    # @option hash [String]  :resource_id ID of the WildFly server from which to undeploy the deployment
+    # @option hash [String]  :feed_id feed containing this resource
     # @option hash [String]  :deployment_name name of deployment to undeploy
     # @option hash [String]  :remove_content whether to remove the deployment content or not (default = true)
     # @option hash [String]  :server_groups comma-separated list of server groups for the operation (default = ignored)
@@ -207,12 +209,9 @@ module Hawkular::Operations
     # @param callback [Block] callback that is run after the operation is done
     def undeploy(hash, &callback)
       hash[:remove_content] = hash.key?(:remove_content) ? hash[:remove_content] : true
-      required = [:resource_path, :deployment_name]
+      required = [:resource_id, :feed_id, :deployment_name]
       check_pre_conditions hash, required, &callback
 
-      cp = ::Hawkular::Inventory::CanonicalPath.parse hash[:resource_path]
-      server_path = cp.up.to_s
-      hash[:resource_path] = server_path
       hash[:destination_file_name] = hash[:deployment_name]
 
       operation_payload = prepare_payload_hash([:deployment_name], hash)
@@ -222,18 +221,16 @@ module Hawkular::Operations
     # Enable a WildFly deployment
     #
     # @param [Hash] hash Arguments for enable deployment
-    # @option hash [String]  :resource_path canonical path of the WildFly server from which to enable the deployment
+    # @option hash [String]  :resource_id ID of the WildFly server from which to enable the deployment
+    # @option hash [String]  :feed_id feed containing this resource
     # @option hash [String]  :deployment_name name of deployment to enable
     # @option hash [String]  :server_groups comma-separated list of server groups for the operation (default = ignored)
     #
     # @param callback [Block] callback that is run after the operation is done
     def enable_deployment(hash, &callback)
-      required = [:resource_path, :deployment_name]
+      required = [:resource_id, :feed_id, :deployment_name]
       check_pre_conditions hash, required, &callback
 
-      cp = ::Hawkular::Inventory::CanonicalPath.parse hash[:resource_path]
-      server_path = cp.up.to_s
-      hash[:resource_path] = server_path
       hash[:destination_file_name] = hash[:deployment_name]
 
       operation_payload = prepare_payload_hash([:deployment_name], hash)
@@ -243,18 +240,16 @@ module Hawkular::Operations
     # Disable a WildFly deployment
     #
     # @param [Hash] hash Arguments for disable deployment
-    # @option hash [String]  :resource_path canonical path of the WildFly server from which to disable the deployment
+    # @option hash [String]  :resource_id ID of the WildFly server from which to disable the deployment
+    # @option hash [String]  :feed_id feed containing this resource
     # @option hash [String]  :deployment_name name of deployment to disable
     # @option hash [String]  :server_groups comma-separated list of server groups for the operation (default = ignored)
     #
     # @param callback [Block] callback that is run after the operation is done
     def disable_deployment(hash, &callback)
-      required = [:resource_path, :deployment_name]
+      required = [:resource_id, :feed_id, :deployment_name]
       check_pre_conditions hash, required, &callback
 
-      cp = ::Hawkular::Inventory::CanonicalPath.parse hash[:resource_path]
-      server_path = cp.up.to_s
-      hash[:resource_path] = server_path
       hash[:destination_file_name] = hash[:deployment_name]
 
       operation_payload = prepare_payload_hash([:deployment_name], hash)
@@ -264,18 +259,16 @@ module Hawkular::Operations
     # Restart a WildFly deployment
     #
     # @param [Hash] hash Arguments for restart deployment
-    # @option hash [String]  :resource_path canonical path of the WildFly server from which to restart the deployment
+    # @option hash [String]  :resource_id ID of the WildFly server from which to restart the deployment
+    # @option hash [String]  :feed_id feed containing this resource
     # @option hash [String]  :deployment_name name of deployment to restart
     # @option hash [String]  :server_groups comma-separated list of server groups for the operation (default = ignored)
     #
     # @param callback [Block] callback that is run after the operation is done
     def restart_deployment(hash, &callback)
-      required = [:resource_path, :deployment_name]
+      required = [:resource_id, :feed_id, :deployment_name]
       check_pre_conditions hash, required, &callback
 
-      cp = ::Hawkular::Inventory::CanonicalPath.parse hash[:resource_path]
-      server_path = cp.up.to_s
-      hash[:resource_path] = server_path
       hash[:destination_file_name] = hash[:deployment_name]
 
       operation_payload = prepare_payload_hash([:deployment_name], hash)
@@ -285,7 +278,8 @@ module Hawkular::Operations
     # Adds a new datasource
     #
     # @param [Hash] hash Arguments for the datasource
-    # @option hash [String]  :resourcePath canonical path of the WildFly server into which we add datasource
+    # @option hash [String]  :resourceId ID of the WildFly server into which we add datasource
+    # @option hash [String]  :feedId ID of the feed containing the WildFly server
     # @option hash [String]  :xaDatasource XA DS or normal
     # @option hash [String]  :datasourceName name of the datasource
     # @option hash [String]  :jndiName JNDI name
@@ -298,7 +292,8 @@ module Hawkular::Operations
     #
     # @param callback [Block] callback that is run after the operation is done
     def add_datasource(hash, &callback)
-      required = [:resourcePath, :xaDatasource, :datasourceName, :jndiName, :driverName, :driverClass, :connectionUrl]
+      required = [:resourceId, :feedId, :xaDatasource, :datasourceName, :jndiName, :driverName,
+                  :driverClass, :connectionUrl]
       check_pre_conditions hash, required, &callback
 
       invoke_specific_operation(hash, 'AddDatasource', &callback)
@@ -307,7 +302,8 @@ module Hawkular::Operations
     # Adds a new datasource
     #
     # @param [Hash] hash Arguments for the datasource
-    # @option hash [String]  :resource_path canonical path of the WildFly server into which we add driver
+    # @option hash [String]  :resource_id ID of the WildFly server into which we add driver
+    # @option hash [String]  :feed_id ID of the feed containing the WildFly server
     # @option hash [String]  :driver_jar_name name of the jar file
     # @option hash [String]  :driver_name name of the jdbc driver (when adding datasource, this is the driverName)
     # @option hash [String]  :module_name name of the JBoss module into which the driver will be installed - 'foo.bar'
@@ -316,7 +312,8 @@ module Hawkular::Operations
     #
     # @param callback [Block] callback that is run after the operation is done
     def add_jdbc_driver(hash, &callback)
-      required = [:resource_path, :driver_jar_name, :driver_name, :module_name, :driver_class, :binary_content]
+      required = [:resource_id, :feed_id, :driver_jar_name, :driver_name, :module_name,
+                  :driver_class, :binary_content]
       check_pre_conditions hash, required, &callback
 
       operation_payload = prepare_payload_hash([:binary_content], hash)
@@ -325,15 +322,18 @@ module Hawkular::Operations
 
     # Exports the JDR report
     #
-    # @param [String] resource_path canonical path of the WildFly server
+    # @param [String] resource_id ID of the WildFly server
+    # @param [String] feed_id ID of the feed containing the WildFly server
     # @param [Boolean] delete_immediately specifies whether the temporary file at the remote
     # server should be deleted. False, by default.
     # @param callback [Block] callback that is run after the operation is done
-    def export_jdr(resource_path, delete_immediately = false, &callback)
-      fail Hawkular::ArgumentError, 'resource_path must be specified' if resource_path.nil?
+    def export_jdr(resource_id, feed_id, delete_immediately = false, &callback)
+      fail Hawkular::ArgumentError, 'resource_id must be specified' if resource_id.nil?
+      fail Hawkular::ArgumentError, 'feed_id must be specified' if feed_id.nil?
       check_pre_conditions(&callback)
 
-      invoke_specific_operation({ resourcePath: resource_path,
+      invoke_specific_operation({ resourceId: resource_id,
+                                  feedId: feed_id,
                                   deleteImmediately: delete_immediately },
                                 'ExportJdr', &callback)
     end
@@ -341,7 +341,8 @@ module Hawkular::Operations
     # Updates the collection intervals.
     #
     # @param [Hash] hash Arguments for update collection intervals
-    # @option hash {resourcePath} a resource managed by the target agent
+    # @option hash {resourceId} a resource managed by the target agent
+    # @option hash {feedId} the related feed ID
     # @option hash {metricTypes} A map with key=MetricTypeId, value=interval (seconds).
     # MetricTypeId must be of form MetricTypeSet~MetricTypeName
     # @option hash {availTypes} A map with key=AvailTypeId, value=interval (seconds).
@@ -349,7 +350,7 @@ module Hawkular::Operations
     #
     # @param callback [Block] callback that is run after the operation is done
     def update_collection_intervals(hash, &callback)
-      required = [:resourcePath, :metricTypes, :availTypes]
+      required = [:resourceId, :feedId, :metricTypes, :availTypes]
       check_pre_conditions hash, required, &callback
       invoke_specific_operation(hash, 'UpdateCollectionIntervals', &callback)
     end
@@ -404,11 +405,11 @@ module Hawkular::Operations
 
         case parsed[:operationName]
         when "#{operation_name}Response"
-          same_path = parsed[:data]['resourcePath'] == operation_payload[:resourcePath]
+          same_id = parsed[:data]['resourceId'] == operation_payload[:resourceId]
           # failed operations don't return the operation name from some strange reason
           same_name = operation_payload[:operationName].nil? ||
                       parsed[:data]['operationName'] == operation_payload[:operationName].to_s
-          if same_path # using the resource path as a correlation id
+          if same_id # resource id is unique even accross feeds
             success = same_name && parsed[:data]['status'] == 'OK'
             success ? callback.perform(:success, parsed[:data]) : callback.perform(:failure, parsed[:data]['message'])
             client.remove_listener :message

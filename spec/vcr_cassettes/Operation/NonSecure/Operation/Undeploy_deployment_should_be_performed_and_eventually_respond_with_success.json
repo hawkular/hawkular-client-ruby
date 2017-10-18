@@ -3,21 +3,21 @@
     {
       "operation": "read",
       "type": "text",
-      "data": "WelcomeResponse={\"sessionId\":\"oG2Gqbl0khg2r3MewIHGkU1brnhb_IhV5CIVjj7e\"}"
+      "data": "WelcomeResponse={\"sessionId\":\"iADBtiQeimssjrrVuOO-qeiqLKW_ua0M1d-bFmnj\"}"
     },
     {
       "operation": "write",
-      "data": "UndeployApplicationRequest={\"resourcePath\":\"/t;<%= tenant_id %>/f;<%= feed_id %>/r;Local~~\",\"removeContent\":true,\"destinationFileName\":\"sample.war\",\"authentication\":{\"username\":\"jdoe\",\"password\":\"password\"}}"
+      "data": "UndeployApplicationRequest={\"resourceId\":\"<%= feed_id %>~Local~~\",\"feedId\":\"<%= feed_id %>\",\"removeContent\":true,\"destinationFileName\":\"sample.war\",\"authentication\":{\"username\":\"jdoe\",\"password\":\"password\"}}"
     },
     {
       "operation": "read",
       "type": "text",
-      "data": "GenericSuccessResponse={\"message\":\"The request has been forwarded to feed [<%= feed_id %>] (MessageId=ID:84873e1d-76c5-11e7-9321-df2a214aeb38)\"}"
+      "data": "GenericSuccessResponse={\"message\":\"The request has been forwarded to feed [<%= feed_id %>] (MessageId=ID:92e1ab49-b3fd-11e7-8637-d5b18dcefaa5)\"}"
     },
     {
       "operation": "read",
       "type": "text",
-      "data": "UndeployApplicationResponse={\"destinationFileName\":\"sample.war\",\"resourcePath\":\"/t;<%= tenant_id %>/f;<%= feed_id %>/r;Local~~\",\"destinationSessionId\":\"oG2Gqbl0khg2r3MewIHGkU1brnhb_IhV5CIVjj7e\",\"status\":\"OK\",\"message\":\"Performed [Undeploy] on a [Application] given by Inventory path [/t;<%= tenant_id %>/f;<%= feed_id %>/r;Local~~]\"}"
+      "data": "UndeployApplicationResponse={\"destinationFileName\":\"sample.war\",\"feedId\":\"<%= feed_id %>\",\"resourceId\":\"<%= feed_id %>~Local~~\",\"destinationSessionId\":\"iADBtiQeimssjrrVuOO-qeiqLKW_ua0M1d-bFmnj\",\"status\":\"OK\",\"message\":\"Performed [Undeploy] on a [Application] given by Feed Id [<%= feed_id %>] Resource Id [<%= feed_id %>~Local~~]\"}"
     }
   ]
 ]
