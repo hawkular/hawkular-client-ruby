@@ -166,14 +166,12 @@ module Hawkular::Operations::RSpec
               @inventory_client = ::Hawkular::Inventory::Client.create(
                 options.merge entrypoint: host_with_scheme(host, security_context == SECURE_CONTEXT))
             end
-            inventory_client = @inventory_client
-            remove_instance_variable(:@inventory_client)
             @tenant_id = 'hawkular'
             record("Operation/#{security_context}/Helpers", { tenant_id: @tenant_id }, 'get_wf_server') do
-              @wf_server = inventory_client.resources(typeId: 'WildFly Server', root: true)[0]
+              @wf_server = @inventory_client.resources(typeId: 'WildFly Server', root: true)[0]
             end
             record("Operation/#{security_context}/Helpers", { tenant_id: @tenant_id }, 'agent_properties') do
-              agent = installed_agent(inventory_client)
+              agent = installed_agent(@inventory_client)
               @agent_immutable = agent_immutable?(agent)
               @agent_id = agent.id
             end
@@ -446,12 +444,16 @@ module Hawkular::Operations::RSpec
         end
 
         it 'Remove datasource should be performed and eventually respond with success' do
-          # FIXME: This ID is not correct. We assume the ID is not guessable.
-          # It could be retrieved by fetching server resource children and filtering on name,
-          # or, ideally, the datasource resource ID could be returned in creation message response (test above)
-          datasource_resource_id = 'Local~%2Fsubsystem%3Ddatasources%2Fdata-source%3DCreatedByRubyDS' + @random_uuid
+          ds = nil
+          unless @agent_immutable
+            record("Operation/#{security_context}/Helpers", nil, 'get_datasource') do
+              ds = @inventory_client.children_resources(@wf_server.id)
+                                    .select { |r| r.name.include? "CreatedByRubyDS#{@random_uuid}" }[0]
+                                    .id
+            end
+          end
           operation = {
-            resourceId: datasource_resource_id,
+            resourceId: ds,
             feedId: @wf_server.feed
           }
 
@@ -469,19 +471,20 @@ module Hawkular::Operations::RSpec
           expect(actual_data['status']).to eq('OK') unless @agent_immutable
           expect(actual_data['message']).to start_with('Performed [Remove] on') unless @agent_immutable
           expect(actual_data['serverRefreshIndicator']).to eq('RELOAD-REQUIRED') unless @agent_immutable
-          expect(actual_data).to include('Command not allowed because the agent is immutable') if @agent_immutable
-        end
+        end unless @agent_immutable
 
         it 'Remove JDBC driver should be performed and eventually respond with success' do
           # Unless it runs in a container
-
-          # FIXME: This ID is not correct. We assume the ID is not guessable.
-          # It could be retrieved by fetching server resource children and filtering on name,
-          # or, ideally, the datasource resource ID could be returned in creation message response (test above)
-          driver_resource_id = 'Local~%2Fsubsystem%3Ddatasources%2Fjdbc-driver%3DCreatedByRubyDriver'
-          driver_resource_id << @not_so_random_uuid
+          driver = nil
+          unless @agent_immutable
+            record("Operation/#{security_context}/Helpers", nil, 'get_driver') do
+              driver = @inventory_client.children_resources(@wf_server.id)
+                                        .select { |r| r.name.include? "CreatedByRubyDriver#{@not_so_random_uuid}" }[0]
+                                        .id
+            end
+          end
           operation = {
-            resourceId: driver_resource_id,
+            resourceId: driver,
             feedId: @wf_server.feed
           }
 
@@ -500,7 +503,6 @@ module Hawkular::Operations::RSpec
           expect(actual_data['resource_id']).to eq(driver_resource_id) unless @agent_immutable
           expect(actual_data['message']).to start_with(
             'Performed [Remove] on a [JDBC Driver]') unless @agent_immutable
-          expect(actual_data).to include('Command not allowed because the agent is immutable') if @agent_immutable
         end
 
         it 'Export JDR should retrieve the zip file with the report' do

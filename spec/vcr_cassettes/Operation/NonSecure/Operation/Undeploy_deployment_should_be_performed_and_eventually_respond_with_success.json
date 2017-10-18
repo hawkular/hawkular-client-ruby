@@ -3,7 +3,7 @@
     {
       "operation": "read",
       "type": "text",
-      "data": "WelcomeResponse={\"sessionId\":\"iADBtiQeimssjrrVuOO-qeiqLKW_ua0M1d-bFmnj\"}"
+      "data": "WelcomeResponse={\"sessionId\":\"6lHXjwzqqaAtNOEAWUscB_oNwOTBk-oEpfOrg14i\"}"
     },
     {
       "operation": "write",
@@ -12,12 +12,12 @@
     {
       "operation": "read",
       "type": "text",
-      "data": "GenericSuccessResponse={\"message\":\"The request has been forwarded to feed [<%= feed_id %>] (MessageId=ID:92e1ab49-b3fd-11e7-8637-d5b18dcefaa5)\"}"
+      "data": "GenericSuccessResponse={\"message\":\"The request has been forwarded to feed [<%= feed_id %>] (MessageId=ID:6432bd71-b411-11e7-afc3-a7ba81887a8e)\"}"
     },
     {
       "operation": "read",
       "type": "text",
-      "data": "UndeployApplicationResponse={\"destinationFileName\":\"sample.war\",\"feedId\":\"<%= feed_id %>\",\"resourceId\":\"<%= feed_id %>~Local~~\",\"destinationSessionId\":\"iADBtiQeimssjrrVuOO-qeiqLKW_ua0M1d-bFmnj\",\"status\":\"OK\",\"message\":\"Performed [Undeploy] on a [Application] given by Feed Id [<%= feed_id %>] Resource Id [<%= feed_id %>~Local~~]\"}"
+      "data": "UndeployApplicationResponse={\"feedId\":\"<%= feed_id %>\",\"resourceId\":\"<%= feed_id %>~Local~~\",\"destinationSessionId\":\"6lHXjwzqqaAtNOEAWUscB_oNwOTBk-oEpfOrg14i\",\"status\":\"ERROR\",\"message\":\"Could not perform [Undeploy] on a [Application] given by inventory path [<%= feed_id %>~Local~~] requested on [2017-10-18T14:34Z]: java.lang.IllegalStateException: Command not allowed because the agent is immutable\"}"
     }
   ]
 ]

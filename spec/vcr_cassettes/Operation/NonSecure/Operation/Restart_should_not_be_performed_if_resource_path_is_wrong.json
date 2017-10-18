@@ -3,7 +3,7 @@
     {
       "operation": "read",
       "type": "text",
-      "data": "WelcomeResponse={\"sessionId\":\"If4YiXm2wNuQJARqpClV1CbaqbX-mYqEll2apqRQ\"}"
+      "data": "WelcomeResponse={\"sessionId\":\"xJKQfyU5TbD0ssGgza8y1WFGz3zuSyf4nNEuW7ro\"}"
     },
     {
       "operation": "write",
@@ -12,12 +12,12 @@
     {
       "operation": "read",
       "type": "text",
-      "data": "GenericSuccessResponse={\"message\":\"The request has been forwarded to feed [<%= feed_id %>] (MessageId=ID:8ed87ef0-b3fd-11e7-8637-d5b18dcefaa5)\"}"
+      "data": "GenericSuccessResponse={\"message\":\"The request has been forwarded to feed [<%= feed_id %>] (MessageId=ID:601fcde9-b411-11e7-afc3-a7ba81887a8e)\"}"
     },
     {
       "operation": "read",
       "type": "text",
-      "data": "RestartApplicationResponse={\"destinationFileName\":\"non-existent.war\",\"feedId\":\"<%= feed_id %>\",\"resourceId\":\"<%= feed_id %>~Local~~\",\"destinationSessionId\":\"If4YiXm2wNuQJARqpClV1CbaqbX-mYqEll2apqRQ\",\"status\":\"ERROR\",\"message\":\"Could not perform [Restart Deployment] on a [Application] given by inventory path [<%= feed_id %>~Local~~] requested on [2017-10-18T12:12Z]: org.<%= tenant_id %>.dmrclient.FailureException: {\\\"WFLYCTL0062: Composite operation failed and was rolled back. Steps that failed:\\\" => {\\\"Operation step-1\\\" => \\\"WFLYCTL0216: Management resource '[(\\\\\\\"deployment\\\\\\\" => \\\\\\\"non-existent.war\\\\\\\")]' not found\\\"}}\"}"
+      "data": "RestartApplicationResponse={\"destinationFileName\":\"non-existent.war\",\"feedId\":\"<%= feed_id %>\",\"resourceId\":\"<%= feed_id %>~Local~~\",\"destinationSessionId\":\"xJKQfyU5TbD0ssGgza8y1WFGz3zuSyf4nNEuW7ro\",\"status\":\"ERROR\",\"message\":\"Could not perform [Restart Deployment] on a [Application] given by inventory path [<%= feed_id %>~Local~~] requested on [2017-10-18T14:33Z]: org.<%= tenant_id %>.dmrclient.FailureException: {\\\"WFLYCTL0062: Composite operation failed and was rolled back. Steps that failed:\\\" => {\\\"Operation step-1\\\" => \\\"WFLYCTL0216: Management resource '[(\\\\\\\"deployment\\\\\\\" => \\\\\\\"non-existent.war\\\\\\\")]' not found\\\"}}\"}"
     }
   ]
 ]

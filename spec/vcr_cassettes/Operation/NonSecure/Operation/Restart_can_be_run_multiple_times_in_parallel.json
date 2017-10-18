@@ -3,7 +3,7 @@
     {
       "operation": "read",
       "type": "text",
-      "data": "WelcomeResponse={\"sessionId\":\"PhT5XICxL1MmFn9sxfxvmH1knWLs1zu4ZR3LWEoM\"}"
+      "data": "WelcomeResponse={\"sessionId\":\"tAPMT8X7n4-vZZfEHh5ycQzsIis006U-mRB_zRK8\"}"
     },
     {
       "operation": "write",
@@ -16,22 +16,22 @@
     {
       "operation": "read",
       "type": "text",
-      "data": "GenericSuccessResponse={\"message\":\"The request has been forwarded to feed [<%= feed_id %>] (MessageId=ID:9188aa8a-b3fd-11e7-8637-d5b18dcefaa5)\"}"
+      "data": "GenericSuccessResponse={\"message\":\"The request has been forwarded to feed [<%= feed_id %>] (MessageId=ID:62d4b473-b411-11e7-afc3-a7ba81887a8e)\"}"
     },
     {
       "operation": "read",
       "type": "text",
-      "data": "GenericSuccessResponse={\"message\":\"The request has been forwarded to feed [<%= feed_id %>] (MessageId=ID:918946d0-b3fd-11e7-8637-d5b18dcefaa5)\"}"
+      "data": "GenericSuccessResponse={\"message\":\"The request has been forwarded to feed [<%= feed_id %>] (MessageId=ID:62d6fe69-b411-11e7-afc3-a7ba81887a8e)\"}"
     },
     {
       "operation": "read",
       "type": "text",
-      "data": "RestartApplicationResponse={\"destinationFileName\":\"<%= tenant_id %>-status.war\",\"feedId\":\"<%= feed_id %>\",\"resourceId\":\"<%= feed_id %>~Local~~\",\"destinationSessionId\":\"PhT5XICxL1MmFn9sxfxvmH1knWLs1zu4ZR3LWEoM\",\"status\":\"OK\",\"message\":\"Performed [Restart Deployment] on a [Application] given by Feed Id [<%= feed_id %>] Resource Id [<%= feed_id %>~Local~~]\"}"
+      "data": "RestartApplicationResponse={\"destinationFileName\":\"<%= tenant_id %>-status.war\",\"feedId\":\"<%= feed_id %>\",\"resourceId\":\"<%= feed_id %>~Local~~\",\"destinationSessionId\":\"tAPMT8X7n4-vZZfEHh5ycQzsIis006U-mRB_zRK8\",\"status\":\"OK\",\"message\":\"Performed [Restart Deployment] on a [Application] given by Feed Id [<%= feed_id %>] Resource Id [<%= feed_id %>~Local~~]\"}"
     },
     {
       "operation": "read",
       "type": "text",
-      "data": "RestartApplicationResponse={\"destinationFileName\":\"<%= tenant_id %>-wildfly-agent-download.war\",\"feedId\":\"<%= feed_id %>\",\"resourceId\":\"<%= feed_id %>~Local~~\",\"destinationSessionId\":\"PhT5XICxL1MmFn9sxfxvmH1knWLs1zu4ZR3LWEoM\",\"status\":\"OK\",\"message\":\"Performed [Restart Deployment] on a [Application] given by Feed Id [<%= feed_id %>] Resource Id [<%= feed_id %>~Local~~]\"}"
+      "data": "RestartApplicationResponse={\"destinationFileName\":\"<%= tenant_id %>-wildfly-agent-download.war\",\"feedId\":\"<%= feed_id %>\",\"resourceId\":\"<%= feed_id %>~Local~~\",\"destinationSessionId\":\"tAPMT8X7n4-vZZfEHh5ycQzsIis006U-mRB_zRK8\",\"status\":\"OK\",\"message\":\"Performed [Restart Deployment] on a [Application] given by Feed Id [<%= feed_id %>] Resource Id [<%= feed_id %>~Local~~]\"}"
     }
   ]
 ]
