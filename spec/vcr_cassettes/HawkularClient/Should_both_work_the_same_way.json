@@ -3,42 +3,42 @@
     {
       "operation": "read",
       "type": "text",
-      "data": "WelcomeResponse={\"sessionId\":\"VFlKNRObmHRknNdZGdJFjowbfPUEOL3jnVhRS-k2\"}"
+      "data": "WelcomeResponse={\"sessionId\":\"UG_slqS0BajeUZR-qMKg4AvembCUoIu2CjopR1pC\"}"
     },
     {
       "operation": "write",
-      "data": "ExecuteOperationRequest={\"operationName\":\"Redeploy\",\"resourcePath\":\"/t;hawkular/f;9a8378da4a7d/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-status.war\",\"authentication\":{\"username\":\"jdoe\",\"password\":\"password\"}}"
+      "data": "RestartApplicationRequest={\"resourceId\":\"e3f72e24aad4~Local~~\",\"feedId\":\"e3f72e24aad4\",\"destinationFileName\":\"hawkular-status.war\",\"authentication\":{\"username\":\"jdoe\",\"password\":\"password\"}}"
     },
     {
       "operation": "read",
       "type": "text",
-      "data": "GenericSuccessResponse={\"message\":\"The request has been forwarded to feed [9a8378da4a7d] (MessageId=ID:74cea585-2f6d-11e7-a0d8-f5da34e341e7)\"}"
+      "data": "GenericSuccessResponse={\"message\":\"The request has been forwarded to feed [e3f72e24aad4] (MessageId=ID:660145d3-b4bc-11e7-b9d0-f595c3e19344)\"}"
     },
     {
       "operation": "read",
       "type": "text",
-      "data": "ExecuteOperationResponse={\"resourcePath\":\"/t;hawkular/f;9a8378da4a7d/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-status.war\",\"destinationSessionId\":\"VFlKNRObmHRknNdZGdJFjowbfPUEOL3jnVhRS-k2\",\"status\":\"ERROR\",\"message\":\"Could not perform [Redeploy] on a [DMR Node] given by inventory path [/t;hawkular/f;9a8378da4a7d/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-status.war] requested on [2017-05-02T19:28Z]: java.lang.IllegalStateException: Operation [Redeploy] not allowed because the agent is immutable\"}"
+      "data": "RestartApplicationResponse={\"destinationFileName\":\"hawkular-status.war\",\"feedId\":\"e3f72e24aad4\",\"resourceId\":\"e3f72e24aad4~Local~~\",\"destinationSessionId\":\"UG_slqS0BajeUZR-qMKg4AvembCUoIu2CjopR1pC\",\"status\":\"OK\",\"message\":\"Performed [Restart Deployment] on a [Application] given by Feed Id [e3f72e24aad4] Resource Id [e3f72e24aad4~Local~~]\"}"
     }
   ],
   [
     {
       "operation": "read",
       "type": "text",
-      "data": "WelcomeResponse={\"sessionId\":\"Oi-VTOLRrJqOb-q-KMJqus3wNo30xcemGGpwdYsX\"}"
+      "data": "WelcomeResponse={\"sessionId\":\"anSGJDyRubdkcuaMEs0wsTvgwiu_qALTuUlGYO-T\"}"
     },
     {
       "operation": "write",
-      "data": "ExecuteOperationRequest={\"operationName\":\"Redeploy\",\"resourcePath\":\"/t;hawkular/f;9a8378da4a7d/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-status.war\",\"authentication\":{\"username\":\"jdoe\",\"password\":\"password\"}}"
+      "data": "RestartApplicationRequest={\"resourceId\":\"e3f72e24aad4~Local~~\",\"feedId\":\"e3f72e24aad4\",\"destinationFileName\":\"hawkular-status.war\",\"authentication\":{\"username\":\"jdoe\",\"password\":\"password\"}}"
     },
     {
       "operation": "read",
       "type": "text",
-      "data": "GenericSuccessResponse={\"message\":\"The request has been forwarded to feed [9a8378da4a7d] (MessageId=ID:75b3d576-2f6d-11e7-a0d8-f5da34e341e7)\"}"
+      "data": "GenericSuccessResponse={\"message\":\"The request has been forwarded to feed [e3f72e24aad4] (MessageId=ID:66a9e0fa-b4bc-11e7-b9d0-f595c3e19344)\"}"
     },
     {
       "operation": "read",
       "type": "text",
-      "data": "ExecuteOperationResponse={\"resourcePath\":\"/t;hawkular/f;9a8378da4a7d/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-status.war\",\"destinationSessionId\":\"Oi-VTOLRrJqOb-q-KMJqus3wNo30xcemGGpwdYsX\",\"status\":\"ERROR\",\"message\":\"Could not perform [Redeploy] on a [DMR Node] given by inventory path [/t;hawkular/f;9a8378da4a7d/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-status.war] requested on [2017-05-02T19:28Z]: java.lang.IllegalStateException: Operation [Redeploy] not allowed because the agent is immutable\"}"
+      "data": "RestartApplicationResponse={\"destinationFileName\":\"hawkular-status.war\",\"feedId\":\"e3f72e24aad4\",\"resourceId\":\"e3f72e24aad4~Local~~\",\"destinationSessionId\":\"anSGJDyRubdkcuaMEs0wsTvgwiu_qALTuUlGYO-T\",\"status\":\"OK\",\"message\":\"Performed [Restart Deployment] on a [Application] given by Feed Id [e3f72e24aad4] Resource Id [e3f72e24aad4~Local~~]\"}"
     }
   ]
 ]
