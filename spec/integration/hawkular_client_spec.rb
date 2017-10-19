@@ -228,19 +228,15 @@ module Hawkular::Client::RSpec
       it 'Should both work the same way', :websocket do
         record_websocket('HawkularClient', nil, cassette_name) do
           wf_server = @hawkular_client.inventory.resources(typeId: 'WildFly Server', root: true)[0]
-          status_war_resource = @hawkular_client.inventory
-                                                .children_resources(wf_server.id)
-                                                .select { |r| r.name == 'Deployment [hawkular-status.war]' }[0]
-
-          redeploy = {
-            operationName: 'Redeploy',
-            resourceId: status_war_resource.id,
-            feedId: status_war_resource.feed
+          restart = {
+            resource_id: wf_server.id,
+            feed_id: wf_server.feed,
+            deployment_name: 'hawkular-status.war'
           }
 
           actual_data = {}
           client = Hawkular::Operations::Client.new(entrypoint: HOST, credentials: @creds)
-          client.invoke_generic_operation(redeploy) do |on|
+          client.restart_deployment(restart) do |on|
             on.success do |data|
               actual_data[:data] = data
             end
@@ -250,12 +246,11 @@ module Hawkular::Client::RSpec
           end
 
           actual_data = wait_for actual_data
-          expect(actual_data['status']).to eq('OK') unless @agent_immutable
-          expect(actual_data).to include('not allowed because the agent is immutable') if @agent_immutable
+          expect(actual_data['status']).to eq('OK')
 
           # now do the same on the main client
           actual_data = {}
-          @hawkular_client.operations_invoke_generic_operation(redeploy) do |on|
+          @hawkular_client.operations_restart_deployment(restart) do |on|
             on.success do |data|
               actual_data[:data] = data
             end
@@ -265,8 +260,7 @@ module Hawkular::Client::RSpec
           end
 
           actual_data = wait_for actual_data
-          expect(actual_data['status']).to eq('OK') unless @agent_immutable
-          expect(actual_data).to include('not allowed because the agent is immutable') if @agent_immutable
+          expect(actual_data['status']).to eq('OK')
         end
       end
 
