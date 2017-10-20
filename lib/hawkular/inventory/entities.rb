@@ -72,6 +72,8 @@ module Hawkular::Inventory
     attr_reader :feed
     # @return [ResourceType] Type of this resource
     attr_reader :type
+    # @return [String] Parent ID of this entity (nil if it's a root resource)
+    attr_reader :parent_id
     # @return [Hash<String,String>] Properties of this resource
     attr_reader :properties
     # @return [Hash<String,String>] Config map of this resource
@@ -86,6 +88,7 @@ module Hawkular::Inventory
       @name = hash['name']
       @feed = hash['feedId']
       @type = ResourceType.new(hash['type'])
+      @parent_id = hash['parentId']
       @properties = hash['properties'] || {}
       @config = hash['config'] || {}
       @metrics = (hash['metrics'] || []).map { |m| Metric.new(m) }

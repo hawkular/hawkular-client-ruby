@@ -53,6 +53,13 @@ module Hawkular::Inventory
       http_get(url('/resources/%s/children', parent_id))['results'].map { |r| Resource.new(r) }
     end
 
+    # Get parent of a resource
+    # @return Resource the parent resource, or nil if the provided ID referred to a root resource
+    def parent(id)
+      hash = http_get(url('/resources/%s/parent', id))
+      Resource.new(hash) if hash
+    end
+
     # List root resources
     # @return [Array<Resource>] List of resources
     def root_resources

@@ -29,94 +29,92 @@ http_interactions:
       Content-Type:
       - application/json
       Content-Length:
-      - '9373'
+      - '9436'
       Date:
-      - Wed, 18 Oct 2017 12:12:01 GMT
+      - Fri, 20 Oct 2017 08:36:37 GMT
     body:
       encoding: UTF-8
-      string: '{"results":[{"id":"22b2911d3c1c~platform~/OPERATING_SYSTEM=22b2911d3c1c_OperatingSystem","name":"22b2911d3c1c_OperatingSystem","feedId":"22b2911d3c1c","type":{"id":"Platform_Operating
-        System","operations":[],"properties":{}},"metrics":[{"name":"System CPU Load","type":"System
-        CPU Load","unit":"PERCENTAGE","properties":{"hawkular.metric.typeId":"Platform_Operating
-        System_System CPU Load","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[22b2911d3c1c/22b2911d3c1c~platform~/OPERATING_SYSTEM=22b2911d3c1c_OperatingSystem]~MT~Platform_Operating
+      string: '{"results":[{"id":"e921694131a5~platform~/OPERATING_SYSTEM=e921694131a5_OperatingSystem","name":"e921694131a5_OperatingSystem","feedId":"e921694131a5","type":{"id":"Platform_Operating
+        System","operations":[],"properties":{}},"parentId":null,"metrics":[{"name":"System
+        CPU Load","type":"System CPU Load","unit":"PERCENTAGE","properties":{"hawkular.metric.typeId":"Platform_Operating
+        System_System CPU Load","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[e921694131a5/e921694131a5~platform~/OPERATING_SYSTEM=e921694131a5_OperatingSystem]~MT~Platform_Operating
         System_System CPU Load"}},{"name":"Process Count","type":"Process Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Platform_Operating
-        System_Process Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[22b2911d3c1c/22b2911d3c1c~platform~/OPERATING_SYSTEM=22b2911d3c1c_OperatingSystem]~MT~Platform_Operating
+        System_Process Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[e921694131a5/e921694131a5~platform~/OPERATING_SYSTEM=e921694131a5_OperatingSystem]~MT~Platform_Operating
         System_Process Count"}},{"name":"System Load Average","type":"System Load
         Average","unit":"NONE","properties":{"hawkular.metric.typeId":"Platform_Operating
-        System_System Load Average","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[22b2911d3c1c/22b2911d3c1c~platform~/OPERATING_SYSTEM=22b2911d3c1c_OperatingSystem]~MT~Platform_Operating
-        System_System Load Average"}}],"properties":{},"config":{"Container Id":"22b2911d3c1c3a7761bd24e9300faf35e4838fd3bcef9629879ae5d96e675277","Machine
-        Id":"22b2911d3c1c"}},{"id":"22b2911d3c1c~Local JMX~java.lang:type=Runtime","name":"JMX
-        [Local JMX][Runtime]","feedId":"22b2911d3c1c","type":{"id":"Runtime MBean","operations":[],"properties":{}},"metrics":[{"name":"Used
-        Heap Memory","type":"Used Heap Memory","unit":"BYTES","properties":{"hawkular.metric.typeId":"Runtime
-        Metrics~Used Heap Memory","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[22b2911d3c1c/22b2911d3c1c~Local
-        JMX~java.lang:type=Runtime]~MT~Runtime Metrics~Used Heap Memory"}},{"name":"VM
-        Uptime","type":"VM Uptime","unit":"MILLISECONDS","properties":{"hawkular.metric.typeId":"Runtime
-        Metrics~VM Uptime","hawkular.metric.type":"COUNTER","hawkular.metric.id":"MI~R~[22b2911d3c1c/22b2911d3c1c~Local
-        JMX~java.lang:type=Runtime]~MT~Runtime Metrics~VM Uptime"}},{"name":"Aggregate
+        System_System Load Average","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[e921694131a5/e921694131a5~platform~/OPERATING_SYSTEM=e921694131a5_OperatingSystem]~MT~Platform_Operating
+        System_System Load Average"}}],"properties":{},"config":{"Container Id":"e921694131a5b815b9453198571801525117296ec98b73289e4e46acdc26d90c","Machine
+        Id":"e921694131a5"}},{"id":"e921694131a5~Local JMX~org.hawkular:type=hawkular-javaagent","name":"Hawkular
+        WildFly Agent","feedId":"e921694131a5","type":{"id":"Hawkular WildFly Agent","operations":[{"name":"Start","parameters":{}},{"name":"Stop","parameters":{}},{"name":"Status","parameters":{}},{"name":"Inventory
+        Discovery Scan","parameters":{}},{"name":"Inventory Report","parameters":{}}],"properties":{}},"parentId":null,"metrics":[],"properties":{},"config":{"Immutable":"true","In
+        Container":"true"}},{"id":"e921694131a5~Local JMX~java.lang:type=Runtime","name":"JMX
+        [Local JMX][Runtime]","feedId":"e921694131a5","type":{"id":"Runtime MBean","operations":[],"properties":{}},"parentId":null,"metrics":[{"name":"Aggregate
         GC Collection Time","type":"Aggregate GC Collection Time","unit":"MILLISECONDS","properties":{"hawkular.metric.typeId":"Runtime
-        Metrics~Aggregate GC Collection Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[22b2911d3c1c/22b2911d3c1c~Local
+        Metrics~Aggregate GC Collection Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[e921694131a5/e921694131a5~Local
         JMX~java.lang:type=Runtime]~MT~Runtime Metrics~Aggregate GC Collection Time"}},{"name":"VM
+        Uptime","type":"VM Uptime","unit":"MILLISECONDS","properties":{"hawkular.metric.typeId":"Runtime
+        Metrics~VM Uptime","hawkular.metric.type":"COUNTER","hawkular.metric.id":"MI~R~[e921694131a5/e921694131a5~Local
+        JMX~java.lang:type=Runtime]~MT~Runtime Metrics~VM Uptime"}},{"name":"Used
+        Heap Memory","type":"Used Heap Memory","unit":"BYTES","properties":{"hawkular.metric.typeId":"Runtime
+        Metrics~Used Heap Memory","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[e921694131a5/e921694131a5~Local
+        JMX~java.lang:type=Runtime]~MT~Runtime Metrics~Used Heap Memory"}},{"name":"VM
         Availability","type":"VM Availability","properties":{"hawkular.metric.typeId":"Runtime
-        Availability~VM Availability","hawkular.metric.type":"AVAILABILITY","hawkular.metric.id":"AI~R~[22b2911d3c1c/22b2911d3c1c~Local
+        Availability~VM Availability","hawkular.metric.type":"AVAILABILITY","hawkular.metric.id":"AI~R~[e921694131a5/e921694131a5~Local
         JMX~java.lang:type=Runtime]~AT~Runtime Availability~VM Availability"}}],"properties":{},"config":{"OS
-        Name":"Linux","Java VM Name":"OpenJDK 64-Bit Server VM"}},{"id":"22b2911d3c1c~Local
-        JMX~org.hawkular:type=hawkular-javaagent","name":"Hawkular WildFly Agent","feedId":"22b2911d3c1c","type":{"id":"Hawkular
-        WildFly Agent","operations":[{"name":"Start","parameters":{}},{"name":"Stop","parameters":{}},{"name":"Status","parameters":{}},{"name":"Inventory
-        Discovery Scan","parameters":{}},{"name":"Inventory Report","parameters":{}}],"properties":{}},"metrics":[],"properties":{},"config":{"Immutable":"false","In
-        Container":"true"}},{"id":"22b2911d3c1c~Local~~","name":"WildFly Server [Local]","feedId":"22b2911d3c1c","type":{"id":"WildFly
-        Server","operations":[{"name":"JDR","parameters":{}},{"name":"Reload","parameters":{"admin-only":{"defaultValue":"false","description":"Whether
+        Name":"Linux","Java VM Name":"OpenJDK 64-Bit Server VM"}},{"id":"e921694131a5~Local~~","name":"WildFly
+        Server [Local]","feedId":"e921694131a5","type":{"id":"WildFly Server","operations":[{"name":"JDR","parameters":{}},{"name":"Reload","parameters":{"admin-only":{"defaultValue":"false","description":"Whether
         the server should start in running mode ADMIN_ONLY when it restarts","type":"bool"},"use-current-server-config":{"defaultValue":"false","description":null,"type":"bool"}}},{"name":"Resume","parameters":{}},{"name":"Shutdown","parameters":{"restart":{"defaultValue":"false","description":"Should
         the server be restarted after shutdown?","type":"bool"},"timeout":{"defaultValue":"0","description":"Timeout
         in seconds to allow active connections to drain","type":"int"}}},{"name":"Suspend","parameters":{"timeout":{"defaultValue":"0","description":"Timeout
         in seconds to allow active connections to drain","type":"int"}}},{"name":"Deploy","parameters":{}},{"name":"Undeploy","parameters":{}},{"name":"Enable
         Deployment","parameters":{}},{"name":"Disable Deployment","parameters":{}},{"name":"Restart
-        Deployment","parameters":{}}],"properties":{}},"metrics":[{"name":"NonHeap
-        Committed","type":"NonHeap Committed","unit":"BYTES","properties":{"hawkular.metric.typeId":"WildFly
-        Memory Metrics~NonHeap Committed","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[22b2911d3c1c/22b2911d3c1c~Local~~]~MT~WildFly
-        Memory Metrics~NonHeap Committed"}},{"name":"Aggregated Servlet Request Count","type":"Aggregated
-        Servlet Request Count","unit":"NONE","properties":{"hawkular.metric.typeId":"WildFly
-        Aggregated Web Metrics~Aggregated Servlet Request Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[22b2911d3c1c/22b2911d3c1c~Local~~]~MT~WildFly
-        Aggregated Web Metrics~Aggregated Servlet Request Count"}},{"name":"Aggregated
-        Servlet Request Time","type":"Aggregated Servlet Request Time","unit":"NONE","properties":{"hawkular.metric.typeId":"WildFly
-        Aggregated Web Metrics~Aggregated Servlet Request Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[22b2911d3c1c/22b2911d3c1c~Local~~]~MT~WildFly
-        Aggregated Web Metrics~Aggregated Servlet Request Time"}},{"name":"Accumulated
-        GC Duration","type":"Accumulated GC Duration","unit":"MILLISECONDS","properties":{"hawkular.metric.typeId":"WildFly
-        Memory Metrics~Accumulated GC Duration","hawkular.metric.type":"COUNTER","hawkular.metric.id":"MI~R~[22b2911d3c1c/22b2911d3c1c~Local~~]~MT~WildFly
-        Memory Metrics~Accumulated GC Duration"}},{"name":"Heap Used","type":"Heap
-        Used","unit":"BYTES","properties":{"hawkular.metric.typeId":"WildFly Memory
-        Metrics~Heap Used","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[22b2911d3c1c/22b2911d3c1c~Local~~]~MT~WildFly
-        Memory Metrics~Heap Used"}},{"name":"Thread Count","type":"Thread Count","unit":"NONE","properties":{"hawkular.metric.typeId":"WildFly
-        Threading Metrics~Thread Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[22b2911d3c1c/22b2911d3c1c~Local~~]~MT~WildFly
-        Threading Metrics~Thread Count"}},{"name":"Aggregated Max Active Web Sessions","type":"Aggregated
-        Max Active Web Sessions","unit":"NONE","properties":{"hawkular.metric.typeId":"WildFly
-        Aggregated Web Metrics~Aggregated Max Active Web Sessions","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[22b2911d3c1c/22b2911d3c1c~Local~~]~MT~WildFly
-        Aggregated Web Metrics~Aggregated Max Active Web Sessions"}},{"name":"Aggregated
-        Expired Web Sessions","type":"Aggregated Expired Web Sessions","unit":"NONE","properties":{"hawkular.metric.typeId":"WildFly
-        Aggregated Web Metrics~Aggregated Expired Web Sessions","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[22b2911d3c1c/22b2911d3c1c~Local~~]~MT~WildFly
-        Aggregated Web Metrics~Aggregated Expired Web Sessions"}},{"name":"NonHeap
-        Used","type":"NonHeap Used","unit":"BYTES","properties":{"hawkular.metric.typeId":"WildFly
-        Memory Metrics~NonHeap Used","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[22b2911d3c1c/22b2911d3c1c~Local~~]~MT~WildFly
-        Memory Metrics~NonHeap Used"}},{"name":"Aggregated Active Web Sessions","type":"Aggregated
-        Active Web Sessions","unit":"NONE","properties":{"hawkular.metric.typeId":"WildFly
-        Aggregated Web Metrics~Aggregated Active Web Sessions","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[22b2911d3c1c/22b2911d3c1c~Local~~]~MT~WildFly
-        Aggregated Web Metrics~Aggregated Active Web Sessions"}},{"name":"Heap Committed","type":"Heap
+        Deployment","parameters":{}}],"properties":{}},"parentId":null,"metrics":[{"name":"Aggregated
+        Active Web Sessions","type":"Aggregated Active Web Sessions","unit":"NONE","properties":{"hawkular.metric.typeId":"WildFly
+        Aggregated Web Metrics~Aggregated Active Web Sessions","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[e921694131a5/e921694131a5~Local~~]~MT~WildFly
+        Aggregated Web Metrics~Aggregated Active Web Sessions"}},{"name":"Aggregated
+        Servlet Request Count","type":"Aggregated Servlet Request Count","unit":"NONE","properties":{"hawkular.metric.typeId":"WildFly
+        Aggregated Web Metrics~Aggregated Servlet Request Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[e921694131a5/e921694131a5~Local~~]~MT~WildFly
+        Aggregated Web Metrics~Aggregated Servlet Request Count"}},{"name":"Heap Committed","type":"Heap
         Committed","unit":"BYTES","properties":{"hawkular.metric.typeId":"WildFly
-        Memory Metrics~Heap Committed","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[22b2911d3c1c/22b2911d3c1c~Local~~]~MT~WildFly
-        Memory Metrics~Heap Committed"}},{"name":"Heap Max","type":"Heap Max","unit":"BYTES","properties":{"hawkular.metric.typeId":"WildFly
-        Memory Metrics~Heap Max","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[22b2911d3c1c/22b2911d3c1c~Local~~]~MT~WildFly
-        Memory Metrics~Heap Max"}},{"name":"Aggregated Rejected Web Sessions","type":"Aggregated
+        Memory Metrics~Heap Committed","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[e921694131a5/e921694131a5~Local~~]~MT~WildFly
+        Memory Metrics~Heap Committed"}},{"name":"Thread Count","type":"Thread Count","unit":"NONE","properties":{"hawkular.metric.typeId":"WildFly
+        Threading Metrics~Thread Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[e921694131a5/e921694131a5~Local~~]~MT~WildFly
+        Threading Metrics~Thread Count"}},{"name":"Heap Used","type":"Heap Used","unit":"BYTES","properties":{"hawkular.metric.typeId":"WildFly
+        Memory Metrics~Heap Used","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[e921694131a5/e921694131a5~Local~~]~MT~WildFly
+        Memory Metrics~Heap Used"}},{"name":"NonHeap Used","type":"NonHeap Used","unit":"BYTES","properties":{"hawkular.metric.typeId":"WildFly
+        Memory Metrics~NonHeap Used","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[e921694131a5/e921694131a5~Local~~]~MT~WildFly
+        Memory Metrics~NonHeap Used"}},{"name":"Aggregated Expired Web Sessions","type":"Aggregated
+        Expired Web Sessions","unit":"NONE","properties":{"hawkular.metric.typeId":"WildFly
+        Aggregated Web Metrics~Aggregated Expired Web Sessions","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[e921694131a5/e921694131a5~Local~~]~MT~WildFly
+        Aggregated Web Metrics~Aggregated Expired Web Sessions"}},{"name":"NonHeap
+        Committed","type":"NonHeap Committed","unit":"BYTES","properties":{"hawkular.metric.typeId":"WildFly
+        Memory Metrics~NonHeap Committed","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[e921694131a5/e921694131a5~Local~~]~MT~WildFly
+        Memory Metrics~NonHeap Committed"}},{"name":"Aggregated Rejected Web Sessions","type":"Aggregated
         Rejected Web Sessions","unit":"NONE","properties":{"hawkular.metric.typeId":"WildFly
-        Aggregated Web Metrics~Aggregated Rejected Web Sessions","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[22b2911d3c1c/22b2911d3c1c~Local~~]~MT~WildFly
-        Aggregated Web Metrics~Aggregated Rejected Web Sessions"}},{"name":"Server
+        Aggregated Web Metrics~Aggregated Rejected Web Sessions","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[e921694131a5/e921694131a5~Local~~]~MT~WildFly
+        Aggregated Web Metrics~Aggregated Rejected Web Sessions"}},{"name":"Heap Max","type":"Heap
+        Max","unit":"BYTES","properties":{"hawkular.metric.typeId":"WildFly Memory
+        Metrics~Heap Max","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[e921694131a5/e921694131a5~Local~~]~MT~WildFly
+        Memory Metrics~Heap Max"}},{"name":"Accumulated GC Duration","type":"Accumulated
+        GC Duration","unit":"MILLISECONDS","properties":{"hawkular.metric.typeId":"WildFly
+        Memory Metrics~Accumulated GC Duration","hawkular.metric.type":"COUNTER","hawkular.metric.id":"MI~R~[e921694131a5/e921694131a5~Local~~]~MT~WildFly
+        Memory Metrics~Accumulated GC Duration"}},{"name":"Aggregated Max Active Web
+        Sessions","type":"Aggregated Max Active Web Sessions","unit":"NONE","properties":{"hawkular.metric.typeId":"WildFly
+        Aggregated Web Metrics~Aggregated Max Active Web Sessions","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[e921694131a5/e921694131a5~Local~~]~MT~WildFly
+        Aggregated Web Metrics~Aggregated Max Active Web Sessions"}},{"name":"Aggregated
+        Servlet Request Time","type":"Aggregated Servlet Request Time","unit":"NONE","properties":{"hawkular.metric.typeId":"WildFly
+        Aggregated Web Metrics~Aggregated Servlet Request Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[e921694131a5/e921694131a5~Local~~]~MT~WildFly
+        Aggregated Web Metrics~Aggregated Servlet Request Time"}},{"name":"Server
         Availability","type":"Server Availability","properties":{"hawkular-services.monitoring-type":"remote","hawkular.metric.typeId":"Server
-        Availability~Server Availability","hawkular.metric.type":"AVAILABILITY","hawkular.metric.id":"AI~R~[22b2911d3c1c/22b2911d3c1c~Local~~]~AT~Server
+        Availability~Server Availability","hawkular.metric.type":"AVAILABILITY","hawkular.metric.id":"AI~R~[e921694131a5/e921694131a5~Local~~]~AT~Server
         Availability~Server Availability"}}],"properties":{},"config":{"Suspend State":"RUNNING","Bound
         Address":"127.0.0.1","Running Mode":"NORMAL","Home Directory":"/opt/jboss/wildfly","Version":"0.40.0.Final-SNAPSHOT","Node
-        Name":"22b2911d3c1c","Server State":"running","Product Name":"Hawkular","Hostname":"22b2911d3c1c","UUID":"14b7a751-27d7-463e-b40b-da427b167d8b","Name":"22b2911d3c1c"}}],"resultSize":4,"startOffset":0}'
+        Name":"e921694131a5","Server State":"running","Product Name":"Hawkular","Hostname":"e921694131a5","UUID":"289957d1-08b1-406a-8509-4268b5ffbbf2","Name":"e921694131a5"}}],"resultSize":4,"startOffset":0}'
     http_version: 
-  recorded_at: Wed, 18 Oct 2017 12:12:01 GMT
+  recorded_at: Fri, 20 Oct 2017 08:36:37 GMT
 - request:
     method: get
-    uri: http://jdoe:password@localhost:8080/hawkular/inventory/resources/22b2911d3c1c~Local%20JMX~java.lang:type=Runtime
+    uri: http://jdoe:password@localhost:8080/hawkular/inventory/resources/e921694131a5~Local%20JMX~java.lang:type=Runtime
     body:
       encoding: US-ASCII
       string: ''
@@ -143,26 +141,26 @@ http_interactions:
       Content-Type:
       - application/json
       Content-Length:
-      - '1507'
+      - '1523'
       Date:
-      - Wed, 18 Oct 2017 12:12:01 GMT
+      - Fri, 20 Oct 2017 08:36:37 GMT
     body:
       encoding: UTF-8
-      string: '{"id":"22b2911d3c1c~Local JMX~java.lang:type=Runtime","name":"JMX [Local
-        JMX][Runtime]","feedId":"22b2911d3c1c","type":{"id":"Runtime MBean","operations":[],"properties":{}},"metrics":[{"name":"Used
-        Heap Memory","type":"Used Heap Memory","unit":"BYTES","properties":{"hawkular.metric.typeId":"Runtime
-        Metrics~Used Heap Memory","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[22b2911d3c1c/22b2911d3c1c~Local
-        JMX~java.lang:type=Runtime]~MT~Runtime Metrics~Used Heap Memory"}},{"name":"VM
-        Uptime","type":"VM Uptime","unit":"MILLISECONDS","properties":{"hawkular.metric.typeId":"Runtime
-        Metrics~VM Uptime","hawkular.metric.type":"COUNTER","hawkular.metric.id":"MI~R~[22b2911d3c1c/22b2911d3c1c~Local
-        JMX~java.lang:type=Runtime]~MT~Runtime Metrics~VM Uptime"}},{"name":"Aggregate
+      string: '{"id":"e921694131a5~Local JMX~java.lang:type=Runtime","name":"JMX [Local
+        JMX][Runtime]","feedId":"e921694131a5","type":{"id":"Runtime MBean","operations":[],"properties":{}},"parentId":null,"metrics":[{"name":"Aggregate
         GC Collection Time","type":"Aggregate GC Collection Time","unit":"MILLISECONDS","properties":{"hawkular.metric.typeId":"Runtime
-        Metrics~Aggregate GC Collection Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[22b2911d3c1c/22b2911d3c1c~Local
+        Metrics~Aggregate GC Collection Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[e921694131a5/e921694131a5~Local
         JMX~java.lang:type=Runtime]~MT~Runtime Metrics~Aggregate GC Collection Time"}},{"name":"VM
+        Uptime","type":"VM Uptime","unit":"MILLISECONDS","properties":{"hawkular.metric.typeId":"Runtime
+        Metrics~VM Uptime","hawkular.metric.type":"COUNTER","hawkular.metric.id":"MI~R~[e921694131a5/e921694131a5~Local
+        JMX~java.lang:type=Runtime]~MT~Runtime Metrics~VM Uptime"}},{"name":"Used
+        Heap Memory","type":"Used Heap Memory","unit":"BYTES","properties":{"hawkular.metric.typeId":"Runtime
+        Metrics~Used Heap Memory","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[e921694131a5/e921694131a5~Local
+        JMX~java.lang:type=Runtime]~MT~Runtime Metrics~Used Heap Memory"}},{"name":"VM
         Availability","type":"VM Availability","properties":{"hawkular.metric.typeId":"Runtime
-        Availability~VM Availability","hawkular.metric.type":"AVAILABILITY","hawkular.metric.id":"AI~R~[22b2911d3c1c/22b2911d3c1c~Local
+        Availability~VM Availability","hawkular.metric.type":"AVAILABILITY","hawkular.metric.id":"AI~R~[e921694131a5/e921694131a5~Local
         JMX~java.lang:type=Runtime]~AT~Runtime Availability~VM Availability"}}],"properties":{},"config":{"OS
         Name":"Linux","Java VM Name":"OpenJDK 64-Bit Server VM"}}'
     http_version: 
-  recorded_at: Wed, 18 Oct 2017 12:12:01 GMT
+  recorded_at: Fri, 20 Oct 2017 08:36:37 GMT
 recorded_with: VCR 3.0.3
