@@ -88,6 +88,26 @@ module Hawkular::Inventory::RSpec
         'JMX [Local JMX] MemoryPool Metaspace', 'JMX [Local JMX] MemoryPool PS Eden Space')
     end
 
+    it 'Should get children' do
+      id = @client.root_resources.find { |r| r.name == 'JMX [Local JMX][Runtime]' }.id
+      res = @client.children_resources(id)
+      expect(res).not_to be_nil
+      expect(res.size).to eq(6)
+      expect(res.map(&:name)).to include(
+        'JMX [Local JMX] MemoryPool Metaspace', 'JMX [Local JMX] MemoryPool PS Eden Space')
+      expect(res.map(&:parent_id)).to eq([id, id, id, id, id, id])
+    end
+
+    it 'Should get parent' do
+      parent_id = @client.root_resources.find { |r| r.name == 'JMX [Local JMX][Runtime]' }.id
+      child_id = @client.children_resources(parent_id)[0].id
+      res = @client.parent(child_id)
+      expect(res).not_to be_nil
+      expect(res.id).to eq(parent_id)
+      expect(res.name).to eq('JMX [Local JMX][Runtime]')
+      expect(res.parent_id).to be_nil
+    end
+
     it 'Should return the version' do
       data = @client.fetch_version_and_status
       expect(data).not_to be_nil
