@@ -3,21 +3,21 @@
     {
       "operation": "read",
       "type": "text",
-      "data": "WelcomeResponse={\"sessionId\":\"mEHn7Rr9-CQXosmb50xafXebHHIbujubkQdz0u2w\"}"
+      "data": "WelcomeResponse={\"sessionId\":\"xgSleRihI11ZFDYGi_EpSuAHLLSIM-f-atgIuU5l\"}"
     },
     {
       "operation": "write",
-      "data": "DisableApplicationRequest={\"resourceId\":\"<%= feed_id %>~Local~~\",\"feedId\":\"<%= feed_id %>\",\"destinationFileName\":\"<%= tenant_id %>-status.war\",\"authentication\":{\"username\":\"jdoe\",\"password\":\"password\"}}"
+      "data": "DisableApplicationRequest={\"resourceId\":\"<%= feed_id %>~Local~~\",\"feedId\":\"<%= feed_id %>\",\"senderRequestId\":\"**fixed id for tests**\",\"destinationFileName\":\"<%= tenant_id %>-status.war\",\"authentication\":{\"username\":\"jdoe\",\"password\":\"password\"}}"
     },
     {
       "operation": "read",
       "type": "text",
-      "data": "GenericSuccessResponse={\"message\":\"The request has been forwarded to feed [<%= feed_id %>] (MessageId=ID:60cc60df-b411-11e7-afc3-a7ba81887a8e)\"}"
+      "data": "GenericSuccessResponse={\"message\":\"The request has been forwarded to feed [<%= feed_id %>] (MessageId=ID:9b447ed6-b583-11e7-8348-99479d103218)\"}"
     },
     {
       "operation": "read",
       "type": "text",
-      "data": "DisableApplicationResponse={\"feedId\":\"<%= feed_id %>\",\"resourceId\":\"<%= feed_id %>~Local~~\",\"destinationSessionId\":\"mEHn7Rr9-CQXosmb50xafXebHHIbujubkQdz0u2w\",\"status\":\"ERROR\",\"message\":\"Could not perform [Disable Deployment] on a [Application] given by inventory path [<%= feed_id %>~Local~~] requested on [2017-10-18T14:33Z]: java.lang.IllegalStateException: Command not allowed because the agent is immutable\"}"
+      "data": "DisableApplicationResponse={\"feedId\":\"<%= feed_id %>\",\"resourceId\":\"<%= feed_id %>~Local~~\",\"senderRequestId\":\"**fixed id for tests**\",\"destinationSessionId\":\"xgSleRihI11ZFDYGi_EpSuAHLLSIM-f-atgIuU5l\",\"status\":\"ERROR\",\"message\":\"Could not perform [Disable Deployment] on a [Application] given by inventory path [<%= feed_id %>~Local~~] requested on [2017-10-20T10:44Z]: java.lang.IllegalStateException: Command not allowed because the agent is immutable\"}"
     }
   ]
 ]

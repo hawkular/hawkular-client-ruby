@@ -102,7 +102,7 @@ module Hawkular::Operations::RSpec
         end
 
         it 'should run into error callback' do
-          noop = { operationName: 'noop', resourcePath: '/bla' }
+          noop = { operationName: 'noop', resourcePath: '/bla', senderRequestId: 'abc' }
           operation_outcome = {}
           client.invoke_generic_operation(noop) do |on|
             on.success do |_data|
@@ -116,7 +116,7 @@ module Hawkular::Operations::RSpec
         end
 
         it 'should run into error callback because bad hash parameters' do
-          noop = { operationName: 'noop' }
+          noop = { operationName: 'noop', senderRequestId: 'abc' }
           operation_outcome = {}
           client.invoke_generic_operation(noop) do |on|
             on.success do |_data|
@@ -130,13 +130,13 @@ module Hawkular::Operations::RSpec
         end
 
         it 'should bail with hash property error because no callback at all' do
-          noop = { operationName: 'noop' }
+          noop = { operationName: 'noop', senderRequestId: 'abc' }
           expect { client.invoke_generic_operation(noop) }.to raise_error(Hawkular::ArgumentError,
                                                                           'You need to specify error callback')
         end
 
         it 'should bail with hash property error because no error-callback ' do
-          noop = { operationName: 'noop' }
+          noop = { operationName: 'noop', senderRequestId: 'abc' }
           expect do
             client.invoke_generic_operation(noop) do |on|
               on.success do |_data|
@@ -156,6 +156,7 @@ module Hawkular::Operations::RSpec
       describe 'Operation/Operation' do
         before(:all) do
           @random_uuid = SecureRandom.uuid
+          @req_id = '**fixed id for tests**'
           @not_so_random_uuid = 'not_so_random_uuid'
         end
 
@@ -176,7 +177,9 @@ module Hawkular::Operations::RSpec
               @agent_id = agent.id
             end
           end
-          @bindings = { random_uuid: @random_uuid, tenant_id: @tenant_id, feed_id: @wf_server.feed }
+          @bindings = { random_uuid: @random_uuid,
+                        tenant_id: @tenant_id,
+                        feed_id: @wf_server.feed }
           record_websocket("Operation/#{security_context}/Operation",
                            @bindings,
                            cassette_name,
@@ -195,6 +198,7 @@ module Hawkular::Operations::RSpec
                                  driver_name: driver_name,
                                  module_name: 'foo.bar' + @not_so_random_uuid, # jboss module
                                  driver_class: 'com.mysql.jdbc.Driver',
+                                 sender_request_id: @req_id,
                                  binary_content: driver_bits) do |on|
             on.success do |data|
               actual_data[:data] = data
@@ -215,7 +219,8 @@ module Hawkular::Operations::RSpec
           restart = {
             resource_id: @wf_server.id,
             feed_id: @wf_server.feed,
-            deployment_name: 'hawkular-status.war'
+            deployment_name: 'hawkular-status.war',
+            sender_request_id: @req_id
           }
 
           actual_data = {}
@@ -241,7 +246,8 @@ module Hawkular::Operations::RSpec
           restart = {
             resource_id: @wf_server.id,
             feed_id: @wf_server.feed,
-            deployment_name: 'non-existent.war'
+            deployment_name: 'non-existent.war',
+            sender_request_id: @req_id
           }
           actual_data = {}
           client.restart_deployment(restart) do |on|
@@ -260,7 +266,8 @@ module Hawkular::Operations::RSpec
           disable = {
             resource_id: @wf_server.id,
             feed_id: @wf_server.feed,
-            deployment_name: 'hawkular-status.war'
+            deployment_name: 'hawkular-status.war',
+            sender_request_id: @req_id
           }
           actual_data = {}
           client.disable_deployment(disable) do |on|
@@ -297,7 +304,8 @@ module Hawkular::Operations::RSpec
             },
             userName: 'sa',
             password: 'sa',
-            securityDomain: 'other'
+            securityDomain: 'other',
+            senderRequestId: @req_id
             # xaDataSourceClass: 'clazz' for xa DS
           }
 
@@ -340,7 +348,8 @@ module Hawkular::Operations::RSpec
             },
             userName: 'sa',
             password: 'sa',
-            securityDomain: 'other'
+            securityDomain: 'other',
+            senderRequestId: @req_id
           }
 
           actual_data = {}
@@ -366,13 +375,15 @@ module Hawkular::Operations::RSpec
           restart1 = {
             resource_id: @wf_server.id,
             feed_id: @wf_server.feed,
-            deployment_name: 'hawkular-status.war'
+            deployment_name: 'hawkular-status.war',
+            sender_request_id: @req_id
           }
 
           restart2 = {
             resource_id: @wf_server.id,
             feed_id: @wf_server.feed,
-            deployment_name: 'hawkular-wildfly-agent-download.war'
+            deployment_name: 'hawkular-wildfly-agent-download.war',
+            sender_request_id: 'another_id'
           }
 
           # run the first operation w/o registering the callback
@@ -392,6 +403,7 @@ module Hawkular::Operations::RSpec
 
           actual_data = wait_for actual_data
           expect(actual_data['status']).to eq('OK')
+          expect(actual_data['senderRequestId']).to eq('another_id')
           expect(actual_data['resourceId']).to eq(@wf_server.id)
           expect(actual_data['destinationFileName']).to eq('hawkular-wildfly-agent-download.war')
           expect(actual_data['message']).to start_with('Performed [Restart Deployment] on')
@@ -404,6 +416,7 @@ module Hawkular::Operations::RSpec
           client.add_deployment(resource_id: @wf_server.id,
                                 feed_id: @wf_server.feed,
                                 destination_file_name: app_name,
+                                sender_request_id: @req_id,
                                 binary_content: war_file) do |on|
             on.success do |data|
               actual_data[:data] = data
@@ -425,7 +438,8 @@ module Hawkular::Operations::RSpec
           undeploy = {
             resource_id: @wf_server.id,
             feed_id: @wf_server.feed,
-            deployment_name: 'sample.war'
+            deployment_name: 'sample.war',
+            sender_request_id: @req_id
           }
           actual_data = {}
           client.undeploy(undeploy) do |on|
@@ -454,7 +468,8 @@ module Hawkular::Operations::RSpec
           end
           operation = {
             resourceId: ds,
-            feedId: @wf_server.feed
+            feedId: @wf_server.feed,
+            senderRequestId: @req_id
           }
 
           actual_data = {}
@@ -485,7 +500,8 @@ module Hawkular::Operations::RSpec
           end
           operation = {
             resourceId: driver,
-            feedId: @wf_server.feed
+            feedId: @wf_server.feed,
+            senderRequestId: @req_id
           }
 
           actual_data = {}
@@ -507,7 +523,7 @@ module Hawkular::Operations::RSpec
 
         it 'Export JDR should retrieve the zip file with the report' do
           actual_data = {}
-          client.export_jdr(@wf_server.id, @wf_server.feed) do |on|
+          client.export_jdr(@wf_server.id, @wf_server.feed, @req_id) do |on|
             on.success do |data|
               actual_data[:data] = data
             end
@@ -528,6 +544,7 @@ module Hawkular::Operations::RSpec
           hash = {
             resourceId: @agent_id,
             feedId: @wf_server.feed,
+            senderRequestId: @req_id,
             metricTypes: { 'WildFly Memory Metrics~Heap Max' => 77, 'Unknown~Metric' => 666 },
             availTypes: { 'Server Availability~Server Availability' => 77, 'Unknown~Avail' => 666 }
           }

@@ -327,14 +327,15 @@ module Hawkular::Operations
     # @param [Boolean] delete_immediately specifies whether the temporary file at the remote
     # server should be deleted. False, by default.
     # @param callback [Block] callback that is run after the operation is done
-    def export_jdr(resource_id, feed_id, delete_immediately = false, &callback)
+    def export_jdr(resource_id, feed_id, delete_immediately = false, sender_request_id = nil, &callback)
       fail Hawkular::ArgumentError, 'resource_id must be specified' if resource_id.nil?
       fail Hawkular::ArgumentError, 'feed_id must be specified' if feed_id.nil?
       check_pre_conditions(&callback)
 
       invoke_specific_operation({ resourceId: resource_id,
                                   feedId: feed_id,
-                                  deleteImmediately: delete_immediately },
+                                  deleteImmediately: delete_immediately,
+                                  senderRequestId: sender_request_id },
                                 'ExportJdr', &callback)
     end
 
@@ -363,6 +364,9 @@ module Hawkular::Operations
       # fallback to generic 'ExecuteOperation' if nothing is specified
       operation_name ||= 'ExecuteOperation'
       add_credentials! operation_payload
+
+      # if unset, set the :senderRequestId
+      operation_payload[:senderRequestId] = SecureRandom.uuid unless operation_payload[:senderRequestId]
 
       handle_message(operation_name, operation_payload, &callback) unless callback.nil?
 
@@ -405,12 +409,8 @@ module Hawkular::Operations
 
         case parsed[:operationName]
         when "#{operation_name}Response"
-          same_id = parsed[:data]['resourceId'] == operation_payload[:resourceId]
-          # failed operations don't return the operation name from some strange reason
-          same_name = operation_payload[:operationName].nil? ||
-                      parsed[:data]['operationName'] == operation_payload[:operationName].to_s
-          if same_id # resource id is unique even accross feeds
-            success = same_name && parsed[:data]['status'] == 'OK'
+          if parsed[:data]['senderRequestId'] == operation_payload[:senderRequestId]
+            success = parsed[:data]['status'] == 'OK'
             success ? callback.perform(:success, parsed[:data]) : callback.perform(:failure, parsed[:data]['message'])
             client.remove_listener :message
           end
