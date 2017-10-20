@@ -7,7 +7,8 @@ HOST = 'http://localhost:8080'
 
 describe 'Inventory' do
   let(:cassette_name) do |example|
-    example.description
+    description = example.description
+    description
   end
 
   before(:all) do
@@ -92,4 +93,3 @@ describe 'Inventory' do
     expect(data).not_to be_nil
   end
 end
-
