@@ -3,11 +3,11 @@
     {
       "operation": "read",
       "type": "text",
-      "data": "WelcomeResponse={\"sessionId\":\"Mroei6eghNxmB1n2ROiYW1KGJmZ8qC8sM_rOwXty\"}"
+      "data": "WelcomeResponse={\"sessionId\":\"BGuFuhqTsEOCbms4jM-YGIPj0M9R3Khksv-nVzSA\"}"
     },
     {
       "operation": "write",
-      "data": "ExecuteOperationRequest={\"operationName\":\"noop\",\"resourcePath\":\"/bla\",\"authentication\":{\"username\":\"jdoe\",\"password\":\"password\"}}"
+      "data": "ExecuteOperationRequest={\"operationName\":\"noop\",\"resourcePath\":\"/bla\",\"senderRequestId\":\"abc\",\"authentication\":{\"username\":\"jdoe\",\"password\":\"password\"}}"
     }
   ]
 ]

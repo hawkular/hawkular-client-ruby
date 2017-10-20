@@ -3,21 +3,21 @@
     {
       "operation": "read",
       "type": "text",
-      "data": "WelcomeResponse={\"sessionId\":\"61f94z97_o5Ymatg2be-NlsxTcSwJvA_4SAhypBe\"}"
+      "data": "WelcomeResponse={\"sessionId\":\"rx8XE8lkwoTYfO2oFowA2DuLqJ_VJ5gXnkfgzAyA\"}"
     },
     {
       "operation": "write",
-      "data": "AddDatasourceRequest={\"resourceId\":\"<%= feed_id %>~Local~~\",\"feedId\":\"<%= feed_id %>\",\"xaDatasource\":true,\"datasourceName\":\"CreatedByRubyDSXA<%= random_uuid %>\",\"jndiName\":\"java:jboss/datasources/CreatedByRubyDSXA<%= random_uuid %>\",\"driverName\":\"h2\",\"xaDataSourceClass\":\"org.h2.jdbcx.JdbcDataSource\",\"driverClass\":\"org.h2.Driver\",\"connectionUrl\":\"dbc:h2:mem:ruby;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE\",\"datasourceProperties\":{\"someKey\":\"someValue\"},\"userName\":\"sa\",\"password\":\"sa\",\"securityDomain\":\"other\",\"authentication\":{\"username\":\"jdoe\",\"password\":\"password\"}}"
+      "data": "AddDatasourceRequest={\"resourceId\":\"<%= feed_id %>~Local~~\",\"feedId\":\"<%= feed_id %>\",\"xaDatasource\":true,\"datasourceName\":\"CreatedByRubyDSXA<%= random_uuid %>\",\"jndiName\":\"java:jboss/datasources/CreatedByRubyDSXA<%= random_uuid %>\",\"driverName\":\"h2\",\"xaDataSourceClass\":\"org.h2.jdbcx.JdbcDataSource\",\"driverClass\":\"org.h2.Driver\",\"connectionUrl\":\"dbc:h2:mem:ruby;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE\",\"datasourceProperties\":{\"someKey\":\"someValue\"},\"userName\":\"sa\",\"password\":\"sa\",\"securityDomain\":\"other\",\"senderRequestId\":\"**fixed id for tests**\",\"authentication\":{\"username\":\"jdoe\",\"password\":\"password\"}}"
     },
     {
       "operation": "read",
       "type": "text",
-      "data": "GenericSuccessResponse={\"message\":\"The request has been forwarded to feed [<%= feed_id %>] (MessageId=ID:6224ec5c-b411-11e7-afc3-a7ba81887a8e)\"}"
+      "data": "GenericSuccessResponse={\"message\":\"The request has been forwarded to feed [<%= feed_id %>] (MessageId=ID:9ca0dae3-b583-11e7-8348-99479d103218)\"}"
     },
     {
       "operation": "read",
       "type": "text",
-      "data": "AddDatasourceResponse={\"xaDatasource\":false,\"feedId\":\"<%= feed_id %>\",\"resourceId\":\"<%= feed_id %>~Local~~\",\"destinationSessionId\":\"61f94z97_o5Ymatg2be-NlsxTcSwJvA_4SAhypBe\",\"status\":\"ERROR\",\"message\":\"Could not perform [Add] on a [Datasource] given by inventory path [<%= feed_id %>~Local~~] requested on [2017-10-18T14:34Z]: java.lang.IllegalStateException: Command not allowed because the agent is immutable\"}"
+      "data": "AddDatasourceResponse={\"xaDatasource\":false,\"feedId\":\"<%= feed_id %>\",\"resourceId\":\"<%= feed_id %>~Local~~\",\"senderRequestId\":\"**fixed id for tests**\",\"destinationSessionId\":\"rx8XE8lkwoTYfO2oFowA2DuLqJ_VJ5gXnkfgzAyA\",\"status\":\"ERROR\",\"message\":\"Could not perform [Add] on a [Datasource] given by inventory path [<%= feed_id %>~Local~~] requested on [2017-10-20T10:44Z]: java.lang.IllegalStateException: Command not allowed because the agent is immutable\"}"
     }
   ]
 ]
