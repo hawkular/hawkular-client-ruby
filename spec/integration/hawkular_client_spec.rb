@@ -24,7 +24,7 @@ module Hawkular::Client::RSpec
         password: 'password'
       }
       ::RSpec::Mocks.with_temporary_scope do
-        mock_inventory_client '0.26.0.Final'
+        mock_inventory_client '0.9.8.Final'
         mock_metrics_version
         @hawkular_client = Hawkular::Client.new(entrypoint: HOST, credentials: @creds, options: { tenant: 'hawkular' })
         @hawkular_client.inventory
