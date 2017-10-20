@@ -74,7 +74,7 @@ module Hawkular::Inventory
     # @option filter :typeId Filter by type id
     def resources(filter = {})
       # FIXME: pagination => lazy-loaded list with ruby?
-      filter[:root] = !!filter[:root] if filter.key? :root
+      filter[:root] = !filter[:root].nil? if filter.key? :root
       filter_query = '?' + filter.keys.join('=%s&') + '=%s' unless filter.empty?
       http_get(url("/resources#{filter_query}", *filter.values))['results'].map { |r| Resource.new(r) }
     end

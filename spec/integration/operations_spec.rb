@@ -448,8 +448,8 @@ module Hawkular::Operations::RSpec
           unless @agent_immutable
             record("Operation/#{security_context}/Helpers", nil, 'get_datasource') do
               ds = @inventory_client.children_resources(@wf_server.id)
-                                    .select { |r| r.name.include? "CreatedByRubyDS#{@random_uuid}" }[0]
-                                    .id
+                   .select { |r| r.name.include? "CreatedByRubyDS#{@random_uuid}" }[0]
+                   .id
             end
           end
           operation = {
@@ -479,8 +479,8 @@ module Hawkular::Operations::RSpec
           unless @agent_immutable
             record("Operation/#{security_context}/Helpers", nil, 'get_driver') do
               driver = @inventory_client.children_resources(@wf_server.id)
-                                        .select { |r| r.name.include? "CreatedByRubyDriver#{@not_so_random_uuid}" }[0]
-                                        .id
+                       .select { |r| r.name.include? "CreatedByRubyDriver#{@not_so_random_uuid}" }[0]
+                       .id
             end
           end
           operation = {
