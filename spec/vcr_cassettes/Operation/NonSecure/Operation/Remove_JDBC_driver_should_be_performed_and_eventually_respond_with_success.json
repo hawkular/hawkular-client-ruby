@@ -3,21 +3,11 @@
     {
       "operation": "read",
       "type": "text",
-      "data": "WelcomeResponse={\"sessionId\":\"Q14g0U9zKR6Dm_AsfUVlHDtPAhgz1rKWrBV9gBN1\"}"
+      "data": "WelcomeResponse={\"sessionId\":\"6BNPDkfV6a4cE3hvkmzhJKXZIa4YEgjoidMkwDVG\"}"
     },
     {
       "operation": "write",
-      "data": "RemoveJdbcDriverRequest={\"resourcePath\":\"/t;<%= tenant_id %>/f;<%= feed_id %>/r;Local~~/r;Local~%2Fsubsystem%3Ddatasources%2Fjdbc-driver%3DCreatedByRubyDrivernot_so_random_uuid\",\"authentication\":{\"username\":\"jdoe\",\"password\":\"password\"}}"
-    },
-    {
-      "operation": "read",
-      "type": "text",
-      "data": "GenericSuccessResponse={\"message\":\"The request has been forwarded to feed [<%= feed_id %>] (MessageId=ID:a854bd17-76c5-11e7-9321-df2a214aeb38)\"}"
-    },
-    {
-      "operation": "read",
-      "type": "text",
-      "data": "RemoveJdbcDriverResponse={\"resourcePath\":\"/t;<%= tenant_id %>/f;<%= feed_id %>/r;Local~~/r;Local~%2Fsubsystem%3Ddatasources%2Fjdbc-driver%3DCreatedByRubyDrivernot_so_random_uuid\",\"destinationSessionId\":\"Q14g0U9zKR6Dm_AsfUVlHDtPAhgz1rKWrBV9gBN1\",\"status\":\"OK\",\"message\":\"Performed [Remove] on a [JDBC Driver] given by Inventory path [/t;<%= tenant_id %>/f;<%= feed_id %>/r;Local~~/r;Local~%2Fsubsystem%3Ddatasources%2Fjdbc-driver%3DCreatedByRubyDrivernot_so_random_uuid]\"}"
+      "data": "RemoveJdbcDriverRequest={\"resourceId\":null,\"feedId\":\"<%= feed_id %>\",\"authentication\":{\"username\":\"jdoe\",\"password\":\"password\"}}"
     }
   ]
 ]

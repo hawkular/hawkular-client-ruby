@@ -3,21 +3,11 @@
     {
       "operation": "read",
       "type": "text",
-      "data": "WelcomeResponse={\"sessionId\":\"Ekz72gsKyNHvzOMkgRN7sSGSaDYIFUZZ0oIgTt1z\"}"
+      "data": "WelcomeResponse={\"sessionId\":\"N7La0N36FzUGn3pIbnuNOZgQlWDXU6VZMqOwlgyG\"}"
     },
     {
       "operation": "write",
-      "data": "RemoveDatasourceRequest={\"resourcePath\":\"/t;<%= tenant_id %>/f;<%= feed_id %>/r;Local~~/r;Local~%2Fsubsystem%3Ddatasources%2Fdata-source%3DCreatedByRubyDS<%= random_uuid %>\",\"authentication\":{\"username\":\"jdoe\",\"password\":\"password\"}}"
-    },
-    {
-      "operation": "read",
-      "type": "text",
-      "data": "GenericSuccessResponse={\"message\":\"The request has been forwarded to feed [<%= feed_id %>] (MessageId=ID:fc71ca16-76c5-11e7-9321-df2a214aeb38)\"}"
-    },
-    {
-      "operation": "read",
-      "type": "text",
-      "data": "RemoveDatasourceResponse={\"resourcePath\":\"/t;<%= tenant_id %>/f;<%= feed_id %>/r;Local~~/r;Local~%2Fsubsystem%3Ddatasources%2Fdata-source%3DCreatedByRubyDS<%= random_uuid %>\",\"destinationSessionId\":\"Ekz72gsKyNHvzOMkgRN7sSGSaDYIFUZZ0oIgTt1z\",\"status\":\"OK\",\"message\":\"Performed [Remove] on a [Datasource] given by Inventory path [/t;<%= tenant_id %>/f;<%= feed_id %>/r;Local~~/r;Local~%2Fsubsystem%3Ddatasources%2Fdata-source%3DCreatedByRubyDS<%= random_uuid %>]\",\"serverRefreshIndicator\":\"RELOAD-REQUIRED\"}"
+      "data": "RemoveDatasourceRequest={\"resourceId\":null,\"feedId\":\"<%= feed_id %>\",\"authentication\":{\"username\":\"jdoe\",\"password\":\"password\"}}"
     }
   ]
 ]

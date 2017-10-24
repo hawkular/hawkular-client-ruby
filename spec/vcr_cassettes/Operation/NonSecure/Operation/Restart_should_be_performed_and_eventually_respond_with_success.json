@@ -3,21 +3,21 @@
     {
       "operation": "read",
       "type": "text",
-      "data": "WelcomeResponse={\"sessionId\":\"Quf9pBFEAJsZeyvp9pMPibh5IpNa3uY4nVQv_n1K\"}"
+      "data": "WelcomeResponse={\"sessionId\":\"yShzNVYy6GashCP2asP3VQ5uOo1lGNDb4JyJrxXL\"}"
     },
     {
       "operation": "write",
-      "data": "RestartApplicationRequest={\"resourcePath\":\"/t;<%= tenant_id %>/f;<%= feed_id %>/r;Local~~\",\"destinationFileName\":\"<%= tenant_id %>-status.war\",\"authentication\":{\"username\":\"jdoe\",\"password\":\"password\"}}"
+      "data": "RestartApplicationRequest={\"resourceId\":\"<%= feed_id %>~Local~~\",\"feedId\":\"<%= feed_id %>\",\"destinationFileName\":\"<%= tenant_id %>-status.war\",\"authentication\":{\"username\":\"jdoe\",\"password\":\"password\"}}"
     },
     {
       "operation": "read",
       "type": "text",
-      "data": "GenericSuccessResponse={\"message\":\"The request has been forwarded to feed [<%= feed_id %>] (MessageId=ID:e8efb1bf-29c8-11e7-9346-cb514f6228a4)\"}"
+      "data": "GenericSuccessResponse={\"message\":\"The request has been forwarded to feed [<%= feed_id %>] (MessageId=ID:5f7005d2-b411-11e7-afc3-a7ba81887a8e)\"}"
     },
     {
       "operation": "read",
       "type": "text",
-      "data": "RestartApplicationResponse={\"destinationFileName\":\"<%= tenant_id %>-status.war\",\"resourcePath\":\"/t;<%= tenant_id %>/f;<%= feed_id %>/r;Local~~\",\"destinationSessionId\":\"Quf9pBFEAJsZeyvp9pMPibh5IpNa3uY4nVQv_n1K\",\"status\":\"OK\",\"message\":\"Performed [Restart Deployment] on a [Application] given by Inventory path [/t;<%= tenant_id %>/f;<%= feed_id %>/r;Local~~]\"}"
+      "data": "RestartApplicationResponse={\"destinationFileName\":\"<%= tenant_id %>-status.war\",\"feedId\":\"<%= feed_id %>\",\"resourceId\":\"<%= feed_id %>~Local~~\",\"destinationSessionId\":\"yShzNVYy6GashCP2asP3VQ5uOo1lGNDb4JyJrxXL\",\"status\":\"OK\",\"message\":\"Performed [Restart Deployment] on a [Application] given by Feed Id [<%= feed_id %>] Resource Id [<%= feed_id %>~Local~~]\"}"
     }
   ]
 ]

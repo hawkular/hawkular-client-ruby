@@ -532,18 +532,12 @@ security_contexts.each do |security_context|
       describe 'Gauge metrics' do
         hawkular_tenant_id = 'hawkular'.freeze
 
-        let(:inventory_client) do
-          inventory_entrypoint = entrypoint(security_context, 'metrics')
-          setup_inventory_client(inventory_entrypoint, tenant: hawkular_tenant_id)
-        end
-
-        let(:hawkular_feed_id) do
-          inventory_client.list_feeds.first
-        end
-
         let(:hawkular_mem_id) do
-          "MI~R~[#{hawkular_feed_id}/platform~/OPERATING_SYSTEM=#{hawkular_feed_id}"\
-                          '_OperatingSystem/MEMORY=Memory]~MT~Platform_Memory_Total Memory'
+          inventory_client = setup_inventory_client(entrypoint(security_context, 'inventory'),
+                                                    tenant: hawkular_tenant_id)
+          memory_rs = inventory_client.resources_for_type('Platform_Memory')[0]
+          metric = memory_rs.metrics.select { |r| r.name == 'Total Memory' }[0]
+          metric.hawkular_id
         end
 
         before(:all) do
