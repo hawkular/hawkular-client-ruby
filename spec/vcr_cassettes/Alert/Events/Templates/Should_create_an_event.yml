@@ -2,10 +2,10 @@
 http_interactions:
 - request:
     method: post
-    uri: http://localhost:8080/hawkular/alerts/events
+    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/events
     body:
       encoding: UTF-8
-      string: '{"id":"<%= id %>","ctime":1493133070000,"category":"MyCategory","text":"Li
+      string: '{"id":"<%= id %>","ctime":1508831135000,"category":"MyCategory","text":"Li
         la lu","context":{"message":"This is a test"},"tags":{"tag_name":"tag-value"}}'
     headers:
       Accept:
@@ -20,9 +20,6 @@ http_interactions:
       - application/json
       Content-Length:
       - '165'
-      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
-
-'
   response:
     status:
       code: 200
@@ -39,7 +36,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 25 Apr 2017 15:11:10 GMT
+      - Tue, 24 Oct 2017 07:45:35 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -48,13 +45,13 @@ http_interactions:
       - '229'
     body:
       encoding: UTF-8
-      string: '{"eventType":"EVENT","tenantId":"hawkular","id":"<%= id %>","ctime":1493133070000,"dataSource":"_none_","category":"MyCategory","text":"Li
+      string: '{"eventType":"EVENT","tenantId":"hawkular","id":"<%= id %>","ctime":1508831135000,"dataSource":"_none_","category":"MyCategory","text":"Li
         la lu","context":{"message":"This is a test"},"tags":{"tag_name":"tag-value"}}'
     http_version: 
-  recorded_at: Tue, 25 Apr 2017 15:11:10 GMT
+  recorded_at: Tue, 24 Oct 2017 07:45:35 GMT
 - request:
     method: delete
-    uri: http://localhost:8080/hawkular/alerts/events/<%= id %>
+    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/events/<%= id %>
     body:
       encoding: US-ASCII
       string: ''
@@ -69,9 +66,6 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
-      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
-
-'
   response:
     status:
       code: 200
@@ -88,7 +82,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 25 Apr 2017 15:11:10 GMT
+      - Tue, 24 Oct 2017 07:45:35 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -99,5 +93,5 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Tue, 25 Apr 2017 15:11:10 GMT
+  recorded_at: Tue, 24 Oct 2017 07:45:35 GMT
 recorded_with: VCR 3.0.3

@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://localhost:8080/hawkular/alerts/plugins
+    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/plugins
     body:
       encoding: US-ASCII
       string: ''
@@ -17,9 +17,6 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
-      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
-
-'
   response:
     status:
       code: 200
@@ -36,7 +33,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 25 Apr 2017 15:11:07 GMT
+      - Tue, 24 Oct 2017 07:45:32 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -47,10 +44,10 @@ http_interactions:
       encoding: UTF-8
       string: '["elasticsearch","email","webhook"]'
     http_version: 
-  recorded_at: Tue, 25 Apr 2017 15:11:07 GMT
+  recorded_at: Tue, 24 Oct 2017 07:45:32 GMT
 - request:
     method: get
-    uri: http://localhost:8080/hawkular/alerts/plugins/elasticsearch
+    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/plugins/elasticsearch
     body:
       encoding: US-ASCII
       string: ''
@@ -65,9 +62,6 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
-      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
-
-'
   response:
     status:
       code: 200
@@ -84,7 +78,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 25 Apr 2017 15:11:07 GMT
+      - Tue, 24 Oct 2017 07:45:32 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -93,12 +87,12 @@ http_interactions:
       - '112'
     body:
       encoding: UTF-8
-      string: '["forwarded-for","index","pass","proxy-remote-user","timestamp.pattern","token","transform","type","url","user"]'
+      string: '["forwarded-for","index","pass","proxy-remote-user","timestamp_pattern","token","transform","type","url","user"]'
     http_version: 
-  recorded_at: Tue, 25 Apr 2017 15:11:07 GMT
+  recorded_at: Tue, 24 Oct 2017 07:45:32 GMT
 - request:
     method: get
-    uri: http://localhost:8080/hawkular/alerts/plugins/email
+    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/plugins/email
     body:
       encoding: US-ASCII
       string: ''
@@ -113,9 +107,6 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
-      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
-
-'
   response:
     status:
       code: 200
@@ -132,7 +123,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 25 Apr 2017 15:11:07 GMT
+      - Tue, 24 Oct 2017 07:45:32 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -143,10 +134,10 @@ http_interactions:
       encoding: UTF-8
       string: '["cc","from","from-name","mail","template.hawkular.url","template.html","template.plain","to"]'
     http_version: 
-  recorded_at: Tue, 25 Apr 2017 15:11:07 GMT
+  recorded_at: Tue, 24 Oct 2017 07:45:32 GMT
 - request:
     method: get
-    uri: http://localhost:8080/hawkular/alerts/plugins/webhook
+    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/plugins/webhook
     body:
       encoding: US-ASCII
       string: ''
@@ -161,9 +152,6 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
-      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
-
-'
   response:
     status:
       code: 200
@@ -180,7 +168,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 25 Apr 2017 15:11:07 GMT
+      - Tue, 24 Oct 2017 07:45:32 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -191,10 +179,10 @@ http_interactions:
       encoding: UTF-8
       string: '["method","timeout","url"]'
     http_version: 
-  recorded_at: Tue, 25 Apr 2017 15:11:07 GMT
+  recorded_at: Tue, 24 Oct 2017 07:45:32 GMT
 - request:
     method: get
-    uri: http://localhost:8080/hawkular/alerts/plugins/email
+    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/plugins/email
     body:
       encoding: US-ASCII
       string: ''
@@ -209,9 +197,6 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
-      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
-
-'
   response:
     status:
       code: 200
@@ -228,7 +213,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 25 Apr 2017 15:11:07 GMT
+      - Tue, 24 Oct 2017 07:45:32 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -239,10 +224,10 @@ http_interactions:
       encoding: UTF-8
       string: '["cc","from","from-name","mail","template.hawkular.url","template.html","template.plain","to"]'
     http_version: 
-  recorded_at: Tue, 25 Apr 2017 15:11:07 GMT
+  recorded_at: Tue, 24 Oct 2017 07:45:32 GMT
 - request:
     method: get
-    uri: http://localhost:8080/hawkular/alerts/plugins/-does-not-exist-
+    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/plugins/-does-not-exist-
     body:
       encoding: US-ASCII
       string: ''
@@ -257,9 +242,6 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
-      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
-
-'
   response:
     status:
       code: 404
@@ -276,7 +258,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 25 Apr 2017 15:11:07 GMT
+      - Tue, 24 Oct 2017 07:45:32 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -287,5 +269,5 @@ http_interactions:
       encoding: UTF-8
       string: '{"errorMsg":"actionPlugin: -does-not-exist- not found"}'
     http_version: 
-  recorded_at: Tue, 25 Apr 2017 15:11:07 GMT
+  recorded_at: Tue, 24 Oct 2017 07:45:32 GMT
 recorded_with: VCR 3.0.3

@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://localhost:8080/hawkular/alerts/events?categories=my-category-01,my-category-02
+    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/events?categories=my-category-01,my-category-02
     body:
       encoding: US-ASCII
       string: ''
@@ -17,9 +17,6 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
-      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
-
-'
   response:
     status:
       code: 200
@@ -36,7 +33,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 25 Apr 2017 15:11:10 GMT
+      - Tue, 24 Oct 2017 07:45:35 GMT
       X-Total-Count:
       - '4'
       Connection:
@@ -51,11 +48,11 @@ http_interactions:
         rel="last"
     body:
       encoding: UTF-8
-      string: '[{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-07","ctime":1493133070000,"dataSource":"_none_","category":"my-category-01","text":"some
-        text for this event"},{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-05","ctime":1493133070000,"dataSource":"_none_","category":"my-category-02","text":"some
-        text for this event"},{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-03","ctime":1493133070000,"dataSource":"_none_","category":"my-category-01","text":"some
-        text for this event"},{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-02","ctime":1493133070000,"dataSource":"_none_","category":"my-category-01","text":"some
+      string: '[{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-07","ctime":1508831135000,"dataSource":"_none_","category":"my-category-01","text":"some
+        text for this event"},{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-05","ctime":1508831135000,"dataSource":"_none_","category":"my-category-02","text":"some
+        text for this event"},{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-03","ctime":1508831135000,"dataSource":"_none_","category":"my-category-01","text":"some
+        text for this event"},{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-02","ctime":1508831135000,"dataSource":"_none_","category":"my-category-01","text":"some
         text for this event"}]'
     http_version: 
-  recorded_at: Tue, 25 Apr 2017 15:11:10 GMT
+  recorded_at: Tue, 24 Oct 2017 07:45:35 GMT
 recorded_with: VCR 3.0.3

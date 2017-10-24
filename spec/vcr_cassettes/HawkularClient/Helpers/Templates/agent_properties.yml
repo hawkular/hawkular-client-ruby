@@ -31,15 +31,15 @@ http_interactions:
       Content-Type:
       - application/json
       Content-Length:
-      - '515'
+      - '531'
       Date:
-      - Thu, 19 Oct 2017 10:58:13 GMT
+      - Tue, 24 Oct 2017 07:34:20 GMT
     body:
       encoding: UTF-8
-      string: '{"results":[{"id":"e3f72e24aad4~Local JMX~org.<%= tenant_id %>:type=<%= tenant_id %>-javaagent","name":"Hawkular
-        WildFly Agent","feedId":"e3f72e24aad4","type":{"id":"Hawkular WildFly Agent","operations":[{"name":"Start","parameters":{}},{"name":"Stop","parameters":{}},{"name":"Status","parameters":{}},{"name":"Inventory
-        Discovery Scan","parameters":{}},{"name":"Inventory Report","parameters":{}}],"properties":{}},"metrics":[],"properties":{},"config":{"Immutable":"true","In
+      string: '{"results":[{"id":"cb2685b3078a~Local JMX~org.<%= tenant_id %>:type=<%= tenant_id %>-javaagent","name":"Hawkular
+        WildFly Agent","feedId":"cb2685b3078a","type":{"id":"Hawkular WildFly Agent","operations":[{"name":"Start","parameters":{}},{"name":"Stop","parameters":{}},{"name":"Status","parameters":{}},{"name":"Inventory
+        Discovery Scan","parameters":{}},{"name":"Inventory Report","parameters":{}}],"properties":{}},"parentId":null,"metrics":[],"properties":{},"config":{"Immutable":"true","In
         Container":"true"}}],"resultSize":1,"startOffset":0}'
     http_version: 
-  recorded_at: Thu, 19 Oct 2017 10:58:13 GMT
+  recorded_at: Tue, 24 Oct 2017 07:34:20 GMT
 recorded_with: VCR 3.0.3
