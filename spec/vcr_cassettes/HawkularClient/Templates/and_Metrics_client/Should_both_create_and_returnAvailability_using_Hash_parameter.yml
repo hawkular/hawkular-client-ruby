@@ -37,7 +37,7 @@ http_interactions:
       Location:
       - http://localhost:8080/hawkular/metrics/availability/<%= id1 %>
       Date:
-      - Wed, 18 Oct 2017 12:12:00 GMT
+      - Tue, 24 Oct 2017 07:34:17 GMT
       Connection:
       - keep-alive
       Content-Length:
@@ -46,7 +46,7 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Wed, 18 Oct 2017 12:12:00 GMT
+  recorded_at: Tue, 24 Oct 2017 07:34:17 GMT
 - request:
     method: get
     uri: http://jdoe:password@localhost:8080/hawkular/metrics/availability/<%= id1 %>
@@ -80,7 +80,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 18 Oct 2017 12:12:00 GMT
+      - Tue, 24 Oct 2017 07:34:17 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -91,7 +91,7 @@ http_interactions:
       encoding: UTF-8
       string: '{"id":"<%= id1 %>","tags":{"some":"value"},"dataRetention":123,"type":"availability","tenantId":"hawkular"}'
     http_version: 
-  recorded_at: Wed, 18 Oct 2017 12:12:00 GMT
+  recorded_at: Tue, 24 Oct 2017 07:34:17 GMT
 - request:
     method: post
     uri: http://jdoe:password@localhost:8080/hawkular/metrics/availability
@@ -129,7 +129,7 @@ http_interactions:
       Location:
       - http://localhost:8080/hawkular/metrics/availability/<%= id2 %>
       Date:
-      - Wed, 18 Oct 2017 12:12:00 GMT
+      - Tue, 24 Oct 2017 07:34:17 GMT
       Connection:
       - keep-alive
       Content-Length:
@@ -138,7 +138,7 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Wed, 18 Oct 2017 12:12:00 GMT
+  recorded_at: Tue, 24 Oct 2017 07:34:17 GMT
 - request:
     method: get
     uri: http://jdoe:password@localhost:8080/hawkular/metrics/availability/<%= id2 %>
@@ -172,7 +172,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 18 Oct 2017 12:12:00 GMT
+      - Tue, 24 Oct 2017 07:34:17 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -183,5 +183,5 @@ http_interactions:
       encoding: UTF-8
       string: '{"id":"<%= id2 %>","tags":{"some":"value"},"dataRetention":321,"type":"availability","tenantId":"hawkular"}'
     http_version: 
-  recorded_at: Wed, 18 Oct 2017 12:12:00 GMT
+  recorded_at: Tue, 24 Oct 2017 07:34:17 GMT
 recorded_with: VCR 3.0.3

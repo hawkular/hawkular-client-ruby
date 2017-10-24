@@ -33,12 +33,12 @@ http_interactions:
       Content-Length:
       - '150'
       Date:
-      - Wed, 18 Oct 2017 12:12:00 GMT
+      - Tue, 24 Oct 2017 07:34:17 GMT
     body:
       encoding: UTF-8
       string: '{"MetricsService":"STARTED","Implementation-Version":"0.26.1.Final","Built-From-Git-SHA1":"45b148c834ed62018f153c23187b4436ae4208fe","Cassandra":"up"}'
     http_version: 
-  recorded_at: Wed, 18 Oct 2017 12:12:00 GMT
+  recorded_at: Tue, 24 Oct 2017 07:34:17 GMT
 - request:
     method: get
     uri: http://jdoe:password@localhost:8080/hawkular/metrics/status
@@ -72,10 +72,10 @@ http_interactions:
       Content-Length:
       - '150'
       Date:
-      - Wed, 18 Oct 2017 12:12:00 GMT
+      - Tue, 24 Oct 2017 07:34:17 GMT
     body:
       encoding: UTF-8
       string: '{"MetricsService":"STARTED","Implementation-Version":"0.26.1.Final","Built-From-Git-SHA1":"45b148c834ed62018f153c23187b4436ae4208fe","Cassandra":"up"}'
     http_version: 
-  recorded_at: Wed, 18 Oct 2017 12:12:00 GMT
+  recorded_at: Tue, 24 Oct 2017 07:34:17 GMT
 recorded_with: VCR 3.0.3

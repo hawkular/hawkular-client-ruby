@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://localhost:8080/hawkular/alerts/?triggerIds=does-not-exist
+    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/?triggerIds=does-not-exist
     body:
       encoding: US-ASCII
       string: ''
@@ -17,9 +17,6 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
-      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
-
-'
   response:
     status:
       code: 200
@@ -36,7 +33,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 25 Apr 2017 15:11:09 GMT
+      - Tue, 24 Oct 2017 07:45:34 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -47,5 +44,5 @@ http_interactions:
       encoding: UTF-8
       string: "[]"
     http_version: 
-  recorded_at: Tue, 25 Apr 2017 15:11:09 GMT
+  recorded_at: Tue, 24 Oct 2017 07:45:34 GMT
 recorded_with: VCR 3.0.3
