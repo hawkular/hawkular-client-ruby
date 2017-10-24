@@ -3,7 +3,7 @@
     {
       "operation": "read",
       "type": "text",
-      "data": "WelcomeResponse={\"sessionId\":\"xzcCHFBLRkdmKs3bmwWyS9S4mWx2WJpbFTkZ30Dm\"}"
+      "data": "WelcomeResponse={\"sessionId\":\"xROjb5xbYZCF5DmtV0ZldLD9LGoraMVO5jlX2GmA\"}"
     },
     {
       "operation": "write",
@@ -12,12 +12,12 @@
     {
       "operation": "read",
       "type": "text",
-      "data": "GenericSuccessResponse={\"message\":\"The request has been forwarded to feed [<%= feed_id %>] (MessageId=ID:d2bf6ecb-b88d-11e7-ad2a-4bf18c0e78c4)\"}"
+      "data": "GenericSuccessResponse={\"message\":\"The request has been forwarded to feed [<%= feed_id %>] (MessageId=ID:e09b258a-b8cd-11e7-ad2a-4bf18c0e78c4)\"}"
     },
     {
       "operation": "read",
       "type": "text",
-      "data": "AddJdbcDriverResponse={\"feedId\":\"<%= feed_id %>\",\"resourceId\":\"<%= feed_id %>~Local~~\",\"senderRequestId\":\"**fixed id for tests**\",\"destinationSessionId\":\"xzcCHFBLRkdmKs3bmwWyS9S4mWx2WJpbFTkZ30Dm\",\"status\":\"ERROR\",\"message\":\"Could not perform [Add] on a [JDBC Driver] given by inventory path [<%= feed_id %>~Local~~] requested on [2017-10-24T07:34Z]: java.lang.IllegalStateException: Command not allowed because the agent is immutable\"}"
+      "data": "AddJdbcDriverResponse={\"feedId\":\"<%= feed_id %>\",\"resourceId\":\"<%= feed_id %>~Local~~\",\"senderRequestId\":\"**fixed id for tests**\",\"destinationSessionId\":\"xROjb5xbYZCF5DmtV0ZldLD9LGoraMVO5jlX2GmA\",\"status\":\"ERROR\",\"message\":\"Could not perform [Add] on a [JDBC Driver] given by inventory path [<%= feed_id %>~Local~~] requested on [2017-10-24T15:13Z]: java.lang.IllegalStateException: Command not allowed because the agent is immutable\"}"
     }
   ]
 ]

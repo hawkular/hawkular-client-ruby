@@ -3,7 +3,7 @@
     {
       "operation": "read",
       "type": "text",
-      "data": "WelcomeResponse={\"sessionId\":\"nd4HrjqUkyeg2zRg_EcUwWIbQsf4huyUgmPKcxVw\"}"
+      "data": "WelcomeResponse={\"sessionId\":\"ySnE47X0z8XYZI-ipv_tiOdt1XD-i_Q-6K9QV0qq\"}"
     },
     {
       "operation": "write",
@@ -12,12 +12,12 @@
     {
       "operation": "read",
       "type": "text",
-      "data": "GenericSuccessResponse={\"message\":\"The request has been forwarded to feed [<%= feed_id %>] (MessageId=ID:d41a4432-b88d-11e7-ad2a-4bf18c0e78c4)\"}"
+      "data": "GenericSuccessResponse={\"message\":\"The request has been forwarded to feed [<%= feed_id %>] (MessageId=ID:e1fa8ed1-b8cd-11e7-ad2a-4bf18c0e78c4)\"}"
     },
     {
       "operation": "read",
       "type": "text",
-      "data": "RestartApplicationResponse={\"destinationFileName\":\"non-existent.war\",\"feedId\":\"<%= feed_id %>\",\"resourceId\":\"<%= feed_id %>~Local~~\",\"senderRequestId\":\"**fixed id for tests**\",\"destinationSessionId\":\"nd4HrjqUkyeg2zRg_EcUwWIbQsf4huyUgmPKcxVw\",\"status\":\"ERROR\",\"message\":\"Could not perform [Restart Deployment] on a [Application] given by inventory path [<%= feed_id %>~Local~~] requested on [2017-10-24T07:34Z]: org.<%= tenant_id %>.dmrclient.FailureException: {\\\"WFLYCTL0062: Composite operation failed and was rolled back. Steps that failed:\\\" => {\\\"Operation step-1\\\" => \\\"WFLYCTL0216: Management resource '[(\\\\\\\"deployment\\\\\\\" => \\\\\\\"non-existent.war\\\\\\\")]' not found\\\"}}\"}"
+      "data": "RestartApplicationResponse={\"destinationFileName\":\"non-existent.war\",\"feedId\":\"<%= feed_id %>\",\"resourceId\":\"<%= feed_id %>~Local~~\",\"senderRequestId\":\"**fixed id for tests**\",\"destinationSessionId\":\"ySnE47X0z8XYZI-ipv_tiOdt1XD-i_Q-6K9QV0qq\",\"status\":\"ERROR\",\"message\":\"Could not perform [Restart Deployment] on a [Application] given by inventory path [<%= feed_id %>~Local~~] requested on [2017-10-24T15:13Z]: org.<%= tenant_id %>.dmrclient.FailureException: {\\\"WFLYCTL0062: Composite operation failed and was rolled back. Steps that failed:\\\" => {\\\"Operation step-1\\\" => \\\"WFLYCTL0216: Management resource '[(\\\\\\\"deployment\\\\\\\" => \\\\\\\"non-existent.war\\\\\\\")]' not found\\\"}}\"}"
     }
   ]
 ]
