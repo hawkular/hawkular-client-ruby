@@ -51,4 +51,52 @@ describe 'Inventory' do
       expect(resource.children_by_type('type-03', true).size).to eq(1)
     end
   end
+
+  describe '#ResultFetcher' do
+    it 'should fetch two first pages' do
+      batches = [[1, 2], [3, 4], [5]]
+      page_size = 2
+      calls_count = 0
+      fetch_func = lambda do |offset|
+        calls_count += 1
+        { 'startOffset' => offset, 'resultSize' => 5, 'results' => batches[offset / page_size] }
+      end
+      result_fetcher = Hawkular::Inventory::ResultFetcher.new(fetch_func)
+
+      # Take first three items, expecting 2 calls
+      values = result_fetcher.take(3)
+      expect(values).to eq([1, 2, 3])
+      expect(calls_count).to eq(2)
+    end
+
+    it 'should fetch all pages while asking more' do
+      batches = [[1, 2], [3, 4], [5]]
+      page_size = 2
+      calls_count = 0
+      fetch_func = lambda do |offset|
+        calls_count += 1
+        { 'startOffset' => offset, 'resultSize' => 5, 'results' => batches[offset / page_size] }
+      end
+      result_fetcher = Hawkular::Inventory::ResultFetcher.new(fetch_func)
+
+      # Take more, expecting 3 calls
+      values = result_fetcher.take(10)
+      expect(values).to eq([1, 2, 3, 4, 5])
+      expect(calls_count).to eq(3)
+    end
+
+    it 'should fetch all pages' do
+      batches = [[1, 2], [3, 4], [5]]
+      page_size = 2
+      calls_count = 0
+      fetch_func = lambda do |offset|
+        calls_count += 1
+        { 'startOffset' => offset, 'resultSize' => 5, 'results' => batches[offset / page_size] }
+      end
+      result_fetcher = Hawkular::Inventory::ResultFetcher.new(fetch_func)
+
+      expect(result_fetcher.collect { |i| i }).to eq([1, 2, 3, 4, 5])
+      expect(calls_count).to eq(3)
+    end
+  end
 end

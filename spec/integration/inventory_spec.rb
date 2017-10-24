@@ -13,7 +13,8 @@ describe 'Inventory' do
 
   before(:all) do
     record('Inventory', nil, 'get_client') do
-      @client = Hawkular::Client.new(entrypoint: HOST, options: {}).inventory
+      @client = Hawkular::Client.new(entrypoint: HOST).inventory
+      @shortpaged_client = Hawkular::Inventory::Client.create(entrypoint: HOST, page_size: 3)
     end
   end
 
@@ -91,5 +92,12 @@ describe 'Inventory' do
   it 'Should return the version' do
     data = @client.fetch_version_and_status
     expect(data).not_to be_nil
+  end
+
+  it 'Should list resources with pages' do
+    res = @shortpaged_client.root_resources
+    expect(res.size).to be(4)
+    expect(res.map { |r| r.type.id }).to include(
+      'Runtime MBean', 'WildFly Server', 'Platform_Operating System', 'Hawkular WildFly Agent')
   end
 end
