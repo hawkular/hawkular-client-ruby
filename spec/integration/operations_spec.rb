@@ -523,7 +523,7 @@ module Hawkular::Operations::RSpec
 
         it 'Export JDR should retrieve the zip file with the report' do
           actual_data = {}
-          client.export_jdr(@wf_server.id, @wf_server.feed, @req_id) do |on|
+          client.export_jdr(@wf_server.id, @wf_server.feed, false, @req_id) do |on|
             on.success do |data|
               actual_data[:data] = data
             end
