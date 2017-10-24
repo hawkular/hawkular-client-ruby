@@ -3,7 +3,7 @@
     {
       "operation": "read",
       "type": "text",
-      "data": "WelcomeResponse={\"sessionId\":\"shAxTU9gks30eQRlEjjCjgcK1SYWxa7f5S-K7QTG\"}"
+      "data": "WelcomeResponse={\"sessionId\":\"0N_aGiWkufSkKFhdDpZiQEzNLmSVjThvsJD4Fm-F\"}"
     },
     {
       "operation": "write",
@@ -12,12 +12,12 @@
     {
       "operation": "read",
       "type": "text",
-      "data": "GenericSuccessResponse={\"message\":\"The request has been forwarded to feed [<%= feed_id %>] (MessageId=ID:d36ee8eb-b88d-11e7-ad2a-4bf18c0e78c4)\"}"
+      "data": "GenericSuccessResponse={\"message\":\"The request has been forwarded to feed [<%= feed_id %>] (MessageId=ID:e14cc28a-b8cd-11e7-ad2a-4bf18c0e78c4)\"}"
     },
     {
       "operation": "read",
       "type": "text",
-      "data": "RestartApplicationResponse={\"destinationFileName\":\"<%= tenant_id %>-status.war\",\"feedId\":\"<%= feed_id %>\",\"resourceId\":\"<%= feed_id %>~Local~~\",\"senderRequestId\":\"**fixed id for tests**\",\"destinationSessionId\":\"shAxTU9gks30eQRlEjjCjgcK1SYWxa7f5S-K7QTG\",\"status\":\"OK\",\"message\":\"Performed [Restart Deployment] on a [Application] given by Feed Id [<%= feed_id %>] Resource Id [<%= feed_id %>~Local~~]\"}"
+      "data": "RestartApplicationResponse={\"destinationFileName\":\"<%= tenant_id %>-status.war\",\"feedId\":\"<%= feed_id %>\",\"resourceId\":\"<%= feed_id %>~Local~~\",\"senderRequestId\":\"**fixed id for tests**\",\"destinationSessionId\":\"0N_aGiWkufSkKFhdDpZiQEzNLmSVjThvsJD4Fm-F\",\"status\":\"OK\",\"message\":\"Performed [Restart Deployment] on a [Application] given by Feed Id [<%= feed_id %>] Resource Id [<%= feed_id %>~Local~~]\"}"
     }
   ]
 ]

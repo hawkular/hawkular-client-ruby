@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://jdoe:password@localhost:8080/<%= tenant_id %>/inventory/resources?typeId=Hawkular%20WildFly%20Agent
+    uri: http://localhost:8080/<%= tenant_id %>/inventory/resources?typeId=Hawkular%20WildFly%20Agent
     body:
       encoding: US-ASCII
       string: ''
@@ -17,6 +17,10 @@ http_interactions:
       - <%= tenant_id %>
       Content-Type:
       - application/json
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 200
@@ -33,7 +37,7 @@ http_interactions:
       Content-Length:
       - '531'
       Date:
-      - Tue, 24 Oct 2017 07:35:03 GMT
+      - Tue, 24 Oct 2017 15:14:59 GMT
     body:
       encoding: UTF-8
       string: '{"results":[{"id":"cb2685b3078a~Local JMX~org.<%= tenant_id %>:type=<%= tenant_id %>-javaagent","name":"Hawkular
@@ -41,5 +45,5 @@ http_interactions:
         Discovery Scan","parameters":{}},{"name":"Inventory Report","parameters":{}}],"properties":{}},"parentId":null,"metrics":[],"properties":{},"config":{"Immutable":"true","In
         Container":"true"}}],"resultSize":1,"startOffset":0}'
     http_version: 
-  recorded_at: Tue, 24 Oct 2017 07:35:03 GMT
+  recorded_at: Tue, 24 Oct 2017 15:14:59 GMT
 recorded_with: VCR 3.0.3
