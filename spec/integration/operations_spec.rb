@@ -1,5 +1,6 @@
 require_relative '../vcr/vcr_setup'
 require_relative '../spec_helper'
+require 'active_support/core_ext/object/blank'
 
 require 'securerandom'
 
