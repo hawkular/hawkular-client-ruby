@@ -53,7 +53,6 @@ describe 'Inventory' do
   end
 
   describe 'ResultFetcher' do
-
     batches = [[1, 2], [3, 4], [5]]
     page_size = 2
 
