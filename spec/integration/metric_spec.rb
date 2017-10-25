@@ -53,11 +53,11 @@ security_contexts.each do |security_context|
       end
 
       before(:all) do
-        @admin_token = ENV['ADMIN_TOKEN'] || SecureRandom.uuid
+        @admin_token = '123-456-789'
       end
 
       let(:vcr_bindings) do
-        { id: @random_id, vcr_test_tenant: vcr_test_tenant, admin_token: @admin_token }
+        { id: @random_id, vcr_test_tenant: vcr_test_tenant }
       end
 
       around(:each) do |example|
@@ -640,7 +640,7 @@ security_contexts.each do |security_context|
 
             data = @client.gauges.get(hawkular_mem_id)
 
-            expect(data).not_to be_nil
+            expect(data).not_to be_nil # needs the services to run for some time so that discovery is run (~5 min)
             expect(data.id).not_to be_nil
             expect(data.tenant_id).to eq(hawkular_tenant_id)
           end
@@ -661,7 +661,7 @@ security_contexts.each do |security_context|
             end
 
             data = @client.gauges.get_data(hawkular_mem_id)
-            expect(data.size).to be > 2 # needs the services to be running for more than 2 minutes
+            expect(data.size).to be > 2 # needs the services to be running for some time (~15 min)
           end
           record("Metrics/#{security_context}/#{metrics_context}",
                  vcr_bindings.merge(bindings),

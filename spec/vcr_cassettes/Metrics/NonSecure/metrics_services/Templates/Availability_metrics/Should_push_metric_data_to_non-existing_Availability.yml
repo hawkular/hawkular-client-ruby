@@ -2,10 +2,10 @@
 http_interactions:
 - request:
     method: post
-    uri: http://jdoe:password@localhost:8080/hawkular/metrics/availability/<%= id %>/raw
+    uri: http://localhost:8080/hawkular/metrics/availability/<%= id %>/raw
     body:
       encoding: UTF-8
-      string: '[{"value":"UP","timestamp":1508831023344}]'
+      string: '[{"value":"UP","timestamp":1508938984300}]'
     headers:
       Accept:
       - application/json
@@ -19,6 +19,10 @@ http_interactions:
       - application/json
       Content-Length:
       - '42'
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 200
@@ -39,15 +43,15 @@ http_interactions:
       Content-Length:
       - '0'
       Date:
-      - Tue, 24 Oct 2017 07:43:43 GMT
+      - Wed, 25 Oct 2017 13:43:04 GMT
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Tue, 24 Oct 2017 07:43:43 GMT
+  recorded_at: Wed, 25 Oct 2017 13:43:04 GMT
 - request:
     method: get
-    uri: http://jdoe:password@localhost:8080/hawkular/metrics/availability/<%= id %>/raw/
+    uri: http://localhost:8080/hawkular/metrics/availability/<%= id %>/raw/
     body:
       encoding: US-ASCII
       string: ''
@@ -62,6 +66,10 @@ http_interactions:
       - <%= vcr_test_tenant %>
       Content-Type:
       - application/json
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 200
@@ -78,7 +86,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 24 Oct 2017 07:43:43 GMT
+      - Wed, 25 Oct 2017 13:43:04 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -87,12 +95,12 @@ http_interactions:
       - '42'
     body:
       encoding: UTF-8
-      string: '[{"timestamp":1508831023344,"value":"up"}]'
+      string: '[{"timestamp":1508938984300,"value":"up"}]'
     http_version: 
-  recorded_at: Tue, 24 Oct 2017 07:43:43 GMT
+  recorded_at: Wed, 25 Oct 2017 13:43:04 GMT
 - request:
     method: get
-    uri: http://jdoe:password@localhost:8080/hawkular/metrics/availability/<%= id %>
+    uri: http://localhost:8080/hawkular/metrics/availability/<%= id %>
     body:
       encoding: US-ASCII
       string: ''
@@ -107,6 +115,10 @@ http_interactions:
       - <%= vcr_test_tenant %>
       Content-Type:
       - application/json
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 200
@@ -123,7 +135,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 24 Oct 2017 07:43:43 GMT
+      - Wed, 25 Oct 2017 13:43:04 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -132,7 +144,7 @@ http_interactions:
       - '231'
     body:
       encoding: UTF-8
-      string: '{"id":"<%= id %>","dataRetention":14,"type":"availability","tenantId":"<%= vcr_test_tenant %>","minTimestamp":1508831023344,"maxTimestamp":1508831023344}'
+      string: '{"id":"<%= id %>","dataRetention":14,"type":"availability","tenantId":"<%= vcr_test_tenant %>","minTimestamp":1508938984300,"maxTimestamp":1508938984300}'
     http_version: 
-  recorded_at: Tue, 24 Oct 2017 07:43:43 GMT
+  recorded_at: Wed, 25 Oct 2017 13:43:04 GMT
 recorded_with: VCR 3.0.3

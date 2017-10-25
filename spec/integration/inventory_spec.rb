@@ -12,8 +12,12 @@ describe 'Inventory' do
   end
 
   before(:all) do
+    @creds = {
+      username: 'jdoe',
+      password: 'password'
+    }
     record('Inventory', nil, 'get_client') do
-      @client = Hawkular::Client.new(entrypoint: HOST).inventory
+      @client = Hawkular::Client.new(entrypoint: HOST, options: {}, credentials: @creds).inventory
       @shortpaged_client = Hawkular::Inventory::Client.create(entrypoint: HOST, page_size: 3)
     end
   end

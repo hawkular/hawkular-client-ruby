@@ -3,7 +3,7 @@
     {
       "operation": "read",
       "type": "text",
-      "data": "WelcomeResponse={\"sessionId\":\"mPA-tQ8HREcBSSj9ewSTp6TLsQEph3Pc22_2NhnB\"}"
+      "data": "WelcomeResponse={\"sessionId\":\"1kmrcvrCrJenkbL0kpms88cO0ypBx1xJmb3upO8L\"}"
     },
     {
       "operation": "write",
@@ -12,12 +12,12 @@
     {
       "operation": "read",
       "type": "text",
-      "data": "GenericSuccessResponse={\"message\":\"The request has been forwarded to feed [<%= feed_id %>] (MessageId=ID:e358988e-b8cd-11e7-ad2a-4bf18c0e78c4)\"}"
+      "data": "GenericSuccessResponse={\"message\":\"The request has been forwarded to feed [<%= feed_id %>] (MessageId=ID:70a81aed-b98a-11e7-9f4f-e19207744f99)\"}"
     },
     {
       "operation": "read",
       "type": "text",
-      "data": "AddDatasourceResponse={\"xaDatasource\":false,\"feedId\":\"<%= feed_id %>\",\"resourceId\":\"<%= feed_id %>~Local~~\",\"senderRequestId\":\"**fixed id for tests**\",\"destinationSessionId\":\"mPA-tQ8HREcBSSj9ewSTp6TLsQEph3Pc22_2NhnB\",\"status\":\"ERROR\",\"message\":\"Could not perform [Add] on a [Datasource] given by inventory path [<%= feed_id %>~Local~~] requested on [2017-10-24T15:13Z]: java.lang.IllegalStateException: Command not allowed because the agent is immutable\"}"
+      "data": "AddDatasourceResponse={\"xaDatasource\":false,\"feedId\":\"<%= feed_id %>\",\"resourceId\":\"<%= feed_id %>~Local~~\",\"senderRequestId\":\"**fixed id for tests**\",\"destinationSessionId\":\"1kmrcvrCrJenkbL0kpms88cO0ypBx1xJmb3upO8L\",\"status\":\"ERROR\",\"message\":\"Could not perform [Add] on a [Datasource] given by inventory path [<%= feed_id %>~Local~~] requested on [2017-10-25T13:43Z]: java.lang.IllegalStateException: Command not allowed because the agent is immutable\"}"
     }
   ]
 ]

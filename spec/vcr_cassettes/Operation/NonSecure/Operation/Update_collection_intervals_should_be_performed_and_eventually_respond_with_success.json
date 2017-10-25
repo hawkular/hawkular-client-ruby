@@ -3,7 +3,7 @@
     {
       "operation": "read",
       "type": "text",
-      "data": "WelcomeResponse={\"sessionId\":\"Bhm4-aGkF6_xz-AlGNIL22ZbnS-6NWzingZyfE6_\"}"
+      "data": "WelcomeResponse={\"sessionId\":\"fBNobfQH3plME4l-8taNhvgcGnrpIOgWEFIW1mJQ\"}"
     },
     {
       "operation": "write",
@@ -12,12 +12,12 @@
     {
       "operation": "read",
       "type": "text",
-      "data": "GenericSuccessResponse={\"message\":\"The request has been forwarded to feed [<%= feed_id %>] (MessageId=ID:19cfc5c0-b8ce-11e7-ad2a-4bf18c0e78c4)\"}"
+      "data": "GenericSuccessResponse={\"message\":\"The request has been forwarded to feed [<%= feed_id %>] (MessageId=ID:a7d578bf-b98a-11e7-9f4f-e19207744f99)\"}"
     },
     {
       "operation": "read",
       "type": "text",
-      "data": "UpdateCollectionIntervalsResponse={\"feedId\":\"<%= feed_id %>\",\"resourceId\":\"<%= feed_id %>~Local JMX~org.<%= tenant_id %>:type=<%= tenant_id %>-javaagent\",\"senderRequestId\":\"**fixed id for tests**\",\"destinationSessionId\":\"Bhm4-aGkF6_xz-AlGNIL22ZbnS-6NWzingZyfE6_\",\"status\":\"ERROR\",\"message\":\"Could not perform [Update Collection Intervals] on a [Agent[JMX]] given by inventory path [<%= feed_id %>~Local JMX~org.<%= tenant_id %>:type=<%= tenant_id %>-javaagent] requested on [2017-10-24T15:14Z]: java.lang.IllegalStateException: Command not allowed because the agent is immutable\"}"
+      "data": "UpdateCollectionIntervalsResponse={\"feedId\":\"<%= feed_id %>\",\"resourceId\":\"<%= feed_id %>~Local JMX~org.<%= tenant_id %>:type=<%= tenant_id %>-javaagent\",\"senderRequestId\":\"**fixed id for tests**\",\"destinationSessionId\":\"fBNobfQH3plME4l-8taNhvgcGnrpIOgWEFIW1mJQ\",\"status\":\"ERROR\",\"message\":\"Could not perform [Update Collection Intervals] on a [Agent[JMX]] given by inventory path [<%= feed_id %>~Local JMX~org.<%= tenant_id %>:type=<%= tenant_id %>-javaagent] requested on [2017-10-25T13:44Z]: java.lang.IllegalStateException: Command not allowed because the agent is immutable\"}"
     }
   ]
 ]

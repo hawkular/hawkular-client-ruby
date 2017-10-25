@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: http://jdoe:password@localhost:8080/hawkular/metrics/counters
+    uri: http://localhost:8080/hawkular/metrics/counters
     body:
       encoding: UTF-8
       string: '{"id":"<%= id %>"}'
@@ -19,6 +19,10 @@ http_interactions:
       - application/json
       Content-Length:
       - '45'
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 201
@@ -37,7 +41,7 @@ http_interactions:
       Location:
       - http://localhost:8080/hawkular/metrics/counters/<%= id %>
       Date:
-      - Tue, 24 Oct 2017 07:43:43 GMT
+      - Wed, 25 Oct 2017 13:43:04 GMT
       Connection:
       - keep-alive
       Content-Length:
@@ -46,10 +50,10 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Tue, 24 Oct 2017 07:43:43 GMT
+  recorded_at: Wed, 25 Oct 2017 13:43:04 GMT
 - request:
     method: post
-    uri: http://jdoe:password@localhost:8080/hawkular/metrics/counters/<%= id %>/raw
+    uri: http://localhost:8080/hawkular/metrics/counters/<%= id %>/raw
     body:
       encoding: UTF-8
       string: '[{"value":110,"timestamp":<%= minus110 %>},{"value":100,"timestamp":<%= minus100 %>},{"value":90,"timestamp":<%= minus90 %>},{"value":80,"timestamp":<%= minus80 %>},{"value":70,"timestamp":<%= minus70 %>},{"value":60,"timestamp":<%= minus60 %>},{"value":50,"timestamp":<%= minus50 %>},{"value":40,"timestamp":<%= minus40 %>},{"value":30,"timestamp":<%= minus30 %>},{"value":20,"timestamp":<%= minus20 %>},{"value":10,"timestamp":<%= minus10 %>}]'
@@ -66,6 +70,10 @@ http_interactions:
       - application/json
       Content-Length:
       - '432'
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 200
@@ -86,15 +94,15 @@ http_interactions:
       Content-Length:
       - '0'
       Date:
-      - Tue, 24 Oct 2017 07:43:43 GMT
+      - Wed, 25 Oct 2017 13:43:04 GMT
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Tue, 24 Oct 2017 07:43:43 GMT
+  recorded_at: Wed, 25 Oct 2017 13:43:04 GMT
 - request:
     method: get
-    uri: http://jdoe:password@localhost:8080/hawkular/metrics/counters/<%= id %>/stats/?buckets=5&end=<%= minus5 %>&start=<%= minus105 %>
+    uri: http://localhost:8080/hawkular/metrics/counters/<%= id %>/stats/?buckets=5&end=<%= minus5 %>&start=<%= minus105 %>
     body:
       encoding: US-ASCII
       string: ''
@@ -109,6 +117,10 @@ http_interactions:
       - <%= vcr_test_tenant %>
       Content-Type:
       - application/json
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 200
@@ -125,7 +137,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 24 Oct 2017 07:43:43 GMT
+      - Wed, 25 Oct 2017 13:43:04 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -134,12 +146,12 @@ http_interactions:
       - '645'
     body:
       encoding: UTF-8
-      string: '[{"start":<%= minus105 %>,"end":1508831023162,"min":90.0,"avg":95.0,"median":90.0,"max":100.0,"sum":190.0,"samples":2,"empty":false},{"start":1508831023162,"end":1508831023182,"min":70.0,"avg":75.0,"median":70.0,"max":80.0,"sum":150.0,"samples":2,"empty":false},{"start":1508831023182,"end":1508831023202,"min":50.0,"avg":55.0,"median":50.0,"max":60.0,"sum":110.0,"samples":2,"empty":false},{"start":1508831023202,"end":1508831023222,"min":30.0,"avg":35.0,"median":30.0,"max":40.0,"sum":70.0,"samples":2,"empty":false},{"start":1508831023222,"end":<%= minus5 %>,"min":10.0,"avg":15.0,"median":10.0,"max":20.0,"sum":30.0,"samples":2,"empty":false}]'
+      string: '[{"start":<%= minus105 %>,"end":1508938984105,"min":90.0,"avg":95.0,"median":90.0,"max":100.0,"sum":190.0,"samples":2,"empty":false},{"start":1508938984105,"end":1508938984125,"min":70.0,"avg":75.0,"median":70.0,"max":80.0,"sum":150.0,"samples":2,"empty":false},{"start":1508938984125,"end":1508938984145,"min":50.0,"avg":55.0,"median":50.0,"max":60.0,"sum":110.0,"samples":2,"empty":false},{"start":1508938984145,"end":1508938984165,"min":30.0,"avg":35.0,"median":30.0,"max":40.0,"sum":70.0,"samples":2,"empty":false},{"start":1508938984165,"end":<%= minus5 %>,"min":10.0,"avg":15.0,"median":10.0,"max":20.0,"sum":30.0,"samples":2,"empty":false}]'
     http_version: 
-  recorded_at: Tue, 24 Oct 2017 07:43:43 GMT
+  recorded_at: Wed, 25 Oct 2017 13:43:04 GMT
 - request:
     method: get
-    uri: http://jdoe:password@localhost:8080/hawkular/metrics/counters/<%= id %>/stats/?buckets=2&end=<%= minus5 %>&start=<%= minus105 %>
+    uri: http://localhost:8080/hawkular/metrics/counters/<%= id %>/stats/?buckets=2&end=<%= minus5 %>&start=<%= minus105 %>
     body:
       encoding: US-ASCII
       string: ''
@@ -154,6 +166,10 @@ http_interactions:
       - <%= vcr_test_tenant %>
       Content-Type:
       - application/json
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 200
@@ -170,7 +186,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 24 Oct 2017 07:43:43 GMT
+      - Wed, 25 Oct 2017 13:43:04 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -179,12 +195,12 @@ http_interactions:
       - '260'
     body:
       encoding: UTF-8
-      string: '[{"start":<%= minus105 %>,"end":1508831023192,"min":60.0,"avg":80.0,"median":80.0,"max":100.0,"sum":400.0,"samples":5,"empty":false},{"start":1508831023192,"end":<%= minus5 %>,"min":10.0,"avg":30.0,"median":30.0,"max":50.0,"sum":150.0,"samples":5,"empty":false}]'
+      string: '[{"start":<%= minus105 %>,"end":1508938984135,"min":60.0,"avg":80.0,"median":80.0,"max":100.0,"sum":400.0,"samples":5,"empty":false},{"start":1508938984135,"end":<%= minus5 %>,"min":10.0,"avg":30.0,"median":30.0,"max":50.0,"sum":150.0,"samples":5,"empty":false}]'
     http_version: 
-  recorded_at: Tue, 24 Oct 2017 07:43:43 GMT
+  recorded_at: Wed, 25 Oct 2017 13:43:04 GMT
 - request:
     method: get
-    uri: http://jdoe:password@localhost:8080/hawkular/metrics/counters/<%= id %>/stats/?bucketDuration=50ms&end=<%= minus5 %>&start=<%= minus105 %>
+    uri: http://localhost:8080/hawkular/metrics/counters/<%= id %>/stats/?bucketDuration=50ms&end=<%= minus5 %>&start=<%= minus105 %>
     body:
       encoding: US-ASCII
       string: ''
@@ -199,6 +215,10 @@ http_interactions:
       - <%= vcr_test_tenant %>
       Content-Type:
       - application/json
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 200
@@ -215,7 +235,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 24 Oct 2017 07:43:43 GMT
+      - Wed, 25 Oct 2017 13:43:04 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -224,7 +244,7 @@ http_interactions:
       - '260'
     body:
       encoding: UTF-8
-      string: '[{"start":<%= minus105 %>,"end":1508831023192,"min":60.0,"avg":80.0,"median":80.0,"max":100.0,"sum":400.0,"samples":5,"empty":false},{"start":1508831023192,"end":<%= minus5 %>,"min":10.0,"avg":30.0,"median":30.0,"max":50.0,"sum":150.0,"samples":5,"empty":false}]'
+      string: '[{"start":<%= minus105 %>,"end":1508938984135,"min":60.0,"avg":80.0,"median":80.0,"max":100.0,"sum":400.0,"samples":5,"empty":false},{"start":1508938984135,"end":<%= minus5 %>,"min":10.0,"avg":30.0,"median":30.0,"max":50.0,"sum":150.0,"samples":5,"empty":false}]'
     http_version: 
-  recorded_at: Tue, 24 Oct 2017 07:43:43 GMT
+  recorded_at: Wed, 25 Oct 2017 13:43:04 GMT
 recorded_with: VCR 3.0.3

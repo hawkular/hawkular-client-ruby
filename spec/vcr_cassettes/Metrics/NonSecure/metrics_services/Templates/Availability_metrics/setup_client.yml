@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://jdoe:password@localhost:8080/hawkular/metrics/status
+    uri: http://localhost:8080/hawkular/metrics/status
     body:
       encoding: US-ASCII
       string: ''
@@ -14,9 +14,13 @@ http_interactions:
       User-Agent:
       - hawkular-client-ruby
       Hawkular-Tenant:
-      - <%= type %>metrics_services-vcr-tenant-1a972950-6e85-4c51-9851-549257713419
+      - <%= type %>metrics_services-vcr-tenant-d29c09dc-7de7-415a-af0b-c1c8d38faaba
       Content-Type:
       - application/json
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 200
@@ -33,10 +37,10 @@ http_interactions:
       Content-Length:
       - '150'
       Date:
-      - Tue, 24 Oct 2017 07:43:43 GMT
+      - Wed, 25 Oct 2017 13:43:04 GMT
     body:
       encoding: UTF-8
       string: '{"MetricsService":"STARTED","Implementation-Version":"0.26.1.Final","Built-From-Git-SHA1":"45b148c834ed62018f153c23187b4436ae4208fe","Cassandra":"up"}'
     http_version: 
-  recorded_at: Tue, 24 Oct 2017 07:43:43 GMT
+  recorded_at: Wed, 25 Oct 2017 13:43:04 GMT
 recorded_with: VCR 3.0.3

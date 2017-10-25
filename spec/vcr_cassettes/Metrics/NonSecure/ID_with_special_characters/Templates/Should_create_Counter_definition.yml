@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: http://jdoe:password@localhost:8080/hawkular/metrics/counters
+    uri: http://localhost:8080/hawkular/metrics/counters
     body:
       encoding: UTF-8
       string: '{"id":"AA~R~[8b*}{''\\14#?/5-7%92[d-c9_.r1///7;:4eddf/L=c~~]~MT~  %-Met@ics~Aggre&?ated
@@ -20,6 +20,10 @@ http_interactions:
       - application/json
       Content-Length:
       - '142'
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 201
@@ -38,7 +42,7 @@ http_interactions:
       Location:
       - http://localhost:8080/hawkular/metrics/counters/AA~R~%5B8b*%7D%7B'%5C14%23%3F%2F5-7%2592%5Bd-c9_.r1%2F%2F%2F7;:4eddf%2FL=c~~%5D~MT~%20%20%25-Met@ics~Aggre&%3Fated%20%22%20Sess%7Bons
       Date:
-      - Tue, 24 Oct 2017 07:43:44 GMT
+      - Wed, 25 Oct 2017 13:43:05 GMT
       Connection:
       - keep-alive
       Content-Length:
@@ -47,10 +51,10 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Tue, 24 Oct 2017 07:43:44 GMT
+  recorded_at: Wed, 25 Oct 2017 13:43:05 GMT
 - request:
     method: get
-    uri: http://jdoe:password@localhost:8080/hawkular/metrics/counters/AA~R~%5B8b*%7D%7B'%5C14%23%3F%2F5-7%2592%5Bd-c9_.r1%2F%2F%2F7;:4eddf%2FL=c~~%5D~MT~%20%20%25-Met@ics~Aggre&%3Fated%20%22%20Sess%7Bons
+    uri: http://localhost:8080/hawkular/metrics/counters/AA~R~%5B8b*%7D%7B'%5C14%23%3F%2F5-7%2592%5Bd-c9_.r1%2F%2F%2F7;:4eddf%2FL=c~~%5D~MT~%20%20%25-Met@ics~Aggre&%3Fated%20%22%20Sess%7Bons
     body:
       encoding: US-ASCII
       string: ''
@@ -65,6 +69,10 @@ http_interactions:
       - <%= vcr_test_tenant %>
       Content-Type:
       - application/json
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 200
@@ -81,7 +89,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 24 Oct 2017 07:43:44 GMT
+      - Wed, 25 Oct 2017 13:43:05 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -93,5 +101,5 @@ http_interactions:
       string: '{"id":"AA~R~[8b*}{''\\14#?/5-7%92[d-c9_.r1///7;:4eddf/L=c~~]~MT~  %-Met@ics~Aggre&?ated
         \" Sess{ons","tags":{"tag":"value"},"dataRetention":90,"type":"counter","tenantId":"<%= vcr_test_tenant %>"}'
     http_version: 
-  recorded_at: Tue, 24 Oct 2017 07:43:44 GMT
+  recorded_at: Wed, 25 Oct 2017 13:43:05 GMT
 recorded_with: VCR 3.0.3

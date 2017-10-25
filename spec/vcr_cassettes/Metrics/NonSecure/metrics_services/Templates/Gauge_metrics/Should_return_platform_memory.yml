@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://jdoe:password@localhost:8080/<%= tenant %>/metrics/status
+    uri: http://localhost:8080/<%= tenant %>/metrics/status
     body:
       encoding: US-ASCII
       string: ''
@@ -17,6 +17,10 @@ http_interactions:
       - <%= tenant %>
       Content-Type:
       - application/json
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 200
@@ -33,15 +37,15 @@ http_interactions:
       Content-Length:
       - '150'
       Date:
-      - Tue, 24 Oct 2017 07:43:43 GMT
+      - Wed, 25 Oct 2017 13:43:04 GMT
     body:
       encoding: UTF-8
       string: '{"MetricsService":"STARTED","Implementation-Version":"0.26.1.Final","Built-From-Git-SHA1":"45b148c834ed62018f153c23187b4436ae4208fe","Cassandra":"up"}'
     http_version: 
-  recorded_at: Tue, 24 Oct 2017 07:43:43 GMT
+  recorded_at: Wed, 25 Oct 2017 13:43:04 GMT
 - request:
     method: get
-    uri: http://jdoe:password@localhost:8080/<%= tenant %>/inventory/status
+    uri: http://localhost:8080/<%= tenant %>/inventory/status
     body:
       encoding: US-ASCII
       string: ''
@@ -56,6 +60,10 @@ http_interactions:
       - <%= tenant %>
       Content-Type:
       - application/json
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 200
@@ -72,15 +80,15 @@ http_interactions:
       Content-Length:
       - '173'
       Date:
-      - Tue, 24 Oct 2017 07:43:43 GMT
+      - Wed, 25 Oct 2017 13:43:04 GMT
     body:
       encoding: UTF-8
       string: '{"Implementation-Version":"0.9.8.Final-SRC-revision-ce866b1ade2d7413f055f461eb36d004ff2888d8","Built-From-Git-SHA1":"ce866b1ade2d7413f055f461eb36d004ff2888d8","status":"UP"}'
     http_version: 
-  recorded_at: Tue, 24 Oct 2017 07:43:43 GMT
+  recorded_at: Wed, 25 Oct 2017 13:43:04 GMT
 - request:
     method: get
-    uri: http://jdoe:password@localhost:8080/<%= tenant %>/inventory/resources?typeId=Platform_Memory
+    uri: http://localhost:8080/<%= tenant %>/inventory/resources?typeId=Platform_Memory
     body:
       encoding: US-ASCII
       string: ''
@@ -95,50 +103,10 @@ http_interactions:
       - <%= tenant %>
       Content-Type:
       - application/json
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Connection:
-      - keep-alive
-      X-Powered-By:
-      - Undertow/1
-      Server:
-      - WildFly/10
-      Content-Type:
-      - application/json
-      Content-Length:
-      - '1020'
-      Date:
-      - Tue, 24 Oct 2017 07:43:43 GMT
-    body:
-      encoding: UTF-8
-      string: '{"results":[{"id":"cb2685b3078a~platform~/OPERATING_SYSTEM=cb2685b3078a_OperatingSystem/MEMORY=Memory","name":"Memory","feedId":"cb2685b3078a","type":{"id":"Platform_Memory","operations":[],"properties":{}},"parentId":"cb2685b3078a~platform~/OPERATING_SYSTEM=cb2685b3078a_OperatingSystem","metrics":[{"name":"Total
-        Memory","type":"Total Memory","unit":"BYTES","properties":{"<%= tenant %>.metric.typeId":"Platform_Memory_Total
-        Memory","<%= tenant %>.metric.type":"GAUGE","<%= tenant %>.metric.id":"MI~R~[cb2685b3078a/cb2685b3078a~platform~/OPERATING_SYSTEM=cb2685b3078a_OperatingSystem/MEMORY=Memory]~MT~Platform_Memory_Total
-        Memory"}},{"name":"Available Memory","type":"Available Memory","unit":"BYTES","properties":{"<%= tenant %>.metric.typeId":"Platform_Memory_Available
-        Memory","<%= tenant %>.metric.type":"GAUGE","<%= tenant %>.metric.id":"MI~R~[cb2685b3078a/cb2685b3078a~platform~/OPERATING_SYSTEM=cb2685b3078a_OperatingSystem/MEMORY=Memory]~MT~Platform_Memory_Available
-        Memory"}}],"properties":{},"config":{}}],"resultSize":1,"startOffset":0}'
-    http_version: 
-  recorded_at: Tue, 24 Oct 2017 07:43:43 GMT
-- request:
-    method: get
-    uri: http://jdoe:password@localhost:8080/<%= tenant %>/metrics/gauges/MI~R~%5Bcb2685b3078a%2Fcb2685b3078a~platform~%2FOPERATING_SYSTEM=cb2685b3078a_OperatingSystem%2FMEMORY=Memory%5D~MT~Platform_Memory_Total%20Memory/raw/
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Accept:
-      - application/json
-      Accept-Encoding:
-      - identity
-      User-Agent:
-      - <%= tenant %>-client-ruby
-      Hawkular-Tenant:
-      - <%= tenant %>
-      Content-Type:
-      - application/json
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 200
@@ -155,7 +123,61 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 24 Oct 2017 07:43:43 GMT
+      - Wed, 25 Oct 2017 13:43:04 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '1020'
+    body:
+      encoding: UTF-8
+      string: '{"results":[{"id":"716e7f866181~platform~/OPERATING_SYSTEM=716e7f866181_OperatingSystem/MEMORY=Memory","name":"Memory","feedId":"716e7f866181","type":{"id":"Platform_Memory","operations":[],"properties":{}},"parentId":"716e7f866181~platform~/OPERATING_SYSTEM=716e7f866181_OperatingSystem","metrics":[{"name":"Total
+        Memory","type":"Total Memory","unit":"BYTES","properties":{"<%= tenant %>.metric.typeId":"Platform_Memory_Total
+        Memory","<%= tenant %>.metric.type":"GAUGE","<%= tenant %>.metric.id":"MI~R~[716e7f866181/716e7f866181~platform~/OPERATING_SYSTEM=716e7f866181_OperatingSystem/MEMORY=Memory]~MT~Platform_Memory_Total
+        Memory"}},{"name":"Available Memory","type":"Available Memory","unit":"BYTES","properties":{"<%= tenant %>.metric.typeId":"Platform_Memory_Available
+        Memory","<%= tenant %>.metric.type":"GAUGE","<%= tenant %>.metric.id":"MI~R~[716e7f866181/716e7f866181~platform~/OPERATING_SYSTEM=716e7f866181_OperatingSystem/MEMORY=Memory]~MT~Platform_Memory_Available
+        Memory"}}],"properties":{},"config":{}}],"resultSize":1,"startOffset":0}'
+    http_version: 
+  recorded_at: Wed, 25 Oct 2017 13:43:04 GMT
+- request:
+    method: get
+    uri: http://localhost:8080/<%= tenant %>/metrics/gauges/MI~R~%5B716e7f866181%2F716e7f866181~platform~%2FOPERATING_SYSTEM=716e7f866181_OperatingSystem%2FMEMORY=Memory%5D~MT~Platform_Memory_Total%20Memory/raw/
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - <%= tenant %>-client-ruby
+      Hawkular-Tenant:
+      - <%= tenant %>
+      Content-Type:
+      - application/json
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Wed, 25 Oct 2017 13:43:04 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -164,7 +186,7 @@ http_interactions:
       - '157'
     body:
       encoding: UTF-8
-      string: '[{"timestamp":1508831002024,"value":1.6233447424E10},{"timestamp":1508830701060,"value":1.6233447424E10},{"timestamp":1508830401033,"value":1.6233447424E10}]'
+      string: '[{"timestamp":1508938954023,"value":1.6233447424E10},{"timestamp":1508938654053,"value":1.6233447424E10},{"timestamp":1508938354079,"value":1.6233447424E10}]'
     http_version: 
-  recorded_at: Tue, 24 Oct 2017 07:43:43 GMT
+  recorded_at: Wed, 25 Oct 2017 13:43:04 GMT
 recorded_with: VCR 3.0.3

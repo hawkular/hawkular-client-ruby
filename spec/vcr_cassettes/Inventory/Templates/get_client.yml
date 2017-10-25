@@ -15,6 +15,10 @@ http_interactions:
       - hawkular-client-ruby
       Content-Type:
       - application/json
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 200
@@ -31,10 +35,10 @@ http_interactions:
       Content-Length:
       - '173'
       Date:
-      - Fri, 20 Oct 2017 14:11:45 GMT
+      - Wed, 25 Oct 2017 13:43:03 GMT
     body:
       encoding: UTF-8
       string: '{"Implementation-Version":"0.9.8.Final-SRC-revision-ce866b1ade2d7413f055f461eb36d004ff2888d8","Built-From-Git-SHA1":"ce866b1ade2d7413f055f461eb36d004ff2888d8","status":"UP"}'
     http_version: 
-  recorded_at: Fri, 20 Oct 2017 14:11:45 GMT
+  recorded_at: Wed, 25 Oct 2017 13:43:03 GMT
 recorded_with: VCR 3.0.3

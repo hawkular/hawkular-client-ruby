@@ -13,6 +13,8 @@ http_interactions:
       - "*/*"
       User-Agent:
       - Ruby
+      Host:
+      - localhost:8080
   response:
     status:
       code: 401
@@ -29,7 +31,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 24 Oct 2017 07:43:42 GMT
+      - Wed, 25 Oct 2017 13:43:03 GMT
       Connection:
       - keep-alive
       Www-Authenticate:
@@ -42,5 +44,5 @@ http_interactions:
       encoding: UTF-8
       string: "<html><head><title>Error</title></head><body>Unauthorized</body></html>"
     http_version: 
-  recorded_at: Tue, 24 Oct 2017 07:43:42 GMT
+  recorded_at: Wed, 25 Oct 2017 13:43:03 GMT
 recorded_with: VCR 3.0.3
