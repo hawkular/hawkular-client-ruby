@@ -52,10 +52,12 @@ describe 'Inventory' do
     end
   end
 
-  describe '#ResultFetcher' do
-    it 'should fetch two first pages' do
-      batches = [[1, 2], [3, 4], [5]]
-      page_size = 2
+  describe 'ResultFetcher' do
+
+    batches = [[1, 2], [3, 4], [5]]
+    page_size = 2
+
+    it 'fetches two first pages' do
       calls_count = 0
       fetch_func = lambda do |offset|
         calls_count += 1
@@ -69,9 +71,7 @@ describe 'Inventory' do
       expect(calls_count).to eq(2)
     end
 
-    it 'should fetch all pages while asking more' do
-      batches = [[1, 2], [3, 4], [5]]
-      page_size = 2
+    it 'fetches all pages while asking more' do
       calls_count = 0
       fetch_func = lambda do |offset|
         calls_count += 1
@@ -85,9 +85,7 @@ describe 'Inventory' do
       expect(calls_count).to eq(3)
     end
 
-    it 'should fetch all pages' do
-      batches = [[1, 2], [3, 4], [5]]
-      page_size = 2
+    it 'fetches all pages' do
       calls_count = 0
       fetch_func = lambda do |offset|
         calls_count += 1
