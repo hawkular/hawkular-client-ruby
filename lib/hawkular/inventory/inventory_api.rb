@@ -13,12 +13,13 @@ module Hawkular::Inventory
     #   http://localhost:8080/hawkular/inventory
     # @param credentials [Hash{String=>String}] Hash of username, password, token(optional)
     # @param options [Hash{String=>String}] Additional rest client options
-    def initialize(entrypoint = nil, credentials = {}, options = {})
+    def initialize(entrypoint = nil, credentials = {}, options = {}, page_size = nil)
       entrypoint = normalize_entrypoint_url entrypoint, 'hawkular/inventory'
       @entrypoint = entrypoint
       super(entrypoint, credentials, options)
       version = fetch_version_and_status['Implementation-Version']
       @version = version.scan(/\d+/).map(&:to_i)
+      @page_size = page_size || 100
     end
 
     # Creates a new Inventory Client
@@ -30,7 +31,7 @@ module Hawkular::Inventory
 
       hash[:credentials] ||= {}
       hash[:options] ||= {}
-      Client.new(hash[:entrypoint], hash[:credentials], hash[:options])
+      Client.new(hash[:entrypoint], hash[:credentials], hash[:options], hash[:page_size])
     end
 
     # Get single resource by id
@@ -61,9 +62,8 @@ module Hawkular::Inventory
     end
 
     # List root resources
-    # @return [Array<Resource>] List of resources
+    # @return [Enumeration<Resource>] Lazy-loaded Enumeration of resources
     def root_resources
-      # FIXME: pagination => lazy-loaded list with ruby?
       resources root: 'true'
     end
 
@@ -72,17 +72,22 @@ module Hawkular::Inventory
     # @option filter :root If truthy, only get root resources
     # @option filter :feedId Filter by feed id
     # @option filter :typeId Filter by type id
+    # @return [Enumeration<Resource>] Lazy-loaded Enumeration of resources
     def resources(filter = {})
-      # FIXME: pagination => lazy-loaded list with ruby?
       filter[:root] = !filter[:root].nil? if filter.key? :root
-      filter_query = '?' + filter.keys.join('=%s&') + '=%s' unless filter.empty?
-      http_get(url("/resources#{filter_query}", *filter.values))['results'].map { |r| Resource.new(r) }
+      filter[:maxResults] = @page_size
+
+      fetch_func = lambda do |offset|
+        filter[:startOffSet] = offset
+        filter_query = '?' + filter.keys.join('=%s&') + '=%s' unless filter.empty?
+        http_get(url("/resources#{filter_query}", *filter.values))
+      end
+      ResultFetcher.new(fetch_func).map { |r| Resource.new(r) }
     end
 
     # List resources for type
-    # @return [Array<Resource>] List of resources
+    # @return [Enumeration<Resource>] Lazy-loaded Enumeration of resources
     def resources_for_type(type)
-      # FIXME: pagination => lazy-loaded list with ruby?
       resources typeId: type
     end
 
@@ -91,6 +96,26 @@ module Hawkular::Inventory
     #         ('Implementation-Version', 'Built-From-Git-SHA1', 'Status')
     def fetch_version_and_status
       http_get('/status')
+    end
+  end
+
+  # Lazy fetching results, based on Inventory "ResultSet" model
+  class ResultFetcher
+    include Enumerable
+
+    def initialize(fetcher)
+      @fetcher = fetcher
+    end
+
+    def each
+      offset = 0
+      loop do
+        result_set = @fetcher.call(offset)
+        results = result_set['results']
+        results.each { |r| yield(r) }
+        offset += results.length
+        break if offset >= result_set['resultSize']
+      end
     end
   end
 end
