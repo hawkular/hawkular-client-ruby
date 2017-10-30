@@ -24,6 +24,10 @@ module Hawkular::Inventory
     def hawkular_type
       @properties.fetch('hawkular.metric.type')
     end
+
+    def hawkular_type_id
+      @properties.fetch('hawkular.metric.typeId')
+    end
   end
 
   class Operation
@@ -106,6 +110,15 @@ module Hawkular::Inventory
 
     def children_by_type(type, recursive = false)
       children(recursive).select { |c| c.type.id == type }
+    end
+
+    def metrics(recursive = false)
+      return @metrics unless recursive == true
+      children(recursive).collect(&:metrics).flat_map(&:itself).concat(@metrics)
+    end
+
+    def metrics_by_type(type)
+      @metrics.select { |m| m.type == type }
     end
 
     def ==(other)
