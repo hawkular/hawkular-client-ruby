@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://localhost:8080/hawkular/alerts/plugins/email
+    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/plugins/email
     body:
       encoding: US-ASCII
       string: ''
@@ -17,9 +17,6 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
-      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
-
-'
   response:
     status:
       code: 200
@@ -36,7 +33,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 25 Apr 2017 15:11:07 GMT
+      - Tue, 24 Oct 2017 07:45:32 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -47,10 +44,10 @@ http_interactions:
       encoding: UTF-8
       string: '["cc","from","from-name","mail","template.hawkular.url","template.html","template.plain","to"]'
     http_version: 
-  recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
+  recorded_at: Tue, 24 Oct 2017 07:45:32 GMT
 - request:
     method: post
-    uri: http://localhost:8080/hawkular/alerts/actions
+    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/actions
     body:
       encoding: UTF-8
       string: '{"actionId":"my-id3","actionPlugin":"email","properties":{"foo":"bar"}}'
@@ -67,9 +64,6 @@ http_interactions:
       - application/json
       Content-Length:
       - '71'
-      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
-
-'
   response:
     status:
       code: 400
@@ -86,7 +80,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 25 Apr 2017 15:11:08 GMT
+      - Tue, 24 Oct 2017 07:45:32 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -98,5 +92,5 @@ http_interactions:
       string: '{"errorMsg":"Bad arguments: java.lang.IllegalArgumentException: Property:
         foo is not valid on plugin: email"}'
     http_version: 
-  recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
+  recorded_at: Tue, 24 Oct 2017 07:45:32 GMT
 recorded_with: VCR 3.0.3

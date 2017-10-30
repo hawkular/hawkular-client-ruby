@@ -231,7 +231,8 @@ module Hawkular::Client::RSpec
           restart = {
             resource_id: wf_server.id,
             feed_id: wf_server.feed,
-            deployment_name: 'hawkular-status.war'
+            deployment_name: 'hawkular-status.war',
+            sender_request_id: '**fixed-req-id**'
           }
 
           actual_data = {}
@@ -250,6 +251,7 @@ module Hawkular::Client::RSpec
 
           # now do the same on the main client
           actual_data = {}
+          restart[:sender_request_id] = '**another-fixed-req-id**'
           @hawkular_client.operations_restart_deployment(restart) do |on|
             on.success do |data|
               actual_data[:data] = data

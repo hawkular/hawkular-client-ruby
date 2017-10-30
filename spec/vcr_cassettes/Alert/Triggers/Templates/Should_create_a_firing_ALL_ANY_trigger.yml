@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: http://localhost:8080/hawkular/alerts/triggers/trigger
+    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/trigger
     body:
       encoding: UTF-8
       string: '{"trigger":{"id":"my-cool-trigger","name":"Just a trigger","enabled":true,"severity":"HIGH","description":"Just
@@ -20,9 +20,6 @@ http_interactions:
       - application/json
       Content-Length:
       - '174'
-      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
-
-'
   response:
     status:
       code: 200
@@ -39,7 +36,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 25 Apr 2017 15:11:07 GMT
+      - Tue, 24 Oct 2017 07:45:32 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -51,10 +48,10 @@ http_interactions:
       string: '{"trigger":{"tenantId":"hawkular","id":"my-cool-trigger","name":"Just
         a trigger","description":"Just a test trigger","type":"STANDARD","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"HIGH","autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","enabled":true,"firingMatch":"ALL","source":"_none_"}}'
     http_version: 
-  recorded_at: Tue, 25 Apr 2017 15:11:07 GMT
+  recorded_at: Tue, 24 Oct 2017 07:45:32 GMT
 - request:
     method: get
-    uri: http://localhost:8080/hawkular/alerts/triggers/my-cool-trigger
+    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/my-cool-trigger
     body:
       encoding: US-ASCII
       string: ''
@@ -69,9 +66,6 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
-      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
-
-'
   response:
     status:
       code: 200
@@ -88,7 +82,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 25 Apr 2017 15:11:07 GMT
+      - Tue, 24 Oct 2017 07:45:32 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -100,10 +94,10 @@ http_interactions:
       string: '{"tenantId":"hawkular","id":"my-cool-trigger","name":"Just a trigger","description":"Just
         a test trigger","type":"STANDARD","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"HIGH","autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","enabled":true,"firingMatch":"ALL","source":"_none_"}'
     http_version: 
-  recorded_at: Tue, 25 Apr 2017 15:11:07 GMT
+  recorded_at: Tue, 24 Oct 2017 07:45:32 GMT
 - request:
     method: get
-    uri: http://localhost:8080/hawkular/alerts/triggers/my-cool-trigger/conditions
+    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/my-cool-trigger/conditions
     body:
       encoding: US-ASCII
       string: ''
@@ -118,9 +112,6 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
-      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
-
-'
   response:
     status:
       code: 200
@@ -137,7 +128,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 25 Apr 2017 15:11:07 GMT
+      - Tue, 24 Oct 2017 07:45:32 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -148,10 +139,10 @@ http_interactions:
       encoding: UTF-8
       string: "[]"
     http_version: 
-  recorded_at: Tue, 25 Apr 2017 15:11:07 GMT
+  recorded_at: Tue, 24 Oct 2017 07:45:32 GMT
 - request:
     method: get
-    uri: http://localhost:8080/hawkular/alerts/triggers/my-cool-trigger/dampenings
+    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/my-cool-trigger/dampenings
     body:
       encoding: US-ASCII
       string: ''
@@ -166,9 +157,6 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
-      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
-
-'
   response:
     status:
       code: 200
@@ -185,7 +173,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 25 Apr 2017 15:11:07 GMT
+      - Tue, 24 Oct 2017 07:45:32 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -196,10 +184,10 @@ http_interactions:
       encoding: UTF-8
       string: "[]"
     http_version: 
-  recorded_at: Tue, 25 Apr 2017 15:11:07 GMT
+  recorded_at: Tue, 24 Oct 2017 07:45:32 GMT
 - request:
     method: delete
-    uri: http://localhost:8080/hawkular/alerts/triggers/my-cool-trigger
+    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/my-cool-trigger
     body:
       encoding: US-ASCII
       string: ''
@@ -214,9 +202,6 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
-      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
-
-'
   response:
     status:
       code: 200
@@ -233,7 +218,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 25 Apr 2017 15:11:07 GMT
+      - Tue, 24 Oct 2017 07:45:32 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -244,10 +229,10 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Tue, 25 Apr 2017 15:11:07 GMT
+  recorded_at: Tue, 24 Oct 2017 07:45:32 GMT
 - request:
     method: post
-    uri: http://localhost:8080/hawkular/alerts/triggers/trigger
+    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/trigger
     body:
       encoding: UTF-8
       string: '{"trigger":{"id":"my-cool-trigger","name":"Just a trigger","enabled":true,"severity":"HIGH","description":"Just
@@ -265,9 +250,6 @@ http_interactions:
       - application/json
       Content-Length:
       - '219'
-      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
-
-'
   response:
     status:
       code: 200
@@ -284,7 +266,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 25 Apr 2017 15:11:07 GMT
+      - Tue, 24 Oct 2017 07:45:32 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -296,10 +278,10 @@ http_interactions:
       string: '{"trigger":{"tenantId":"hawkular","id":"my-cool-trigger","name":"Just
         a trigger","description":"Just a test trigger","type":"STANDARD","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"HIGH","autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ANY","enabled":true,"firingMatch":"ANY","source":"_none_"}}'
     http_version: 
-  recorded_at: Tue, 25 Apr 2017 15:11:07 GMT
+  recorded_at: Tue, 24 Oct 2017 07:45:32 GMT
 - request:
     method: get
-    uri: http://localhost:8080/hawkular/alerts/triggers/my-cool-trigger
+    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/my-cool-trigger
     body:
       encoding: US-ASCII
       string: ''
@@ -314,9 +296,6 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
-      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
-
-'
   response:
     status:
       code: 200
@@ -333,7 +312,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 25 Apr 2017 15:11:07 GMT
+      - Tue, 24 Oct 2017 07:45:32 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -345,10 +324,10 @@ http_interactions:
       string: '{"tenantId":"hawkular","id":"my-cool-trigger","name":"Just a trigger","description":"Just
         a test trigger","type":"STANDARD","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"HIGH","autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ANY","enabled":true,"firingMatch":"ANY","source":"_none_"}'
     http_version: 
-  recorded_at: Tue, 25 Apr 2017 15:11:07 GMT
+  recorded_at: Tue, 24 Oct 2017 07:45:32 GMT
 - request:
     method: get
-    uri: http://localhost:8080/hawkular/alerts/triggers/my-cool-trigger/conditions
+    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/my-cool-trigger/conditions
     body:
       encoding: US-ASCII
       string: ''
@@ -363,9 +342,6 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
-      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
-
-'
   response:
     status:
       code: 200
@@ -382,7 +358,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 25 Apr 2017 15:11:07 GMT
+      - Tue, 24 Oct 2017 07:45:32 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -393,10 +369,10 @@ http_interactions:
       encoding: UTF-8
       string: "[]"
     http_version: 
-  recorded_at: Tue, 25 Apr 2017 15:11:07 GMT
+  recorded_at: Tue, 24 Oct 2017 07:45:32 GMT
 - request:
     method: get
-    uri: http://localhost:8080/hawkular/alerts/triggers/my-cool-trigger/dampenings
+    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/my-cool-trigger/dampenings
     body:
       encoding: US-ASCII
       string: ''
@@ -411,9 +387,6 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
-      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
-
-'
   response:
     status:
       code: 200
@@ -430,7 +403,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 25 Apr 2017 15:11:07 GMT
+      - Tue, 24 Oct 2017 07:45:32 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -441,10 +414,10 @@ http_interactions:
       encoding: UTF-8
       string: "[]"
     http_version: 
-  recorded_at: Tue, 25 Apr 2017 15:11:07 GMT
+  recorded_at: Tue, 24 Oct 2017 07:45:32 GMT
 - request:
     method: delete
-    uri: http://localhost:8080/hawkular/alerts/triggers/my-cool-trigger
+    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers/my-cool-trigger
     body:
       encoding: US-ASCII
       string: ''
@@ -459,9 +432,6 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
-      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
-
-'
   response:
     status:
       code: 200
@@ -478,7 +448,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 25 Apr 2017 15:11:07 GMT
+      - Tue, 24 Oct 2017 07:45:32 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -489,5 +459,5 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Tue, 25 Apr 2017 15:11:07 GMT
+  recorded_at: Tue, 24 Oct 2017 07:45:32 GMT
 recorded_with: VCR 3.0.3
