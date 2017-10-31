@@ -14,6 +14,10 @@ services = {
   'alerts' => {
     url: 'http://localhost:8080/hawkular/alerts/status',
     is_ready: -> (response) { response.code == '200' && JSON.parse(response.body)['status'] == 'STARTED' }
+  },
+  'inventory' => {
+    url: 'http://localhost:8080/hawkular/inventory/status',
+    is_ready: -> (response) { response.code == '200' && JSON.parse(response.body)['status'] == 'UP' }
   }
 }
 
