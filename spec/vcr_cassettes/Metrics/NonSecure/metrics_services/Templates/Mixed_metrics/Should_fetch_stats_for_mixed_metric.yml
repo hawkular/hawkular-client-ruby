@@ -37,12 +37,12 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 25 Oct 2017 13:43:03 GMT
+      - Tue, 31 Oct 2017 08:13:26 GMT
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Wed, 25 Oct 2017 13:43:03 GMT
+  recorded_at: Tue, 31 Oct 2017 08:13:26 GMT
 - request:
     method: get
     uri: http://localhost:8080/hawkular/metrics/gauges/<%= id %>/raw/
@@ -80,12 +80,12 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 25 Oct 2017 13:43:03 GMT
+      - Tue, 31 Oct 2017 08:13:26 GMT
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Wed, 25 Oct 2017 13:43:03 GMT
+  recorded_at: Tue, 31 Oct 2017 08:13:26 GMT
 - request:
     method: get
     uri: http://localhost:8080/hawkular/metrics/availability/<%= id %>/raw/
@@ -123,18 +123,18 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 25 Oct 2017 13:43:03 GMT
+      - Tue, 31 Oct 2017 08:13:26 GMT
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Wed, 25 Oct 2017 13:43:03 GMT
+  recorded_at: Tue, 31 Oct 2017 08:13:26 GMT
 - request:
     method: post
     uri: http://localhost:8080/hawkular/metrics/metrics/raw
     body:
       encoding: UTF-8
-      string: '{"gauges":[{"id":"<%= id %>","data":[{"value":1.1,"timestamp":1508938983978}]}],"counters":[{"id":"<%= id %>","data":[{"value":1,"timestamp":1508938983978}]}],"availabilities":[{"id":"<%= id %>","data":[{"value":"down","timestamp":1508938983978}]}],"strings":[]}'
+      string: '{"gauges":[{"id":"<%= id %>","data":[{"value":1.1,"timestamp":1509437606612}]}],"counters":[{"id":"<%= id %>","data":[{"value":1,"timestamp":1509437606612}]}],"availabilities":[{"id":"<%= id %>","data":[{"value":"down","timestamp":1509437606612}]}],"strings":[]}'
     headers:
       Accept:
       - application/json
@@ -172,12 +172,12 @@ http_interactions:
       Content-Length:
       - '0'
       Date:
-      - Wed, 25 Oct 2017 13:43:03 GMT
+      - Tue, 31 Oct 2017 08:13:26 GMT
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Wed, 25 Oct 2017 13:43:03 GMT
+  recorded_at: Tue, 31 Oct 2017 08:13:26 GMT
 - request:
     method: get
     uri: http://localhost:8080/hawkular/metrics/counters/<%= id %>/raw/
@@ -215,7 +215,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 25 Oct 2017 13:43:03 GMT
+      - Tue, 31 Oct 2017 08:13:26 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -224,9 +224,9 @@ http_interactions:
       - '39'
     body:
       encoding: UTF-8
-      string: '[{"timestamp":1508938983978,"value":1}]'
+      string: '[{"timestamp":1509437606612,"value":1}]'
     http_version: 
-  recorded_at: Wed, 25 Oct 2017 13:43:03 GMT
+  recorded_at: Tue, 31 Oct 2017 08:13:26 GMT
 - request:
     method: get
     uri: http://localhost:8080/hawkular/metrics/gauges/<%= id %>/raw/
@@ -264,7 +264,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 25 Oct 2017 13:43:03 GMT
+      - Tue, 31 Oct 2017 08:13:26 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -273,9 +273,9 @@ http_interactions:
       - '41'
     body:
       encoding: UTF-8
-      string: '[{"timestamp":1508938983978,"value":1.1}]'
+      string: '[{"timestamp":1509437606612,"value":1.1}]'
     http_version: 
-  recorded_at: Wed, 25 Oct 2017 13:43:03 GMT
+  recorded_at: Tue, 31 Oct 2017 08:13:26 GMT
 - request:
     method: get
     uri: http://localhost:8080/hawkular/metrics/availability/<%= id %>/raw/
@@ -313,7 +313,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 25 Oct 2017 13:43:03 GMT
+      - Tue, 31 Oct 2017 08:13:26 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -322,15 +322,15 @@ http_interactions:
       - '44'
     body:
       encoding: UTF-8
-      string: '[{"timestamp":1508938983978,"value":"down"}]'
+      string: '[{"timestamp":1509437606612,"value":"down"}]'
     http_version: 
-  recorded_at: Wed, 25 Oct 2017 13:43:03 GMT
+  recorded_at: Tue, 31 Oct 2017 08:13:26 GMT
 - request:
     method: post
     uri: http://localhost:8080/hawkular/metrics/metrics/stats/query
     body:
       encoding: UTF-8
-      string: '{"metrics":{"gauge":["<%= id %>"],"counter":["<%= id %>"],"availability":["<%= id %>"]},"start":1508938983978,"end":1508938983979,"bucketDuration":"1ms"}'
+      string: '{"metrics":{"gauge":["<%= id %>"],"counter":["<%= id %>"],"availability":["<%= id %>"]},"start":1509437606612,"end":1509437606613,"bucketDuration":"1ms"}'
     headers:
       Accept:
       - application/json
@@ -364,7 +364,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 25 Oct 2017 13:43:04 GMT
+      - Tue, 31 Oct 2017 08:13:26 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -373,7 +373,7 @@ http_interactions:
       - '735'
     body:
       encoding: UTF-8
-      string: '{"gauge":{"<%= id %>":[{"start":1508938983978,"end":1508938983979,"min":1.1,"avg":1.1,"median":1.1,"max":1.1,"sum":1.1,"samples":1,"empty":false}]},"counter":{"<%= id %>":[{"start":1508938983978,"end":1508938983979,"min":1.0,"avg":1.0,"median":1.0,"max":1.0,"sum":1.0,"samples":1,"empty":false}]},"availability":{"<%= id %>":[{"start":1508938983978,"end":1508938983979,"durationMap":{"down":1},"lastNotUptime":1508938983979,"uptimeRatio":0.0,"notUpCount":1,"samples":1,"downtimeDuration":1,"lastDowntime":1508938983979,"downtimeCount":1,"adminDuration":0,"downDuration":1,"unknownDuration":0,"upDuration":0,"notUpDuration":1,"upCount":0,"empty":false}]}}'
+      string: '{"gauge":{"<%= id %>":[{"start":1509437606612,"end":1509437606613,"min":1.1,"avg":1.1,"median":1.1,"max":1.1,"sum":1.1,"samples":1,"empty":false}]},"counter":{"<%= id %>":[{"start":1509437606612,"end":1509437606613,"min":1.0,"avg":1.0,"median":1.0,"max":1.0,"sum":1.0,"samples":1,"empty":false}]},"availability":{"<%= id %>":[{"start":1509437606612,"end":1509437606613,"durationMap":{"down":1},"lastNotUptime":1509437606613,"uptimeRatio":0.0,"notUpCount":1,"samples":1,"downtimeDuration":1,"lastDowntime":1509437606613,"downtimeCount":1,"notUpDuration":1,"upCount":0,"adminDuration":0,"downDuration":1,"unknownDuration":0,"upDuration":0,"empty":false}]}}'
     http_version: 
-  recorded_at: Wed, 25 Oct 2017 13:43:04 GMT
+  recorded_at: Tue, 31 Oct 2017 08:13:26 GMT
 recorded_with: VCR 3.0.3

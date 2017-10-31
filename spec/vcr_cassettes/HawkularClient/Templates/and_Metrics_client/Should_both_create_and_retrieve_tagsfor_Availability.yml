@@ -41,7 +41,7 @@ http_interactions:
       Location:
       - http://localhost:8080/hawkular/metrics/availability/<%= id1 %>
       Date:
-      - Wed, 25 Oct 2017 13:43:01 GMT
+      - Tue, 31 Oct 2017 07:59:58 GMT
       Connection:
       - keep-alive
       Content-Length:
@@ -50,7 +50,7 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Wed, 25 Oct 2017 13:43:01 GMT
+  recorded_at: Tue, 31 Oct 2017 07:59:58 GMT
 - request:
     method: get
     uri: http://localhost:8080/hawkular/metrics/availability/<%= id1 %>
@@ -88,7 +88,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 25 Oct 2017 13:43:01 GMT
+      - Tue, 31 Oct 2017 07:59:58 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -99,7 +99,7 @@ http_interactions:
       encoding: UTF-8
       string: '{"id":"<%= id1 %>","tags":{"myTag":"<%= id1 %>"},"dataRetention":14,"type":"availability","tenantId":"hawkular"}'
     http_version: 
-  recorded_at: Wed, 25 Oct 2017 13:43:01 GMT
+  recorded_at: Tue, 31 Oct 2017 07:59:58 GMT
 - request:
     method: post
     uri: http://localhost:8080/hawkular/metrics/availability
@@ -141,7 +141,7 @@ http_interactions:
       Location:
       - http://localhost:8080/hawkular/metrics/availability/<%= id2 %>
       Date:
-      - Wed, 25 Oct 2017 13:43:01 GMT
+      - Tue, 31 Oct 2017 07:59:58 GMT
       Connection:
       - keep-alive
       Content-Length:
@@ -150,7 +150,7 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Wed, 25 Oct 2017 13:43:01 GMT
+  recorded_at: Tue, 31 Oct 2017 07:59:58 GMT
 - request:
     method: get
     uri: http://localhost:8080/hawkular/metrics/availability/<%= id2 %>
@@ -188,7 +188,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 25 Oct 2017 13:43:01 GMT
+      - Tue, 31 Oct 2017 07:59:58 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -199,5 +199,5 @@ http_interactions:
       encoding: UTF-8
       string: '{"id":"<%= id2 %>","tags":{"myTag":"<%= id2 %>"},"dataRetention":14,"type":"availability","tenantId":"hawkular"}'
     http_version: 
-  recorded_at: Wed, 25 Oct 2017 13:43:01 GMT
+  recorded_at: Tue, 31 Oct 2017 07:59:58 GMT
 recorded_with: VCR 3.0.3

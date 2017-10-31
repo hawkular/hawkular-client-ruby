@@ -661,7 +661,7 @@ security_contexts.each do |security_context|
             end
 
             data = @client.gauges.get_data(hawkular_mem_id)
-            expect(data.size).to be > 2 # needs the services to be running for some time (~15 min)
+            expect(data.size).to be >= 2 # needs the services to be running for some time (~10 min)
           end
           record("Metrics/#{security_context}/#{metrics_context}",
                  vcr_bindings.merge(bindings),

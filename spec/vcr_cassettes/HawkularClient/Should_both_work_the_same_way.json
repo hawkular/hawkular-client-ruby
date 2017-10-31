@@ -3,42 +3,42 @@
     {
       "operation": "read",
       "type": "text",
-      "data": "WelcomeResponse={\"sessionId\":\"1X5H-TmC-aZ7sgJClbTB4c4bP28G3a9Y9c_9zUZr\"}"
+      "data": "WelcomeResponse={\"sessionId\":\"v-0oM-g2tXSB5o0Tg7Ghy9_kKaJV9j_aDxKUlYDW\"}"
     },
     {
       "operation": "write",
-      "data": "RestartApplicationRequest={\"resourceId\":\"716e7f866181~Local~~\",\"feedId\":\"716e7f866181\",\"senderRequestId\":\"**fixed-req-id**\",\"destinationFileName\":\"hawkular-status.war\",\"authentication\":{\"username\":\"jdoe\",\"password\":\"password\"}}"
+      "data": "RestartApplicationRequest={\"resourceId\":\"e1f8fda30051~Local~~\",\"feedId\":\"e1f8fda30051\",\"senderRequestId\":\"**fixed-req-id**\",\"destinationFileName\":\"hawkular-status.war\",\"authentication\":{\"username\":\"jdoe\",\"password\":\"password\"}}"
     },
     {
       "operation": "read",
       "type": "text",
-      "data": "GenericSuccessResponse={\"message\":\"The request has been forwarded to feed [716e7f866181] (MessageId=ID:6b3e26be-b98a-11e7-9f4f-e19207744f99)\"}"
+      "data": "GenericSuccessResponse={\"message\":\"The request has been forwarded to feed [e1f8fda30051] (MessageId=ID:7dd4a9bf-be11-11e7-b799-578b0e77ae3e)\"}"
     },
     {
       "operation": "read",
       "type": "text",
-      "data": "RestartApplicationResponse={\"destinationFileName\":\"hawkular-status.war\",\"feedId\":\"716e7f866181\",\"resourceId\":\"716e7f866181~Local~~\",\"senderRequestId\":\"**fixed-req-id**\",\"destinationSessionId\":\"1X5H-TmC-aZ7sgJClbTB4c4bP28G3a9Y9c_9zUZr\",\"status\":\"OK\",\"message\":\"Performed [Restart Deployment] on a [Application] given by Feed Id [716e7f866181] Resource Id [716e7f866181~Local~~]\"}"
+      "data": "RestartApplicationResponse={\"destinationFileName\":\"hawkular-status.war\",\"feedId\":\"e1f8fda30051\",\"resourceId\":\"e1f8fda30051~Local~~\",\"senderRequestId\":\"**fixed-req-id**\",\"destinationSessionId\":\"v-0oM-g2tXSB5o0Tg7Ghy9_kKaJV9j_aDxKUlYDW\",\"status\":\"OK\",\"message\":\"Performed [Restart Deployment] on a [Application] given by Feed Id [e1f8fda30051] Resource Id [e1f8fda30051~Local~~]\"}"
     }
   ],
   [
     {
       "operation": "read",
       "type": "text",
-      "data": "WelcomeResponse={\"sessionId\":\"ERRyR1FvCNj7LMESx0hhgHWTK46Wzt8MlGw6vQao\"}"
+      "data": "WelcomeResponse={\"sessionId\":\"6I4FonYUsVbtkn4cfiE-nei5a8zNO12v41jLAPDT\"}"
     },
     {
       "operation": "write",
-      "data": "RestartApplicationRequest={\"resourceId\":\"716e7f866181~Local~~\",\"feedId\":\"716e7f866181\",\"senderRequestId\":\"**another-fixed-req-id**\",\"destinationFileName\":\"hawkular-status.war\",\"authentication\":{\"username\":\"jdoe\",\"password\":\"password\"}}"
+      "data": "RestartApplicationRequest={\"resourceId\":\"e1f8fda30051~Local~~\",\"feedId\":\"e1f8fda30051\",\"senderRequestId\":\"**another-fixed-req-id**\",\"destinationFileName\":\"hawkular-status.war\",\"authentication\":{\"username\":\"jdoe\",\"password\":\"password\"}}"
     },
     {
       "operation": "read",
       "type": "text",
-      "data": "GenericSuccessResponse={\"message\":\"The request has been forwarded to feed [716e7f866181] (MessageId=ID:6bdd9b26-b98a-11e7-9f4f-e19207744f99)\"}"
+      "data": "GenericSuccessResponse={\"message\":\"The request has been forwarded to feed [e1f8fda30051] (MessageId=ID:7e6bba15-be11-11e7-b799-578b0e77ae3e)\"}"
     },
     {
       "operation": "read",
       "type": "text",
-      "data": "RestartApplicationResponse={\"destinationFileName\":\"hawkular-status.war\",\"feedId\":\"716e7f866181\",\"resourceId\":\"716e7f866181~Local~~\",\"senderRequestId\":\"**another-fixed-req-id**\",\"destinationSessionId\":\"ERRyR1FvCNj7LMESx0hhgHWTK46Wzt8MlGw6vQao\",\"status\":\"OK\",\"message\":\"Performed [Restart Deployment] on a [Application] given by Feed Id [716e7f866181] Resource Id [716e7f866181~Local~~]\"}"
+      "data": "RestartApplicationResponse={\"destinationFileName\":\"hawkular-status.war\",\"feedId\":\"e1f8fda30051\",\"resourceId\":\"e1f8fda30051~Local~~\",\"senderRequestId\":\"**another-fixed-req-id**\",\"destinationSessionId\":\"6I4FonYUsVbtkn4cfiE-nei5a8zNO12v41jLAPDT\",\"status\":\"OK\",\"message\":\"Performed [Restart Deployment] on a [Application] given by Feed Id [e1f8fda30051] Resource Id [e1f8fda30051~Local~~]\"}"
     }
   ]
 ]

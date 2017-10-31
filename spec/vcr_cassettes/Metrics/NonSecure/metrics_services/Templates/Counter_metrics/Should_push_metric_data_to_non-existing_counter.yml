@@ -5,7 +5,7 @@ http_interactions:
     uri: http://localhost:8080/hawkular/metrics/counters/<%= id %>/raw
     body:
       encoding: UTF-8
-      string: '[{"value":4,"timestamp":1508938984232}]'
+      string: '[{"value":4,"timestamp":1509437606856}]'
     headers:
       Accept:
       - application/json
@@ -43,12 +43,12 @@ http_interactions:
       Content-Length:
       - '0'
       Date:
-      - Wed, 25 Oct 2017 13:43:04 GMT
+      - Tue, 31 Oct 2017 08:13:26 GMT
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Wed, 25 Oct 2017 13:43:04 GMT
+  recorded_at: Tue, 31 Oct 2017 08:13:26 GMT
 - request:
     method: get
     uri: http://localhost:8080/hawkular/metrics/counters/<%= id %>/raw/
@@ -86,7 +86,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 25 Oct 2017 13:43:04 GMT
+      - Tue, 31 Oct 2017 08:13:26 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -95,9 +95,9 @@ http_interactions:
       - '39'
     body:
       encoding: UTF-8
-      string: '[{"timestamp":1508938984232,"value":4}]'
+      string: '[{"timestamp":1509437606856,"value":4}]'
     http_version: 
-  recorded_at: Wed, 25 Oct 2017 13:43:04 GMT
+  recorded_at: Tue, 31 Oct 2017 08:13:26 GMT
 - request:
     method: get
     uri: http://localhost:8080/hawkular/metrics/counters/<%= id %>
@@ -135,7 +135,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 25 Oct 2017 13:43:04 GMT
+      - Tue, 31 Oct 2017 08:13:26 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -144,7 +144,7 @@ http_interactions:
       - '226'
     body:
       encoding: UTF-8
-      string: '{"id":"<%= id %>","dataRetention":14,"type":"counter","tenantId":"<%= vcr_test_tenant %>","minTimestamp":1508938984232,"maxTimestamp":1508938984232}'
+      string: '{"id":"<%= id %>","dataRetention":14,"type":"counter","tenantId":"<%= vcr_test_tenant %>","minTimestamp":1509437606856,"maxTimestamp":1509437606856}'
     http_version: 
-  recorded_at: Wed, 25 Oct 2017 13:43:04 GMT
+  recorded_at: Tue, 31 Oct 2017 08:13:26 GMT
 recorded_with: VCR 3.0.3

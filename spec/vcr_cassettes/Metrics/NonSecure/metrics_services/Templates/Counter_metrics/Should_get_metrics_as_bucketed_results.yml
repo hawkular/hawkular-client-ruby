@@ -41,7 +41,7 @@ http_interactions:
       Location:
       - http://localhost:8080/hawkular/metrics/counters/<%= id %>
       Date:
-      - Wed, 25 Oct 2017 13:43:04 GMT
+      - Tue, 31 Oct 2017 08:13:26 GMT
       Connection:
       - keep-alive
       Content-Length:
@@ -50,7 +50,7 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Wed, 25 Oct 2017 13:43:04 GMT
+  recorded_at: Tue, 31 Oct 2017 08:13:26 GMT
 - request:
     method: post
     uri: http://localhost:8080/hawkular/metrics/counters/<%= id %>/raw
@@ -94,12 +94,12 @@ http_interactions:
       Content-Length:
       - '0'
       Date:
-      - Wed, 25 Oct 2017 13:43:04 GMT
+      - Tue, 31 Oct 2017 08:13:26 GMT
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Wed, 25 Oct 2017 13:43:04 GMT
+  recorded_at: Tue, 31 Oct 2017 08:13:26 GMT
 - request:
     method: get
     uri: http://localhost:8080/hawkular/metrics/counters/<%= id %>/stats/?buckets=5&end=<%= minus5 %>&start=<%= minus105 %>
@@ -137,7 +137,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 25 Oct 2017 13:43:04 GMT
+      - Tue, 31 Oct 2017 08:13:26 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -146,9 +146,9 @@ http_interactions:
       - '645'
     body:
       encoding: UTF-8
-      string: '[{"start":<%= minus105 %>,"end":1508938984105,"min":90.0,"avg":95.0,"median":90.0,"max":100.0,"sum":190.0,"samples":2,"empty":false},{"start":1508938984105,"end":1508938984125,"min":70.0,"avg":75.0,"median":70.0,"max":80.0,"sum":150.0,"samples":2,"empty":false},{"start":1508938984125,"end":1508938984145,"min":50.0,"avg":55.0,"median":50.0,"max":60.0,"sum":110.0,"samples":2,"empty":false},{"start":1508938984145,"end":1508938984165,"min":30.0,"avg":35.0,"median":30.0,"max":40.0,"sum":70.0,"samples":2,"empty":false},{"start":1508938984165,"end":<%= minus5 %>,"min":10.0,"avg":15.0,"median":10.0,"max":20.0,"sum":30.0,"samples":2,"empty":false}]'
+      string: '[{"start":<%= minus105 %>,"end":1509437606727,"min":90.0,"avg":95.0,"median":90.0,"max":100.0,"sum":190.0,"samples":2,"empty":false},{"start":1509437606727,"end":1509437606747,"min":70.0,"avg":75.0,"median":70.0,"max":80.0,"sum":150.0,"samples":2,"empty":false},{"start":1509437606747,"end":1509437606767,"min":50.0,"avg":55.0,"median":50.0,"max":60.0,"sum":110.0,"samples":2,"empty":false},{"start":1509437606767,"end":1509437606787,"min":30.0,"avg":35.0,"median":30.0,"max":40.0,"sum":70.0,"samples":2,"empty":false},{"start":1509437606787,"end":<%= minus5 %>,"min":10.0,"avg":15.0,"median":10.0,"max":20.0,"sum":30.0,"samples":2,"empty":false}]'
     http_version: 
-  recorded_at: Wed, 25 Oct 2017 13:43:04 GMT
+  recorded_at: Tue, 31 Oct 2017 08:13:26 GMT
 - request:
     method: get
     uri: http://localhost:8080/hawkular/metrics/counters/<%= id %>/stats/?buckets=2&end=<%= minus5 %>&start=<%= minus105 %>
@@ -186,7 +186,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 25 Oct 2017 13:43:04 GMT
+      - Tue, 31 Oct 2017 08:13:26 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -195,9 +195,9 @@ http_interactions:
       - '260'
     body:
       encoding: UTF-8
-      string: '[{"start":<%= minus105 %>,"end":1508938984135,"min":60.0,"avg":80.0,"median":80.0,"max":100.0,"sum":400.0,"samples":5,"empty":false},{"start":1508938984135,"end":<%= minus5 %>,"min":10.0,"avg":30.0,"median":30.0,"max":50.0,"sum":150.0,"samples":5,"empty":false}]'
+      string: '[{"start":<%= minus105 %>,"end":1509437606757,"min":60.0,"avg":80.0,"median":80.0,"max":100.0,"sum":400.0,"samples":5,"empty":false},{"start":1509437606757,"end":<%= minus5 %>,"min":10.0,"avg":30.0,"median":30.0,"max":50.0,"sum":150.0,"samples":5,"empty":false}]'
     http_version: 
-  recorded_at: Wed, 25 Oct 2017 13:43:04 GMT
+  recorded_at: Tue, 31 Oct 2017 08:13:26 GMT
 - request:
     method: get
     uri: http://localhost:8080/hawkular/metrics/counters/<%= id %>/stats/?bucketDuration=50ms&end=<%= minus5 %>&start=<%= minus105 %>
@@ -235,7 +235,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 25 Oct 2017 13:43:04 GMT
+      - Tue, 31 Oct 2017 08:13:26 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -244,7 +244,7 @@ http_interactions:
       - '260'
     body:
       encoding: UTF-8
-      string: '[{"start":<%= minus105 %>,"end":1508938984135,"min":60.0,"avg":80.0,"median":80.0,"max":100.0,"sum":400.0,"samples":5,"empty":false},{"start":1508938984135,"end":<%= minus5 %>,"min":10.0,"avg":30.0,"median":30.0,"max":50.0,"sum":150.0,"samples":5,"empty":false}]'
+      string: '[{"start":<%= minus105 %>,"end":1509437606757,"min":60.0,"avg":80.0,"median":80.0,"max":100.0,"sum":400.0,"samples":5,"empty":false},{"start":1509437606757,"end":<%= minus5 %>,"min":10.0,"avg":30.0,"median":30.0,"max":50.0,"sum":150.0,"samples":5,"empty":false}]'
     http_version: 
-  recorded_at: Wed, 25 Oct 2017 13:43:04 GMT
+  recorded_at: Tue, 31 Oct 2017 08:13:26 GMT
 recorded_with: VCR 3.0.3

@@ -42,7 +42,7 @@ http_interactions:
       Location:
       - http://localhost:8080/hawkular/metrics/gauges/MI~R~%5B8b*%7D%7B'%5C14%23%3F%2F5-7%2592e%5B-c9_.r1%2F%2F;%2F74eddf%2FL=c~~%5D~MT~%20%20%20%20*%20%20%2F%20Met@ics~Aggre&%3F%20ated%20s%20%20Active%22%20Ses;ns
       Date:
-      - Wed, 25 Oct 2017 13:43:05 GMT
+      - Tue, 31 Oct 2017 08:13:27 GMT
       Connection:
       - keep-alive
       Content-Length:
@@ -51,7 +51,7 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Wed, 25 Oct 2017 13:43:05 GMT
+  recorded_at: Tue, 31 Oct 2017 08:13:27 GMT
 - request:
     method: get
     uri: http://localhost:8080/hawkular/metrics/gauges/MI~R~%5B8b*%7D%7B'%5C14%23%3F%2F5-7%2592e%5B-c9_.r1%2F%2F;%2F74eddf%2FL=c~~%5D~MT~%20%20%20%20*%20%20%2F%20Met@ics~Aggre&%3F%20ated%20s%20%20Active%22%20Ses;ns
@@ -89,7 +89,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 25 Oct 2017 13:43:05 GMT
+      - Tue, 31 Oct 2017 08:13:27 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -101,5 +101,5 @@ http_interactions:
       string: '{"id":"MI~R~[8b*}{''\\14#?/5-7%92e[-c9_.r1//;/74eddf/L=c~~]~MT~    *  /
         Met@ics~Aggre&? ated s  Active\" Ses;ns","tags":{"tag":"value"},"dataRetention":90,"type":"gauge","tenantId":"<%= vcr_test_tenant %>"}'
     http_version: 
-  recorded_at: Wed, 25 Oct 2017 13:43:05 GMT
+  recorded_at: Tue, 31 Oct 2017 08:13:27 GMT
 recorded_with: VCR 3.0.3

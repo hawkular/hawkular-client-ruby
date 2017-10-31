@@ -35,10 +35,10 @@ http_interactions:
       Content-Length:
       - '173'
       Date:
-      - Wed, 25 Oct 2017 13:43:03 GMT
+      - Tue, 31 Oct 2017 08:01:27 GMT
     body:
       encoding: UTF-8
       string: '{"Implementation-Version":"0.9.8.Final-SRC-revision-ce866b1ade2d7413f055f461eb36d004ff2888d8","Built-From-Git-SHA1":"ce866b1ade2d7413f055f461eb36d004ff2888d8","status":"UP"}'
     http_version: 
-  recorded_at: Wed, 25 Oct 2017 13:43:03 GMT
+  recorded_at: Tue, 31 Oct 2017 08:01:27 GMT
 recorded_with: VCR 3.0.3

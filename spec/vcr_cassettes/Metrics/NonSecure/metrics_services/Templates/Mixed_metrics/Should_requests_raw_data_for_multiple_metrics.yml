@@ -37,12 +37,12 @@ http_interactions:
       Content-Length:
       - '150'
       Date:
-      - Wed, 25 Oct 2017 13:43:03 GMT
+      - Tue, 31 Oct 2017 08:13:26 GMT
     body:
       encoding: UTF-8
       string: '{"MetricsService":"STARTED","Implementation-Version":"0.26.1.Final","Built-From-Git-SHA1":"45b148c834ed62018f153c23187b4436ae4208fe","Cassandra":"up"}'
     http_version: 
-  recorded_at: Wed, 25 Oct 2017 13:43:03 GMT
+  recorded_at: Tue, 31 Oct 2017 08:13:26 GMT
 - request:
     method: post
     uri: http://localhost:8080/hawkular/metrics/counters/raw/query
@@ -82,12 +82,12 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 25 Oct 2017 13:43:03 GMT
+      - Tue, 31 Oct 2017 08:13:26 GMT
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Wed, 25 Oct 2017 13:43:03 GMT
+  recorded_at: Tue, 31 Oct 2017 08:13:26 GMT
 - request:
     method: post
     uri: http://localhost:8080/hawkular/metrics/gauges/raw/query
@@ -127,12 +127,12 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 25 Oct 2017 13:43:03 GMT
+      - Tue, 31 Oct 2017 08:13:26 GMT
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Wed, 25 Oct 2017 13:43:03 GMT
+  recorded_at: Tue, 31 Oct 2017 08:13:26 GMT
 - request:
     method: post
     uri: http://localhost:8080/hawkular/metrics/availability/raw/query
@@ -172,18 +172,18 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 25 Oct 2017 13:43:03 GMT
+      - Tue, 31 Oct 2017 08:13:26 GMT
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Wed, 25 Oct 2017 13:43:03 GMT
+  recorded_at: Tue, 31 Oct 2017 08:13:26 GMT
 - request:
     method: post
     uri: http://localhost:8080/hawkular/metrics/metrics/raw
     body:
       encoding: UTF-8
-      string: '{"gauges":[{"id":"<%= id1 %>","data":[{"value":1.1,"timestamp":1508938983813}]},{"id":"<%= id2 %>","data":[{"value":2.2,"timestamp":1508938983813}]},{"id":"<%= id3 %>","data":[{"value":3.3,"timestamp":1508938983813}]}],"counters":[{"id":"<%= id1 %>","data":[{"value":1,"timestamp":1508938983813}]},{"id":"<%= id2 %>","data":[{"value":2,"timestamp":1508938983813}]},{"id":"<%= id3 %>","data":[{"value":3,"timestamp":1508938983813}]}],"availabilities":[{"id":"<%= id1 %>","data":[{"value":"up","timestamp":1508938983813}]},{"id":"<%= id2 %>","data":[{"value":"down","timestamp":1508938983813}]},{"id":"<%= id3 %>","data":[{"value":"up","timestamp":1508938983813}]},{"id":"<%= id4 %>","data":[{"value":"up","timestamp":10000},{"value":"down","timestamp":100000},{"value":"admin","timestamp":1000000}]}],"strings":[]}'
+      string: '{"gauges":[{"id":"<%= id1 %>","data":[{"value":1.1,"timestamp":1509437606479}]},{"id":"<%= id2 %>","data":[{"value":2.2,"timestamp":1509437606479}]},{"id":"<%= id3 %>","data":[{"value":3.3,"timestamp":1509437606479}]}],"counters":[{"id":"<%= id1 %>","data":[{"value":1,"timestamp":1509437606479}]},{"id":"<%= id2 %>","data":[{"value":2,"timestamp":1509437606479}]},{"id":"<%= id3 %>","data":[{"value":3,"timestamp":1509437606479}]}],"availabilities":[{"id":"<%= id1 %>","data":[{"value":"up","timestamp":1509437606479}]},{"id":"<%= id2 %>","data":[{"value":"down","timestamp":1509437606479}]},{"id":"<%= id3 %>","data":[{"value":"up","timestamp":1509437606479}]},{"id":"<%= id4 %>","data":[{"value":"up","timestamp":10000},{"value":"down","timestamp":100000},{"value":"admin","timestamp":1000000}]}],"strings":[]}'
     headers:
       Accept:
       - application/json
@@ -221,12 +221,12 @@ http_interactions:
       Content-Length:
       - '0'
       Date:
-      - Wed, 25 Oct 2017 13:43:03 GMT
+      - Tue, 31 Oct 2017 08:13:26 GMT
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Wed, 25 Oct 2017 13:43:03 GMT
+  recorded_at: Tue, 31 Oct 2017 08:13:26 GMT
 - request:
     method: post
     uri: http://localhost:8080/hawkular/metrics/counters/raw/query
@@ -266,7 +266,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 25 Oct 2017 13:43:03 GMT
+      - Tue, 31 Oct 2017 08:13:26 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -275,9 +275,9 @@ http_interactions:
       - '280'
     body:
       encoding: UTF-8
-      string: '[{"id":"<%= id1 %>","data":[{"timestamp":1508938983813,"value":1}]},{"id":"<%= id2 %>","data":[{"timestamp":1508938983813,"value":2}]},{"id":"<%= id3 %>","data":[{"timestamp":1508938983813,"value":3}]}]'
+      string: '[{"id":"<%= id1 %>","data":[{"timestamp":1509437606479,"value":1}]},{"id":"<%= id2 %>","data":[{"timestamp":1509437606479,"value":2}]},{"id":"<%= id3 %>","data":[{"timestamp":1509437606479,"value":3}]}]'
     http_version: 
-  recorded_at: Wed, 25 Oct 2017 13:43:03 GMT
+  recorded_at: Tue, 31 Oct 2017 08:13:26 GMT
 - request:
     method: post
     uri: http://localhost:8080/hawkular/metrics/gauges/raw/query
@@ -317,7 +317,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 25 Oct 2017 13:43:03 GMT
+      - Tue, 31 Oct 2017 08:13:26 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -326,9 +326,9 @@ http_interactions:
       - '286'
     body:
       encoding: UTF-8
-      string: '[{"id":"<%= id1 %>","data":[{"timestamp":1508938983813,"value":1.1}]},{"id":"<%= id2 %>","data":[{"timestamp":1508938983813,"value":2.2}]},{"id":"<%= id3 %>","data":[{"timestamp":1508938983813,"value":3.3}]}]'
+      string: '[{"id":"<%= id1 %>","data":[{"timestamp":1509437606479,"value":1.1}]},{"id":"<%= id2 %>","data":[{"timestamp":1509437606479,"value":2.2}]},{"id":"<%= id3 %>","data":[{"timestamp":1509437606479,"value":3.3}]}]'
     http_version: 
-  recorded_at: Wed, 25 Oct 2017 13:43:03 GMT
+  recorded_at: Tue, 31 Oct 2017 08:13:26 GMT
 - request:
     method: post
     uri: http://localhost:8080/hawkular/metrics/availability/raw/query
@@ -368,7 +368,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 25 Oct 2017 13:43:03 GMT
+      - Tue, 31 Oct 2017 08:13:26 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -377,9 +377,9 @@ http_interactions:
       - '291'
     body:
       encoding: UTF-8
-      string: '[{"id":"<%= id1 %>","data":[{"timestamp":1508938983813,"value":"up"}]},{"id":"<%= id2 %>","data":[{"timestamp":1508938983813,"value":"down"}]},{"id":"<%= id3 %>","data":[{"timestamp":1508938983813,"value":"up"}]}]'
+      string: '[{"id":"<%= id1 %>","data":[{"timestamp":1509437606479,"value":"up"}]},{"id":"<%= id2 %>","data":[{"timestamp":1509437606479,"value":"down"}]},{"id":"<%= id3 %>","data":[{"timestamp":1509437606479,"value":"up"}]}]'
     http_version: 
-  recorded_at: Wed, 25 Oct 2017 13:43:03 GMT
+  recorded_at: Tue, 31 Oct 2017 08:13:26 GMT
 - request:
     method: get
     uri: http://localhost:8080/hawkular/metrics/availability/<%= id4 %>/raw/?distinct=true&end=2000000&order=ASC&start=100
@@ -417,7 +417,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 25 Oct 2017 13:43:03 GMT
+      - Tue, 31 Oct 2017 08:13:26 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -428,5 +428,5 @@ http_interactions:
       encoding: UTF-8
       string: '[{"timestamp":10000,"value":"up"},{"timestamp":100000,"value":"down"},{"timestamp":1000000,"value":"admin"}]'
     http_version: 
-  recorded_at: Wed, 25 Oct 2017 13:43:03 GMT
+  recorded_at: Tue, 31 Oct 2017 08:13:26 GMT
 recorded_with: VCR 3.0.3

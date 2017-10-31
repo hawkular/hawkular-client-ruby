@@ -31,7 +31,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 25 Oct 2017 13:43:03 GMT
+      - Tue, 31 Oct 2017 08:13:26 GMT
       Connection:
       - keep-alive
       Www-Authenticate:
@@ -44,5 +44,5 @@ http_interactions:
       encoding: UTF-8
       string: "<html><head><title>Error</title></head><body>Unauthorized</body></html>"
     http_version: 
-  recorded_at: Wed, 25 Oct 2017 13:43:03 GMT
+  recorded_at: Tue, 31 Oct 2017 08:13:26 GMT
 recorded_with: VCR 3.0.3

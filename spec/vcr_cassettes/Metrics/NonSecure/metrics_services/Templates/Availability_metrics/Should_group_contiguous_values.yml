@@ -37,12 +37,12 @@ http_interactions:
       Content-Length:
       - '150'
       Date:
-      - Wed, 25 Oct 2017 13:43:04 GMT
+      - Tue, 31 Oct 2017 08:13:26 GMT
     body:
       encoding: UTF-8
       string: '{"MetricsService":"STARTED","Implementation-Version":"0.26.1.Final","Built-From-Git-SHA1":"45b148c834ed62018f153c23187b4436ae4208fe","Cassandra":"up"}'
     http_version: 
-  recorded_at: Wed, 25 Oct 2017 13:43:04 GMT
+  recorded_at: Tue, 31 Oct 2017 08:13:26 GMT
 - request:
     method: post
     uri: http://localhost:8080/hawkular/metrics/availability/<%= id %>/raw
@@ -86,12 +86,12 @@ http_interactions:
       Content-Length:
       - '0'
       Date:
-      - Wed, 25 Oct 2017 13:43:04 GMT
+      - Tue, 31 Oct 2017 08:13:26 GMT
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Wed, 25 Oct 2017 13:43:04 GMT
+  recorded_at: Tue, 31 Oct 2017 08:13:26 GMT
 - request:
     method: get
     uri: http://localhost:8080/hawkular/metrics/availability/<%= id %>/raw/?distinct=true&order=ASC
@@ -129,7 +129,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 25 Oct 2017 13:43:04 GMT
+      - Tue, 31 Oct 2017 08:13:26 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -140,5 +140,5 @@ http_interactions:
       encoding: UTF-8
       string: '[{"timestamp":<%= minus50 %>,"value":"up"},{"timestamp":<%= minus30 %>,"value":"down"},{"timestamp":<%= now %>,"value":"up"}]'
     http_version: 
-  recorded_at: Wed, 25 Oct 2017 13:43:04 GMT
+  recorded_at: Tue, 31 Oct 2017 08:13:26 GMT
 recorded_with: VCR 3.0.3

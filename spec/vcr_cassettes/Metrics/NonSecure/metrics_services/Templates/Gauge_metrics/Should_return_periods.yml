@@ -43,12 +43,12 @@ http_interactions:
       Content-Length:
       - '0'
       Date:
-      - Wed, 25 Oct 2017 13:43:04 GMT
+      - Tue, 31 Oct 2017 08:13:27 GMT
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Wed, 25 Oct 2017 13:43:04 GMT
+  recorded_at: Tue, 31 Oct 2017 08:13:27 GMT
 - request:
     method: get
     uri: http://localhost:8080/hawkular/metrics/gauges/<%= id %>/periods?op=lte&start=<%= before4h %>&threshold=4
@@ -86,7 +86,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 25 Oct 2017 13:43:04 GMT
+      - Tue, 31 Oct 2017 08:13:27 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -97,5 +97,5 @@ http_interactions:
       encoding: UTF-8
       string: "[[<%= minus30 %>,<%= start %>]]"
     http_version: 
-  recorded_at: Wed, 25 Oct 2017 13:43:04 GMT
+  recorded_at: Tue, 31 Oct 2017 08:13:27 GMT
 recorded_with: VCR 3.0.3

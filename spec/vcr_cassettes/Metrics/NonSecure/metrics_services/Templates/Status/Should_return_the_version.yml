@@ -37,12 +37,12 @@ http_interactions:
       Content-Length:
       - '150'
       Date:
-      - Wed, 25 Oct 2017 13:43:04 GMT
+      - Tue, 31 Oct 2017 08:13:27 GMT
     body:
       encoding: UTF-8
       string: '{"MetricsService":"STARTED","Implementation-Version":"0.26.1.Final","Built-From-Git-SHA1":"45b148c834ed62018f153c23187b4436ae4208fe","Cassandra":"up"}'
     http_version: 
-  recorded_at: Wed, 25 Oct 2017 13:43:04 GMT
+  recorded_at: Tue, 31 Oct 2017 08:13:27 GMT
 - request:
     method: get
     uri: http://localhost:8080/hawkular/metrics/status
@@ -80,10 +80,10 @@ http_interactions:
       Content-Length:
       - '150'
       Date:
-      - Wed, 25 Oct 2017 13:43:04 GMT
+      - Tue, 31 Oct 2017 08:13:27 GMT
     body:
       encoding: UTF-8
       string: '{"MetricsService":"STARTED","Implementation-Version":"0.26.1.Final","Built-From-Git-SHA1":"45b148c834ed62018f153c23187b4436ae4208fe","Cassandra":"up"}'
     http_version: 
-  recorded_at: Wed, 25 Oct 2017 13:43:04 GMT
+  recorded_at: Tue, 31 Oct 2017 08:13:27 GMT
 recorded_with: VCR 3.0.3

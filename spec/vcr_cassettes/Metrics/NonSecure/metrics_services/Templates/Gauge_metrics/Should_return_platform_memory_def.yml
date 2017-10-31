@@ -37,12 +37,12 @@ http_interactions:
       Content-Length:
       - '150'
       Date:
-      - Wed, 25 Oct 2017 13:43:04 GMT
+      - Tue, 31 Oct 2017 08:13:27 GMT
     body:
       encoding: UTF-8
       string: '{"MetricsService":"STARTED","Implementation-Version":"0.26.1.Final","Built-From-Git-SHA1":"45b148c834ed62018f153c23187b4436ae4208fe","Cassandra":"up"}'
     http_version: 
-  recorded_at: Wed, 25 Oct 2017 13:43:04 GMT
+  recorded_at: Tue, 31 Oct 2017 08:13:27 GMT
 - request:
     method: get
     uri: http://localhost:8080/<%= tenant %>/inventory/status
@@ -80,15 +80,15 @@ http_interactions:
       Content-Length:
       - '173'
       Date:
-      - Wed, 25 Oct 2017 13:43:04 GMT
+      - Tue, 31 Oct 2017 08:13:27 GMT
     body:
       encoding: UTF-8
       string: '{"Implementation-Version":"0.9.8.Final-SRC-revision-ce866b1ade2d7413f055f461eb36d004ff2888d8","Built-From-Git-SHA1":"ce866b1ade2d7413f055f461eb36d004ff2888d8","status":"UP"}'
     http_version: 
-  recorded_at: Wed, 25 Oct 2017 13:43:04 GMT
+  recorded_at: Tue, 31 Oct 2017 08:13:27 GMT
 - request:
     method: get
-    uri: http://localhost:8080/<%= tenant %>/inventory/resources?typeId=Platform_Memory
+    uri: http://localhost:8080/<%= tenant %>/inventory/resources?maxResults=100&startOffSet=0&typeId=Platform_Memory
     body:
       encoding: US-ASCII
       string: ''
@@ -123,7 +123,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 25 Oct 2017 13:43:04 GMT
+      - Tue, 31 Oct 2017 08:13:27 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -132,17 +132,17 @@ http_interactions:
       - '1020'
     body:
       encoding: UTF-8
-      string: '{"results":[{"id":"716e7f866181~platform~/OPERATING_SYSTEM=716e7f866181_OperatingSystem/MEMORY=Memory","name":"Memory","feedId":"716e7f866181","type":{"id":"Platform_Memory","operations":[],"properties":{}},"parentId":"716e7f866181~platform~/OPERATING_SYSTEM=716e7f866181_OperatingSystem","metrics":[{"name":"Total
-        Memory","type":"Total Memory","unit":"BYTES","properties":{"<%= tenant %>.metric.typeId":"Platform_Memory_Total
-        Memory","<%= tenant %>.metric.type":"GAUGE","<%= tenant %>.metric.id":"MI~R~[716e7f866181/716e7f866181~platform~/OPERATING_SYSTEM=716e7f866181_OperatingSystem/MEMORY=Memory]~MT~Platform_Memory_Total
-        Memory"}},{"name":"Available Memory","type":"Available Memory","unit":"BYTES","properties":{"<%= tenant %>.metric.typeId":"Platform_Memory_Available
-        Memory","<%= tenant %>.metric.type":"GAUGE","<%= tenant %>.metric.id":"MI~R~[716e7f866181/716e7f866181~platform~/OPERATING_SYSTEM=716e7f866181_OperatingSystem/MEMORY=Memory]~MT~Platform_Memory_Available
+      string: '{"results":[{"id":"e1f8fda30051~platform~/OPERATING_SYSTEM=e1f8fda30051_OperatingSystem/MEMORY=Memory","name":"Memory","feedId":"e1f8fda30051","type":{"id":"Platform_Memory","operations":[],"properties":{}},"parentId":"e1f8fda30051~platform~/OPERATING_SYSTEM=e1f8fda30051_OperatingSystem","metrics":[{"name":"Available
+        Memory","type":"Available Memory","unit":"BYTES","properties":{"<%= tenant %>.metric.typeId":"Platform_Memory_Available
+        Memory","<%= tenant %>.metric.type":"GAUGE","<%= tenant %>.metric.id":"MI~R~[e1f8fda30051/e1f8fda30051~platform~/OPERATING_SYSTEM=e1f8fda30051_OperatingSystem/MEMORY=Memory]~MT~Platform_Memory_Available
+        Memory"}},{"name":"Total Memory","type":"Total Memory","unit":"BYTES","properties":{"<%= tenant %>.metric.typeId":"Platform_Memory_Total
+        Memory","<%= tenant %>.metric.type":"GAUGE","<%= tenant %>.metric.id":"MI~R~[e1f8fda30051/e1f8fda30051~platform~/OPERATING_SYSTEM=e1f8fda30051_OperatingSystem/MEMORY=Memory]~MT~Platform_Memory_Total
         Memory"}}],"properties":{},"config":{}}],"resultSize":1,"startOffset":0}'
     http_version: 
-  recorded_at: Wed, 25 Oct 2017 13:43:04 GMT
+  recorded_at: Tue, 31 Oct 2017 08:13:27 GMT
 - request:
     method: get
-    uri: http://localhost:8080/<%= tenant %>/metrics/gauges/MI~R~%5B716e7f866181%2F716e7f866181~platform~%2FOPERATING_SYSTEM=716e7f866181_OperatingSystem%2FMEMORY=Memory%5D~MT~Platform_Memory_Total%20Memory
+    uri: http://localhost:8080/<%= tenant %>/metrics/gauges/MI~R~%5Be1f8fda30051%2Fe1f8fda30051~platform~%2FOPERATING_SYSTEM=e1f8fda30051_OperatingSystem%2FMEMORY=Memory%5D~MT~Platform_Memory_Total%20Memory
     body:
       encoding: US-ASCII
       string: ''
@@ -177,7 +177,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 25 Oct 2017 13:43:04 GMT
+      - Tue, 31 Oct 2017 08:13:27 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -186,8 +186,8 @@ http_interactions:
       - '257'
     body:
       encoding: UTF-8
-      string: '{"id":"MI~R~[716e7f866181/716e7f866181~platform~/OPERATING_SYSTEM=716e7f866181_OperatingSystem/MEMORY=Memory]~MT~Platform_Memory_Total
-        Memory","dataRetention":14,"type":"gauge","tenantId":"<%= tenant %>","minTimestamp":1508938354079,"maxTimestamp":1508938954023}'
+      string: '{"id":"MI~R~[e1f8fda30051/e1f8fda30051~platform~/OPERATING_SYSTEM=e1f8fda30051_OperatingSystem/MEMORY=Memory]~MT~Platform_Memory_Total
+        Memory","dataRetention":14,"type":"gauge","tenantId":"<%= tenant %>","minTimestamp":1509437068083,"maxTimestamp":1509437368019}'
     http_version: 
-  recorded_at: Wed, 25 Oct 2017 13:43:04 GMT
+  recorded_at: Tue, 31 Oct 2017 08:13:27 GMT
 recorded_with: VCR 3.0.3

@@ -41,7 +41,7 @@ http_interactions:
       Location:
       - http://localhost:8080/hawkular/metrics/strings/<%= id %>
       Date:
-      - Wed, 25 Oct 2017 13:43:04 GMT
+      - Tue, 31 Oct 2017 08:13:27 GMT
       Connection:
       - keep-alive
       Content-Length:
@@ -50,7 +50,7 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Wed, 25 Oct 2017 13:43:04 GMT
+  recorded_at: Tue, 31 Oct 2017 08:13:27 GMT
 - request:
     method: post
     uri: http://localhost:8080/hawkular/metrics/strings/<%= id %>/raw
@@ -94,12 +94,12 @@ http_interactions:
       Content-Length:
       - '0'
       Date:
-      - Wed, 25 Oct 2017 13:43:04 GMT
+      - Tue, 31 Oct 2017 08:13:27 GMT
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Wed, 25 Oct 2017 13:43:04 GMT
+  recorded_at: Tue, 31 Oct 2017 08:13:27 GMT
 - request:
     method: get
     uri: http://localhost:8080/hawkular/metrics/strings/<%= id %>/raw/
@@ -137,7 +137,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 25 Oct 2017 13:43:04 GMT
+      - Tue, 31 Oct 2017 08:13:27 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -148,13 +148,13 @@ http_interactions:
       encoding: UTF-8
       string: '[{"timestamp":<%= now10 %>,"value":"Value3"},{"timestamp":<%= now20 %>,"value":"Value2"},{"timestamp":<%= now30 %>,"value":"Value1"}]'
     http_version: 
-  recorded_at: Wed, 25 Oct 2017 13:43:04 GMT
+  recorded_at: Tue, 31 Oct 2017 08:13:27 GMT
 - request:
     method: post
     uri: http://localhost:8080/hawkular/metrics/strings/<%= id %>/raw
     body:
       encoding: UTF-8
-      string: '[{"value":"Now","timestamp":1508938984753}]'
+      string: '[{"value":"Now","timestamp":1509437607316}]'
     headers:
       Accept:
       - application/json
@@ -192,12 +192,12 @@ http_interactions:
       Content-Length:
       - '0'
       Date:
-      - Wed, 25 Oct 2017 13:43:04 GMT
+      - Tue, 31 Oct 2017 08:13:27 GMT
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Wed, 25 Oct 2017 13:43:04 GMT
+  recorded_at: Tue, 31 Oct 2017 08:13:27 GMT
 - request:
     method: get
     uri: http://localhost:8080/hawkular/metrics/strings/<%= id %>/raw/
@@ -235,7 +235,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 25 Oct 2017 13:43:04 GMT
+      - Tue, 31 Oct 2017 08:13:27 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -244,9 +244,9 @@ http_interactions:
       - '178'
     body:
       encoding: UTF-8
-      string: '[{"timestamp":1508938984753,"value":"Now"},{"timestamp":<%= now10 %>,"value":"Value3"},{"timestamp":<%= now20 %>,"value":"Value2"},{"timestamp":<%= now30 %>,"value":"Value1"}]'
+      string: '[{"timestamp":1509437607316,"value":"Now"},{"timestamp":<%= now10 %>,"value":"Value3"},{"timestamp":<%= now20 %>,"value":"Value2"},{"timestamp":<%= now30 %>,"value":"Value1"}]'
     http_version: 
-  recorded_at: Wed, 25 Oct 2017 13:43:04 GMT
+  recorded_at: Tue, 31 Oct 2017 08:13:27 GMT
 - request:
     method: get
     uri: http://localhost:8080/hawkular/metrics/strings/<%= id %>/raw/?end=<%= ends %>&start=<%= starts %>
@@ -284,10 +284,10 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 25 Oct 2017 13:43:04 GMT
+      - Tue, 31 Oct 2017 08:13:27 GMT
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Wed, 25 Oct 2017 13:43:04 GMT
+  recorded_at: Tue, 31 Oct 2017 08:13:27 GMT
 recorded_with: VCR 3.0.3
