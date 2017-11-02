@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/status
+    uri: http://localhost:8080/hawkular/alerts/status
     body:
       encoding: US-ASCII
       string: ''
@@ -15,6 +15,10 @@ http_interactions:
       - hawkular-client-ruby
       Content-Type:
       - application/json
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 200
@@ -31,10 +35,10 @@ http_interactions:
       Content-Length:
       - '146'
       Date:
-      - Tue, 24 Oct 2017 07:45:35 GMT
+      - Wed, 25 Oct 2017 13:43:00 GMT
     body:
       encoding: UTF-8
       string: '{"distributed":"false","Implementation-Version":"1.6.2.Final","Built-From-Git-SHA1":"3d45598e80ee3abc4057fd77d2f112530b56c1a7","status":"STARTED"}'
     http_version: 
-  recorded_at: Tue, 24 Oct 2017 07:45:35 GMT
+  recorded_at: Wed, 25 Oct 2017 13:43:00 GMT
 recorded_with: VCR 3.0.3

@@ -15,6 +15,10 @@ http_interactions:
       - hawkular-client-ruby
       Content-Type:
       - application/json
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 200
@@ -31,10 +35,51 @@ http_interactions:
       Content-Length:
       - '173'
       Date:
-      - Fri, 20 Oct 2017 14:11:45 GMT
+      - Tue, 31 Oct 2017 08:01:27 GMT
     body:
       encoding: UTF-8
       string: '{"Implementation-Version":"0.9.8.Final-SRC-revision-ce866b1ade2d7413f055f461eb36d004ff2888d8","Built-From-Git-SHA1":"ce866b1ade2d7413f055f461eb36d004ff2888d8","status":"UP"}'
     http_version: 
-  recorded_at: Fri, 20 Oct 2017 14:11:45 GMT
+  recorded_at: Tue, 31 Oct 2017 08:01:27 GMT
+- request:
+    method: get
+    uri: http://localhost:8080/hawkular/inventory/status
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Content-Type:
+      - application/json
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '173'
+      Date:
+      - Tue, 31 Oct 2017 08:01:27 GMT
+    body:
+      encoding: UTF-8
+      string: '{"Implementation-Version":"0.9.8.Final-SRC-revision-ce866b1ade2d7413f055f461eb36d004ff2888d8","Built-From-Git-SHA1":"ce866b1ade2d7413f055f461eb36d004ff2888d8","status":"UP"}'
+    http_version: 
+  recorded_at: Tue, 31 Oct 2017 08:01:27 GMT
 recorded_with: VCR 3.0.3
