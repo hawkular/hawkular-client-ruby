@@ -1,7 +1,7 @@
 hawkular:
   # !! WARNING !! FIXME !! TODO !!
   # Reset to hawkular/hawkular-services:latest before merging in master
-  image: "jotak/hawkular-services:latest"
+  image: "hawkular/hawkular-services:hawkular-1259"
   ports:
     - "8080:8080"
     - "8443:8443"
@@ -12,7 +12,7 @@ hawkular:
     - /tmp/opt/hawkular/server:/opt/data
   environment:
     - CASSANDRA_NODES=myCassandra
-    - ADMIN_TOKEN
+    - ADMIN_TOKEN=123-456-789
 myCassandra:
   image: cassandra:3.0.12
   environment:

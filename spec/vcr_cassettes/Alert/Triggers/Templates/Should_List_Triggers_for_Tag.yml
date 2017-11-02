@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/triggers?tags=resourceId%7Cmy-resource01
+    uri: http://localhost:8080/hawkular/alerts/triggers?tags=resourceId%7Cmy-resource01
     body:
       encoding: US-ASCII
       string: ''
@@ -17,6 +17,10 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 200
@@ -33,7 +37,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 24 Oct 2017 07:45:32 GMT
+      - Wed, 25 Oct 2017 13:42:57 GMT
       X-Total-Count:
       - '4'
       Connection:
@@ -50,5 +54,5 @@ http_interactions:
       encoding: UTF-8
       string: '[{"tenantId":"hawkular","id":"my-trigger-02","name":"defaultName","type":"STANDARD","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"MEDIUM","tags":{"resourceId":"my-resource01"},"autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","enabled":false,"firingMatch":"ALL","source":"_none_"},{"tenantId":"hawkular","id":"my-trigger-04","name":"defaultName","type":"STANDARD","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"MEDIUM","tags":{"app":"MyShop","resourceId":"my-resource01"},"autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","enabled":false,"firingMatch":"ALL","source":"_none_"},{"tenantId":"hawkular","id":"my-trigger-06","name":"defaultName","type":"STANDARD","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"MEDIUM","tags":{"app":"MyShop","resourceId":"my-resource01"},"autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","enabled":false,"firingMatch":"ALL","source":"_none_"},{"tenantId":"hawkular","id":"my-trigger-01","name":"defaultName","type":"STANDARD","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"MEDIUM","tags":{"app":"MyShop","resourceId":"my-resource01"},"autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","enabled":false,"firingMatch":"ALL","source":"_none_"}]'
     http_version: 
-  recorded_at: Tue, 24 Oct 2017 07:45:32 GMT
+  recorded_at: Wed, 25 Oct 2017 13:42:57 GMT
 recorded_with: VCR 3.0.3

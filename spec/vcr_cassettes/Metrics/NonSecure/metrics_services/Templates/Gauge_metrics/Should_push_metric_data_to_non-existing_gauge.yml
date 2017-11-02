@@ -2,10 +2,10 @@
 http_interactions:
 - request:
     method: post
-    uri: http://jdoe:password@localhost:8080/hawkular/metrics/gauges/<%= id %>/raw
+    uri: http://localhost:8080/hawkular/metrics/gauges/<%= id %>/raw
     body:
       encoding: UTF-8
-      string: '[{"value":3.1415926,"timestamp":1508831023461}]'
+      string: '[{"value":3.1415926,"timestamp":1509437607026}]'
     headers:
       Accept:
       - application/json
@@ -19,6 +19,10 @@ http_interactions:
       - application/json
       Content-Length:
       - '47'
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 200
@@ -39,15 +43,15 @@ http_interactions:
       Content-Length:
       - '0'
       Date:
-      - Tue, 24 Oct 2017 07:43:43 GMT
+      - Tue, 31 Oct 2017 08:13:27 GMT
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Tue, 24 Oct 2017 07:43:43 GMT
+  recorded_at: Tue, 31 Oct 2017 08:13:27 GMT
 - request:
     method: get
-    uri: http://jdoe:password@localhost:8080/hawkular/metrics/gauges/<%= id %>/raw/
+    uri: http://localhost:8080/hawkular/metrics/gauges/<%= id %>/raw/
     body:
       encoding: US-ASCII
       string: ''
@@ -62,6 +66,10 @@ http_interactions:
       - <%= vcr_test_tenant %>
       Content-Type:
       - application/json
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 200
@@ -78,7 +86,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 24 Oct 2017 07:43:43 GMT
+      - Tue, 31 Oct 2017 08:13:27 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -87,12 +95,12 @@ http_interactions:
       - '47'
     body:
       encoding: UTF-8
-      string: '[{"timestamp":1508831023461,"value":3.1415926}]'
+      string: '[{"timestamp":1509437607026,"value":3.1415926}]'
     http_version: 
-  recorded_at: Tue, 24 Oct 2017 07:43:43 GMT
+  recorded_at: Tue, 31 Oct 2017 08:13:27 GMT
 - request:
     method: get
-    uri: http://jdoe:password@localhost:8080/hawkular/metrics/gauges/<%= id %>
+    uri: http://localhost:8080/hawkular/metrics/gauges/<%= id %>
     body:
       encoding: US-ASCII
       string: ''
@@ -107,6 +115,10 @@ http_interactions:
       - <%= vcr_test_tenant %>
       Content-Type:
       - application/json
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 200
@@ -123,7 +135,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 24 Oct 2017 07:43:43 GMT
+      - Tue, 31 Oct 2017 08:13:27 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -132,7 +144,7 @@ http_interactions:
       - '224'
     body:
       encoding: UTF-8
-      string: '{"id":"<%= id %>","dataRetention":14,"type":"gauge","tenantId":"<%= vcr_test_tenant %>","minTimestamp":1508831023461,"maxTimestamp":1508831023461}'
+      string: '{"id":"<%= id %>","dataRetention":14,"type":"gauge","tenantId":"<%= vcr_test_tenant %>","minTimestamp":1509437607026,"maxTimestamp":1509437607026}'
     http_version: 
-  recorded_at: Tue, 24 Oct 2017 07:43:43 GMT
+  recorded_at: Tue, 31 Oct 2017 08:13:27 GMT
 recorded_with: VCR 3.0.3

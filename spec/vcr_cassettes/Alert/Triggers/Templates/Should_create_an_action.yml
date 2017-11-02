@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/plugins/email
+    uri: http://localhost:8080/hawkular/alerts/plugins/email
     body:
       encoding: US-ASCII
       string: ''
@@ -17,6 +17,10 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 200
@@ -33,7 +37,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 24 Oct 2017 07:45:32 GMT
+      - Wed, 25 Oct 2017 13:42:58 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -44,10 +48,10 @@ http_interactions:
       encoding: UTF-8
       string: '["cc","from","from-name","mail","template.hawkular.url","template.html","template.plain","to"]'
     http_version: 
-  recorded_at: Tue, 24 Oct 2017 07:45:32 GMT
+  recorded_at: Wed, 25 Oct 2017 13:42:58 GMT
 - request:
     method: post
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/actions
+    uri: http://localhost:8080/hawkular/alerts/actions
     body:
       encoding: UTF-8
       string: '{"actionId":"my-id1","actionPlugin":"email","properties":{"to":"joe@acme.org"}}'
@@ -64,6 +68,10 @@ http_interactions:
       - application/json
       Content-Length:
       - '79'
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 200
@@ -80,7 +88,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 24 Oct 2017 07:45:32 GMT
+      - Wed, 25 Oct 2017 13:42:58 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -91,10 +99,10 @@ http_interactions:
       encoding: UTF-8
       string: '{"tenantId":"hawkular","actionPlugin":"email","actionId":"my-id1","global":false,"properties":{"to":"joe@acme.org"}}'
     http_version: 
-  recorded_at: Tue, 24 Oct 2017 07:45:32 GMT
+  recorded_at: Wed, 25 Oct 2017 13:42:58 GMT
 - request:
     method: delete
-    uri: http://<%= username %>:<%= password %>@localhost:8080/hawkular/alerts/actions/email/my-id1
+    uri: http://localhost:8080/hawkular/alerts/actions/email/my-id1
     body:
       encoding: US-ASCII
       string: ''
@@ -109,6 +117,10 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 200
@@ -125,7 +137,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 24 Oct 2017 07:45:32 GMT
+      - Wed, 25 Oct 2017 13:42:58 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -136,5 +148,5 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Tue, 24 Oct 2017 07:45:32 GMT
+  recorded_at: Wed, 25 Oct 2017 13:42:58 GMT
 recorded_with: VCR 3.0.3
