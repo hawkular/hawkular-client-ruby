@@ -14,14 +14,15 @@ http_interactions:
       User-Agent:
       - hawkular-client-ruby
       Hawkular-Tenant:
-      - "<%= vcr_test_tenant %>"
+      - <%= vcr_test_tenant %>
       Content-Type:
       - application/json
       Content-Length:
       - '45'
-      Authorization: 'Basic amRvZTpwYXNzd29yZA==
-
-'
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 201
@@ -40,7 +41,7 @@ http_interactions:
       Location:
       - http://localhost:8080/hawkular/metrics/counters/<%= id %>
       Date:
-      - Wed, 05 Apr 2017 08:18:50 GMT
+      - Tue, 31 Oct 2017 08:13:26 GMT
       Connection:
       - keep-alive
       Content-Length:
@@ -49,14 +50,13 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Wed, 05 Apr 2017 08:18:50 GMT
+  recorded_at: Tue, 31 Oct 2017 08:13:26 GMT
 - request:
     method: post
     uri: http://localhost:8080/hawkular/metrics/counters/<%= id %>/raw
     body:
       encoding: UTF-8
-      string: '[{"value":1,"timestamp":<%= minus30 %>},{"value":2,"timestamp":<%=
-        minus20 %>},{"value":3,"timestamp":<%= minus10 %>}]'
+      string: '[{"value":1,"timestamp":<%= minus30 %>},{"value":2,"timestamp":<%= minus20 %>},{"value":3,"timestamp":<%= minus10 %>}]'
     headers:
       Accept:
       - application/json
@@ -65,14 +65,15 @@ http_interactions:
       User-Agent:
       - hawkular-client-ruby
       Hawkular-Tenant:
-      - "<%= vcr_test_tenant %>"
+      - <%= vcr_test_tenant %>
       Content-Type:
       - application/json
       Content-Length:
       - '115'
-      Authorization: 'Basic amRvZTpwYXNzd29yZA==
-
-'
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 200
@@ -93,12 +94,12 @@ http_interactions:
       Content-Length:
       - '0'
       Date:
-      - Wed, 05 Apr 2017 08:18:50 GMT
+      - Tue, 31 Oct 2017 08:13:26 GMT
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Wed, 05 Apr 2017 08:18:50 GMT
+  recorded_at: Tue, 31 Oct 2017 08:13:26 GMT
 - request:
     method: get
     uri: http://localhost:8080/hawkular/metrics/counters/<%= id %>/raw/
@@ -113,12 +114,13 @@ http_interactions:
       User-Agent:
       - hawkular-client-ruby
       Hawkular-Tenant:
-      - "<%= vcr_test_tenant %>"
+      - <%= vcr_test_tenant %>
       Content-Type:
       - application/json
-      Authorization: 'Basic amRvZTpwYXNzd29yZA==
-
-'
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 200
@@ -135,7 +137,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 05 Apr 2017 08:18:50 GMT
+      - Tue, 31 Oct 2017 08:13:26 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -144,16 +146,15 @@ http_interactions:
       - '115'
     body:
       encoding: UTF-8
-      string: '[{"timestamp":<%= minus10 %>,"value":3},{"timestamp":<%= minus20 %>,"value":2},{"timestamp":<%=
-        minus30 %>,"value":1}]'
+      string: '[{"timestamp":<%= minus10 %>,"value":3},{"timestamp":<%= minus20 %>,"value":2},{"timestamp":<%= minus30 %>,"value":1}]'
     http_version: 
-  recorded_at: Wed, 05 Apr 2017 08:18:50 GMT
+  recorded_at: Tue, 31 Oct 2017 08:13:26 GMT
 - request:
     method: post
     uri: http://localhost:8080/hawkular/metrics/counters/<%= id %>/raw
     body:
       encoding: UTF-8
-      string: '[{"value":4,"timestamp":1491380330369}]'
+      string: '[{"value":4,"timestamp":1509437606783}]'
     headers:
       Accept:
       - application/json
@@ -162,14 +163,15 @@ http_interactions:
       User-Agent:
       - hawkular-client-ruby
       Hawkular-Tenant:
-      - "<%= vcr_test_tenant %>"
+      - <%= vcr_test_tenant %>
       Content-Type:
       - application/json
       Content-Length:
       - '39'
-      Authorization: 'Basic amRvZTpwYXNzd29yZA==
-
-'
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 200
@@ -190,12 +192,12 @@ http_interactions:
       Content-Length:
       - '0'
       Date:
-      - Wed, 05 Apr 2017 08:18:50 GMT
+      - Tue, 31 Oct 2017 08:13:26 GMT
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Wed, 05 Apr 2017 08:18:50 GMT
+  recorded_at: Tue, 31 Oct 2017 08:13:26 GMT
 - request:
     method: get
     uri: http://localhost:8080/hawkular/metrics/counters/<%= id %>/raw/
@@ -210,12 +212,13 @@ http_interactions:
       User-Agent:
       - hawkular-client-ruby
       Hawkular-Tenant:
-      - "<%= vcr_test_tenant %>"
+      - <%= vcr_test_tenant %>
       Content-Type:
       - application/json
-      Authorization: 'Basic amRvZTpwYXNzd29yZA==
-
-'
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 200
@@ -232,7 +235,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 05 Apr 2017 08:18:50 GMT
+      - Tue, 31 Oct 2017 08:13:26 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -241,10 +244,9 @@ http_interactions:
       - '153'
     body:
       encoding: UTF-8
-      string: '[{"timestamp":1491380330369,"value":4},{"timestamp":<%= minus10 %>,"value":3},{"timestamp":<%=
-        minus20 %>,"value":2},{"timestamp":<%= minus30 %>,"value":1}]'
+      string: '[{"timestamp":1509437606783,"value":4},{"timestamp":<%= minus10 %>,"value":3},{"timestamp":<%= minus20 %>,"value":2},{"timestamp":<%= minus30 %>,"value":1}]'
     http_version: 
-  recorded_at: Wed, 05 Apr 2017 08:18:50 GMT
+  recorded_at: Tue, 31 Oct 2017 08:13:26 GMT
 - request:
     method: get
     uri: http://localhost:8080/hawkular/metrics/counters/<%= id %>/raw/?limit=1&order=DESC
@@ -259,12 +261,13 @@ http_interactions:
       User-Agent:
       - hawkular-client-ruby
       Hawkular-Tenant:
-      - "<%= vcr_test_tenant %>"
+      - <%= vcr_test_tenant %>
       Content-Type:
       - application/json
-      Authorization: 'Basic amRvZTpwYXNzd29yZA==
-
-'
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 200
@@ -281,7 +284,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 05 Apr 2017 08:18:50 GMT
+      - Tue, 31 Oct 2017 08:13:26 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -290,13 +293,12 @@ http_interactions:
       - '39'
     body:
       encoding: UTF-8
-      string: '[{"timestamp":1491380330369,"value":4}]'
+      string: '[{"timestamp":1509437606783,"value":4}]'
     http_version: 
-  recorded_at: Wed, 05 Apr 2017 08:18:50 GMT
+  recorded_at: Tue, 31 Oct 2017 08:13:26 GMT
 - request:
     method: get
-    uri: http://localhost:8080/hawkular/metrics/counters/<%= id %>/raw/?end=<%= minus4h
-      %>&start=<%= minus8h %>
+    uri: http://localhost:8080/hawkular/metrics/counters/<%= id %>/raw/?end=<%= minus4h %>&start=<%= minus8h %>
     body:
       encoding: US-ASCII
       string: ''
@@ -308,12 +310,13 @@ http_interactions:
       User-Agent:
       - hawkular-client-ruby
       Hawkular-Tenant:
-      - "<%= vcr_test_tenant %>"
+      - <%= vcr_test_tenant %>
       Content-Type:
       - application/json
-      Authorization: 'Basic amRvZTpwYXNzd29yZA==
-
-'
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 204
@@ -330,10 +333,10 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 05 Apr 2017 08:18:50 GMT
+      - Tue, 31 Oct 2017 08:13:26 GMT
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Wed, 05 Apr 2017 08:18:50 GMT
+  recorded_at: Tue, 31 Oct 2017 08:13:26 GMT
 recorded_with: VCR 3.0.3

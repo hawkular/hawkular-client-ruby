@@ -34,7 +34,7 @@ module Hawkular
     end
 
     def inventory
-      @inventory ||= Inventory::Client.new("#{@state[:entrypoint]}/hawkular/metrics",
+      @inventory ||= Inventory::Client.new("#{@state[:entrypoint]}/hawkular/inventory",
                                            @state[:credentials],
                                            @state[:options])
     end

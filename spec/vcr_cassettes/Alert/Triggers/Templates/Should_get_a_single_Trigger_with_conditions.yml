@@ -17,9 +17,10 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
-      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
-
-'
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 200
@@ -36,7 +37,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 25 Apr 2017 15:11:07 GMT
+      - Wed, 25 Oct 2017 13:42:57 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -47,7 +48,7 @@ http_interactions:
       encoding: UTF-8
       string: '{"tenantId":"hawkular","id":"my-trigger-01","name":"defaultName","type":"STANDARD","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"MEDIUM","tags":{"app":"MyShop","resourceId":"my-resource01"},"autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","enabled":false,"firingMatch":"ALL","source":"_none_"}'
     http_version: 
-  recorded_at: Tue, 25 Apr 2017 15:11:07 GMT
+  recorded_at: Wed, 25 Oct 2017 13:42:57 GMT
 - request:
     method: get
     uri: http://localhost:8080/hawkular/alerts/triggers/my-trigger-01/conditions
@@ -65,9 +66,10 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
-      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
-
-'
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 200
@@ -84,7 +86,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 25 Apr 2017 15:11:07 GMT
+      - Wed, 25 Oct 2017 13:42:57 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -95,7 +97,7 @@ http_interactions:
       encoding: UTF-8
       string: '[{"tenantId":"hawkular","triggerId":"my-trigger-01","triggerMode":"FIRING","type":"THRESHOLD","conditionSetSize":1,"conditionSetIndex":1,"conditionId":"hawkular-my-trigger-01-FIRING-1-1","dataId":"data-x","operator":"LT","threshold":5.0}]'
     http_version: 
-  recorded_at: Tue, 25 Apr 2017 15:11:07 GMT
+  recorded_at: Wed, 25 Oct 2017 13:42:57 GMT
 - request:
     method: get
     uri: http://localhost:8080/hawkular/alerts/triggers/my-trigger-01/dampenings
@@ -113,9 +115,10 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
-      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
-
-'
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 200
@@ -132,7 +135,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 25 Apr 2017 15:11:07 GMT
+      - Wed, 25 Oct 2017 13:42:58 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -143,5 +146,5 @@ http_interactions:
       encoding: UTF-8
       string: '[{"tenantId":"hawkular","triggerId":"my-trigger-01","triggerMode":"FIRING","type":"STRICT","evalTrueSetting":1,"evalTotalSetting":1,"evalTimeSetting":0,"dampeningId":"hawkular-my-trigger-01-FIRING"}]'
     http_version: 
-  recorded_at: Tue, 25 Apr 2017 15:11:07 GMT
+  recorded_at: Wed, 25 Oct 2017 13:42:58 GMT
 recorded_with: VCR 3.0.3

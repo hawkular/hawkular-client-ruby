@@ -18,14 +18,13 @@ http_interactions:
       Content-Type:
       - application/json
       Hawkular-Admin-Token:
-      - "<%= admin_token %>"
+      - 123-456-789
       Content-Length:
       - '45'
       Host:
       - localhost:8080
-      Authorization: 'Basic amRvZTpwYXNzd29yZA==
-
-'
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 201
@@ -44,7 +43,7 @@ http_interactions:
       Location:
       - http://localhost:8080/hawkular/metrics/tenants
       Date:
-      - Fri, 07 Oct 2016 17:56:22 GMT
+      - Tue, 31 Oct 2017 08:13:26 GMT
       Connection:
       - keep-alive
       Content-Length:
@@ -53,7 +52,7 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Fri, 07 Oct 2016 17:56:22 GMT
+  recorded_at: Tue, 31 Oct 2017 08:13:26 GMT
 - request:
     method: get
     uri: http://localhost:8080/hawkular/metrics/tenants
@@ -72,12 +71,11 @@ http_interactions:
       Content-Type:
       - application/json
       Hawkular-Admin-Token:
-      - "<%= admin_token %>"
+      - 123-456-789
       Host:
       - localhost:8080
-      Authorization: 'Basic amRvZTpwYXNzd29yZA==
-
-'
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 200
@@ -94,17 +92,16 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Fri, 07 Oct 2016 17:56:22 GMT
+      - Tue, 31 Oct 2017 08:13:26 GMT
       Connection:
       - keep-alive
       Content-Type:
       - application/json
       Content-Length:
-      - '115'
+      - '944'
     body:
       encoding: UTF-8
-      string: '[{"id":"other-tenant"},{"id":"dea3f721-2e73-4d7e-8cfb-cf073680f77b"},{"id":"<%=
-        id %>"}]'
+      string: '[{"id":"<%= id %>"},{"id":"4ac55d1b-b704-4ad0-80b6-49affc46e800"},{"id":"09c3e711-2a58-4786-a61f-d2fb7fb37db8"},{"id":"admin"},{"id":"a726f8e9-2a27-4416-a104-5da15882987d"},{"id":"NonSecuremetrics_services-vcr-tenant-36b3e6bd-3c12-4cd6-a652-ef1fc5fba194"},{"id":"NonSecure-vcr-tenant-2645acda-7bb8-47d8-9e97-a5138bd691ca"},{"id":"NonSecuremetrics_services-vcr-tenant-2645acda-7bb8-47d8-9e97-a5138bd691ca"},{"id":"f8cd0066-b14b-45fb-9125-950023075b55"},{"id":"436e89f2-0add-4f09-83cf-645d2be26126"},{"id":"4429ff05-b487-4d16-a754-bcbb855d0fb0"},{"id":"43ea234f-4541-467f-95b0-e9dd7c41831c"},{"id":"NonSecure-vcr-tenant-36b3e6bd-3c12-4cd6-a652-ef1fc5fba194"},{"id":"NonSecuremetrics_services-vcr-tenant-bfbdb2b8-a14d-481b-99ec-8bc1b1a15fa3"},{"id":"NonSecure-vcr-tenant-bfbdb2b8-a14d-481b-99ec-8bc1b1a15fa3"},{"id":"86eacf19-4c74-42c4-9b36-5e6b562d8ec7"},{"id":"hawkular"},{"id":"5926211d-ef92-46c2-9c77-0043e99f3fcb"}]'
     http_version: 
-  recorded_at: Fri, 07 Oct 2016 17:56:22 GMT
+  recorded_at: Tue, 31 Oct 2017 08:13:26 GMT
 recorded_with: VCR 3.0.3

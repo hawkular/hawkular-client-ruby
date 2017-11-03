@@ -1,0 +1,1112 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://jdoe:password@localhost:8080/hawkular/inventory/resources/62b7f4cfed6b~Local~~/children
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - hawkular
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 18 Oct 2017 14:14:55 GMT
+    body:
+      encoding: UTF-8
+      string: '{"results":[{"id":"62b7f4cfed6b~Local~/deployment=hawkular-status.war","name":"Deployment
+        [hawkular-status.war]","feedId":"62b7f4cfed6b","type":{"id":"Deployment","operations":[],"properties":{}},"metrics":[{"name":"Active
+        Sessions","type":"Active Sessions","unit":"NONE","properties":{"hawkular.metric.typeId":"Undertow
+        Metrics~Active Sessions","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/deployment=hawkular-status.war]~MT~Undertow
+        Metrics~Active Sessions"}},{"name":"Sessions Created","type":"Sessions Created","unit":"NONE","properties":{"hawkular.metric.typeId":"Undertow
+        Metrics~Sessions Created","hawkular.metric.type":"COUNTER","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/deployment=hawkular-status.war]~MT~Undertow
+        Metrics~Sessions Created"}},{"name":"Expired Sessions","type":"Expired Sessions","unit":"NONE","properties":{"hawkular.metric.typeId":"Undertow
+        Metrics~Expired Sessions","hawkular.metric.type":"COUNTER","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/deployment=hawkular-status.war]~MT~Undertow
+        Metrics~Expired Sessions"}},{"name":"Max Active Sessions","type":"Max Active
+        Sessions","unit":"NONE","properties":{"hawkular.metric.typeId":"Undertow Metrics~Max
+        Active Sessions","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/deployment=hawkular-status.war]~MT~Undertow
+        Metrics~Max Active Sessions"}},{"name":"Rejected Sessions","type":"Rejected
+        Sessions","unit":"NONE","properties":{"hawkular.metric.typeId":"Undertow Metrics~Rejected
+        Sessions","hawkular.metric.type":"COUNTER","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/deployment=hawkular-status.war]~MT~Undertow
+        Metrics~Rejected Sessions"}},{"name":"Deployment Status","type":"Deployment
+        Status","properties":{"hawkular-services.monitoring-type":"remote","hawkular.metric.typeId":"Deployment
+        Status~Deployment Status","hawkular.metric.type":"AVAILABILITY","hawkular.metric.id":"AI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/deployment=hawkular-status.war]~AT~Deployment
+        Status~Deployment Status"}}],"properties":{},"config":{}},{"id":"62b7f4cfed6b~Local~/deployment=hawkular-inventory-service.war","name":"Deployment
+        [hawkular-inventory-service.war]","feedId":"62b7f4cfed6b","type":{"id":"Deployment","operations":[],"properties":{}},"metrics":[{"name":"Expired
+        Sessions","type":"Expired Sessions","unit":"NONE","properties":{"hawkular.metric.typeId":"Undertow
+        Metrics~Expired Sessions","hawkular.metric.type":"COUNTER","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/deployment=hawkular-inventory-service.war]~MT~Undertow
+        Metrics~Expired Sessions"}},{"name":"Max Active Sessions","type":"Max Active
+        Sessions","unit":"NONE","properties":{"hawkular.metric.typeId":"Undertow Metrics~Max
+        Active Sessions","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/deployment=hawkular-inventory-service.war]~MT~Undertow
+        Metrics~Max Active Sessions"}},{"name":"Rejected Sessions","type":"Rejected
+        Sessions","unit":"NONE","properties":{"hawkular.metric.typeId":"Undertow Metrics~Rejected
+        Sessions","hawkular.metric.type":"COUNTER","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/deployment=hawkular-inventory-service.war]~MT~Undertow
+        Metrics~Rejected Sessions"}},{"name":"Sessions Created","type":"Sessions Created","unit":"NONE","properties":{"hawkular.metric.typeId":"Undertow
+        Metrics~Sessions Created","hawkular.metric.type":"COUNTER","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/deployment=hawkular-inventory-service.war]~MT~Undertow
+        Metrics~Sessions Created"}},{"name":"Active Sessions","type":"Active Sessions","unit":"NONE","properties":{"hawkular.metric.typeId":"Undertow
+        Metrics~Active Sessions","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/deployment=hawkular-inventory-service.war]~MT~Undertow
+        Metrics~Active Sessions"}},{"name":"Deployment Status","type":"Deployment
+        Status","properties":{"hawkular-services.monitoring-type":"remote","hawkular.metric.typeId":"Deployment
+        Status~Deployment Status","hawkular.metric.type":"AVAILABILITY","hawkular.metric.id":"AI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/deployment=hawkular-inventory-service.war]~AT~Deployment
+        Status~Deployment Status"}}],"properties":{},"config":{}},{"id":"62b7f4cfed6b~Local~/deployment=hawkular-wildfly-agent-download.war","name":"Deployment
+        [hawkular-wildfly-agent-download.war]","feedId":"62b7f4cfed6b","type":{"id":"Deployment","operations":[],"properties":{}},"metrics":[{"name":"Rejected
+        Sessions","type":"Rejected Sessions","unit":"NONE","properties":{"hawkular.metric.typeId":"Undertow
+        Metrics~Rejected Sessions","hawkular.metric.type":"COUNTER","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/deployment=hawkular-wildfly-agent-download.war]~MT~Undertow
+        Metrics~Rejected Sessions"}},{"name":"Sessions Created","type":"Sessions Created","unit":"NONE","properties":{"hawkular.metric.typeId":"Undertow
+        Metrics~Sessions Created","hawkular.metric.type":"COUNTER","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/deployment=hawkular-wildfly-agent-download.war]~MT~Undertow
+        Metrics~Sessions Created"}},{"name":"Expired Sessions","type":"Expired Sessions","unit":"NONE","properties":{"hawkular.metric.typeId":"Undertow
+        Metrics~Expired Sessions","hawkular.metric.type":"COUNTER","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/deployment=hawkular-wildfly-agent-download.war]~MT~Undertow
+        Metrics~Expired Sessions"}},{"name":"Active Sessions","type":"Active Sessions","unit":"NONE","properties":{"hawkular.metric.typeId":"Undertow
+        Metrics~Active Sessions","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/deployment=hawkular-wildfly-agent-download.war]~MT~Undertow
+        Metrics~Active Sessions"}},{"name":"Max Active Sessions","type":"Max Active
+        Sessions","unit":"NONE","properties":{"hawkular.metric.typeId":"Undertow Metrics~Max
+        Active Sessions","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/deployment=hawkular-wildfly-agent-download.war]~MT~Undertow
+        Metrics~Max Active Sessions"}},{"name":"Deployment Status","type":"Deployment
+        Status","properties":{"hawkular-services.monitoring-type":"remote","hawkular.metric.typeId":"Deployment
+        Status~Deployment Status","hawkular.metric.type":"AVAILABILITY","hawkular.metric.id":"AI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/deployment=hawkular-wildfly-agent-download.war]~AT~Deployment
+        Status~Deployment Status"}}],"properties":{},"config":{}},{"id":"62b7f4cfed6b~Local~/subsystem=datasources/jdbc-driver=h2","name":"JDBC
+        Driver [h2]","feedId":"62b7f4cfed6b","type":{"id":"JDBC Driver","operations":[],"properties":{}},"metrics":[],"properties":{},"config":{"Module
+        Name":"com.h2database.h2","Driver Name":"h2","Driver Class":null,"XA DS Class":"org.h2.jdbcx.JdbcDataSource"}},{"id":"62b7f4cfed6b~Local~/subsystem=datasources/data-source=CreatedByRubyDS2d925ec9-949e-42dc-950e-7443368cc7b1","name":"Datasource
+        [CreatedByRubyDS2d925ec9-949e-42dc-950e-7443368cc7b1]","feedId":"62b7f4cfed6b","type":{"id":"Datasource","operations":[],"properties":{}},"metrics":[{"name":"Average
+        Blocking Time","type":"Average Blocking Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Average Blocking Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=CreatedByRubyDS2d925ec9-949e-42dc-950e-7443368cc7b1]~MT~Datasource
+        Pool Metrics~Average Blocking Time"}},{"name":"Idle Count","type":"Idle Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Idle Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=CreatedByRubyDS2d925ec9-949e-42dc-950e-7443368cc7b1]~MT~Datasource
+        Pool Metrics~Idle Count"}},{"name":"Max Creation Time","type":"Max Creation
+        Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource Pool
+        Metrics~Max Creation Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=CreatedByRubyDS2d925ec9-949e-42dc-950e-7443368cc7b1]~MT~Datasource
+        Pool Metrics~Max Creation Time"}},{"name":"Prepared Statement Cache Current
+        Size","type":"Prepared Statement Cache Current Size","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        JDBC Metrics~Prepared Statement Cache Current Size","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=CreatedByRubyDS2d925ec9-949e-42dc-950e-7443368cc7b1]~MT~Datasource
+        JDBC Metrics~Prepared Statement Cache Current Size"}},{"name":"Created Count","type":"Created
+        Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource Pool
+        Metrics~Created Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=CreatedByRubyDS2d925ec9-949e-42dc-950e-7443368cc7b1]~MT~Datasource
+        Pool Metrics~Created Count"}},{"name":"Blocking Failure Count","type":"Blocking
+        Failure Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Blocking Failure Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=CreatedByRubyDS2d925ec9-949e-42dc-950e-7443368cc7b1]~MT~Datasource
+        Pool Metrics~Blocking Failure Count"}},{"name":"Average Get Time","type":"Average
+        Get Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Average Get Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=CreatedByRubyDS2d925ec9-949e-42dc-950e-7443368cc7b1]~MT~Datasource
+        Pool Metrics~Average Get Time"}},{"name":"Max Get Time","type":"Max Get Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Max Get Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=CreatedByRubyDS2d925ec9-949e-42dc-950e-7443368cc7b1]~MT~Datasource
+        Pool Metrics~Max Get Time"}},{"name":"Timed Out","type":"Timed Out","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Timed Out","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=CreatedByRubyDS2d925ec9-949e-42dc-950e-7443368cc7b1]~MT~Datasource
+        Pool Metrics~Timed Out"}},{"name":"Total Creation Time","type":"Total Creation
+        Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource Pool
+        Metrics~Total Creation Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=CreatedByRubyDS2d925ec9-949e-42dc-950e-7443368cc7b1]~MT~Datasource
+        Pool Metrics~Total Creation Time"}},{"name":"Max Used Count","type":"Max Used
+        Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource Pool
+        Metrics~Max Used Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=CreatedByRubyDS2d925ec9-949e-42dc-950e-7443368cc7b1]~MT~Datasource
+        Pool Metrics~Max Used Count"}},{"name":"Prepared Statement Cache Miss Count","type":"Prepared
+        Statement Cache Miss Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        JDBC Metrics~Prepared Statement Cache Miss Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=CreatedByRubyDS2d925ec9-949e-42dc-950e-7443368cc7b1]~MT~Datasource
+        JDBC Metrics~Prepared Statement Cache Miss Count"}},{"name":"Active Count","type":"Active
+        Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource Pool
+        Metrics~Active Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=CreatedByRubyDS2d925ec9-949e-42dc-950e-7443368cc7b1]~MT~Datasource
+        Pool Metrics~Active Count"}},{"name":"Prepared Statement Cache Add Count","type":"Prepared
+        Statement Cache Add Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        JDBC Metrics~Prepared Statement Cache Add Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=CreatedByRubyDS2d925ec9-949e-42dc-950e-7443368cc7b1]~MT~Datasource
+        JDBC Metrics~Prepared Statement Cache Add Count"}},{"name":"Destroyed Count","type":"Destroyed
+        Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource Pool
+        Metrics~Destroyed Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=CreatedByRubyDS2d925ec9-949e-42dc-950e-7443368cc7b1]~MT~Datasource
+        Pool Metrics~Destroyed Count"}},{"name":"In Use Count","type":"In Use Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~In Use Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=CreatedByRubyDS2d925ec9-949e-42dc-950e-7443368cc7b1]~MT~Datasource
+        Pool Metrics~In Use Count"}},{"name":"Total Blocking Time","type":"Total Blocking
+        Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource Pool
+        Metrics~Total Blocking Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=CreatedByRubyDS2d925ec9-949e-42dc-950e-7443368cc7b1]~MT~Datasource
+        Pool Metrics~Total Blocking Time"}},{"name":"Prepared Statement Cache Delete
+        Count","type":"Prepared Statement Cache Delete Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        JDBC Metrics~Prepared Statement Cache Delete Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=CreatedByRubyDS2d925ec9-949e-42dc-950e-7443368cc7b1]~MT~Datasource
+        JDBC Metrics~Prepared Statement Cache Delete Count"}},{"name":"Prepared Statement
+        Cache Access Count","type":"Prepared Statement Cache Access Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        JDBC Metrics~Prepared Statement Cache Access Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=CreatedByRubyDS2d925ec9-949e-42dc-950e-7443368cc7b1]~MT~Datasource
+        JDBC Metrics~Prepared Statement Cache Access Count"}},{"name":"Prepared Statement
+        Cache Hit Count","type":"Prepared Statement Cache Hit Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        JDBC Metrics~Prepared Statement Cache Hit Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=CreatedByRubyDS2d925ec9-949e-42dc-950e-7443368cc7b1]~MT~Datasource
+        JDBC Metrics~Prepared Statement Cache Hit Count"}},{"name":"Average Creation
+        Time","type":"Average Creation Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Average Creation Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=CreatedByRubyDS2d925ec9-949e-42dc-950e-7443368cc7b1]~MT~Datasource
+        Pool Metrics~Average Creation Time"}},{"name":"Max Wait Time","type":"Max
+        Wait Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Max Wait Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=CreatedByRubyDS2d925ec9-949e-42dc-950e-7443368cc7b1]~MT~Datasource
+        Pool Metrics~Max Wait Time"}},{"name":"Wait Count","type":"Wait Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Wait Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=CreatedByRubyDS2d925ec9-949e-42dc-950e-7443368cc7b1]~MT~Datasource
+        Pool Metrics~Wait Count"}},{"name":"Max Wait Count","type":"Max Wait Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Max Wait Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=CreatedByRubyDS2d925ec9-949e-42dc-950e-7443368cc7b1]~MT~Datasource
+        Pool Metrics~Max Wait Count"}},{"name":"Available Count","type":"Available
+        Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource Pool
+        Metrics~Available Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=CreatedByRubyDS2d925ec9-949e-42dc-950e-7443368cc7b1]~MT~Datasource
+        Pool Metrics~Available Count"}},{"name":"Total Get Time","type":"Total Get
+        Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource Pool
+        Metrics~Total Get Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=CreatedByRubyDS2d925ec9-949e-42dc-950e-7443368cc7b1]~MT~Datasource
+        Pool Metrics~Total Get Time"}}],"properties":{},"config":{"Connection Properties":"{\"someKey\":\"someValue\"}","Datasource
+        Class":null,"Security Domain":null,"Username":"sa","Driver Name":"h2","JNDI
+        Name":"java:jboss/datasources/CreatedByRubyDS2d925ec9-949e-42dc-950e-7443368cc7b1","Connection
+        URL":"dbc:h2:mem:ruby;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE","Enabled":"true","Driver
+        Class":"org.h2.Driver","Password":"sa"}},{"id":"62b7f4cfed6b~Local~/deployment=hawkular-metrics.ear","name":"Deployment
+        [hawkular-metrics.ear]","feedId":"62b7f4cfed6b","type":{"id":"Deployment","operations":[],"properties":{}},"metrics":[{"name":"Deployment
+        Status","type":"Deployment Status","properties":{"hawkular-services.monitoring-type":"remote","hawkular.metric.typeId":"Deployment
+        Status~Deployment Status","hawkular.metric.type":"AVAILABILITY","hawkular.metric.id":"AI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/deployment=hawkular-metrics.ear]~AT~Deployment
+        Status~Deployment Status"}}],"properties":{},"config":{}},{"id":"62b7f4cfed6b~Local~/subsystem=datasources/data-source=CreatedByRubyDS14c235df-48d9-4cc9-bf82-d589635ead67","name":"Datasource
+        [CreatedByRubyDS14c235df-48d9-4cc9-bf82-d589635ead67]","feedId":"62b7f4cfed6b","type":{"id":"Datasource","operations":[],"properties":{}},"metrics":[{"name":"Destroyed
+        Count","type":"Destroyed Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Destroyed Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=CreatedByRubyDS14c235df-48d9-4cc9-bf82-d589635ead67]~MT~Datasource
+        Pool Metrics~Destroyed Count"}},{"name":"Total Blocking Time","type":"Total
+        Blocking Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Total Blocking Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=CreatedByRubyDS14c235df-48d9-4cc9-bf82-d589635ead67]~MT~Datasource
+        Pool Metrics~Total Blocking Time"}},{"name":"Max Wait Count","type":"Max Wait
+        Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource Pool
+        Metrics~Max Wait Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=CreatedByRubyDS14c235df-48d9-4cc9-bf82-d589635ead67]~MT~Datasource
+        Pool Metrics~Max Wait Count"}},{"name":"Idle Count","type":"Idle Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Idle Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=CreatedByRubyDS14c235df-48d9-4cc9-bf82-d589635ead67]~MT~Datasource
+        Pool Metrics~Idle Count"}},{"name":"Blocking Failure Count","type":"Blocking
+        Failure Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Blocking Failure Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=CreatedByRubyDS14c235df-48d9-4cc9-bf82-d589635ead67]~MT~Datasource
+        Pool Metrics~Blocking Failure Count"}},{"name":"Timed Out","type":"Timed Out","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Timed Out","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=CreatedByRubyDS14c235df-48d9-4cc9-bf82-d589635ead67]~MT~Datasource
+        Pool Metrics~Timed Out"}},{"name":"Max Creation Time","type":"Max Creation
+        Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource Pool
+        Metrics~Max Creation Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=CreatedByRubyDS14c235df-48d9-4cc9-bf82-d589635ead67]~MT~Datasource
+        Pool Metrics~Max Creation Time"}},{"name":"Wait Count","type":"Wait Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Wait Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=CreatedByRubyDS14c235df-48d9-4cc9-bf82-d589635ead67]~MT~Datasource
+        Pool Metrics~Wait Count"}},{"name":"Active Count","type":"Active Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Active Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=CreatedByRubyDS14c235df-48d9-4cc9-bf82-d589635ead67]~MT~Datasource
+        Pool Metrics~Active Count"}},{"name":"Max Used Count","type":"Max Used Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Max Used Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=CreatedByRubyDS14c235df-48d9-4cc9-bf82-d589635ead67]~MT~Datasource
+        Pool Metrics~Max Used Count"}},{"name":"Total Get Time","type":"Total Get
+        Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource Pool
+        Metrics~Total Get Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=CreatedByRubyDS14c235df-48d9-4cc9-bf82-d589635ead67]~MT~Datasource
+        Pool Metrics~Total Get Time"}},{"name":"Available Count","type":"Available
+        Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource Pool
+        Metrics~Available Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=CreatedByRubyDS14c235df-48d9-4cc9-bf82-d589635ead67]~MT~Datasource
+        Pool Metrics~Available Count"}},{"name":"Max Get Time","type":"Max Get Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Max Get Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=CreatedByRubyDS14c235df-48d9-4cc9-bf82-d589635ead67]~MT~Datasource
+        Pool Metrics~Max Get Time"}},{"name":"In Use Count","type":"In Use Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~In Use Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=CreatedByRubyDS14c235df-48d9-4cc9-bf82-d589635ead67]~MT~Datasource
+        Pool Metrics~In Use Count"}},{"name":"Prepared Statement Cache Hit Count","type":"Prepared
+        Statement Cache Hit Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        JDBC Metrics~Prepared Statement Cache Hit Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=CreatedByRubyDS14c235df-48d9-4cc9-bf82-d589635ead67]~MT~Datasource
+        JDBC Metrics~Prepared Statement Cache Hit Count"}},{"name":"Average Get Time","type":"Average
+        Get Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Average Get Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=CreatedByRubyDS14c235df-48d9-4cc9-bf82-d589635ead67]~MT~Datasource
+        Pool Metrics~Average Get Time"}},{"name":"Prepared Statement Cache Access
+        Count","type":"Prepared Statement Cache Access Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        JDBC Metrics~Prepared Statement Cache Access Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=CreatedByRubyDS14c235df-48d9-4cc9-bf82-d589635ead67]~MT~Datasource
+        JDBC Metrics~Prepared Statement Cache Access Count"}},{"name":"Created Count","type":"Created
+        Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource Pool
+        Metrics~Created Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=CreatedByRubyDS14c235df-48d9-4cc9-bf82-d589635ead67]~MT~Datasource
+        Pool Metrics~Created Count"}},{"name":"Max Wait Time","type":"Max Wait Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Max Wait Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=CreatedByRubyDS14c235df-48d9-4cc9-bf82-d589635ead67]~MT~Datasource
+        Pool Metrics~Max Wait Time"}},{"name":"Prepared Statement Cache Miss Count","type":"Prepared
+        Statement Cache Miss Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        JDBC Metrics~Prepared Statement Cache Miss Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=CreatedByRubyDS14c235df-48d9-4cc9-bf82-d589635ead67]~MT~Datasource
+        JDBC Metrics~Prepared Statement Cache Miss Count"}},{"name":"Total Creation
+        Time","type":"Total Creation Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Total Creation Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=CreatedByRubyDS14c235df-48d9-4cc9-bf82-d589635ead67]~MT~Datasource
+        Pool Metrics~Total Creation Time"}},{"name":"Prepared Statement Cache Add
+        Count","type":"Prepared Statement Cache Add Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        JDBC Metrics~Prepared Statement Cache Add Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=CreatedByRubyDS14c235df-48d9-4cc9-bf82-d589635ead67]~MT~Datasource
+        JDBC Metrics~Prepared Statement Cache Add Count"}},{"name":"Prepared Statement
+        Cache Delete Count","type":"Prepared Statement Cache Delete Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        JDBC Metrics~Prepared Statement Cache Delete Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=CreatedByRubyDS14c235df-48d9-4cc9-bf82-d589635ead67]~MT~Datasource
+        JDBC Metrics~Prepared Statement Cache Delete Count"}},{"name":"Prepared Statement
+        Cache Current Size","type":"Prepared Statement Cache Current Size","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        JDBC Metrics~Prepared Statement Cache Current Size","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=CreatedByRubyDS14c235df-48d9-4cc9-bf82-d589635ead67]~MT~Datasource
+        JDBC Metrics~Prepared Statement Cache Current Size"}},{"name":"Average Blocking
+        Time","type":"Average Blocking Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Average Blocking Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=CreatedByRubyDS14c235df-48d9-4cc9-bf82-d589635ead67]~MT~Datasource
+        Pool Metrics~Average Blocking Time"}},{"name":"Average Creation Time","type":"Average
+        Creation Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Average Creation Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=CreatedByRubyDS14c235df-48d9-4cc9-bf82-d589635ead67]~MT~Datasource
+        Pool Metrics~Average Creation Time"}}],"properties":{},"config":{"Connection
+        Properties":"{\"someKey\":\"someValue\"}","Datasource Class":null,"Security
+        Domain":null,"Username":"sa","Driver Name":"h2","JNDI Name":"java:jboss/datasources/CreatedByRubyDS14c235df-48d9-4cc9-bf82-d589635ead67","Connection
+        URL":"dbc:h2:mem:ruby;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE","Enabled":"true","Driver
+        Class":"org.h2.Driver","Password":"sa"}},{"id":"62b7f4cfed6b~Local~/subsystem=messaging-activemq/server=default","name":"Messaging
+        Server [default]","feedId":"62b7f4cfed6b","type":{"id":"Messaging Server","operations":[],"properties":{}},"metrics":[],"properties":{},"config":{}},{"id":"62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA37abe712-1c9e-452f-8275-f92d7e7109e4","name":"XA
+        Datasource [CreatedByRubyDSXA37abe712-1c9e-452f-8275-f92d7e7109e4]","feedId":"62b7f4cfed6b","type":{"id":"XA
+        Datasource","operations":[],"properties":{}},"metrics":[{"name":"Total Blocking
+        Time","type":"Total Blocking Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Total Blocking Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA37abe712-1c9e-452f-8275-f92d7e7109e4]~MT~Datasource
+        Pool Metrics~Total Blocking Time"}},{"name":"Prepared Statement Cache Access
+        Count","type":"Prepared Statement Cache Access Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        JDBC Metrics~Prepared Statement Cache Access Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA37abe712-1c9e-452f-8275-f92d7e7109e4]~MT~Datasource
+        JDBC Metrics~Prepared Statement Cache Access Count"}},{"name":"In Use Count","type":"In
+        Use Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~In Use Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA37abe712-1c9e-452f-8275-f92d7e7109e4]~MT~Datasource
+        Pool Metrics~In Use Count"}},{"name":"Prepared Statement Cache Delete Count","type":"Prepared
+        Statement Cache Delete Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        JDBC Metrics~Prepared Statement Cache Delete Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA37abe712-1c9e-452f-8275-f92d7e7109e4]~MT~Datasource
+        JDBC Metrics~Prepared Statement Cache Delete Count"}},{"name":"Available Count","type":"Available
+        Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource Pool
+        Metrics~Available Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA37abe712-1c9e-452f-8275-f92d7e7109e4]~MT~Datasource
+        Pool Metrics~Available Count"}},{"name":"Max Get Time","type":"Max Get Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Max Get Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA37abe712-1c9e-452f-8275-f92d7e7109e4]~MT~Datasource
+        Pool Metrics~Max Get Time"}},{"name":"Average Blocking Time","type":"Average
+        Blocking Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Average Blocking Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA37abe712-1c9e-452f-8275-f92d7e7109e4]~MT~Datasource
+        Pool Metrics~Average Blocking Time"}},{"name":"Total Get Time","type":"Total
+        Get Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Total Get Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA37abe712-1c9e-452f-8275-f92d7e7109e4]~MT~Datasource
+        Pool Metrics~Total Get Time"}},{"name":"Wait Count","type":"Wait Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Wait Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA37abe712-1c9e-452f-8275-f92d7e7109e4]~MT~Datasource
+        Pool Metrics~Wait Count"}},{"name":"Max Creation Time","type":"Max Creation
+        Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource Pool
+        Metrics~Max Creation Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA37abe712-1c9e-452f-8275-f92d7e7109e4]~MT~Datasource
+        Pool Metrics~Max Creation Time"}},{"name":"Idle Count","type":"Idle Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Idle Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA37abe712-1c9e-452f-8275-f92d7e7109e4]~MT~Datasource
+        Pool Metrics~Idle Count"}},{"name":"Timed Out","type":"Timed Out","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Timed Out","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA37abe712-1c9e-452f-8275-f92d7e7109e4]~MT~Datasource
+        Pool Metrics~Timed Out"}},{"name":"Blocking Failure Count","type":"Blocking
+        Failure Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Blocking Failure Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA37abe712-1c9e-452f-8275-f92d7e7109e4]~MT~Datasource
+        Pool Metrics~Blocking Failure Count"}},{"name":"Max Wait Count","type":"Max
+        Wait Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Max Wait Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA37abe712-1c9e-452f-8275-f92d7e7109e4]~MT~Datasource
+        Pool Metrics~Max Wait Count"}},{"name":"Prepared Statement Cache Add Count","type":"Prepared
+        Statement Cache Add Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        JDBC Metrics~Prepared Statement Cache Add Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA37abe712-1c9e-452f-8275-f92d7e7109e4]~MT~Datasource
+        JDBC Metrics~Prepared Statement Cache Add Count"}},{"name":"Max Wait Time","type":"Max
+        Wait Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Max Wait Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA37abe712-1c9e-452f-8275-f92d7e7109e4]~MT~Datasource
+        Pool Metrics~Max Wait Time"}},{"name":"Destroyed Count","type":"Destroyed
+        Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource Pool
+        Metrics~Destroyed Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA37abe712-1c9e-452f-8275-f92d7e7109e4]~MT~Datasource
+        Pool Metrics~Destroyed Count"}},{"name":"Prepared Statement Cache Miss Count","type":"Prepared
+        Statement Cache Miss Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        JDBC Metrics~Prepared Statement Cache Miss Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA37abe712-1c9e-452f-8275-f92d7e7109e4]~MT~Datasource
+        JDBC Metrics~Prepared Statement Cache Miss Count"}},{"name":"Prepared Statement
+        Cache Current Size","type":"Prepared Statement Cache Current Size","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        JDBC Metrics~Prepared Statement Cache Current Size","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA37abe712-1c9e-452f-8275-f92d7e7109e4]~MT~Datasource
+        JDBC Metrics~Prepared Statement Cache Current Size"}},{"name":"Average Creation
+        Time","type":"Average Creation Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Average Creation Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA37abe712-1c9e-452f-8275-f92d7e7109e4]~MT~Datasource
+        Pool Metrics~Average Creation Time"}},{"name":"Total Creation Time","type":"Total
+        Creation Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Total Creation Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA37abe712-1c9e-452f-8275-f92d7e7109e4]~MT~Datasource
+        Pool Metrics~Total Creation Time"}},{"name":"Created Count","type":"Created
+        Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource Pool
+        Metrics~Created Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA37abe712-1c9e-452f-8275-f92d7e7109e4]~MT~Datasource
+        Pool Metrics~Created Count"}},{"name":"Average Get Time","type":"Average Get
+        Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource Pool
+        Metrics~Average Get Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA37abe712-1c9e-452f-8275-f92d7e7109e4]~MT~Datasource
+        Pool Metrics~Average Get Time"}},{"name":"Active Count","type":"Active Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Active Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA37abe712-1c9e-452f-8275-f92d7e7109e4]~MT~Datasource
+        Pool Metrics~Active Count"}},{"name":"Prepared Statement Cache Hit Count","type":"Prepared
+        Statement Cache Hit Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        JDBC Metrics~Prepared Statement Cache Hit Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA37abe712-1c9e-452f-8275-f92d7e7109e4]~MT~Datasource
+        JDBC Metrics~Prepared Statement Cache Hit Count"}},{"name":"Max Used Count","type":"Max
+        Used Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Max Used Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA37abe712-1c9e-452f-8275-f92d7e7109e4]~MT~Datasource
+        Pool Metrics~Max Used Count"}}],"properties":{},"config":{"Datasource Properties":"{\"someKey\":\"someValue\"}","XA
+        Datasource Class":"org.h2.jdbcx.JdbcDataSource","Security Domain":null,"Username":"sa","Driver
+        Name":"h2","JNDI Name":"java:jboss/datasources/CreatedByRubyDSXA37abe712-1c9e-452f-8275-f92d7e7109e4","Enabled":"true","Password":"sa"}},{"id":"62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA2d925ec9-949e-42dc-950e-7443368cc7b1","name":"XA
+        Datasource [CreatedByRubyDSXA2d925ec9-949e-42dc-950e-7443368cc7b1]","feedId":"62b7f4cfed6b","type":{"id":"XA
+        Datasource","operations":[],"properties":{}},"metrics":[{"name":"Idle Count","type":"Idle
+        Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource Pool
+        Metrics~Idle Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA2d925ec9-949e-42dc-950e-7443368cc7b1]~MT~Datasource
+        Pool Metrics~Idle Count"}},{"name":"Average Creation Time","type":"Average
+        Creation Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Average Creation Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA2d925ec9-949e-42dc-950e-7443368cc7b1]~MT~Datasource
+        Pool Metrics~Average Creation Time"}},{"name":"Prepared Statement Cache Access
+        Count","type":"Prepared Statement Cache Access Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        JDBC Metrics~Prepared Statement Cache Access Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA2d925ec9-949e-42dc-950e-7443368cc7b1]~MT~Datasource
+        JDBC Metrics~Prepared Statement Cache Access Count"}},{"name":"Prepared Statement
+        Cache Add Count","type":"Prepared Statement Cache Add Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        JDBC Metrics~Prepared Statement Cache Add Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA2d925ec9-949e-42dc-950e-7443368cc7b1]~MT~Datasource
+        JDBC Metrics~Prepared Statement Cache Add Count"}},{"name":"In Use Count","type":"In
+        Use Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~In Use Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA2d925ec9-949e-42dc-950e-7443368cc7b1]~MT~Datasource
+        Pool Metrics~In Use Count"}},{"name":"Total Get Time","type":"Total Get Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Total Get Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA2d925ec9-949e-42dc-950e-7443368cc7b1]~MT~Datasource
+        Pool Metrics~Total Get Time"}},{"name":"Timed Out","type":"Timed Out","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Timed Out","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA2d925ec9-949e-42dc-950e-7443368cc7b1]~MT~Datasource
+        Pool Metrics~Timed Out"}},{"name":"Wait Count","type":"Wait Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Wait Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA2d925ec9-949e-42dc-950e-7443368cc7b1]~MT~Datasource
+        Pool Metrics~Wait Count"}},{"name":"Average Get Time","type":"Average Get
+        Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource Pool
+        Metrics~Average Get Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA2d925ec9-949e-42dc-950e-7443368cc7b1]~MT~Datasource
+        Pool Metrics~Average Get Time"}},{"name":"Average Blocking Time","type":"Average
+        Blocking Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Average Blocking Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA2d925ec9-949e-42dc-950e-7443368cc7b1]~MT~Datasource
+        Pool Metrics~Average Blocking Time"}},{"name":"Available Count","type":"Available
+        Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource Pool
+        Metrics~Available Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA2d925ec9-949e-42dc-950e-7443368cc7b1]~MT~Datasource
+        Pool Metrics~Available Count"}},{"name":"Prepared Statement Cache Delete Count","type":"Prepared
+        Statement Cache Delete Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        JDBC Metrics~Prepared Statement Cache Delete Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA2d925ec9-949e-42dc-950e-7443368cc7b1]~MT~Datasource
+        JDBC Metrics~Prepared Statement Cache Delete Count"}},{"name":"Max Wait Time","type":"Max
+        Wait Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Max Wait Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA2d925ec9-949e-42dc-950e-7443368cc7b1]~MT~Datasource
+        Pool Metrics~Max Wait Time"}},{"name":"Destroyed Count","type":"Destroyed
+        Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource Pool
+        Metrics~Destroyed Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA2d925ec9-949e-42dc-950e-7443368cc7b1]~MT~Datasource
+        Pool Metrics~Destroyed Count"}},{"name":"Active Count","type":"Active Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Active Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA2d925ec9-949e-42dc-950e-7443368cc7b1]~MT~Datasource
+        Pool Metrics~Active Count"}},{"name":"Prepared Statement Cache Current Size","type":"Prepared
+        Statement Cache Current Size","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        JDBC Metrics~Prepared Statement Cache Current Size","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA2d925ec9-949e-42dc-950e-7443368cc7b1]~MT~Datasource
+        JDBC Metrics~Prepared Statement Cache Current Size"}},{"name":"Max Wait Count","type":"Max
+        Wait Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Max Wait Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA2d925ec9-949e-42dc-950e-7443368cc7b1]~MT~Datasource
+        Pool Metrics~Max Wait Count"}},{"name":"Max Get Time","type":"Max Get Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Max Get Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA2d925ec9-949e-42dc-950e-7443368cc7b1]~MT~Datasource
+        Pool Metrics~Max Get Time"}},{"name":"Max Used Count","type":"Max Used Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Max Used Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA2d925ec9-949e-42dc-950e-7443368cc7b1]~MT~Datasource
+        Pool Metrics~Max Used Count"}},{"name":"Prepared Statement Cache Miss Count","type":"Prepared
+        Statement Cache Miss Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        JDBC Metrics~Prepared Statement Cache Miss Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA2d925ec9-949e-42dc-950e-7443368cc7b1]~MT~Datasource
+        JDBC Metrics~Prepared Statement Cache Miss Count"}},{"name":"Total Creation
+        Time","type":"Total Creation Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Total Creation Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA2d925ec9-949e-42dc-950e-7443368cc7b1]~MT~Datasource
+        Pool Metrics~Total Creation Time"}},{"name":"Prepared Statement Cache Hit
+        Count","type":"Prepared Statement Cache Hit Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        JDBC Metrics~Prepared Statement Cache Hit Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA2d925ec9-949e-42dc-950e-7443368cc7b1]~MT~Datasource
+        JDBC Metrics~Prepared Statement Cache Hit Count"}},{"name":"Max Creation Time","type":"Max
+        Creation Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Max Creation Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA2d925ec9-949e-42dc-950e-7443368cc7b1]~MT~Datasource
+        Pool Metrics~Max Creation Time"}},{"name":"Total Blocking Time","type":"Total
+        Blocking Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Total Blocking Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA2d925ec9-949e-42dc-950e-7443368cc7b1]~MT~Datasource
+        Pool Metrics~Total Blocking Time"}},{"name":"Blocking Failure Count","type":"Blocking
+        Failure Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Blocking Failure Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA2d925ec9-949e-42dc-950e-7443368cc7b1]~MT~Datasource
+        Pool Metrics~Blocking Failure Count"}},{"name":"Created Count","type":"Created
+        Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource Pool
+        Metrics~Created Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA2d925ec9-949e-42dc-950e-7443368cc7b1]~MT~Datasource
+        Pool Metrics~Created Count"}}],"properties":{},"config":{"Datasource Properties":"{\"someKey\":\"someValue\"}","XA
+        Datasource Class":"org.h2.jdbcx.JdbcDataSource","Security Domain":null,"Username":"sa","Driver
+        Name":"h2","JNDI Name":"java:jboss/datasources/CreatedByRubyDSXA2d925ec9-949e-42dc-950e-7443368cc7b1","Enabled":"true","Password":"sa"}},{"id":"62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA3f1aa808-b6bb-4d3d-ac20-634f1eee28ed","name":"XA
+        Datasource [CreatedByRubyDSXA3f1aa808-b6bb-4d3d-ac20-634f1eee28ed]","feedId":"62b7f4cfed6b","type":{"id":"XA
+        Datasource","operations":[],"properties":{}},"metrics":[{"name":"Available
+        Count","type":"Available Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Available Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA3f1aa808-b6bb-4d3d-ac20-634f1eee28ed]~MT~Datasource
+        Pool Metrics~Available Count"}},{"name":"Average Creation Time","type":"Average
+        Creation Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Average Creation Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA3f1aa808-b6bb-4d3d-ac20-634f1eee28ed]~MT~Datasource
+        Pool Metrics~Average Creation Time"}},{"name":"Max Used Count","type":"Max
+        Used Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Max Used Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA3f1aa808-b6bb-4d3d-ac20-634f1eee28ed]~MT~Datasource
+        Pool Metrics~Max Used Count"}},{"name":"Idle Count","type":"Idle Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Idle Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA3f1aa808-b6bb-4d3d-ac20-634f1eee28ed]~MT~Datasource
+        Pool Metrics~Idle Count"}},{"name":"Blocking Failure Count","type":"Blocking
+        Failure Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Blocking Failure Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA3f1aa808-b6bb-4d3d-ac20-634f1eee28ed]~MT~Datasource
+        Pool Metrics~Blocking Failure Count"}},{"name":"Total Get Time","type":"Total
+        Get Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Total Get Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA3f1aa808-b6bb-4d3d-ac20-634f1eee28ed]~MT~Datasource
+        Pool Metrics~Total Get Time"}},{"name":"Total Creation Time","type":"Total
+        Creation Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Total Creation Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA3f1aa808-b6bb-4d3d-ac20-634f1eee28ed]~MT~Datasource
+        Pool Metrics~Total Creation Time"}},{"name":"Prepared Statement Cache Current
+        Size","type":"Prepared Statement Cache Current Size","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        JDBC Metrics~Prepared Statement Cache Current Size","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA3f1aa808-b6bb-4d3d-ac20-634f1eee28ed]~MT~Datasource
+        JDBC Metrics~Prepared Statement Cache Current Size"}},{"name":"Average Get
+        Time","type":"Average Get Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Average Get Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA3f1aa808-b6bb-4d3d-ac20-634f1eee28ed]~MT~Datasource
+        Pool Metrics~Average Get Time"}},{"name":"Prepared Statement Cache Hit Count","type":"Prepared
+        Statement Cache Hit Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        JDBC Metrics~Prepared Statement Cache Hit Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA3f1aa808-b6bb-4d3d-ac20-634f1eee28ed]~MT~Datasource
+        JDBC Metrics~Prepared Statement Cache Hit Count"}},{"name":"Prepared Statement
+        Cache Access Count","type":"Prepared Statement Cache Access Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        JDBC Metrics~Prepared Statement Cache Access Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA3f1aa808-b6bb-4d3d-ac20-634f1eee28ed]~MT~Datasource
+        JDBC Metrics~Prepared Statement Cache Access Count"}},{"name":"Prepared Statement
+        Cache Add Count","type":"Prepared Statement Cache Add Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        JDBC Metrics~Prepared Statement Cache Add Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA3f1aa808-b6bb-4d3d-ac20-634f1eee28ed]~MT~Datasource
+        JDBC Metrics~Prepared Statement Cache Add Count"}},{"name":"Created Count","type":"Created
+        Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource Pool
+        Metrics~Created Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA3f1aa808-b6bb-4d3d-ac20-634f1eee28ed]~MT~Datasource
+        Pool Metrics~Created Count"}},{"name":"Destroyed Count","type":"Destroyed
+        Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource Pool
+        Metrics~Destroyed Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA3f1aa808-b6bb-4d3d-ac20-634f1eee28ed]~MT~Datasource
+        Pool Metrics~Destroyed Count"}},{"name":"Total Blocking Time","type":"Total
+        Blocking Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Total Blocking Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA3f1aa808-b6bb-4d3d-ac20-634f1eee28ed]~MT~Datasource
+        Pool Metrics~Total Blocking Time"}},{"name":"Prepared Statement Cache Delete
+        Count","type":"Prepared Statement Cache Delete Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        JDBC Metrics~Prepared Statement Cache Delete Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA3f1aa808-b6bb-4d3d-ac20-634f1eee28ed]~MT~Datasource
+        JDBC Metrics~Prepared Statement Cache Delete Count"}},{"name":"Prepared Statement
+        Cache Miss Count","type":"Prepared Statement Cache Miss Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        JDBC Metrics~Prepared Statement Cache Miss Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA3f1aa808-b6bb-4d3d-ac20-634f1eee28ed]~MT~Datasource
+        JDBC Metrics~Prepared Statement Cache Miss Count"}},{"name":"Max Creation
+        Time","type":"Max Creation Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Max Creation Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA3f1aa808-b6bb-4d3d-ac20-634f1eee28ed]~MT~Datasource
+        Pool Metrics~Max Creation Time"}},{"name":"Active Count","type":"Active Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Active Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA3f1aa808-b6bb-4d3d-ac20-634f1eee28ed]~MT~Datasource
+        Pool Metrics~Active Count"}},{"name":"Wait Count","type":"Wait Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Wait Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA3f1aa808-b6bb-4d3d-ac20-634f1eee28ed]~MT~Datasource
+        Pool Metrics~Wait Count"}},{"name":"Average Blocking Time","type":"Average
+        Blocking Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Average Blocking Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA3f1aa808-b6bb-4d3d-ac20-634f1eee28ed]~MT~Datasource
+        Pool Metrics~Average Blocking Time"}},{"name":"Max Wait Time","type":"Max
+        Wait Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Max Wait Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA3f1aa808-b6bb-4d3d-ac20-634f1eee28ed]~MT~Datasource
+        Pool Metrics~Max Wait Time"}},{"name":"Max Get Time","type":"Max Get Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Max Get Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA3f1aa808-b6bb-4d3d-ac20-634f1eee28ed]~MT~Datasource
+        Pool Metrics~Max Get Time"}},{"name":"In Use Count","type":"In Use Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~In Use Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA3f1aa808-b6bb-4d3d-ac20-634f1eee28ed]~MT~Datasource
+        Pool Metrics~In Use Count"}},{"name":"Max Wait Count","type":"Max Wait Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Max Wait Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA3f1aa808-b6bb-4d3d-ac20-634f1eee28ed]~MT~Datasource
+        Pool Metrics~Max Wait Count"}},{"name":"Timed Out","type":"Timed Out","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Timed Out","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA3f1aa808-b6bb-4d3d-ac20-634f1eee28ed]~MT~Datasource
+        Pool Metrics~Timed Out"}}],"properties":{},"config":{"Datasource Properties":"{\"someKey\":\"someValue\"}","XA
+        Datasource Class":"org.h2.jdbcx.JdbcDataSource","Security Domain":null,"Username":"sa","Driver
+        Name":"h2","JNDI Name":"java:jboss/datasources/CreatedByRubyDSXA3f1aa808-b6bb-4d3d-ac20-634f1eee28ed","Enabled":"true","Password":"sa"}},{"id":"62b7f4cfed6b~Local~/socket-binding-group=standard-sockets","name":"Socket
+        Binding Group [standard-sockets]","feedId":"62b7f4cfed6b","type":{"id":"Socket
+        Binding Group","operations":[],"properties":{}},"metrics":[],"properties":{},"config":{"Default
+        Interface":"public","Port Offset":"0","Name":"standard-sockets"}},{"id":"62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA14c235df-48d9-4cc9-bf82-d589635ead67","name":"XA
+        Datasource [CreatedByRubyDSXA14c235df-48d9-4cc9-bf82-d589635ead67]","feedId":"62b7f4cfed6b","type":{"id":"XA
+        Datasource","operations":[],"properties":{}},"metrics":[{"name":"Idle Count","type":"Idle
+        Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource Pool
+        Metrics~Idle Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA14c235df-48d9-4cc9-bf82-d589635ead67]~MT~Datasource
+        Pool Metrics~Idle Count"}},{"name":"Prepared Statement Cache Access Count","type":"Prepared
+        Statement Cache Access Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        JDBC Metrics~Prepared Statement Cache Access Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA14c235df-48d9-4cc9-bf82-d589635ead67]~MT~Datasource
+        JDBC Metrics~Prepared Statement Cache Access Count"}},{"name":"Max Wait Time","type":"Max
+        Wait Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Max Wait Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA14c235df-48d9-4cc9-bf82-d589635ead67]~MT~Datasource
+        Pool Metrics~Max Wait Time"}},{"name":"Average Blocking Time","type":"Average
+        Blocking Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Average Blocking Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA14c235df-48d9-4cc9-bf82-d589635ead67]~MT~Datasource
+        Pool Metrics~Average Blocking Time"}},{"name":"Available Count","type":"Available
+        Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource Pool
+        Metrics~Available Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA14c235df-48d9-4cc9-bf82-d589635ead67]~MT~Datasource
+        Pool Metrics~Available Count"}},{"name":"Total Creation Time","type":"Total
+        Creation Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Total Creation Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA14c235df-48d9-4cc9-bf82-d589635ead67]~MT~Datasource
+        Pool Metrics~Total Creation Time"}},{"name":"Wait Count","type":"Wait Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Wait Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA14c235df-48d9-4cc9-bf82-d589635ead67]~MT~Datasource
+        Pool Metrics~Wait Count"}},{"name":"Prepared Statement Cache Add Count","type":"Prepared
+        Statement Cache Add Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        JDBC Metrics~Prepared Statement Cache Add Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA14c235df-48d9-4cc9-bf82-d589635ead67]~MT~Datasource
+        JDBC Metrics~Prepared Statement Cache Add Count"}},{"name":"Prepared Statement
+        Cache Current Size","type":"Prepared Statement Cache Current Size","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        JDBC Metrics~Prepared Statement Cache Current Size","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA14c235df-48d9-4cc9-bf82-d589635ead67]~MT~Datasource
+        JDBC Metrics~Prepared Statement Cache Current Size"}},{"name":"Prepared Statement
+        Cache Delete Count","type":"Prepared Statement Cache Delete Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        JDBC Metrics~Prepared Statement Cache Delete Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA14c235df-48d9-4cc9-bf82-d589635ead67]~MT~Datasource
+        JDBC Metrics~Prepared Statement Cache Delete Count"}},{"name":"Max Used Count","type":"Max
+        Used Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Max Used Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA14c235df-48d9-4cc9-bf82-d589635ead67]~MT~Datasource
+        Pool Metrics~Max Used Count"}},{"name":"Total Blocking Time","type":"Total
+        Blocking Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Total Blocking Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA14c235df-48d9-4cc9-bf82-d589635ead67]~MT~Datasource
+        Pool Metrics~Total Blocking Time"}},{"name":"Destroyed Count","type":"Destroyed
+        Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource Pool
+        Metrics~Destroyed Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA14c235df-48d9-4cc9-bf82-d589635ead67]~MT~Datasource
+        Pool Metrics~Destroyed Count"}},{"name":"Created Count","type":"Created Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Created Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA14c235df-48d9-4cc9-bf82-d589635ead67]~MT~Datasource
+        Pool Metrics~Created Count"}},{"name":"Prepared Statement Cache Hit Count","type":"Prepared
+        Statement Cache Hit Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        JDBC Metrics~Prepared Statement Cache Hit Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA14c235df-48d9-4cc9-bf82-d589635ead67]~MT~Datasource
+        JDBC Metrics~Prepared Statement Cache Hit Count"}},{"name":"Blocking Failure
+        Count","type":"Blocking Failure Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Blocking Failure Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA14c235df-48d9-4cc9-bf82-d589635ead67]~MT~Datasource
+        Pool Metrics~Blocking Failure Count"}},{"name":"Max Creation Time","type":"Max
+        Creation Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Max Creation Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA14c235df-48d9-4cc9-bf82-d589635ead67]~MT~Datasource
+        Pool Metrics~Max Creation Time"}},{"name":"Average Creation Time","type":"Average
+        Creation Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Average Creation Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA14c235df-48d9-4cc9-bf82-d589635ead67]~MT~Datasource
+        Pool Metrics~Average Creation Time"}},{"name":"Active Count","type":"Active
+        Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource Pool
+        Metrics~Active Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA14c235df-48d9-4cc9-bf82-d589635ead67]~MT~Datasource
+        Pool Metrics~Active Count"}},{"name":"Max Wait Count","type":"Max Wait Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Max Wait Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA14c235df-48d9-4cc9-bf82-d589635ead67]~MT~Datasource
+        Pool Metrics~Max Wait Count"}},{"name":"Max Get Time","type":"Max Get Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Max Get Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA14c235df-48d9-4cc9-bf82-d589635ead67]~MT~Datasource
+        Pool Metrics~Max Get Time"}},{"name":"In Use Count","type":"In Use Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~In Use Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA14c235df-48d9-4cc9-bf82-d589635ead67]~MT~Datasource
+        Pool Metrics~In Use Count"}},{"name":"Prepared Statement Cache Miss Count","type":"Prepared
+        Statement Cache Miss Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        JDBC Metrics~Prepared Statement Cache Miss Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA14c235df-48d9-4cc9-bf82-d589635ead67]~MT~Datasource
+        JDBC Metrics~Prepared Statement Cache Miss Count"}},{"name":"Total Get Time","type":"Total
+        Get Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Total Get Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA14c235df-48d9-4cc9-bf82-d589635ead67]~MT~Datasource
+        Pool Metrics~Total Get Time"}},{"name":"Timed Out","type":"Timed Out","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Timed Out","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA14c235df-48d9-4cc9-bf82-d589635ead67]~MT~Datasource
+        Pool Metrics~Timed Out"}},{"name":"Average Get Time","type":"Average Get Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Average Get Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA14c235df-48d9-4cc9-bf82-d589635ead67]~MT~Datasource
+        Pool Metrics~Average Get Time"}}],"properties":{},"config":{"Datasource Properties":"{\"someKey\":\"someValue\"}","XA
+        Datasource Class":"org.h2.jdbcx.JdbcDataSource","Security Domain":null,"Username":"sa","Driver
+        Name":"h2","JNDI Name":"java:jboss/datasources/CreatedByRubyDSXA14c235df-48d9-4cc9-bf82-d589635ead67","Enabled":"true","Password":"sa"}},{"id":"62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA06617731-5213-4224-be03-3a01a013a086","name":"XA
+        Datasource [CreatedByRubyDSXA06617731-5213-4224-be03-3a01a013a086]","feedId":"62b7f4cfed6b","type":{"id":"XA
+        Datasource","operations":[],"properties":{}},"metrics":[{"name":"Prepared
+        Statement Cache Miss Count","type":"Prepared Statement Cache Miss Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        JDBC Metrics~Prepared Statement Cache Miss Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA06617731-5213-4224-be03-3a01a013a086]~MT~Datasource
+        JDBC Metrics~Prepared Statement Cache Miss Count"}},{"name":"Prepared Statement
+        Cache Delete Count","type":"Prepared Statement Cache Delete Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        JDBC Metrics~Prepared Statement Cache Delete Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA06617731-5213-4224-be03-3a01a013a086]~MT~Datasource
+        JDBC Metrics~Prepared Statement Cache Delete Count"}},{"name":"Timed Out","type":"Timed
+        Out","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource Pool
+        Metrics~Timed Out","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA06617731-5213-4224-be03-3a01a013a086]~MT~Datasource
+        Pool Metrics~Timed Out"}},{"name":"Total Creation Time","type":"Total Creation
+        Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource Pool
+        Metrics~Total Creation Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA06617731-5213-4224-be03-3a01a013a086]~MT~Datasource
+        Pool Metrics~Total Creation Time"}},{"name":"Average Creation Time","type":"Average
+        Creation Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Average Creation Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA06617731-5213-4224-be03-3a01a013a086]~MT~Datasource
+        Pool Metrics~Average Creation Time"}},{"name":"Created Count","type":"Created
+        Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource Pool
+        Metrics~Created Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA06617731-5213-4224-be03-3a01a013a086]~MT~Datasource
+        Pool Metrics~Created Count"}},{"name":"Average Get Time","type":"Average Get
+        Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource Pool
+        Metrics~Average Get Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA06617731-5213-4224-be03-3a01a013a086]~MT~Datasource
+        Pool Metrics~Average Get Time"}},{"name":"Destroyed Count","type":"Destroyed
+        Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource Pool
+        Metrics~Destroyed Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA06617731-5213-4224-be03-3a01a013a086]~MT~Datasource
+        Pool Metrics~Destroyed Count"}},{"name":"Blocking Failure Count","type":"Blocking
+        Failure Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Blocking Failure Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA06617731-5213-4224-be03-3a01a013a086]~MT~Datasource
+        Pool Metrics~Blocking Failure Count"}},{"name":"Prepared Statement Cache Access
+        Count","type":"Prepared Statement Cache Access Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        JDBC Metrics~Prepared Statement Cache Access Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA06617731-5213-4224-be03-3a01a013a086]~MT~Datasource
+        JDBC Metrics~Prepared Statement Cache Access Count"}},{"name":"Average Blocking
+        Time","type":"Average Blocking Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Average Blocking Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA06617731-5213-4224-be03-3a01a013a086]~MT~Datasource
+        Pool Metrics~Average Blocking Time"}},{"name":"Idle Count","type":"Idle Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Idle Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA06617731-5213-4224-be03-3a01a013a086]~MT~Datasource
+        Pool Metrics~Idle Count"}},{"name":"In Use Count","type":"In Use Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~In Use Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA06617731-5213-4224-be03-3a01a013a086]~MT~Datasource
+        Pool Metrics~In Use Count"}},{"name":"Max Get Time","type":"Max Get Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Max Get Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA06617731-5213-4224-be03-3a01a013a086]~MT~Datasource
+        Pool Metrics~Max Get Time"}},{"name":"Prepared Statement Cache Add Count","type":"Prepared
+        Statement Cache Add Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        JDBC Metrics~Prepared Statement Cache Add Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA06617731-5213-4224-be03-3a01a013a086]~MT~Datasource
+        JDBC Metrics~Prepared Statement Cache Add Count"}},{"name":"Max Wait Time","type":"Max
+        Wait Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Max Wait Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA06617731-5213-4224-be03-3a01a013a086]~MT~Datasource
+        Pool Metrics~Max Wait Time"}},{"name":"Total Get Time","type":"Total Get Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Total Get Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA06617731-5213-4224-be03-3a01a013a086]~MT~Datasource
+        Pool Metrics~Total Get Time"}},{"name":"Max Used Count","type":"Max Used Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Max Used Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA06617731-5213-4224-be03-3a01a013a086]~MT~Datasource
+        Pool Metrics~Max Used Count"}},{"name":"Prepared Statement Cache Current Size","type":"Prepared
+        Statement Cache Current Size","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        JDBC Metrics~Prepared Statement Cache Current Size","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA06617731-5213-4224-be03-3a01a013a086]~MT~Datasource
+        JDBC Metrics~Prepared Statement Cache Current Size"}},{"name":"Active Count","type":"Active
+        Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource Pool
+        Metrics~Active Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA06617731-5213-4224-be03-3a01a013a086]~MT~Datasource
+        Pool Metrics~Active Count"}},{"name":"Wait Count","type":"Wait Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Wait Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA06617731-5213-4224-be03-3a01a013a086]~MT~Datasource
+        Pool Metrics~Wait Count"}},{"name":"Max Creation Time","type":"Max Creation
+        Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource Pool
+        Metrics~Max Creation Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA06617731-5213-4224-be03-3a01a013a086]~MT~Datasource
+        Pool Metrics~Max Creation Time"}},{"name":"Max Wait Count","type":"Max Wait
+        Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource Pool
+        Metrics~Max Wait Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA06617731-5213-4224-be03-3a01a013a086]~MT~Datasource
+        Pool Metrics~Max Wait Count"}},{"name":"Available Count","type":"Available
+        Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource Pool
+        Metrics~Available Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA06617731-5213-4224-be03-3a01a013a086]~MT~Datasource
+        Pool Metrics~Available Count"}},{"name":"Prepared Statement Cache Hit Count","type":"Prepared
+        Statement Cache Hit Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        JDBC Metrics~Prepared Statement Cache Hit Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA06617731-5213-4224-be03-3a01a013a086]~MT~Datasource
+        JDBC Metrics~Prepared Statement Cache Hit Count"}},{"name":"Total Blocking
+        Time","type":"Total Blocking Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Total Blocking Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/xa-data-source=CreatedByRubyDSXA06617731-5213-4224-be03-3a01a013a086]~MT~Datasource
+        Pool Metrics~Total Blocking Time"}}],"properties":{},"config":{"Datasource
+        Properties":"{\"someKey\":\"someValue\"}","XA Datasource Class":"org.h2.jdbcx.JdbcDataSource","Security
+        Domain":null,"Username":"sa","Driver Name":"h2","JNDI Name":"java:jboss/datasources/CreatedByRubyDSXA06617731-5213-4224-be03-3a01a013a086","Enabled":"true","Password":"sa"}},{"id":"62b7f4cfed6b~Local~/subsystem=transactions","name":"Transaction
+        Manager","feedId":"62b7f4cfed6b","type":{"id":"Transaction Manager","operations":[],"properties":{}},"metrics":[{"name":"Number
+        of In-Flight Transactions","type":"Number of In-Flight Transactions","unit":"NONE","properties":{"hawkular.metric.typeId":"Transactions
+        Metrics~Number of In-Flight Transactions","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=transactions]~MT~Transactions
+        Metrics~Number of In-Flight Transactions"}},{"name":"Number of Heuristics","type":"Number
+        of Heuristics","unit":"NONE","properties":{"hawkular.metric.typeId":"Transactions
+        Metrics~Number of Heuristics","hawkular.metric.type":"COUNTER","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=transactions]~MT~Transactions
+        Metrics~Number of Heuristics"}},{"name":"Number of Timed Out Transactions","type":"Number
+        of Timed Out Transactions","unit":"NONE","properties":{"hawkular.metric.typeId":"Transactions
+        Metrics~Number of Timed Out Transactions","hawkular.metric.type":"COUNTER","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=transactions]~MT~Transactions
+        Metrics~Number of Timed Out Transactions"}},{"name":"Number of Nested Transactions","type":"Number
+        of Nested Transactions","unit":"NONE","properties":{"hawkular.metric.typeId":"Transactions
+        Metrics~Number of Nested Transactions","hawkular.metric.type":"COUNTER","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=transactions]~MT~Transactions
+        Metrics~Number of Nested Transactions"}},{"name":"Number of Resource Rollbacks","type":"Number
+        of Resource Rollbacks","unit":"NONE","properties":{"hawkular.metric.typeId":"Transactions
+        Metrics~Number of Resource Rollbacks","hawkular.metric.type":"COUNTER","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=transactions]~MT~Transactions
+        Metrics~Number of Resource Rollbacks"}},{"name":"Number of Aborted Transactions","type":"Number
+        of Aborted Transactions","unit":"NONE","properties":{"hawkular.metric.typeId":"Transactions
+        Metrics~Number of Aborted Transactions","hawkular.metric.type":"COUNTER","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=transactions]~MT~Transactions
+        Metrics~Number of Aborted Transactions"}},{"name":"Number of Application Rollbacks","type":"Number
+        of Application Rollbacks","unit":"NONE","properties":{"hawkular.metric.typeId":"Transactions
+        Metrics~Number of Application Rollbacks","hawkular.metric.type":"COUNTER","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=transactions]~MT~Transactions
+        Metrics~Number of Application Rollbacks"}},{"name":"Number of Transactions","type":"Number
+        of Transactions","unit":"NONE","properties":{"hawkular.metric.typeId":"Transactions
+        Metrics~Number of Transactions","hawkular.metric.type":"COUNTER","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=transactions]~MT~Transactions
+        Metrics~Number of Transactions"}},{"name":"Number of Committed Transactions","type":"Number
+        of Committed Transactions","unit":"NONE","properties":{"hawkular.metric.typeId":"Transactions
+        Metrics~Number of Committed Transactions","hawkular.metric.type":"COUNTER","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=transactions]~MT~Transactions
+        Metrics~Number of Committed Transactions"}}],"properties":{},"config":{}},{"id":"62b7f4cfed6b~Local~/deployment=hawkular-rest-api.war","name":"Deployment
+        [hawkular-rest-api.war]","feedId":"62b7f4cfed6b","type":{"id":"Deployment","operations":[],"properties":{}},"metrics":[{"name":"Expired
+        Sessions","type":"Expired Sessions","unit":"NONE","properties":{"hawkular.metric.typeId":"Undertow
+        Metrics~Expired Sessions","hawkular.metric.type":"COUNTER","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/deployment=hawkular-rest-api.war]~MT~Undertow
+        Metrics~Expired Sessions"}},{"name":"Max Active Sessions","type":"Max Active
+        Sessions","unit":"NONE","properties":{"hawkular.metric.typeId":"Undertow Metrics~Max
+        Active Sessions","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/deployment=hawkular-rest-api.war]~MT~Undertow
+        Metrics~Max Active Sessions"}},{"name":"Active Sessions","type":"Active Sessions","unit":"NONE","properties":{"hawkular.metric.typeId":"Undertow
+        Metrics~Active Sessions","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/deployment=hawkular-rest-api.war]~MT~Undertow
+        Metrics~Active Sessions"}},{"name":"Rejected Sessions","type":"Rejected Sessions","unit":"NONE","properties":{"hawkular.metric.typeId":"Undertow
+        Metrics~Rejected Sessions","hawkular.metric.type":"COUNTER","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/deployment=hawkular-rest-api.war]~MT~Undertow
+        Metrics~Rejected Sessions"}},{"name":"Sessions Created","type":"Sessions Created","unit":"NONE","properties":{"hawkular.metric.typeId":"Undertow
+        Metrics~Sessions Created","hawkular.metric.type":"COUNTER","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/deployment=hawkular-rest-api.war]~MT~Undertow
+        Metrics~Sessions Created"}},{"name":"Deployment Status","type":"Deployment
+        Status","properties":{"hawkular-services.monitoring-type":"remote","hawkular.metric.typeId":"Deployment
+        Status~Deployment Status","hawkular.metric.type":"AVAILABILITY","hawkular.metric.id":"AI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/deployment=hawkular-rest-api.war]~AT~Deployment
+        Status~Deployment Status"}}],"properties":{},"config":{}},{"id":"62b7f4cfed6b~Local~/subsystem=datasources/data-source=ExampleDS","name":"Datasource
+        [ExampleDS]","feedId":"62b7f4cfed6b","type":{"id":"Datasource","operations":[],"properties":{}},"metrics":[{"name":"Wait
+        Count","type":"Wait Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Wait Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=ExampleDS]~MT~Datasource
+        Pool Metrics~Wait Count"}},{"name":"Created Count","type":"Created Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Created Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=ExampleDS]~MT~Datasource
+        Pool Metrics~Created Count"}},{"name":"Prepared Statement Cache Delete Count","type":"Prepared
+        Statement Cache Delete Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        JDBC Metrics~Prepared Statement Cache Delete Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=ExampleDS]~MT~Datasource
+        JDBC Metrics~Prepared Statement Cache Delete Count"}},{"name":"Prepared Statement
+        Cache Miss Count","type":"Prepared Statement Cache Miss Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        JDBC Metrics~Prepared Statement Cache Miss Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=ExampleDS]~MT~Datasource
+        JDBC Metrics~Prepared Statement Cache Miss Count"}},{"name":"Prepared Statement
+        Cache Access Count","type":"Prepared Statement Cache Access Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        JDBC Metrics~Prepared Statement Cache Access Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=ExampleDS]~MT~Datasource
+        JDBC Metrics~Prepared Statement Cache Access Count"}},{"name":"Total Blocking
+        Time","type":"Total Blocking Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Total Blocking Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=ExampleDS]~MT~Datasource
+        Pool Metrics~Total Blocking Time"}},{"name":"Average Creation Time","type":"Average
+        Creation Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Average Creation Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=ExampleDS]~MT~Datasource
+        Pool Metrics~Average Creation Time"}},{"name":"Destroyed Count","type":"Destroyed
+        Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource Pool
+        Metrics~Destroyed Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=ExampleDS]~MT~Datasource
+        Pool Metrics~Destroyed Count"}},{"name":"Timed Out","type":"Timed Out","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Timed Out","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=ExampleDS]~MT~Datasource
+        Pool Metrics~Timed Out"}},{"name":"Max Creation Time","type":"Max Creation
+        Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource Pool
+        Metrics~Max Creation Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=ExampleDS]~MT~Datasource
+        Pool Metrics~Max Creation Time"}},{"name":"Max Used Count","type":"Max Used
+        Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource Pool
+        Metrics~Max Used Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=ExampleDS]~MT~Datasource
+        Pool Metrics~Max Used Count"}},{"name":"Prepared Statement Cache Hit Count","type":"Prepared
+        Statement Cache Hit Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        JDBC Metrics~Prepared Statement Cache Hit Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=ExampleDS]~MT~Datasource
+        JDBC Metrics~Prepared Statement Cache Hit Count"}},{"name":"Prepared Statement
+        Cache Current Size","type":"Prepared Statement Cache Current Size","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        JDBC Metrics~Prepared Statement Cache Current Size","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=ExampleDS]~MT~Datasource
+        JDBC Metrics~Prepared Statement Cache Current Size"}},{"name":"In Use Count","type":"In
+        Use Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~In Use Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=ExampleDS]~MT~Datasource
+        Pool Metrics~In Use Count"}},{"name":"Max Wait Time","type":"Max Wait Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Max Wait Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=ExampleDS]~MT~Datasource
+        Pool Metrics~Max Wait Time"}},{"name":"Average Blocking Time","type":"Average
+        Blocking Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Average Blocking Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=ExampleDS]~MT~Datasource
+        Pool Metrics~Average Blocking Time"}},{"name":"Total Creation Time","type":"Total
+        Creation Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Total Creation Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=ExampleDS]~MT~Datasource
+        Pool Metrics~Total Creation Time"}},{"name":"Available Count","type":"Available
+        Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource Pool
+        Metrics~Available Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=ExampleDS]~MT~Datasource
+        Pool Metrics~Available Count"}},{"name":"Average Get Time","type":"Average
+        Get Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Average Get Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=ExampleDS]~MT~Datasource
+        Pool Metrics~Average Get Time"}},{"name":"Max Get Time","type":"Max Get Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Max Get Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=ExampleDS]~MT~Datasource
+        Pool Metrics~Max Get Time"}},{"name":"Idle Count","type":"Idle Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Idle Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=ExampleDS]~MT~Datasource
+        Pool Metrics~Idle Count"}},{"name":"Blocking Failure Count","type":"Blocking
+        Failure Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Blocking Failure Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=ExampleDS]~MT~Datasource
+        Pool Metrics~Blocking Failure Count"}},{"name":"Prepared Statement Cache Add
+        Count","type":"Prepared Statement Cache Add Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        JDBC Metrics~Prepared Statement Cache Add Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=ExampleDS]~MT~Datasource
+        JDBC Metrics~Prepared Statement Cache Add Count"}},{"name":"Active Count","type":"Active
+        Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource Pool
+        Metrics~Active Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=ExampleDS]~MT~Datasource
+        Pool Metrics~Active Count"}},{"name":"Total Get Time","type":"Total Get Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Total Get Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=ExampleDS]~MT~Datasource
+        Pool Metrics~Total Get Time"}},{"name":"Max Wait Count","type":"Max Wait Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Max Wait Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=ExampleDS]~MT~Datasource
+        Pool Metrics~Max Wait Count"}}],"properties":{},"config":{"Connection Properties":null,"Datasource
+        Class":null,"Security Domain":null,"Username":"sa","Driver Name":"h2","JNDI
+        Name":"java:jboss/datasources/ExampleDS","Connection URL":"jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE","Enabled":"true","Driver
+        Class":null,"Password":"sa"}},{"id":"62b7f4cfed6b~Local~/subsystem=datasources/data-source=CreatedByRubyDS3f1aa808-b6bb-4d3d-ac20-634f1eee28ed","name":"Datasource
+        [CreatedByRubyDS3f1aa808-b6bb-4d3d-ac20-634f1eee28ed]","feedId":"62b7f4cfed6b","type":{"id":"Datasource","operations":[],"properties":{}},"metrics":[{"name":"Max
+        Wait Time","type":"Max Wait Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Max Wait Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=CreatedByRubyDS3f1aa808-b6bb-4d3d-ac20-634f1eee28ed]~MT~Datasource
+        Pool Metrics~Max Wait Time"}},{"name":"Average Blocking Time","type":"Average
+        Blocking Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Average Blocking Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=CreatedByRubyDS3f1aa808-b6bb-4d3d-ac20-634f1eee28ed]~MT~Datasource
+        Pool Metrics~Average Blocking Time"}},{"name":"Total Blocking Time","type":"Total
+        Blocking Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Total Blocking Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=CreatedByRubyDS3f1aa808-b6bb-4d3d-ac20-634f1eee28ed]~MT~Datasource
+        Pool Metrics~Total Blocking Time"}},{"name":"Prepared Statement Cache Miss
+        Count","type":"Prepared Statement Cache Miss Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        JDBC Metrics~Prepared Statement Cache Miss Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=CreatedByRubyDS3f1aa808-b6bb-4d3d-ac20-634f1eee28ed]~MT~Datasource
+        JDBC Metrics~Prepared Statement Cache Miss Count"}},{"name":"Wait Count","type":"Wait
+        Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource Pool
+        Metrics~Wait Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=CreatedByRubyDS3f1aa808-b6bb-4d3d-ac20-634f1eee28ed]~MT~Datasource
+        Pool Metrics~Wait Count"}},{"name":"Blocking Failure Count","type":"Blocking
+        Failure Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Blocking Failure Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=CreatedByRubyDS3f1aa808-b6bb-4d3d-ac20-634f1eee28ed]~MT~Datasource
+        Pool Metrics~Blocking Failure Count"}},{"name":"Prepared Statement Cache Delete
+        Count","type":"Prepared Statement Cache Delete Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        JDBC Metrics~Prepared Statement Cache Delete Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=CreatedByRubyDS3f1aa808-b6bb-4d3d-ac20-634f1eee28ed]~MT~Datasource
+        JDBC Metrics~Prepared Statement Cache Delete Count"}},{"name":"Destroyed Count","type":"Destroyed
+        Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource Pool
+        Metrics~Destroyed Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=CreatedByRubyDS3f1aa808-b6bb-4d3d-ac20-634f1eee28ed]~MT~Datasource
+        Pool Metrics~Destroyed Count"}},{"name":"Active Count","type":"Active Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Active Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=CreatedByRubyDS3f1aa808-b6bb-4d3d-ac20-634f1eee28ed]~MT~Datasource
+        Pool Metrics~Active Count"}},{"name":"Average Creation Time","type":"Average
+        Creation Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Average Creation Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=CreatedByRubyDS3f1aa808-b6bb-4d3d-ac20-634f1eee28ed]~MT~Datasource
+        Pool Metrics~Average Creation Time"}},{"name":"Max Creation Time","type":"Max
+        Creation Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Max Creation Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=CreatedByRubyDS3f1aa808-b6bb-4d3d-ac20-634f1eee28ed]~MT~Datasource
+        Pool Metrics~Max Creation Time"}},{"name":"Total Get Time","type":"Total Get
+        Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource Pool
+        Metrics~Total Get Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=CreatedByRubyDS3f1aa808-b6bb-4d3d-ac20-634f1eee28ed]~MT~Datasource
+        Pool Metrics~Total Get Time"}},{"name":"In Use Count","type":"In Use Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~In Use Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=CreatedByRubyDS3f1aa808-b6bb-4d3d-ac20-634f1eee28ed]~MT~Datasource
+        Pool Metrics~In Use Count"}},{"name":"Prepared Statement Cache Hit Count","type":"Prepared
+        Statement Cache Hit Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        JDBC Metrics~Prepared Statement Cache Hit Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=CreatedByRubyDS3f1aa808-b6bb-4d3d-ac20-634f1eee28ed]~MT~Datasource
+        JDBC Metrics~Prepared Statement Cache Hit Count"}},{"name":"Idle Count","type":"Idle
+        Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource Pool
+        Metrics~Idle Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=CreatedByRubyDS3f1aa808-b6bb-4d3d-ac20-634f1eee28ed]~MT~Datasource
+        Pool Metrics~Idle Count"}},{"name":"Max Get Time","type":"Max Get Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Max Get Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=CreatedByRubyDS3f1aa808-b6bb-4d3d-ac20-634f1eee28ed]~MT~Datasource
+        Pool Metrics~Max Get Time"}},{"name":"Available Count","type":"Available Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Available Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=CreatedByRubyDS3f1aa808-b6bb-4d3d-ac20-634f1eee28ed]~MT~Datasource
+        Pool Metrics~Available Count"}},{"name":"Timed Out","type":"Timed Out","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Timed Out","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=CreatedByRubyDS3f1aa808-b6bb-4d3d-ac20-634f1eee28ed]~MT~Datasource
+        Pool Metrics~Timed Out"}},{"name":"Prepared Statement Cache Current Size","type":"Prepared
+        Statement Cache Current Size","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        JDBC Metrics~Prepared Statement Cache Current Size","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=CreatedByRubyDS3f1aa808-b6bb-4d3d-ac20-634f1eee28ed]~MT~Datasource
+        JDBC Metrics~Prepared Statement Cache Current Size"}},{"name":"Average Get
+        Time","type":"Average Get Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Average Get Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=CreatedByRubyDS3f1aa808-b6bb-4d3d-ac20-634f1eee28ed]~MT~Datasource
+        Pool Metrics~Average Get Time"}},{"name":"Total Creation Time","type":"Total
+        Creation Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Total Creation Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=CreatedByRubyDS3f1aa808-b6bb-4d3d-ac20-634f1eee28ed]~MT~Datasource
+        Pool Metrics~Total Creation Time"}},{"name":"Max Used Count","type":"Max Used
+        Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource Pool
+        Metrics~Max Used Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=CreatedByRubyDS3f1aa808-b6bb-4d3d-ac20-634f1eee28ed]~MT~Datasource
+        Pool Metrics~Max Used Count"}},{"name":"Max Wait Count","type":"Max Wait Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Max Wait Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=CreatedByRubyDS3f1aa808-b6bb-4d3d-ac20-634f1eee28ed]~MT~Datasource
+        Pool Metrics~Max Wait Count"}},{"name":"Prepared Statement Cache Add Count","type":"Prepared
+        Statement Cache Add Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        JDBC Metrics~Prepared Statement Cache Add Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=CreatedByRubyDS3f1aa808-b6bb-4d3d-ac20-634f1eee28ed]~MT~Datasource
+        JDBC Metrics~Prepared Statement Cache Add Count"}},{"name":"Prepared Statement
+        Cache Access Count","type":"Prepared Statement Cache Access Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        JDBC Metrics~Prepared Statement Cache Access Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=CreatedByRubyDS3f1aa808-b6bb-4d3d-ac20-634f1eee28ed]~MT~Datasource
+        JDBC Metrics~Prepared Statement Cache Access Count"}},{"name":"Created Count","type":"Created
+        Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource Pool
+        Metrics~Created Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/subsystem=datasources/data-source=CreatedByRubyDS3f1aa808-b6bb-4d3d-ac20-634f1eee28ed]~MT~Datasource
+        Pool Metrics~Created Count"}}],"properties":{},"config":{"Connection Properties":"{\"someKey\":\"someValue\"}","Datasource
+        Class":null,"Security Domain":null,"Username":"sa","Driver Name":"h2","JNDI
+        Name":"java:jboss/datasources/CreatedByRubyDS3f1aa808-b6bb-4d3d-ac20-634f1eee28ed","Connection
+        URL":"dbc:h2:mem:ruby;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE","Enabled":"true","Driver
+        Class":"org.h2.Driver","Password":"sa"}},{"id":"62b7f4cfed6b~Local~/deployment=hawkular-command-gateway-war.war","name":"Deployment
+        [hawkular-command-gateway-war.war]","feedId":"62b7f4cfed6b","type":{"id":"Deployment","operations":[],"properties":{}},"metrics":[{"name":"Rejected
+        Sessions","type":"Rejected Sessions","unit":"NONE","properties":{"hawkular.metric.typeId":"Undertow
+        Metrics~Rejected Sessions","hawkular.metric.type":"COUNTER","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/deployment=hawkular-command-gateway-war.war]~MT~Undertow
+        Metrics~Rejected Sessions"}},{"name":"Active Sessions","type":"Active Sessions","unit":"NONE","properties":{"hawkular.metric.typeId":"Undertow
+        Metrics~Active Sessions","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/deployment=hawkular-command-gateway-war.war]~MT~Undertow
+        Metrics~Active Sessions"}},{"name":"Max Active Sessions","type":"Max Active
+        Sessions","unit":"NONE","properties":{"hawkular.metric.typeId":"Undertow Metrics~Max
+        Active Sessions","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/deployment=hawkular-command-gateway-war.war]~MT~Undertow
+        Metrics~Max Active Sessions"}},{"name":"Sessions Created","type":"Sessions
+        Created","unit":"NONE","properties":{"hawkular.metric.typeId":"Undertow Metrics~Sessions
+        Created","hawkular.metric.type":"COUNTER","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/deployment=hawkular-command-gateway-war.war]~MT~Undertow
+        Metrics~Sessions Created"}},{"name":"Expired Sessions","type":"Expired Sessions","unit":"NONE","properties":{"hawkular.metric.typeId":"Undertow
+        Metrics~Expired Sessions","hawkular.metric.type":"COUNTER","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/deployment=hawkular-command-gateway-war.war]~MT~Undertow
+        Metrics~Expired Sessions"}},{"name":"Deployment Status","type":"Deployment
+        Status","properties":{"hawkular-services.monitoring-type":"remote","hawkular.metric.typeId":"Deployment
+        Status~Deployment Status","hawkular.metric.type":"AVAILABILITY","hawkular.metric.id":"AI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/deployment=hawkular-command-gateway-war.war]~AT~Deployment
+        Status~Deployment Status"}}],"properties":{},"config":{}},{"id":"62b7f4cfed6b~Local~/deployment=hawkular-inventory-ui.war","name":"Deployment
+        [hawkular-inventory-ui.war]","feedId":"62b7f4cfed6b","type":{"id":"Deployment","operations":[],"properties":{}},"metrics":[{"name":"Max
+        Active Sessions","type":"Max Active Sessions","unit":"NONE","properties":{"hawkular.metric.typeId":"Undertow
+        Metrics~Max Active Sessions","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/deployment=hawkular-inventory-ui.war]~MT~Undertow
+        Metrics~Max Active Sessions"}},{"name":"Rejected Sessions","type":"Rejected
+        Sessions","unit":"NONE","properties":{"hawkular.metric.typeId":"Undertow Metrics~Rejected
+        Sessions","hawkular.metric.type":"COUNTER","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/deployment=hawkular-inventory-ui.war]~MT~Undertow
+        Metrics~Rejected Sessions"}},{"name":"Sessions Created","type":"Sessions Created","unit":"NONE","properties":{"hawkular.metric.typeId":"Undertow
+        Metrics~Sessions Created","hawkular.metric.type":"COUNTER","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/deployment=hawkular-inventory-ui.war]~MT~Undertow
+        Metrics~Sessions Created"}},{"name":"Expired Sessions","type":"Expired Sessions","unit":"NONE","properties":{"hawkular.metric.typeId":"Undertow
+        Metrics~Expired Sessions","hawkular.metric.type":"COUNTER","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/deployment=hawkular-inventory-ui.war]~MT~Undertow
+        Metrics~Expired Sessions"}},{"name":"Active Sessions","type":"Active Sessions","unit":"NONE","properties":{"hawkular.metric.typeId":"Undertow
+        Metrics~Active Sessions","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/deployment=hawkular-inventory-ui.war]~MT~Undertow
+        Metrics~Active Sessions"}},{"name":"Deployment Status","type":"Deployment
+        Status","properties":{"hawkular-services.monitoring-type":"remote","hawkular.metric.typeId":"Deployment
+        Status~Deployment Status","hawkular.metric.type":"AVAILABILITY","hawkular.metric.id":"AI~R~[62b7f4cfed6b/62b7f4cfed6b~Local~/deployment=hawkular-inventory-ui.war]~AT~Deployment
+        Status~Deployment Status"}}],"properties":{},"config":{}},{"id":"62b7f4cfed6b~Local~/subsystem=infinispan","name":"Infinispan","feedId":"62b7f4cfed6b","type":{"id":"Infinispan","operations":[],"properties":{}},"metrics":[],"properties":{},"config":{}}],"resultSize":21,"startOffset":0}'
+    http_version: 
+  recorded_at: Wed, 18 Oct 2017 14:14:55 GMT
+- request:
+    method: get
+    uri: http://jdoe:password@localhost:8080/hawkular/inventory/resources/d70f3ec07ee0~Local~~/children
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - hawkular
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 18 Oct 2017 14:24:02 GMT
+    body:
+      encoding: UTF-8
+      string: '{"results":[{"id":"d70f3ec07ee0~Local~/subsystem=infinispan","name":"Infinispan","feedId":"d70f3ec07ee0","type":{"id":"Infinispan","operations":[],"properties":{}},"metrics":[],"properties":{},"config":{}},{"id":"d70f3ec07ee0~Local~/subsystem=datasources/data-source=ExampleDS","name":"Datasource
+        [ExampleDS]","feedId":"d70f3ec07ee0","type":{"id":"Datasource","operations":[],"properties":{}},"metrics":[{"name":"Max
+        Wait Count","type":"Max Wait Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Max Wait Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[d70f3ec07ee0/d70f3ec07ee0~Local~/subsystem=datasources/data-source=ExampleDS]~MT~Datasource
+        Pool Metrics~Max Wait Count"}},{"name":"Created Count","type":"Created Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Created Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[d70f3ec07ee0/d70f3ec07ee0~Local~/subsystem=datasources/data-source=ExampleDS]~MT~Datasource
+        Pool Metrics~Created Count"}},{"name":"Prepared Statement Cache Miss Count","type":"Prepared
+        Statement Cache Miss Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        JDBC Metrics~Prepared Statement Cache Miss Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[d70f3ec07ee0/d70f3ec07ee0~Local~/subsystem=datasources/data-source=ExampleDS]~MT~Datasource
+        JDBC Metrics~Prepared Statement Cache Miss Count"}},{"name":"In Use Count","type":"In
+        Use Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~In Use Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[d70f3ec07ee0/d70f3ec07ee0~Local~/subsystem=datasources/data-source=ExampleDS]~MT~Datasource
+        Pool Metrics~In Use Count"}},{"name":"Available Count","type":"Available Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Available Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[d70f3ec07ee0/d70f3ec07ee0~Local~/subsystem=datasources/data-source=ExampleDS]~MT~Datasource
+        Pool Metrics~Available Count"}},{"name":"Average Get Time","type":"Average
+        Get Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Average Get Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[d70f3ec07ee0/d70f3ec07ee0~Local~/subsystem=datasources/data-source=ExampleDS]~MT~Datasource
+        Pool Metrics~Average Get Time"}},{"name":"Max Get Time","type":"Max Get Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Max Get Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[d70f3ec07ee0/d70f3ec07ee0~Local~/subsystem=datasources/data-source=ExampleDS]~MT~Datasource
+        Pool Metrics~Max Get Time"}},{"name":"Total Get Time","type":"Total Get Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Total Get Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[d70f3ec07ee0/d70f3ec07ee0~Local~/subsystem=datasources/data-source=ExampleDS]~MT~Datasource
+        Pool Metrics~Total Get Time"}},{"name":"Average Creation Time","type":"Average
+        Creation Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Average Creation Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[d70f3ec07ee0/d70f3ec07ee0~Local~/subsystem=datasources/data-source=ExampleDS]~MT~Datasource
+        Pool Metrics~Average Creation Time"}},{"name":"Total Blocking Time","type":"Total
+        Blocking Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Total Blocking Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[d70f3ec07ee0/d70f3ec07ee0~Local~/subsystem=datasources/data-source=ExampleDS]~MT~Datasource
+        Pool Metrics~Total Blocking Time"}},{"name":"Idle Count","type":"Idle Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Idle Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[d70f3ec07ee0/d70f3ec07ee0~Local~/subsystem=datasources/data-source=ExampleDS]~MT~Datasource
+        Pool Metrics~Idle Count"}},{"name":"Max Creation Time","type":"Max Creation
+        Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource Pool
+        Metrics~Max Creation Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[d70f3ec07ee0/d70f3ec07ee0~Local~/subsystem=datasources/data-source=ExampleDS]~MT~Datasource
+        Pool Metrics~Max Creation Time"}},{"name":"Blocking Failure Count","type":"Blocking
+        Failure Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Blocking Failure Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[d70f3ec07ee0/d70f3ec07ee0~Local~/subsystem=datasources/data-source=ExampleDS]~MT~Datasource
+        Pool Metrics~Blocking Failure Count"}},{"name":"Active Count","type":"Active
+        Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource Pool
+        Metrics~Active Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[d70f3ec07ee0/d70f3ec07ee0~Local~/subsystem=datasources/data-source=ExampleDS]~MT~Datasource
+        Pool Metrics~Active Count"}},{"name":"Average Blocking Time","type":"Average
+        Blocking Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Average Blocking Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[d70f3ec07ee0/d70f3ec07ee0~Local~/subsystem=datasources/data-source=ExampleDS]~MT~Datasource
+        Pool Metrics~Average Blocking Time"}},{"name":"Max Wait Time","type":"Max
+        Wait Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Max Wait Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[d70f3ec07ee0/d70f3ec07ee0~Local~/subsystem=datasources/data-source=ExampleDS]~MT~Datasource
+        Pool Metrics~Max Wait Time"}},{"name":"Timed Out","type":"Timed Out","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Timed Out","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[d70f3ec07ee0/d70f3ec07ee0~Local~/subsystem=datasources/data-source=ExampleDS]~MT~Datasource
+        Pool Metrics~Timed Out"}},{"name":"Prepared Statement Cache Hit Count","type":"Prepared
+        Statement Cache Hit Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        JDBC Metrics~Prepared Statement Cache Hit Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[d70f3ec07ee0/d70f3ec07ee0~Local~/subsystem=datasources/data-source=ExampleDS]~MT~Datasource
+        JDBC Metrics~Prepared Statement Cache Hit Count"}},{"name":"Wait Count","type":"Wait
+        Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource Pool
+        Metrics~Wait Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[d70f3ec07ee0/d70f3ec07ee0~Local~/subsystem=datasources/data-source=ExampleDS]~MT~Datasource
+        Pool Metrics~Wait Count"}},{"name":"Total Creation Time","type":"Total Creation
+        Time","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource Pool
+        Metrics~Total Creation Time","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[d70f3ec07ee0/d70f3ec07ee0~Local~/subsystem=datasources/data-source=ExampleDS]~MT~Datasource
+        Pool Metrics~Total Creation Time"}},{"name":"Destroyed Count","type":"Destroyed
+        Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource Pool
+        Metrics~Destroyed Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[d70f3ec07ee0/d70f3ec07ee0~Local~/subsystem=datasources/data-source=ExampleDS]~MT~Datasource
+        Pool Metrics~Destroyed Count"}},{"name":"Prepared Statement Cache Add Count","type":"Prepared
+        Statement Cache Add Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        JDBC Metrics~Prepared Statement Cache Add Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[d70f3ec07ee0/d70f3ec07ee0~Local~/subsystem=datasources/data-source=ExampleDS]~MT~Datasource
+        JDBC Metrics~Prepared Statement Cache Add Count"}},{"name":"Max Used Count","type":"Max
+        Used Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        Pool Metrics~Max Used Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[d70f3ec07ee0/d70f3ec07ee0~Local~/subsystem=datasources/data-source=ExampleDS]~MT~Datasource
+        Pool Metrics~Max Used Count"}},{"name":"Prepared Statement Cache Delete Count","type":"Prepared
+        Statement Cache Delete Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        JDBC Metrics~Prepared Statement Cache Delete Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[d70f3ec07ee0/d70f3ec07ee0~Local~/subsystem=datasources/data-source=ExampleDS]~MT~Datasource
+        JDBC Metrics~Prepared Statement Cache Delete Count"}},{"name":"Prepared Statement
+        Cache Access Count","type":"Prepared Statement Cache Access Count","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        JDBC Metrics~Prepared Statement Cache Access Count","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[d70f3ec07ee0/d70f3ec07ee0~Local~/subsystem=datasources/data-source=ExampleDS]~MT~Datasource
+        JDBC Metrics~Prepared Statement Cache Access Count"}},{"name":"Prepared Statement
+        Cache Current Size","type":"Prepared Statement Cache Current Size","unit":"NONE","properties":{"hawkular.metric.typeId":"Datasource
+        JDBC Metrics~Prepared Statement Cache Current Size","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[d70f3ec07ee0/d70f3ec07ee0~Local~/subsystem=datasources/data-source=ExampleDS]~MT~Datasource
+        JDBC Metrics~Prepared Statement Cache Current Size"}}],"properties":{},"config":{"Connection
+        Properties":null,"Datasource Class":null,"Security Domain":null,"Username":"sa","Driver
+        Name":"h2","JNDI Name":"java:jboss/datasources/ExampleDS","Connection URL":"jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE","Enabled":"true","Driver
+        Class":null,"Password":"sa"}},{"id":"d70f3ec07ee0~Local~/deployment=hawkular-metrics.ear","name":"Deployment
+        [hawkular-metrics.ear]","feedId":"d70f3ec07ee0","type":{"id":"Deployment","operations":[],"properties":{}},"metrics":[{"name":"Deployment
+        Status","type":"Deployment Status","properties":{"hawkular-services.monitoring-type":"remote","hawkular.metric.typeId":"Deployment
+        Status~Deployment Status","hawkular.metric.type":"AVAILABILITY","hawkular.metric.id":"AI~R~[d70f3ec07ee0/d70f3ec07ee0~Local~/deployment=hawkular-metrics.ear]~AT~Deployment
+        Status~Deployment Status"}}],"properties":{},"config":{}},{"id":"d70f3ec07ee0~Local~/subsystem=messaging-activemq/server=default","name":"Messaging
+        Server [default]","feedId":"d70f3ec07ee0","type":{"id":"Messaging Server","operations":[],"properties":{}},"metrics":[],"properties":{},"config":{}},{"id":"d70f3ec07ee0~Local~/deployment=hawkular-inventory-ui.war","name":"Deployment
+        [hawkular-inventory-ui.war]","feedId":"d70f3ec07ee0","type":{"id":"Deployment","operations":[],"properties":{}},"metrics":[{"name":"Rejected
+        Sessions","type":"Rejected Sessions","unit":"NONE","properties":{"hawkular.metric.typeId":"Undertow
+        Metrics~Rejected Sessions","hawkular.metric.type":"COUNTER","hawkular.metric.id":"MI~R~[d70f3ec07ee0/d70f3ec07ee0~Local~/deployment=hawkular-inventory-ui.war]~MT~Undertow
+        Metrics~Rejected Sessions"}},{"name":"Sessions Created","type":"Sessions Created","unit":"NONE","properties":{"hawkular.metric.typeId":"Undertow
+        Metrics~Sessions Created","hawkular.metric.type":"COUNTER","hawkular.metric.id":"MI~R~[d70f3ec07ee0/d70f3ec07ee0~Local~/deployment=hawkular-inventory-ui.war]~MT~Undertow
+        Metrics~Sessions Created"}},{"name":"Expired Sessions","type":"Expired Sessions","unit":"NONE","properties":{"hawkular.metric.typeId":"Undertow
+        Metrics~Expired Sessions","hawkular.metric.type":"COUNTER","hawkular.metric.id":"MI~R~[d70f3ec07ee0/d70f3ec07ee0~Local~/deployment=hawkular-inventory-ui.war]~MT~Undertow
+        Metrics~Expired Sessions"}},{"name":"Active Sessions","type":"Active Sessions","unit":"NONE","properties":{"hawkular.metric.typeId":"Undertow
+        Metrics~Active Sessions","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[d70f3ec07ee0/d70f3ec07ee0~Local~/deployment=hawkular-inventory-ui.war]~MT~Undertow
+        Metrics~Active Sessions"}},{"name":"Max Active Sessions","type":"Max Active
+        Sessions","unit":"NONE","properties":{"hawkular.metric.typeId":"Undertow Metrics~Max
+        Active Sessions","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[d70f3ec07ee0/d70f3ec07ee0~Local~/deployment=hawkular-inventory-ui.war]~MT~Undertow
+        Metrics~Max Active Sessions"}},{"name":"Deployment Status","type":"Deployment
+        Status","properties":{"hawkular-services.monitoring-type":"remote","hawkular.metric.typeId":"Deployment
+        Status~Deployment Status","hawkular.metric.type":"AVAILABILITY","hawkular.metric.id":"AI~R~[d70f3ec07ee0/d70f3ec07ee0~Local~/deployment=hawkular-inventory-ui.war]~AT~Deployment
+        Status~Deployment Status"}}],"properties":{},"config":{}},{"id":"d70f3ec07ee0~Local~/deployment=hawkular-command-gateway-war.war","name":"Deployment
+        [hawkular-command-gateway-war.war]","feedId":"d70f3ec07ee0","type":{"id":"Deployment","operations":[],"properties":{}},"metrics":[{"name":"Max
+        Active Sessions","type":"Max Active Sessions","unit":"NONE","properties":{"hawkular.metric.typeId":"Undertow
+        Metrics~Max Active Sessions","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[d70f3ec07ee0/d70f3ec07ee0~Local~/deployment=hawkular-command-gateway-war.war]~MT~Undertow
+        Metrics~Max Active Sessions"}},{"name":"Sessions Created","type":"Sessions
+        Created","unit":"NONE","properties":{"hawkular.metric.typeId":"Undertow Metrics~Sessions
+        Created","hawkular.metric.type":"COUNTER","hawkular.metric.id":"MI~R~[d70f3ec07ee0/d70f3ec07ee0~Local~/deployment=hawkular-command-gateway-war.war]~MT~Undertow
+        Metrics~Sessions Created"}},{"name":"Expired Sessions","type":"Expired Sessions","unit":"NONE","properties":{"hawkular.metric.typeId":"Undertow
+        Metrics~Expired Sessions","hawkular.metric.type":"COUNTER","hawkular.metric.id":"MI~R~[d70f3ec07ee0/d70f3ec07ee0~Local~/deployment=hawkular-command-gateway-war.war]~MT~Undertow
+        Metrics~Expired Sessions"}},{"name":"Rejected Sessions","type":"Rejected Sessions","unit":"NONE","properties":{"hawkular.metric.typeId":"Undertow
+        Metrics~Rejected Sessions","hawkular.metric.type":"COUNTER","hawkular.metric.id":"MI~R~[d70f3ec07ee0/d70f3ec07ee0~Local~/deployment=hawkular-command-gateway-war.war]~MT~Undertow
+        Metrics~Rejected Sessions"}},{"name":"Active Sessions","type":"Active Sessions","unit":"NONE","properties":{"hawkular.metric.typeId":"Undertow
+        Metrics~Active Sessions","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[d70f3ec07ee0/d70f3ec07ee0~Local~/deployment=hawkular-command-gateway-war.war]~MT~Undertow
+        Metrics~Active Sessions"}},{"name":"Deployment Status","type":"Deployment
+        Status","properties":{"hawkular-services.monitoring-type":"remote","hawkular.metric.typeId":"Deployment
+        Status~Deployment Status","hawkular.metric.type":"AVAILABILITY","hawkular.metric.id":"AI~R~[d70f3ec07ee0/d70f3ec07ee0~Local~/deployment=hawkular-command-gateway-war.war]~AT~Deployment
+        Status~Deployment Status"}}],"properties":{},"config":{}},{"id":"d70f3ec07ee0~Local~/deployment=hawkular-rest-api.war","name":"Deployment
+        [hawkular-rest-api.war]","feedId":"d70f3ec07ee0","type":{"id":"Deployment","operations":[],"properties":{}},"metrics":[{"name":"Expired
+        Sessions","type":"Expired Sessions","unit":"NONE","properties":{"hawkular.metric.typeId":"Undertow
+        Metrics~Expired Sessions","hawkular.metric.type":"COUNTER","hawkular.metric.id":"MI~R~[d70f3ec07ee0/d70f3ec07ee0~Local~/deployment=hawkular-rest-api.war]~MT~Undertow
+        Metrics~Expired Sessions"}},{"name":"Rejected Sessions","type":"Rejected Sessions","unit":"NONE","properties":{"hawkular.metric.typeId":"Undertow
+        Metrics~Rejected Sessions","hawkular.metric.type":"COUNTER","hawkular.metric.id":"MI~R~[d70f3ec07ee0/d70f3ec07ee0~Local~/deployment=hawkular-rest-api.war]~MT~Undertow
+        Metrics~Rejected Sessions"}},{"name":"Active Sessions","type":"Active Sessions","unit":"NONE","properties":{"hawkular.metric.typeId":"Undertow
+        Metrics~Active Sessions","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[d70f3ec07ee0/d70f3ec07ee0~Local~/deployment=hawkular-rest-api.war]~MT~Undertow
+        Metrics~Active Sessions"}},{"name":"Max Active Sessions","type":"Max Active
+        Sessions","unit":"NONE","properties":{"hawkular.metric.typeId":"Undertow Metrics~Max
+        Active Sessions","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[d70f3ec07ee0/d70f3ec07ee0~Local~/deployment=hawkular-rest-api.war]~MT~Undertow
+        Metrics~Max Active Sessions"}},{"name":"Sessions Created","type":"Sessions
+        Created","unit":"NONE","properties":{"hawkular.metric.typeId":"Undertow Metrics~Sessions
+        Created","hawkular.metric.type":"COUNTER","hawkular.metric.id":"MI~R~[d70f3ec07ee0/d70f3ec07ee0~Local~/deployment=hawkular-rest-api.war]~MT~Undertow
+        Metrics~Sessions Created"}},{"name":"Deployment Status","type":"Deployment
+        Status","properties":{"hawkular-services.monitoring-type":"remote","hawkular.metric.typeId":"Deployment
+        Status~Deployment Status","hawkular.metric.type":"AVAILABILITY","hawkular.metric.id":"AI~R~[d70f3ec07ee0/d70f3ec07ee0~Local~/deployment=hawkular-rest-api.war]~AT~Deployment
+        Status~Deployment Status"}}],"properties":{},"config":{}},{"id":"d70f3ec07ee0~Local~/subsystem=transactions","name":"Transaction
+        Manager","feedId":"d70f3ec07ee0","type":{"id":"Transaction Manager","operations":[],"properties":{}},"metrics":[{"name":"Number
+        of Timed Out Transactions","type":"Number of Timed Out Transactions","unit":"NONE","properties":{"hawkular.metric.typeId":"Transactions
+        Metrics~Number of Timed Out Transactions","hawkular.metric.type":"COUNTER","hawkular.metric.id":"MI~R~[d70f3ec07ee0/d70f3ec07ee0~Local~/subsystem=transactions]~MT~Transactions
+        Metrics~Number of Timed Out Transactions"}},{"name":"Number of In-Flight Transactions","type":"Number
+        of In-Flight Transactions","unit":"NONE","properties":{"hawkular.metric.typeId":"Transactions
+        Metrics~Number of In-Flight Transactions","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[d70f3ec07ee0/d70f3ec07ee0~Local~/subsystem=transactions]~MT~Transactions
+        Metrics~Number of In-Flight Transactions"}},{"name":"Number of Heuristics","type":"Number
+        of Heuristics","unit":"NONE","properties":{"hawkular.metric.typeId":"Transactions
+        Metrics~Number of Heuristics","hawkular.metric.type":"COUNTER","hawkular.metric.id":"MI~R~[d70f3ec07ee0/d70f3ec07ee0~Local~/subsystem=transactions]~MT~Transactions
+        Metrics~Number of Heuristics"}},{"name":"Number of Resource Rollbacks","type":"Number
+        of Resource Rollbacks","unit":"NONE","properties":{"hawkular.metric.typeId":"Transactions
+        Metrics~Number of Resource Rollbacks","hawkular.metric.type":"COUNTER","hawkular.metric.id":"MI~R~[d70f3ec07ee0/d70f3ec07ee0~Local~/subsystem=transactions]~MT~Transactions
+        Metrics~Number of Resource Rollbacks"}},{"name":"Number of Nested Transactions","type":"Number
+        of Nested Transactions","unit":"NONE","properties":{"hawkular.metric.typeId":"Transactions
+        Metrics~Number of Nested Transactions","hawkular.metric.type":"COUNTER","hawkular.metric.id":"MI~R~[d70f3ec07ee0/d70f3ec07ee0~Local~/subsystem=transactions]~MT~Transactions
+        Metrics~Number of Nested Transactions"}},{"name":"Number of Aborted Transactions","type":"Number
+        of Aborted Transactions","unit":"NONE","properties":{"hawkular.metric.typeId":"Transactions
+        Metrics~Number of Aborted Transactions","hawkular.metric.type":"COUNTER","hawkular.metric.id":"MI~R~[d70f3ec07ee0/d70f3ec07ee0~Local~/subsystem=transactions]~MT~Transactions
+        Metrics~Number of Aborted Transactions"}},{"name":"Number of Application Rollbacks","type":"Number
+        of Application Rollbacks","unit":"NONE","properties":{"hawkular.metric.typeId":"Transactions
+        Metrics~Number of Application Rollbacks","hawkular.metric.type":"COUNTER","hawkular.metric.id":"MI~R~[d70f3ec07ee0/d70f3ec07ee0~Local~/subsystem=transactions]~MT~Transactions
+        Metrics~Number of Application Rollbacks"}},{"name":"Number of Committed Transactions","type":"Number
+        of Committed Transactions","unit":"NONE","properties":{"hawkular.metric.typeId":"Transactions
+        Metrics~Number of Committed Transactions","hawkular.metric.type":"COUNTER","hawkular.metric.id":"MI~R~[d70f3ec07ee0/d70f3ec07ee0~Local~/subsystem=transactions]~MT~Transactions
+        Metrics~Number of Committed Transactions"}},{"name":"Number of Transactions","type":"Number
+        of Transactions","unit":"NONE","properties":{"hawkular.metric.typeId":"Transactions
+        Metrics~Number of Transactions","hawkular.metric.type":"COUNTER","hawkular.metric.id":"MI~R~[d70f3ec07ee0/d70f3ec07ee0~Local~/subsystem=transactions]~MT~Transactions
+        Metrics~Number of Transactions"}}],"properties":{},"config":{}},{"id":"d70f3ec07ee0~Local~/deployment=hawkular-inventory-service.war","name":"Deployment
+        [hawkular-inventory-service.war]","feedId":"d70f3ec07ee0","type":{"id":"Deployment","operations":[],"properties":{}},"metrics":[{"name":"Expired
+        Sessions","type":"Expired Sessions","unit":"NONE","properties":{"hawkular.metric.typeId":"Undertow
+        Metrics~Expired Sessions","hawkular.metric.type":"COUNTER","hawkular.metric.id":"MI~R~[d70f3ec07ee0/d70f3ec07ee0~Local~/deployment=hawkular-inventory-service.war]~MT~Undertow
+        Metrics~Expired Sessions"}},{"name":"Sessions Created","type":"Sessions Created","unit":"NONE","properties":{"hawkular.metric.typeId":"Undertow
+        Metrics~Sessions Created","hawkular.metric.type":"COUNTER","hawkular.metric.id":"MI~R~[d70f3ec07ee0/d70f3ec07ee0~Local~/deployment=hawkular-inventory-service.war]~MT~Undertow
+        Metrics~Sessions Created"}},{"name":"Max Active Sessions","type":"Max Active
+        Sessions","unit":"NONE","properties":{"hawkular.metric.typeId":"Undertow Metrics~Max
+        Active Sessions","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[d70f3ec07ee0/d70f3ec07ee0~Local~/deployment=hawkular-inventory-service.war]~MT~Undertow
+        Metrics~Max Active Sessions"}},{"name":"Active Sessions","type":"Active Sessions","unit":"NONE","properties":{"hawkular.metric.typeId":"Undertow
+        Metrics~Active Sessions","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[d70f3ec07ee0/d70f3ec07ee0~Local~/deployment=hawkular-inventory-service.war]~MT~Undertow
+        Metrics~Active Sessions"}},{"name":"Rejected Sessions","type":"Rejected Sessions","unit":"NONE","properties":{"hawkular.metric.typeId":"Undertow
+        Metrics~Rejected Sessions","hawkular.metric.type":"COUNTER","hawkular.metric.id":"MI~R~[d70f3ec07ee0/d70f3ec07ee0~Local~/deployment=hawkular-inventory-service.war]~MT~Undertow
+        Metrics~Rejected Sessions"}},{"name":"Deployment Status","type":"Deployment
+        Status","properties":{"hawkular-services.monitoring-type":"remote","hawkular.metric.typeId":"Deployment
+        Status~Deployment Status","hawkular.metric.type":"AVAILABILITY","hawkular.metric.id":"AI~R~[d70f3ec07ee0/d70f3ec07ee0~Local~/deployment=hawkular-inventory-service.war]~AT~Deployment
+        Status~Deployment Status"}}],"properties":{},"config":{}},{"id":"d70f3ec07ee0~Local~/deployment=hawkular-wildfly-agent-download.war","name":"Deployment
+        [hawkular-wildfly-agent-download.war]","feedId":"d70f3ec07ee0","type":{"id":"Deployment","operations":[],"properties":{}},"metrics":[{"name":"Rejected
+        Sessions","type":"Rejected Sessions","unit":"NONE","properties":{"hawkular.metric.typeId":"Undertow
+        Metrics~Rejected Sessions","hawkular.metric.type":"COUNTER","hawkular.metric.id":"MI~R~[d70f3ec07ee0/d70f3ec07ee0~Local~/deployment=hawkular-wildfly-agent-download.war]~MT~Undertow
+        Metrics~Rejected Sessions"}},{"name":"Expired Sessions","type":"Expired Sessions","unit":"NONE","properties":{"hawkular.metric.typeId":"Undertow
+        Metrics~Expired Sessions","hawkular.metric.type":"COUNTER","hawkular.metric.id":"MI~R~[d70f3ec07ee0/d70f3ec07ee0~Local~/deployment=hawkular-wildfly-agent-download.war]~MT~Undertow
+        Metrics~Expired Sessions"}},{"name":"Active Sessions","type":"Active Sessions","unit":"NONE","properties":{"hawkular.metric.typeId":"Undertow
+        Metrics~Active Sessions","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[d70f3ec07ee0/d70f3ec07ee0~Local~/deployment=hawkular-wildfly-agent-download.war]~MT~Undertow
+        Metrics~Active Sessions"}},{"name":"Sessions Created","type":"Sessions Created","unit":"NONE","properties":{"hawkular.metric.typeId":"Undertow
+        Metrics~Sessions Created","hawkular.metric.type":"COUNTER","hawkular.metric.id":"MI~R~[d70f3ec07ee0/d70f3ec07ee0~Local~/deployment=hawkular-wildfly-agent-download.war]~MT~Undertow
+        Metrics~Sessions Created"}},{"name":"Max Active Sessions","type":"Max Active
+        Sessions","unit":"NONE","properties":{"hawkular.metric.typeId":"Undertow Metrics~Max
+        Active Sessions","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[d70f3ec07ee0/d70f3ec07ee0~Local~/deployment=hawkular-wildfly-agent-download.war]~MT~Undertow
+        Metrics~Max Active Sessions"}},{"name":"Deployment Status","type":"Deployment
+        Status","properties":{"hawkular-services.monitoring-type":"remote","hawkular.metric.typeId":"Deployment
+        Status~Deployment Status","hawkular.metric.type":"AVAILABILITY","hawkular.metric.id":"AI~R~[d70f3ec07ee0/d70f3ec07ee0~Local~/deployment=hawkular-wildfly-agent-download.war]~AT~Deployment
+        Status~Deployment Status"}}],"properties":{},"config":{}},{"id":"d70f3ec07ee0~Local~/deployment=hawkular-status.war","name":"Deployment
+        [hawkular-status.war]","feedId":"d70f3ec07ee0","type":{"id":"Deployment","operations":[],"properties":{}},"metrics":[{"name":"Expired
+        Sessions","type":"Expired Sessions","unit":"NONE","properties":{"hawkular.metric.typeId":"Undertow
+        Metrics~Expired Sessions","hawkular.metric.type":"COUNTER","hawkular.metric.id":"MI~R~[d70f3ec07ee0/d70f3ec07ee0~Local~/deployment=hawkular-status.war]~MT~Undertow
+        Metrics~Expired Sessions"}},{"name":"Sessions Created","type":"Sessions Created","unit":"NONE","properties":{"hawkular.metric.typeId":"Undertow
+        Metrics~Sessions Created","hawkular.metric.type":"COUNTER","hawkular.metric.id":"MI~R~[d70f3ec07ee0/d70f3ec07ee0~Local~/deployment=hawkular-status.war]~MT~Undertow
+        Metrics~Sessions Created"}},{"name":"Rejected Sessions","type":"Rejected Sessions","unit":"NONE","properties":{"hawkular.metric.typeId":"Undertow
+        Metrics~Rejected Sessions","hawkular.metric.type":"COUNTER","hawkular.metric.id":"MI~R~[d70f3ec07ee0/d70f3ec07ee0~Local~/deployment=hawkular-status.war]~MT~Undertow
+        Metrics~Rejected Sessions"}},{"name":"Max Active Sessions","type":"Max Active
+        Sessions","unit":"NONE","properties":{"hawkular.metric.typeId":"Undertow Metrics~Max
+        Active Sessions","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[d70f3ec07ee0/d70f3ec07ee0~Local~/deployment=hawkular-status.war]~MT~Undertow
+        Metrics~Max Active Sessions"}},{"name":"Active Sessions","type":"Active Sessions","unit":"NONE","properties":{"hawkular.metric.typeId":"Undertow
+        Metrics~Active Sessions","hawkular.metric.type":"GAUGE","hawkular.metric.id":"MI~R~[d70f3ec07ee0/d70f3ec07ee0~Local~/deployment=hawkular-status.war]~MT~Undertow
+        Metrics~Active Sessions"}},{"name":"Deployment Status","type":"Deployment
+        Status","properties":{"hawkular-services.monitoring-type":"remote","hawkular.metric.typeId":"Deployment
+        Status~Deployment Status","hawkular.metric.type":"AVAILABILITY","hawkular.metric.id":"AI~R~[d70f3ec07ee0/d70f3ec07ee0~Local~/deployment=hawkular-status.war]~AT~Deployment
+        Status~Deployment Status"}}],"properties":{},"config":{}},{"id":"d70f3ec07ee0~Local~/subsystem=datasources/jdbc-driver=h2","name":"JDBC
+        Driver [h2]","feedId":"d70f3ec07ee0","type":{"id":"JDBC Driver","operations":[],"properties":{}},"metrics":[],"properties":{},"config":{"Module
+        Name":"com.h2database.h2","Driver Name":"h2","Driver Class":null,"XA DS Class":"org.h2.jdbcx.JdbcDataSource"}},{"id":"d70f3ec07ee0~Local~/socket-binding-group=standard-sockets","name":"Socket
+        Binding Group [standard-sockets]","feedId":"d70f3ec07ee0","type":{"id":"Socket
+        Binding Group","operations":[],"properties":{}},"metrics":[],"properties":{},"config":{"Default
+        Interface":"public","Port Offset":"0","Name":"standard-sockets"}}],"resultSize":13,"startOffset":0}'
+    http_version: 
+  recorded_at: Wed, 18 Oct 2017 14:24:02 GMT
+recorded_with: VCR 3.0.3

@@ -102,7 +102,7 @@ module Hawkular::Operations::RSpec
         end
 
         it 'should run into error callback' do
-          noop = { operationName: 'noop', resourcePath: '/bla' }
+          noop = { operationName: 'noop', resourcePath: '/bla', senderRequestId: 'abc' }
           operation_outcome = {}
           client.invoke_generic_operation(noop) do |on|
             on.success do |_data|
@@ -116,7 +116,7 @@ module Hawkular::Operations::RSpec
         end
 
         it 'should run into error callback because bad hash parameters' do
-          noop = { operationName: 'noop' }
+          noop = { operationName: 'noop', senderRequestId: 'abc' }
           operation_outcome = {}
           client.invoke_generic_operation(noop) do |on|
             on.success do |_data|
@@ -126,17 +126,17 @@ module Hawkular::Operations::RSpec
               operation_outcome[:data] = error
             end
           end
-          expect(wait_for(operation_outcome)).to eq 'Hash property resourcePath must be specified'
+          expect(wait_for(operation_outcome)).to eq 'Hash property feedId must be specified'
         end
 
         it 'should bail with hash property error because no callback at all' do
-          noop = { operationName: 'noop' }
+          noop = { operationName: 'noop', senderRequestId: 'abc' }
           expect { client.invoke_generic_operation(noop) }.to raise_error(Hawkular::ArgumentError,
                                                                           'You need to specify error callback')
         end
 
         it 'should bail with hash property error because no error-callback ' do
-          noop = { operationName: 'noop' }
+          noop = { operationName: 'noop', senderRequestId: 'abc' }
           expect do
             client.invoke_generic_operation(noop) do |on|
               on.success do |_data|
@@ -156,6 +156,7 @@ module Hawkular::Operations::RSpec
       describe 'Operation/Operation' do
         before(:all) do
           @random_uuid = SecureRandom.uuid
+          @req_id = '**fixed id for tests**'
           @not_so_random_uuid = 'not_so_random_uuid'
         end
 
@@ -166,21 +167,19 @@ module Hawkular::Operations::RSpec
               @inventory_client = ::Hawkular::Inventory::Client.create(
                 options.merge entrypoint: host_with_scheme(host, security_context == SECURE_CONTEXT))
             end
-            inventory_client = @inventory_client
-            remove_instance_variable(:@inventory_client)
             @tenant_id = 'hawkular'
-            record("Operation/#{security_context}/Helpers", { tenant_id: @tenant_id }, 'get_feed') do
-              @feed_id = inventory_client.list_feeds[0]
+            record("Operation/#{security_context}/Helpers", { tenant_id: @tenant_id }, 'get_wf_server') do
+              @wf_server = @inventory_client.resources(typeId: 'WildFly Server', root: true)[0]
             end
-            record("Operation/#{security_context}/Helpers", { tenant_id: @tenant_id, feed_id: @feed_id },
-                   'agent_properties') do
-              @wf_server_resource_id = 'Local~~'
-              agent = installed_agent(inventory_client, @feed_id)
+            record("Operation/#{security_context}/Helpers", { tenant_id: @tenant_id }, 'agent_properties') do
+              agent = installed_agent(@inventory_client)
               @agent_immutable = agent_immutable?(agent)
-              @agent_path = agent.path
+              @agent_id = agent.id
             end
           end
-          @bindings = { random_uuid: @random_uuid, tenant_id: @tenant_id, feed_id: @feed_id }
+          @bindings = { random_uuid: @random_uuid,
+                        tenant_id: @tenant_id,
+                        feed_id: @wf_server.feed }
           record_websocket("Operation/#{security_context}/Operation",
                            @bindings,
                            cassette_name,
@@ -190,17 +189,16 @@ module Hawkular::Operations::RSpec
         it 'Add JDBC driver should add the driver' do # Unless it runs in a container
           driver_name = 'CreatedByRubyDriver' + @not_so_random_uuid
           driver_bits = IO.binread("#{File.dirname(__FILE__)}/../resources/driver.jar")
-          wf_path = CanonicalPath.new(tenant_id: @tenant_id,
-                                      feed_id: @feed_id,
-                                      resource_ids: [@wf_server_resource_id]).to_s
 
           actual_data = {}
 
-          client.add_jdbc_driver(resource_path: wf_path,
+          client.add_jdbc_driver(resource_id: @wf_server.id,
+                                 feed_id: @wf_server.feed,
                                  driver_jar_name: 'driver.jar',
                                  driver_name: driver_name,
                                  module_name: 'foo.bar' + @not_so_random_uuid, # jboss module
                                  driver_class: 'com.mysql.jdbc.Driver',
+                                 sender_request_id: @req_id,
                                  binary_content: driver_bits) do |on|
             on.success do |data|
               actual_data[:data] = data
@@ -218,15 +216,11 @@ module Hawkular::Operations::RSpec
         end
 
         it 'Restart should be performed and eventually respond with success' do
-          wf_server_resource_id = 'Local~~'
-          status_war_resource_id = 'Local~%2Fdeployment%3Dhawkular-status.war'
-          path = CanonicalPath.new(tenant_id: @tenant_id,
-                                   feed_id: @feed_id,
-                                   resource_ids: [wf_server_resource_id, status_war_resource_id])
-
           restart = {
-            resource_path: path.to_s,
-            deployment_name: 'hawkular-status.war'
+            resource_id: @wf_server.id,
+            feed_id: @wf_server.feed,
+            deployment_name: 'hawkular-status.war',
+            sender_request_id: @req_id
           }
 
           actual_data = {}
@@ -243,20 +237,17 @@ module Hawkular::Operations::RSpec
           # expectations don't work from callbacks so waiting for the results via blocking helper `wait_for`
           actual_data = wait_for actual_data
           expect(actual_data['status']).to eq('OK')
-          expect(actual_data['resourcePath']).to eq(path.up.to_s)
+          expect(actual_data['resourceId']).to eq(@wf_server.id)
+          expect(actual_data['destinationFileName']).to eq('hawkular-status.war')
           expect(actual_data['message']).to start_with('Performed [Restart Deployment] on')
         end
 
         it 'Restart should not be performed if resource path is wrong' do
-          wf_server_resource_id = 'Unknown~~'
-          wrong_war_resource_id = 'Unknown~%2Fdeployment%3Dnon-existent.war'
-          path = CanonicalPath.new(tenant_id: @tenant_id,
-                                   feed_id: @feed_id,
-                                   resource_ids: [wf_server_resource_id, wrong_war_resource_id])
-
           restart = {
-            resource_path: path.to_s,
-            deployment_name: 'non-existent.war'
+            resource_id: @wf_server.id,
+            feed_id: @wf_server.feed,
+            deployment_name: 'non-existent.war',
+            sender_request_id: @req_id
           }
           actual_data = {}
           client.restart_deployment(restart) do |on|
@@ -272,15 +263,11 @@ module Hawkular::Operations::RSpec
         end
 
         it 'Disable should be performed and eventually respond with success' do
-          wf_server_resource_id = 'Local~~'
-          status_war_resource_id = 'Local~%2Fdeployment%3Dhawkular-status.war'
-          path = CanonicalPath.new(tenant_id: @tenant_id,
-                                   feed_id: @feed_id,
-                                   resource_ids: [wf_server_resource_id, status_war_resource_id])
-
           disable = {
-            resource_path: path.to_s,
-            deployment_name: 'hawkular-status.war'
+            resource_id: @wf_server.id,
+            feed_id: @wf_server.feed,
+            deployment_name: 'hawkular-status.war',
+            sender_request_id: @req_id
           }
           actual_data = {}
           client.disable_deployment(disable) do |on|
@@ -299,13 +286,10 @@ module Hawkular::Operations::RSpec
         end
 
         it 'Add non-XA datasource should be doable' do
-          wf_server_resource_id = 'Local~~'
-          wf_path = CanonicalPath.new(tenant_id: @tenant_id,
-                                      feed_id: @feed_id,
-                                      resource_ids: [wf_server_resource_id]).to_s
           payload = {
             # compulsory fields
-            resourcePath: wf_path,
+            resourceId: @wf_server.id,
+            feedId: @wf_server.feed,
             xaDatasource: false,
             datasourceName: 'CreatedByRubyDS' + @random_uuid,
             jndiName: 'java:jboss/datasources/CreatedByRubyDS' + @random_uuid,
@@ -320,7 +304,8 @@ module Hawkular::Operations::RSpec
             },
             userName: 'sa',
             password: 'sa',
-            securityDomain: 'other'
+            securityDomain: 'other',
+            senderRequestId: @req_id
             # xaDataSourceClass: 'clazz' for xa DS
           }
 
@@ -344,13 +329,10 @@ module Hawkular::Operations::RSpec
         end
 
         it 'Add XA datasource should be doable' do
-          wf_server_resource_id = 'Local~~'
-          wf_path = CanonicalPath.new(tenant_id: @tenant_id,
-                                      feed_id: @feed_id,
-                                      resource_ids: [wf_server_resource_id]).to_s
           payload = {
             # compulsory fields
-            resourcePath: wf_path,
+            resourceId: @wf_server.id,
+            feedId: @wf_server.feed,
             xaDatasource: true,
             datasourceName: 'CreatedByRubyDSXA' + @random_uuid,
             jndiName: 'java:jboss/datasources/CreatedByRubyDSXA' + @random_uuid,
@@ -366,7 +348,8 @@ module Hawkular::Operations::RSpec
             },
             userName: 'sa',
             password: 'sa',
-            securityDomain: 'other'
+            securityDomain: 'other',
+            senderRequestId: @req_id
           }
 
           actual_data = {}
@@ -389,24 +372,18 @@ module Hawkular::Operations::RSpec
         end
 
         it 'Restart can be run multiple times in parallel' do
-          wf_server_resource_id = 'Local~~'
-          status_war_resource_id = 'Local~%2Fdeployment%3Dhawkular-status.war'
-          console_war_resource_id = 'Local~%2Fdeployment%3Dhawkular-wildfly-agent-download.war'
-          path1 = CanonicalPath.new(tenant_id: @tenant_id,
-                                    feed_id: @feed_id,
-                                    resource_ids: [wf_server_resource_id, status_war_resource_id])
-          path2 = CanonicalPath.new(tenant_id: @tenant_id,
-                                    feed_id: @feed_id,
-                                    resource_ids: [wf_server_resource_id, console_war_resource_id])
-
           restart1 = {
-            resource_path: path1.to_s,
-            deployment_name: 'hawkular-status.war'
+            resource_id: @wf_server.id,
+            feed_id: @wf_server.feed,
+            deployment_name: 'hawkular-status.war',
+            sender_request_id: @req_id
           }
 
           restart2 = {
-            resource_path: path2.to_s,
-            deployment_name: 'hawkular-wildfly-agent-download.war'
+            resource_id: @wf_server.id,
+            feed_id: @wf_server.feed,
+            deployment_name: 'hawkular-wildfly-agent-download.war',
+            sender_request_id: 'another_id'
           }
 
           # run the first operation w/o registering the callback
@@ -426,21 +403,20 @@ module Hawkular::Operations::RSpec
 
           actual_data = wait_for actual_data
           expect(actual_data['status']).to eq('OK')
-          expect(actual_data['resourcePath']).to eq(path2.up.to_s)
+          expect(actual_data['senderRequestId']).to eq('another_id')
+          expect(actual_data['resourceId']).to eq(@wf_server.id)
+          expect(actual_data['destinationFileName']).to eq('hawkular-wildfly-agent-download.war')
           expect(actual_data['message']).to start_with('Performed [Restart Deployment] on')
         end
 
         it 'Add deployment should be doable' do
-          wf_server_resource_id = 'Local~~'
           app_name = 'sample.war'
           war_file = IO.binread("#{File.dirname(__FILE__)}/../resources/#{app_name}")
-          wf_path = CanonicalPath.new(tenant_id: @tenant_id,
-                                      feed_id: @feed_id,
-                                      resource_ids: [wf_server_resource_id]).to_s
-
           actual_data = {}
-          client.add_deployment(resource_path: wf_path,
+          client.add_deployment(resource_id: @wf_server.id,
+                                feed_id: @wf_server.feed,
                                 destination_file_name: app_name,
+                                sender_request_id: @req_id,
                                 binary_content: war_file) do |on|
             on.success do |data|
               actual_data[:data] = data
@@ -454,19 +430,16 @@ module Hawkular::Operations::RSpec
           expect(actual_data['status']).to eq('OK') unless @agent_immutable
           expect(actual_data['message']).to start_with('Performed [Deploy] on') unless @agent_immutable
           expect(actual_data['destinationFileName']).to eq(app_name) unless @agent_immutable
-          expect(actual_data['resourcePath']).to eq(wf_path) unless @agent_immutable
+          expect(actual_data['resourceId']).to eq(@wf_server.id) unless @agent_immutable
           expect(actual_data).to include('Command not allowed because the agent is immutable') if @agent_immutable
         end
 
         it 'Undeploy deployment should be performed and eventually respond with success' do
-          wf_server_resource_id = 'Local~~'
-          sample_app_resource_id = 'Local~%2Fdeployment=sample.war'
-          path = CanonicalPath.new(tenant_id: @tenant_id,
-                                   feed_id: @feed_id,
-                                   resource_ids: [wf_server_resource_id, sample_app_resource_id])
           undeploy = {
-            resource_path: path.to_s,
-            deployment_name: 'sample.war'
+            resource_id: @wf_server.id,
+            feed_id: @wf_server.feed,
+            deployment_name: 'sample.war',
+            sender_request_id: @req_id
           }
           actual_data = {}
           client.undeploy(undeploy) do |on|
@@ -485,14 +458,18 @@ module Hawkular::Operations::RSpec
         end
 
         it 'Remove datasource should be performed and eventually respond with success' do
-          wf_server_resource_id = 'Local~~'
-          datasource_resource_id = 'Local~%2Fsubsystem%3Ddatasources%2Fdata-source%3DCreatedByRubyDS' + @random_uuid
-          path = CanonicalPath.new(tenant_id: @tenant_id,
-                                   feed_id: @feed_id,
-                                   resource_ids: [wf_server_resource_id, datasource_resource_id])
-
+          ds = nil
+          unless @agent_immutable
+            record("Operation/#{security_context}/Helpers", nil, 'get_datasource') do
+              ds = @inventory_client.children_resources(@wf_server.id)
+                   .select { |r| r.name.include? "CreatedByRubyDS#{@random_uuid}" }[0]
+                   .id
+            end
+          end
           operation = {
-            resourcePath: path.to_s
+            resourceId: ds,
+            feedId: @wf_server.feed,
+            senderRequestId: @req_id
           }
 
           actual_data = {}
@@ -509,19 +486,26 @@ module Hawkular::Operations::RSpec
           expect(actual_data['status']).to eq('OK') unless @agent_immutable
           expect(actual_data['message']).to start_with('Performed [Remove] on') unless @agent_immutable
           expect(actual_data['serverRefreshIndicator']).to eq('RELOAD-REQUIRED') unless @agent_immutable
-          expect(actual_data).to include('Command not allowed because the agent is immutable') if @agent_immutable
-        end
+        end unless @agent_immutable
 
         it 'Remove JDBC driver should be performed and eventually respond with success' do
           # Unless it runs in a container
-          driver_resource_id = 'Local~%2Fsubsystem%3Ddatasources%2Fjdbc-driver%3DCreatedByRubyDriver'
-          driver_resource_id << @not_so_random_uuid
-          path = CanonicalPath.new(tenant_id: @tenant_id,
-                                   feed_id: @feed_id,
-                                   resource_ids: [@wf_server_resource_id, driver_resource_id]).to_s
+          driver = nil
+          unless @agent_immutable
+            record("Operation/#{security_context}/Helpers", nil, 'get_driver') do
+              driver = @inventory_client.children_resources(@wf_server.id)
+                       .select { |r| r.name.include? "CreatedByRubyDriver#{@not_so_random_uuid}" }[0]
+                       .id
+            end
+          end
+          operation = {
+            resourceId: driver,
+            feedId: @wf_server.feed,
+            senderRequestId: @req_id
+          }
 
           actual_data = {}
-          client.invoke_specific_operation({ resourcePath: path }, 'RemoveJdbcDriver') do |on|
+          client.invoke_specific_operation(operation, 'RemoveJdbcDriver') do |on|
             on.success do |data|
               actual_data[:data] = data
             end
@@ -532,20 +516,14 @@ module Hawkular::Operations::RSpec
           end
           actual_data = wait_for actual_data
           expect(actual_data['status']).to eq('OK') unless @agent_immutable
-          expect(actual_data['resourcePath']).to eq(path) unless @agent_immutable
+          expect(actual_data['resource_id']).to eq(driver_resource_id) unless @agent_immutable
           expect(actual_data['message']).to start_with(
             'Performed [Remove] on a [JDBC Driver]') unless @agent_immutable
-          expect(actual_data).to include('Command not allowed because the agent is immutable') if @agent_immutable
         end
 
         it 'Export JDR should retrieve the zip file with the report' do
-          wf_server_resource_id = 'Local~~'
-          path = CanonicalPath.new(tenant_id: @tenant_id,
-                                   feed_id: @feed_id,
-                                   resource_ids: [wf_server_resource_id]).to_s
-
           actual_data = {}
-          client.export_jdr(path) do |on|
+          client.export_jdr(@wf_server.id, @wf_server.feed, false, @req_id) do |on|
             on.success do |data|
               actual_data[:data] = data
             end
@@ -556,7 +534,7 @@ module Hawkular::Operations::RSpec
           end
           actual_data = wait_for actual_data
           expect(actual_data['status']).to eq('OK')
-          expect(actual_data['resourcePath']).to eq(path)
+          expect(actual_data['resourceId']).to eq(@wf_server.id)
           expect(actual_data['message']).to start_with('Performed [Export JDR] on')
           expect(actual_data['fileName']).to start_with('jdr_')
           expect(actual_data[:attachments]).to_not be_blank
@@ -564,7 +542,9 @@ module Hawkular::Operations::RSpec
 
         it 'Update collection intervals should be performed and eventually respond with success' do
           hash = {
-            resourcePath: @agent_path.to_s,
+            resourceId: @agent_id,
+            feedId: @wf_server.feed,
+            senderRequestId: @req_id,
             metricTypes: { 'WildFly Memory Metrics~Heap Max' => 77, 'Unknown~Metric' => 666 },
             availTypes: { 'Server Availability~Server Availability' => 77, 'Unknown~Avail' => 666 }
           }

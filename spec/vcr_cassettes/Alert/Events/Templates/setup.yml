@@ -5,7 +5,7 @@ http_interactions:
     uri: http://localhost:8080/hawkular/alerts/events
     body:
       encoding: UTF-8
-      string: '{"id":"my-event-01","ctime":1493133070000,"category":"general-category","text":"some
+      string: '{"id":"my-event-01","ctime":1508938980000,"category":"general-category","text":"some
         text for this event"}'
     headers:
       Accept:
@@ -20,9 +20,10 @@ http_interactions:
       - application/json
       Content-Length:
       - '106'
-      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
-
-'
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 200
@@ -39,7 +40,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 25 Apr 2017 15:11:10 GMT
+      - Wed, 25 Oct 2017 13:43:00 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -48,16 +49,16 @@ http_interactions:
       - '170'
     body:
       encoding: UTF-8
-      string: '{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-01","ctime":1493133070000,"dataSource":"_none_","category":"general-category","text":"some
+      string: '{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-01","ctime":1508938980000,"dataSource":"_none_","category":"general-category","text":"some
         text for this event"}'
     http_version: 
-  recorded_at: Tue, 25 Apr 2017 15:11:10 GMT
+  recorded_at: Wed, 25 Oct 2017 13:43:00 GMT
 - request:
     method: post
     uri: http://localhost:8080/hawkular/alerts/events
     body:
       encoding: UTF-8
-      string: '{"id":"my-event-01","ctime":1493133070000,"category":"general-category","text":"some
+      string: '{"id":"my-event-01","ctime":1508938980000,"category":"general-category","text":"some
         text for this event"}'
     headers:
       Accept:
@@ -72,9 +73,10 @@ http_interactions:
       - application/json
       Content-Length:
       - '106'
-      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
-
-'
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 200
@@ -91,7 +93,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 25 Apr 2017 15:11:10 GMT
+      - Wed, 25 Oct 2017 13:43:00 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -100,16 +102,16 @@ http_interactions:
       - '165'
     body:
       encoding: UTF-8
-      string: '{"eventType":"EVENT","tenantId":"foo","id":"my-event-01","ctime":1493133070000,"dataSource":"_none_","category":"general-category","text":"some
+      string: '{"eventType":"EVENT","tenantId":"foo","id":"my-event-01","ctime":1508938980000,"dataSource":"_none_","category":"general-category","text":"some
         text for this event"}'
     http_version: 
-  recorded_at: Tue, 25 Apr 2017 15:11:10 GMT
+  recorded_at: Wed, 25 Oct 2017 13:43:00 GMT
 - request:
     method: post
     uri: http://localhost:8080/hawkular/alerts/events
     body:
       encoding: UTF-8
-      string: '{"id":"my-event-02","ctime":1493133070000,"category":"my-category-01","text":"some
+      string: '{"id":"my-event-02","ctime":1508938980000,"category":"my-category-01","text":"some
         text for this event"}'
     headers:
       Accept:
@@ -124,9 +126,10 @@ http_interactions:
       - application/json
       Content-Length:
       - '104'
-      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
-
-'
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 200
@@ -143,7 +146,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 25 Apr 2017 15:11:10 GMT
+      - Wed, 25 Oct 2017 13:43:00 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -152,16 +155,16 @@ http_interactions:
       - '168'
     body:
       encoding: UTF-8
-      string: '{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-02","ctime":1493133070000,"dataSource":"_none_","category":"my-category-01","text":"some
+      string: '{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-02","ctime":1508938980000,"dataSource":"_none_","category":"my-category-01","text":"some
         text for this event"}'
     http_version: 
-  recorded_at: Tue, 25 Apr 2017 15:11:10 GMT
+  recorded_at: Wed, 25 Oct 2017 13:43:00 GMT
 - request:
     method: post
     uri: http://localhost:8080/hawkular/alerts/events
     body:
       encoding: UTF-8
-      string: '{"id":"my-event-02","ctime":1493133070000,"category":"my-category-01","text":"some
+      string: '{"id":"my-event-02","ctime":1508938980000,"category":"my-category-01","text":"some
         text for this event"}'
     headers:
       Accept:
@@ -176,9 +179,10 @@ http_interactions:
       - application/json
       Content-Length:
       - '104'
-      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
-
-'
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 200
@@ -195,7 +199,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 25 Apr 2017 15:11:10 GMT
+      - Wed, 25 Oct 2017 13:43:00 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -204,16 +208,16 @@ http_interactions:
       - '163'
     body:
       encoding: UTF-8
-      string: '{"eventType":"EVENT","tenantId":"foo","id":"my-event-02","ctime":1493133070000,"dataSource":"_none_","category":"my-category-01","text":"some
+      string: '{"eventType":"EVENT","tenantId":"foo","id":"my-event-02","ctime":1508938980000,"dataSource":"_none_","category":"my-category-01","text":"some
         text for this event"}'
     http_version: 
-  recorded_at: Tue, 25 Apr 2017 15:11:10 GMT
+  recorded_at: Wed, 25 Oct 2017 13:43:00 GMT
 - request:
     method: post
     uri: http://localhost:8080/hawkular/alerts/events
     body:
       encoding: UTF-8
-      string: '{"id":"my-event-03","ctime":1493133070000,"category":"my-category-01","text":"some
+      string: '{"id":"my-event-03","ctime":1508938980000,"category":"my-category-01","text":"some
         text for this event"}'
     headers:
       Accept:
@@ -228,9 +232,10 @@ http_interactions:
       - application/json
       Content-Length:
       - '104'
-      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
-
-'
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 200
@@ -247,7 +252,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 25 Apr 2017 15:11:10 GMT
+      - Wed, 25 Oct 2017 13:43:00 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -256,16 +261,16 @@ http_interactions:
       - '168'
     body:
       encoding: UTF-8
-      string: '{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-03","ctime":1493133070000,"dataSource":"_none_","category":"my-category-01","text":"some
+      string: '{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-03","ctime":1508938980000,"dataSource":"_none_","category":"my-category-01","text":"some
         text for this event"}'
     http_version: 
-  recorded_at: Tue, 25 Apr 2017 15:11:10 GMT
+  recorded_at: Wed, 25 Oct 2017 13:43:00 GMT
 - request:
     method: post
     uri: http://localhost:8080/hawkular/alerts/events
     body:
       encoding: UTF-8
-      string: '{"id":"my-event-03","ctime":1493133070000,"category":"my-category-01","text":"some
+      string: '{"id":"my-event-03","ctime":1508938980000,"category":"my-category-01","text":"some
         text for this event"}'
     headers:
       Accept:
@@ -280,9 +285,10 @@ http_interactions:
       - application/json
       Content-Length:
       - '104'
-      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
-
-'
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 200
@@ -299,7 +305,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 25 Apr 2017 15:11:10 GMT
+      - Wed, 25 Oct 2017 13:43:00 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -308,16 +314,16 @@ http_interactions:
       - '163'
     body:
       encoding: UTF-8
-      string: '{"eventType":"EVENT","tenantId":"foo","id":"my-event-03","ctime":1493133070000,"dataSource":"_none_","category":"my-category-01","text":"some
+      string: '{"eventType":"EVENT","tenantId":"foo","id":"my-event-03","ctime":1508938980000,"dataSource":"_none_","category":"my-category-01","text":"some
         text for this event"}'
     http_version: 
-  recorded_at: Tue, 25 Apr 2017 15:11:10 GMT
+  recorded_at: Wed, 25 Oct 2017 13:43:00 GMT
 - request:
     method: post
     uri: http://localhost:8080/hawkular/alerts/events
     body:
       encoding: UTF-8
-      string: '{"id":"my-event-04","ctime":1493133070000,"category":"general-category","text":"some
+      string: '{"id":"my-event-04","ctime":1508938980000,"category":"general-category","text":"some
         text for this event"}'
     headers:
       Accept:
@@ -332,9 +338,10 @@ http_interactions:
       - application/json
       Content-Length:
       - '106'
-      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
-
-'
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 200
@@ -351,7 +358,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 25 Apr 2017 15:11:10 GMT
+      - Wed, 25 Oct 2017 13:43:00 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -360,16 +367,16 @@ http_interactions:
       - '170'
     body:
       encoding: UTF-8
-      string: '{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-04","ctime":1493133070000,"dataSource":"_none_","category":"general-category","text":"some
+      string: '{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-04","ctime":1508938980000,"dataSource":"_none_","category":"general-category","text":"some
         text for this event"}'
     http_version: 
-  recorded_at: Tue, 25 Apr 2017 15:11:10 GMT
+  recorded_at: Wed, 25 Oct 2017 13:43:00 GMT
 - request:
     method: post
     uri: http://localhost:8080/hawkular/alerts/events
     body:
       encoding: UTF-8
-      string: '{"id":"my-event-04","ctime":1493133070000,"category":"general-category","text":"some
+      string: '{"id":"my-event-04","ctime":1508938980000,"category":"general-category","text":"some
         text for this event"}'
     headers:
       Accept:
@@ -384,9 +391,10 @@ http_interactions:
       - application/json
       Content-Length:
       - '106'
-      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
-
-'
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 200
@@ -403,7 +411,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 25 Apr 2017 15:11:10 GMT
+      - Wed, 25 Oct 2017 13:43:00 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -412,16 +420,16 @@ http_interactions:
       - '165'
     body:
       encoding: UTF-8
-      string: '{"eventType":"EVENT","tenantId":"foo","id":"my-event-04","ctime":1493133070000,"dataSource":"_none_","category":"general-category","text":"some
+      string: '{"eventType":"EVENT","tenantId":"foo","id":"my-event-04","ctime":1508938980000,"dataSource":"_none_","category":"general-category","text":"some
         text for this event"}'
     http_version: 
-  recorded_at: Tue, 25 Apr 2017 15:11:10 GMT
+  recorded_at: Wed, 25 Oct 2017 13:43:00 GMT
 - request:
     method: post
     uri: http://localhost:8080/hawkular/alerts/events
     body:
       encoding: UTF-8
-      string: '{"id":"my-event-05","ctime":1493133070000,"category":"my-category-02","text":"some
+      string: '{"id":"my-event-05","ctime":1508938980000,"category":"my-category-02","text":"some
         text for this event"}'
     headers:
       Accept:
@@ -436,9 +444,10 @@ http_interactions:
       - application/json
       Content-Length:
       - '104'
-      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
-
-'
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 200
@@ -455,7 +464,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 25 Apr 2017 15:11:10 GMT
+      - Wed, 25 Oct 2017 13:43:00 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -464,16 +473,16 @@ http_interactions:
       - '168'
     body:
       encoding: UTF-8
-      string: '{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-05","ctime":1493133070000,"dataSource":"_none_","category":"my-category-02","text":"some
+      string: '{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-05","ctime":1508938980000,"dataSource":"_none_","category":"my-category-02","text":"some
         text for this event"}'
     http_version: 
-  recorded_at: Tue, 25 Apr 2017 15:11:10 GMT
+  recorded_at: Wed, 25 Oct 2017 13:43:00 GMT
 - request:
     method: post
     uri: http://localhost:8080/hawkular/alerts/events
     body:
       encoding: UTF-8
-      string: '{"id":"my-event-05","ctime":1493133070000,"category":"my-category-02","text":"some
+      string: '{"id":"my-event-05","ctime":1508938980000,"category":"my-category-02","text":"some
         text for this event"}'
     headers:
       Accept:
@@ -488,9 +497,10 @@ http_interactions:
       - application/json
       Content-Length:
       - '104'
-      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
-
-'
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 200
@@ -507,7 +517,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 25 Apr 2017 15:11:10 GMT
+      - Wed, 25 Oct 2017 13:43:00 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -516,16 +526,16 @@ http_interactions:
       - '163'
     body:
       encoding: UTF-8
-      string: '{"eventType":"EVENT","tenantId":"foo","id":"my-event-05","ctime":1493133070000,"dataSource":"_none_","category":"my-category-02","text":"some
+      string: '{"eventType":"EVENT","tenantId":"foo","id":"my-event-05","ctime":1508938980000,"dataSource":"_none_","category":"my-category-02","text":"some
         text for this event"}'
     http_version: 
-  recorded_at: Tue, 25 Apr 2017 15:11:10 GMT
+  recorded_at: Wed, 25 Oct 2017 13:43:00 GMT
 - request:
     method: post
     uri: http://localhost:8080/hawkular/alerts/events
     body:
       encoding: UTF-8
-      string: '{"id":"my-event-06","ctime":1493133070000,"category":"general-category","text":"some
+      string: '{"id":"my-event-06","ctime":1508938980000,"category":"general-category","text":"some
         text for this event"}'
     headers:
       Accept:
@@ -540,9 +550,10 @@ http_interactions:
       - application/json
       Content-Length:
       - '106'
-      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
-
-'
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 200
@@ -559,7 +570,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 25 Apr 2017 15:11:10 GMT
+      - Wed, 25 Oct 2017 13:43:00 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -568,16 +579,16 @@ http_interactions:
       - '170'
     body:
       encoding: UTF-8
-      string: '{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-06","ctime":1493133070000,"dataSource":"_none_","category":"general-category","text":"some
+      string: '{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-06","ctime":1508938980000,"dataSource":"_none_","category":"general-category","text":"some
         text for this event"}'
     http_version: 
-  recorded_at: Tue, 25 Apr 2017 15:11:10 GMT
+  recorded_at: Wed, 25 Oct 2017 13:43:00 GMT
 - request:
     method: post
     uri: http://localhost:8080/hawkular/alerts/events
     body:
       encoding: UTF-8
-      string: '{"id":"my-event-06","ctime":1493133070000,"category":"general-category","text":"some
+      string: '{"id":"my-event-06","ctime":1508938980000,"category":"general-category","text":"some
         text for this event"}'
     headers:
       Accept:
@@ -592,9 +603,10 @@ http_interactions:
       - application/json
       Content-Length:
       - '106'
-      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
-
-'
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 200
@@ -611,7 +623,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 25 Apr 2017 15:11:10 GMT
+      - Wed, 25 Oct 2017 13:43:00 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -620,16 +632,16 @@ http_interactions:
       - '165'
     body:
       encoding: UTF-8
-      string: '{"eventType":"EVENT","tenantId":"foo","id":"my-event-06","ctime":1493133070000,"dataSource":"_none_","category":"general-category","text":"some
+      string: '{"eventType":"EVENT","tenantId":"foo","id":"my-event-06","ctime":1508938980000,"dataSource":"_none_","category":"general-category","text":"some
         text for this event"}'
     http_version: 
-  recorded_at: Tue, 25 Apr 2017 15:11:10 GMT
+  recorded_at: Wed, 25 Oct 2017 13:43:00 GMT
 - request:
     method: post
     uri: http://localhost:8080/hawkular/alerts/events
     body:
       encoding: UTF-8
-      string: '{"id":"my-event-07","ctime":1493133070000,"category":"my-category-01","text":"some
+      string: '{"id":"my-event-07","ctime":1508938980000,"category":"my-category-01","text":"some
         text for this event"}'
     headers:
       Accept:
@@ -644,9 +656,10 @@ http_interactions:
       - application/json
       Content-Length:
       - '104'
-      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
-
-'
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 200
@@ -663,7 +676,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 25 Apr 2017 15:11:10 GMT
+      - Wed, 25 Oct 2017 13:43:00 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -672,16 +685,16 @@ http_interactions:
       - '168'
     body:
       encoding: UTF-8
-      string: '{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-07","ctime":1493133070000,"dataSource":"_none_","category":"my-category-01","text":"some
+      string: '{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-07","ctime":1508938980000,"dataSource":"_none_","category":"my-category-01","text":"some
         text for this event"}'
     http_version: 
-  recorded_at: Tue, 25 Apr 2017 15:11:10 GMT
+  recorded_at: Wed, 25 Oct 2017 13:43:00 GMT
 - request:
     method: post
     uri: http://localhost:8080/hawkular/alerts/events
     body:
       encoding: UTF-8
-      string: '{"id":"my-event-07","ctime":1493133070000,"category":"my-category-01","text":"some
+      string: '{"id":"my-event-07","ctime":1508938980000,"category":"my-category-01","text":"some
         text for this event"}'
     headers:
       Accept:
@@ -696,9 +709,10 @@ http_interactions:
       - application/json
       Content-Length:
       - '104'
-      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
-
-'
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 200
@@ -715,7 +729,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 25 Apr 2017 15:11:10 GMT
+      - Wed, 25 Oct 2017 13:43:00 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -724,16 +738,16 @@ http_interactions:
       - '163'
     body:
       encoding: UTF-8
-      string: '{"eventType":"EVENT","tenantId":"foo","id":"my-event-07","ctime":1493133070000,"dataSource":"_none_","category":"my-category-01","text":"some
+      string: '{"eventType":"EVENT","tenantId":"foo","id":"my-event-07","ctime":1508938980000,"dataSource":"_none_","category":"my-category-01","text":"some
         text for this event"}'
     http_version: 
-  recorded_at: Tue, 25 Apr 2017 15:11:10 GMT
+  recorded_at: Wed, 25 Oct 2017 13:43:00 GMT
 - request:
     method: post
     uri: http://localhost:8080/hawkular/alerts/events
     body:
       encoding: UTF-8
-      string: '{"id":"my-event-08","ctime":1493133070000,"category":"general-category","text":"some
+      string: '{"id":"my-event-08","ctime":1508938980000,"category":"general-category","text":"some
         text for this event"}'
     headers:
       Accept:
@@ -748,9 +762,10 @@ http_interactions:
       - application/json
       Content-Length:
       - '106'
-      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
-
-'
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 200
@@ -767,7 +782,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 25 Apr 2017 15:11:10 GMT
+      - Wed, 25 Oct 2017 13:43:00 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -776,16 +791,16 @@ http_interactions:
       - '170'
     body:
       encoding: UTF-8
-      string: '{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-08","ctime":1493133070000,"dataSource":"_none_","category":"general-category","text":"some
+      string: '{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-08","ctime":1508938980000,"dataSource":"_none_","category":"general-category","text":"some
         text for this event"}'
     http_version: 
-  recorded_at: Tue, 25 Apr 2017 15:11:10 GMT
+  recorded_at: Wed, 25 Oct 2017 13:43:00 GMT
 - request:
     method: post
     uri: http://localhost:8080/hawkular/alerts/events
     body:
       encoding: UTF-8
-      string: '{"id":"my-event-08","ctime":1493133070000,"category":"general-category","text":"some
+      string: '{"id":"my-event-08","ctime":1508938980000,"category":"general-category","text":"some
         text for this event"}'
     headers:
       Accept:
@@ -800,9 +815,10 @@ http_interactions:
       - application/json
       Content-Length:
       - '106'
-      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
-
-'
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 200
@@ -819,7 +835,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 25 Apr 2017 15:11:10 GMT
+      - Wed, 25 Oct 2017 13:43:00 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -828,16 +844,16 @@ http_interactions:
       - '165'
     body:
       encoding: UTF-8
-      string: '{"eventType":"EVENT","tenantId":"foo","id":"my-event-08","ctime":1493133070000,"dataSource":"_none_","category":"general-category","text":"some
+      string: '{"eventType":"EVENT","tenantId":"foo","id":"my-event-08","ctime":1508938980000,"dataSource":"_none_","category":"general-category","text":"some
         text for this event"}'
     http_version: 
-  recorded_at: Tue, 25 Apr 2017 15:11:10 GMT
+  recorded_at: Wed, 25 Oct 2017 13:43:00 GMT
 - request:
     method: post
     uri: http://localhost:8080/hawkular/alerts/events
     body:
       encoding: UTF-8
-      string: '{"id":"my-event-09","ctime":1493133070000,"category":"general-category","text":"some
+      string: '{"id":"my-event-09","ctime":1508938980000,"category":"general-category","text":"some
         text for this event"}'
     headers:
       Accept:
@@ -852,9 +868,10 @@ http_interactions:
       - application/json
       Content-Length:
       - '106'
-      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
-
-'
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 200
@@ -871,7 +888,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 25 Apr 2017 15:11:10 GMT
+      - Wed, 25 Oct 2017 13:43:00 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -880,16 +897,16 @@ http_interactions:
       - '170'
     body:
       encoding: UTF-8
-      string: '{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-09","ctime":1493133070000,"dataSource":"_none_","category":"general-category","text":"some
+      string: '{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-09","ctime":1508938980000,"dataSource":"_none_","category":"general-category","text":"some
         text for this event"}'
     http_version: 
-  recorded_at: Tue, 25 Apr 2017 15:11:10 GMT
+  recorded_at: Wed, 25 Oct 2017 13:43:00 GMT
 - request:
     method: post
     uri: http://localhost:8080/hawkular/alerts/events
     body:
       encoding: UTF-8
-      string: '{"id":"my-event-09","ctime":1493133070000,"category":"general-category","text":"some
+      string: '{"id":"my-event-09","ctime":1508938980000,"category":"general-category","text":"some
         text for this event"}'
     headers:
       Accept:
@@ -904,9 +921,10 @@ http_interactions:
       - application/json
       Content-Length:
       - '106'
-      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
-
-'
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 200
@@ -923,7 +941,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 25 Apr 2017 15:11:10 GMT
+      - Wed, 25 Oct 2017 13:43:00 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -932,16 +950,16 @@ http_interactions:
       - '165'
     body:
       encoding: UTF-8
-      string: '{"eventType":"EVENT","tenantId":"foo","id":"my-event-09","ctime":1493133070000,"dataSource":"_none_","category":"general-category","text":"some
+      string: '{"eventType":"EVENT","tenantId":"foo","id":"my-event-09","ctime":1508938980000,"dataSource":"_none_","category":"general-category","text":"some
         text for this event"}'
     http_version: 
-  recorded_at: Tue, 25 Apr 2017 15:11:10 GMT
+  recorded_at: Wed, 25 Oct 2017 13:43:00 GMT
 - request:
     method: post
     uri: http://localhost:8080/hawkular/alerts/events
     body:
       encoding: UTF-8
-      string: '{"id":"my-event-10","ctime":1493133070000,"category":"general-category","text":"some
+      string: '{"id":"my-event-10","ctime":1508938980000,"category":"general-category","text":"some
         text for this event"}'
     headers:
       Accept:
@@ -956,9 +974,10 @@ http_interactions:
       - application/json
       Content-Length:
       - '106'
-      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
-
-'
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 200
@@ -975,7 +994,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 25 Apr 2017 15:11:10 GMT
+      - Wed, 25 Oct 2017 13:43:00 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -984,16 +1003,16 @@ http_interactions:
       - '170'
     body:
       encoding: UTF-8
-      string: '{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-10","ctime":1493133070000,"dataSource":"_none_","category":"general-category","text":"some
+      string: '{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-10","ctime":1508938980000,"dataSource":"_none_","category":"general-category","text":"some
         text for this event"}'
     http_version: 
-  recorded_at: Tue, 25 Apr 2017 15:11:10 GMT
+  recorded_at: Wed, 25 Oct 2017 13:43:00 GMT
 - request:
     method: post
     uri: http://localhost:8080/hawkular/alerts/events
     body:
       encoding: UTF-8
-      string: '{"id":"my-event-10","ctime":1493133070000,"category":"general-category","text":"some
+      string: '{"id":"my-event-10","ctime":1508938980000,"category":"general-category","text":"some
         text for this event"}'
     headers:
       Accept:
@@ -1008,9 +1027,10 @@ http_interactions:
       - application/json
       Content-Length:
       - '106'
-      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
-
-'
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 200
@@ -1027,7 +1047,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 25 Apr 2017 15:11:10 GMT
+      - Wed, 25 Oct 2017 13:43:00 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -1036,16 +1056,16 @@ http_interactions:
       - '165'
     body:
       encoding: UTF-8
-      string: '{"eventType":"EVENT","tenantId":"foo","id":"my-event-10","ctime":1493133070000,"dataSource":"_none_","category":"general-category","text":"some
+      string: '{"eventType":"EVENT","tenantId":"foo","id":"my-event-10","ctime":1508938980000,"dataSource":"_none_","category":"general-category","text":"some
         text for this event"}'
     http_version: 
-  recorded_at: Tue, 25 Apr 2017 15:11:10 GMT
+  recorded_at: Wed, 25 Oct 2017 13:43:00 GMT
 - request:
     method: post
     uri: http://localhost:8080/hawkular/alerts/events
     body:
       encoding: UTF-8
-      string: '{"id":"my-event-11","ctime":1493133070000,"category":"general-category","text":"some
+      string: '{"id":"my-event-11","ctime":1508938980000,"category":"general-category","text":"some
         text for this event"}'
     headers:
       Accept:
@@ -1060,9 +1080,10 @@ http_interactions:
       - application/json
       Content-Length:
       - '106'
-      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
-
-'
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 200
@@ -1079,7 +1100,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 25 Apr 2017 15:11:10 GMT
+      - Wed, 25 Oct 2017 13:43:00 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -1088,16 +1109,16 @@ http_interactions:
       - '170'
     body:
       encoding: UTF-8
-      string: '{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-11","ctime":1493133070000,"dataSource":"_none_","category":"general-category","text":"some
+      string: '{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-11","ctime":1508938980000,"dataSource":"_none_","category":"general-category","text":"some
         text for this event"}'
     http_version: 
-  recorded_at: Tue, 25 Apr 2017 15:11:10 GMT
+  recorded_at: Wed, 25 Oct 2017 13:43:00 GMT
 - request:
     method: post
     uri: http://localhost:8080/hawkular/alerts/events
     body:
       encoding: UTF-8
-      string: '{"id":"my-event-11","ctime":1493133070000,"category":"general-category","text":"some
+      string: '{"id":"my-event-11","ctime":1508938980000,"category":"general-category","text":"some
         text for this event"}'
     headers:
       Accept:
@@ -1112,9 +1133,10 @@ http_interactions:
       - application/json
       Content-Length:
       - '106'
-      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
-
-'
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 200
@@ -1131,7 +1153,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 25 Apr 2017 15:11:10 GMT
+      - Wed, 25 Oct 2017 13:43:00 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -1140,16 +1162,16 @@ http_interactions:
       - '165'
     body:
       encoding: UTF-8
-      string: '{"eventType":"EVENT","tenantId":"foo","id":"my-event-11","ctime":1493133070000,"dataSource":"_none_","category":"general-category","text":"some
+      string: '{"eventType":"EVENT","tenantId":"foo","id":"my-event-11","ctime":1508938980000,"dataSource":"_none_","category":"general-category","text":"some
         text for this event"}'
     http_version: 
-  recorded_at: Tue, 25 Apr 2017 15:11:10 GMT
+  recorded_at: Wed, 25 Oct 2017 13:43:00 GMT
 - request:
     method: post
     uri: http://localhost:8080/hawkular/alerts/events
     body:
       encoding: UTF-8
-      string: '{"id":"my-event-12","ctime":1493133070000,"category":"general-category","text":"some
+      string: '{"id":"my-event-12","ctime":1508938980000,"category":"general-category","text":"some
         text for this event"}'
     headers:
       Accept:
@@ -1164,9 +1186,10 @@ http_interactions:
       - application/json
       Content-Length:
       - '106'
-      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
-
-'
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 200
@@ -1183,7 +1206,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 25 Apr 2017 15:11:10 GMT
+      - Wed, 25 Oct 2017 13:43:00 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -1192,16 +1215,16 @@ http_interactions:
       - '170'
     body:
       encoding: UTF-8
-      string: '{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-12","ctime":1493133070000,"dataSource":"_none_","category":"general-category","text":"some
+      string: '{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-12","ctime":1508938980000,"dataSource":"_none_","category":"general-category","text":"some
         text for this event"}'
     http_version: 
-  recorded_at: Tue, 25 Apr 2017 15:11:10 GMT
+  recorded_at: Wed, 25 Oct 2017 13:43:00 GMT
 - request:
     method: post
     uri: http://localhost:8080/hawkular/alerts/events
     body:
       encoding: UTF-8
-      string: '{"id":"my-event-12","ctime":1493133070000,"category":"general-category","text":"some
+      string: '{"id":"my-event-12","ctime":1508938980000,"category":"general-category","text":"some
         text for this event"}'
     headers:
       Accept:
@@ -1216,9 +1239,10 @@ http_interactions:
       - application/json
       Content-Length:
       - '106'
-      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
-
-'
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 200
@@ -1235,7 +1259,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 25 Apr 2017 15:11:10 GMT
+      - Wed, 25 Oct 2017 13:43:00 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -1244,8 +1268,8 @@ http_interactions:
       - '165'
     body:
       encoding: UTF-8
-      string: '{"eventType":"EVENT","tenantId":"foo","id":"my-event-12","ctime":1493133070000,"dataSource":"_none_","category":"general-category","text":"some
+      string: '{"eventType":"EVENT","tenantId":"foo","id":"my-event-12","ctime":1508938980000,"dataSource":"_none_","category":"general-category","text":"some
         text for this event"}'
     http_version: 
-  recorded_at: Tue, 25 Apr 2017 15:11:10 GMT
+  recorded_at: Wed, 25 Oct 2017 13:43:00 GMT
 recorded_with: VCR 3.0.3

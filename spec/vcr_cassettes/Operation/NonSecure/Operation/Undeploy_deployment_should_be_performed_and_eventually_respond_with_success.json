@@ -3,21 +3,21 @@
     {
       "operation": "read",
       "type": "text",
-      "data": "WelcomeResponse={\"sessionId\":\"oG2Gqbl0khg2r3MewIHGkU1brnhb_IhV5CIVjj7e\"}"
+      "data": "WelcomeResponse={\"sessionId\":\"BRhISlonn8ynuk448YDFN9F48qhVArH7hvDIHxVJ\"}"
     },
     {
       "operation": "write",
-      "data": "UndeployApplicationRequest={\"resourcePath\":\"/t;<%= tenant_id %>/f;<%= feed_id %>/r;Local~~\",\"removeContent\":true,\"destinationFileName\":\"sample.war\",\"authentication\":{\"username\":\"jdoe\",\"password\":\"password\"}}"
+      "data": "UndeployApplicationRequest={\"resourceId\":\"<%= feed_id %>~Local~~\",\"feedId\":\"<%= feed_id %>\",\"senderRequestId\":\"**fixed id for tests**\",\"removeContent\":true,\"destinationFileName\":\"sample.war\",\"authentication\":{\"username\":\"jdoe\",\"password\":\"password\"}}"
     },
     {
       "operation": "read",
       "type": "text",
-      "data": "GenericSuccessResponse={\"message\":\"The request has been forwarded to feed [<%= feed_id %>] (MessageId=ID:84873e1d-76c5-11e7-9321-df2a214aeb38)\"}"
+      "data": "GenericSuccessResponse={\"message\":\"The request has been forwarded to feed [<%= feed_id %>] (MessageId=ID:d64755fe-be11-11e7-b799-578b0e77ae3e)\"}"
     },
     {
       "operation": "read",
       "type": "text",
-      "data": "UndeployApplicationResponse={\"destinationFileName\":\"sample.war\",\"resourcePath\":\"/t;<%= tenant_id %>/f;<%= feed_id %>/r;Local~~\",\"destinationSessionId\":\"oG2Gqbl0khg2r3MewIHGkU1brnhb_IhV5CIVjj7e\",\"status\":\"OK\",\"message\":\"Performed [Undeploy] on a [Application] given by Inventory path [/t;<%= tenant_id %>/f;<%= feed_id %>/r;Local~~]\"}"
+      "data": "UndeployApplicationResponse={\"feedId\":\"<%= feed_id %>\",\"resourceId\":\"<%= feed_id %>~Local~~\",\"senderRequestId\":\"**fixed id for tests**\",\"destinationSessionId\":\"BRhISlonn8ynuk448YDFN9F48qhVArH7hvDIHxVJ\",\"status\":\"ERROR\",\"message\":\"Could not perform [Undeploy] on a [Application] given by inventory path [<%= feed_id %>~Local~~] requested on [2017-10-31T08:02Z]: java.lang.IllegalStateException: Command not allowed because the agent is immutable\"}"
     }
   ]
 ]

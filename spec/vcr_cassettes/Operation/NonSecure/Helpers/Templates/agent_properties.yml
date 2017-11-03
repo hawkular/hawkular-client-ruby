@@ -1,12 +1,11 @@
 ---
 http_interactions:
 - request:
-    method: post
-    uri: http://localhost:8080/<%= tenant_id %>/metrics/strings/raw/query
+    method: get
+    uri: http://localhost:8080/<%= tenant_id %>/inventory/resources?maxResults=100&startOffSet=0&typeId=Hawkular%20WildFly%20Agent
     body:
-      encoding: UTF-8
-      string: '{"fromEarliest":true,"order":"DESC","tags":"module:inventory,feed:<%= feed_id %>,type:r,restypes:.*\\|Hawkular\\
-        WildFly\\ Agent\\|.*"}'
+      encoding: US-ASCII
+      string: ''
     headers:
       Accept:
       - application/json
@@ -18,8 +17,6 @@ http_interactions:
       - <%= tenant_id %>
       Content-Type:
       - application/json
-      Content-Length:
-      - '125'
       Host:
       - localhost:8080
       Authorization:
@@ -40,16 +37,19 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 01 Aug 2017 14:30:37 GMT
+      - Tue, 31 Oct 2017 08:03:50 GMT
       Connection:
       - keep-alive
       Content-Type:
       - application/json
       Content-Length:
-      - '1376'
+      - '531'
     body:
       encoding: UTF-8
-      string: '[{"id":"inventory.<%= feed_id %>.r.Local JMX~org.<%= tenant_id %>:type=<%= tenant_id %>-javaagent","data":[{"timestamp":1501597716799,"value":"H4sIAAAAAAAAAH2QT0+EMBDFvwpp4m0V4xHiwRiNGE1MJNFks4exFKiWKRmmKCH42W1XIO7BPdH5w+/Ne6PQ2CtkS8Mzk5PsSIlkFDy0/itIddaRVGIjCmAIk5Zsq4i16nw1bYQu/N6DlWCi+8fXb0vVWQ2fH84AJYFyuVSn79ADVF7M0xCawL+bZ9GLNsWtGaKreW4dV1ZjNWugtM1aLUflnv4EXHtOzOkiE5dprgaIidOFfnJxPvP961fBY2Tte6QwmArmbpA1DyLZjse9SoulrhwBa4urFXTGHD+7B+P22WZN4xjeTAigBNOFdDOMri0yaFS0toNXu1871Dw8fpp2k++ErLsMC/UVNP4JNtkKsfPLjWLSMv/7yzT9AF9vaY4MAgAA"},{"timestamp":1501597522098,"value":"H4sIAAAAAAAAAH2QT0+EMBDFvwpp4m0V4xHiwRiNGE1MJNFks4exFKiWKRmmKCH42W1XIO7BPdH5w+/Ne6PQ2CtkS8Mzk5PsSIlkFDy0/itIddaRVGIjCmAIk5Zsq4i16nw1bYQu/N6DlWCi+8fXb0vVWQ2fH84AJYFyuVSn79ADVF7M0xCawL+bZ9GLNsWtGaKreW4dV1ZjNWugtM1aLUflnv4EXHtOzOkiE5dprgaIidOFfnJxPvP961fBY2Tte6QwmArmbpA1DyLZjse9SoulrhwBa4urFXTGHD+7B+P22WZN4xjeTAigBNOFdDOMri0yaFS0toNXu1871Dw8fpp2k++ErLsMC/UVNP4JNtkKsfPLjWLSMv/7yzT9AF9vaY4MAgAA"},{"timestamp":1501539374246,"value":"H4sIAAAAAAAAAH2QT0+EMBDFvwpp4m0V4xHiwRiNGE1MJNFks4exFKiWKRmmKCH42W1XIO7BPdH5w+/Ne6PQ2CtkS8Mzk5PsSIlkFDy0/itIddaRVGIjCmAIk5Zsq4i16nw1bYQu/N6DlWCi+8fXb0vVWQ2fH84AJYFyuVSn79ADVF7M0xCawL+bZ9GLNsWtGaKreW4dV1ZjNWugtM1aLUflnv4EXHtOzOkiE5dprgaIidOFfnJxPvP961fBY2Tte6QwmArmbpA1DyLZjse9SoulrhwBa4urFXTGHD+7B+P22WZN4xjeTAigBNOFdDOMri0yaFS0toNXu1871Dw8fpp2k++ErLsMC/UVNP4JNtkKsfPLjWLSMv/7yzT9AF9vaY4MAgAA"}]}]'
+      string: '{"results":[{"id":"e1f8fda30051~Local JMX~org.<%= tenant_id %>:type=<%= tenant_id %>-javaagent","name":"Hawkular
+        WildFly Agent","feedId":"e1f8fda30051","type":{"id":"Hawkular WildFly Agent","operations":[{"name":"Start","parameters":{}},{"name":"Stop","parameters":{}},{"name":"Status","parameters":{}},{"name":"Inventory
+        Discovery Scan","parameters":{}},{"name":"Inventory Report","parameters":{}}],"properties":{}},"parentId":null,"metrics":[],"properties":{},"config":{"Immutable":"true","In
+        Container":"true"}}],"resultSize":1,"startOffset":0}'
     http_version: 
-  recorded_at: Tue, 01 Aug 2017 14:30:37 GMT
+  recorded_at: Tue, 31 Oct 2017 08:03:50 GMT
 recorded_with: VCR 3.0.3

@@ -3,42 +3,42 @@
     {
       "operation": "read",
       "type": "text",
-      "data": "WelcomeResponse={\"sessionId\":\"VFlKNRObmHRknNdZGdJFjowbfPUEOL3jnVhRS-k2\"}"
+      "data": "WelcomeResponse={\"sessionId\":\"v-0oM-g2tXSB5o0Tg7Ghy9_kKaJV9j_aDxKUlYDW\"}"
     },
     {
       "operation": "write",
-      "data": "ExecuteOperationRequest={\"operationName\":\"Redeploy\",\"resourcePath\":\"/t;hawkular/f;9a8378da4a7d/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-status.war\",\"authentication\":{\"username\":\"jdoe\",\"password\":\"password\"}}"
+      "data": "RestartApplicationRequest={\"resourceId\":\"e1f8fda30051~Local~~\",\"feedId\":\"e1f8fda30051\",\"senderRequestId\":\"**fixed-req-id**\",\"destinationFileName\":\"hawkular-status.war\",\"authentication\":{\"username\":\"jdoe\",\"password\":\"password\"}}"
     },
     {
       "operation": "read",
       "type": "text",
-      "data": "GenericSuccessResponse={\"message\":\"The request has been forwarded to feed [9a8378da4a7d] (MessageId=ID:74cea585-2f6d-11e7-a0d8-f5da34e341e7)\"}"
+      "data": "GenericSuccessResponse={\"message\":\"The request has been forwarded to feed [e1f8fda30051] (MessageId=ID:7dd4a9bf-be11-11e7-b799-578b0e77ae3e)\"}"
     },
     {
       "operation": "read",
       "type": "text",
-      "data": "ExecuteOperationResponse={\"resourcePath\":\"/t;hawkular/f;9a8378da4a7d/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-status.war\",\"destinationSessionId\":\"VFlKNRObmHRknNdZGdJFjowbfPUEOL3jnVhRS-k2\",\"status\":\"ERROR\",\"message\":\"Could not perform [Redeploy] on a [DMR Node] given by inventory path [/t;hawkular/f;9a8378da4a7d/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-status.war] requested on [2017-05-02T19:28Z]: java.lang.IllegalStateException: Operation [Redeploy] not allowed because the agent is immutable\"}"
+      "data": "RestartApplicationResponse={\"destinationFileName\":\"hawkular-status.war\",\"feedId\":\"e1f8fda30051\",\"resourceId\":\"e1f8fda30051~Local~~\",\"senderRequestId\":\"**fixed-req-id**\",\"destinationSessionId\":\"v-0oM-g2tXSB5o0Tg7Ghy9_kKaJV9j_aDxKUlYDW\",\"status\":\"OK\",\"message\":\"Performed [Restart Deployment] on a [Application] given by Feed Id [e1f8fda30051] Resource Id [e1f8fda30051~Local~~]\"}"
     }
   ],
   [
     {
       "operation": "read",
       "type": "text",
-      "data": "WelcomeResponse={\"sessionId\":\"Oi-VTOLRrJqOb-q-KMJqus3wNo30xcemGGpwdYsX\"}"
+      "data": "WelcomeResponse={\"sessionId\":\"6I4FonYUsVbtkn4cfiE-nei5a8zNO12v41jLAPDT\"}"
     },
     {
       "operation": "write",
-      "data": "ExecuteOperationRequest={\"operationName\":\"Redeploy\",\"resourcePath\":\"/t;hawkular/f;9a8378da4a7d/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-status.war\",\"authentication\":{\"username\":\"jdoe\",\"password\":\"password\"}}"
+      "data": "RestartApplicationRequest={\"resourceId\":\"e1f8fda30051~Local~~\",\"feedId\":\"e1f8fda30051\",\"senderRequestId\":\"**another-fixed-req-id**\",\"destinationFileName\":\"hawkular-status.war\",\"authentication\":{\"username\":\"jdoe\",\"password\":\"password\"}}"
     },
     {
       "operation": "read",
       "type": "text",
-      "data": "GenericSuccessResponse={\"message\":\"The request has been forwarded to feed [9a8378da4a7d] (MessageId=ID:75b3d576-2f6d-11e7-a0d8-f5da34e341e7)\"}"
+      "data": "GenericSuccessResponse={\"message\":\"The request has been forwarded to feed [e1f8fda30051] (MessageId=ID:7e6bba15-be11-11e7-b799-578b0e77ae3e)\"}"
     },
     {
       "operation": "read",
       "type": "text",
-      "data": "ExecuteOperationResponse={\"resourcePath\":\"/t;hawkular/f;9a8378da4a7d/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-status.war\",\"destinationSessionId\":\"Oi-VTOLRrJqOb-q-KMJqus3wNo30xcemGGpwdYsX\",\"status\":\"ERROR\",\"message\":\"Could not perform [Redeploy] on a [DMR Node] given by inventory path [/t;hawkular/f;9a8378da4a7d/r;Local~~/r;Local~%2Fdeployment%3Dhawkular-status.war] requested on [2017-05-02T19:28Z]: java.lang.IllegalStateException: Operation [Redeploy] not allowed because the agent is immutable\"}"
+      "data": "RestartApplicationResponse={\"destinationFileName\":\"hawkular-status.war\",\"feedId\":\"e1f8fda30051\",\"resourceId\":\"e1f8fda30051~Local~~\",\"senderRequestId\":\"**another-fixed-req-id**\",\"destinationSessionId\":\"6I4FonYUsVbtkn4cfiE-nei5a8zNO12v41jLAPDT\",\"status\":\"OK\",\"message\":\"Performed [Restart Deployment] on a [Application] given by Feed Id [e1f8fda30051] Resource Id [e1f8fda30051~Local~~]\"}"
     }
   ]
 ]

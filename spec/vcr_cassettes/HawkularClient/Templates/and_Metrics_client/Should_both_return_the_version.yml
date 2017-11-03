@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://localhost:8080/hawkular/metrics/status
+    uri: http://jdoe:password@localhost:8080/hawkular/metrics/status
     body:
       encoding: US-ASCII
       string: ''
@@ -17,9 +17,6 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
-      Authorization: 'Basic amRvZTpwYXNzd29yZA==
-
-'
   response:
     status:
       code: 200
@@ -36,12 +33,51 @@ http_interactions:
       Content-Length:
       - '150'
       Date:
-      - Tue, 25 Apr 2017 15:06:53 GMT
+      - Tue, 24 Oct 2017 07:34:17 GMT
     body:
       encoding: UTF-8
-      string: '{"MetricsService":"STARTED","Implementation-Version":"0.26.0.Final","Built-From-Git-SHA1":"fe3ef3ccc36a0c85bcdbf3e96aae8d36a636f7f2","Cassandra":"up"}'
+      string: '{"MetricsService":"STARTED","Implementation-Version":"0.26.1.Final","Built-From-Git-SHA1":"45b148c834ed62018f153c23187b4436ae4208fe","Cassandra":"up"}'
     http_version: 
-  recorded_at: Tue, 25 Apr 2017 15:06:53 GMT
+  recorded_at: Tue, 24 Oct 2017 07:34:17 GMT
+- request:
+    method: get
+    uri: http://jdoe:password@localhost:8080/hawkular/metrics/status
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - hawkular
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '150'
+      Date:
+      - Tue, 24 Oct 2017 07:34:17 GMT
+    body:
+      encoding: UTF-8
+      string: '{"MetricsService":"STARTED","Implementation-Version":"0.26.1.Final","Built-From-Git-SHA1":"45b148c834ed62018f153c23187b4436ae4208fe","Cassandra":"up"}'
+    http_version: 
+  recorded_at: Tue, 24 Oct 2017 07:34:17 GMT
 - request:
     method: get
     uri: http://localhost:8080/hawkular/metrics/status
@@ -59,9 +95,10 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
-      Authorization: 'Basic amRvZTpwYXNzd29yZA==
-
-'
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 200
@@ -78,10 +115,53 @@ http_interactions:
       Content-Length:
       - '150'
       Date:
-      - Tue, 25 Apr 2017 15:06:53 GMT
+      - Tue, 31 Oct 2017 07:59:58 GMT
     body:
       encoding: UTF-8
-      string: '{"MetricsService":"STARTED","Implementation-Version":"0.26.0.Final","Built-From-Git-SHA1":"fe3ef3ccc36a0c85bcdbf3e96aae8d36a636f7f2","Cassandra":"up"}'
+      string: '{"MetricsService":"STARTED","Implementation-Version":"0.26.1.Final","Built-From-Git-SHA1":"45b148c834ed62018f153c23187b4436ae4208fe","Cassandra":"up"}'
     http_version: 
-  recorded_at: Tue, 25 Apr 2017 15:06:53 GMT
+  recorded_at: Tue, 31 Oct 2017 07:59:58 GMT
+- request:
+    method: get
+    uri: http://localhost:8080/hawkular/metrics/status
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Hawkular-Tenant:
+      - hawkular
+      Content-Type:
+      - application/json
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '150'
+      Date:
+      - Tue, 31 Oct 2017 07:59:58 GMT
+    body:
+      encoding: UTF-8
+      string: '{"MetricsService":"STARTED","Implementation-Version":"0.26.1.Final","Built-From-Git-SHA1":"45b148c834ed62018f153c23187b4436ae4208fe","Cassandra":"up"}'
+    http_version: 
+  recorded_at: Tue, 31 Oct 2017 07:59:58 GMT
 recorded_with: VCR 3.0.3

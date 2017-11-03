@@ -12,14 +12,15 @@ http_interactions:
       Accept-Encoding:
       - identity
       User-Agent:
-      - "<%= tenant %>-client-ruby"
+      - <%= tenant %>-client-ruby
       Hawkular-Tenant:
-      - "<%= tenant %>"
+      - <%= tenant %>
       Content-Type:
       - application/json
-      Authorization: 'Basic amRvZTpwYXNzd29yZA==
-
-'
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 200
@@ -34,17 +35,17 @@ http_interactions:
       Content-Type:
       - application/json
       Content-Length:
-      - '153'
+      - '150'
       Date:
-      - Wed, 05 Apr 2017 08:18:50 GMT
+      - Tue, 31 Oct 2017 08:13:27 GMT
     body:
       encoding: UTF-8
-      string: '{"MetricsService":"STARTED","Implementation-Version":"0.26.0-SNAPSHOT","Built-From-Git-SHA1":"65cace494ecb1fe770989a9e57d140f1918ef0e9","Cassandra":"up"}'
+      string: '{"MetricsService":"STARTED","Implementation-Version":"0.26.1.Final","Built-From-Git-SHA1":"45b148c834ed62018f153c23187b4436ae4208fe","Cassandra":"up"}'
     http_version: 
-  recorded_at: Wed, 05 Apr 2017 08:18:50 GMT
+  recorded_at: Tue, 31 Oct 2017 08:13:27 GMT
 - request:
     method: get
-    uri: http://localhost:8080/<%= tenant %>/metrics/status
+    uri: http://localhost:8080/<%= tenant %>/inventory/status
     body:
       encoding: US-ASCII
       string: ''
@@ -54,14 +55,15 @@ http_interactions:
       Accept-Encoding:
       - identity
       User-Agent:
-      - "<%= tenant %>-client-ruby"
+      - <%= tenant %>-client-ruby
       Hawkular-Tenant:
-      - "<%= tenant %>"
+      - <%= tenant %>
       Content-Type:
       - application/json
-      Authorization: 'Basic amRvZTpwYXNzd29yZA==
-
-'
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 200
@@ -76,17 +78,17 @@ http_interactions:
       Content-Type:
       - application/json
       Content-Length:
-      - '153'
+      - '173'
       Date:
-      - Wed, 05 Apr 2017 08:18:50 GMT
+      - Tue, 31 Oct 2017 08:13:27 GMT
     body:
       encoding: UTF-8
-      string: '{"MetricsService":"STARTED","Implementation-Version":"0.26.0-SNAPSHOT","Built-From-Git-SHA1":"65cace494ecb1fe770989a9e57d140f1918ef0e9","Cassandra":"up"}'
+      string: '{"Implementation-Version":"0.9.8.Final-SRC-revision-ce866b1ade2d7413f055f461eb36d004ff2888d8","Built-From-Git-SHA1":"ce866b1ade2d7413f055f461eb36d004ff2888d8","status":"UP"}'
     http_version: 
-  recorded_at: Wed, 05 Apr 2017 08:18:50 GMT
+  recorded_at: Tue, 31 Oct 2017 08:13:27 GMT
 - request:
     method: get
-    uri: http://localhost:8080/<%= tenant %>/metrics/strings/tags/module:inventory,feed:*
+    uri: http://localhost:8080/<%= tenant %>/inventory/resources?maxResults=100&startOffSet=0&typeId=Platform_Memory
     body:
       encoding: US-ASCII
       string: ''
@@ -96,14 +98,15 @@ http_interactions:
       Accept-Encoding:
       - identity
       User-Agent:
-      - "<%= tenant %>-client-ruby"
+      - <%= tenant %>-client-ruby
       Hawkular-Tenant:
-      - "<%= tenant %>"
+      - <%= tenant %>
       Content-Type:
       - application/json
-      Authorization: 'Basic amRvZTpwYXNzd29yZA==
-
-'
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 200
@@ -120,21 +123,26 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 05 Apr 2017 08:18:50 GMT
+      - Tue, 31 Oct 2017 08:13:27 GMT
       Connection:
       - keep-alive
       Content-Type:
       - application/json
       Content-Length:
-      - '72'
+      - '1020'
     body:
       encoding: UTF-8
-      string: '{"feed":["03eca767-e48f-4f0b-9a8a-d8f46112c9a5"],"module":["inventory"]}'
+      string: '{"results":[{"id":"e1f8fda30051~platform~/OPERATING_SYSTEM=e1f8fda30051_OperatingSystem/MEMORY=Memory","name":"Memory","feedId":"e1f8fda30051","type":{"id":"Platform_Memory","operations":[],"properties":{}},"parentId":"e1f8fda30051~platform~/OPERATING_SYSTEM=e1f8fda30051_OperatingSystem","metrics":[{"name":"Available
+        Memory","type":"Available Memory","unit":"BYTES","properties":{"<%= tenant %>.metric.typeId":"Platform_Memory_Available
+        Memory","<%= tenant %>.metric.type":"GAUGE","<%= tenant %>.metric.id":"MI~R~[e1f8fda30051/e1f8fda30051~platform~/OPERATING_SYSTEM=e1f8fda30051_OperatingSystem/MEMORY=Memory]~MT~Platform_Memory_Available
+        Memory"}},{"name":"Total Memory","type":"Total Memory","unit":"BYTES","properties":{"<%= tenant %>.metric.typeId":"Platform_Memory_Total
+        Memory","<%= tenant %>.metric.type":"GAUGE","<%= tenant %>.metric.id":"MI~R~[e1f8fda30051/e1f8fda30051~platform~/OPERATING_SYSTEM=e1f8fda30051_OperatingSystem/MEMORY=Memory]~MT~Platform_Memory_Total
+        Memory"}}],"properties":{},"config":{}}],"resultSize":1,"startOffset":0}'
     http_version: 
-  recorded_at: Wed, 05 Apr 2017 08:18:50 GMT
+  recorded_at: Tue, 31 Oct 2017 08:13:27 GMT
 - request:
     method: get
-    uri: http://localhost:8080/<%= tenant %>/metrics/gauges/MI~R~%5B03eca767-e48f-4f0b-9a8a-d8f46112c9a5%2Fplatform~%2FOPERATING_SYSTEM=03eca767-e48f-4f0b-9a8a-d8f46112c9a5_OperatingSystem%2FMEMORY=Memory%5D~MT~Platform_Memory_Total%20Memory/raw/
+    uri: http://localhost:8080/<%= tenant %>/metrics/gauges/MI~R~%5Be1f8fda30051%2Fe1f8fda30051~platform~%2FOPERATING_SYSTEM=e1f8fda30051_OperatingSystem%2FMEMORY=Memory%5D~MT~Platform_Memory_Total%20Memory/raw/
     body:
       encoding: US-ASCII
       string: ''
@@ -144,14 +152,15 @@ http_interactions:
       Accept-Encoding:
       - identity
       User-Agent:
-      - "<%= tenant %>-client-ruby"
+      - <%= tenant %>-client-ruby
       Hawkular-Tenant:
-      - "<%= tenant %>"
+      - <%= tenant %>
       Content-Type:
       - application/json
-      Authorization: 'Basic amRvZTpwYXNzd29yZA==
-
-'
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 200
@@ -168,16 +177,16 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 05 Apr 2017 08:18:50 GMT
+      - Tue, 31 Oct 2017 08:13:27 GMT
       Connection:
       - keep-alive
       Content-Type:
       - application/json
       Content-Length:
-      - '751'
+      - '105'
     body:
       encoding: UTF-8
-      string: '[{"timestamp":1491380326008,"value":1.62359296E10},{"timestamp":1491380266013,"value":1.62359296E10},{"timestamp":1491380206008,"value":1.62359296E10},{"timestamp":1491380145008,"value":1.62359296E10},{"timestamp":1491380084004,"value":1.62359296E10},{"timestamp":1491380024006,"value":1.62359296E10},{"timestamp":1491379964006,"value":1.62359296E10},{"timestamp":1491379904008,"value":1.62359296E10},{"timestamp":1491379844011,"value":1.62359296E10},{"timestamp":1491379784005,"value":1.62359296E10},{"timestamp":1491379723013,"value":1.62359296E10},{"timestamp":1491379663012,"value":1.62359296E10},{"timestamp":1491379603019,"value":1.62359296E10},{"timestamp":1491379542020,"value":1.62359296E10},{"timestamp":1491379481011,"value":1.62359296E10}]'
+      string: '[{"timestamp":1509437368019,"value":1.6233455616E10},{"timestamp":1509437068083,"value":1.6233455616E10}]'
     http_version: 
-  recorded_at: Wed, 05 Apr 2017 08:18:50 GMT
+  recorded_at: Tue, 31 Oct 2017 08:13:27 GMT
 recorded_with: VCR 3.0.3

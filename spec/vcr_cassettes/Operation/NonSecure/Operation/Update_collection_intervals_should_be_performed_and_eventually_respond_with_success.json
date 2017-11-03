@@ -3,21 +3,21 @@
     {
       "operation": "read",
       "type": "text",
-      "data": "WelcomeResponse={\"sessionId\":\"NRkgJ7HTGyRotkPBp5VKE63Q4L3axAJdBw16pC0H\"}"
+      "data": "WelcomeResponse={\"sessionId\":\"qk3PTxP0eF7ZoSothV01dXq4ecSSj0lo6Jp9NQeS\"}"
     },
     {
       "operation": "write",
-      "data": "UpdateCollectionIntervalsRequest={\"resourcePath\":\"/t;<%= tenant_id %>/f;<%= feed_id %>/r;Local%20JMX~org.<%= tenant_id %>:type%3d<%= tenant_id %>-javaagent\",\"metricTypes\":{\"WildFly Memory Metrics~Heap Max\":77,\"Unknown~Metric\":666},\"availTypes\":{\"Server Availability~Server Availability\":77,\"Unknown~Avail\":666},\"authentication\":{\"username\":\"jdoe\",\"password\":\"password\"}}"
+      "data": "UpdateCollectionIntervalsRequest={\"resourceId\":\"<%= feed_id %>~Local JMX~org.<%= tenant_id %>:type=<%= tenant_id %>-javaagent\",\"feedId\":\"<%= feed_id %>\",\"senderRequestId\":\"**fixed id for tests**\",\"metricTypes\":{\"WildFly Memory Metrics~Heap Max\":77,\"Unknown~Metric\":666},\"availTypes\":{\"Server Availability~Server Availability\":77,\"Unknown~Avail\":666},\"authentication\":{\"username\":\"jdoe\",\"password\":\"password\"}}"
     },
     {
       "operation": "read",
       "type": "text",
-      "data": "GenericSuccessResponse={\"message\":\"The request has been forwarded to feed [<%= feed_id %>] (MessageId=ID:b3071470-76c5-11e7-9321-df2a214aeb38)\"}"
+      "data": "GenericSuccessResponse={\"message\":\"The request has been forwarded to feed [<%= feed_id %>] (MessageId=ID:07f4c5f3-be12-11e7-b799-578b0e77ae3e)\"}"
     },
     {
       "operation": "read",
       "type": "text",
-      "data": "UpdateCollectionIntervalsResponse={\"resourcePath\":\"/t;<%= tenant_id %>/f;<%= feed_id %>/r;Local%20JMX~org.<%= tenant_id %>:type%3d<%= tenant_id %>-javaagent\",\"destinationSessionId\":\"NRkgJ7HTGyRotkPBp5VKE63Q4L3axAJdBw16pC0H\",\"status\":\"OK\",\"message\":\"Performed [Update Collection Intervals] on a [Agent[JMX]] given by Inventory path [/t;<%= tenant_id %>/f;<%= feed_id %>/r;Local%20JMX~org.<%= tenant_id %>:type%3d<%= tenant_id %>-javaagent]\"}"
+      "data": "UpdateCollectionIntervalsResponse={\"feedId\":\"<%= feed_id %>\",\"resourceId\":\"<%= feed_id %>~Local JMX~org.<%= tenant_id %>:type=<%= tenant_id %>-javaagent\",\"senderRequestId\":\"**fixed id for tests**\",\"destinationSessionId\":\"qk3PTxP0eF7ZoSothV01dXq4ecSSj0lo6Jp9NQeS\",\"status\":\"ERROR\",\"message\":\"Could not perform [Update Collection Intervals] on a [Agent[JMX]] given by inventory path [<%= feed_id %>~Local JMX~org.<%= tenant_id %>:type=<%= tenant_id %>-javaagent] requested on [2017-10-31T08:03Z]: java.lang.IllegalStateException: Command not allowed because the agent is immutable\"}"
     }
   ]
 ]

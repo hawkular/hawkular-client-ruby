@@ -17,9 +17,10 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
-      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
-
-'
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 200
@@ -36,7 +37,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 25 Apr 2017 15:11:07 GMT
+      - Wed, 25 Oct 2017 13:42:58 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -47,7 +48,7 @@ http_interactions:
       encoding: UTF-8
       string: '["elasticsearch","email","webhook"]'
     http_version: 
-  recorded_at: Tue, 25 Apr 2017 15:11:07 GMT
+  recorded_at: Wed, 25 Oct 2017 13:42:58 GMT
 - request:
     method: get
     uri: http://localhost:8080/hawkular/alerts/plugins/elasticsearch
@@ -65,9 +66,10 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
-      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
-
-'
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 200
@@ -84,7 +86,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 25 Apr 2017 15:11:07 GMT
+      - Wed, 25 Oct 2017 13:42:58 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -93,9 +95,9 @@ http_interactions:
       - '112'
     body:
       encoding: UTF-8
-      string: '["forwarded-for","index","pass","proxy-remote-user","timestamp.pattern","token","transform","type","url","user"]'
+      string: '["forwarded-for","index","pass","proxy-remote-user","timestamp_pattern","token","transform","type","url","user"]'
     http_version: 
-  recorded_at: Tue, 25 Apr 2017 15:11:07 GMT
+  recorded_at: Wed, 25 Oct 2017 13:42:58 GMT
 - request:
     method: get
     uri: http://localhost:8080/hawkular/alerts/plugins/email
@@ -113,9 +115,10 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
-      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
-
-'
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 200
@@ -132,7 +135,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 25 Apr 2017 15:11:07 GMT
+      - Wed, 25 Oct 2017 13:42:58 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -143,7 +146,7 @@ http_interactions:
       encoding: UTF-8
       string: '["cc","from","from-name","mail","template.hawkular.url","template.html","template.plain","to"]'
     http_version: 
-  recorded_at: Tue, 25 Apr 2017 15:11:07 GMT
+  recorded_at: Wed, 25 Oct 2017 13:42:58 GMT
 - request:
     method: get
     uri: http://localhost:8080/hawkular/alerts/plugins/webhook
@@ -161,9 +164,10 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
-      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
-
-'
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 200
@@ -180,7 +184,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 25 Apr 2017 15:11:07 GMT
+      - Wed, 25 Oct 2017 13:42:58 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -191,7 +195,7 @@ http_interactions:
       encoding: UTF-8
       string: '["method","timeout","url"]'
     http_version: 
-  recorded_at: Tue, 25 Apr 2017 15:11:07 GMT
+  recorded_at: Wed, 25 Oct 2017 13:42:58 GMT
 - request:
     method: get
     uri: http://localhost:8080/hawkular/alerts/plugins/email
@@ -209,9 +213,10 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
-      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
-
-'
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 200
@@ -228,7 +233,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 25 Apr 2017 15:11:07 GMT
+      - Wed, 25 Oct 2017 13:42:58 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -239,7 +244,7 @@ http_interactions:
       encoding: UTF-8
       string: '["cc","from","from-name","mail","template.hawkular.url","template.html","template.plain","to"]'
     http_version: 
-  recorded_at: Tue, 25 Apr 2017 15:11:07 GMT
+  recorded_at: Wed, 25 Oct 2017 13:42:58 GMT
 - request:
     method: get
     uri: http://localhost:8080/hawkular/alerts/plugins/-does-not-exist-
@@ -257,9 +262,10 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
-      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
-
-'
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 404
@@ -276,7 +282,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 25 Apr 2017 15:11:07 GMT
+      - Wed, 25 Oct 2017 13:42:58 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -287,5 +293,5 @@ http_interactions:
       encoding: UTF-8
       string: '{"errorMsg":"actionPlugin: -does-not-exist- not found"}'
     http_version: 
-  recorded_at: Tue, 25 Apr 2017 15:11:07 GMT
+  recorded_at: Wed, 25 Oct 2017 13:42:58 GMT
 recorded_with: VCR 3.0.3

@@ -17,9 +17,10 @@ http_interactions:
       - hawkular
       Content-Type:
       - application/json
-      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
-
-'
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 200
@@ -36,7 +37,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 25 Apr 2017 15:11:07 GMT
+      - Wed, 25 Oct 2017 13:42:58 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -47,7 +48,7 @@ http_interactions:
       encoding: UTF-8
       string: '["cc","from","from-name","mail","template.hawkular.url","template.html","template.plain","to"]'
     http_version: 
-  recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
+  recorded_at: Wed, 25 Oct 2017 13:42:58 GMT
 - request:
     method: post
     uri: http://localhost:8080/hawkular/alerts/actions
@@ -67,9 +68,10 @@ http_interactions:
       - application/json
       Content-Length:
       - '71'
-      Authorization: 'Basic PCU9IHVzZXJuYW1lICU+OjwlPSBwYXNzd29yZCAlPg==
-
-'
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 400
@@ -86,7 +88,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 25 Apr 2017 15:11:08 GMT
+      - Wed, 25 Oct 2017 13:42:58 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -98,5 +100,5 @@ http_interactions:
       string: '{"errorMsg":"Bad arguments: java.lang.IllegalArgumentException: Property:
         foo is not valid on plugin: email"}'
     http_version: 
-  recorded_at: Tue, 25 Apr 2017 15:11:08 GMT
+  recorded_at: Wed, 25 Oct 2017 13:42:58 GMT
 recorded_with: VCR 3.0.3

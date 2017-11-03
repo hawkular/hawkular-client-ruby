@@ -22,4 +22,5 @@ token_v8:
 
 metrics: "hawkular/metrics"
 alerts: "hawkular/alerts"
+inventory: "hawkular/inventory"
 urls: "hawkular/api/urls"

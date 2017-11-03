@@ -14,14 +14,15 @@ http_interactions:
       User-Agent:
       - hawkular-client-ruby
       Hawkular-Tenant:
-      - 01aad6f9-52c0-4586-b812-07873a54834a
+      - f7dd5ae5-c2b3-4f01-86d2-90310142bc63
       Content-Type:
       - application/json
       Content-Length:
       - '93'
-      Authorization: 'Basic amRvZTpwYXNzd29yZA==
-
-'
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 201
@@ -40,7 +41,7 @@ http_interactions:
       Location:
       - http://localhost:8080/hawkular/metrics/gauges/metric_1
       Date:
-      - Wed, 05 Apr 2017 08:18:51 GMT
+      - Tue, 31 Oct 2017 08:13:27 GMT
       Connection:
       - keep-alive
       Content-Length:
@@ -49,7 +50,7 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Wed, 05 Apr 2017 08:18:51 GMT
+  recorded_at: Tue, 31 Oct 2017 08:13:27 GMT
 - request:
     method: get
     uri: http://localhost:8080/hawkular/metrics/gauges/metric_1
@@ -64,12 +65,13 @@ http_interactions:
       User-Agent:
       - hawkular-client-ruby
       Hawkular-Tenant:
-      - 01aad6f9-52c0-4586-b812-07873a54834a
+      - f7dd5ae5-c2b3-4f01-86d2-90310142bc63
       Content-Type:
       - application/json
-      Authorization: 'Basic amRvZTpwYXNzd29yZA==
-
-'
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 200
@@ -86,7 +88,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 05 Apr 2017 08:18:51 GMT
+      - Tue, 31 Oct 2017 08:13:27 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -95,9 +97,9 @@ http_interactions:
       - '158'
     body:
       encoding: UTF-8
-      string: '{"id":"metric_1","tags":{"tag1":"value1","tag2":"value2","tag3":"value3"},"dataRetention":90,"type":"gauge","tenantId":"01aad6f9-52c0-4586-b812-07873a54834a"}'
+      string: '{"id":"metric_1","tags":{"tag1":"value1","tag2":"value2","tag3":"value3"},"dataRetention":90,"type":"gauge","tenantId":"f7dd5ae5-c2b3-4f01-86d2-90310142bc63"}'
     http_version: 
-  recorded_at: Wed, 05 Apr 2017 08:18:51 GMT
+  recorded_at: Tue, 31 Oct 2017 08:13:27 GMT
 - request:
     method: post
     uri: http://localhost:8080/hawkular/metrics/availability
@@ -112,14 +114,15 @@ http_interactions:
       User-Agent:
       - hawkular-client-ruby
       Hawkular-Tenant:
-      - 01aad6f9-52c0-4586-b812-07873a54834a
+      - f7dd5ae5-c2b3-4f01-86d2-90310142bc63
       Content-Type:
       - application/json
       Content-Length:
       - '93'
-      Authorization: 'Basic amRvZTpwYXNzd29yZA==
-
-'
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 201
@@ -138,7 +141,7 @@ http_interactions:
       Location:
       - http://localhost:8080/hawkular/metrics/availability/metric_2
       Date:
-      - Wed, 05 Apr 2017 08:18:51 GMT
+      - Tue, 31 Oct 2017 08:13:27 GMT
       Connection:
       - keep-alive
       Content-Length:
@@ -147,7 +150,7 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Wed, 05 Apr 2017 08:18:51 GMT
+  recorded_at: Tue, 31 Oct 2017 08:13:27 GMT
 - request:
     method: get
     uri: http://localhost:8080/hawkular/metrics/availability/metric_2
@@ -162,12 +165,13 @@ http_interactions:
       User-Agent:
       - hawkular-client-ruby
       Hawkular-Tenant:
-      - 01aad6f9-52c0-4586-b812-07873a54834a
+      - f7dd5ae5-c2b3-4f01-86d2-90310142bc63
       Content-Type:
       - application/json
-      Authorization: 'Basic amRvZTpwYXNzd29yZA==
-
-'
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 200
@@ -184,7 +188,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 05 Apr 2017 08:18:51 GMT
+      - Tue, 31 Oct 2017 08:13:27 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -193,9 +197,9 @@ http_interactions:
       - '165'
     body:
       encoding: UTF-8
-      string: '{"id":"metric_2","tags":{"tag1":"value1","tag4":"value4","tag5":"value5"},"dataRetention":90,"type":"availability","tenantId":"01aad6f9-52c0-4586-b812-07873a54834a"}'
+      string: '{"id":"metric_2","tags":{"tag1":"value1","tag4":"value4","tag5":"value5"},"dataRetention":90,"type":"availability","tenantId":"f7dd5ae5-c2b3-4f01-86d2-90310142bc63"}'
     http_version: 
-  recorded_at: Wed, 05 Apr 2017 08:18:51 GMT
+  recorded_at: Tue, 31 Oct 2017 08:13:27 GMT
 - request:
     method: post
     uri: http://localhost:8080/hawkular/metrics/counters
@@ -210,14 +214,15 @@ http_interactions:
       User-Agent:
       - hawkular-client-ruby
       Hawkular-Tenant:
-      - 01aad6f9-52c0-4586-b812-07873a54834a
+      - f7dd5ae5-c2b3-4f01-86d2-90310142bc63
       Content-Type:
       - application/json
       Content-Length:
       - '95'
-      Authorization: 'Basic amRvZTpwYXNzd29yZA==
-
-'
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 201
@@ -236,7 +241,7 @@ http_interactions:
       Location:
       - http://localhost:8080/hawkular/metrics/counters/metric_2
       Date:
-      - Wed, 05 Apr 2017 08:18:51 GMT
+      - Tue, 31 Oct 2017 08:13:27 GMT
       Connection:
       - keep-alive
       Content-Length:
@@ -245,7 +250,7 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Wed, 05 Apr 2017 08:18:51 GMT
+  recorded_at: Tue, 31 Oct 2017 08:13:27 GMT
 - request:
     method: get
     uri: http://localhost:8080/hawkular/metrics/counters/metric_2
@@ -260,12 +265,13 @@ http_interactions:
       User-Agent:
       - hawkular-client-ruby
       Hawkular-Tenant:
-      - 01aad6f9-52c0-4586-b812-07873a54834a
+      - f7dd5ae5-c2b3-4f01-86d2-90310142bc63
       Content-Type:
       - application/json
-      Authorization: 'Basic amRvZTpwYXNzd29yZA==
-
-'
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 200
@@ -282,7 +288,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 05 Apr 2017 08:18:51 GMT
+      - Tue, 31 Oct 2017 08:13:27 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -291,9 +297,9 @@ http_interactions:
       - '162'
     body:
       encoding: UTF-8
-      string: '{"id":"metric_2","tags":{"tag1":"value1","tag4":"value4","tag5":"value5.1"},"dataRetention":90,"type":"counter","tenantId":"01aad6f9-52c0-4586-b812-07873a54834a"}'
+      string: '{"id":"metric_2","tags":{"tag1":"value1","tag4":"value4","tag5":"value5.1"},"dataRetention":90,"type":"counter","tenantId":"f7dd5ae5-c2b3-4f01-86d2-90310142bc63"}'
     http_version: 
-  recorded_at: Wed, 05 Apr 2017 08:18:51 GMT
+  recorded_at: Tue, 31 Oct 2017 08:13:27 GMT
 - request:
     method: post
     uri: http://localhost:8080/hawkular/metrics/counters
@@ -308,14 +314,15 @@ http_interactions:
       User-Agent:
       - hawkular-client-ruby
       Hawkular-Tenant:
-      - 01aad6f9-52c0-4586-b812-07873a54834a
+      - f7dd5ae5-c2b3-4f01-86d2-90310142bc63
       Content-Type:
       - application/json
       Content-Length:
       - '46'
-      Authorization: 'Basic amRvZTpwYXNzd29yZA==
-
-'
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 201
@@ -334,7 +341,7 @@ http_interactions:
       Location:
       - http://localhost:8080/hawkular/metrics/counters/metric_3
       Date:
-      - Wed, 05 Apr 2017 08:18:51 GMT
+      - Tue, 31 Oct 2017 08:13:27 GMT
       Connection:
       - keep-alive
       Content-Length:
@@ -343,7 +350,7 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Wed, 05 Apr 2017 08:18:51 GMT
+  recorded_at: Tue, 31 Oct 2017 08:13:27 GMT
 - request:
     method: get
     uri: http://localhost:8080/hawkular/metrics/counters/metric_3
@@ -358,12 +365,13 @@ http_interactions:
       User-Agent:
       - hawkular-client-ruby
       Hawkular-Tenant:
-      - 01aad6f9-52c0-4586-b812-07873a54834a
+      - f7dd5ae5-c2b3-4f01-86d2-90310142bc63
       Content-Type:
       - application/json
-      Authorization: 'Basic amRvZTpwYXNzd29yZA==
-
-'
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 200
@@ -380,7 +388,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 05 Apr 2017 08:18:51 GMT
+      - Tue, 31 Oct 2017 08:13:27 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -389,9 +397,9 @@ http_interactions:
       - '103'
     body:
       encoding: UTF-8
-      string: '{"id":"metric_3","dataRetention":90,"type":"counter","tenantId":"01aad6f9-52c0-4586-b812-07873a54834a"}'
+      string: '{"id":"metric_3","dataRetention":90,"type":"counter","tenantId":"f7dd5ae5-c2b3-4f01-86d2-90310142bc63"}'
     http_version: 
-  recorded_at: Wed, 05 Apr 2017 08:18:51 GMT
+  recorded_at: Tue, 31 Oct 2017 08:13:27 GMT
 - request:
     method: get
     uri: http://localhost:8080/hawkular/metrics/metrics/
@@ -406,12 +414,13 @@ http_interactions:
       User-Agent:
       - hawkular-client-ruby
       Hawkular-Tenant:
-      - 01aad6f9-52c0-4586-b812-07873a54834a
+      - f7dd5ae5-c2b3-4f01-86d2-90310142bc63
       Content-Type:
       - application/json
-      Authorization: 'Basic amRvZTpwYXNzd29yZA==
-
-'
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 200
@@ -428,7 +437,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 05 Apr 2017 08:18:51 GMT
+      - Tue, 31 Oct 2017 08:13:27 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -437,7 +446,7 @@ http_interactions:
       - '593'
     body:
       encoding: UTF-8
-      string: '[{"id":"metric_2","tags":{"tag1":"value1","tag4":"value4","tag5":"value5"},"dataRetention":90,"type":"availability","tenantId":"01aad6f9-52c0-4586-b812-07873a54834a"},{"id":"metric_2","tags":{"tag1":"value1","tag4":"value4","tag5":"value5.1"},"dataRetention":90,"type":"counter","tenantId":"01aad6f9-52c0-4586-b812-07873a54834a"},{"id":"metric_3","dataRetention":90,"type":"counter","tenantId":"01aad6f9-52c0-4586-b812-07873a54834a"},{"id":"metric_1","tags":{"tag1":"value1","tag2":"value2","tag3":"value3"},"dataRetention":90,"type":"gauge","tenantId":"01aad6f9-52c0-4586-b812-07873a54834a"}]'
+      string: '[{"id":"metric_2","tags":{"tag1":"value1","tag4":"value4","tag5":"value5"},"dataRetention":90,"type":"availability","tenantId":"f7dd5ae5-c2b3-4f01-86d2-90310142bc63"},{"id":"metric_2","tags":{"tag1":"value1","tag4":"value4","tag5":"value5.1"},"dataRetention":90,"type":"counter","tenantId":"f7dd5ae5-c2b3-4f01-86d2-90310142bc63"},{"id":"metric_3","dataRetention":90,"type":"counter","tenantId":"f7dd5ae5-c2b3-4f01-86d2-90310142bc63"},{"id":"metric_1","tags":{"tag1":"value1","tag2":"value2","tag3":"value3"},"dataRetention":90,"type":"gauge","tenantId":"f7dd5ae5-c2b3-4f01-86d2-90310142bc63"}]'
     http_version: 
-  recorded_at: Wed, 05 Apr 2017 08:18:51 GMT
+  recorded_at: Tue, 31 Oct 2017 08:13:27 GMT
 recorded_with: VCR 3.0.3

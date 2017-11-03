@@ -10,7 +10,7 @@ hawkular:
     - /tmp/opt/hawkular/server:/opt/data
   environment:
     - CASSANDRA_NODES=myCassandra
-    - ADMIN_TOKEN
+    - ADMIN_TOKEN=123-456-789
 myCassandra:
   image: cassandra:3.0.12
   environment:

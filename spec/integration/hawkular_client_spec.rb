@@ -24,7 +24,7 @@ module Hawkular::Client::RSpec
         password: 'password'
       }
       ::RSpec::Mocks.with_temporary_scope do
-        mock_inventory_client '0.26.0.Final'
+        mock_inventory_client '0.9.8.Final'
         mock_metrics_version
         @hawkular_client = Hawkular::Client.new(entrypoint: HOST, credentials: @creds, options: { tenant: 'hawkular' })
         @hawkular_client.inventory
@@ -44,14 +44,14 @@ module Hawkular::Client::RSpec
         }
         expect do
           Hawkular::Client.new(entrypoint: HOST, credentials: @creds, options: { tenant: 'hawkular' })
-            .inventory_list_feeds
+            .inventory_root_resources
         end.to raise_error(Hawkular::BaseClient::HawkularException, 'Unauthorized')
       end
     end
 
     it 'Should fail when calling method with unknown prefix' do
-      expect { @hawkular_client.ynventori_list_feeds }.to raise_error(Hawkular::ArgumentError)
-      expect { @hawkular_client.list_feeds }.to raise_error(Hawkular::ArgumentError)
+      expect { @hawkular_client.ynventori_root_resources }.to raise_error(Hawkular::ArgumentError)
+      expect { @hawkular_client.root_resources }.to raise_error(Hawkular::ArgumentError)
     end
 
     it 'Should fail when calling unknown method with known client prefix' do
@@ -68,7 +68,7 @@ module Hawkular::Client::RSpec
           opts = { tenant: 'hawkular' }
           mock_metrics_version
           the_client = Hawkular::Client.new(entrypoint: uri, credentials: @creds, options: opts)
-          expect { the_client.inventory.list_feeds }.to_not raise_error
+          expect { the_client.inventory.root_resources }.to_not raise_error
         end
       end
 
@@ -105,34 +105,16 @@ module Hawkular::Client::RSpec
         record('HawkularClient', nil, cassette_name, example: example)
       end
 
-      it 'Should list the same feeds' do
-        feeds1 = @client.list_feeds
-        feeds2 = @hawkular_client.inventory_list_feeds
+      it 'Should list the same root resources' do
+        rr1 = @client.root_resources
+        rr2 = @hawkular_client.inventory_root_resources
 
-        expect(feeds1).to match_array(feeds2)
-        @state[:feed] = feeds1[0] unless feeds1[0].nil?
-      end
-
-      it 'Should list same types when param is given' do
-        types1 = @client.list_resource_types(@state[:feed])
-        types2 = @hawkular_client.inventory_list_resource_types(@state[:feed])
-
-        expect(types1).to match_array(types2)
-      end
-
-      it 'Should both list types with bad feed' do
-        type = 'does not exist'
-        types1 = @client.list_resource_types(type)
-        types2 = @hawkular_client.inventory_list_resource_types(type)
-
-        expect(types1).to match_array(types2)
+        expect(rr1).to match_array(rr2)
       end
 
       it 'Should both list WildFlys' do
-        path = Hawkular::Inventory::CanonicalPath.new(feed_id: @state[:feed],
-                                                      resource_type_id: hawk_escape_id('WildFly Server'))
-        resources1 = @client.list_resources_for_type(path.to_s)
-        resources2 = @hawkular_client.inventory_list_resources_for_type(path)
+        resources1 = @client.resources_for_type('WildFly Server')
+        resources2 = @hawkular_client.inventory_resources_for_type('WildFly Server')
 
         expect(resources1).to match_array(resources2)
       end
@@ -232,12 +214,8 @@ module Hawkular::Client::RSpec
           inventory_client = @inventory_client
           remove_instance_variable(:@inventory_client)
           @tenant_id = 'hawkular'
-          record('HawkularClient/Helpers', { tenant_id: @tenant_id }, 'get_feed') do
-            @feed_id = inventory_client.list_feeds[0]
-          end
-          record('HawkularClient/Helpers', { tenant_id: @tenant_id, feed_id: @feed_id },
-                 'agent_properties') do
-            agent = installed_agent(inventory_client, @feed_id)
+          record('HawkularClient/Helpers', { tenant_id: @tenant_id }, 'agent_properties') do
+            agent = installed_agent(inventory_client)
             @agent_immutable = agent_immutable?(agent)
           end
         end
@@ -249,21 +227,17 @@ module Hawkular::Client::RSpec
 
       it 'Should both work the same way', :websocket do
         record_websocket('HawkularClient', nil, cassette_name) do
-          feed_id = @hawkular_client.inventory.list_feeds.first
-          wf_server_resource_id = 'Local~~'
-          status_war_resource_id = 'Local~%2Fdeployment%3Dhawkular-status.war'
-
-          path = Hawkular::Inventory::CanonicalPath.new(tenant_id: 'hawkular',
-                                                        feed_id: feed_id,
-                                                        resource_ids: [wf_server_resource_id, status_war_resource_id])
-          redeploy = {
-            operationName: 'Redeploy',
-            resourcePath: path.to_s
+          wf_server = @hawkular_client.inventory.resources(typeId: 'WildFly Server', root: true)[0]
+          restart = {
+            resource_id: wf_server.id,
+            feed_id: wf_server.feed,
+            deployment_name: 'hawkular-status.war',
+            sender_request_id: '**fixed-req-id**'
           }
 
           actual_data = {}
           client = Hawkular::Operations::Client.new(entrypoint: HOST, credentials: @creds)
-          client.invoke_generic_operation(redeploy) do |on|
+          client.restart_deployment(restart) do |on|
             on.success do |data|
               actual_data[:data] = data
             end
@@ -273,12 +247,12 @@ module Hawkular::Client::RSpec
           end
 
           actual_data = wait_for actual_data
-          expect(actual_data['status']).to eq('OK') unless @agent_immutable
-          expect(actual_data).to include('not allowed because the agent is immutable') if @agent_immutable
+          expect(actual_data['status']).to eq('OK')
 
           # now do the same on the main client
           actual_data = {}
-          @hawkular_client.operations_invoke_generic_operation(redeploy) do |on|
+          restart[:sender_request_id] = '**another-fixed-req-id**'
+          @hawkular_client.operations_restart_deployment(restart) do |on|
             on.success do |data|
               actual_data[:data] = data
             end
@@ -288,8 +262,7 @@ module Hawkular::Client::RSpec
           end
 
           actual_data = wait_for actual_data
-          expect(actual_data['status']).to eq('OK') unless @agent_immutable
-          expect(actual_data).to include('not allowed because the agent is immutable') if @agent_immutable
+          expect(actual_data['status']).to eq('OK')
         end
       end
 
