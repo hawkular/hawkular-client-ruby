@@ -3,6 +3,9 @@
 This document describes the relevant changes between releases of the
 _hawkular-client_ project.
 
+=== v 5.0.0
+* This version introduces support for the new Hawkular Inventory API and Prometheus metric storage.
+
 === v 4.1.0
 * Fixed binary data handling when invoking <em>Export JDR</em> on operations API.
 * Added <em>delete_immediately</em> parameter to <em>Export JDR</em> operation.
