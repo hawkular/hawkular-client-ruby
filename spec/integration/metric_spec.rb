@@ -21,8 +21,8 @@ NON_SECURE_CONTEXT = :NonSecure
 
 security_contexts = [NON_SECURE_CONTEXT, SECURE_CONTEXT].freeze
 entrypoints = {
-  :Secure => 'https://localhost:8444/hawkular/metrics',
-  :NonSecure => 'http://localhost:8081/hawkular/metrics'
+  Secure: 'https://localhost:8444/hawkular/metrics',
+  NonSecure: 'http://localhost:8081/hawkular/metrics'
 }
 
 vcr_test_tenant_postfix = "-vcr-tenant-#{SecureRandom.uuid}".freeze
@@ -555,8 +555,6 @@ security_contexts.each do |security_context|
       end
 
       describe 'Gauge metrics' do
-        hawkular_tenant_id = 'hawkular'.freeze
-
         before(:all) do
           @tenant = vcr_test_tenant
           record("Metrics/#{security_context}/#{metrics_context}",
@@ -836,8 +834,8 @@ security_contexts.each do |security_context|
         record("Metrics/#{security_context}/ID_with_special_characters",
                { tenant: vcr_test_tenant },
                'setup_client') do
-          setup_client(type: security_context, tenant: vcr_test_tenant, 
-            entrypoint: entrypoints[security_context])
+          setup_client(type: security_context, tenant: vcr_test_tenant,
+                       entrypoint: entrypoints[security_context])
         end
       end
 
