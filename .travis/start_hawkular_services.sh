@@ -18,9 +18,12 @@ while [ "$CASSANDRA_STATUS" != "running" ] && [ $TOTAL_WAIT -lt 60 ]; do
  echo "Waited $TOTAL_WAIT seconds for Cassandra to start."
 done
 
+# Start hawkular-metrics
+docker-compose up -d hawkular-metrics
+
 # Update hawkular javaagent configuration to make it suitable for tests.
-docker-compose create hawkular
-DOCKER_HAWKULAR_ID=`docker-compose ps -q hawkular`
+docker-compose create hawkular-services
+DOCKER_HAWKULAR_ID=`docker-compose ps -q hawkular-services`
 export DOCKER_`docker inspect -f '{{range $index, $value := .Config.Env}}{{println $value}}{{end}}' $DOCKER_HAWKULAR_ID  | grep JBOSS_HOME`
 
 docker cp ${DOCKER_HAWKULAR_ID}:${DOCKER_JBOSS_HOME}/standalone/configuration/hawkular-javaagent-config.yaml hawkular-javaagent-config.yaml
@@ -31,4 +34,5 @@ rm hawkular-javaagent-config.yaml
 # Ensure the volume exists and has correct permissions.
 mkdir -p /tmp/opt/hawkular/server
 chown 1000:1000 -R /tmp/opt/hawkular
-docker-compose start hawkular
+docker-compose start hawkular-services
+

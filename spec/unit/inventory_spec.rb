@@ -7,27 +7,27 @@ describe 'Inventory' do
       'id' => 'root',
       'type' => {},
       'metrics' => [
-        { 'type' => 'm1' },
-        { 'type' => 'm2' },
-        { 'type' => 'm3' }
+        { 'family' => 'm1' },
+        { 'family' => 'm2' },
+        { 'family' => 'm3' }
       ],
       'children' => [
-        { 'id' => 'child-01', 'type' => { 'id' => 'type-01' }, 'children' => [], 'metrics' => [{ 'type' => 'm1' }] },
+        { 'id' => 'child-01', 'type' => { 'id' => 'type-01' }, 'children' => [], 'metrics' => [{ 'family' => 'm1' }] },
         { 'id' => 'child-02', 'type' => { 'id' => 'type-02' },
           'children' => [
             {
-              'id' => 'child-03', 'type' => { 'id' => 'type-02' }, 'children' => [], 'metrics' => [{ 'type' => 'm4' }]
+              'id' => 'child-03', 'type' => { 'id' => 'type-02' }, 'children' => [], 'metrics' => [{ 'family' => 'm4' }]
             },
             {
-              'id' => 'child-04', 'type' => { 'id' => 'type-02' }, 'children' => [], 'metrics' => [{ 'type' => 'm5' }]
+              'id' => 'child-04', 'type' => { 'id' => 'type-02' }, 'children' => [], 'metrics' => [{ 'family' => 'm5' }]
             },
             {
-              'id' => 'child-05', 'type' => { 'id' => 'type-03' }, 'children' => [], 'metrics' => [{ 'type' => 'm6' }]
+              'id' => 'child-05', 'type' => { 'id' => 'type-03' }, 'children' => [], 'metrics' => [{ 'family' => 'm6' }]
             }
           ],
-          'metrics' => [{ 'type' => 'm1' }, { 'type' => 'm2' }, { 'type' => 'm3' }]
+          'metrics' => [{ 'family' => 'm1' }, { 'family' => 'm2' }, { 'family' => 'm3' }]
         },
-        { 'id' => 'child-06', 'type' => { 'id' => 'type-01' }, 'children' => [], 'metrics' => [{ 'type' => 'm3' }] }
+        { 'id' => 'child-06', 'type' => { 'id' => 'type-01' }, 'children' => [], 'metrics' => [{ 'family' => 'm3' }] }
       ]
     }
   end
@@ -90,10 +90,10 @@ describe 'Inventory' do
     end
   end
 
-  describe '#metrics_by_type' do
-    it 'return metrics by type' do
-      expect(resource.metrics_by_type('m1').size).to eq(1)
-      expect(resource.metrics_by_type('m1').first.type).to eq('m1')
+  describe '#metrics_by_family' do
+    it 'return metrics by family' do
+      expect(resource.metrics_by_family('m1').size).to eq(1)
+      expect(resource.metrics_by_family('m1').first.family).to eq('m1')
     end
   end
 

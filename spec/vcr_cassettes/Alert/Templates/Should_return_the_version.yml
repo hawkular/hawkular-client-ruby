@@ -33,12 +33,12 @@ http_interactions:
       Content-Type:
       - application/json
       Content-Length:
-      - '146'
+      - '195'
       Date:
-      - Wed, 25 Oct 2017 13:43:00 GMT
+      - Mon, 13 Nov 2017 12:09:55 GMT
     body:
       encoding: UTF-8
-      string: '{"distributed":"false","Implementation-Version":"1.6.2.Final","Built-From-Git-SHA1":"3d45598e80ee3abc4057fd77d2f112530b56c1a7","status":"STARTED"}'
+      string: '{"distributed":"false","Implementation-Version":"1.8.0.Final-SRC-revision-b42b55a2d3496b68e8ba76a7d46951213f480efd","Built-From-Git-SHA1":"b42b55a2d3496b68e8ba76a7d46951213f480efd","status":"UP"}'
     http_version: 
-  recorded_at: Wed, 25 Oct 2017 13:43:00 GMT
+  recorded_at: Mon, 13 Nov 2017 12:09:55 GMT
 recorded_with: VCR 3.0.3

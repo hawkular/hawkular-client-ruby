@@ -3,30 +3,21 @@ module Hawkular::Inventory
   class Metric
     # @return [String] Name of the metric
     attr_reader :name
-    # @return [String] Type of the metric
-    attr_reader :type
+    # @return [String] Family of the metric (Prometheus family name)
+    attr_reader :family
     # @return [String] Unit of the metric
     attr_reader :unit
+    # @return [Hash<String,String>] Labels of this metric (Prometheus labels)
+    attr_reader :labels
     # @return [Hash<String,String>] Properties of this metric
     attr_reader :properties
 
     def initialize(hash)
-      @name = hash['name']
-      @type = hash['type']
+      @name = hash['displayName']
+      @family = hash['family']
       @unit = hash['unit']
+      @labels = hash['labels'] || {}
       @properties = hash['properties'] || {}
-    end
-
-    def hawkular_id
-      @properties.fetch('hawkular.metric.id')
-    end
-
-    def hawkular_type
-      @properties.fetch('hawkular.metric.type')
-    end
-
-    def hawkular_type_id
-      @properties.fetch('hawkular.metric.typeId')
     end
   end
 
@@ -117,8 +108,8 @@ module Hawkular::Inventory
       children(recursive).collect(&:metrics).flat_map(&:itself).concat(@metrics)
     end
 
-    def metrics_by_type(type)
-      @metrics.select { |m| m.type == type }
+    def metrics_by_family(family)
+      @metrics.select { |m| m.family == family }
     end
 
     def ==(other)

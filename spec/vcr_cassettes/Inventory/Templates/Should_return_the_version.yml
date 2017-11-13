@@ -35,10 +35,10 @@ http_interactions:
       Content-Length:
       - '173'
       Date:
-      - Tue, 31 Oct 2017 08:01:27 GMT
+      - Mon, 13 Nov 2017 12:09:58 GMT
     body:
       encoding: UTF-8
-      string: '{"Implementation-Version":"0.9.8.Final-SRC-revision-ce866b1ade2d7413f055f461eb36d004ff2888d8","Built-From-Git-SHA1":"ce866b1ade2d7413f055f461eb36d004ff2888d8","status":"UP"}'
+      string: '{"Implementation-Version":"1.0.0.Final-SRC-revision-5402471e65caef238c019c107814982990179690","Built-From-Git-SHA1":"5402471e65caef238c019c107814982990179690","status":"UP"}'
     http_version: 
-  recorded_at: Tue, 31 Oct 2017 08:01:27 GMT
+  recorded_at: Mon, 13 Nov 2017 12:09:58 GMT
 recorded_with: VCR 3.0.3
