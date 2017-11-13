@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://localhost:8080/hawkular/metrics/counters/<%= id %>/raw/
+    uri: http://localhost:8081/hawkular/metrics/counters/<%= id %>/raw/
     body:
       encoding: US-ASCII
       string: ''
@@ -18,7 +18,7 @@ http_interactions:
       Content-Type:
       - application/json
       Host:
-      - localhost:8080
+      - localhost:8081
       Authorization:
       - Basic amRvZTpwYXNzd29yZA==
   response:
@@ -26,26 +26,24 @@ http_interactions:
       code: 204
       message: No Content
     headers:
-      Expires:
-      - '0'
       Cache-Control:
-      - no-cache, no-store, must-revalidate
+      - no-cache
+      Vary:
+      - Origin,Accept-Encoding
       X-Powered-By:
       - Undertow/1
       Server:
       - WildFly/10
-      Pragma:
-      - no-cache
       Date:
-      - Tue, 31 Oct 2017 08:13:26 GMT
+      - Mon, 13 Nov 2017 12:09:58 GMT
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Tue, 31 Oct 2017 08:13:26 GMT
+  recorded_at: Mon, 13 Nov 2017 12:09:58 GMT
 - request:
     method: get
-    uri: http://localhost:8080/hawkular/metrics/gauges/<%= id %>/raw/
+    uri: http://localhost:8081/hawkular/metrics/gauges/<%= id %>/raw/
     body:
       encoding: US-ASCII
       string: ''
@@ -61,7 +59,7 @@ http_interactions:
       Content-Type:
       - application/json
       Host:
-      - localhost:8080
+      - localhost:8081
       Authorization:
       - Basic amRvZTpwYXNzd29yZA==
   response:
@@ -69,26 +67,24 @@ http_interactions:
       code: 204
       message: No Content
     headers:
-      Expires:
-      - '0'
       Cache-Control:
-      - no-cache, no-store, must-revalidate
+      - no-cache
+      Vary:
+      - Origin,Accept-Encoding
       X-Powered-By:
       - Undertow/1
       Server:
       - WildFly/10
-      Pragma:
-      - no-cache
       Date:
-      - Tue, 31 Oct 2017 08:13:26 GMT
+      - Mon, 13 Nov 2017 12:09:58 GMT
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Tue, 31 Oct 2017 08:13:26 GMT
+  recorded_at: Mon, 13 Nov 2017 12:09:58 GMT
 - request:
     method: get
-    uri: http://localhost:8080/hawkular/metrics/availability/<%= id %>/raw/
+    uri: http://localhost:8081/hawkular/metrics/availability/<%= id %>/raw/
     body:
       encoding: US-ASCII
       string: ''
@@ -104,7 +100,7 @@ http_interactions:
       Content-Type:
       - application/json
       Host:
-      - localhost:8080
+      - localhost:8081
       Authorization:
       - Basic amRvZTpwYXNzd29yZA==
   response:
@@ -112,29 +108,27 @@ http_interactions:
       code: 204
       message: No Content
     headers:
-      Expires:
-      - '0'
       Cache-Control:
-      - no-cache, no-store, must-revalidate
+      - no-cache
+      Vary:
+      - Origin,Accept-Encoding
       X-Powered-By:
       - Undertow/1
       Server:
       - WildFly/10
-      Pragma:
-      - no-cache
       Date:
-      - Tue, 31 Oct 2017 08:13:26 GMT
+      - Mon, 13 Nov 2017 12:09:58 GMT
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Tue, 31 Oct 2017 08:13:26 GMT
+  recorded_at: Mon, 13 Nov 2017 12:09:58 GMT
 - request:
     method: post
-    uri: http://localhost:8080/hawkular/metrics/metrics/raw
+    uri: http://localhost:8081/hawkular/metrics/metrics/raw
     body:
       encoding: UTF-8
-      string: '{"gauges":[{"id":"<%= id %>","data":[{"value":1.1,"timestamp":1509437606573}]}],"counters":[{"id":"<%= id %>","data":[{"value":1,"timestamp":1509437606573}]}],"availabilities":[{"id":"<%= id %>","data":[{"value":"down","timestamp":1509437606573}]}],"strings":[]}'
+      string: '{"gauges":[{"id":"<%= id %>","data":[{"value":1.1,"timestamp":1510574998501}]}],"counters":[{"id":"<%= id %>","data":[{"value":1,"timestamp":1510574998501}]}],"availabilities":[{"id":"<%= id %>","data":[{"value":"down","timestamp":1510574998501}]}],"strings":[]}'
     headers:
       Accept:
       - application/json
@@ -149,7 +143,7 @@ http_interactions:
       Content-Length:
       - '343'
       Host:
-      - localhost:8080
+      - localhost:8081
       Authorization:
       - Basic amRvZTpwYXNzd29yZA==
   response:
@@ -157,30 +151,28 @@ http_interactions:
       code: 200
       message: OK
     headers:
-      Expires:
-      - '0'
       Connection:
       - keep-alive
       Cache-Control:
-      - no-cache, no-store, must-revalidate
+      - no-cache
+      Vary:
+      - Origin,Accept-Encoding
       X-Powered-By:
       - Undertow/1
       Server:
       - WildFly/10
-      Pragma:
-      - no-cache
       Content-Length:
       - '0'
       Date:
-      - Tue, 31 Oct 2017 08:13:26 GMT
+      - Mon, 13 Nov 2017 12:09:58 GMT
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Tue, 31 Oct 2017 08:13:26 GMT
+  recorded_at: Mon, 13 Nov 2017 12:09:58 GMT
 - request:
     method: get
-    uri: http://localhost:8080/hawkular/metrics/counters/<%= id %>/raw/
+    uri: http://localhost:8081/hawkular/metrics/counters/<%= id %>/raw/
     body:
       encoding: US-ASCII
       string: ''
@@ -196,7 +188,7 @@ http_interactions:
       Content-Type:
       - application/json
       Host:
-      - localhost:8080
+      - localhost:8081
       Authorization:
       - Basic amRvZTpwYXNzd29yZA==
   response:
@@ -204,32 +196,30 @@ http_interactions:
       code: 200
       message: OK
     headers:
-      Expires:
-      - '0'
+      Connection:
+      - keep-alive
       Cache-Control:
-      - no-cache, no-store, must-revalidate
+      - no-cache
+      Vary:
+      - Origin,Accept-Encoding
       X-Powered-By:
       - Undertow/1
       Server:
       - WildFly/10
-      Pragma:
-      - no-cache
-      Date:
-      - Tue, 31 Oct 2017 08:13:26 GMT
-      Connection:
-      - keep-alive
       Content-Type:
       - application/json
       Content-Length:
       - '39'
+      Date:
+      - Mon, 13 Nov 2017 12:09:58 GMT
     body:
       encoding: UTF-8
-      string: '[{"timestamp":1509437606573,"value":1}]'
+      string: '[{"timestamp":1510574998501,"value":1}]'
     http_version: 
-  recorded_at: Tue, 31 Oct 2017 08:13:26 GMT
+  recorded_at: Mon, 13 Nov 2017 12:09:58 GMT
 - request:
     method: get
-    uri: http://localhost:8080/hawkular/metrics/gauges/<%= id %>/raw/
+    uri: http://localhost:8081/hawkular/metrics/gauges/<%= id %>/raw/
     body:
       encoding: US-ASCII
       string: ''
@@ -245,7 +235,7 @@ http_interactions:
       Content-Type:
       - application/json
       Host:
-      - localhost:8080
+      - localhost:8081
       Authorization:
       - Basic amRvZTpwYXNzd29yZA==
   response:
@@ -253,32 +243,30 @@ http_interactions:
       code: 200
       message: OK
     headers:
-      Expires:
-      - '0'
+      Connection:
+      - keep-alive
       Cache-Control:
-      - no-cache, no-store, must-revalidate
+      - no-cache
+      Vary:
+      - Origin,Accept-Encoding
       X-Powered-By:
       - Undertow/1
       Server:
       - WildFly/10
-      Pragma:
-      - no-cache
-      Date:
-      - Tue, 31 Oct 2017 08:13:26 GMT
-      Connection:
-      - keep-alive
       Content-Type:
       - application/json
       Content-Length:
       - '41'
+      Date:
+      - Mon, 13 Nov 2017 12:09:58 GMT
     body:
       encoding: UTF-8
-      string: '[{"timestamp":1509437606573,"value":1.1}]'
+      string: '[{"timestamp":1510574998501,"value":1.1}]'
     http_version: 
-  recorded_at: Tue, 31 Oct 2017 08:13:26 GMT
+  recorded_at: Mon, 13 Nov 2017 12:09:58 GMT
 - request:
     method: get
-    uri: http://localhost:8080/hawkular/metrics/availability/<%= id %>/raw/
+    uri: http://localhost:8081/hawkular/metrics/availability/<%= id %>/raw/
     body:
       encoding: US-ASCII
       string: ''
@@ -294,7 +282,7 @@ http_interactions:
       Content-Type:
       - application/json
       Host:
-      - localhost:8080
+      - localhost:8081
       Authorization:
       - Basic amRvZTpwYXNzd29yZA==
   response:
@@ -302,27 +290,25 @@ http_interactions:
       code: 200
       message: OK
     headers:
-      Expires:
-      - '0'
+      Connection:
+      - keep-alive
       Cache-Control:
-      - no-cache, no-store, must-revalidate
+      - no-cache
+      Vary:
+      - Origin,Accept-Encoding
       X-Powered-By:
       - Undertow/1
       Server:
       - WildFly/10
-      Pragma:
-      - no-cache
-      Date:
-      - Tue, 31 Oct 2017 08:13:26 GMT
-      Connection:
-      - keep-alive
       Content-Type:
       - application/json
       Content-Length:
       - '44'
+      Date:
+      - Mon, 13 Nov 2017 12:09:58 GMT
     body:
       encoding: UTF-8
-      string: '[{"timestamp":1509437606573,"value":"down"}]'
+      string: '[{"timestamp":1510574998501,"value":"down"}]'
     http_version: 
-  recorded_at: Tue, 31 Oct 2017 08:13:26 GMT
+  recorded_at: Mon, 13 Nov 2017 12:09:58 GMT
 recorded_with: VCR 3.0.3

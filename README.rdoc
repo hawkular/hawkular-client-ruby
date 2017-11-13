@@ -135,7 +135,6 @@ Check each resource API for a detailed description of what methods are available
 Integration tests are recorded and played against cassettes recorded with VCR
 (http://www.relishapp.com/vcr/vcr/docs)
 
-* Edit the endpoint properties in the file +spec/endpoint.yml+ (user, password and host name) if needed
 * From command line run
     rake spec
 * To run the tests against a live server, set +VCR_OFF+ to +1+ as in

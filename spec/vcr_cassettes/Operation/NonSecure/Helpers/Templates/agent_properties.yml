@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://localhost:8080/<%= tenant_id %>/inventory/resources?maxResults=100&startOffSet=0&typeId=Hawkular%20WildFly%20Agent
+    uri: http://localhost:8080/<%= tenant_id %>/inventory/resources?maxResults=100&startOffSet=0&typeId=Hawkular%20Java%20Agent%20WF10
     body:
       encoding: US-ASCII
       string: ''
@@ -37,19 +37,19 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Tue, 31 Oct 2017 08:03:50 GMT
+      - Mon, 13 Nov 2017 12:10:10 GMT
       Connection:
       - keep-alive
       Content-Type:
       - application/json
       Content-Length:
-      - '531'
+      - '566'
     body:
       encoding: UTF-8
-      string: '{"results":[{"id":"e1f8fda30051~Local JMX~org.<%= tenant_id %>:type=<%= tenant_id %>-javaagent","name":"Hawkular
-        WildFly Agent","feedId":"e1f8fda30051","type":{"id":"Hawkular WildFly Agent","operations":[{"name":"Start","parameters":{}},{"name":"Stop","parameters":{}},{"name":"Status","parameters":{}},{"name":"Inventory
-        Discovery Scan","parameters":{}},{"name":"Inventory Report","parameters":{}}],"properties":{}},"parentId":null,"metrics":[],"properties":{},"config":{"Immutable":"true","In
-        Container":"true"}}],"resultSize":1,"startOffset":0}'
+      string: '{"results":[{"id":"7e9fa1d632f0~Local JMX~org.<%= tenant_id %>:type=<%= tenant_id %>-javaagent","name":"Hawkular
+        Java Agent","feedId":"7e9fa1d632f0","type":{"id":"Hawkular Java Agent WF10","operations":[{"name":"Start","parameters":{}},{"name":"Stop","parameters":{}},{"name":"Status","parameters":{}},{"name":"Inventory
+        Discovery Scan","parameters":{}},{"name":"Inventory Report","parameters":{}}],"properties":{}},"parentId":null,"metrics":[],"properties":{},"config":{"Immutable":"true","Metrics
+        Endpoint":"127.0.0.1:9779","In Container":"true"}}],"resultSize":1,"startOffset":0}'
     http_version: 
-  recorded_at: Tue, 31 Oct 2017 08:03:50 GMT
+  recorded_at: Mon, 13 Nov 2017 12:10:10 GMT
 recorded_with: VCR 3.0.3

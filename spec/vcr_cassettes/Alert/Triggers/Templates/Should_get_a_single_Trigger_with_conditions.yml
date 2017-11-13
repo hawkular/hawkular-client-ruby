@@ -37,7 +37,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 25 Oct 2017 13:42:57 GMT
+      - Mon, 13 Nov 2017 12:09:53 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -48,7 +48,7 @@ http_interactions:
       encoding: UTF-8
       string: '{"tenantId":"hawkular","id":"my-trigger-01","name":"defaultName","type":"STANDARD","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"MEDIUM","tags":{"app":"MyShop","resourceId":"my-resource01"},"autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","enabled":false,"firingMatch":"ALL","source":"_none_"}'
     http_version: 
-  recorded_at: Wed, 25 Oct 2017 13:42:57 GMT
+  recorded_at: Mon, 13 Nov 2017 12:09:53 GMT
 - request:
     method: get
     uri: http://localhost:8080/hawkular/alerts/triggers/my-trigger-01/conditions
@@ -86,18 +86,19 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 25 Oct 2017 13:42:57 GMT
+      - Mon, 13 Nov 2017 12:09:53 GMT
       Connection:
       - keep-alive
       Content-Type:
       - application/json
       Content-Length:
-      - '238'
+      - '271'
     body:
       encoding: UTF-8
-      string: '[{"tenantId":"hawkular","triggerId":"my-trigger-01","triggerMode":"FIRING","type":"THRESHOLD","conditionSetSize":1,"conditionSetIndex":1,"conditionId":"hawkular-my-trigger-01-FIRING-1-1","dataId":"data-x","operator":"LT","threshold":5.0}]'
+      string: '[{"tenantId":"hawkular","triggerId":"my-trigger-01","triggerMode":"FIRING","type":"THRESHOLD","conditionSetSize":1,"conditionSetIndex":1,"conditionId":"hawkular-my-trigger-01-FIRING-1-1","displayString":"data-x
+        LT 5.00","dataId":"data-x","operator":"LT","threshold":5.0}]'
     http_version: 
-  recorded_at: Wed, 25 Oct 2017 13:42:57 GMT
+  recorded_at: Mon, 13 Nov 2017 12:09:53 GMT
 - request:
     method: get
     uri: http://localhost:8080/hawkular/alerts/triggers/my-trigger-01/dampenings
@@ -135,7 +136,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 25 Oct 2017 13:42:58 GMT
+      - Mon, 13 Nov 2017 12:09:53 GMT
       Connection:
       - keep-alive
       Content-Type:
@@ -146,5 +147,5 @@ http_interactions:
       encoding: UTF-8
       string: '[{"tenantId":"hawkular","triggerId":"my-trigger-01","triggerMode":"FIRING","type":"STRICT","evalTrueSetting":1,"evalTotalSetting":1,"evalTimeSetting":0,"dampeningId":"hawkular-my-trigger-01-FIRING"}]'
     http_version: 
-  recorded_at: Wed, 25 Oct 2017 13:42:58 GMT
+  recorded_at: Mon, 13 Nov 2017 12:09:53 GMT
 recorded_with: VCR 3.0.3
