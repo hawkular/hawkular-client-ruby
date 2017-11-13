@@ -8,12 +8,8 @@ include Hawkular::Operations
 
 SKIP_SECURE_CONTEXT = ENV['SKIP_SECURE_CONTEXT'] || '1'
 HOSTS = {
-  :Secure => 'localhost:8443',
-  :NonSecure => 'localhost:8080'
-}
-URIS = {
-  :Secure => "https://#{HOSTS[:Secure]}",
-  :NonSecure => "http://#{HOSTS[:NonSecure]}"
+  Secure: 'localhost:8443',
+  NonSecure: 'localhost:8080'
 }
 
 # examples for operations, it uses the websocket communication
