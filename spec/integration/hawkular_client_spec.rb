@@ -11,8 +11,6 @@ module Hawkular::Client::RSpec
   HOST = 'http://localhost:8080'
 
   describe 'HawkularClient' do
-    alias_method :helper_host, :host
-
     let(:cassette_name) do |example|
       description = example.description
       description
@@ -28,7 +26,6 @@ module Hawkular::Client::RSpec
         mock_metrics_version
         @hawkular_client = Hawkular::Client.new(entrypoint: HOST, credentials: @creds, options: { tenant: 'hawkular' })
         @hawkular_client.inventory
-        @hawkular_client.metrics
       end
       @state = {
         hostname: 'localhost.localdomain',
@@ -56,7 +53,6 @@ module Hawkular::Client::RSpec
 
     it 'Should fail when calling unknown method with known client prefix' do
       expect { @hawkular_client.inventory_lyst_feeds }.to raise_error(NoMethodError)
-      expect { @hawkular_client.metrics_lyst_feeds }.to raise_error(NoMethodError)
       expect { @hawkular_client.alerts_lyst_feeds }.to raise_error(NoMethodError)
       expect { @hawkular_client.tokens_lyst_feeds }.to raise_error(NoMethodError)
     end
@@ -70,24 +66,6 @@ module Hawkular::Client::RSpec
           the_client = Hawkular::Client.new(entrypoint: uri, credentials: @creds, options: opts)
           expect { the_client.inventory.root_resources }.to_not raise_error
         end
-      end
-
-      it 'Should work with URI on metrics client' do
-        uri = URI.parse HOST
-        opts = { tenant: 'hawkular' }
-        record('HawkularClient', nil, cassette_name) do
-          mock_metrics_version
-          the_client = Hawkular::Metrics::Client.new(uri, @creds, opts)
-          expect { the_client.http_get '/status' }.to_not raise_error
-        end
-      end
-
-      it 'Should work with https URI on metrics client' do
-        uri = URI.parse 'https://localhost:8080'
-        opts = { tenant: 'hawkular' }
-        mock_metrics_version
-        the_client = Hawkular::Metrics::Client.new(uri, @creds, opts)
-        expect !the_client.nil?
       end
     end
 
@@ -120,69 +98,6 @@ module Hawkular::Client::RSpec
       end
     end
 
-    context 'and Metrics client' do
-      include Hawkular::Metrics::RSpec
-
-      before(:all) do
-        ::RSpec::Mocks.with_temporary_scope do
-          mock_metrics_version
-          opts = { tenant: 'hawkular' }
-          @client = Hawkular::Metrics::Client.new(HOST, @creds, opts)
-        end
-      end
-
-      it 'Should both work the same way when pushing metric data to non-existing counter' do
-        id = SecureRandom.uuid
-        record('HawkularClient', { id: id }, 'and_Metrics_client/Should both work the same way when' \
-                              ' pushing metric data to non-existing counter') do
-          @client.counters.push_data(id, value: 4)
-          data = @hawkular_client.metrics.counters.get_data(id)
-          expect(data.size).to be 1
-          counter = @hawkular_client.metrics.counters.get(id)
-          expect(counter.id).to eql(id)
-        end
-      end
-
-      it 'Should both create and return Availability using Hash parameter' do
-        id1 = SecureRandom.uuid
-        id2 = SecureRandom.uuid
-        record('HawkularClient', { id1: id1, id2: id2 }, 'and_Metrics_client/Should both create and return' \
-                  'Availability using Hash parameter') do
-          @client.avail.create(id: id1, dataRetention: 123, tags: { some: 'value' })
-          metric = @hawkular_client.metrics.avail.get(id1)
-          expect(metric.id).to eql(id1)
-          expect(metric.data_retention).to eql(123)
-
-          @hawkular_client.metrics.avail.create(id: id2, dataRetention: 321, tags: { some: 'value' })
-          metric = @client.avail.get(id2)
-          expect(metric.id).to eql(id2)
-          expect(metric.data_retention).to eql(321)
-        end
-      end
-
-      it 'Should both update tags for Availability' do
-        id1 = SecureRandom.uuid
-        id2 = SecureRandom.uuid
-        record('HawkularClient', { id1: id1, id2: id2 }, 'and_Metrics_client/Should both create and retrieve tags'\
-                  'for Availability') do
-          @client.avail.create(id: id1, tags: { myTag: id1 })
-          metric = @hawkular_client.metrics.avail.get(id1)
-          expect(metric.id).to eql(id1)
-          @hawkular_client.metrics.avail.create(id: id2, tags: { myTag: id2 })
-          metric = @client.avail.get(id2)
-          expect(metric.id).to eql(id2)
-        end
-      end
-
-      it 'Should both return the version' do
-        record('HawkularClient', nil, 'and_Metrics_client/Should both return the version') do
-          data1 = @client.fetch_version_and_status
-          data2 = @hawkular_client.metrics.fetch_version_and_status
-          expect(data1).to eql(data2)
-        end
-      end
-    end
-
     context 'and Operations client' do
       include Hawkular::Operations::RSpec
 
@@ -190,13 +105,9 @@ module Hawkular::Client::RSpec
         c.hook_uris = ['localhost:8080']
       end
 
-      let(:host) do
-        helper_host(:NonSecure)
-      end
-
       let(:options) do
         {
-          host: host,
+          entrypoint: HOST,
           wait_time: WebSocketVCR.live? ? 1.5 : 2,
           use_secure_connection: false,
           credentials: credentials,
@@ -209,8 +120,7 @@ module Hawkular::Client::RSpec
       before(:each) do
         record('HawkularClient/Helpers', nil, 'get_tenant') do
           mock_inventory_client
-          @inventory_client = ::Hawkular::Inventory::Client.create(
-            options.merge entrypoint: host_with_scheme(host, false))
+          @inventory_client = ::Hawkular::Inventory::Client.create(options)
           inventory_client = @inventory_client
           remove_instance_variable(:@inventory_client)
           @tenant_id = 'hawkular'
@@ -227,7 +137,7 @@ module Hawkular::Client::RSpec
 
       it 'Should both work the same way', :websocket do
         record_websocket('HawkularClient', nil, cassette_name) do
-          wf_server = @hawkular_client.inventory.resources(typeId: 'WildFly Server', root: true)[0]
+          wf_server = @hawkular_client.inventory.resources(typeId: 'WildFly Server WF10', root: true)[0]
           restart = {
             resource_id: wf_server.id,
             feed_id: wf_server.feed,

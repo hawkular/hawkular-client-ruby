@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://localhost:8080/hawkular/metrics/status
+    uri: <%= entrypoint %>/status
     body:
       encoding: US-ASCII
       string: ''
@@ -18,7 +18,7 @@ http_interactions:
       Content-Type:
       - application/json
       Host:
-      - localhost:8080
+      - localhost:8081
       Authorization:
       - Basic amRvZTpwYXNzd29yZA==
   response:
@@ -28,6 +28,10 @@ http_interactions:
     headers:
       Connection:
       - keep-alive
+      Cache-Control:
+      - no-cache
+      Vary:
+      - Origin,Accept-Encoding
       X-Powered-By:
       - Undertow/1
       Server:
@@ -37,10 +41,10 @@ http_interactions:
       Content-Length:
       - '150'
       Date:
-      - Tue, 31 Oct 2017 08:13:27 GMT
+      - Mon, 13 Nov 2017 12:09:59 GMT
     body:
       encoding: UTF-8
-      string: '{"MetricsService":"STARTED","Implementation-Version":"0.26.1.Final","Built-From-Git-SHA1":"45b148c834ed62018f153c23187b4436ae4208fe","Cassandra":"up"}'
+      string: '{"MetricsService":"STARTED","Implementation-Version":"0.28.2.Final","Built-From-Git-SHA1":"8d5399b7af220b9a8ab63457bce92ffa2df451b3","Cassandra":"up"}'
     http_version: 
-  recorded_at: Tue, 31 Oct 2017 08:13:27 GMT
+  recorded_at: Mon, 13 Nov 2017 12:09:59 GMT
 recorded_with: VCR 3.0.3

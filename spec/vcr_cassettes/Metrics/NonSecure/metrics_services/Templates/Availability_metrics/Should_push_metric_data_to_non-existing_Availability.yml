@@ -2,10 +2,10 @@
 http_interactions:
 - request:
     method: post
-    uri: http://localhost:8080/hawkular/metrics/availability/<%= id %>/raw
+    uri: http://localhost:8081/hawkular/metrics/availability/<%= id %>/raw
     body:
       encoding: UTF-8
-      string: '[{"value":"UP","timestamp":1509437606914}]'
+      string: '[{"value":"UP","timestamp":1510574998868}]'
     headers:
       Accept:
       - application/json
@@ -20,7 +20,7 @@ http_interactions:
       Content-Length:
       - '42'
       Host:
-      - localhost:8080
+      - localhost:8081
       Authorization:
       - Basic amRvZTpwYXNzd29yZA==
   response:
@@ -28,30 +28,28 @@ http_interactions:
       code: 200
       message: OK
     headers:
-      Expires:
-      - '0'
       Connection:
       - keep-alive
       Cache-Control:
-      - no-cache, no-store, must-revalidate
+      - no-cache
+      Vary:
+      - Origin,Accept-Encoding
       X-Powered-By:
       - Undertow/1
       Server:
       - WildFly/10
-      Pragma:
-      - no-cache
       Content-Length:
       - '0'
       Date:
-      - Tue, 31 Oct 2017 08:13:26 GMT
+      - Mon, 13 Nov 2017 12:09:58 GMT
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Tue, 31 Oct 2017 08:13:26 GMT
+  recorded_at: Mon, 13 Nov 2017 12:09:58 GMT
 - request:
     method: get
-    uri: http://localhost:8080/hawkular/metrics/availability/<%= id %>/raw/
+    uri: http://localhost:8081/hawkular/metrics/availability/<%= id %>/raw/
     body:
       encoding: US-ASCII
       string: ''
@@ -67,7 +65,7 @@ http_interactions:
       Content-Type:
       - application/json
       Host:
-      - localhost:8080
+      - localhost:8081
       Authorization:
       - Basic amRvZTpwYXNzd29yZA==
   response:
@@ -75,32 +73,30 @@ http_interactions:
       code: 200
       message: OK
     headers:
-      Expires:
-      - '0'
+      Connection:
+      - keep-alive
       Cache-Control:
-      - no-cache, no-store, must-revalidate
+      - no-cache
+      Vary:
+      - Origin,Accept-Encoding
       X-Powered-By:
       - Undertow/1
       Server:
       - WildFly/10
-      Pragma:
-      - no-cache
-      Date:
-      - Tue, 31 Oct 2017 08:13:26 GMT
-      Connection:
-      - keep-alive
       Content-Type:
       - application/json
       Content-Length:
       - '42'
+      Date:
+      - Mon, 13 Nov 2017 12:09:58 GMT
     body:
       encoding: UTF-8
-      string: '[{"timestamp":1509437606914,"value":"up"}]'
+      string: '[{"timestamp":1510574998868,"value":"up"}]'
     http_version: 
-  recorded_at: Tue, 31 Oct 2017 08:13:26 GMT
+  recorded_at: Mon, 13 Nov 2017 12:09:58 GMT
 - request:
     method: get
-    uri: http://localhost:8080/hawkular/metrics/availability/<%= id %>
+    uri: http://localhost:8081/hawkular/metrics/availability/<%= id %>
     body:
       encoding: US-ASCII
       string: ''
@@ -116,7 +112,7 @@ http_interactions:
       Content-Type:
       - application/json
       Host:
-      - localhost:8080
+      - localhost:8081
       Authorization:
       - Basic amRvZTpwYXNzd29yZA==
   response:
@@ -124,27 +120,25 @@ http_interactions:
       code: 200
       message: OK
     headers:
-      Expires:
-      - '0'
+      Connection:
+      - keep-alive
       Cache-Control:
-      - no-cache, no-store, must-revalidate
+      - no-cache
+      Vary:
+      - Origin,Accept-Encoding
       X-Powered-By:
       - Undertow/1
       Server:
       - WildFly/10
-      Pragma:
-      - no-cache
-      Date:
-      - Tue, 31 Oct 2017 08:13:26 GMT
-      Connection:
-      - keep-alive
       Content-Type:
       - application/json
       Content-Length:
-      - '231'
+      - '230'
+      Date:
+      - Mon, 13 Nov 2017 12:09:58 GMT
     body:
       encoding: UTF-8
-      string: '{"id":"<%= id %>","dataRetention":14,"type":"availability","tenantId":"<%= vcr_test_tenant %>","minTimestamp":1509437606914,"maxTimestamp":1509437606914}'
+      string: '{"id":"<%= id %>","dataRetention":7,"type":"availability","tenantId":"<%= vcr_test_tenant %>","minTimestamp":1510574998868,"maxTimestamp":1510574998868}'
     http_version: 
-  recorded_at: Tue, 31 Oct 2017 08:13:26 GMT
+  recorded_at: Mon, 13 Nov 2017 12:09:58 GMT
 recorded_with: VCR 3.0.3

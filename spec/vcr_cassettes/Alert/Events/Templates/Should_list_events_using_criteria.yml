@@ -37,7 +37,7 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 25 Oct 2017 13:43:00 GMT
+      - Mon, 13 Nov 2017 12:09:55 GMT
       X-Total-Count:
       - '4'
       Connection:
@@ -52,11 +52,11 @@ http_interactions:
         rel="last"
     body:
       encoding: UTF-8
-      string: '[{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-07","ctime":1508938980000,"dataSource":"_none_","category":"my-category-01","text":"some
-        text for this event"},{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-05","ctime":1508938980000,"dataSource":"_none_","category":"my-category-02","text":"some
-        text for this event"},{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-03","ctime":1508938980000,"dataSource":"_none_","category":"my-category-01","text":"some
-        text for this event"},{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-02","ctime":1508938980000,"dataSource":"_none_","category":"my-category-01","text":"some
+      string: '[{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-07","ctime":1510574995000,"dataSource":"_none_","category":"my-category-01","text":"some
+        text for this event"},{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-05","ctime":1510574995000,"dataSource":"_none_","category":"my-category-02","text":"some
+        text for this event"},{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-03","ctime":1510574995000,"dataSource":"_none_","category":"my-category-01","text":"some
+        text for this event"},{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-02","ctime":1510574995000,"dataSource":"_none_","category":"my-category-01","text":"some
         text for this event"}]'
     http_version: 
-  recorded_at: Wed, 25 Oct 2017 13:43:00 GMT
+  recorded_at: Mon, 13 Nov 2017 12:09:55 GMT
 recorded_with: VCR 3.0.3
