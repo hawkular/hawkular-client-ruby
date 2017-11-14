@@ -3,6 +3,20 @@
 This document describes the relevant changes between releases of the
 _hawkular-client_ project.
 
+=== v 5.0.0.pre1
+* Hawkular services version 0.40.x and Hawkular Agent 1.x will be the last
+  versions to include support for _inventory-on-metrics_ and Hawkular Metrics.
+  The following versions won't be backwards compatible. Right now, a new API
+  for inventory is already implemented. This pre-release of the client is
+  adding support for this new inventory API and removing all support for the
+  previous implementation. See link:api_breaking_changes.rdoc for more details.
+* Because of the new inventory implementation, the _Operations_ client requires
+  the feed id to be sent on all operations. See link:api_breaking_changes.rdoc
+  for more details.
+* Support for a _sender_request_id_ has been added to the _Operations_ client.
+  This allows to match operation requests with their respective operation result
+  websocket messages.
+
 === v 4.1.0
 * Fixed binary data handling when invoking <em>Export JDR</em> on operations API.
 * Added <em>delete_immediately</em> parameter to <em>Export JDR</em> operation.

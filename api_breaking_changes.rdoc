@@ -1,5 +1,27 @@
 == Breaking changes in the major releases
 
+=== 5.0.0.pre1
+* The Hawkular inventory implementation was rewritten. Thus, the support for
+  inventory on metrics has been removed from the client. The new API is now
+  being used. Some of the most important changes are these:
+  * CanonicalPath is removed. Now, entities in inventory have opaque IDs,
+    and no assumptions about the format of the ID can be done.
+  * Inventory has now four basic classes for entities: Resource, Resource Type,
+    Metric and Operation. The _BaseEntity_ class has been removed.
+  * The inventory client <code>Hawkular::Inventory::Client</code> class was
+    fully rewritten. None of the previous methods exist. Now, it is using the new
+    API exposed by Hawkular and provides basic methods to traverse the inventory
+    tree and do some simple queries.
+* Almost all _Operations_ client methods receive a hash with the parameters
+  to perform the operation. A common hash key was <code>resourcePath</code>.
+  Because of the new inventory API, this key is no longer requried. Instead,
+  <code>resourceId</code> and <code>feedId</code> keys are required. This means
+  that all methods of the _Operations_ client class are non-backwards compatible.
+  * In particular, <code>export_jdr</code> method does not receive a hash, but
+    plain parameters. The <code>resourcePath</code> parameter was replaced by
+    <code>resourceId</code> and <code>feedId</code> parameters. Also, support
+    for <code>sender_request_id</code> is added as a parameter.
+
 === 4.0.0
 * Standardized Exceptions under the Hawkular namespace, and the old names were deprecated, here is the list:
   1. <code>Hawkular::BaseClient::HawkularException</code> -> <code>Hawkular::Exception</code>
