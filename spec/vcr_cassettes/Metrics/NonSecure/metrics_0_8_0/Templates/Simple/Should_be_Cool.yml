@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://localhost:8080/hawkular/metrics
+    uri: http://localhost:8081/hawkular/metrics
     body:
       encoding: US-ASCII
       string: ''

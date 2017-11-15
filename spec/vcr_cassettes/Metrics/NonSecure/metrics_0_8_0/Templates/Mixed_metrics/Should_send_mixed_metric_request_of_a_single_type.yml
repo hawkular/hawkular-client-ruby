@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: http://localhost:8080/hawkular/metrics/metrics/data
+    uri: http://localhost:8081/hawkular/metrics/metrics/data
     body:
       encoding: UTF-8
       string: '{"gauges":[],"counters":[{"id":"<%= id %>","data":[{"value":1,"timestamp":1467304297056}]}],"availabilities":[]}'
@@ -41,7 +41,7 @@ http_interactions:
   recorded_at: Thu, 30 Jun 2016 16:31:37 GMT
 - request:
     method: get
-    uri: http://localhost:8080/hawkular/metrics/counters/<%= id %>/data/
+    uri: http://localhost:8081/hawkular/metrics/counters/<%= id %>/data/
     body:
       encoding: US-ASCII
       string: ''
@@ -80,7 +80,7 @@ http_interactions:
   recorded_at: Thu, 30 Jun 2016 16:31:37 GMT
 - request:
     method: post
-    uri: http://localhost:8080/hawkular/metrics/metrics/data
+    uri: http://localhost:8081/hawkular/metrics/metrics/data
     body:
       encoding: UTF-8
       string: '{"gauges":[],"counters":[],"availabilities":[{"id":"<%= id %>","data":[{"value":"down","timestamp":1467304297104}]}]}'
@@ -119,7 +119,7 @@ http_interactions:
   recorded_at: Thu, 30 Jun 2016 16:31:37 GMT
 - request:
     method: get
-    uri: http://localhost:8080/hawkular/metrics/availability/<%= id %>/data/
+    uri: http://localhost:8081/hawkular/metrics/availability/<%= id %>/data/
     body:
       encoding: US-ASCII
       string: ''
@@ -158,7 +158,7 @@ http_interactions:
   recorded_at: Thu, 30 Jun 2016 16:31:37 GMT
 - request:
     method: post
-    uri: http://localhost:8080/hawkular/metrics/metrics/data
+    uri: http://localhost:8081/hawkular/metrics/metrics/data
     body:
       encoding: UTF-8
       string: '{"gauges":[{"id":"<%= id %>","data":[{"value":1.1,"timestamp":1467304297146}]}],"counters":[],"availabilities":[]}'
@@ -197,7 +197,7 @@ http_interactions:
   recorded_at: Thu, 30 Jun 2016 16:31:37 GMT
 - request:
     method: get
-    uri: http://localhost:8080/hawkular/metrics/gauges/<%= id %>/data/
+    uri: http://localhost:8081/hawkular/metrics/gauges/<%= id %>/data/
     body:
       encoding: US-ASCII
       string: ''

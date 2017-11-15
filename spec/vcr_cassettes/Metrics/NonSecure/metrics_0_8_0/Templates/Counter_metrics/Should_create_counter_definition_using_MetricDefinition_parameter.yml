@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: http://localhost:8080/hawkular/metrics/counters
+    uri: http://localhost:8081/hawkular/metrics/counters
     body:
       encoding: UTF-8
       string: '{"id":"<%= id %>","dataRetention":90,"tags":{"tag":"value"}}'
@@ -31,7 +31,7 @@ http_interactions:
       Server:
       - WildFly/9
       Location:
-      - http://localhost:8080/hawkular/metrics/counters/<%= id %>
+      - http://localhost:8081/hawkular/metrics/counters/<%= id %>
       Content-Length:
       - '0'
       Date:
@@ -43,7 +43,7 @@ http_interactions:
   recorded_at: Thu, 30 Jun 2016 16:31:37 GMT
 - request:
     method: get
-    uri: http://localhost:8080/hawkular/metrics/counters/<%= id %>
+    uri: http://localhost:8081/hawkular/metrics/counters/<%= id %>
     body:
       encoding: US-ASCII
       string: ''

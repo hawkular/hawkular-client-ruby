@@ -99,7 +99,7 @@ security_contexts.each do |security_context|
                  options,
                  'Client/setup_client') do
             if metrics_context == v8_context
-              setup_v8_client
+              setup_v8_client(options)
             else
               setup_client(options)
             end
@@ -118,7 +118,7 @@ security_contexts.each do |security_context|
                  options,
                  'Tenants/setup_client') do
             if metrics_context == v8_context
-              setup_v8_client
+              setup_v8_client(options)
             else
               setup_client(options)
             end
@@ -153,7 +153,7 @@ security_contexts.each do |security_context|
                  options,
                  'Mixed_metrics/setup_client') do
             if metrics_context == v8_context
-              setup_v8_client tenant: vcr_test_tenant
+              setup_v8_client(setup_options.merge(tenant: vcr_test_tenant))
             else
               setup_client(setup_options)
             end
@@ -330,7 +330,7 @@ security_contexts.each do |security_context|
                  options,
                  'Counter_metrics/setup_client') do
             if metrics_context == v8_context
-              setup_v8_client tenant: @tenant
+              setup_v8_client(setup_options.merge(tenant: @tenant))
             else
               setup_client(setup_options.merge(tenant: @tenant))
             end
@@ -494,7 +494,7 @@ security_contexts.each do |security_context|
                  options,
                  'Availability_metrics/setup_client') do
             if metrics_context == v8_context
-              setup_v8_client tenant: @tenant
+              setup_v8_client(setup_options.merge(tenant: @tenant))
             else
               setup_client(setup_options.merge(tenant: @tenant))
             end
@@ -561,7 +561,7 @@ security_contexts.each do |security_context|
                  setup_options.merge(tenant: @tenant),
                  'Gauge_metrics/setup_client') do
             if metrics_context == v8_context
-              setup_v8_client tenant: @tenant
+              setup_v8_client(setup_options.merge(tenant: @tenant))
             else
               setup_client(setup_options.merge(tenant: @tenant))
             end
@@ -648,7 +648,7 @@ security_contexts.each do |security_context|
       describe 'Status' do
         it 'Should return the version' do
           if metrics_context == v8_context
-            setup_v8_client
+            setup_v8_client setup_options
           else
             setup_client setup_options
           end

@@ -10,13 +10,17 @@ http_interactions:
       Accept:
       - application/json
       Accept-Encoding:
-      - gzip, deflate
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
       Hawkular-Tenant:
       - hawkular
       Content-Type:
       - application/json
-      User-Agent:
-      - Ruby
+      Host:
+      - localhost:8081
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 200
@@ -24,19 +28,23 @@ http_interactions:
     headers:
       Connection:
       - keep-alive
+      Cache-Control:
+      - no-cache
+      Vary:
+      - Origin,Accept-Encoding
       X-Powered-By:
       - Undertow/1
       Server:
-      - WildFly/9
+      - WildFly/10
       Content-Type:
       - application/json
       Content-Length:
-      - '132'
+      - '150'
       Date:
-      - Thu, 30 Jun 2016 16:31:36 GMT
+      - Mon, 13 Nov 2017 12:09:58 GMT
     body:
       encoding: UTF-8
-      string: '{"MetricsService":"STARTED","Implementation-Version":"0.8.0.Final","Built-From-Git-SHA1":"fba0489ea5b443f986b1bbb02ae9906fd6709cab"}'
+      string: '{"MetricsService":"STARTED","Implementation-Version":"0.28.2.Final","Built-From-Git-SHA1":"8d5399b7af220b9a8ab63457bce92ffa2df451b3","Cassandra":"up"}'
     http_version: 
-  recorded_at: Thu, 30 Jun 2016 16:31:36 GMT
-recorded_with: VCR 3.0.1
+  recorded_at: Mon, 13 Nov 2017 12:09:58 GMT
+recorded_with: VCR 3.0.3
