@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: http://localhost:8080/hawkular/metrics/counters
+    uri: http://localhost:8081/hawkular/metrics/counters
     body:
       encoding: UTF-8
       string: '{"id":"<%= id %>"}'
@@ -31,7 +31,7 @@ http_interactions:
       Server:
       - WildFly/9
       Location:
-      - http://localhost:8080/hawkular/metrics/counters/<%= id %>
+      - http://localhost:8081/hawkular/metrics/counters/<%= id %>
       Content-Length:
       - '0'
       Date:
@@ -43,7 +43,7 @@ http_interactions:
   recorded_at: Thu, 30 Jun 2016 16:31:37 GMT
 - request:
     method: post
-    uri: http://localhost:8080/hawkular/metrics/counters/<%= id %>/data
+    uri: http://localhost:8081/hawkular/metrics/counters/<%= id %>/data
     body:
       encoding: UTF-8
       string: '[{"value":1,"timestamp":<%= minus30 %>},{"value":2,"timestamp":<%=
@@ -83,7 +83,7 @@ http_interactions:
   recorded_at: Thu, 30 Jun 2016 16:31:37 GMT
 - request:
     method: get
-    uri: http://localhost:8080/hawkular/metrics/counters/<%= id %>/data/
+    uri: http://localhost:8081/hawkular/metrics/counters/<%= id %>/data/
     body:
       encoding: US-ASCII
       string: ''
@@ -123,7 +123,7 @@ http_interactions:
   recorded_at: Thu, 30 Jun 2016 16:31:37 GMT
 - request:
     method: post
-    uri: http://localhost:8080/hawkular/metrics/counters/<%= id %>/data
+    uri: http://localhost:8081/hawkular/metrics/counters/<%= id %>/data
     body:
       encoding: UTF-8
       string: '[{"value":4,"timestamp":1467304297430}]'
@@ -162,7 +162,7 @@ http_interactions:
   recorded_at: Thu, 30 Jun 2016 16:31:37 GMT
 - request:
     method: get
-    uri: http://localhost:8080/hawkular/metrics/counters/<%= id %>/data/
+    uri: http://localhost:8081/hawkular/metrics/counters/<%= id %>/data/
     body:
       encoding: US-ASCII
       string: ''
@@ -202,7 +202,7 @@ http_interactions:
   recorded_at: Thu, 30 Jun 2016 16:31:37 GMT
 - request:
     method: get
-    uri: http://localhost:8080/hawkular/metrics/counters/<%= id %>/data/?end=<%= minus4h
+    uri: http://localhost:8081/hawkular/metrics/counters/<%= id %>/data/?end=<%= minus4h
       %>&start=<%= minus8h %>
     body:
       encoding: US-ASCII

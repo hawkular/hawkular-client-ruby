@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: http://localhost:8080/hawkular/metrics/counters
+    uri: http://localhost:8081/hawkular/metrics/counters
     body:
       encoding: UTF-8
       string: '{"id":"<%= id %>"}'
@@ -31,7 +31,7 @@ http_interactions:
       Server:
       - WildFly/9
       Location:
-      - http://localhost:8080/hawkular/metrics/counters/<%= id %>
+      - http://localhost:8081/hawkular/metrics/counters/<%= id %>
       Content-Length:
       - '0'
       Date:
@@ -43,7 +43,7 @@ http_interactions:
   recorded_at: Thu, 30 Jun 2016 16:31:37 GMT
 - request:
     method: post
-    uri: http://localhost:8080/hawkular/metrics/counters/<%= id %>/data
+    uri: http://localhost:8081/hawkular/metrics/counters/<%= id %>/data
     body:
       encoding: UTF-8
       string: '[{"value":110,"timestamp":<%= minus110 %>},{"value":100,"timestamp":<%=
@@ -87,7 +87,7 @@ http_interactions:
   recorded_at: Thu, 30 Jun 2016 16:31:37 GMT
 - request:
     method: get
-    uri: http://localhost:8080/hawkular/metrics/counters/<%= id %>/data/?buckets=5&end=<%=
+    uri: http://localhost:8081/hawkular/metrics/counters/<%= id %>/data/?buckets=5&end=<%=
       minus5 %>&start=<%= minus105 %>
     body:
       encoding: US-ASCII
@@ -128,7 +128,7 @@ http_interactions:
   recorded_at: Thu, 30 Jun 2016 16:31:37 GMT
 - request:
     method: get
-    uri: http://localhost:8080/hawkular/metrics/counters/<%= id %>/data/?buckets=2&end=<%=
+    uri: http://localhost:8081/hawkular/metrics/counters/<%= id %>/data/?buckets=2&end=<%=
       minus5 %>&start=<%= minus105 %>
     body:
       encoding: US-ASCII
@@ -169,7 +169,7 @@ http_interactions:
   recorded_at: Thu, 30 Jun 2016 16:31:37 GMT
 - request:
     method: get
-    uri: http://localhost:8080/hawkular/metrics/counters/<%= id %>/data/?bucketDuration=50ms&end=<%=
+    uri: http://localhost:8081/hawkular/metrics/counters/<%= id %>/data/?bucketDuration=50ms&end=<%=
       minus5 %>&start=<%= minus105 %>
     body:
       encoding: US-ASCII

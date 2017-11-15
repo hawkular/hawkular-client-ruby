@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: http://localhost:8080/hawkular/metrics/gauges
+    uri: http://localhost:8081/hawkular/metrics/gauges
     body:
       encoding: UTF-8
       string: '{"id":"<%= id %>","dataRetention":90,"tags":{"tag":"value"}}'
@@ -31,7 +31,7 @@ http_interactions:
       Server:
       - WildFly/9
       Location:
-      - http://localhost:8080/hawkular/metrics/gauges/<%= id %>
+      - http://localhost:8081/hawkular/metrics/gauges/<%= id %>
       Content-Length:
       - '0'
       Date:
@@ -43,7 +43,7 @@ http_interactions:
   recorded_at: Thu, 30 Jun 2016 16:31:37 GMT
 - request:
     method: get
-    uri: http://localhost:8080/hawkular/metrics/gauges/<%= id %>
+    uri: http://localhost:8081/hawkular/metrics/gauges/<%= id %>
     body:
       encoding: US-ASCII
       string: ''

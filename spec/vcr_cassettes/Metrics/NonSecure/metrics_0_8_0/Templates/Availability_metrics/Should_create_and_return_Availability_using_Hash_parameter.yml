@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: http://localhost:8080/hawkular/metrics/availability
+    uri: http://localhost:8081/hawkular/metrics/availability
     body:
       encoding: UTF-8
       string: '{"id":"<%= id %>","dataRetention":123,"tags":{"some":"value"},"tenantId":"<%=
@@ -32,7 +32,7 @@ http_interactions:
       Server:
       - WildFly/9
       Location:
-      - http://localhost:8080/hawkular/metrics/availability/<%= id %>
+      - http://localhost:8081/hawkular/metrics/availability/<%= id %>
       Content-Length:
       - '0'
       Date:
@@ -44,7 +44,7 @@ http_interactions:
   recorded_at: Thu, 30 Jun 2016 16:31:37 GMT
 - request:
     method: get
-    uri: http://localhost:8080/hawkular/metrics/availability/<%= id %>
+    uri: http://localhost:8081/hawkular/metrics/availability/<%= id %>
     body:
       encoding: US-ASCII
       string: ''
