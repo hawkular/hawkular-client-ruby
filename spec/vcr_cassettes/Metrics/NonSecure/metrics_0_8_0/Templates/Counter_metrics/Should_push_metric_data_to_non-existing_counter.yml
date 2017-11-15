@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: http://localhost:8080/hawkular/metrics/counters/<%= id %>/data
+    uri: http://localhost:8081/hawkular/metrics/counters/<%= id %>/data
     body:
       encoding: UTF-8
       string: '[{"value":4,"timestamp":1467304297589}]'
@@ -41,7 +41,7 @@ http_interactions:
   recorded_at: Thu, 30 Jun 2016 16:31:37 GMT
 - request:
     method: get
-    uri: http://localhost:8080/hawkular/metrics/counters/<%= id %>/data/
+    uri: http://localhost:8081/hawkular/metrics/counters/<%= id %>/data/
     body:
       encoding: US-ASCII
       string: ''
@@ -80,7 +80,7 @@ http_interactions:
   recorded_at: Thu, 30 Jun 2016 16:31:37 GMT
 - request:
     method: get
-    uri: http://localhost:8080/hawkular/metrics/counters/<%= id %>
+    uri: http://localhost:8081/hawkular/metrics/counters/<%= id %>
     body:
       encoding: US-ASCII
       string: ''

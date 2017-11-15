@@ -57,7 +57,7 @@ module Hawkular::Metrics::RSpec
     options[:verify_ssl] ||= OpenSSL::SSL::VERIFY_NONE
     ::RSpec::Mocks.with_temporary_scope do
       mock_metrics_version '0.8.0'
-      @client = Hawkular::Metrics::Client.new(entrypoint('v8', 'metrics'),
+      @client = Hawkular::Metrics::Client.new(options[:entrypoint],
                                               credentials_v8(options), options)
     end
     @client
