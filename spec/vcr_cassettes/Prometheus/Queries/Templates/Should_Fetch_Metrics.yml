@@ -1,0 +1,81 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://localhost:8080/hawkular/alerter/prometheus/endpoint
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Host:
+      - localhost:8080
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '21'
+      Date:
+      - Fri, 17 Nov 2017 15:14:38 GMT
+    body:
+      encoding: UTF-8
+      string: http://localhost:9090
+    http_version: 
+  recorded_at: Fri, 17 Nov 2017 15:14:38 GMT
+- request:
+    method: get
+    uri: http://localhost:9090/api/v1/query_range?end=2017-11-17T14:49:00Z&query=jvm_memory_bytes_used%7Barea=%22heap%22,feed_id=%22attilan%22%7D%20or%20jvm_memory_bytes_used%7Barea=%22nonheap%22,feed_id=%22attilan%22%7D&start=2017-11-17T14:48:00Z&step=5s
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Content-Type:
+      - application/json
+      Host:
+      - localhost:9090
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Headers:
+      - Accept, Authorization, Content-Type, Origin
+      Access-Control-Allow-Methods:
+      - GET, OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - Date
+      Content-Type:
+      - application/json
+      Date:
+      - Fri, 17 Nov 2017 15:14:38 GMT
+      Content-Length:
+      - '841'
+    body:
+      encoding: UTF-8
+      string: '{"status":"success","data":{"resultType":"matrix","result":[{"metric":{"__name__":"jvm_memory_bytes_used","area":"heap","feed_id":"attilan","instance":"127.0.0.1:9779","job":"hawkular"},"values":[[1510930095,"252327232"],[1510930100,"252327232"],[1510930105,"252327232"],[1510930110,"267279128"],[1510930115,"267279128"],[1510930120,"267279128"],[1510930125,"288050696"],[1510930130,"288050696"],[1510930135,"288050696"],[1510930140,"251954304"]]},{"metric":{"__name__":"jvm_memory_bytes_used","area":"nonheap","feed_id":"attilan","instance":"127.0.0.1:9779","job":"hawkular"},"values":[[1510930095,"240264760"],[1510930100,"240264760"],[1510930105,"240264760"],[1510930110,"241565400"],[1510930115,"241565400"],[1510930120,"241565400"],[1510930125,"242169584"],[1510930130,"242169584"],[1510930135,"242169584"],[1510930140,"242326184"]]}]}}'
+    http_version: 
+  recorded_at: Fri, 17 Nov 2017 15:14:38 GMT
+recorded_with: VCR 3.0.3
