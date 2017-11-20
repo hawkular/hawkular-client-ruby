@@ -7,6 +7,8 @@ module Hawkular::Inventory
     attr_reader :family
     # @return [String] Unit of the metric
     attr_reader :unit
+    # @return [String] Expression of the metric (Prometheus expression)
+    attr_reader :expression
     # @return [Hash<String,String>] Labels of this metric (Prometheus labels)
     attr_reader :labels
     # @return [Hash<String,String>] Properties of this metric
@@ -16,8 +18,16 @@ module Hawkular::Inventory
       @name = hash['displayName']
       @family = hash['family']
       @unit = hash['unit']
+      @expression = hash['expression']
       @labels = hash['labels'] || {}
       @properties = hash['properties'] || {}
+      @_hash = hash.dup
+    end
+
+    # Returns a hash representation of the metric type
+    # @return [Hash<String,Object>] hash of the metric type
+    def to_h
+      @_hash.dup
     end
   end
 
