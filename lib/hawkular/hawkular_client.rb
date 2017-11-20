@@ -59,7 +59,7 @@ module Hawkular
     end
 
     def prometheus
-      @prometheus ||= Prometheus::Client.new(@state[:endpoint],
+      @prometheus ||= Prometheus::Client.new(@state[:entrypoint],
                                              @state[:credentials],
                                              @state[:options])
     end
