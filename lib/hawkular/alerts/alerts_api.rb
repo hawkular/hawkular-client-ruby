@@ -448,6 +448,7 @@ module Hawkular::Alerts
     class Condition
       attr_accessor :condition_id, :type, :operator, :threshold
       attr_accessor :trigger_mode, :data_id, :data2_id, :data2_multiplier
+      attr_accessor :alerter_id, :expression
       attr_reader :condition_set_size, :condition_set_index, :trigger_id
 
       def initialize(cond_hash)
@@ -461,7 +462,8 @@ module Hawkular::Alerts
         @data2_id = cond_hash['data2Id']
         @data2_multiplier = cond_hash['data2Multiplier']
         @trigger_id = cond_hash['triggerId']
-        @interval = cond_hash['interval']
+        @alerter_id = cond_hash['alerterId']
+        @expression = cond_hash['expression']
       end
 
       def to_h
@@ -476,7 +478,8 @@ module Hawkular::Alerts
         cond_hash['data2Id'] = @data2_id
         cond_hash['data2Multiplier'] = @data2_multiplier
         cond_hash['triggerId'] = @trigger_id
-        cond_hash['interval'] = @interval
+        cond_hash['alerterId'] = @alerter_id
+        cond_hash['expression'] = @expression
         cond_hash
       end
     end
