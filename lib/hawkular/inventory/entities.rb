@@ -1,10 +1,14 @@
 # It contains class definitions that are used by the inventory REST client
 module Hawkular::Inventory
   class Metric
-    # @return [String] Name of the metric
+    # @return [String] Provider Name of the metric
     attr_reader :name
+    # @return [String] Display Name of the metric
+    attr_reader :display_name
     # @return [String] Family of the metric (Prometheus family name)
     attr_reader :family
+    # @return [String] Promql expression for fetching the  time series
+    attr_reader :expression
     # @return [String] Unit of the metric
     attr_reader :unit
     # @return [String] Expression of the metric (Prometheus expression)
@@ -16,7 +20,9 @@ module Hawkular::Inventory
 
     def initialize(hash)
       @name = hash['displayName']
+      @display_name = hash['displayName']
       @family = hash['family']
+      @expression = hash['expression']
       @unit = hash['unit']
       @expression = hash['expression']
       @labels = hash['labels'] || {}
@@ -29,6 +35,18 @@ module Hawkular::Inventory
     def to_h
       @_hash.dup
     end
+
+    def to_h
+        metric_hash = {}
+        metric_hash['name'] = @name
+        metric_hash['displayName'] = @display_name
+        metric_hash['family'] = @family
+        metric_hash['expression'] = @expression
+        metric_hash['unit'] = @unit
+        metric_hash['labels'] = @labels
+        metric_hash['properties'] = @properties
+        metric_hash
+      end
   end
 
   class Operation
