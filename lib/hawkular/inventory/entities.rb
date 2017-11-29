@@ -35,18 +35,6 @@ module Hawkular::Inventory
     def to_h
       @_hash.dup
     end
-
-    def to_h
-        metric_hash = {}
-        metric_hash['name'] = @name
-        metric_hash['displayName'] = @display_name
-        metric_hash['family'] = @family
-        metric_hash['expression'] = @expression
-        metric_hash['unit'] = @unit
-        metric_hash['labels'] = @labels
-        metric_hash['properties'] = @properties
-        metric_hash
-      end
   end
 
   class Operation

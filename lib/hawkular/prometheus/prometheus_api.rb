@@ -27,13 +27,11 @@ module Hawkular::Prometheus
       results = []
       metrics.each do |metric|
         query = metric['expression']
-        puts("DELETEME p8s - /query?time=#{time}&query=#{query}")
         response = http_get "/query?start=#{time}&query=#{query}"
         result = response['data']['result'].empty? ? {} : response['data']['result'].first
         result['metric'] = metric
         results << result
       end
-      puts("DELETEME p8s - query #{results}")
       results
     end
 
@@ -41,23 +39,17 @@ module Hawkular::Prometheus
       results = []
       metrics.each do |metric|
         query = metric['expression']
-        puts("DELETEME p8s - /query_range?start=#{starts}&end=#{ends}&step=#{step}&query=#{query}")
         response = http_get "/query_range?start=#{starts}&end=#{ends}&step=#{step}&query=#{query}"
         result = response['data']['result'].empty? ? {} : response['data']['result'].first
         result['metric'] = metric
-        # DELETEME this, it's to have this info, as a worker can't show the stdout correctly
-        # result['query'] = "/query_range?start=#{starts}&end=#{ends}&step=#{step}&query=#{query}"
         results << result
       end
-      puts("DELETEME p8s - query_range #{results}")
       results
     end
 
     def up_time(feed_id: nil, starts: nil, ends: nil, step: nil)
       query = "up{feed_id=\"#{feed_id}\"}"
-      puts("DELETEME p8s - up_time /query_range?start=#{starts}&end=#{ends}&step=#{step}&query=#{query}")
       response = http_get "/query_range?start=#{starts}&end=#{ends}&step=#{step}&query=#{query}"
-      puts("DELETEME p8s - up_time feed_id #{feed_id} #{response['data']['result']}")
       if response['data']['result'].empty?
         []
       else
