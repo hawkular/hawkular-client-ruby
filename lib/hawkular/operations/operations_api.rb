@@ -431,8 +431,14 @@ module Hawkular::Operations
     end
 
     def to_camel_case(str)
-      ret = str.split('_').collect(&:capitalize).join
-      ret[0, 1].downcase + ret[1..-1]
+      subs = str.split('_')
+      if subs.length > 1
+        ret = subs.collect(&:capitalize).join
+      else
+        ret = subs[0]
+      end
+      ret[0] = ret[0].downcase
+      ret
     end
   end
 end
