@@ -1,4 +1,5 @@
 hawkular-metrics:
+  # !! TODO consider changing this from rubensvp
   image: "rubensvp/hawkular-metrics:latest"
   ports:
     - "8081:8080"
@@ -17,7 +18,7 @@ myCassandra:
     - CASSANDRA_START_RPC=true
 hawkular-services:
   # !! WARNING !! FIXME !! TODO !!
-  # Reset to hawkular/hawkular-services:latest before merging in master
+  # Reset to hawkular/hawkular-services:latest when services 1275 work is merged to master
   image: "hawkular/hawkular-services:hawkular-1275"
   ports:
     - "8080:8080"
