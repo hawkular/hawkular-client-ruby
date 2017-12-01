@@ -20,6 +20,11 @@ SECURE_CONTEXT = :Secure
 NON_SECURE_CONTEXT = :NonSecure
 
 security_contexts = [NON_SECURE_CONTEXT, SECURE_CONTEXT].freeze
+entrypoints = {
+  Secure: 'https://localhost:8444/hawkular/metrics',
+  NonSecure: 'http://localhost:8081/hawkular/metrics'
+}
+
 vcr_test_tenant_postfix = "-vcr-tenant-#{SecureRandom.uuid}".freeze
 
 security_contexts.each do |security_context|
@@ -38,7 +43,8 @@ security_contexts.each do |security_context|
     next if security_context == SECURE_CONTEXT && metrics_context == v8_context
 
     setup_options = {
-      type: security_context
+      type: security_context,
+      entrypoint: entrypoints[security_context]
     }.freeze
 
     describe "#{metrics_context} #{security_context}" do
@@ -81,8 +87,27 @@ security_contexts.each do |security_context|
 
       describe 'Simple' do
         it 'Should be Cool' do
-          url = metrics_context == v8_context ? entrypoint('v8', 'metrics') : entrypoint(security_context, 'metrics')
+          url = entrypoints[security_context]
           Net::HTTP.get_response(URI(url))
+        end
+      end
+
+      describe 'Client' do
+        before(:all) do
+          options = setup_options.merge admin_token: @admin_token
+          record("Metrics/#{security_context}/#{metrics_context}",
+                 options,
+                 'Client/setup_client') do
+            if metrics_context == v8_context
+              setup_v8_client(options)
+            else
+              setup_client(options)
+            end
+          end
+        end
+
+        it 'Should get status' do
+          expect { @client.http_get '/status' }.to_not raise_error
         end
       end
 
@@ -93,7 +118,7 @@ security_contexts.each do |security_context|
                  options,
                  'Tenants/setup_client') do
             if metrics_context == v8_context
-              setup_v8_client
+              setup_v8_client(options)
             else
               setup_client(options)
             end
@@ -128,7 +153,7 @@ security_contexts.each do |security_context|
                  options,
                  'Mixed_metrics/setup_client') do
             if metrics_context == v8_context
-              setup_v8_client tenant: vcr_test_tenant
+              setup_v8_client(setup_options.merge(tenant: vcr_test_tenant))
             else
               setup_client(setup_options)
             end
@@ -268,7 +293,7 @@ security_contexts.each do |security_context|
           expect(stats.size).to be 3
           expect(stats['gauge'][@random_id].first['avg']).to be 1.1
           expect(stats['counter'][@random_id].first['avg']).to be 1.0
-          expect(stats['availability'][@random_id].first['downtimeCount']).to be 1
+          expect(stats['availability'][@random_id].first['notUpCount']).to be 1
         end
 
         it 'Should fetch rate stats for mixed metric', run_for: [services_context] do
@@ -305,7 +330,7 @@ security_contexts.each do |security_context|
                  options,
                  'Counter_metrics/setup_client') do
             if metrics_context == v8_context
-              setup_v8_client tenant: @tenant
+              setup_v8_client(setup_options.merge(tenant: @tenant))
             else
               setup_client(setup_options.merge(tenant: @tenant))
             end
@@ -469,7 +494,7 @@ security_contexts.each do |security_context|
                  options,
                  'Availability_metrics/setup_client') do
             if metrics_context == v8_context
-              setup_v8_client tenant: @tenant
+              setup_v8_client(setup_options.merge(tenant: @tenant))
             else
               setup_client(setup_options.merge(tenant: @tenant))
             end
@@ -530,23 +555,13 @@ security_contexts.each do |security_context|
       end
 
       describe 'Gauge metrics' do
-        hawkular_tenant_id = 'hawkular'.freeze
-
-        let(:hawkular_mem_id) do
-          inventory_client = setup_inventory_client(entrypoint(security_context, 'inventory'),
-                                                    tenant: hawkular_tenant_id)
-          memory_rs = inventory_client.resources_for_type('Platform_Memory')[0]
-          metric = memory_rs.metrics.select { |r| r.name == 'Total Memory' }[0]
-          metric.hawkular_id
-        end
-
         before(:all) do
           @tenant = vcr_test_tenant
           record("Metrics/#{security_context}/#{metrics_context}",
                  setup_options.merge(tenant: @tenant),
                  'Gauge_metrics/setup_client') do
             if metrics_context == v8_context
-              setup_v8_client tenant: @tenant
+              setup_v8_client(setup_options.merge(tenant: @tenant))
             else
               setup_client(setup_options.merge(tenant: @tenant))
             end
@@ -628,52 +643,12 @@ security_contexts.each do |security_context|
                  cassette_name,
                  example: example)
         end
-
-        it 'Should return platform memory def', :skip_auto_vcr, run_for: [services_context] do
-          bindings = { tenant: hawkular_tenant_id }
-          example = proc do
-            if metrics_context == v8_context
-              setup_v8_client tenant: hawkular_tenant_id
-            else
-              setup_client(setup_options.merge tenant: hawkular_tenant_id)
-            end
-
-            data = @client.gauges.get(hawkular_mem_id)
-
-            expect(data).not_to be_nil # needs the services to run for some time so that discovery is run (~5 min)
-            expect(data.id).not_to be_nil
-            expect(data.tenant_id).to eq(hawkular_tenant_id)
-          end
-          record("Metrics/#{security_context}/#{metrics_context}",
-                 vcr_bindings.merge(bindings),
-                 cassette_name,
-                 example: example)
-        end
-
-        it 'Should return platform memory', :skip_auto_vcr, run_for: [services_context] do
-          bindings = { tenant: hawkular_tenant_id }
-          example = proc do
-            # this id depends on OS and the feed id
-            if metrics_context == v8_context
-              setup_v8_client tenant: tenant_id
-            else
-              setup_client(setup_options.merge tenant: hawkular_tenant_id)
-            end
-
-            data = @client.gauges.get_data(hawkular_mem_id)
-            expect(data.size).to be >= 2 # needs the services to be running for some time (~10 min)
-          end
-          record("Metrics/#{security_context}/#{metrics_context}",
-                 vcr_bindings.merge(bindings),
-                 cassette_name,
-                 example: example)
-        end
       end
 
       describe 'Status' do
         it 'Should return the version' do
           if metrics_context == v8_context
-            setup_v8_client
+            setup_v8_client setup_options
           else
             setup_client setup_options
           end
@@ -859,7 +834,8 @@ security_contexts.each do |security_context|
         record("Metrics/#{security_context}/ID_with_special_characters",
                { tenant: vcr_test_tenant },
                'setup_client') do
-          setup_client(type: security_context, tenant: vcr_test_tenant)
+          setup_client(type: security_context, tenant: vcr_test_tenant,
+                       entrypoint: entrypoints[security_context])
         end
       end
 

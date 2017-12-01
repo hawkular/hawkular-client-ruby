@@ -37,57 +37,57 @@ http_interactions:
       Pragma:
       - no-cache
       Date:
-      - Wed, 25 Oct 2017 13:43:00 GMT
+      - Mon, 13 Nov 2017 12:09:55 GMT
       X-Total-Count:
-      - '30'
+      - '28'
       Connection:
       - keep-alive
       Content-Type:
       - application/json
       Content-Length:
-      - '7415'
+      - '6328'
       Link:
       - <http://localhost:8080/hawkular/alerts/admin/events?thin=true>; rel="current",
         <http://localhost:8080/hawkular/alerts/admin/events?thin=true&page=0>; rel="last"
     body:
       encoding: UTF-8
-      string: '[{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-12","ctime":1508938980000,"dataSource":"_none_","category":"general-category","text":"some
-        text for this event"},{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-11","ctime":1508938980000,"dataSource":"_none_","category":"general-category","text":"some
-        text for this event"},{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-10","ctime":1508938980000,"dataSource":"_none_","category":"general-category","text":"some
-        text for this event"},{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-09","ctime":1508938980000,"dataSource":"_none_","category":"general-category","text":"some
-        text for this event"},{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-08","ctime":1508938980000,"dataSource":"_none_","category":"general-category","text":"some
-        text for this event"},{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-07","ctime":1508938980000,"dataSource":"_none_","category":"my-category-01","text":"some
-        text for this event"},{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-06","ctime":1508938980000,"dataSource":"_none_","category":"general-category","text":"some
-        text for this event"},{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-05","ctime":1508938980000,"dataSource":"_none_","category":"my-category-02","text":"some
-        text for this event"},{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-04","ctime":1508938980000,"dataSource":"_none_","category":"general-category","text":"some
-        text for this event"},{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-03","ctime":1508938980000,"dataSource":"_none_","category":"my-category-01","text":"some
-        text for this event"},{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-02","ctime":1508938980000,"dataSource":"_none_","category":"my-category-01","text":"some
-        text for this event"},{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-01","ctime":1508938980000,"dataSource":"_none_","category":"general-category","text":"some
-        text for this event"},{"eventType":"ALERT","tenantId":"hawkular","id":"hello-world-trigger-1508938979501-40e233f8-59d9-4551-b3c6-61095043af16","ctime":1508938979501,"dataSource":"_none_","dataId":"hello-world-trigger","category":"ALERT","text":"A
-        mandatory Hello World Trigger","trigger":{"tenantId":"hawkular","id":"hello-world-trigger","name":"Hello
-        World Trigger","description":"A mandatory Hello World Trigger","type":"STANDARD","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"HIGH","autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","enabled":true,"firingMatch":"ALL","source":"_none_"},"severity":null,"status":"OPEN"},{"eventType":"ALERT","tenantId":"hawkular","id":"a-trigger-1508938979501-83278a13-8c96-4ea6-b828-61c52f765a62","ctime":1508938979501,"dataSource":"_none_","dataId":"a-trigger","category":"ALERT","text":"Just
-        a trigger","trigger":{"tenantId":"hawkular","id":"a-trigger","name":"A trigger
-        name","description":"Just a trigger","type":"STANDARD","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"HIGH","autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","enabled":true,"firingMatch":"ALL","source":"_none_"},"severity":null,"status":"OPEN"},{"eventType":"EVENT","tenantId":"hawkular","id":"RESOURCE_ADDED_716e7f866181_716e7f866181~Local~~","ctime":1508938054892,"dataSource":"_none_","category":"Inventory
-        Change","text":"Added: WildFly Server","context":{"resource_id":"716e7f866181~Local~~","message":"Added:
-        WildFly Server","feed_id":"716e7f866181"},"tags":{"miq.event_type":"hawkular_event","miq.resource_type":"MiddlewareServer"}},{"eventType":"EVENT","tenantId":"hawkular","id":"0ed80196-0b77-45a4-8364-88aa6a9fdf56","ctime":1508938085059,"dataSource":"_none_","category":"Inventory
-        Change","text":"Avail change [UP]: Server Availability","context":{"resource_id":"716e7f866181~Local~~","message":"Avail
-        change [UP]: Server Availability","feed_id":"716e7f866181"},"tags":{"miq.event_type":"hawkular_event","miq.resource_type":"MiddlewareServer"}},{"eventType":"EVENT","tenantId":"foo","id":"my-event-12","ctime":1508938980000,"dataSource":"_none_","category":"general-category","text":"some
-        text for this event"},{"eventType":"EVENT","tenantId":"foo","id":"my-event-11","ctime":1508938980000,"dataSource":"_none_","category":"general-category","text":"some
-        text for this event"},{"eventType":"EVENT","tenantId":"foo","id":"my-event-10","ctime":1508938980000,"dataSource":"_none_","category":"general-category","text":"some
-        text for this event"},{"eventType":"EVENT","tenantId":"foo","id":"my-event-09","ctime":1508938980000,"dataSource":"_none_","category":"general-category","text":"some
-        text for this event"},{"eventType":"EVENT","tenantId":"foo","id":"my-event-08","ctime":1508938980000,"dataSource":"_none_","category":"general-category","text":"some
-        text for this event"},{"eventType":"EVENT","tenantId":"foo","id":"my-event-07","ctime":1508938980000,"dataSource":"_none_","category":"my-category-01","text":"some
-        text for this event"},{"eventType":"EVENT","tenantId":"foo","id":"my-event-06","ctime":1508938980000,"dataSource":"_none_","category":"general-category","text":"some
-        text for this event"},{"eventType":"EVENT","tenantId":"foo","id":"my-event-05","ctime":1508938980000,"dataSource":"_none_","category":"my-category-02","text":"some
-        text for this event"},{"eventType":"EVENT","tenantId":"foo","id":"my-event-04","ctime":1508938980000,"dataSource":"_none_","category":"general-category","text":"some
-        text for this event"},{"eventType":"EVENT","tenantId":"foo","id":"my-event-03","ctime":1508938980000,"dataSource":"_none_","category":"my-category-01","text":"some
-        text for this event"},{"eventType":"EVENT","tenantId":"foo","id":"my-event-02","ctime":1508938980000,"dataSource":"_none_","category":"my-category-01","text":"some
-        text for this event"},{"eventType":"EVENT","tenantId":"foo","id":"my-event-01","ctime":1508938980000,"dataSource":"_none_","category":"general-category","text":"some
-        text for this event"},{"eventType":"ALERT","tenantId":"foo","id":"hello-world-trigger-1508938979501-59f60eeb-0558-4254-abf1-a602d2ea90e2","ctime":1508938979501,"dataSource":"_none_","dataId":"hello-world-trigger","category":"ALERT","text":"A
-        mandatory Hello World Trigger","trigger":{"tenantId":"foo","id":"hello-world-trigger","name":"Hello
-        World Trigger","description":"A mandatory Hello World Trigger","type":"STANDARD","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"HIGH","autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","enabled":true,"firingMatch":"ALL","source":"_none_"},"severity":null,"status":"OPEN"},{"eventType":"ALERT","tenantId":"foo","id":"a-trigger-1508938979501-d04a243e-5052-49da-9fc6-77329a22244e","ctime":1508938979501,"dataSource":"_none_","dataId":"a-trigger","category":"ALERT","text":"Just
-        a trigger","trigger":{"tenantId":"foo","id":"a-trigger","name":"A trigger
-        name","description":"Just a trigger","type":"STANDARD","eventType":"ALERT","eventCategory":null,"eventText":null,"severity":"HIGH","autoDisable":false,"autoEnable":false,"autoResolve":false,"autoResolveAlerts":true,"autoResolveMatch":"ALL","enabled":true,"firingMatch":"ALL","source":"_none_"},"severity":null,"status":"OPEN"}]'
+      string: '[{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-12","ctime":1510574995000,"dataSource":"_none_","category":"general-category","text":"some
+        text for this event"},{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-11","ctime":1510574995000,"dataSource":"_none_","category":"general-category","text":"some
+        text for this event"},{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-10","ctime":1510574995000,"dataSource":"_none_","category":"general-category","text":"some
+        text for this event"},{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-09","ctime":1510574995000,"dataSource":"_none_","category":"general-category","text":"some
+        text for this event"},{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-08","ctime":1510574995000,"dataSource":"_none_","category":"general-category","text":"some
+        text for this event"},{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-07","ctime":1510574995000,"dataSource":"_none_","category":"my-category-01","text":"some
+        text for this event"},{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-06","ctime":1510574995000,"dataSource":"_none_","category":"general-category","text":"some
+        text for this event"},{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-05","ctime":1510574995000,"dataSource":"_none_","category":"my-category-02","text":"some
+        text for this event"},{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-04","ctime":1510574995000,"dataSource":"_none_","category":"general-category","text":"some
+        text for this event"},{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-03","ctime":1510574995000,"dataSource":"_none_","category":"my-category-01","text":"some
+        text for this event"},{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-02","ctime":1510574995000,"dataSource":"_none_","category":"my-category-01","text":"some
+        text for this event"},{"eventType":"EVENT","tenantId":"hawkular","id":"my-event-01","ctime":1510574995000,"dataSource":"_none_","category":"general-category","text":"some
+        text for this event"},{"eventType":"EVENT","tenantId":"hawkular","id":"aaa157db-6b4a-4e32-9027-4e0d8bfec6e2","ctime":1510574949795,"dataSource":"_none_","category":"AddDatasourceResponse","text":"error","context":{"resource_id":"7e9fa1d632f0~Local~~","message":"Could
+        not perform [Add] on a [Datasource] given by inventory path [7e9fa1d632f0~Local~~]
+        requested on [2017-11-13T12:09Z]: java.lang.IllegalStateException: Command
+        not allowed because the agent is immutable","feed_id":"7e9fa1d632f0"},"tags":{"miq.resource_type":"MiddlewareServer","miq.event_type":"hawkular_datasource.error"}},{"eventType":"EVENT","tenantId":"hawkular","id":"9e00d2f0-07a3-471a-a812-fe74371727fe","ctime":1510574954304,"dataSource":"_none_","category":"UndeployApplicationResponse","text":"error","context":{"resource_id":"7e9fa1d632f0~Local~~","message":"Could
+        not perform [Undeploy] on a [Application] given by inventory path [7e9fa1d632f0~Local~~]
+        requested on [2017-11-13T12:09Z]: java.lang.IllegalStateException: Command
+        not allowed because the agent is immutable","feed_id":"7e9fa1d632f0"},"tags":{"miq.resource_type":"MiddlewareServer","miq.event_type":"hawkular_deployment_remove.error"}},{"eventType":"EVENT","tenantId":"hawkular","id":"408c8eee-a1ba-46a3-851b-1d3853ae1550","ctime":1510574950939,"dataSource":"_none_","category":"AddDatasourceResponse","text":"error","context":{"resource_id":"7e9fa1d632f0~Local~~","message":"Could
+        not perform [Add] on a [Datasource] given by inventory path [7e9fa1d632f0~Local~~]
+        requested on [2017-11-13T12:09Z]: java.lang.IllegalStateException: Command
+        not allowed because the agent is immutable","feed_id":"7e9fa1d632f0"},"tags":{"miq.resource_type":"MiddlewareServer","miq.event_type":"hawkular_datasource.error"}},{"eventType":"EVENT","tenantId":"hawkular","id":"15917514-947e-4d6d-87ce-cc8c9fbd7841","ctime":1510574953188,"dataSource":"_none_","category":"DeployApplicationResponse","text":"error","context":{"resource_id":"7e9fa1d632f0~Local~~","message":"Could
+        not perform [Deploy] on a [Application] given by inventory path [7e9fa1d632f0~Local~~]
+        requested on [2017-11-13T12:09Z]: java.lang.IllegalStateException: Command
+        not allowed because the agent is immutable","feed_id":"7e9fa1d632f0"},"tags":{"miq.resource_type":"MiddlewareServer","miq.event_type":"hawkular_deployment.error"}},{"eventType":"EVENT","tenantId":"foo","id":"my-event-12","ctime":1510574995000,"dataSource":"_none_","category":"general-category","text":"some
+        text for this event"},{"eventType":"EVENT","tenantId":"foo","id":"my-event-11","ctime":1510574995000,"dataSource":"_none_","category":"general-category","text":"some
+        text for this event"},{"eventType":"EVENT","tenantId":"foo","id":"my-event-10","ctime":1510574995000,"dataSource":"_none_","category":"general-category","text":"some
+        text for this event"},{"eventType":"EVENT","tenantId":"foo","id":"my-event-09","ctime":1510574995000,"dataSource":"_none_","category":"general-category","text":"some
+        text for this event"},{"eventType":"EVENT","tenantId":"foo","id":"my-event-08","ctime":1510574995000,"dataSource":"_none_","category":"general-category","text":"some
+        text for this event"},{"eventType":"EVENT","tenantId":"foo","id":"my-event-07","ctime":1510574995000,"dataSource":"_none_","category":"my-category-01","text":"some
+        text for this event"},{"eventType":"EVENT","tenantId":"foo","id":"my-event-06","ctime":1510574995000,"dataSource":"_none_","category":"general-category","text":"some
+        text for this event"},{"eventType":"EVENT","tenantId":"foo","id":"my-event-05","ctime":1510574995000,"dataSource":"_none_","category":"my-category-02","text":"some
+        text for this event"},{"eventType":"EVENT","tenantId":"foo","id":"my-event-04","ctime":1510574995000,"dataSource":"_none_","category":"general-category","text":"some
+        text for this event"},{"eventType":"EVENT","tenantId":"foo","id":"my-event-03","ctime":1510574995000,"dataSource":"_none_","category":"my-category-01","text":"some
+        text for this event"},{"eventType":"EVENT","tenantId":"foo","id":"my-event-02","ctime":1510574995000,"dataSource":"_none_","category":"my-category-01","text":"some
+        text for this event"},{"eventType":"EVENT","tenantId":"foo","id":"my-event-01","ctime":1510574995000,"dataSource":"_none_","category":"general-category","text":"some
+        text for this event"}]'
     http_version: 
-  recorded_at: Wed, 25 Oct 2017 13:43:00 GMT
+  recorded_at: Mon, 13 Nov 2017 12:09:55 GMT
 recorded_with: VCR 3.0.3

@@ -1,9 +1,10 @@
-hawkular:
-  image: "hawkular/hawkular-services:latest"
+hawkular-metrics:
+  # !! TODO consider changing this from rubensvp
+  image: "rubensvp/hawkular-metrics:latest"
   ports:
-    - "8080:8080"
-    - "8443:8443"
-    - "9990:9990"
+    - "8081:8080"
+    - "8444:8443"
+    - "9991:9990"
   links:
     - myCassandra
   volumes:
@@ -15,3 +16,13 @@ myCassandra:
   image: cassandra:3.0.12
   environment:
     - CASSANDRA_START_RPC=true
+hawkular-services:
+  # !! WARNING !! FIXME !! TODO !!
+  # Reset to hawkular/hawkular-services:latest when services 1275 work is merged to master
+  image: "hawkular/hawkular-services:hawkular-1275"
+  ports:
+    - "8080:8080"
+    - "8443:8443"
+    - "9990:9990"
+  volumes:
+    - /tmp/opt/hawkular/server:/opt/data

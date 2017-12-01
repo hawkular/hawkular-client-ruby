@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: http://localhost:8080/hawkular/metrics/tenants
+    uri: http://localhost:8081/hawkular/metrics/tenants
     body:
       encoding: UTF-8
       string: '{"id":"<%= id %>"}'
@@ -22,7 +22,7 @@ http_interactions:
       Content-Length:
       - '45'
       Host:
-      - localhost:8080
+      - localhost:8081
       Authorization:
       - Basic amRvZTpwYXNzd29yZA==
   response:
@@ -30,32 +30,30 @@ http_interactions:
       code: 201
       message: Created
     headers:
-      Expires:
-      - '0'
+      Connection:
+      - keep-alive
       Cache-Control:
-      - no-cache, no-store, must-revalidate
+      - no-cache
+      Vary:
+      - Origin,Accept-Encoding
       X-Powered-By:
       - Undertow/1
       Server:
       - WildFly/10
-      Pragma:
-      - no-cache
       Location:
-      - http://localhost:8080/hawkular/metrics/tenants
-      Date:
-      - Tue, 31 Oct 2017 08:13:26 GMT
-      Connection:
-      - keep-alive
+      - http://localhost:8081/hawkular/metrics/tenants
       Content-Length:
       - '0'
+      Date:
+      - Mon, 13 Nov 2017 12:09:58 GMT
     body:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Tue, 31 Oct 2017 08:13:26 GMT
+  recorded_at: Mon, 13 Nov 2017 12:09:58 GMT
 - request:
     method: get
-    uri: http://localhost:8080/hawkular/metrics/tenants
+    uri: http://localhost:8081/hawkular/metrics/tenants
     body:
       encoding: US-ASCII
       string: ''
@@ -73,7 +71,7 @@ http_interactions:
       Hawkular-Admin-Token:
       - 123-456-789
       Host:
-      - localhost:8080
+      - localhost:8081
       Authorization:
       - Basic amRvZTpwYXNzd29yZA==
   response:
@@ -81,27 +79,25 @@ http_interactions:
       code: 200
       message: OK
     headers:
-      Expires:
-      - '0'
+      Connection:
+      - keep-alive
       Cache-Control:
-      - no-cache, no-store, must-revalidate
+      - no-cache
+      Vary:
+      - Origin,Accept-Encoding
       X-Powered-By:
       - Undertow/1
       Server:
       - WildFly/10
-      Pragma:
-      - no-cache
-      Date:
-      - Tue, 31 Oct 2017 08:13:26 GMT
-      Connection:
-      - keep-alive
       Content-Type:
       - application/json
       Content-Length:
-      - '944'
+      - '2185'
+      Date:
+      - Mon, 13 Nov 2017 12:09:58 GMT
     body:
       encoding: UTF-8
-      string: '[{"id":"<%= id %>"},{"id":"4ac55d1b-b704-4ad0-80b6-49affc46e800"},{"id":"09c3e711-2a58-4786-a61f-d2fb7fb37db8"},{"id":"admin"},{"id":"a726f8e9-2a27-4416-a104-5da15882987d"},{"id":"NonSecuremetrics_services-vcr-tenant-36b3e6bd-3c12-4cd6-a652-ef1fc5fba194"},{"id":"NonSecure-vcr-tenant-2645acda-7bb8-47d8-9e97-a5138bd691ca"},{"id":"NonSecuremetrics_services-vcr-tenant-2645acda-7bb8-47d8-9e97-a5138bd691ca"},{"id":"f8cd0066-b14b-45fb-9125-950023075b55"},{"id":"436e89f2-0add-4f09-83cf-645d2be26126"},{"id":"4429ff05-b487-4d16-a754-bcbb855d0fb0"},{"id":"43ea234f-4541-467f-95b0-e9dd7c41831c"},{"id":"NonSecure-vcr-tenant-36b3e6bd-3c12-4cd6-a652-ef1fc5fba194"},{"id":"NonSecuremetrics_services-vcr-tenant-bfbdb2b8-a14d-481b-99ec-8bc1b1a15fa3"},{"id":"NonSecure-vcr-tenant-bfbdb2b8-a14d-481b-99ec-8bc1b1a15fa3"},{"id":"86eacf19-4c74-42c4-9b36-5e6b562d8ec7"},{"id":"hawkular"},{"id":"5926211d-ef92-46c2-9c77-0043e99f3fcb"}]'
+      string: '[{"id":"ccd7a260-b29d-4ddc-bd12-90057f0d07b9"},{"id":"ebed37a5-7a63-4e7b-a6e7-33c7fe55ac8a"},{"id":"<%= id %>"},{"id":"ec0b69f5-3092-4cb2-b9d6-f56464de33f3"},{"id":"66556551-e2b2-4901-bfff-674b7c99bc99"},{"id":"8056125f-2512-486e-ada9-6fd2e11f92a8"},{"id":"a3574bba-9c97-4012-aec2-d6b5ec7ac10e"},{"id":"cb50fa05-5863-4224-9593-44266d9f36b0"},{"id":"15f73da4-e18a-46da-99d0-0659a8f0cd42"},{"id":"NonSecuremetrics_services-vcr-tenant-4d7d5e38-a280-4856-9615-28233024f8c0"},{"id":"ee932992-d3fb-4462-913d-73b5822124c3"},{"id":"a1e6bf76-f9fb-4565-a7b2-a935bb29c559"},{"id":"4709dd70-a585-4253-ac69-d926b9e12ace"},{"id":"bb6012bf-d357-4db8-8014-8bc8f3cf7b17"},{"id":"cc4f1719-e479-40e2-8144-36d8fe9e3043"},{"id":"3e2a4e4c-355b-4ca1-b452-6f91deef550b"},{"id":"NonSecuremetrics_services-vcr-tenant-c5203bf7-5e90-4b62-a434-0bfd4940f74a"},{"id":"90e8ab55-bd7d-4ffd-914f-04867ee9b113"},{"id":"NonSecuremetrics_services-vcr-tenant-88da5c56-3cac-46cb-9581-ef964e611a4f"},{"id":"08452753-62f1-47d2-88c6-9e2de0a46a1d"},{"id":"12e39884-f071-4ec2-ac61-8bbe0e0be3ac"},{"id":"NonSecuremetrics_services-vcr-tenant-2b48ad56-393f-456b-960b-63b90e2c56b4"},{"id":"NonSecuremetrics_services-vcr-tenant-ff411290-bf74-414b-986a-eb844048b142"},{"id":"f96ca5b7-898e-4e6b-a274-551998cba5da"},{"id":"NonSecure-vcr-tenant-4d7d5e38-a280-4856-9615-28233024f8c0"},{"id":"NonSecure-vcr-tenant-ff411290-bf74-414b-986a-eb844048b142"},{"id":"8a9b04fa-d72c-461c-8cc5-0aa983fcb926"},{"id":"0e9a852b-da02-450c-aeee-2436581731ab"},{"id":"NonSecuremetrics_services-vcr-tenant-fe9296b3-8a98-4dbb-84e5-d482c865cf77"},{"id":"233f59d1-7bf8-4ec2-a3c6-19ce9f7744c9"},{"id":"e03e89a7-5b8a-4f3d-b5ca-d7e90ee3fea8"},{"id":"NonSecuremetrics_services-vcr-tenant-94738c67-94c7-4d01-9349-3075d5ea607c"},{"id":"f106bf5c-dd5d-4ec1-9274-a1c52eb268d5"},{"id":"NonSecuremetrics_services-vcr-tenant-bf472f37-4747-4b04-b278-4b43ba18b14c"},{"id":"dac14fc2-2643-4cea-b67a-666320708af0"},{"id":"29f07f46-094e-45ac-ba2d-5fbde6cf6241"},{"id":"NonSecuremetrics_services-vcr-tenant-71c51c2a-f22d-4491-863d-5fc3737f82fe"},{"id":"1b66bae1-2ba1-4932-9fdb-c31484d52d7c"},{"id":"admin"},{"id":"8acd3f08-0cb2-431d-855d-68a94e5171e0"}]'
     http_version: 
-  recorded_at: Tue, 31 Oct 2017 08:13:26 GMT
+  recorded_at: Mon, 13 Nov 2017 12:09:58 GMT
 recorded_with: VCR 3.0.3

@@ -34,13 +34,13 @@ describe 'Inventory' do
     res = @client.root_resources
     expect(res.size).to be(4)
     expect(res.map { |r| r.type.id }).to include(
-      'Runtime MBean', 'WildFly Server', 'Platform_Operating System', 'Hawkular WildFly Agent')
+      'Runtime MBean WF10', 'WildFly Server WF10', 'Platform_Operating System', 'Hawkular Java Agent WF10')
     # Children are not loaded
     expect(res.map(&:children)).to eq([nil, nil, nil, nil])
   end
 
   it 'Should get by type' do
-    res = @client.resources_for_type('Memory Pool MBean')
+    res = @client.resources_for_type('Memory Pool MBean WF10')
     expect(res.size).to be(6)
     expect(res.map(&:name)).to include(
       'JMX [Local JMX] MemoryPool Metaspace', 'JMX [Local JMX] MemoryPool PS Eden Space')
@@ -52,12 +52,15 @@ describe 'Inventory' do
     expect(res).not_to be_nil
     expect(res.name).to eq('JMX [Local JMX][Runtime]')
     expect(res.type).not_to be_nil
-    expect(res.type.id).to eq('Runtime MBean')
+    expect(res.type.id).to eq('Runtime MBean WF10')
     expect(res.children).to be_nil
     expect(res.metrics).not_to be_nil
-    expect(res.metrics.size).to eq(4)
+    expect(res.metrics.size).to eq(3)
     expect(res.metrics.map(&:name)).to include('VM Uptime', 'Used Heap Memory')
     expect(res.metrics.map(&:unit)).to include('MILLISECONDS', 'BYTES')
+    heap_memory = res.metrics.find { |m| m.name == 'Used Heap Memory' }
+    expect(heap_memory.family).to eq('jvm_memory_bytes_used')
+    expect(heap_memory.labels).to include('area' => 'heap')
   end
 
   it 'Should get subtree' do
@@ -66,7 +69,7 @@ describe 'Inventory' do
     expect(res).not_to be_nil
     expect(res.name).to eq('JMX [Local JMX][Runtime]')
     expect(res.type).not_to be_nil
-    expect(res.type.id).to eq('Runtime MBean')
+    expect(res.type.id).to eq('Runtime MBean WF10')
     expect(res.children).not_to be_nil
     expect(res.children.size).to eq(6)
     expect(res.children.map(&:name)).to include(
@@ -102,6 +105,6 @@ describe 'Inventory' do
     res = @shortpaged_client.root_resources
     expect(res.size).to be(4)
     expect(res.map { |r| r.type.id }).to include(
-      'Runtime MBean', 'WildFly Server', 'Platform_Operating System', 'Hawkular WildFly Agent')
+      'Runtime MBean WF10', 'WildFly Server WF10', 'Platform_Operating System', 'Hawkular Java Agent WF10')
   end
 end

@@ -1,13 +1,13 @@
 require 'hawkular/inventory/inventory_api'
-require 'hawkular/metrics/metrics_client'
 require 'hawkular/alerts/alerts_api'
 require 'hawkular/tokens/tokens_api'
 require 'hawkular/operations/operations_api'
+require 'hawkular/prometheus/prometheus_api'
 require 'hawkular/base_client'
 
 module Hawkular
   class Client
-    attr_reader :inventory, :metrics, :alerts, :operations, :tokens, :state
+    attr_reader :inventory, :alerts, :operations, :tokens, :state, :prometheus
 
     def initialize(hash)
       hash[:credentials] ||= {}
@@ -21,13 +21,13 @@ module Hawkular
     def method_missing(name, *args, &block)
       delegate_client = case name
                         when /^inventory_/ then inventory
-                        when /^metrics_/ then metrics
                         when /^alerts_/ then alerts
                         when /^operations_/ then operations
                         when /^tokens_/ then tokens
+                        when /^prometheus_/ then prometheus
                         else
                           fail Hawkular::ArgumentError, "unknown method prefix `#{name}`, allowed prefixes:"\
-      '`inventory_`, `metrics_`,`alerts_`,`operations_`, `tokens_`'
+      '`inventory_`, `alerts_`, `operations_`, `tokens_`, `prometheus_`'
                         end
       method = name.to_s.sub(/^[^_]+_/, '')
       delegate_client.__send__(method, *args, &block)
@@ -37,12 +37,6 @@ module Hawkular
       @inventory ||= Inventory::Client.new("#{@state[:entrypoint]}/hawkular/inventory",
                                            @state[:credentials],
                                            @state[:options])
-    end
-
-    def metrics
-      @metrics ||= Metrics::Client.new("#{@state[:entrypoint]}/hawkular/metrics",
-                                       @state[:credentials],
-                                       @state[:options])
     end
 
     def alerts
@@ -62,6 +56,12 @@ module Hawkular
       @tokens ||= Token::Client.new(@state[:entrypoint],
                                     @state[:credentials],
                                     @state[:options])
+    end
+
+    def prometheus
+      @prometheus ||= Prometheus::Client.new(@state[:entrypoint],
+                                             @state[:credentials],
+                                             @state[:options])
     end
 
     private

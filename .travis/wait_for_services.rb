@@ -8,12 +8,12 @@ services = {
     is_ready: -> (response) { response.code == '200' }
   },
   'metrics' => {
-    url: 'http://localhost:8080/hawkular/metrics/status',
+    url: 'http://localhost:8081/hawkular/metrics/status',
     is_ready: -> (response) { response.code == '200' && JSON.parse(response.body)['MetricsService'] == 'STARTED' }
   },
   'alerts' => {
     url: 'http://localhost:8080/hawkular/alerts/status',
-    is_ready: -> (response) { response.code == '200' && JSON.parse(response.body)['status'] == 'STARTED' }
+    is_ready: -> (response) { response.code == '200' && JSON.parse(response.body)['status'] == 'UP' }
   },
   'inventory' => {
     url: 'http://localhost:8080/hawkular/inventory/status',

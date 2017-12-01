@@ -732,7 +732,8 @@ module Hawkular::Alerts::RSpec
       @client = Hawkular::Alerts::Client.new(ALERTS_BASE, creds, options)
     end
 
-    it 'Should create and fire a trigger' do
+    # FIXME: disabled because involves hawkular-metrics
+    xit 'Should create and fire a trigger' do
       email_props = { to: 'joe@acme.org',
                       from: 'admin@acme.org' }
       begin

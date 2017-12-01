@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: http://localhost:8080/hawkular/metrics/gauges/<%= id %>/data
+    uri: http://localhost:8081/hawkular/metrics/gauges/<%= id %>/data
     body:
       encoding: UTF-8
       string: '[{"value":1,"timestamp":<%= minus30 %>},{"value":2,"timestamp":<%=
@@ -42,7 +42,7 @@ http_interactions:
   recorded_at: Thu, 30 Jun 2016 16:31:38 GMT
 - request:
     method: get
-    uri: http://localhost:8080/hawkular/metrics/gauges/<%= id %>/periods?op=lte&start=<%=
+    uri: http://localhost:8081/hawkular/metrics/gauges/<%= id %>/periods?op=lte&start=<%=
       before4h %>&threshold=4
     body:
       encoding: US-ASCII

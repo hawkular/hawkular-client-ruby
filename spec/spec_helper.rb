@@ -4,6 +4,7 @@ Coveralls.wear!
 
 # Now the application requires.
 require 'hawkular/hawkular_client'
+require 'hawkular/metrics/metrics_client'
 require 'hawkular/client_utils'
 require 'rspec/core'
 require 'rspec/mocks'
@@ -15,8 +16,8 @@ require 'json'
 module Hawkular::Inventory::RSpec
   def setup_inventory_client(entrypoint, options = {})
     credentials = {
-      username: options[:username].nil? ? config['user'] : options[:username],
-      password: options[:password].nil? ? config['password'] : options[:password]
+      username: options[:username].nil? ? 'jdoe' : options[:username],
+      password: options[:password].nil? ? 'password' : options[:password]
     }
     @client = Hawkular::Inventory::Client.new(entrypoint, credentials, options)
   end
@@ -35,9 +36,7 @@ module Hawkular::Metrics::RSpec
     mocked_version = options[:mocked_version]
     ::RSpec::Mocks.with_temporary_scope do
       mock_metrics_version(mocked_version) unless mocked_version.nil?
-      @client = Hawkular::Metrics::Client.new(entrypoint(options[:type], 'metrics'),
-                                              credentials(options), options)
-      return @client
+      @client = Hawkular::Metrics::Client.new(options[:entrypoint], credentials(options), options)
     end
   end
 
@@ -47,8 +46,7 @@ module Hawkular::Metrics::RSpec
     mocked_version = options[:mocked_version]
     ::RSpec::Mocks.with_temporary_scope do
       mock_metrics_version(mocked_version) unless mocked_version.nil?
-      @client = Hawkular::Metrics::Client.new(entrypoint(options[:type], 'metrics'),
-                                              credentials(options), options)
+      @client = Hawkular::Metrics::Client.new(options[:entrypoint], credentials(options), options)
     end
     @client
   end
@@ -59,7 +57,7 @@ module Hawkular::Metrics::RSpec
     options[:verify_ssl] ||= OpenSSL::SSL::VERIFY_NONE
     ::RSpec::Mocks.with_temporary_scope do
       mock_metrics_version '0.8.0'
-      @client = Hawkular::Metrics::Client.new(entrypoint('v8', 'metrics'),
+      @client = Hawkular::Metrics::Client.new(options[:entrypoint],
                                               credentials_v8(options), options)
     end
     @client
@@ -67,14 +65,14 @@ module Hawkular::Metrics::RSpec
 
   def credentials_v8(options = {})
     {
-      token: options[:token].nil? ? config['token_v8'] : options[:token]
+      token: options[:token].nil? ? '' : options[:token]
     }
   end
 
   def credentials(options = {})
     {
-      username: options[:username].nil? ? config['user'] : options[:username],
-      password: options[:password].nil? ? config['password'] : options[:password]
+      username: options[:username].nil? ? 'jdoe' : options[:username],
+      password: options[:password].nil? ? 'password' : options[:password]
     }
   end
 
@@ -179,25 +177,8 @@ end
 
 # globally used helper functions
 module Helpers
-  def config
-    @config ||= YAML.load(
-      File.read(File.expand_path('endpoint.yml', __dir__))
-    )
-  end
-
-  def entrypoint(type, component = nil)
-    base = config[type.to_s.downcase]
-    entrypoint = "#{base['is_secure'] ? 'https' : 'http'}://#{base['host']}:#{base['port']}/"
-    entrypoint << config[component] unless component.nil?
-  end
-
-  def host(type)
-    base = config[type.to_s.downcase]
-    "#{base['host']}:#{base['port']}"
-  end
-
   def installed_agent(inventory)
-    inventory.resources_for_type('Hawkular WildFly Agent').first
+    inventory.resources_for_type('Hawkular Java Agent WF10').first
   end
 
   def agent_in_container?(agent)

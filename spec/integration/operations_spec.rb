@@ -7,6 +7,10 @@ include Hawkular::Inventory
 include Hawkular::Operations
 
 SKIP_SECURE_CONTEXT = ENV['SKIP_SECURE_CONTEXT'] || '1'
+HOSTS = {
+  Secure: 'localhost:8443',
+  NonSecure: 'localhost:8080'
+}
 
 # examples for operations, it uses the websocket communication
 module Hawkular::Operations::RSpec
@@ -21,10 +25,8 @@ module Hawkular::Operations::RSpec
     end
 
     context "#{security_context}" do
-      alias_method :helper_host, :host
-
       let(:host) do
-        helper_host(security_context)
+        HOSTS[security_context]
       end
 
       let(:options) do
@@ -54,7 +56,7 @@ module Hawkular::Operations::RSpec
 
       before(:all) do
         WebSocketVCR.configure do |c|
-          c.hook_uris = [helper_host(security_context)]
+          c.hook_uris = [HOSTS[security_context]]
         end
       end
 
@@ -169,7 +171,7 @@ module Hawkular::Operations::RSpec
             end
             @tenant_id = 'hawkular'
             record("Operation/#{security_context}/Helpers", { tenant_id: @tenant_id }, 'get_wf_server') do
-              @wf_server = @inventory_client.resources(typeId: 'WildFly Server', root: true)[0]
+              @wf_server = @inventory_client.resources(typeId: 'WildFly Server WF10', root: true)[0]
             end
             record("Operation/#{security_context}/Helpers", { tenant_id: @tenant_id }, 'agent_properties') do
               agent = installed_agent(@inventory_client)
@@ -382,7 +384,7 @@ module Hawkular::Operations::RSpec
           restart2 = {
             resource_id: @wf_server.id,
             feed_id: @wf_server.feed,
-            deployment_name: 'hawkular-wildfly-agent-download.war',
+            deployment_name: 'hawkular-prometheus-alerter.war',
             sender_request_id: 'another_id'
           }
 
@@ -405,7 +407,7 @@ module Hawkular::Operations::RSpec
           expect(actual_data['status']).to eq('OK')
           expect(actual_data['senderRequestId']).to eq('another_id')
           expect(actual_data['resourceId']).to eq(@wf_server.id)
-          expect(actual_data['destinationFileName']).to eq('hawkular-wildfly-agent-download.war')
+          expect(actual_data['destinationFileName']).to eq('hawkular-prometheus-alerter.war')
           expect(actual_data['message']).to start_with('Performed [Restart Deployment] on')
         end
 
@@ -538,32 +540,6 @@ module Hawkular::Operations::RSpec
           expect(actual_data['message']).to start_with('Performed [Export JDR] on')
           expect(actual_data['fileName']).to start_with('jdr_')
           expect(actual_data[:attachments]).to_not be_blank
-        end
-
-        it 'Update collection intervals should be performed and eventually respond with success' do
-          hash = {
-            resourceId: @agent_id,
-            feedId: @wf_server.feed,
-            senderRequestId: @req_id,
-            metricTypes: { 'WildFly Memory Metrics~Heap Max' => 77, 'Unknown~Metric' => 666 },
-            availTypes: { 'Server Availability~Server Availability' => 77, 'Unknown~Avail' => 666 }
-          }
-
-          actual_data = {}
-          client.update_collection_intervals(hash) do |on|
-            on.success do |data|
-              actual_data[:data] = data
-            end
-            on.failure do |error|
-              actual_data[:data] = error
-              puts 'error callback was called, reason: ' + error.to_s unless @agent_immutable
-            end
-          end
-          actual_data = wait_for actual_data
-          expect(actual_data['status']).to eq('OK') unless @agent_immutable
-          expect(
-            actual_data['message']).to start_with('Performed [Update Collection Intervals] on') unless @agent_immutable
-          expect(actual_data).to include('Command not allowed because the agent is immutable') if @agent_immutable
         end
       end
     end
