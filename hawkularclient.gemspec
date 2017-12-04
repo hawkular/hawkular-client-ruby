@@ -32,7 +32,7 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency('yard')
   gem.add_development_dependency('webmock', '~> 3.0')
   gem.add_development_dependency('vcr')
-  gem.add_development_dependency('rubocop', '= 0.34.2')
+  gem.add_development_dependency('rubocop', '= 0.51.0')
   gem.add_development_dependency('coveralls')
   gem.add_development_dependency('rack', '~> 1.6.4')
   gem.add_development_dependency('pry-byebug')
