@@ -7,8 +7,6 @@ require 'hawkular/base_client'
 
 module Hawkular
   class Client
-    attr_reader :inventory, :alerts, :operations, :tokens, :state, :prometheus
-
     def initialize(hash)
       hash[:credentials] ||= {}
       hash[:options] ||= {}
@@ -16,6 +14,10 @@ module Hawkular
       fail Hawkular::ArgumentError, 'no parameter ":entrypoint" given' if hash[:entrypoint].nil?
 
       @state = hash
+    end
+
+    def respond_to_missing?(method_name, include_private = false)
+      method_name.to_s.start_with?('inventory_', 'alerts_', 'operations_', 'tokens_', 'prometheus_') || super
     end
 
     def method_missing(name, *args, &block)
@@ -26,8 +28,7 @@ module Hawkular
                         when /^tokens_/ then tokens
                         when /^prometheus_/ then prometheus
                         else
-                          fail Hawkular::ArgumentError, "unknown method prefix `#{name}`, allowed prefixes:"\
-      '`inventory_`, `alerts_`, `operations_`, `tokens_`, `prometheus_`'
+                          super
                         end
       method = name.to_s.sub(/^[^_]+_/, '')
       delegate_client.__send__(method, *args, &block)

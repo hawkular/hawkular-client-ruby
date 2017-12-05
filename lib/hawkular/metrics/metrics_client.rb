@@ -41,7 +41,7 @@ module Hawkular::Metrics
       version = version_status_hash['Implementation-Version']
       major, minor = version.scan(/\d+/).map(&:to_i)
       fail Hawkular::Exception, fail_version_msg if major.nil? || minor.nil?
-      @legacy_api = (major == 0 && minor < 16)
+      @legacy_api = (major.zero? && minor < 16)
     end
 
     # Construct a new Hawkular Metrics client class.

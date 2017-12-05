@@ -41,7 +41,7 @@ module Hawkular::Inventory
 
     def initialize(op_hash)
       @name = op_hash['name']
-      @params = (op_hash.key? 'parameters') ? op_hash['parameters'] : {}
+      @params = op_hash.key?('parameters') ? op_hash['parameters'] : {}
     end
   end
 
@@ -61,7 +61,7 @@ module Hawkular::Inventory
     end
 
     def ==(other)
-      self.equal?(other) || other.class == self.class && other.id == @id
+      equal?(other) || other.class == self.class && other.id == @id
     end
 
     # Returns a hash representation of the resource type
@@ -86,10 +86,6 @@ module Hawkular::Inventory
     attr_reader :properties
     # @return [Hash<String,String>] Config map of this resource
     attr_reader :config
-    # @return [List<Metric>] Metrics associated to this resource
-    attr_reader :metrics
-    # @return [List<Resource>] List of children (present when the whole tree is loaded, else nil)
-    attr_reader :children
 
     def initialize(hash)
       @id = hash['id']
@@ -126,7 +122,7 @@ module Hawkular::Inventory
     end
 
     def ==(other)
-      self.equal?(other) || other.class == self.class && other.id == @id
+      equal?(other) || other.class == self.class && other.id == @id
     end
 
     # Returns a hash representation of the resource

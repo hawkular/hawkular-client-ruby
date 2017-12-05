@@ -95,7 +95,7 @@ module Hawkular::Operations
       if args[:entrypoint]
         uri = URI.parse(args[:entrypoint].to_s)
         args[:host] = "#{uri.host}:#{uri.port}"
-        args[:use_secure_connection] = %w(https wss).include?(uri.scheme) ? true : false
+        args[:use_secure_connection] = %w[https wss].include?(uri.scheme) ? true : false
       end
 
       fail Hawkular::ArgumentError, 'no parameter ":host" or ":entrypoint" given' if args[:host].nil?
@@ -153,7 +153,7 @@ module Hawkular::Operations
     # which the operation is about to run, feedId [String], operationName [String]
     # @param callback [Block] callback that is run after the operation is done
     def invoke_generic_operation(hash, &callback)
-      required = [:resourceId, :feedId, :operationName]
+      required = %i[resourceId feedId operationName]
       check_pre_conditions hash, required, &callback
 
       invoke_operation_helper(hash, &callback)
@@ -168,7 +168,7 @@ module Hawkular::Operations
     # @param callback [Block] callback that is run after the operation is done
     def invoke_specific_operation(operation_payload, operation_name, &callback)
       fail Hawkular::ArgumentError, 'Operation must be specified' if operation_name.nil?
-      required = [:resourceId, :feedId]
+      required = %i[resourceId feedId]
       check_pre_conditions operation_payload, required, &callback
 
       invoke_operation_helper(operation_payload, operation_name, &callback)
@@ -190,7 +190,7 @@ module Hawkular::Operations
     def add_deployment(hash, &callback)
       hash[:enabled] = hash.key?(:enabled) ? hash[:enabled] : true
       hash[:force_deploy] = hash.key?(:force_deploy) ? hash[:force_deploy] : false
-      required = [:resource_id, :feed_id, :destination_file_name, :binary_content]
+      required = %i[resource_id feed_id destination_file_name binary_content]
       check_pre_conditions hash, required, &callback
 
       operation_payload = prepare_payload_hash([:binary_content], hash)
@@ -209,7 +209,7 @@ module Hawkular::Operations
     # @param callback [Block] callback that is run after the operation is done
     def undeploy(hash, &callback)
       hash[:remove_content] = hash.key?(:remove_content) ? hash[:remove_content] : true
-      required = [:resource_id, :feed_id, :deployment_name]
+      required = %i[resource_id feed_id deployment_name]
       check_pre_conditions hash, required, &callback
 
       hash[:destination_file_name] = hash[:deployment_name]
@@ -228,7 +228,7 @@ module Hawkular::Operations
     #
     # @param callback [Block] callback that is run after the operation is done
     def enable_deployment(hash, &callback)
-      required = [:resource_id, :feed_id, :deployment_name]
+      required = %i[resource_id feed_id deployment_name]
       check_pre_conditions hash, required, &callback
 
       hash[:destination_file_name] = hash[:deployment_name]
@@ -247,7 +247,7 @@ module Hawkular::Operations
     #
     # @param callback [Block] callback that is run after the operation is done
     def disable_deployment(hash, &callback)
-      required = [:resource_id, :feed_id, :deployment_name]
+      required = %i[resource_id feed_id deployment_name]
       check_pre_conditions hash, required, &callback
 
       hash[:destination_file_name] = hash[:deployment_name]
@@ -266,7 +266,7 @@ module Hawkular::Operations
     #
     # @param callback [Block] callback that is run after the operation is done
     def restart_deployment(hash, &callback)
-      required = [:resource_id, :feed_id, :deployment_name]
+      required = %i[resource_id feed_id deployment_name]
       check_pre_conditions hash, required, &callback
 
       hash[:destination_file_name] = hash[:deployment_name]
@@ -292,8 +292,8 @@ module Hawkular::Operations
     #
     # @param callback [Block] callback that is run after the operation is done
     def add_datasource(hash, &callback)
-      required = [:resourceId, :feedId, :xaDatasource, :datasourceName, :jndiName, :driverName,
-                  :driverClass, :connectionUrl]
+      required = %i[resourceId feedId xaDatasource datasourceName jndiName
+                    driverName driverClass connectionUrl]
       check_pre_conditions hash, required, &callback
 
       invoke_specific_operation(hash, 'AddDatasource', &callback)
@@ -312,8 +312,8 @@ module Hawkular::Operations
     #
     # @param callback [Block] callback that is run after the operation is done
     def add_jdbc_driver(hash, &callback)
-      required = [:resource_id, :feed_id, :driver_jar_name, :driver_name, :module_name,
-                  :driver_class, :binary_content]
+      required = %i[resource_id feed_id driver_jar_name driver_name module_name
+                    driver_class binary_content]
       check_pre_conditions hash, required, &callback
 
       operation_payload = prepare_payload_hash([:binary_content], hash)
@@ -351,7 +351,7 @@ module Hawkular::Operations
     #
     # @param callback [Block] callback that is run after the operation is done
     def update_collection_intervals(hash, &callback)
-      required = [:resourceId, :feedId, :metricTypes, :availTypes]
+      required = %i[resourceId feedId metricTypes availTypes]
       check_pre_conditions hash, required, &callback
       invoke_specific_operation(hash, 'UpdateCollectionIntervals', &callback)
     end
@@ -424,19 +424,16 @@ module Hawkular::Operations
     def self.handle_error(parsed_message, &callback)
       callback.perform(:failure, parsed_message == {} ? 'error' : parsed_message[:data]['errorMessage'])
     end
+    private_class_method :handle_error
 
     def prepare_payload_hash(ignored_params, hash)
       # it filters out ignored params and convert keys from snake_case to camelCase
-      Hash[hash.select { |k, _| !ignored_params.include? k }.map { |k, v| [to_camel_case(k.to_s).to_sym, v] }]
+      Hash[hash.reject { |k, _| ignored_params.include? k }.map { |k, v| [to_camel_case(k.to_s).to_sym, v] }]
     end
 
     def to_camel_case(str)
       subs = str.split('_')
-      if subs.length > 1
-        ret = subs.collect(&:capitalize).join
-      else
-        ret = subs[0]
-      end
+      ret = subs.length > 1 ? subs.collect(&:capitalize).join : subs[0]
       ret[0] = ret[0].downcase
       ret
     end

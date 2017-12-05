@@ -157,11 +157,8 @@ module Hawkular::Operations::RSpec
     sleep_interval *= 3 if ENV['TRAVIS']
     attempt = 0
     sleep sleep_interval while yield && (attempt += 1) < MAX_ATTEMPTS
-    if attempt == MAX_ATTEMPTS
-      puts 'timeout hit'
-    else
-      return
-    end
+    return unless attempt == MAX_ATTEMPTS
+    puts 'timeout hit'
   end
 
   def hash_include_all(hash, keys)

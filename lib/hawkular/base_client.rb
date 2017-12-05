@@ -95,7 +95,7 @@ module Hawkular
       opts[:user] = @credentials[:username]
       opts[:password] = @credentials[:password]
       # strip @endpoint in case suburl is absolute
-      suburl = suburl[@entrypoint.length, suburl.length] if suburl.match(/^http/)
+      suburl = suburl[@entrypoint.length, suburl.length] if suburl =~ /^http/
       RestClient::Resource.new(@entrypoint, opts)[suburl]
     end
 
@@ -131,12 +131,12 @@ module Hawkular
     # @param params [Hash] key-values pairs
     # @return [String] complete query string to append to a base url, '' if no valid params
     def generate_query_params(params = {})
-      params = params.select { |_k, v| !(v.nil? || ((v.instance_of? Array) && v.empty?)) }
+      params = params.reject { |_k, v| v.nil? || ((v.instance_of? Array) && v.empty?) }
       return '' if params.empty?
 
       params.inject('?') do |ret, (k, v)|
         ret += '&' unless ret == '?'
-        part = (v.instance_of? Array) ? "#{k}=#{v.join(',')}" : "#{k}=#{v}"
+        part = v.instance_of?(Array) ? "#{k}=#{v.join(',')}" : "#{k}=#{v}"
         ret + hawk_escape(part)
       end
     end

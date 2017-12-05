@@ -169,7 +169,7 @@ security_contexts.each do |security_context|
           ids = [id1, id2, id3]
           bindings = { id1: id1, id2: id2, id3: id3, id4: id4 }
           example = proc do
-            @client = setup_client(setup_options.merge tenant: vcr_test_tenant)
+            @client = setup_client(setup_options.merge(tenant: vcr_test_tenant))
 
             expect(@client.counters.raw_data(ids).size).to be 0
             expect(@client.gauges.raw_data(ids).size).to be 0
@@ -531,21 +531,21 @@ security_contexts.each do |security_context|
           bindings = { id: @random_id, minus10: minus10, minus20: minus20, minus30: minus30, minus40: minus40,
                        minus50: minus50, now: now }
           example = proc do
-            @client = setup_client(setup_options.merge tenant: vcr_test_tenant)
+            @client = setup_client(setup_options.merge(tenant: vcr_test_tenant))
             @client.avail.push_data(@random_id, [
-              { timestamp: minus50, value: 'up' },
-              { timestamp: minus40, value: 'up' },
-              { timestamp: minus30, value: 'down' },
-              { timestamp: minus20, value: 'down' },
-              { timestamp: minus10, value: 'down' },
-              { timestamp: now, value: 'up' }
-            ])
+                                      { timestamp: minus50, value: 'up' },
+                                      { timestamp: minus40, value: 'up' },
+                                      { timestamp: minus30, value: 'down' },
+                                      { timestamp: minus20, value: 'down' },
+                                      { timestamp: minus10, value: 'down' },
+                                      { timestamp: now, value: 'up' }
+                                    ])
             result = @client.avail.get_data(@random_id, distinct: true, order: 'ASC')
             expect(result).to eq([
-              { 'timestamp' => minus50, 'value' => 'up' },
-              { 'timestamp' => minus30, 'value' => 'down' },
-              { 'timestamp' => now, 'value' => 'up' }
-            ])
+                                   { 'timestamp' => minus50, 'value' => 'up' },
+                                   { 'timestamp' => minus30, 'value' => 'down' },
+                                   { 'timestamp' => now, 'value' => 'up' }
+                                 ])
           end
           record("Metrics/#{security_context}/#{metrics_context}",
                  vcr_bindings.merge(bindings),
@@ -869,9 +869,9 @@ security_contexts.each do |security_context|
 
       it 'Should push metric data to existing gauge' do
         @client.gauges.push_data(id_gauge, [
-          { value: 0.1,  tags: { tagName: 'myMin' } },
-          { value: 99.9, tags: { tagName: 'myMax' } }
-        ])
+                                   { value: 0.1,  tags: { tagName: 'myMin' } },
+                                   { value: 99.9, tags: { tagName: 'myMax' } }
+                                 ])
       end
 
       it 'Should update tags for gauge definition' do

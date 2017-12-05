@@ -10,7 +10,7 @@ SKIP_SECURE_CONTEXT = ENV['SKIP_SECURE_CONTEXT'] || '1'
 HOSTS = {
   Secure: 'localhost:8443',
   NonSecure: 'localhost:8080'
-}
+}.freeze
 
 # examples for operations, it uses the websocket communication
 module Hawkular::Operations::RSpec
@@ -24,7 +24,7 @@ module Hawkular::Operations::RSpec
       next
     end
 
-    context "#{security_context}" do
+    context security_context.to_s do
       let(:host) do
         HOSTS[security_context]
       end
@@ -79,7 +79,7 @@ module Hawkular::Operations::RSpec
         it 'connects correctly' do
           ep = host_with_scheme(host, security_context == SECURE_CONTEXT)
 
-          client = Client.new(options.merge entrypoint: ep, host: nil)
+          client = Client.new(options.merge(entrypoint: ep, host: nil))
           client.connect
 
           expect(client.ws).not_to be nil
@@ -150,7 +150,7 @@ module Hawkular::Operations::RSpec
 
         it 'should bail with no host' do
           expect do
-            Client.new(options.merge host: nil)
+            Client.new(options.merge(host: nil))
           end.to raise_error(Hawkular::ArgumentError, 'no parameter ":host" or ":entrypoint" given')
         end
       end
@@ -167,7 +167,8 @@ module Hawkular::Operations::RSpec
             ::RSpec::Mocks.with_temporary_scope do
               mock_inventory_client
               @inventory_client = ::Hawkular::Inventory::Client.create(
-                options.merge entrypoint: host_with_scheme(host, security_context == SECURE_CONTEXT))
+                options.merge(entrypoint: host_with_scheme(host, security_context == SECURE_CONTEXT))
+              )
             end
             @tenant_id = 'hawkular'
             record("Operation/#{security_context}/Helpers", { tenant_id: @tenant_id }, 'get_wf_server') do
@@ -459,36 +460,38 @@ module Hawkular::Operations::RSpec
           expect(actual_data).to include('Command not allowed because the agent is immutable') if @agent_immutable
         end
 
-        it 'Remove datasource should be performed and eventually respond with success' do
-          ds = nil
-          unless @agent_immutable
-            record("Operation/#{security_context}/Helpers", nil, 'get_datasource') do
-              ds = @inventory_client.children_resources(@wf_server.id)
-                   .select { |r| r.name.include? "CreatedByRubyDS#{@random_uuid}" }[0]
-                   .id
+        unless @agent_immutable
+          it 'Remove datasource should be performed and eventually respond with success' do
+            ds = nil
+            unless @agent_immutable
+              record("Operation/#{security_context}/Helpers", nil, 'get_datasource') do
+                ds = @inventory_client.children_resources(@wf_server.id)
+                                      .select { |r| r.name.include? "CreatedByRubyDS#{@random_uuid}" }[0]
+                                      .id
+              end
             end
-          end
-          operation = {
-            resourceId: ds,
-            feedId: @wf_server.feed,
-            senderRequestId: @req_id
-          }
+            operation = {
+              resourceId: ds,
+              feedId: @wf_server.feed,
+              senderRequestId: @req_id
+            }
 
-          actual_data = {}
-          client.invoke_specific_operation(operation, 'RemoveDatasource') do |on|
-            on.success do |data|
-              actual_data[:data] = data
+            actual_data = {}
+            client.invoke_specific_operation(operation, 'RemoveDatasource') do |on|
+              on.success do |data|
+                actual_data[:data] = data
+              end
+              on.failure do |error|
+                actual_data[:data] = error
+                puts 'error callback was called, reason: ' + error.to_s unless @agent_immutable
+              end
             end
-            on.failure do |error|
-              actual_data[:data] = error
-              puts 'error callback was called, reason: ' + error.to_s unless @agent_immutable
-            end
+            actual_data = wait_for actual_data
+            expect(actual_data['status']).to eq('OK') unless @agent_immutable
+            expect(actual_data['message']).to start_with('Performed [Remove] on') unless @agent_immutable
+            expect(actual_data['serverRefreshIndicator']).to eq('RELOAD-REQUIRED') unless @agent_immutable
           end
-          actual_data = wait_for actual_data
-          expect(actual_data['status']).to eq('OK') unless @agent_immutable
-          expect(actual_data['message']).to start_with('Performed [Remove] on') unless @agent_immutable
-          expect(actual_data['serverRefreshIndicator']).to eq('RELOAD-REQUIRED') unless @agent_immutable
-        end unless @agent_immutable
+        end
 
         it 'Remove JDBC driver should be performed and eventually respond with success' do
           # Unless it runs in a container
@@ -496,8 +499,8 @@ module Hawkular::Operations::RSpec
           unless @agent_immutable
             record("Operation/#{security_context}/Helpers", nil, 'get_driver') do
               driver = @inventory_client.children_resources(@wf_server.id)
-                       .select { |r| r.name.include? "CreatedByRubyDriver#{@not_so_random_uuid}" }[0]
-                       .id
+                                        .select { |r| r.name.include? "CreatedByRubyDriver#{@not_so_random_uuid}" }[0]
+                                        .id
             end
           end
           operation = {
@@ -519,8 +522,7 @@ module Hawkular::Operations::RSpec
           actual_data = wait_for actual_data
           expect(actual_data['status']).to eq('OK') unless @agent_immutable
           expect(actual_data['resource_id']).to eq(driver_resource_id) unless @agent_immutable
-          expect(actual_data['message']).to start_with(
-            'Performed [Remove] on a [JDBC Driver]') unless @agent_immutable
+          expect(actual_data['message']).to start_with('Performed [Remove] on a [JDBC Driver]') unless @agent_immutable
         end
 
         it 'Export JDR should retrieve the zip file with the report' do

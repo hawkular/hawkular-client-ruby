@@ -1,6 +1,6 @@
 require_relative '../spec_helper'
 
-HOST = 'localhost:8080'
+HOST = 'localhost:8080'.freeze
 describe Hawkular::Metrics::Client do
   context 'client initialization' do
     it 'should accept no option' do
