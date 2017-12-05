@@ -17,6 +17,8 @@ module Hawkular::Prometheus
   # Interface to talk with the Prometheus server used for Middleware Manager
   # @param entrypoint [String] base url of Hawkular Services
   class Client < Hawkular::BaseClient
+    attr_reader :entrypoint
+
     def initialize(entrypoint, credentials = {}, options = {})
       prometheus_entrypoint = Alerter.new(entrypoint, credentials, options).prometheus_entrypoint
       @entrypoint = normalize_entrypoint_url prometheus_entrypoint, 'api/v1'
@@ -55,6 +57,10 @@ module Hawkular::Prometheus
       else
         response['data']['result'].first['values']
       end
+    end
+
+    def ping
+      http_get '/query?query=up'
     end
   end
 end
