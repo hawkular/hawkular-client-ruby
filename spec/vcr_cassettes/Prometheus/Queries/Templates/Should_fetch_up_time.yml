@@ -2,6 +2,119 @@
 http_interactions:
 - request:
     method: get
+    uri: http://localhost:8080/hawkular/inventory/status
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Content-Type:
+      - application/json
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '173'
+      Date:
+      - Tue, 05 Dec 2017 13:22:50 GMT
+    body:
+      encoding: UTF-8
+      string: '{"Implementation-Version":"1.0.0.Final-SRC-revision-d27e8a223a015e4f878c2695626bd851ce559925","Built-From-Git-SHA1":"d27e8a223a015e4f878c2695626bd851ce559925","status":"UP"}'
+    http_version: 
+  recorded_at: Tue, 05 Dec 2017 13:22:50 GMT
+- request:
+    method: get
+    uri: http://localhost:8080/hawkular/inventory/resources?maxResults=100&startOffSet=0&typeId=WildFly%20Server%20WF10
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - identity
+      User-Agent:
+      - hawkular-client-ruby
+      Content-Type:
+      - application/json
+      Host:
+      - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - '0'
+      Cache-Control:
+      - no-cache, no-store, must-revalidate
+      X-Powered-By:
+      - Undertow/1
+      Server:
+      - WildFly/10
+      Pragma:
+      - no-cache
+      Date:
+      - Tue, 05 Dec 2017 13:22:50 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '4996'
+    body:
+      encoding: UTF-8
+      string: '{"results":[{"id":"attilan~Local~~","name":"Local","feedId":"attilan","type":{"id":"WildFly
+        Server WF10","operations":[{"name":"JDR","parameters":{}},{"name":"Reload","parameters":{"admin-only":{"defaultValue":"false","description":"Whether
+        the server should start in running mode ADMIN_ONLY when it restarts","type":"bool"},"use-current-server-config":{"defaultValue":"false","description":null,"type":"bool"}}},{"name":"Resume","parameters":{}},{"name":"Shutdown","parameters":{"restart":{"defaultValue":"false","description":"Should
+        the server be restarted after shutdown?","type":"bool"},"timeout":{"defaultValue":"0","description":"Timeout
+        in seconds to allow active connections to drain","type":"int"}}},{"name":"Suspend","parameters":{"timeout":{"defaultValue":"0","description":"Timeout
+        in seconds to allow active connections to drain","type":"int"}}},{"name":"Deploy","parameters":{}},{"name":"Undeploy","parameters":{}},{"name":"Enable
+        Deployment","parameters":{}},{"name":"Disable Deployment","parameters":{}},{"name":"Restart
+        Deployment","parameters":{}}],"properties":{}},"parentId":null,"metrics":[{"displayName":"NonHeap
+        Max","family":"jvm_memory_bytes_max","unit":"BYTES","expression":"jvm_memory_bytes_max{area=\"nonheap\",feed_id=\"attilan\"}","labels":{"area":"nonheap","feed_id":"attilan"},"properties":{}},{"displayName":"Aggregated
+        Servlet Request Time","family":"wildfly_servlet_total_request_time","unit":"NONE","expression":"sum(wildfly_servlet_total_request_time{feed_id=\"attilan\"})","labels":{"feed_id":"attilan"},"properties":{}},{"displayName":"Aggregated
+        Expired Web Sessions","family":"wildfly_deployment_expired_sessions","unit":"NONE","expression":"sum(wildfly_deployment_expired_sessions{feed_id=\"attilan\"})","labels":{"feed_id":"attilan"},"properties":{}},{"displayName":"NonHeap
+        Committed","family":"jvm_memory_bytes_committed","unit":"BYTES","expression":"jvm_memory_bytes_committed{area=\"nonheap\",feed_id=\"attilan\"}","labels":{"area":"nonheap","feed_id":"attilan"},"properties":{}},{"displayName":"Heap
+        Max","family":"jvm_memory_bytes_max","unit":"BYTES","expression":"jvm_memory_bytes_max{area=\"heap\",feed_id=\"attilan\"}","labels":{"area":"heap","feed_id":"attilan"},"properties":{}},{"displayName":"Heap
+        Used","family":"jvm_memory_bytes_used","unit":"BYTES","expression":"jvm_memory_bytes_used{area=\"heap\",feed_id=\"attilan\"}","labels":{"area":"heap","feed_id":"attilan"},"properties":{}},{"displayName":"Accumulated
+        GC Duration","family":"jvm_gc_collection_seconds_sum","unit":"SECONDS","expression":"sum(jvm_gc_collection_seconds_sum{feed_id=\"attilan\"})","labels":{"feed_id":"attilan"},"properties":{}},{"displayName":"Aggregated
+        Max Active Web Sessions","family":"wildfly_deployment_max_active_sessions","unit":"NONE","expression":"sum(wildfly_deployment_max_active_sessions{feed_id=\"attilan\"})","labels":{"feed_id":"attilan"},"properties":{}},{"displayName":"Server
+        Availability","family":"wildfly_server_availability","unit":"NONE","expression":"wildfly_server_availability{feed_id=\"attilan\"}","labels":{"feed_id":"attilan"},"properties":{}},{"displayName":"up","family":"up","unit":"NONE","expression":"up{feed_id=\"attilan\"}","labels":{"feed_id":"attilan"},"properties":{}},{"displayName":"Aggregated
+        Active Web Sessions","family":"wildfly_deployment_active_sessions","unit":"NONE","expression":"sum(wildfly_deployment_active_sessions{feed_id=\"attilan\"})","labels":{"feed_id":"attilan"},"properties":{}},{"displayName":"NonHeap
+        Used","family":"jvm_memory_bytes_used","unit":"BYTES","expression":"jvm_memory_bytes_used{area=\"nonheap\",feed_id=\"attilan\"}","labels":{"area":"nonheap","feed_id":"attilan"},"properties":{}},{"displayName":"Aggregated
+        Servlet Request Count","family":"wildfly_servlet_request_count","unit":"NONE","expression":"sum(wildfly_servlet_request_count{feed_id=\"attilan\"})","labels":{"feed_id":"attilan"},"properties":{}},{"displayName":"Aggregated
+        Rejected Web Sessions","family":"wildfly_deployment_rejected_sessions","unit":"NONE","expression":"sum(wildfly_deployment_rejected_sessions{feed_id=\"attilan\"})","labels":{"feed_id":"attilan"},"properties":{}},{"displayName":"Heap
+        Committed","family":"jvm_memory_bytes_committed","unit":"BYTES","expression":"jvm_memory_bytes_committed{area=\"heap\",feed_id=\"attilan\"}","labels":{"area":"heap","feed_id":"attilan"},"properties":{}},{"displayName":"Thread
+        Count","family":"jvm_threads_current","unit":"NONE","expression":"jvm_threads_current{feed_id=\"attilan\"}","labels":{"feed_id":"attilan"},"properties":{}}],"properties":{},"config":{"Suspend
+        State":"RUNNING","Bound Address":"127.0.0.1","Running Mode":"NORMAL","Home
+        Directory":"/home/lponce/git/hawkular-services/dist/target/hawkular-services-dist-1.0.0.Final-SNAPSHOT","Version":"1.0.0.Final-SNAPSHOT","Node
+        Name":"attilan","Server State":"running","Product Name":"Hawkular","Hostname":"attilan","UUID":"b9e67075-9186-4dee-95fe-b9a8068c27fc","Name":"attilan"}}],"resultSize":1,"startOffset":0}'
+    http_version: 
+  recorded_at: Tue, 05 Dec 2017 13:22:50 GMT
+- request:
+    method: get
     uri: http://localhost:8080/hawkular/alerter/prometheus/endpoint
     body:
       encoding: US-ASCII
@@ -15,6 +128,8 @@ http_interactions:
       - hawkular-client-ruby
       Host:
       - localhost:8080
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 200
@@ -31,15 +146,15 @@ http_interactions:
       Content-Length:
       - '21'
       Date:
-      - Tue, 28 Nov 2017 10:51:11 GMT
+      - Tue, 05 Dec 2017 13:22:50 GMT
     body:
       encoding: UTF-8
       string: http://localhost:9090
     http_version: 
-  recorded_at: Tue, 28 Nov 2017 10:51:11 GMT
+  recorded_at: Tue, 05 Dec 2017 13:22:50 GMT
 - request:
     method: get
-    uri: http://localhost:9090/api/v1/query_range?end=2017-11-28T15:00:00Z&query=up%7Bfeed_id=%22attilan%22%7D&start=2017-11-28T10:00:00Z&step=60m
+    uri: http://localhost:9090/api/v1/query_range?end=2017-11-05T11:25:00Z&query=up%7Bfeed_id=%22attilan%22%7D&start=2017-11-05T11:20:00Z&step=5s
     body:
       encoding: US-ASCII
       string: ''
@@ -54,6 +169,8 @@ http_interactions:
       - application/json
       Host:
       - localhost:9090
+      Authorization:
+      - Basic amRvZTpwYXNzd29yZA==
   response:
     status:
       code: 200
@@ -70,12 +187,12 @@ http_interactions:
       Content-Type:
       - application/json
       Date:
-      - Tue, 28 Nov 2017 10:51:11 GMT
+      - Tue, 05 Dec 2017 13:22:50 GMT
       Content-Length:
-      - '184'
+      - '63'
     body:
       encoding: UTF-8
-      string: '{"status":"success","data":{"resultType":"matrix","result":[{"metric":{"__name__":"up","feed_id":"attilan","instance":"127.0.0.1:9779","job":"hawkular"},"values":[[1511863200,"1"]]}]}}'
+      string: '{"status":"success","data":{"resultType":"matrix","result":[]}}'
     http_version: 
-  recorded_at: Tue, 28 Nov 2017 10:51:11 GMT
+  recorded_at: Tue, 05 Dec 2017 13:22:50 GMT
 recorded_with: VCR 3.0.3
