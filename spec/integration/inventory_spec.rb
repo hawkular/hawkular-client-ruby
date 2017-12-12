@@ -63,6 +63,10 @@ describe 'Inventory' do
     expect(heap_memory.labels).to include('area' => 'heap')
   end
 
+  it 'Returns nil if specified resource is not in inventory' do
+    expect(@client.resource('NonExistentResource')).to be_nil
+  end
+
   it 'Should get subtree' do
     id = @client.root_resources.find { |r| r.name == 'JMX [Local JMX][Runtime]' }.id
     res = @client.resource_tree(id)

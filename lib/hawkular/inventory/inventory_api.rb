@@ -39,6 +39,9 @@ module Hawkular::Inventory
     def resource(id)
       hash = http_get(url('/resources/%s', id))
       Resource.new(hash)
+    rescue ::Hawkular::Exception => e
+      return if e.cause.is_a?(::RestClient::NotFound)
+      raise
     end
 
     # Get resource by id with its complete subtree
