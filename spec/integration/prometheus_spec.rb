@@ -2,7 +2,7 @@ require_relative '../vcr/vcr_setup'
 require_relative '../spec_helper'
 
 module Hawkular::Prometheus::RSpec
-  HAWKULAR_BASE = 'http://localhost:8080/'
+  HAWKULAR_BASE = 'http://localhost:8080/'.freeze
   creds = {
     username: 'jdoe',
     password: 'password'

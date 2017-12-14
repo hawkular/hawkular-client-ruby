@@ -23,7 +23,8 @@ module Hawkular::Metrics
     # @param starts [Integer] optional timestamp (default now - 8h)
     # @param ends [Integer] optional timestamp (default now)
     # @return [Array[Hash]] datapoints
-    def data_by_tags(tags, buckets: nil, bucketDuration:nil, start:nil, ends: nil)
+    def data_by_tags(tags, buckets: nil, bucketDuration: nil, # rubocop:disable Naming/VariableName
+                     start: nil, ends: nil)
       data = {
         tags: tags_param(tags), buckets: buckets, bucketDuration: bucketDuration, start: start, end: ends
       }
@@ -56,7 +57,7 @@ module Hawkular::Metrics
       strings.each { |g| default_timestamp g[:data] }
       data = { gauges: gauges, counters: counters, availabilities: availabilities, strings: strings }
       path = '/metrics/'
-      @legacy_api ? path << 'data' : path << 'raw'
+      path << (@legacy_api ? 'data' : 'raw')
       http_post(path, data)
     end
 
@@ -84,7 +85,7 @@ module Hawkular::Metrics
       path = '/metrics/stats/query'
       metrics = { gauge: gauge_ids, counter: counter_ids, availability: avail_ids }
       data = { metrics: metrics, start: starts, end: ends, bucketDuration: bucket_duration }
-      data['types'] = %w(gauge gauge_rate counter counter_rate availability) if rates
+      data['types'] = %w[gauge gauge_rate counter counter_rate availability] if rates
       http_post(path, data)
     end
 
@@ -93,9 +94,11 @@ module Hawkular::Metrics
     def tags
       tags = []
       http_get('/metrics/').map do |g|
+        next if g['tags'].nil?
+
         g['tags'].map do |k, v|
           tags << { k => v }
-        end unless g['tags'].nil?
+        end
       end
       tags.uniq!
     end
@@ -171,7 +174,7 @@ module Hawkular::Metrics
       def push_data(id, data)
         data = [data] unless data.is_a?(Array)
         uri = "/#{@resource}/#{ERB::Util.url_encode(id)}/"
-        @legacy_api ? uri << 'data' : uri << 'raw'
+        uri << (@legacy_api ? 'data' : 'raw')
         @client.default_timestamp data
         @client.http_post(uri, data)
       end
@@ -187,8 +190,8 @@ module Hawkular::Metrics
       # @param order [String] optional Data point sort order, based on timestamp (ASC, DESC)
       # @return [Array[Hash]] datapoints
       # @see #push_data #push_data for datapoint detail
-      def get_data(id, starts: nil, ends: nil, bucketDuration: nil, buckets: nil, percentiles: nil, limit: nil,
-                   order: nil)
+      def get_data(id, starts: nil, ends: nil, bucketDuration: nil, # rubocop:disable Naming/VariableName
+                   buckets: nil, percentiles: nil, limit: nil, order: nil)
         params = { start: starts, end: ends, bucketDuration: bucketDuration, buckets: buckets,
                    percentiles: percentiles, limit: limit, order: order }
         get_data_helper(id, params)
@@ -214,28 +217,32 @@ module Hawkular::Metrics
       # @param buckets [Integer] optional number of buckets
       # @return [Array[Hash]] datapoints
       # @see #push_data #push_data for datapoint detail
-      def get_data_by_tags(tags, starts: nil, ends: nil, bucketDuration: nil, buckets:nil)
+      def get_data_by_tags(tags, starts: nil, ends: nil, bucketDuration: nil, # rubocop:disable Naming/VariableName
+                           buckets: nil)
         params = { tags: @client.tags_param(tags), start: starts,
                    end: ends, bucketDuration: bucketDuration, buckets: buckets }
         path = "/#{@resource}/"
-        @legacy_api ? path << 'data/?' : path << 'stats/?'
+        path << (@legacy_api ? 'data/?' : 'stats/?')
         resp = @client.http_get(path + encode_params(params))
         resp.is_a?(Array) ? resp : [] # API returns no content (empty Hash) instead of empty array
       end
 
       def encode_params(params)
-        URI.encode_www_form(params.select { |_k, v| !v.nil? })
+        URI.encode_www_form(params.reject { |_k, v| v.nil? })
       end
 
       private
 
       def get_data_helper(id, params)
         path = "/#{@resource}/#{ERB::Util.url_encode(id)}/"
-        if @legacy_api
-          path << 'data/?'
-        else
-          (params[:bucketDuration].nil? && params[:buckets].nil?) ? path << 'raw/?' : path << 'stats/?'
-        end
+        path << if @legacy_api
+                  'data/?'
+                elsif params[:bucketDuration].nil? && params[:buckets].nil?
+                  'raw/?'
+                else
+                  'stats/?'
+                end
+
         path << encode_params(params)
         resp = @client.http_get(path)
         resp.is_a?(Array) ? resp : [] # API returns no content (empty Hash) instead of empty array
@@ -329,8 +336,8 @@ module Hawkular::Metrics
       # @param order [String] optional Data point sort order, based on timestamp (ASC, DESC)
       # @return [Array[Hash]] datapoints
       # @see #push_data #push_data for datapoint detail
-      def get_data(id, starts: nil, ends: nil, bucketDuration: nil, buckets: nil, distinct: nil, limit: nil,
-        order: nil)
+      def get_data(id, starts: nil, ends: nil, bucketDuration: nil, # rubocop:disable Naming/VariableName
+                   buckets: nil, distinct: nil, limit: nil, order: nil)
         params = { start: starts, end: ends, bucketDuration: bucketDuration, buckets: buckets,
                    distinct: distinct, limit: limit, order: order }
         get_data_helper(id, params)

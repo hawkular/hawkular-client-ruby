@@ -2,7 +2,7 @@ require_relative '../vcr/vcr_setup'
 require_relative '../spec_helper'
 
 module Hawkular::Alerts::RSpec
-  ALERTS_BASE = 'http://localhost:8080/hawkular/alerts'
+  ALERTS_BASE = 'http://localhost:8080/hawkular/alerts'.freeze
   creds = { username: 'jdoe', password: 'password' }
   options = { tenant: 'hawkular' }
 
@@ -57,7 +57,7 @@ module Hawkular::Alerts::RSpec
 
     it 'Should List Triggers for Tags' do
       triggers = @client.list_triggers [],
-                                       %w(resourceId|my-resource01 app|MyShop)
+                                       %w[resourceId|my-resource01 app|MyShop]
 
       expect(triggers.size).to be(5)
     end
@@ -188,7 +188,7 @@ module Hawkular::Alerts::RSpec
     it 'Should get the action definitions' do
       ret = @client.get_action_definition
       expect(ret.size).to be > 0
-      expect(ret.key? 'email').to be_truthy
+      expect(ret.key?('email')).to be_truthy
 
       ret = @client.get_action_definition 'email'
       expect(ret.size).to be(1)
@@ -416,7 +416,8 @@ module Hawkular::Alerts::RSpec
       record('Alert/Alerts', credentials, 'setup') do
         @client = Hawkular::Alerts::Client.new(ALERTS_BASE, credentials, options)
         @client_tenant = Hawkular::Alerts::Client.new(
-          ALERTS_BASE, credentials, options.merge(tenant: 'foo'))
+          ALERTS_BASE, credentials, options.merge(tenant: 'foo')
+        )
 
         json = IO.read('spec/integration/alert-resources/alerts-test-data.json')
         trigger_hash = JSON.parse(json)
@@ -438,7 +439,8 @@ module Hawkular::Alerts::RSpec
       record('Alert/Alerts', credentials, 'setup_cleanup') do
         @client = Hawkular::Alerts::Client.new(ALERTS_BASE, credentials, options)
         @client_tenant = Hawkular::Alerts::Client.new(
-          ALERTS_BASE, credentials, options.merge(tenant: 'foo'))
+          ALERTS_BASE, credentials, options.merge(tenant: 'foo')
+        )
 
         json = IO.read('spec/integration/alert-resources/alerts-test-data.json')
         trigger_hash = JSON.parse(json)
@@ -478,7 +480,7 @@ module Hawkular::Alerts::RSpec
     it 'Should list alerts for multiple tenants' do
       client = Hawkular::Alerts::Client.new(ALERTS_BASE, creds, options)
 
-      alerts = client.alerts(tenants: [:hawkular, :foo])
+      alerts = client.alerts(tenants: %i[hawkular foo])
 
       expect(alerts).to_not be_nil
       expect(alerts.size).to eq(4)
@@ -609,7 +611,8 @@ module Hawkular::Alerts::RSpec
       record('Alert/Events', credentials, 'setup') do
         @client = Hawkular::Alerts::Client.new(ALERTS_BASE, credentials, options)
         @client_tenant = Hawkular::Alerts::Client.new(
-          ALERTS_BASE, credentials, options.merge(tenant: 'foo'))
+          ALERTS_BASE, credentials, options.merge(tenant: 'foo')
+        )
 
         json = IO.read('spec/integration/alert-resources/events-test-data.json')
         hash = JSON.parse(json)
@@ -623,10 +626,10 @@ module Hawkular::Alerts::RSpec
     after(:all) do
       # cleanup test values
       record('Alert/Events', credentials, 'setup_cleanup') do
-        @client = Hawkular::Alerts::Client.new(
-          ALERTS_BASE, credentials, options)
+        @client = Hawkular::Alerts::Client.new(ALERTS_BASE, credentials, options)
         @client_tenant = Hawkular::Alerts::Client.new(
-          ALERTS_BASE, credentials, options.merge(tenant: 'foo'))
+          ALERTS_BASE, credentials, options.merge(tenant: 'foo')
+        )
 
         json = IO.read('spec/integration/alert-resources/events-test-data.json')
         hash = JSON.parse(json)
@@ -658,7 +661,7 @@ module Hawkular::Alerts::RSpec
     it 'Should list events for multiple tenants' do
       client = Hawkular::Alerts::Client.new(ALERTS_BASE, creds, options)
 
-      events = client.events(criteria: { 'thin' => true }, tenants: [:hawkular, :foo])
+      events = client.events(criteria: { 'thin' => true }, tenants: %i[hawkular foo])
       events.select! { |e| e.eventType == 'EVENT' }
 
       expect(events).to_not be_nil
@@ -670,7 +673,7 @@ module Hawkular::Alerts::RSpec
     it 'Should list events using criteria' do
       client = Hawkular::Alerts::Client.new(ALERTS_BASE, creds, options)
 
-      events = client.list_events('categories' => %w(my-category-01 my-category-02))
+      events = client.list_events('categories' => %w[my-category-01 my-category-02])
 
       expect(events).to_not be_nil
       expect(events.size).to be(4)
@@ -799,7 +802,6 @@ module Hawkular::Alerts::RSpec
         alerts = @client.get_alerts_for_trigger 'my-cool-email-trigger'
         expect(alerts).to_not be(nil)
         alerts.each { |al| @client.resolve_alert(al.id, 'Heiko', 'Hello Ruby World :-)') }
-
       ensure
         # rubocop:disable Lint/HandleExceptions
         begin

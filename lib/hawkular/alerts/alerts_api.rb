@@ -182,11 +182,7 @@ module Hawkular::Alerts
     # Obtains action definition/plugin from the server.
     # @param [String] action_plugin Id of the action plugin to fetch. If nil, all the plugins are fetched
     def get_action_definition(action_plugin = nil)
-      if action_plugin.nil?
-        plugins = http_get('plugins')
-      else
-        plugins = [action_plugin]
-      end
+      plugins = action_plugin.nil? ? http_get('plugins') : [action_plugin]
       ret = {}
       plugins.each do |p|
         ret[p] = http_get("/plugins/#{p}")
@@ -232,7 +228,8 @@ module Hawkular::Alerts
     # Obtain the alerts for the Trigger with the passed id
     # @param [String] trigger_id Id of the trigger that has fired the alerts
     # @return [Array<Alert>] List of alerts for the trigger. Can be empty
-    def get_alerts_for_trigger(trigger_id) # TODO: add additional filters
+    def get_alerts_for_trigger(trigger_id)
+      # TODO: add additional filters
       return [] unless trigger_id
 
       url = '/?triggerIds=' + trigger_id
@@ -254,7 +251,7 @@ module Hawkular::Alerts
     # @param [Array] tenants optional list of tenants. The elements of the array can be any object
     #   convertible to a string
     # @return [Array<Alert>] List of alerts in the system. Can be empty
-    def alerts(criteria: {}, tenants:nil)
+    def alerts(criteria: {}, tenants: nil)
       query = generate_query_params(criteria)
       uri = tenants ? '/admin/alerts/' : '/'
       ret = http_get(uri + query, multi_tenants_header(tenants))
@@ -389,7 +386,7 @@ module Hawkular::Alerts
     attr_accessor :auto_resolve, :auto_resolve_alerts, :tags, :type
     attr_accessor :tenant, :description, :group, :severity, :event_type, :event_category, :member_of, :data_id_map
     attr_reader :conditions, :dampenings
-    attr_accessor :enabled, :actions, :firing_match, :auto_resolve_match
+    attr_accessor :enabled, :firing_match, :auto_resolve_match
 
     def initialize(trigger_hash)
       return if trigger_hash.nil?
@@ -427,9 +424,10 @@ module Hawkular::Alerts
         ret = x.to_s.split('_').collect(&:capitalize).join
         ret[0, 1].downcase + ret[1..-1]
       end
-      fields = [:id, :name, :enabled, :severity, :auto_resolve, :auto_resolve_alerts, :event_type, :event_category,
-                :description, :auto_enable, :auto_disable, :context, :type, :tags, :member_of, :data_id_map,
-                :firing_match, :auto_resolve_match]
+      fields = %i[id name enabled severity auto_resolve auto_resolve_alerts
+                  event_type event_category description auto_enable auto_disable
+                  context type tags member_of data_id_map firing_match
+                  auto_resolve_match]
 
       fields.each do |field|
         camelized_field = to_camel.call(field)
@@ -604,8 +602,8 @@ module Hawkular::Alerts
     end
 
     # for some API back compatibility
-    alias_method :ackBy, :ack_by
-    alias_method :resolvedBy, :resolved_by
+    alias ackBy ack_by
+    alias resolvedBy resolved_by
   end
 
   # Representation of one event.

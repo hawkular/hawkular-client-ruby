@@ -39,7 +39,7 @@ describe 'Base Spec' do
   end
 
   it 'should flatten arrays' do
-    params = { value: %w(hello world) }
+    params = { value: %w[hello world] }
 
     c = Hawkular::BaseClient.new('not-needed-for-this-test')
     ret = c.generate_query_params params
@@ -270,12 +270,13 @@ describe 'Url builder' do
   end
 
   it 'Should work with symbols' do
-    expect(Hawkular::BaseClient.new('not-needed').url('abc/%s', :true)).to eql('abc/true')
+    expect(Hawkular::BaseClient.new('not-needed')
+      .url('abc/%s', :true)).to eql('abc/true') # rubocop:disable Lint/BooleanSymbol
   end
 
   it 'Should work with multiple params' do
-    expect(Hawkular::BaseClient.new('not-needed').url('resource/%s/inner/%s', true, :ok)).to eql(
-      'resource/true/inner/ok')
+    expect(Hawkular::BaseClient.new('not-needed')
+      .url('resource/%s/inner/%s', true, :ok)).to eql('resource/true/inner/ok')
   end
 
   it 'Should work with & and ? params' do

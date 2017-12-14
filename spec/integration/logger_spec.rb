@@ -24,7 +24,7 @@ describe Hawkular::Logger do
       expect(File.read(file)).to be_empty
     end
 
-    %w(debug info warn error fatal).each do |priority|
+    %w[debug info warn error fatal].each do |priority|
       it "allows to log with #{priority} priority" do
         logger.log('this is a message', priority)
         file.flush

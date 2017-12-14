@@ -25,8 +25,7 @@ describe 'Inventory' do
               'id' => 'child-05', 'type' => { 'id' => 'type-03' }, 'children' => [], 'metrics' => [{ 'family' => 'm6' }]
             }
           ],
-          'metrics' => [{ 'family' => 'm1' }, { 'family' => 'm2' }, { 'family' => 'm3' }]
-        },
+          'metrics' => [{ 'family' => 'm1' }, { 'family' => 'm2' }, { 'family' => 'm3' }] },
         { 'id' => 'child-06', 'type' => { 'id' => 'type-01' }, 'children' => [], 'metrics' => [{ 'family' => 'm3' }] }
       ]
     }

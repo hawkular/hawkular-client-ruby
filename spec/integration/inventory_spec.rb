@@ -1,9 +1,9 @@
 require_relative '../vcr/vcr_setup'
 require_relative '../spec_helper'
 
-DEFAULT_VERSION = '0.9.8.Final'
+DEFAULT_VERSION = '0.9.8.Final'.freeze
 VERSION = ENV['INVENTORY_VERSION'] || DEFAULT_VERSION
-HOST = 'http://localhost:8080'
+HOST = 'http://localhost:8080'.freeze
 
 describe 'Inventory' do
   let(:cassette_name) do |example|
@@ -33,8 +33,10 @@ describe 'Inventory' do
   it 'Should list root resources' do
     res = @client.root_resources
     expect(res.size).to be(4)
-    expect(res.map { |r| r.type.id }).to include(
-      'Runtime MBean WF10', 'WildFly Server WF10', 'Platform_Operating System', 'Hawkular Java Agent WF10')
+    expect(res.map { |r| r.type.id }).to include('Runtime MBean WF10',
+                                                 'WildFly Server WF10',
+                                                 'Platform_Operating System',
+                                                 'Hawkular Java Agent WF10')
     # Children are not loaded
     expect(res.map(&:children)).to eq([nil, nil, nil, nil])
   end
@@ -42,8 +44,8 @@ describe 'Inventory' do
   it 'Should get by type' do
     res = @client.resources_for_type('Memory Pool MBean WF10')
     expect(res.size).to be(6)
-    expect(res.map(&:name)).to include(
-      'JMX [Local JMX] MemoryPool Metaspace', 'JMX [Local JMX] MemoryPool PS Eden Space')
+    expect(res.map(&:name)).to include('JMX [Local JMX] MemoryPool Metaspace',
+                                       'JMX [Local JMX] MemoryPool PS Eden Space')
   end
 
   it 'Should get resource' do
@@ -76,8 +78,8 @@ describe 'Inventory' do
     expect(res.type.id).to eq('Runtime MBean WF10')
     expect(res.children).not_to be_nil
     expect(res.children.size).to eq(6)
-    expect(res.children.map(&:name)).to include(
-      'JMX [Local JMX] MemoryPool Metaspace', 'JMX [Local JMX] MemoryPool PS Eden Space')
+    expect(res.children.map(&:name)).to include('JMX [Local JMX] MemoryPool Metaspace',
+                                                'JMX [Local JMX] MemoryPool PS Eden Space')
   end
 
   it 'Should get children' do
@@ -85,8 +87,8 @@ describe 'Inventory' do
     res = @client.children_resources(id)
     expect(res).not_to be_nil
     expect(res.size).to eq(6)
-    expect(res.map(&:name)).to include(
-      'JMX [Local JMX] MemoryPool Metaspace', 'JMX [Local JMX] MemoryPool PS Eden Space')
+    expect(res.map(&:name)).to include('JMX [Local JMX] MemoryPool Metaspace',
+                                       'JMX [Local JMX] MemoryPool PS Eden Space')
     expect(res.map(&:parent_id)).to eq([id, id, id, id, id, id])
   end
 
@@ -108,7 +110,9 @@ describe 'Inventory' do
   it 'Should list resources with pages' do
     res = @shortpaged_client.root_resources
     expect(res.size).to be(4)
-    expect(res.map { |r| r.type.id }).to include(
-      'Runtime MBean WF10', 'WildFly Server WF10', 'Platform_Operating System', 'Hawkular Java Agent WF10')
+    expect(res.map { |r| r.type.id }).to include('Runtime MBean WF10',
+                                                 'WildFly Server WF10',
+                                                 'Platform_Operating System',
+                                                 'Hawkular Java Agent WF10')
   end
 end

@@ -8,7 +8,7 @@ include Hawkular::Operations
 
 # examples that tests the main client which delegates all the calls to Hawkular component clients
 module Hawkular::Client::RSpec
-  HOST = 'http://localhost:8080'
+  HOST = 'http://localhost:8080'.freeze
 
   describe 'HawkularClient' do
     let(:cassette_name) do |example|
@@ -41,14 +41,14 @@ module Hawkular::Client::RSpec
         }
         expect do
           Hawkular::Client.new(entrypoint: HOST, credentials: @creds, options: { tenant: 'hawkular' })
-            .inventory_root_resources
+                          .inventory_root_resources
         end.to raise_error(Hawkular::BaseClient::HawkularException, 'Unauthorized')
       end
     end
 
     it 'Should fail when calling method with unknown prefix' do
-      expect { @hawkular_client.ynventori_root_resources }.to raise_error(Hawkular::ArgumentError)
-      expect { @hawkular_client.root_resources }.to raise_error(Hawkular::ArgumentError)
+      expect { @hawkular_client.ynventori_root_resources }.to raise_error(NoMethodError)
+      expect { @hawkular_client.root_resources }.to raise_error(NoMethodError)
     end
 
     it 'Should fail when calling unknown method with known client prefix' do
