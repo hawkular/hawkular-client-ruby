@@ -17,21 +17,18 @@ module Hawkular
     end
 
     def respond_to_missing?(method_name, include_private = false)
-      method_name.to_s.start_with?('inventory_', 'alerts_', 'operations_', 'tokens_', 'prometheus_') || super
+      delegate_client = client_for_method(method_name)
+      return super if delegate_client.nil?
+
+      method = submethod_name_for(method_name)
+      return super unless delegate_client.respond_to?(method)
+
+      true
     end
 
     def method_missing(name, *args, &block)
-      delegate_client = case name
-                        when /^inventory_/ then inventory
-                        when /^alerts_/ then alerts
-                        when /^operations_/ then operations
-                        when /^tokens_/ then tokens
-                        when /^prometheus_/ then prometheus
-                        else
-                          super
-                        end
-      method = name.to_s.sub(/^[^_]+_/, '')
-      delegate_client.__send__(method, *args, &block)
+      super unless respond_to?(name)
+      client_for_method(name).__send__(submethod_name_for(name), *args, &block)
     end
 
     def inventory
@@ -72,6 +69,20 @@ module Hawkular
       Operations::Client.new(entrypoint: @state[:entrypoint],
                              credentials: @state[:credentials],
                              options: @state[:options])
+    end
+
+    def client_for_method(method_name)
+      case method_name
+      when /^inventory_/ then inventory
+      when /^alerts_/ then alerts
+      when /^operations_/ then operations
+      when /^tokens_/ then tokens
+      when /^prometheus_/ then prometheus
+      end
+    end
+
+    def submethod_name_for(method_name)
+      method_name.to_s.sub(/^[^_]+_/, '')
     end
   end
 end
