@@ -19,7 +19,7 @@ Gem::Specification.new do |gem|
   gem.require_paths = ['lib']
 
   gem.add_runtime_dependency('addressable')
-  gem.add_runtime_dependency('rest-client', '~> 2.0.0')
+  gem.add_runtime_dependency('rest-client', '~> 2.0')
   gem.add_runtime_dependency('websocket-client-simple', '~> 0.3.0')
   gem.add_development_dependency('actionpack', '~> 4')
   gem.add_development_dependency('coveralls')
