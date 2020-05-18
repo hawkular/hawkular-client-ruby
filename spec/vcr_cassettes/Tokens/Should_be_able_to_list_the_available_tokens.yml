@@ -9,8 +9,6 @@ http_interactions:
     headers:
       Accept:
       - application/json
-      Accept-Encoding:
-      - gzip, deflate
       User-Agent:
       - rest-client/2.0.0.rc1 (linux-gnu x86_64) ruby/2.2.4p230
       Content-Type:
@@ -24,7 +22,7 @@ http_interactions:
       message: OK
     headers:
       Content-Encoding:
-      - gzip
+      - json
       Expires:
       - '0'
       Cache-Control:
@@ -45,8 +43,7 @@ http_interactions:
       - '22'
     body:
       encoding: ASCII-8BIT
-      string: !binary |-
-        H4sIAAAAAAAAAIuOBQApu0wNAgAAAA==
+      string: "[]"
     http_version: 
   recorded_at: Tue, 16 Feb 2016 11:18:00 GMT
 recorded_with: VCR 3.0.1

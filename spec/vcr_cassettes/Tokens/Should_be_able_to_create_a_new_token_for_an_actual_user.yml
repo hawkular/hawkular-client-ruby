@@ -27,7 +27,7 @@ http_interactions:
       message: OK
     headers:
       Content-Encoding:
-      - gzip
+      - json
       Expires:
       - '0'
       Cache-Control:
@@ -48,8 +48,7 @@ http_interactions:
       - '227'
     body:
       encoding: ASCII-8BIT
-      string: !binary |-
-        H4sIAAAAAAAAAI3Ny07DMBCF4VexvK6Rx576kh1iwxp1xW5sTyQrIUSJA1RV3x1X4gHYf+c/NznxVQ4yQgjeF1KA6BRGMiqkmBRCLhk9Ws4kT3LnvHHr/swJPKdgjNEha6utHUuKGDVQdD51u251yXWluXMTtHHJOhVGRoXW9jzmoM4GGbwlF9LYJz1Ojcvz48FocEobBe4CMEAYtH5y1r13dqzlP4x/1rrx/mDLMc8nSa1tNR2Ndznc5EIf3AOXz4kX8fcsviqJV/qejpk28Xakq3iZKy9N3u+/MwqPrisBAAA=
+      string: "{\"key\":\"918877da-1446-49a2-8b9b-41cdc4743eca\",\"secret\":\"5eb17eb822208c03033fdb94901a967b\",\"principal\":\"28026b36-8fe4-4332-84c8-524e173a68bf\",\"createdAt\":\"2016-02-16T11:18:00.636Z\",\"updatedAt\":\"2016-02-16T11:18:00.636Z\",\"expiresAt\":null,\"attributes\":{\"name\":\"Token created via Hawkular Ruby Client\"}}"
     http_version: 
   recorded_at: Tue, 16 Feb 2016 11:18:00 GMT
 recorded_with: VCR 3.0.1
