@@ -4,5 +4,5 @@
 # @see https://github.com/hawkular
 module Hawkular
   # Version of the Hawkular Ruby Gem
-  VERSION = '5.0.0.pre1'.freeze
+  VERSION = '5.0.0.pre2'.freeze
 end
